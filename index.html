@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>全書逐章整理 — Kittel 固態物理</title>
+<meta name="description" content="Kittel《Introduction to Solid State Physics》第 8 版全 22 章逐章整理：199 條公式全部標到書本頁碼與式號，每章六欄，含與熱容的關聯分級。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<main id="main">
+  <header class="hero">
+    <div class="wrap">
+      <p class="kicker">Kittel《Introduction to Solid State Physics》第 8 版</p>
+      <h1>22 章，逐章拆解</h1>
+      <p class="hero__lede">每章六欄：主要內容與研究問題／核心物理概念／重要模型與公式／最重要的結論／與前後章的關係／與熱容的關聯程度。</p>
+      <p class="hero__claim">你不需要讀完 700 頁才知道哪一章與你有關。</p>
+      <p class="anchors__cap">這份整理的實際規模</p>
+      <ul class="anchors">
+        <li><span class="v num">199</span><span class="k">條公式，全部標到書本頁碼與式號</span></li>
+        <li><span class="v num">216</span><span class="k">條核心概念，逐條回原文核對</span></li>
+        <li><span class="v num">4 / 22</span><span class="k">章與熱容直接相關</span></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+    <div>
+      <h2 style="margin-top:0">全書總表</h2>
+      <p>點章名進入該章的六欄整理。左側刻度尺的格子寬度就是「與熱容的關聯程度」——整本書的分佈一眼看完。</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>章</th><th>章名</th><th>書本頁</th><th>公式</th><th>熱容關聯</th><th>核心概念（首條）</th></tr></thead>
+          <tbody><tr><td class="mono">01</td><td><a href="ch-01.html"><b>晶體結構</b></a><br><span class="mine">Crystal Structure</span></td><td class="mono">1–22</td><td class="mono">8</td><td><span class="tag tag--indirect">間接</span></td><td>晶體＝lattice（數學點集）＋ basis（附著在每個晶格點上的原子群），兩者分開描述是…</td></tr><tr><td class="mono">02</td><td><a href="ch-02.html"><b>波繞射與倒晶格</b></a><br><span class="mine">Wave Diffraction and the Reciprocal Lattice</span></td><td class="mono">23–45</td><td class="mono">8</td><td><span class="tag tag--indirect">間接</span></td><td>Bragg law 2d sinθ = nλ 是繞射條件最簡單的敘述，但它假設鏡面反射，只是…</td></tr><tr><td class="mono">03</td><td><a href="ch-03.html"><b>晶體鍵結與彈性常數</b></a><br><span class="mine">Crystal Binding and Elastic Constants</span></td><td class="mono">47–87</td><td class="mono">8</td><td><span class="tag tag--indirect">間接</span></td><td>晶體的內聚完全來自電子負電荷與原子核正電荷之間的靜電吸引；磁力影響微弱，重力可忽略。exch…</td></tr><tr><td class="mono">04</td><td><a href="ch-04.html"><b>聲子 I：晶格振動</b></a><br><span class="mine">Phonons I. Crystal Vibrations</span></td><td class="mono">89–103</td><td class="mono">12</td><td><span class="tag tag--indirect">間接</span></td><td>晶體的彈性響應假設為位移的線性函數（等價於彈性能為相對位移的二次函數），三次以上的項在小形變…</td></tr><tr><td class="mono">05</td><td><a href="ch-05.html"><b>聲子 II：熱性質</b></a><br><span class="mine">Phonons II. Thermal Properties</span></td><td class="mono">105–129</td><td class="mono">12</td><td><span class="tag tag--direct">直接</span></td><td>熱容通常指定容熱容 C_V ≡ (∂U/∂T)_V，比實驗直接量到的 C_p 更基本；聲子對…</td></tr><tr><td class="mono">06</td><td><a href="ch-06.html"><b>自由電子費米氣</b></a><br><span class="mine">Free Electron Fermi Gas</span></td><td class="mono">131–158</td><td class="mono">12</td><td><span class="tag tag--direct">直接</span></td><td>自由電子費米氣＝受包立不相容原理約束的自由電子氣；價電子成為傳導電子，離子實只佔約 15% …</td></tr><tr><td class="mono">07</td><td><a href="ch-07.html"><b>能帶</b></a><br><span class="mine">Energy Bands</span></td><td class="mono">161–183</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>晶體中的電子排列成能帶，其間隔著沒有波狀電子軌域存在的禁區，稱為能隙（energy gap）…</td></tr><tr><td class="mono">08</td><td><a href="ch-08.html"><b>半導體晶體</b></a><br><span class="mine">Semiconductor Crystals</span></td><td class="mono">185–219</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>半導體以室溫電阻率 10⁻² 至 10⁹ ohm-cm 分類，且強烈依賴溫度；絕對零度下純完…</td></tr><tr><td class="mono">09</td><td><a href="ch-09.html"><b>費米面與金屬</b></a><br><span class="mine">Fermi Surfaces and Metals</span></td><td class="mono">221–255</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>費米面是 k 空間中能量等於 ε_F 的等能面，在絕對零度分隔已填與未填軌域；金屬的電性由費…</td></tr><tr><td class="mono">10</td><td><a href="ch-10.html"><b>超導</b></a><br><span class="mine">Superconductivity</span></td><td class="mono">257–296</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>超導態不只是零電阻：塊材在弱磁場中表現為完美反磁性，B = 0（Meissner 效應），此…</td></tr><tr><td class="mono">11</td><td><a href="ch-11.html"><b>反磁性與順磁性</b></a><br><span class="mine">Diamagnetism and Paramagnetism</span></td><td class="mono">297–319</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>磁化率定義 χ = M/B；χ&lt;0 稱抗磁、χ&gt;0 稱順磁；莫耳磁化率寫作 χ_M。</td></tr><tr><td class="mono">12</td><td><a href="ch-12.html"><b>鐵磁性與反鐵磁性</b></a><br><span class="mine">Ferromagnetism and Antiferromagnetism</span></td><td class="mono">321–359</td><td class="mono">10</td><td><span class="tag tag--none">無明顯關聯</span></td><td>平均場（分子場／Weiss 場）近似：每個磁性原子感受到正比於磁化的交換場 B_E = λM…</td></tr><tr><td class="mono">13</td><td><a href="ch-13.html"><b>磁共振</b></a><br><span class="mine">Magnetic Resonance</span></td><td class="mono">361–391</td><td class="mono">12</td><td><span class="tag tag--none">無明顯關聯</span></td><td>共振研究可提供四類資訊：單一缺陷的電子結構（由精細結構）、自旋或環境的運動（由線寬變化）、自…</td></tr><tr><td class="mono">14</td><td><a href="ch-14.html"><b>電漿子、極化子與極子</b></a><br><span class="mine">Plasmons, Polaritons, and Polarons</span></td><td class="mono">393–425</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>介電函數 ε(ω,K) 可由外加電荷密度與感應電荷密度的傅立葉分量定義，ε(K)=ρext(…</td></tr><tr><td class="mono">15</td><td><a href="ch-15.html"><b>光學過程與激子</b></a><br><span class="mine">Optical Processes and Excitons</span></td><td class="mono">427–451</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>在紅外、可見光、紫外區，輻射的波向量遠小於最短倒晶格向量，因此可取 K=0，只需考慮 ε(ω…</td></tr><tr><td class="mono">16</td><td><a href="ch-16.html"><b>介電體與鐵電體</b></a><br><span class="mine">Dielectrics and Ferroelectrics</span></td><td class="mono">453–485</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>極化 P 定義為單位體積的偶極矩（對晶胞體積平均）；巨觀電場 E 定義為微觀電場 e(r) …</td></tr><tr><td class="mono">17</td><td><a href="ch-17.html"><b>表面與界面物理</b></a><br><span class="mine">Surface and Interface Physics</span></td><td class="mono">487–513</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>表面弛豫（relaxation）只改變層間距而保持表面內結構；表面重構（reconstruc…</td></tr><tr><td class="mono">18</td><td><a href="ch-18.html"><b>奈米結構</b></a><br><span class="mine">Nanostructures</span></td><td class="mono">515–563</td><td class="mono">13</td><td><span class="tag tag--direct">直接</span></td><td>製作奈米結構有兩大路線：top-down 用微影把巨觀材料切到奈米尺度，bottom-up …</td></tr><tr><td class="mono">19</td><td><a href="ch-19.html"><b>非晶固體</b></a><br><span class="mine">Noncrystalline Solids</span></td><td class="mono">565–582</td><td class="mono">8</td><td><span class="tag tag--direct">直接</span></td><td>非晶材料的 x 射線或中子繞射圖樣是一個或數個寬而瀰散的環；由此只能直接決定徑向分布函數，需…</td></tr><tr><td class="mono">20</td><td><a href="ch-20.html"><b>點缺陷</b></a><br><span class="mine">Point Defects</span></td><td class="mono">583–595</td><td class="mono">8</td><td><span class="tag tag--indirect">間接</span></td><td>最簡單的缺陷是晶格空缺（Schottky 缺陷）：把內部晶格位的原子搬到晶體表面的晶格位；熱…</td></tr><tr><td class="mono">21</td><td><a href="ch-21.html"><b>差排</b></a><br><span class="mine">Dislocations</span></td><td class="mono">597–618</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>Frenkel 用簡單模型估計完美晶體的理論剪切強度：若 a ≈ d，理想臨界剪應力約為剪切…</td></tr><tr><td class="mono">22</td><td><a href="ch-22.html"><b>合金</b></a><br><span class="mine">Alloys</span></td><td class="mono">619–640</td><td class="mono">8</td><td><span class="tag tag--none">無明顯關聯</span></td><td>低濃度雜質原子無法對負責能隙與費米面形狀的有效位能 Fourier 分量 U_G 造成太大影…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <section class="plate">
+    <div class="wrap--text">
+      <h2>整本書的熱容關聯分佈</h2>
+      <p>把 22 章依「與熱容的關聯程度」分類，結果是嚴重偏斜的——這正是左側刻度尺想讓你一眼看到的事。</p>
+      <div class="plate__grid">
+        <div><span class="plate__n">4</span><p class="plate__k">章<strong>直接</strong>相關<br>Ch5 聲子熱容、Ch6 電子熱容、Ch18 奈米結構熱性質、Ch19 非晶低溫熱容</p></div>
+        <div><span class="plate__n">5</span><p class="plate__k">章<strong>間接</strong>相關<br>提供聲速、色散關係、模式計數或缺陷散射</p></div>
+        <div><span class="plate__n">13</span><p class="plate__k">章<strong>無明顯關聯</strong><br>電子能帶、磁性、光學、缺陷力學</p></div>
+      </div>
+      <p style="margin-top:32px">分級與「與前後章的關係」是<strong>我依章節依賴所做的判讀</strong>，不是書中的說法。各章的公式、頁碼、式號與逐字引用則全部出自 PDF 文字層，並經獨立代理回原文逐條核對。</p>
+    </div>
+  </section>
+
+  <section class="sect wrap--text">
+    <h2>附錄 A–J</h2>
+    <p>書末十個附錄。與熱容有間接價值的只有 C（彈性波量子化的正式處理）、D（費米–狄拉克分布）與 F（波茲曼輸運方程，可用來理解 K = ⅓Cvℓ 的來歷）。</p>
+    <div class="tablewrap tablewrap--narrow">
+      <table><thead><tr><th>附錄</th><th>標題</th><th>起始頁</th><th>對熱容</th></tr></thead><tbody><tr><td class="mono">A</td><td>反射線的溫度相依<br><span class="mine">Temperature Dependence of the Reflection Lines</span></td><td class="mono">p.641</td><td>可略過</td></tr><tr><td class="mono">B</td><td>Ewald 晶格和計算<br><span class="mine">Ewald Calculation of Lattice Sums</span></td><td class="mono">p.644</td><td>可略過</td></tr><tr><td class="mono">C</td><td>彈性波的量子化：聲子<br><span class="mine">Quantization of Elastic Waves: Phonons</span></td><td class="mono">p.648</td><td>支撐</td></tr><tr><td class="mono">D</td><td>費米–狄拉克分布函數<br><span class="mine">Fermi-Dirac Distribution Function</span></td><td class="mono">p.652</td><td>支撐</td></tr><tr><td class="mono">E</td><td>dk/dt 方程的推導<br><span class="mine">Derivation of the dk/dt Equation</span></td><td class="mono">p.655</td><td>可略過</td></tr><tr><td class="mono">F</td><td>波茲曼輸運方程<br><span class="mine">Boltzmann Transport Equation</span></td><td class="mono">p.656</td><td>支撐</td></tr><tr><td class="mono">G</td><td>向量位、場動量與規範變換<br><span class="mine">Vector Potential, Field Momentum, and Gauge Transformations</span></td><td class="mono">p.661</td><td>可略過</td></tr><tr><td class="mono">H</td><td>Cooper 對<br><span class="mine">Cooper Pairs</span></td><td class="mono">p.665</td><td>可略過</td></tr><tr><td class="mono">I</td><td>Ginzburg–Landau 方程<br><span class="mine">Ginzburg-Landau Equation</span></td><td class="mono">p.667</td><td>可略過</td></tr><tr><td class="mono">J</td><td>電子—聲子碰撞<br><span class="mine">Electron-Phonon Collisions</span></td><td class="mono">p.671</td><td>可略過</td></tr></tbody></table>
+    </div>
+  </section>
+
+  <section class="sect wrap--text">
+    <h2>姊妹頁：熱容專題</h2>
+    <p>本頁按書的章序走。若你要的是「熱容」這條主線——它散在 Ch5、Ch6、Ch10、Ch12、Ch18、Ch19 六章裡——請看 <a href="thermal.html">熱容專題整理</a>：11 個主題沿 C(T) 溫度軸排列，每個主題六個固定面向，全部標到章節小節與頁碼。</p>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

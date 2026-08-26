@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 8 章 半導體晶體 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 8 章「Semiconductor Crystals」（書本 p.185–219）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 8 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">08</span><h1>半導體晶體</h1><p class="uhead__en">Semiconductor Crystals</p><p class="chap__meta"><span>書本 p.185–219</span><span>公式 8 條</span><span>核心概念 8 條</span><span>熱容關聯 <span class="tag tag--none">無明顯關聯</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" aria-current="page" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章處理半導體晶體（特別是 Si、Ge、GaAs）的中心物理：能隙如何決定導電性、載子在外場中如何運動、以及本質與雜質載子濃度如何隨溫度變化。書中先由 Bloch 波包導出電子在能帶中的運動方程，再引入電洞與有效質量張量，說明迴旋共振如何量得有效質量。接著以拋物線能帶邊近似計算本質載子濃度與 np 乘積，並用修正的 Bohr 模型估算施體／受體游離能。最後討論熱電效應、半金屬與超晶格中的 Bloch 振盪與 Zener 穿隧。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>半導體以室溫電阻率 10⁻² 至 10⁹ ohm-cm 分類，且強烈依賴溫度；絕對零度下純完美晶體多為絕緣體。</li><li>能隙分直接與間接：直接吸收在 ℏω_g 起始，間接吸收必須同時涉及一個聲子以滿足波向量守恆。</li><li>波包在外力下的運動由 ℏdk/dt = F 描述，晶格對電子的作用完全包含在色散關係 ε(k) 中。</li><li>電洞是填滿能帶中的空軌域，具有 k_h = −k_e、ε_h(k_h) = −ε_e(k_e)、v_h = v_e、m_h = −m_e，且在外場中行為如同正電荷 +e。</li><li>有效質量由能帶曲率倒數決定；能隙越小，能帶邊附近的 |m*| 越小。</li><li>迴旋共振以 ω_c = eB/m*c 直接量測載子有效質量，需滿足 ω_cτ ≳ 1。</li><li>np 乘積在給定溫度下為常數且與費米能階無關，此即質量作用定律，是補償（compensation）的基礎。</li><li>施體游離能可由氫原子 Bohr 模型代入介電常數與有效質量得到，Ge 約 5 meV（模型值），Si 約 20 meV；玻爾半徑放大 ε m/m_e 倍，故施體軌域重疊在相當低的濃度即發生。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">直接能隙的光吸收閾值</p><p class="eq__f">E_g = ℏω_g</p><span class="eq__r">p.188</span><p class="eq__s">E_g 為能隙；ω_g 為連續光吸收的起始頻率（直接躍遷）</p></div><div class="eq"><p class="eq__l">波包的群速度</p><p class="eq__f">v_g = ℏ⁻¹ dε/dk ,  即 v = ℏ⁻¹ ∇_k ε(k)</p><span class="eq__r">(1) 　p.191</span><p class="eq__s">v_g 群速度；ε(k) 能帶色散關係；晶格對電子運動的效應全含於 ε(k) 中</p></div><div class="eq"><p class="eq__l">能帶中電子的運動方程</p><p class="eq__f">ℏ dk/dt = F</p><span class="eq__r">(5) 　p.192</span><p class="eq__s">F 為作用於電子的外力（含電場與磁場之勞侖茲力）；ℏdk/dt 等於外力，而非 d(mv)/dt</p></div><div class="eq"><p class="eq__l">電洞的波向量</p><p class="eq__f">k_h = −k_e</p><span class="eq__r">(17) 　p.194</span><p class="eq__s">k_e 為缺失電子原本所在軌域的波向量；k_h 為電洞的波向量；填滿能帶總波向量為零</p></div><div class="eq"><p class="eq__l">有效質量的定義</p><p class="eq__f">1/m* = (1/ℏ²) d²ε/dk²</p><span class="eq__r">(28) 　p.198</span><p class="eq__s">m* 有效質量；d²ε/dk² 為能帶曲率。書中另以 (1/m*)_{μν} = (1/ℏ²) ∂²ε_k/∂k_μ∂k_ν 推廣為倒有效質量張量（式 29）</p></div><div class="eq"><p class="eq__l">迴旋共振頻率</p><p class="eq__f">ω_c = eB/(m*c)  [CGS] ；ω_c = eB/m*  [SI]</p><span class="eq__r">(30) 　p.200</span><p class="eq__s">ω_c 角旋轉頻率；B 靜磁場；m* 適當的迴旋有效質量；電子與電洞旋轉方向相反</p></div><div class="eq"><p class="eq__l">電子—電洞濃度乘積（質量作用定律）</p><p class="eq__f">np = 4 (k_B T / 2πℏ²)³ (m_e m_h)^{3/2} exp(−E_g / k_B T)</p><span class="eq__r">(43) 　p.206</span><p class="eq__s">n、p 為導帶電子與價帶電洞濃度；m_e、m_h 為有效質量；E_g = E_c − E_v。此結果不含費米能階 μ，對雜質游離同樣成立</p></div><div class="eq"><p class="eq__l">本質載子濃度</p><p class="eq__f">n_i = p_i = 2 (k_B T / 2πℏ²)^{3/2} (m_e m_h)^{3/4} exp(−E_g / 2k_B T)</p><span class="eq__r">(45) 　p.207</span><p class="eq__s">下標 i 表示本質（intrinsic）；本質載子濃度隨 E_g/2k_BT 指數變化</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>半導體的電性由能隙與能帶邊曲率共同決定：載子在外場中依 ℏdk/dt = F 運動，並以由能帶曲率倒數定義的有效質量響應，能隙越小有效質量越小、遷移率越高。填滿能帶中的空軌域可完整地以帶正電、正質量的電洞描述。本質載子濃度隨 exp(−E_g/2k_BT) 變化，而 np 乘積在固定溫度下為與費米能階、與摻雜無關的常數，因此摻雜提高一種載子必然壓低另一種（補償效應）。施體與受體的游離能可用介電常數與有效質量修正的 Bohr 模型估得，在 Si 中與室溫 k_BT（26 meV）相當，故室溫熱游離主導矽的導電行為。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"Impurity atoms that can give up an electron are called donors." (p.209)</p><p>"Vacant orbitals in a band are commonly called holes" (p.194)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>用 Ch7 的能帶與能隙，加入載子統計與有效質量。本章的接面與載子行為是 Ch17 表面／界面物理的直接前置；超晶格一節連到 Ch18 的低維系統。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">無明顯關聯</span>
+    <p>無明顯關聯。整章講電性與載子輸運。唯一沾邊的是 p.214 的熱電效應（Seebeck），但那是電—熱耦合的另一個題目，與熱容無關。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-07.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">07</span> 能帶</span></a>
+<a href="ch-09.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">09</span> 費米面與金屬</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

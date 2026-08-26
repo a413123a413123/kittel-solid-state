@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 3 章 晶體鍵結與彈性常數 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 3 章「Crystal Binding and Elastic Constants」（書本 p.47–87）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 3 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">03</span><h1>晶體鍵結與彈性常數</h1><p class="uhead__en">Crystal Binding and Elastic Constants</p><p class="chap__meta"><span>書本 p.47–87</span><span>公式 8 條</span><span>核心概念 9 條</span><span>熱容關聯 <span class="tag tag--indirect">間接</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" aria-current="page" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章問兩個相連的問題：「是什麼把晶體黏在一起？」以及「晶體被外力形變時如何反應？」前半處理 crystal binding，依序建立惰性氣體晶體（van der Waals-London 吸引 ＋ Pauli 排斥，合成 Lennard-Jones 位能）、離子晶體（Madelung 能量與指數排斥項）、共價晶體（電子對鍵與交換作用）、金屬鍵與氫鍵，並整理原子與離子半徑的可加性。後半把晶體視為連續彈性介質，定義應變分量 e_αβ 與應力分量、彈性剛度常數 C_λμ，證明立方晶只剩 C₁₁, C₁₂, C₄₄ 三個獨立常數，最後由 Hooke 定律加 Newton 第二定律導出彈性波方程與 [100]、[110] 方向的波速。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>晶體的內聚完全來自電子負電荷與原子核正電荷之間的靜電吸引；磁力影響微弱，重力可忽略。exchange energy、van der Waals force、covalent bond 只是這件事在不同情境下的專門稱呼。</li><li>cohesive energy 定義為把晶體拆成靜止、無限遠分離的中性自由原子所需的能量；lattice energy 則是拆成自由「離子」所需的能量（用於離子晶體）。</li><li>van der Waals-London 交互作用來自兩個耦合諧振子零點能的降低，正比於 −1/R⁶，是量子效應（ℏ → 0 時 ΔU → 0），且不需要電荷密度重疊。</li><li>排斥作用主要來自 Pauli 不相容原理：閉殼層重疊時電子必須被提升到高能態，故總能上升。經驗上以 B/R¹² 或 λexp(−R/ρ) 表示。</li><li>惰性氣體晶體用 Lennard-Jones 位能加總後可得 R₀/σ = 1.09（fcc，與實驗 1.09–1.14 相符）與 U_tot(R₀) = −(2.15)(4Nε)，且參數全由氣相數據決定，無可調參數。</li><li>離子晶體的主要束縛能是 Madelung energy −Nαq²/R₀；Madelung 常數 α 依結構而定：NaCl 1.747565、CsCl 1.762675、cubic ZnS 1.6381；一維交錯離子鏈為 α = 2 ln 2。</li><li>應變由 6 個無因次分量 e_xx, e_yy, e_zz, e_xy, e_yz, e_zx 完全描述；dilation δ = e_xx + e_yy + e_zz 為體積分數變化。應力也由 9 個減為 6 個獨立分量（力矩為零）。</li><li>彈性能密度為應變的二次式，使 36 個剛度常數先降為 21 個；立方對稱（四條 [111] 三重旋轉軸）再降為 C₁₁, C₁₂, C₄₄ 三個獨立常數。</li><li>立方晶三個主方向（[100]、[111]、[110]）中，兩個模式的粒子運動恰好橫向、一個恰好縱向；[100] 與 [111] 方向的兩個橫波簡併，[110] 方向則分裂為 C₄₄ 與 ½(C₁₁ − C₁₂) 兩支。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">van der Waals-London 吸引能（零點能降低量）</p><p class="eq__f">ΔU = ½ℏ(Δω_s + Δω_a) = −ℏω₀ · (1/8)(2e²/CR³)² = −A/R⁶</p><span class="eq__r">(9) 　p.56</span><p class="eq__s">ω₀ = (C/m)^(1/2) 為未耦合振子頻率（取為原子最強光吸收線的頻率）；C 為力常數，m 為質量，±e 為振子電荷，R 為兩振子（原子）間距；A 為常數，近似值為 ℏω₀α，α 為電子極化率</p></div><div class="eq"><p class="eq__l">Lennard-Jones 位能</p><p class="eq__f">U(R) = 4ε[(σ/R)¹² − (σ/R)⁶]</p><span class="eq__r">(10) 　p.58</span><p class="eq__s">ε 與 σ 為經驗參數，滿足 4εσ⁶ = A、4εσ¹² = B；R 為兩原子間距。極小值出現在 R/σ = 2^(1/6) ≈ 1.12，U 的極小值為 −ε，且 R = σ 時 U = 0。原子間力為 −dU/dR</p></div><div class="eq"><p class="eq__l">離子對的交互作用能（Madelung 模型的成對位能）</p><p class="eq__f">U_ij = λ exp(−r_ij/ρ) ± q²/r_ij   (CGS)</p><span class="eq__r">(18) 　p.62</span><p class="eq__s">λ 為排斥強度、ρ 為排斥作用力程（r = ρ 時排斥項降為 r = 0 時的 e⁻¹）；r_ij 為離子 i、j 間距；同號電荷取 + 號、異號取 − 號。SI 制中庫侖項改為 ±q²/4πε₀r</p></div><div class="eq"><p class="eq__l">離子晶體的總晶格能（平衡分離下）</p><p class="eq__f">U_tot = −(Nαq²/R₀)(1 − ρ/R₀)   (CGS)</p><span class="eq__r">(24) 　p.63</span><p class="eq__s">N 為分子數（2N 個離子），α 為 Madelung 常數，q 為離子電荷，R₀ 為平衡最近鄰距離，ρ 為排斥力程。−Nαq²/R₀ 即 Madelung energy；書中指出 ρ 約為 0.1R₀，故排斥作用力程極短</p></div><div class="eq"><p class="eq__l">立方晶的彈性能密度</p><p class="eq__f">U = ½C₁₁(e_xx² + e_yy² + e_zz²) + ½C₄₄(e_yz² + e_zx² + e_xy²) + C₁₂(e_yy e_zz + e_zz e_xx + e_xx e_yy)</p><span class="eq__r">(43) 　p.78</span><p class="eq__s">C₁₁, C₁₂, C₄₄ 為立方晶三個獨立的 elastic stiffness constants；e_αβ 為應變分量。應力由 X_x = ∂U/∂e_xx 等關係取得，並得 C₁₂ = C₁₃、C₁₄ = C₁₅ = C₁₆ = 0、C₆₆ = C₄₄　[式號依書中彈性能密度處為準；先前誤植的 (62)(63) 已移除]</p></div><div class="eq"><p class="eq__l">立方晶的體積模數</p><p class="eq__f">B = ⅓(C₁₁ + 2C₁₂)</p><span class="eq__r">(54) 　p.80</span><p class="eq__s">B 由 U = ½Bδ²（式 53）定義，等價於 −V dp/dV；δ 為 dilation（均勻膨脹 e_xx = e_yy = e_zz = δ/3）。壓縮率 K = 1/B</p></div><div class="eq"><p class="eq__l">[100] 方向縱波速度</p><p class="eq__f">ω²ρ = C₁₁K² ,  v_s = νλ = ω/K = (C₁₁/ρ)^(1/2)</p><span class="eq__r">(59) 色散 ω²ρ=C₁₁K²；(60) 波速 v_s=(C₁₁/ρ)^½（同在 p.82） 　p.82</span><p class="eq__s">取試解 u = u₀ exp[i(Kx − ωt)]（式 58），K = 2π/λ 為波向量、ω = 2πν 為角頻率、ρ 為密度、u 為 x 方向粒子位移</p></div><div class="eq"><p class="eq__l">[100] 方向橫波（剪切波）速度</p><p class="eq__f">ω²ρ = C₄₄K² ,  v_s = (C₄₄/ρ)^(1/2)</p><span class="eq__r">(62) 色散 ω²ρ=C₄₄K²；(63) 波速 v_s=(C₄₄/ρ)^½（同在 p.82） 　p.82</span><p class="eq__s">取試解 v = v₀ exp[i(Kx − ωt)]（式 61），波向量沿 x 立方稜、粒子位移 v 沿 y 方向。粒子位移改沿 z 亦得相同速度，故 K ∥ [100] 時兩支獨立剪切波速度相等</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>晶體的結合力歸根究柢全是靜電作用，差別只在最外層電子的分布方式：惰性氣體靠 −A/R⁶ 的感應偶極吸引配上 Pauli 排斥（Lennard-Jones 位能），離子晶體靠 Madelung 靜電能 −Nαq²/R₀（占束縛能絕大部分，van der Waals 僅貢獻 1–2%），共價晶體靠自旋反平行電子對的重疊與交換作用（具強方向性，故 diamond 結構填充率僅 0.34），金屬則靠價電子動能相對自由原子的降低。在彈性方面，立方晶因四條 [111] 三重軸只剩 C₁₁、C₁₂、C₄₄ 三個獨立剛度常數，體積模數 B = ⅓(C₁₁ + 2C₁₂)；沿 [100]、[110]、[111] 三個主方向的三個簡正模式恰好可分成純縱波與純橫波，其速度分別由這三個常數的特定組合給出——這正是實驗上由三個波速反推三個彈性常數的依據。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"The attractive electrostatic interaction between the negative charges of the electrons and the positive charges of the nuclei is entirely responsible for the cohesion of solids." (p.49)</p><p>"The main contribution to the binding energy of ionic crystals is electrostatic and is called the Madelung energy." (p.61)</p><p>"Hooke's law states that in an elastic solid the strain is directly proportional to the stress." (p.73)</p><p>"There are three normal modes of wave motion in a crystal for a given magnitude and direction of the wavevector K." (p.85)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>前半（鍵結）相對獨立；後半（p.73 起的彈性）才是承先啟後的關鍵——彈性剛度常數 C₁₁、C₄₄ 給出彈性波速度，那正是 Ch4 力常數的巨觀對應，也是 Ch5 Debye 模型「聲速 v 為常數」這個假設的物理來源。往後 Ch18 的奈米樑振動與 Ch21 的差排應力場都回頭用本章的彈性理論。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">間接</span>
+    <p>這是聲速 v 的唯一來源。Debye 溫度 θ 與熱導率 K = ⅓Cvℓ 都需要 v，而 v = (C₁₁/ρ)^½（縱波）或 (C₄₄/ρ)^½（橫波），出自 p.82。讀 p.73–85 即可。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-02.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">02</span> 波繞射與倒晶格</span></a>
+<a href="ch-04.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">04</span> 聲子 I：晶格振動</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

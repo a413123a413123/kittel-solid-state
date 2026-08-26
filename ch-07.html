@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 7 章 能帶 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 7 章「Energy Bands」（書本 p.161–183）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 7 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">07</span><h1>能帶</h1><p class="uhead__en">Energy Bands</p><p class="chap__meta"><span>書本 p.161–183</span><span>公式 8 條</span><span>核心概念 9 條</span><span>熱容關聯 <span class="tag tag--none">無明顯關聯</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" aria-current="page" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章要解決自由電子模型無法回答的問題：金屬、半金屬、半導體、絕緣體之間的區別，霍爾係數出現正值的原因，以及傳導電子與自由原子價電子的關係。書中指出純金屬電阻率可低至 10⁻¹⁰ ohm-cm，良好絕緣體可高達 10²² ohm-cm，這 10³² 的跨度可能是固體中最寬的物理性質範圍。為此必須把自由電子模型擴充到考慮晶格週期性，最重要的新性質就是能隙的出現。全章依序建立近自由電子模型（能隙起源於布拉格反射與駐波）、布洛赫定理、Kronig-Penney 模型、週期位能中的波方程與中央方程（central equation），最後計算能帶中的軌域數並據以區分金屬與絕緣體。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>晶體中的電子排列成能帶，其間隔著沒有波狀電子軌域存在的禁區，稱為能隙（energy gap）或能帶隙（band gap），來自傳導電子波與離子實的交互作用。</li><li>能隙的物理起源是電子波在晶體中的布拉格反射：在 k = ±nπ/a 處行進波被反射，時間無關的狀態由駐波表示。</li><li>兩個駐波 ψ(+) ∝ cos(πx/a) 與 ψ(−) ∝ sin(πx/a) 把電子分別堆積在正離子實上與離子之間，因而有不同的位能期望值，這就是能隙的來源。</li><li>布洛赫定理：週期位能下波方程的本徵函數是平面波 exp(ik·r) 乘上一個具晶格週期性的函數 u_k(r)。</li><li>晶體動量 ℏk：k 是標記布洛赫函數的指標，也是碰撞過程守恆律（選擇律）中的量，電子吸收波向量 q 的聲子時選擇律為 k + q = k' + G。</li><li>中央方程（central equation）把週期位能中的微分波方程換成一組耦合的代數方程，未知數為傅立葉係數 C(k − G)；實務上常只需二到四項就夠。</li><li>在區邊界處二分量近似給出 ε = λ ± U，即位能的傅立葉分量 U 在區邊界造出寬度 2U 的能隙；能量對偏離區邊界的波向量 K̃ 呈二次相依。</li><li>每個原胞對每個能帶恰貢獻一個獨立的 k 值；計入自旋後每個能帶有 2N 個獨立軌域，N 為原胞數。</li><li>晶體只有在每個原胞的價電子數為偶整數時才可能是絕緣體；若能帶重疊，偶數價電子也會給出金屬（如鹼土金屬）。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">一維布拉格反射條件（第一布里淵區邊界）</p><p class="eq__f">k = ±(1/2)G = ±nπ/a</p><span class="eq__r">(4) 　p.165</span><p class="eq__s">布拉格條件 (k + G)² = k² 在一維的結果；G = 2πn/a 為倒晶格向量，n 為整數，a 為晶格常數。−π/a 與 π/a 之間的 k 空間區域為第一布里淵區。</p></div><div class="eq"><p class="eq__l">區邊界處的兩個駐波</p><p class="eq__f">ψ(+) = exp(iπx/a) + exp(−iπx/a) = 2 cos(πx/a) ； ψ(−) = exp(iπx/a) − exp(−iπx/a) = 2i sin(πx/a)</p><span class="eq__r">(5) 　p.165</span><p class="eq__s">(+)、(−) 依 x → −x 時是否變號而標記；兩者皆由等量的右行波與左行波組成。對應機率密度 ρ(+) ∝ cos²(πx/a) 把電子堆在 x = 0, a, 2a 的正離子上，ρ(−) ∝ sin²(πx/a) 則把電子集中在離子之間。</p></div><div class="eq"><p class="eq__l">能隙等於晶體位能的傅立葉分量</p><p class="eq__f">E_g = ∫₀¹ dx U(x) [|ψ(+)|² − |ψ(−)|²] = 2∫dx U cos(2πx/a)(cos²(πx/a) − sin²(πx/a)) = U</p><span class="eq__r">(6) 　p.167</span><p class="eq__s">取晶體位能 U(x) = U cos(2πx/a)；ψ(+) = cos(πx/a)、ψ(−) = sin(πx/a) 在單位長度上歸一化。此為兩駐波態之間的一階能量差。</p></div><div class="eq"><p class="eq__l">布洛赫定理（布洛赫函數形式）</p><p class="eq__f">ψ_k(r) = u_k(r) exp(ik·r) ， u_k(r) = u_k(r + T)</p><span class="eq__r">(7) 　p.167</span><p class="eq__s">u_k(r) 具晶格週期性；T 為晶格平移向量。單電子波函數若為此形式即稱布洛赫函數，可分解為行進波之和，也可組成波包描述電子在離子實位能場中自由傳播。</p></div><div class="eq"><p class="eq__l">Kronig-Penney 模型（δ 函數位能極限）</p><p class="eq__f">(P/Ka) sin Ka + cos Ka = cos ka</p><span class="eq__r">(21b) 　p.169</span><p class="eq__s">由 b → 0、U₀ → ∞ 且 Q²ba/2 = P 保持有限的極限取得；K 由 ε = ℏ²K²/2m 定義（井內平面波波數），k 為布洛赫指標，a 為晶格常數。方程有解的 K 範圍即允許能帶，其餘為能隙。</p></div><div class="eq"><p class="eq__l">中央方程（週期位能中的波方程的代數形式）</p><p class="eq__f">(λ_k − ε) C(k) + Σ_G U_G C(k − G) = 0 ， λ_k ≡ ℏ²k²/2m</p><span class="eq__r">(27),(28) 　p.172</span><p class="eq__s">C(k) 為波函數傅立葉展開 ψ = Σ_k C(k)e^{ikx} 的係數；U_G 為位能 U(x) = Σ_G U_G e^{iGx} 的傅立葉分量；G 為倒晶格向量。原則上有無限多個 C(k − G) 待定，實務上二到四項常已足夠。</p></div><div class="eq"><p class="eq__l">區邊界處的兩個能量根（能隙 2U）</p><p class="eq__f">ε = λ ± U = (ℏ²/2m)((1/2)G)² ± U ，且 C(−G/2)/C(G/2) = ±1</p><span class="eq__r">(47),(48) 　p.178</span><p class="eq__s">λ = ℏ²((1/2)G)²/2m 為區邊界處的自由電子動能；U 為位能的傅立葉分量。兩根一個比自由電子動能低 U、一個高 U，故位能 2U cos Gx 在區邊界造出 2U 的能隙；對應波函數 ψ(x) = exp(iGx/2) ± exp(−iGx/2) 即 (5) 式的駐波。</p></div><div class="eq"><p class="eq__l">區邊界附近的兩支能帶</p><p class="eq__f">ε = (1/2)(λ_{k−G} + λ_k) ± [(1/4)(λ_{k−G} − λ_k)² + U²]^(1/2)</p><span class="eq__r">(50) 　p.179</span><p class="eq__s">以 ψ(x) = C(k)e^{ikx} + C(k−G)e^{i(k−G)x} 的二分量近似求得；λ_k = ℏ²k²/2m。兩個根各描述一個能帶。以 K̃ ≡ k − (1/2)G 展開後得 ε_K̃(±) = ε(±) + (ℏ²K̃²/2m)(1 ± 2λ/U)，顯示能量對 K̃ 的二次相依。</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>晶體中的電子波在布里淵區邊界發生布拉格反射，形成駐波而非行進波；兩個駐波把電荷分別堆積在離子實上與離子之間，位能期望值不同，於是在區邊界張開能隙——書中稱 Fig. 3 是理解能隙起源的關鍵。週期位能下的解必為布洛赫形式 ψ_k(r) = e^{ik·r}u_k(r)，而波方程可改寫成中央方程這組代數方程；在二分量近似下區邊界能隙寬度就等於位能的傅立葉分量所給的 2U。每個能帶含 2N 個軌域（N 為原胞數），因此只有當每個原胞的價電子數為偶整數且能帶不重疊時晶體才是絕緣體；鹼金屬與貴金屬每原胞一個價電子必為金屬，鹼土金屬雖有兩個價電子卻因能帶重疊而成為（不甚好的）金屬，而金剛石、矽、鍺每原胞八個價電子且能帶不重疊，在絕對零度為絕緣體。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"Bragg reflection of electron waves in crystals is the cause of energy gaps." (p.164)</p><p>"The number of orbitals in a band is 2N, where N is the number of primitive cells in the specimen." (p.182)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>修正 Ch6 的自由電子假設——把週期位能放回去，得到 Bloch 函數與能隙。它產出的能帶結構是 Ch8（半導體）、Ch9（費米面）、Ch17（界面能帶對齊）的共同基礎。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">無明顯關聯</span>
+    <p>無明顯關聯。本章處理的是電子的能量本徵態，不涉及熱容或熱傳。做元件的人本來就熟這章，但對 Cth 幫不上忙。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-06.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">06</span> 自由電子費米氣</span></a>
+<a href="ch-08.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">08</span> 半導體晶體</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

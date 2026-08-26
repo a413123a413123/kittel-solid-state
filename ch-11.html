@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 11 章 反磁性與順磁性 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 11 章「Diamagnetism and Paramagnetism」（書本 p.297–319）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 11 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">11</span><h1>反磁性與順磁性</h1><p class="uhead__en">Diamagnetism and Paramagnetism</p><p class="chap__meta"><span>書本 p.297–319</span><span>公式 8 條</span><span>核心概念 10 條</span><span>熱容關聯 <span class="tag tag--none">無明顯關聯</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" aria-current="page" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章處理「未進入磁有序」的磁性：自由原子與離子在外加磁場下的抗磁與順磁反應。書中一開始即指出磁性與量子力學不可分割，因為嚴格古典的熱平衡系統即使在磁場中也不會顯示磁矩。自由原子磁矩有三個來源：電子自旋、電子繞核的軌道角動量、以及外加磁場所誘發的軌道磁矩變化；前兩者給出順磁貢獻，第三者給出抗磁貢獻。章內依序建立 Langevin 抗磁公式、抗磁的量子（微擾）推導、Brillouin 函數與 Curie 定律、稀土與鐵族離子的有效磁子數、晶場劈裂與軌道角動量凍結（quenching）、Van Vleck 溫度無關順磁性、等熵去磁冷卻，最後以 Pauli 傳導電子順磁性作結。核心問題是：什麼決定 χ 的正負號、大小與溫度依賴？</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>磁化率定義 χ = M/B；χ&lt;0 稱抗磁、χ&gt;0 稱順磁；莫耳磁化率寫作 χ_M。</li><li>抗磁性源自電荷部分屏蔽外加磁場的傾向；Larmor 定理指出磁場只是在原運動上疊加一個進動，該進動電流產生與外場反向的磁矩。</li><li>抗磁磁化率只與電子分布的 ⟨r²⟩ 有關，與溫度無關（Langevin 結果），對惰性氣體與離子實核（ion core）近似成立。</li><li>順磁性出現在：奇數電子系統、內殼層未填滿的自由原子與離子（過渡族、稀土、錒系）、少數偶電子化合物（如 O₂）、以及金屬。</li><li>磁矩 μ = γℏJ = −gμ_B J；自由原子的 g 由 Landé 公式給出，磁場中有 2J+1 個等間距能階。</li><li>Brillouin 函數描述任意 J 的磁化，其高溫極限給出 Curie 定律 χ = C/T，並定義有效磁子數 p = g[J(J+1)]^{1/2}。</li><li>Hund 規則決定基態：S 最大、在該 S 下 L 最大、殼層未過半時 J = |L−S|、過半時 J = L+S。</li><li>鐵族離子的 3d 殼層是最外層，會受到強而不均勻的晶場，使 L–S 耦合被破壞、L_z 平均為零（軌道角動量凍結），故實驗 p 值接近純自旋值 2[S(S+1)]^{1/2}。</li><li>等熵（絕熱）去磁：固定溫度下磁場降低自旋熵，撤場時熵由晶格流入自旋系統，達到 T₂ = T₁(B_Δ/B)；核去磁可再低約 100 倍（Cu 曾達 1.2×10⁻⁶ K）。</li><li>傳導電子只有費米面附近約 T/T_F 比例的電子能翻轉，故 Pauli 自旋順磁性與溫度無關；Landau 抗磁再抵掉其中 1/3。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">Larmor 進動角頻率（抗磁的古典基礎）</p><p class="eq__f">ω = eB/2mc （CGS）;  ω = eB/2m （SI）</p><span class="eq__r">(2) 　p.300</span><p class="eq__s">e 電子電荷，m 電子質量，B 外加磁場，c 光速。此為磁場中電子繞核運動額外疊加的進動頻率，須遠低於原中心場運動頻率才成立。</p></div><div class="eq"><p class="eq__l">Langevin 抗磁磁化率</p><p class="eq__f">χ = Nμ/B = −NZe²⟨r²⟩ / 6mc² （CGS）;  χ = μ₀Nμ/B = −μ₀NZe²⟨r²⟩ / 6m （SI）</p><span class="eq__r">(5) 　p.301</span><p class="eq__s">N 每單位體積原子數，Z 原子序（電子數），⟨r²⟩ = ⟨x²⟩+⟨y²⟩+⟨z²⟩ 為電子到原子核的均方距離。書中同時由式 (4) 的 μ = −(Ze²B/4mc²)⟨ρ²⟩ 與球對稱關係 ⟨ρ²⟩ = (2/3)⟨r²⟩ 得到。</p></div><div class="eq"><p class="eq__l">Landé g 因子（自由原子的譜線劈裂因子）</p><p class="eq__f">g = 1 + [J(J+1) + S(S+1) − L(L+1)] / [2J(J+1)]</p><span class="eq__r">(13) 　p.302</span><p class="eq__s">J 總角動量量子數，S 總自旋，L 總軌道角動量。g 定義為 gμ_B ≡ −γℏ；電子自旋的 g = 2.0023，通常取 2.00。</p></div><div class="eq"><p class="eq__l">磁場中的 Zeeman 能階</p><p class="eq__f">U = −μ·B = m_J g μ_B B</p><span class="eq__r">(14) 　p.303</span><p class="eq__s">m_J 為方位量子數，取值 J, J−1, …, −J；μ_B = eℏ/2mc（CGS）= eℏ/2m（SI）為 Bohr 磁子。單一自旋無軌道矩時 m_J = ±1/2、g = 2，得 U = ±μ_B B。</p></div><div class="eq"><p class="eq__l">Curie–Brillouin 定律（任意 J 的磁化）</p><p class="eq__f">M = N g J μ_B B_J(x),  x = g J μ_B B / k_B T;  B_J(x) = [(2J+1)/2J]·ctnh[(2J+1)x/2J] − (1/2J)·ctnh(x/2J)</p><span class="eq__r">(19) 在 p.303；Brillouin 函數本體 (20) 在次頁 　p.303</span><p class="eq__s">B_J 為 Brillouin 函數，N 為單位體積離子數。J = 1/2 時退化為式 (17) 的 M = Nμ tanh(μB/k_BT)。</p></div><div class="eq"><p class="eq__l">Curie 定律與有效磁子數</p><p class="eq__f">M/B = N J(J+1) g² μ_B² / 3k_B T = N p² μ_B² / 3k_B T = C/T,  p ≡ g[J(J+1)]^{1/2}</p><span class="eq__r">(22), (23) 　p.304</span><p class="eq__s">C 為 Curie 常數，p 為有效 Bohr 磁子數。此為 x = μB/k_BT ≪ 1 的展開結果（ctnh x = 1/x + x/3 − x³/45 + …）。</p></div><div class="eq"><p class="eq__l">等熵去磁所達最終溫度</p><p class="eq__f">T₂ = T₁ (B_Δ / B)</p><span class="eq__r">(41) 　p.314</span><p class="eq__s">B 為初始外加磁場，T₁ 為初始溫度，B_Δ 為對應局域交互作用的有效內場。書中 Cu 核去磁實驗擬合出 T₂ = T₁(3.1/B)（B 以高斯計），即 B_Δ = 3.1 gauss。</p></div><div class="eq"><p class="eq__l">Pauli 傳導電子自旋順磁性（含 Landau 修正）</p><p class="eq__f">M = μ²D(ε_F)B = 3Nμ²B / 2k_B T_F  →  χ = 3Nμ²/2ε_F;  含 Landau 抗磁後 M = N μ_B² B / k_B T_F</p><span class="eq__r">(45), (46) 　p.317</span><p class="eq__s">D(ε_F) 為費米能處的軌道態密度（= 3N/2ε_F），T_F 為費米溫度，μ = μ_B。Landau 證明自由電子波函數受磁場修正會產生等於順磁矩 −1/3 的抗磁矩，故總磁化為 Pauli 值的 2/3。</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>抗磁性是普遍存在的誘發效應，其大小僅由電子分布的 ⟨r²⟩ 決定且與溫度無關（Langevin 結果）；順磁性則來自未填滿殼層的永久磁矩，其磁化由 Brillouin 函數描述，高溫下服從 Curie 定律 χ = C/T。稀土離子的 4f 殼層深埋於 5s5p 之內，實驗有效磁子數與 Landé/Hund 預測相符；鐵族離子的 3d 為最外層，晶場凍結軌道角動量，故實驗值接近純自旋值。金屬中的傳導電子因 Fermi–Dirac 統計，只有費米面附近 T/T_F 比例的電子能翻轉，因而給出與溫度無關的 Pauli 順磁性 χ = 3Nμ²/2ε_F。 但書中同時指出（p.306）實驗磁子數與此計算仍有不符之處，並非全然吻合。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"Magnetism is inseparable from quantum mechanics" (p.299)</p><p>"When Lz averages to zero, the orbital angular momentum is said to be quenched." (p.308)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>用 Ch6 的 D(ε_F) 導出傳導電子的 Pauli 順磁；建立的交換與 Hund 規則框架是 Ch12 鐵磁交換場的前置。等熵去磁一節提供了到達極低溫的實驗手段。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">無明顯關聯</span>
+    <p>無明顯關聯。但 Pauli 順磁 χ = 3Nμ²/2ε_F 的推導與 Ch6 的電子熱容同源——都源自「只有 ε_F 附近 ~k_BT 的電子能響應」。Ch6 推導卡住時，這裡是同一物理的另一個面向。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-10.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">10</span> 超導</span></a>
+<a href="ch-12.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">12</span> 鐵磁性與反鐵磁性</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

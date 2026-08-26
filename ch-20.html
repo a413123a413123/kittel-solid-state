@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 20 章 點缺陷 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 20 章「Point Defects」（書本 p.583–595）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 20 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">20</span><h1>點缺陷</h1><p class="uhead__en">Point Defects</p><p class="chap__meta"><span>書本 p.583–595</span><span>公式 8 條</span><span>核心概念 12 條</span><span>熱容關聯 <span class="tag tag--indirect">間接</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" aria-current="page" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章處理晶體中的點缺陷：化學雜質、空缺晶格位（lattice vacancy）與不在正常晶格位上的額外原子。書中強調某些晶體性質受缺陷控制的程度與受主體成分控制的程度相當——某些半導體的導電度完全來自微量化學雜質，許多晶體的顏色與發光來自雜質或缺陷，原子擴散可被雜質或缺陷大幅加速，機械與塑性性質通常由缺陷控制。章節依序處理：晶格空缺（Schottky 缺陷、Frenkel 缺陷、離子晶體中的成對空缺、二價離子摻雜造成的空缺）、擴散（Fick 定律、活化能、跳躍頻率、離子導電度與 Einstein 關係、金屬中的自擴散），以及色心（F 心、F_A 心、M 心、R 心、V_K 心）。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>最簡單的缺陷是晶格空缺（Schottky 缺陷）：把內部晶格位的原子搬到晶體表面的晶格位；熱平衡下永遠存在一定數量的空缺，因為無序增加了熵。</li><li>緊密堆積金屬在接近熔點時的空缺比例約 10⁻³ 到 10⁻⁴，但某些合金（如硬質過渡金屬碳化物 TiC）某一成分的空缺比例可高達 50%。</li><li>離子晶體中形成數目大致相等的正、負離子空缺在能量上通常較有利，因為成對空缺可在局部尺度維持電中性。純鹼金屬鹵化物以 Schottky 缺陷為主，純鹵化銀以 Frenkel 缺陷為主。</li><li>Frenkel 缺陷是原子從晶格位移到間隙位（interstitial position），即正常不被原子佔據的位置。</li><li>在 KCl 中摻入 CaCl₂ 時，每個 Ca²⁺ 進入正常 K⁺ 位就必須產生一個 K⁺ 空缺以維持電中性，因此密度下降；這些額外空缺才是離子導電度增強的原因，而非二價離子本身特別可動。</li><li>空缺沿一方向的擴散等價於原子沿反方向的擴散；熱生成的缺陷其形成能會對晶體熱容產生額外貢獻（如溴化銀）。</li><li>擴散遵守 Fick 定律，但嚴格說驅動力是化學位能梯度而非僅濃度梯度；擴散常數隨溫度呈 Arrhenius 形式，活化能即原子越過最近鄰位能障所需的能量。</li><li>帶電雜質（p.590 逐字 If the impurities are charged）的擴散率可經 Einstein 關係 k_BT μ = qD 轉換成遷移率與導電度；在空缺數由二價離子決定的溫度區間，ln σ 對 1/k_BT 的斜率給出正離子空缺跳躍的活化能 E₊；在熱生成主導的區間，斜率則為 E₊ + (1/2)E_f。</li><li>室溫下跳躍頻率約 1 s⁻¹，100 K 時約 10⁻²⁵ s⁻¹，可見低溫擴散極慢。</li><li>色心是會吸收可見光的晶格缺陷；一般的晶格空缺並不會使鹼金屬鹵化物著色，只影響紫外吸收。可用化學雜質、過量金屬離子、x/γ 射線與電子轟擊、或電解來著色。</li><li>F 心（源自德文 Farbe）已由電子自旋共振確認為被束縛在負離子空缺上的一個電子；負離子空缺在完美週期晶格中等效於一個孤立正電荷，會吸引並束縛電子。兩個相鄰 F 心組成 M 心，三個組成 R 心。</li><li>電洞形成的色心不如電子色心單純：鹵素離子的 p⁵ 組態是非對稱的，會因 Jahn–Teller 效應扭曲鄰近環境；最著名的捕獲電洞中心是 V_K 心，形如負鹵素分子離子（KCl 中為 Cl₂⁻）。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">熱平衡下的晶格空缺數（Boltzmann 因子）</p><p class="eq__f">n/(N − n) = exp(−E_V / k_B T) ;  n/N ≅ exp(−E_V / k_B T)  (n ≪ N)</p><span class="eq__r">(1), (2) 　p.585</span><p class="eq__s">N 為原子數，n 為平衡空缺數，E_V 為把原子從晶體內部晶格位搬到表面晶格位所需的能量；E_V ≈ 1 eV、T ≈ 1000 K 時 n/N ≈ e⁻¹² ≈ 10⁻⁵</p></div><div class="eq"><p class="eq__l">離子晶體中成對空缺（Schottky pair）的平衡數</p><p class="eq__f">n ≅ N exp(−E_p / 2 k_B T)</p><span class="eq__r">(3) 　p.586</span><p class="eq__s">n 為空缺對數目，E_p 為形成一對正負離子空缺的能量；由統計計算得到</p></div><div class="eq"><p class="eq__l">Frenkel 缺陷的平衡數</p><p class="eq__f">n ≅ (N N')^{1/2} exp(−E_I / 2 k_B T)</p><span class="eq__r">(4) 　p.586</span><p class="eq__s">N 為晶格位數，N' 為可能的間隙位數，E_I 為把原子從晶格位移到間隙位所需能量；適用於 n ≪ N, N'</p></div><div class="eq"><p class="eq__l">Fick 擴散定律</p><p class="eq__f">J_N = −D grad N</p><span class="eq__r">(5) 　p.588</span><p class="eq__s">J_N 為單位時間通過單位面積的原子數；D 為擴散常數（擴散率），單位 cm²/s 或 m²/s；負號表示擴散離開高濃度區</p></div><div class="eq"><p class="eq__l">擴散常數的溫度依賴（Arrhenius 形式）</p><p class="eq__f">D = D₀ exp(−E / k_B T)</p><span class="eq__r">(6) 　p.588</span><p class="eq__s">E 為該過程的活化能；碳在 α 鐵中的實驗值為 E = 0.87 eV、D₀ = 0.020 cm²/s</p></div><div class="eq"><p class="eq__l">由跳躍頻率導出的擴散常數</p><p class="eq__f">p ≅ ν exp(−E / k_B T) ;  D = ν a² exp(−E / k_B T)</p><span class="eq__r">(7), (9) 　p.590</span><p class="eq__s">ν 為特徵原子振動頻率，p 為單位時間跳躍頻率，a 為晶格常數（兩平面間距）；對應式 (6) 中的 D₀ = ν a²</p></div><div class="eq"><p class="eq__l">帶電雜質的離子導電度（經 Einstein 關係）</p><p class="eq__f">σ = N q μ = (N q² ν a² / k_B T) exp(−E / k_B T)</p><span class="eq__r">(11) 　p.590</span><p class="eq__s">N 為帶電荷 q 的雜質離子濃度；遷移率 μ = (qνa²/k_BT) exp(−E/k_BT)（式 10），由 Einstein 關係 k_BT μ = qD 得到</p></div><div class="eq"><p class="eq__l">熱生成主導區間的空缺比例</p><p class="eq__f">f ≅ exp(−E_f / 2 k_B T)</p><span class="eq__r">(12) 　p.590</span><p class="eq__s">E_f 為形成一對空缺的能量（依 Schottky 或 Frenkel 缺陷理論）；此區間 ln σ 對 1/k_BT 的斜率為 E₊ + (1/2)E_f</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>點缺陷（空缺、間隙原子、化學雜質）在熱平衡下必然存在，其濃度由 Boltzmann 因子 exp(−E/k_BT) 決定，Schottky 與 Frenkel 缺陷的成對形成則給出 exp(−E/2k_BT) 的一半指數。這些缺陷是原子擴散的載體：擴散常數 D = νa²exp(−E/k_BT) 具 Arrhenius 形式，並可透過 Einstein 關係與離子導電度連結，因此量測 ln σ 對 1/k_BT 的斜率可在不同溫度區間分別得到空缺跳躍活化能 E₊ 與空缺對形成能 E_f。缺陷也決定光學性質：F 心已由電子自旋共振確認為束縛在負離子空缺上的電子，是鹼金屬鹵化物中最簡單的捕獲電子中心。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"The simplest imperfection is a lattice vacancy, which is a missing atom or ion, also known as a Schottky defect." (p.585)</p><p>"A color center is a lattice defect that absorbs visible light." (p.592)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>缺陷是對 Ch1 理想晶體的偏離。Ch5 p.126 的 Imperfections 一節已提到缺陷會散射聲子，本章則給出缺陷本身的物理（空位、擴散、色心）；F 中心接到 Ch13 的磁共振。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">間接</span>
+    <p>間接。缺陷限制聲子平均自由徑，因而影響 Ch5 的 K = ⅓Cvℓ；但書中沒有把「缺陷濃度」與「熱導率」這條線量化接起來。想深究摻雜如何影響薄結構的有效熱導率時值得回頭看。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-19.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">19</span> 非晶固體</span></a>
+<a href="ch-21.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">21</span> 差排</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

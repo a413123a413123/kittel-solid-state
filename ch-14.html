@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 14 章 電漿子、極化子與極子 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 14 章「Plasmons, Polaritons, and Polarons」（書本 p.393–425）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 14 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">14</span><h1>電漿子、極化子與極子</h1><p class="uhead__en">Plasmons, Polaritons, and Polarons</p><p class="chap__meta"><span>書本 p.393–425</span><span>公式 8 條</span><span>核心概念 8 條</span><span>熱容關聯 <span class="tag tag--none">無明顯關聯</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" aria-current="page" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章以電子氣的介電函數 ε(ω,K) 為主軸，說明它對固體物理性質的決定性影響。書中明言在 ε(ω,0) 這一極限描述費米海的集體激發（體電漿子與表面電漿子），而在 ε(0,K) 這一極限描述電子—電子、電子—晶格、電子—雜質交互作用的靜電屏蔽。接著用離子晶體的介電函數導出 polariton 光譜，並討論 LST 關係。最後處理電子—電子交互作用（Fermi liquid）、電子—聲子交互作用產生的 polaron，以及線性金屬的 Peierls 不穩定性。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>介電函數 ε(ω,K) 可由外加電荷密度與感應電荷密度的傅立葉分量定義，ε(K)=ρext(K)/ρ(K)=1−ρind(K)/ρ(K)。</li><li>ε 的零點決定縱波（longitudinal）振盪頻率，ε 的極點決定介質自由振盪頻率；ε&lt;0 的頻段電磁波不能傳播而被全反射。</li><li>電漿子（plasmon）是電漿振盪的量子，可用電子穿過金屬薄膜或反射電子／光子來激發，反射電子會損失整數倍的電漿子能量。</li><li>Thomas–Fermi 近似假設可定義隨位置變化的局域化學勢，得到靜態屏蔽介電函數與屏蔽長度 1/ks（Cu 約 0.55 Å）。</li><li>Mott 金屬—絕緣體轉變：屏蔽庫侖位能在 ks 夠小時才存在束縛態，臨界晶格常數 ac ≈ 4.5a0。</li><li>Polariton 是耦合的 TO 聲子—光子橫波場的量子，耦合由 Maxwell 方程式必然帶來，在 ωT&lt;ω&lt;ωL 形成禁止傳播帶。</li><li>Landau Fermi liquid 理論用 quasiparticle 描述有交互作用的電子系統；包立不相容原理與屏蔽使電子—電子平均自由程極長（室溫下 &gt;10⁴ Å）。</li><li>Polaron 是電子加上它拖著的晶格應變場，耦合常數 α 可視為「圍繞慢速電子的聲子數」，離子晶體中 α 大、共價晶體中 α 小。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">自由電子氣的介電函數</p><p class="eq__f">ε(ω) = 1 − 4πne²/(mω²)   (CGS);   ε(ω) = 1 − ne²/(ε₀mω²)   (SI)</p><span class="eq__r">(8) 　p.397</span><p class="eq__s">n＝電子濃度，e＝電子電荷，m＝電子質量，ω＝頻率</p></div><div class="eq"><p class="eq__l">電漿頻率定義</p><p class="eq__f">ωp² = 4πne²/m   (CGS);   ωp² = ne²/(ε₀m)   (SI)</p><span class="eq__r">(9) 　p.397</span><p class="eq__s">ωp＝電漿頻率；ε(ω)=1−ωp²/ω²（式(10)）</p></div><div class="eq"><p class="eq__l">電磁波在介質中的色散關係</p><p class="eq__f">ε(ω,K) ω² = c²K²   (CGS);   ε(ω,K) ω²/c² = K²   (SI)</p><span class="eq__r">(14) 　p.397</span><p class="eq__s">K＝波向量，c＝真空光速；ε 實數且為正時橫波以相速度 c/ε^(1/2) 傳播</p></div><div class="eq"><p class="eq__l">電漿中橫向電磁波的色散關係</p><p class="eq__f">ω² = ω̄p² + c²K²/ε(∞)</p><span class="eq__r">(16) 　p.398</span><p class="eq__s">ω̄p² = 4πne²/[ε(∞)m]（式(12)），ε(∞)＝離子實背景的介電常數；ω&lt;ω̄p 時波被全反射</p></div><div class="eq"><p class="eq__l">Thomas–Fermi 靜態介電函數與屏蔽波數</p><p class="eq__f">ε(0,K) = 1 + ks²/K² ,  ks² = 6πn₀e²/ε_F = 4(3/π)^(1/3) n₀^(1/3)/a₀ = 4πe²D(ε_F)</p><span class="eq__r">(33)(34) 　p.405</span><p class="eq__s">n₀＝均勻電子濃度，ε_F＝費米能，a₀＝波耳半徑，D(ε_F)＝費米能處的態密度，1/ks＝Thomas–Fermi 屏蔽長度</p></div><div class="eq"><p class="eq__l">屏蔽庫侖位勢</p><p class="eq__f">φ(K) = 4πq/(K² + ks²) ,  φ(r) = (q/r) exp(−ks r)</p><span class="eq__r">(39)(40) 　p.406</span><p class="eq__s">q＝置入電子海中的點電荷；n₀→0 時 ks→0，回到裸庫侖位勢 q/r</p></div><div class="eq"><p class="eq__l">含離子實電子貢獻的離子晶體介電函數</p><p class="eq__f">ε(ω) = ε(∞) + (4πNq²/M)/(ωT² − ω²)</p><span class="eq__r">(58) 　p.411</span><p class="eq__s">N＝單位體積的離子對數，q＝有效電荷，M＝約化質量，ωT＝TO 聲子頻率，ε(∞)＝光學介電常數</p></div><div class="eq"><p class="eq__l">Lyddane–Sachs–Teller 關係</p><p class="eq__f">ωL²/ωT² = ε(0)/ε(∞)   （等價於 ε(∞)ωL² = ε(0)ωT²）</p><span class="eq__r">(62) 　p.414</span><p class="eq__s">ωL＝LO 聲子頻率，ωT＝TO 聲子頻率，ε(0)＝靜態介電常數；ωT→0 的軟模對應 ε(0)→∞，即鐵電性特徵</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>介電函數 ε(ω,K) 把金屬與離子晶體中一系列看似不同的現象統一起來：ε 的零點給出縱向集體模（電漿子頻率 ωp、LO 聲子頻率 ωL），ε 的極點給出 TO 聲子頻率 ωT，而 ε&lt;0 的區間對應電磁波不能傳播、被全反射的頻段。在靜態極限下 ε(0,K)=1+ks²/K² 給出 Thomas–Fermi 屏蔽，使庫侖位勢變成 (q/r)exp(−ks r)，這是合金殘餘電阻、Mott 轉變與金屬中縱聲學聲子速度的共同基礎。橫向光學聲子與光子必然透過 Maxwell 方程式耦合成 polariton，並導出 LST 關係 ωL²/ωT²=ε(0)/ε(∞)，其與中子散射的實驗值符合極佳。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"A plasma oscillation in a metal is a collective longitudinal excitation of the conduction electron gas." (p.401)</p><p>"The quantum of the coupled phonon-photon transverse wave field is called a polariton." (p.410)</p><p>"In an insulator the combination of the electron and its strain field is known as a polaron." (p.420)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>用 Ch6 的電子氣導出介電函數，是 Ch15（光學過程）與 Ch16（介電體）的共同前置。極子（polaron）涉及電子—聲子耦合，形式上接到 Ch4–5；Peierls 不穩定的能隙方程與 Ch10 的 BCS 同形。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">無明顯關聯</span>
+    <p>無明顯關聯。極子雖然是電子—聲子耦合，但書中處理的是輸運與有效質量，不是能量弛豫或熱容。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-13.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">13</span> 磁共振</span></a>
+<a href="ch-15.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">15</span> 光學過程與激子</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

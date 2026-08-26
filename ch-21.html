@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 21 章 差排 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 21 章「Dislocations」（書本 p.597–618）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 21 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">21</span><h1>差排</h1><p class="uhead__en">Dislocations</p><p class="chap__meta"><span>書本 p.597–618</span><span>公式 8 條</span><span>核心概念 13 條</span><span>熱容關聯 <span class="tag tag--none">無明顯關聯</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" aria-current="page" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章用差排理論解釋晶體固體的塑性力學性質（塑性為不可逆變形，彈性為可逆）。核心問題是：為什麼純單晶如此容易塑性變形？完美晶體彈性極限應變的理論估計可比觀測到的最低值高 10³ 到 10⁴ 倍（10² 倍較常見）。章節先用 Frenkel 的方法估計完美晶體的理論剪切強度，發現與實驗值差距巨大，只能靠缺陷解釋；接著引入差排（刃差排、螺旋差排、Burgers 向量），推導差排的應力場與彈性能、差排間的作用力，再處理低角度晶界（差排陣列，間距 D = b/θ）、差排密度與 Frank–Read 源的增殖機制，然後討論合金強化的四種機制，最後是差排對晶體生長的控制作用（螺旋生長）、whisker 與材料硬度。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>Frenkel 用簡單模型估計完美晶體的理論剪切強度：若 a ≈ d，理想臨界剪應力約為剪切模數的 1/6；Mackenzie 進一步修正後約為 G/30，對應約 2 度的臨界剪切應變角。實驗彈性極限遠低於此。</li><li>塑性變形靠滑移（slip）發生：晶體的一部分整體滑過相鄰部分，滑移面與滑移方向都高度各向異性（fcc 滑移方向為 ⟨110⟩，bcc 為 ⟨111⟩），滑移向量必須等於晶格平移向量。</li><li>滑移遵守 Schmid 臨界剪應力定律：當對應的剪應力分量達到臨界值時，沿該滑移面與方向發生滑移。另一種塑性模式是孿晶（twinning），常見於 hcp 與 bcc。</li><li>刃差排是已滑移區與未滑移區的邊界，位置由擠入上半晶體的額外半原子面終端標示；其運動類比於地毯上皺褶的傳遞——皺褶比整張地毯容易移動。移動差排所需的外加應力很小，鍵結力非高度方向性時低於 10⁵ dyn/cm²。</li><li>螺旋差排的邊界平行於滑移方向（刃差排則垂直），可視為用刀部分切開晶體再沿切口邊緣剪切一個原子間距；它把連續的原子面轉成螺旋面。</li><li>Burgers 向量 b 由「切開—位移—補料或去料—重新接合」的一般構造定義；b 必須等於晶格向量，否則重新接合無法維持晶體性。螺旋差排的 b 平行差排線，刃差排的 b 垂直差排線且位於滑移面內。</li><li>差排的彈性能都含 ln(R/r₀) 因子；r₀ 取 Burgers 向量大小或晶格常數量級，R 不能超過晶體尺寸，但因為進入對數項，R/r₀ 的值影響不大。</li><li>Burgers 提出低角度晶界由差排陣列組成：純傾斜（pure tilt）晶界是間距 D = b/θ 的刃差排陣列；Vogel 等人以蝕坑計數量測 D 並由 θ = b/D 算得的傾角與 x 射線直接量測吻合。純傾斜晶界在適當應力下會整體垂直移動，由陣列中各差排協同滑移完成。</li><li>差排密度從最好的 Ge、Si 晶體的 10² cm⁻² 以下，到重度變形金屬的 10¹¹–10¹² cm⁻²；塑性變形使密度從約 10⁸ 增至 10¹¹ cm⁻²，代表差排在變形中增殖。兩端被釘住的差排段稱為 Frank–Read 源，可在單一滑移面上產生大量同心差排環；雙交叉滑移是最常見的來源。</li><li>提高合金降伏強度的四種重要方式：機械阻擋差排運動（析出第二相粒子）、溶質原子釘住差排（溶質雲）、短程有序阻礙差排運動、以及提高差排密度造成糾結（加工硬化）。第五種是把差排全部移除（whisker）。</li><li>所有強化機制在擴散變得可觀的溫度都開始失效，導致隨時間變化的變形即潛變（creep）；尋找高溫合金就是尋找低擴散率。但強合金的核心問題不是強度而是延性，因為破壞常以斷裂發生。</li><li>低過飽和度（約 1%）下晶體生長速率遠快於理想晶體的計算值；若存在螺旋差排就永遠不必成核新的單層，晶體沿不連續處以螺旋方式生長，若生長速率與方向無關則圖樣為 Archimedes 螺線 r = aθ。</li><li>Whisker（細髮狀晶體）在高過飽和度下生長，可能只含一根軸向螺旋差排，因此具有接近理論完美晶體的彈性性質；Herring 與 Galt 觀測到半徑約 10⁻⁴ cm 的錫 whisker 降伏應變約 10⁻²，對應剪應力約 10⁻² G，約為塊材錫的 1000 倍。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">完美晶體的理論臨界剪應力（Frenkel 估計）</p><p class="eq__f">σ = (Ga/2πd) sin(2πx/a) ,  σ_c = Ga/2πd</p><span class="eq__r">(2), (3) 　p.599</span><p class="eq__s">G 為適當的剪切模數，d 為面間距，a 為剪切方向上的原子間距，x 為位移；小應變時化為 σ = Gx/d（式 1）。若 a ≈ d 則 σ_c ≈ G/2π，即剪切模數的 1/6</p></div><div class="eq"><p class="eq__l">螺旋差排的剪應力場</p><p class="eq__f">σ = G e = G b / (2π r)</p><span class="eq__r">(4) 　p.605</span><p class="eq__s">周長 2πr 的殼被剪切了 b，故剪應變 e = b/2πr；b 為 Burgers 向量大小，r 為到差排線的距離。此式在差排線鄰近區域不成立（應變太大）</p></div><div class="eq"><p class="eq__l">螺旋差排單位長度的彈性能</p><p class="eq__f">E_S = (G b² / 4π) ln(R / r₀)</p><span class="eq__r">(5) 　p.606</span><p class="eq__s">由 dE_s = ½Ge² dV = (Gb²/4π) dr/r 積分而得；R 與 r₀ 分別為 r 的上下限，r₀ 約為 b 或晶格常數，R 不超過晶體尺寸</p></div><div class="eq"><p class="eq__l">刃差排的應力場（等向彈性連續體）</p><p class="eq__f">σ_rr = σ_θθ = −[G b / 2π(1 − ν)] · (sin θ)/r ;  σ_rθ = [G b / 2π(1 − ν)] · (cos θ)/r</p><span class="eq__r">(6) 　p.606</span><p class="eq__s">σ_rr、σ_θθ 為徑向與圓周方向的拉應力，σ_rθ 為剪應力；ν 為 Poisson 比，多數晶體 ν ≅ 0.3</p></div><div class="eq"><p class="eq__l">刃差排單位長度的應變能</p><p class="eq__f">E_e = [G b² / 4π(1 − ν)] ln(R / r₀)</p><span class="eq__r">(7) 　p.606</span><p class="eq__s">與螺旋差排式 (5) 相比多了 1/(1−ν) 因子；ν 為 Poisson 比</p></div><div class="eq"><p class="eq__l">刃差排間的作用力（滑移方向分量）</p><p class="eq__f">F = b σ_xy = [G b² / 2π(1 − ν)] · (sin 4θ) / (4y)</p><span class="eq__r">(9) 　p.606</span><p class="eq__s">位於原點的刃差排施於位置 (y, θ) 處同類差排的單位長度作用力；由 σ_xy = [Gb/2π(1−ν)]·x(x²−y²)/(x²+y²)²（式 8）與 F = bσ（習題 3）得到</p></div><div class="eq"><p class="eq__l">低角度純傾斜晶界的差排間距</p><p class="eq__f">D = b / θ</p><span class="eq__r">p.607</span><p class="eq__s">D 為刃差排陣列的間距，b 為差排的 Burgers 向量，θ 為兩晶粒繞共同 [001] 軸的小角度相對旋轉；Vogel 等人以蝕坑計數量測 D，由 θ = b/D 算得的角度與 x 射線量測吻合</p></div><div class="eq"><p class="eq__l">析出粒子強化：迫使差排穿過間距 L 粒子所需的應力</p><p class="eq__f">σ / G = b / L</p><span class="eq__r">(10) 　p.614</span><p class="eq__s">L 為滑移面上粒子的間距，b 為 Burgers 向量，G 為剪切模數；L 愈小降伏應力愈高。析出完成後 L 最小、強度最大，高溫久置後粒子粗化使 L 增大、強度下降</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>純晶體觀測到的臨界剪應力遠低於 Frenkel 對完美晶體的理論估計（理想值約 G/2π，修正後約 G/30），這個差距只能用差排這種線缺陷的運動來解釋——差排通過晶體等價於一部分晶體的滑移位移，而移動差排所需的應力極小。差排的應力場隨 1/r 衰減、彈性能正比於 Gb² 並含 ln(R/r₀) 因子；低角度晶界就是間距 D = b/θ 的差排陣列，此模型已由電子顯微鏡、蝕坑計數與 x 射線量測證實。反過來，一切合金強化機制（析出粒子、溶質雲、短程有序、加工硬化）本質上都是阻礙差排運動，可把降伏強度提高到 10⁻³ G 至 10⁻² G；而完全沒有差排的 whisker 則可達到接近理論完美晶體的強度。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"The ease with which pure single crystals deform plastically is striking." (p.599)</p><p>"The tilt boundary is represented as an array of edge dislocations of spacing D = b/θ, where b is the Burgers vector of the dislocations." (p.607)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>線缺陷，與 Ch20 的點缺陷並列為晶體缺陷的兩章。用 Ch3 的彈性理論計算差排的應力場與能量；小角度晶界可視為差排陣列。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">無明顯關聯</span>
+    <p>無明顯關聯。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-20.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">20</span> 點缺陷</span></a>
+<a href="ch-22.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">22</span> 合金</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

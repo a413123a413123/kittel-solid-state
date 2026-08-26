@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 12 章 鐵磁性與反鐵磁性 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 12 章「Ferromagnetism and Antiferromagnetism」（書本 p.321–359）的六欄整理：研究問題、核心概念、10 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 12 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">12</span><h1>鐵磁性與反鐵磁性</h1><p class="uhead__en">Ferromagnetism and Antiferromagnetism</p><p class="chap__meta"><span>書本 p.321–359</span><span>公式 10 條</span><span>核心概念 11 條</span><span>熱容關聯 <span class="tag tag--none">無明顯關聯</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" aria-current="page" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章處理電子自旋的有序排列：鐵磁、亞鐵磁與反鐵磁。書中先以 Weiss 平均場（分子場、交換場）把自發磁矩問題化約為自洽方程，導出 Curie 溫度與 Curie–Weiss 定律，並把平均場常數 λ 連回 Heisenberg 交換積分 J。接著處理低溫的基本激發——磁振子（magnon），推導色散關係並得到 Bloch T^{3/2} 定律，說明中子散射如何直接量測磁振子譜。之後推廣到亞鐵磁（兩個不等值的反平行次晶格、鐵石榴石 YIG）與反鐵磁（MnO、Néel 溫度、χ⊥ 與 χ∥ 的差異、反鐵磁磁振子）。最後處理巨觀結構問題：為什麼鐵磁體會分成磁疇、Bloch 壁的厚度與能量由何決定、以及矯頑力與磁滯。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>平均場（分子場／Weiss 場）近似：每個磁性原子感受到正比於磁化的交換場 B_E = λM，鐵中 B_E 可達 10⁷ G ≈ 10³ T，遠大於相鄰磁性離子的真實偶極場（約 10³ G）。</li><li>交換場只是交換交互作用的近似表示；真正的機制是 Heisenberg 模型 U = −2J S_i·S_j，J 與相鄰原子電荷分布的重疊有關，其符號決定鐵磁（J&gt;0）或反鐵磁（J&lt;0）。</li><li>Curie 溫度以上服從 Curie–Weiss 定律 χ = C/(T−T_c)；T_c 以下由自洽方程 m = tanh(m/t) 給出自發磁化，屬二階相變。</li><li>平均場在低溫描述不佳：它給出指數型的 ΔM，實驗卻是 T^{3/2}；正確解釋來自自旋波理論。</li><li>磁振子是量子化的自旋波，能量 ε_k = (n_k + 1/2)ℏω_k，激發一個磁振子相當於翻轉一個自旋；其熱佈居服從 Planck 分布。</li><li>中子同時看到原子核分布與電子磁化分布，故中子繞射可定出磁矩的分布、方向與有序方式；非彈性中子散射（動量與能量守恆）可直接測出磁振子譜。</li><li>亞鐵磁：兩個反平行但磁矩不等的次晶格；1/χ 對 T 的曲線呈現特徵彎曲。反鐵磁是 C_A = C_B 的特例，T_N 處 χ 出現尖點（kink）而非發散。</li><li>反鐵磁在 T_N 以下的磁化率具方向性：垂直方向 χ⊥ = 1/μ，平行方向在 0 K 時 χ∥(0) = 0，並隨溫度平滑上升至 T_N。</li><li>反鐵磁磁振子色散在長波長時線性於 k（ω ≈ ω_ex|ka|），與鐵磁的 ω ∝ k² 截然不同，因此低溫熱容給出 T³ 項。</li><li>磁疇源自能量最小化（交換能、異向能、磁能的競爭）；Bloch 壁厚度與壁能由交換能（偏好厚壁）與異向能（偏好薄壁）的平衡決定，鐵中約 300 個晶格常數、壁能約 1 erg/cm²。</li><li>矯頑力是鐵磁材料最敏感、可控範圍最廣的性質（跨七個數量級）；直徑小於 10⁻⁵–10⁻⁶ cm 的粒子必為單疇，反磁化只能靠整體轉動，故矯頑力高。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">Weiss 交換場（平均場近似）</p><p class="eq__f">B_E = λM</p><span class="eq__r">(1) 　p.323</span><p class="eq__s">M 為單位體積磁矩（磁化），λ 為與溫度無關的平均場常數。此式假設每個自旋感受到所有其他自旋的平均磁化。</p></div><div class="eq"><p class="eq__l">Curie–Weiss 定律與 Curie 溫度</p><p class="eq__f">χ = C/(T − T_c),  T_c = Cλ;  λ = T_c/C = 3k_B T_c / [N g² S(S+1) μ_B²]</p><span class="eq__r">(3)(4) 在 p.324；(5) λ=T_c/C 在次頁 　p.324</span><p class="eq__s">C 為 Curie 常數，T_c 為 Curie 溫度。χ 在 T = Cλ 發散，即出現自發磁化。書中以鐵為例（T_c ≈ 1000 K, g ≈ 2, S ≈ 1）估得 λ ≈ 5000。</p></div><div class="eq"><p class="eq__l">Heisenberg 交換交互作用</p><p class="eq__f">U = −2J S_i·S_j</p><span class="eq__r">(6) 　p.325</span><p class="eq__s">J 為交換積分，與原子 i、j 電荷分布的重疊有關；S_i、S_j 為兩原子的電子自旋。</p></div><div class="eq"><p class="eq__l">交換積分與 Curie 溫度的平均場關係</p><p class="eq__f">J = 3k_B T_c / [2 z S(S+1)]</p><span class="eq__r">(7) 　p.325</span><p class="eq__s">z 為最近鄰數。書中指出更好的統計近似給出 k_B T_c/zJ = 0.28（sc）、0.325（bcc）、0.346（fcc），對比平均場的 0.500；以 S = 1 表示鐵時，觀測 T_c 對應 J = 11.9 meV。</p></div><div class="eq"><p class="eq__l">自發磁化的自洽方程（約化形式）</p><p class="eq__f">m = tanh(m/t),  m ≡ M/Nμ,  t ≡ k_B T / Nμ²λ = T/T_c</p><span class="eq__r">(9) 　p.326</span><p class="eq__s">m 為約化磁化，t 為約化溫度。由 (8) 的 M = Nμ tanh(μλM/k_BT) 改寫；臨界溫度為 t = 1，即 T_c = Nμ²λ/k_B。</p></div><div class="eq"><p class="eq__l">鐵磁磁振子色散關係（一維最近鄰）</p><p class="eq__f">ℏω = 4JS(1 − cos ka);  ka ≪ 1 時 ℏω ≅ (2JSa²)k²</p><span class="eq__r">(22), (23) 　p.332</span><p class="eq__s">J 交換積分，S 自旋量子數，a 晶格常數，k 波向量。三維立方晶格為 ℏω = 2JS[z − Σ_δ cos(k·δ)]（式 24），長波長極限同為 ℏω = (2JSa²)k² = Dk²。中子散射測得 D 在 295 K 分別為 Fe 281、Co 500、Ni 364 meV·Å²。</p></div><div class="eq"><p class="eq__l">Bloch T^{3/2} 定律（磁振子熱激發造成的磁化下降）</p><p class="eq__f">ΔM/M(0) = (0.0587 / S Q) · (k_B T / 2JS)^{3/2}</p><span class="eq__r">(30) 　p.334</span><p class="eq__s">Q = 1, 2, 4 分別對應 sc、bcc、fcc（每單位晶胞原子數），S 為自旋，J 為交換積分。由磁振子態密度與 Planck 分布積分得到，實驗上 ΔM/M(0) = A T^{3/2}，Ni 的 A = (7.5±0.2)×10⁻⁶ deg^{−3/2}，Fe 為 (3.4±0.2)×10⁻⁶ deg^{−3/2}（式 11, p.327）。</p></div><div class="eq"><p class="eq__l">反鐵磁的 Néel 溫度與順磁區磁化率</p><p class="eq__f">T_N = μC;  χ = 2C / (T + T_N)，實驗形式 χ = 2C/(T + θ)</p><span class="eq__r">(39)(40) 在 p.342；(38) T_N=μC 在前一頁 　p.342</span><p class="eq__s">C 為單一次晶格的 Curie 常數，μ 為 A–B 次晶格間的平均場常數，θ 為 Curie–Weiss 溫度。書中指出實測 θ/T_N 常明顯偏離 1；若引入次晶格內部的平均場常數 −ε，則 θ/T_N = (μ+ε)/(μ−ε)。</p></div><div class="eq"><p class="eq__l">反鐵磁磁振子色散關係</p><p class="eq__f">ω = ω_ex |sin ka|,  ω_ex ≡ 4|J|S/ℏ</p><span class="eq__r">(52) 　p.345</span><p class="eq__s">J &lt; 0 為反鐵磁交換積分。ka ≪ 1 時 ω ≅ ω_ex|ka|，即頻率線性於波向量；RbMnF₃ 的中子散射結果證實有很大一段線性區。</p></div><div class="eq"><p class="eq__l">Bloch 壁的厚度與單位面積壁能</p><p class="eq__f">σ_w ≅ π²JS²/Na² + KNa;  N = (π²JS²/Ka³)^{1/2};  σ_w = 2π(KJS²/a)^{1/2}</p><span class="eq__r">(56), (58), (59) 　p.350</span><p class="eq__s">N 為壁內原子面數，a 晶格常數，K 異向能常數，J 交換積分，S 自旋。第一項為交換能（偏好厚壁），第二項為異向能（限制壁厚）。鐵中 N ≈ 300、σ_w ≈ 1 erg/cm²；(100) 面上 180° 壁的精確計算為 σ_w = 2(2K₁JS²/a)^{1/2}。</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>鐵磁性可由 Weiss 平均場（交換場 B_E = λM）成功描述其高溫磁化率（Curie–Weiss 定律）與 T_c 附近的行為，交換場本身則是 Heisenberg 交換交互作用 U = −2J S_i·S_j 的近似表示。但平均場在低溫失效：正確的低溫圖像是量子化的自旋波（磁振子），其 ω ∝ k² 的色散給出實驗證實的 Bloch T^{3/2} 磁化衰減，並可由非彈性中子散射直接量測。把同一套平均場語言推廣到兩個次晶格，即得亞鐵磁（T_c = μ(C_AC_B)^{1/2}）與反鐵磁（T_N = μC、χ = 2C/(T+θ)、反鐵磁磁振子 ω ∝ |sin ka|）。巨觀上，鐵磁體分成磁疇是交換能、異向能與磁能競爭的自然結果；Bloch 壁的厚度 (J/Ka³)^{1/2} 與壁能 (KJ/a)^{1/2} 由交換與異向能的平衡決定，而矯頑力則是可跨七個數量級調控的、最敏感的工程性質。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"A ferromagnet has a spontaneous magnetic moment" (p.323)</p><p>"A magnon is a quantized spin wave." (p.330)</p><p>"This result is the Bloch T3/2 law and has been confirmed experimentally." (p.335)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>承 Ch11 的順磁，把交換交互作用放進去得到自發磁化。磁振子的量子化與 Ch4 的聲子量子化數學同構（都是諧振子的集體激發）；Ch13 用磁共振量測本章建立的量。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">無明顯關聯</span>
+    <p>無明顯關聯——你的 Si／SiO₂ 沒有磁序。但 p.334 的磁振子熱容 ∝ T³ᐟ² 有對照價值：它是全書第三種低溫熱容冪次，與聲子 T³、電子 T 一起構成「冪次洩漏激發種類」的判準。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-11.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">11</span> 反磁性與順磁性</span></a>
+<a href="ch-13.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">13</span> 磁共振</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

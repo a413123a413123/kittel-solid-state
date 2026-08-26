@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 19 章 非晶固體 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 19 章「Noncrystalline Solids」（書本 p.565–582）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 19 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">19</span><h1>非晶固體</h1><p class="uhead__en">Noncrystalline Solids</p><p class="chap__meta"><span>書本 p.565–582</span><span>公式 8 條</span><span>核心概念 11 條</span><span>熱容關聯 <span class="tag tag--direct">直接</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" aria-current="page" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章處理非晶固體：amorphous solid、noncrystalline solid、disordered solid、glass 或 liquid。書中明白指出這些名詞除了「在任何顯著尺度上都不是晶體」之外沒有精確的結構意義，唯一存在的主要結構秩序是最近鄰原子或分子間距近似固定。章節先問：非晶材料的繞射圖樣（幾個寬而瀰散的環）能告訴我們什麼？答案是只能直接得到徑向分布函數。接著以熔融石英為例建立氧化物玻璃的隨機網路模型，討論玻璃轉變溫度與黏度的跳躍模型，再處理非晶鐵磁體與非晶半導體，最後是本章最反直覺的部分：非晶固體在 1 K 以下出現異常的線性熱容項，以及玻璃極低的熱導率與極短的聲子平均自由程；章末以光纖的 Rayleigh 衰減收尾。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>非晶材料的 x 射線或中子繞射圖樣是一個或數個寬而瀰散的環；由此只能直接決定徑向分布函數，需對實驗散射曲線做 Fourier 分析取得。</li><li>晶體與非晶之間沒有明確界線：晶體粉末顆粒愈小，繞射線愈寬，最後與液體或玻璃的圖樣相似。</li><li>熔融石英的第一個峰在 1.62 Å（接近晶態矽酸鹽的平均 Si–O 距離），每個 Si 被四個 O 四面體包圍，每個 O 鍵結兩個 Si，符合 Zachariasen 的隨機網路模型。</li><li>玻璃是由液體冷卻但未結晶而來，兼具液體的隨機結構與各向同性固體的彈性；依約定當黏度達 10¹³ poise 時定義玻璃轉變溫度 T_g，這不是熱力學相變，只是「實用上」的轉變。</li><li>液體黏度由分子熱重排（跳躍到空位或與鄰居互換）的速率決定；分子必須越過高度 E 的位能障，成功跳躍的機率為 exp(−E/k_BT)，因此黏度隨溫度指數上升。玻璃形成者的活化能約 1 eV 以上。</li><li>非晶金屬合金由極快淬冷（melt-spin）製得；因近乎各向同性而磁晶各向異性能幾乎為零，故矯頑力低、磁滯損失小、導磁率高（如 Metglas）。</li><li>非晶半導體中 Bloch 定理不適用，電子態無法用明確定義的 k 描述，光學躍遷的動量選擇律放寬；但能帶與能隙仍然存在，因為態密度形式主要由局部電子鍵結組態決定。Anderson 提出能帶邊緣附近的態可能是局域化的。</li><li>純介電晶體低溫熱容遵守 Debye T³ 律，但許多絕緣玻璃在 1 K 以下出現非預期的線性熱容項；25 mK 時熔融石英的觀測熱容超過 Debye 聲子貢獻達 1000 倍。此異常被認為來自二能階系統（可被強聲子場飽和），而非多能階振子系統。</li><li>經驗結果是所有無序固體都有約 N ~ 10¹⁷ cm⁻³ 的「新型」低能激發，均勻分布在 0 到 1 K 的能量區間。</li><li>玻璃的熱導率極低：室溫以上由結構無序尺度限制聲子平均自由程（熔融石英約 6 × 10⁻⁸ cm，即數個原子間距），這是靠相位抵消過程達成的；1 K 以下則由聲子被那些神祕的二能階（穿隧）態散射所限制。</li><li>光纖在 1.55 μm 附近有最小衰減約 0.20 dB/km；光學窗口低頻側受聲子吸收帶限制，高頻側受 Rayleigh 散射與最終的電子吸收限制，衰減正比於頻率的四次方。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">非晶材料散射強度的 Debye 結果</p><p class="eq__f">I(K) = Σ_m Σ_n f_m f_n (sin K r_mn)/(K r_mn)</p><span class="eq__r">(5) 　p.568</span><p class="eq__s">f_m 為原子形狀因子；K 為散射向量 Δk 的大小；r_mn 為 |r_m − r_n|；已對球面平均相位因子 ⟨exp(iKr cos α)⟩ = (sin Kr_mn)/(K r_mn)（式 4）</p></div><div class="eq"><p class="eq__l">液體結構因子與徑向分布函數的關係</p><p class="eq__f">S(K) = 1 + 4πρ̄ ∫₀^∞ dr [g(r) − 1] r² (sin Kr)/(Kr)</p><span class="eq__r">(12) 　p.569</span><p class="eq__s">S(K) ≡ I/(N f²)（式 9）；ρ̄ 為平均濃度；g(r) 由 ρ(r) = g(r) ρ̄ 定義（式 11）；(sin Kr)/Kr 是 exp(iK·r) 展開中的球對稱 s 項</p></div><div class="eq"><p class="eq__l">由結構因子反算徑向分布函數（雙原子關聯函數）</p><p class="eq__f">g(r) − 1 = (1/8π³ρ̄) ∫ dK [S(K) − 1] exp(−iK·r) = (1/2π²ρ̄r) ∫ dK [S(K) − 1] K sin Kr</p><span class="eq__r">(13) 　p.569</span><p class="eq__s">由三維 Fourier 積分定理得到；g(r) 又稱雙原子關聯函數，可由量測到的 S(K) 計算</p></div><div class="eq"><p class="eq__l">分子越過位能障的時間比例（跳躍機率）</p><p class="eq__f">f ≅ exp(−E/k_B T)</p><span class="eq__r">(16) 　p.574</span><p class="eq__s">E 為適當的自由能，稱為決定跳躍速率之過程的活化能，與自擴散活化能相關；黏度隨成功跳躍機率下降而上升，η ≅ η(min)/f</p></div><div class="eq"><p class="eq__l">單一二能階系統的熱容</p><p class="eq__f">C_V = k_B(∂U/∂τ) = k_B (Δ/2τ)² sech²(Δ/2τ)</p><span class="eq__r">(22) 　p.578</span><p class="eq__s">τ = k_B T；Δ 為能階分裂（遠小於 Debye 截止 k_Bθ）；配分函數 Z = 2cosh(Δ/2τ)（式 20），熱平均能量 U = −(1/2)Δ tanh(Δ/2τ)（式 21）</p></div><div class="eq"><p class="eq__l">二能階系統在低溫給出的線性熱容</p><p class="eq__f">C_V ≅ 2 k_B² T / (3 Δ₀)</p><span class="eq__r">(24) 　p.579</span><p class="eq__s">設 Δ 在 0 到 Δ₀ 之間均勻分布；適用於 τ ≪ Δ₀（即 T &lt; Δ₀/k_B）；此時式 (23) 的積分約為 1/3。此線性項與傳導電子熱容的線性項無關</p></div><div class="eq"><p class="eq__l">熔融石英低溫熱容的實驗表達式</p><p class="eq__f">C_V = c₁ T + c₃ T³</p><span class="eq__r">(28) 　p.579</span><p class="eq__s">c₁ = 12 erg g⁻¹ K⁻²，c₃ = 18 erg g⁻¹ K⁻⁴；c₁T 為二能階系統的異常線性項，c₃T³ 為 Debye 聲子項</p></div><div class="eq"><p class="eq__l">玻璃熱導率與聲子平均自由程</p><p class="eq__f">K = (1/3) c v ℓ</p><span class="eq__r">(29) 　p.580</span><p class="eq__s">c 為單位體積熱容，v 為平均聲子速度，ℓ 為聲子平均自由程；熔融石英室溫下 c ≅ 1.6 J cm⁻³K⁻¹、K ≅ 1.4×10⁻² J cm⁻¹s⁻¹K⁻¹、⟨v⟩ ≅ 4.2×10⁵ cm/s，得 ℓ ≅ 6×10⁻⁸ cm</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>非晶固體唯一的結構秩序來自近似固定的最近鄰間距，因此繞射只能給出徑向分布函數，而熔融石英的結果完全符合 Zachariasen 的隨機網路模型。玻璃的定義是黏度達 10¹³ poise，其溫度依賴由分子越過位能障的活化跳躍決定。最重要也最違反直覺的結論是：純晶體低溫熱容遵守 Debye T³ 律，但幾乎所有非晶固體在 1 K 以下都多出一個線性項，其來源被認為是濃度約 10¹⁷ cm⁻³、能量均勻分布在 0–1 K 的二能階系統；同樣這些二能階（穿隧）態在低溫散射聲子，加上室溫以上結構無序把聲子平均自由程壓到僅數個原子間距，共同造成玻璃極低的熱導率。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"However, many insulating glasses show an unexpected linear term in the heat capacity below 1 K." (p.578)</p><p>"The normal modes of vibration of the glass structure are utterly unlike plane waves." (p.581)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>打破 Ch1–2 的週期性前提，改用徑向分佈函數描述結構。其低溫熱容討論直接回指 Ch5 的 Debye T³ 律並指出偏離；無序的討論與 Ch22 的合金呼應。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">直接</span>
+    <p>p.578–580：純介電晶體的低溫熱容遵守 Debye T³，但許多絕緣玻璃在 1 K 以下出現預期外的線性項，以二能階系統（TLS）解釋。書中特別提醒這個線性項與傳導電子熱容的線性項毫無關係，儘管兩者都 ∝ T——做 cryo 量測時這是關鍵的排查點。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-18.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">18</span> 奈米結構</span></a>
+<a href="ch-20.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">20</span> 點缺陷</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

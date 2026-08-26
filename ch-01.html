@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 1 章 晶體結構 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 1 章「Crystal Structure」（書本 p.1–22）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 1 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">01</span><h1>晶體結構</h1><p class="uhead__en">Crystal Structure</p><p class="chap__meta"><span>書本 p.1–22</span><span>公式 8 條</span><span>核心概念 8 條</span><span>熱容關聯 <span class="tag tag--indirect">間接</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" aria-current="page" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章處理「晶體是什麼、如何用數學描述晶體的週期性」。書中從晶體由相同建構單元（building blocks）連續堆疊而成的成長圖像出發，建立 lattice（晶格）＋ basis（基）＝ crystal structure 的核心框架，並定義 primitive translation vectors 與 primitive cell。接著討論晶格可容許的旋轉對稱（1、2、3、4、6 次軸，五次軸不可能），推出二維 5 種、三維 14 種 Bravais lattice。再引入 Miller 指標系統標定晶面，最後逐一檢視 NaCl、CsCl、hcp、diamond、cubic ZnS 五種基本結構，並談 STM 直接成像與 random stacking／polytypism 等非理想結構。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>晶體＝lattice（數學點集）＋ basis（附著在每個晶格點上的原子群），兩者分開描述是全章的骨架。</li><li>primitive translation vectors a₁, a₂, a₃ 定義晶軸；任兩個看起來相同的點必滿足整數平移關係 (1)，此時晶格稱為 primitive。</li><li>primitive cell 是最小體積的晶胞，每個 primitive cell 恰含一個晶格點；選法不唯一，Wigner-Seitz cell 是其中一種對稱的選法。</li><li>晶格只能有 1、2、3、4、6 次旋轉軸；五次對稱與平移週期性不相容（正五邊形無法鋪滿平面）。</li><li>二維有 5 種 Bravais lattice（oblique 加四種特殊晶格）；三維點群要求 14 種晶格型態，歸為 7 大晶系。</li><li>立方系有 sc、bcc、fcc 三種晶格；conventional cell 中 bcc 含 2 個、fcc 含 4 個晶格點，只有 sc 的 conventional cell 本身就是 primitive cell。</li><li>晶面指標 (hkl)：取軸截距（以晶格常數為單位）的倒數，再化為最小整數比；立方晶中 [hkl] 方向垂直於 (hkl) 面，但其他晶系不然。</li><li>diamond structure 空間晶格為 fcc、基有兩個相同原子（000 與 ¼¼¼），填充率僅 0.34；cubic ZnS 為 diamond 的兩套 fcc 分別放 Zn 與 S，失去反演對稱。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">晶格平移對稱條件（定義 lattice）</p><p class="eq__f">r′ = r + u₁a₁ + u₂a₂ + u₃a₃</p><span class="eq__r">(1) 　p.4</span><p class="eq__s">r 為觀察點，r′ 為平移後的等價點；u₁, u₂, u₃ 為任意整數（arbitrary integers）；a₁, a₂, a₃ 為三個平移向量（primitive translation vectors）</p></div><div class="eq"><p class="eq__l">基中第 j 個原子中心相對晶格點的位置</p><p class="eq__f">rⱼ = xⱼa₁ + yⱼa₂ + zⱼa₃ ,  0 ≤ xⱼ, yⱼ, zⱼ ≤ 1</p><span class="eq__r">(2) 　p.5</span><p class="eq__s">rⱼ 為基中原子 j 的中心相對於所屬晶格點的位置向量；xⱼ, yⱼ, zⱼ 為以軸長為單位的分數座標</p></div><div class="eq"><p class="eq__l">primitive cell 的體積（平行六面體體積）</p><p class="eq__f">V_c = |a₁ · a₂ × a₃|</p><span class="eq__r">(3) 　p.6</span><p class="eq__s">V_c 為以 a₁, a₂, a₃ 為稜的平行六面體體積；書中稱此為 elementary vector analysis 的結果</p></div><div class="eq"><p class="eq__l">bcc 晶格的 primitive translation vectors</p><p class="eq__f">a₁ = ½a(x̂ + ŷ − ẑ) ; a₂ = ½a(−x̂ + ŷ + ẑ) ; a₃ = ½a(x̂ − ŷ + ẑ)</p><span class="eq__r">p.10</span><p class="eq__s">a 為 conventional cube 的邊長；x̂, ŷ, ẑ 為 Cartesian unit vectors。此 primitive cell 為邊長 ½a√3 的菱面體，相鄰稜夾角 109°28′</p></div><div class="eq"><p class="eq__l">fcc 晶格的 primitive translation vectors</p><p class="eq__f">a₁ = ½a(x̂ + ŷ) ; a₂ = ½a(ŷ + ẑ) ; a₃ = ½a(ẑ + x̂)</p><span class="eq__r">p.11</span><p class="eq__s">a 為 conventional cube 邊長；這三個向量連接原點的晶格點與各面心，軸間夾角為 60°</p></div><div class="eq"><p class="eq__l">三種立方晶格的最近鄰距離（Table 2）</p><p class="eq__f">sc: a ; bcc: 3^(1/2)a/2 = 0.866a ; fcc: a/2^(1/2) = 0.707a</p><span class="eq__r">p.10</span><p class="eq__s">a 為 conventional cell 邊長。對應最近鄰數分別為 6、8、12；每個 conventional cell 的晶格點數為 1、2、4</p></div><div class="eq"><p class="eq__l">晶格平移算符（SUMMARY）</p><p class="eq__f">T = u₁a₁ + u₂a₂ + u₃a₃</p><span class="eq__r">p.22</span><p class="eq__s">T 為 lattice translation operator；u₁, u₂, u₃ 為整數；a₁, a₂, a₃ 為晶軸（crystal axes）</p></div><div class="eq"><p class="eq__l">理想 hcp 結構的 c/a 比</p><p class="eq__f">c/a = (8/3)^(1/2) = 1.633</p><span class="eq__r">p.22</span><p class="eq__s">a 為基面內的晶格參數，c 為堆疊軸方向的晶格參數；若 c/a 明顯大於此值，可視為緊密堆積面之間鬆散堆疊</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>晶體結構完全由「晶格 ＋ 基」兩件事決定：晶格是滿足 T = u₁a₁ + u₂a₂ + u₃a₃ 的數學點集，基是附在每個晶格點上、組成與取向都相同的原子群。平移週期性強烈限制了可能的對稱性——旋轉軸只能是 1、2、3、4、6 次，因此二維僅有 5 種、三維僅有 14 種 Bravais lattice。實用上以 conventional cell 與 Miller 指標 (hkl) 描述結構與晶面，書中選 NaCl、CsCl、hcp、diamond、cubic ZnS 五種結構作為「general interest」的示例（p.13），其中 fcc 與 hcp 的填充率皆為 0.74（最密），diamond 結構則只有 0.34。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"An ideal crystal is constructed by the infinite repetition of identical groups of atoms (Fig. 2)." (p.4)</p><p>"A primitive cell is a minimum-volume cell." ... "There is always one lattice point per primitive cell." (p.6)</p><p>"Bravais lattice is the common phrase for a distinct lattice type; we say that there are five Bravais lattices in two dimensions." (p.8)</p><p>"The number of nearest-neighbor atoms is 12 for both hcp and fcc structures." (p.16)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>開卷章，不依賴任何前章。它建立的「晶格＋基」與原胞概念是 Ch2 倒晶格的直接輸入（倒晶格基向量由 a₁,a₂,a₃ 定義），也是 Ch4–5 聲子模式計數的空間基礎——每原胞的原子數決定色散關係有幾支分支。往後 Ch19（非晶）與 Ch22（合金）都是在打破本章的週期性前提。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">間接</span>
+    <p>Debye 溫度定義式 θ = (ℏv/k_B)(6π²N/V)^⅓ 裡的 N/V（單位體積原胞數）就來自本章的原胞概念；矽的 diamond 結構每原胞 2 個原子，決定了聲子分支數。知道 N/V 是什麼即可，不需精讀。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="index.html"><span class="dir">← 回到</span><span class="t">全書總覽</span></a>
+<a href="ch-02.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">02</span> 波繞射與倒晶格</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

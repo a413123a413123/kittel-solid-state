@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 6 章 自由電子費米氣 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 6 章「Free Electron Fermi Gas」（書本 p.131–158）的六欄整理：研究問題、核心概念、12 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 6 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">06</span><h1>自由電子費米氣</h1><p class="uhead__en">Free Electron Fermi Gas</p><p class="chap__meta"><span>書本 p.131–158</span><span>公式 12 條</span><span>核心概念 9 條</span><span>熱容關聯 <span class="tag tag--direct">直接</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" aria-current="page" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章以「自由電子費米氣」（受包立原理約束的自由電子氣）為模型，解釋金屬的物理性質。書中先在一維求解無限位能井中的電子軌域與費米能，再推廣到三維週期性邊界條件下的平面波軌域、費米球與態密度。全章最核心的問題是電子熱容：古典統計預測每個自由電子貢獻 (3/2)k_B，但實測的電子熱容在室溫下不到該值的 0.01，書中明言這是早期電子論最大的困難。後半以費米球在 k 空間的位移處理電導率與歐姆定律、Matthiessen 規則、umklapp 散射，再處理磁場中的運動（霍爾效應）與金屬熱導率，最後導出 Wiedemann-Franz 定律與 Lorenz 數。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>自由電子費米氣＝受包立不相容原理約束的自由電子氣；價電子成為傳導電子，離子實只佔約 15% 體積（鹼金屬）。</li><li>orbital（軌域）指單電子波方程的解；N 電子系統的近似量子態由 N 個電子分佔 N 個不同軌域構成，僅在電子間無交互作用時為精確。</li><li>費米能 ε_F 定義為 N 電子系統基態中最高被佔據能階的能量；絕對零度時化學勢 μ 等於 ε_F。</li><li>三維基態中被佔據的軌域填滿 k 空間中半徑 k_F 的費米球，k_F 只取決於電子濃度 N/V。</li><li>加熱時並非每個電子都獲得 ~k_BT 的能量，只有費米能階附近 k_BT 能量範圍內的電子能被熱激發，因此電子熱容遠小於古典值。</li><li>電子熱容正比於 T，與晶格的 T³ 項合成 C = γT + AT³；γ 稱為 Sommerfeld 參數。</li><li>實測 γ 與自由電子值的比值定義熱有效質量 m_th/m，偏離 1 來自週期位能、電子-聲子交互作用、電子-電子交互作用三種效應；重費米子化合物的 γ 可高出常見值二至三個數量級。</li><li>電導率由費米球在定常態下的位移給出（σ = ne²τ/m）；電阻在室溫由聲子散射主導、在液氦溫度由雜質與缺陷主導，低溫電阻主要來自 umklapp 散射。</li><li>霍爾係數 R_H = E_y/(j_x B)，自由電子模型給 R_H = −1/nec；Al、In、Be、As 出現正號，需能帶理論（電洞）才能解釋。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">費米-狄拉克分布函數（軌域被佔據的機率）</p><p class="eq__f">f(ε) = 1 / (exp[(ε − μ)/k_B T] + 1)</p><span class="eq__r">(5) 　p.136</span><p class="eq__s">ε 為軌域能量；μ 為化學勢（隨溫度變化，需使總粒子數等於 N）；k_B 為波茲曼常數；T 為溫度。絕對零度時 μ = ε_F。</p></div><div class="eq"><p class="eq__l">三維費米波向量（僅取決於電子濃度）</p><p class="eq__f">k_F = (3π²N/V)^(1/3)</p><span class="eq__r">(16) 　p.138</span><p class="eq__s">k_F 為費米面上波向量的大小；N 為電子數；V 為體積。由 2·(4πk_F³/3)/(2π/L)³ = V k_F³/3π² = N 得到，左側因子 2 來自兩個自旋值。</p></div><div class="eq"><p class="eq__l">費米能與電子濃度的關係</p><p class="eq__f">ε_F = (ℏ²/2m)(3π²N/V)^(2/3)</p><span class="eq__r">(17) 　p.140</span><p class="eq__s">ℏ 為約化普朗克常數；m 為電子質量；N/V 為電子濃度。費米溫度定義為 T_F ≡ ε_F/k_B（與電子氣的實際溫度無關）。</p></div><div class="eq"><p class="eq__l">三維自由電子氣的態密度</p><p class="eq__f">D(ε) ≡ dN/dε = (V/2π²)(2m/ℏ²)^(3/2) · ε^(1/2)</p><span class="eq__r">(20) 　p.140</span><p class="eq__s">D(ε) 為單位能量範圍內的軌域數（嚴格說是單粒子態密度／軌域密度）；由總軌域數 N = (V/3π²)(2mε/ℏ²)^(3/2) 對 ε 微分而得。</p></div><div class="eq"><p class="eq__l">態密度的簡化式（比較 (19) 與 (20)）</p><p class="eq__f">D(ε) ≡ dN/dε = 3N/2ε</p><span class="eq__r">(21) 　p.141</span><p class="eq__s">在 ε 處成立；在費米能處 D(ε_F) = 3N/2ε_F = 3N/2k_B T_F，即費米能處單位能量的軌域數約等於總傳導電子數除以費米能。</p></div><div class="eq"><p class="eq__l">電子熱容的一般積分式</p><p class="eq__f">C_el = dU/dT = ∫₀^∞ dε (ε − ε_F) (df/dT) D(ε)</p><span class="eq__r">(28) 　p.142</span><p class="eq__s">ΔU = U(T) − U(0) 為 N 個電子由 0 加熱到 T 的總能量增量；f(ε) 為費米-狄拉克函數，是 (27) 式中唯一與溫度相關的項；D(ε) 為單位能量範圍的軌域數。</p></div><div class="eq"><p class="eq__l">低溫電子熱容（Sommerfeld 展開結果）</p><p class="eq__f">C_el = (1/3) π² D(ε_F) k_B² T</p><span class="eq__r">(34) 　p.144</span><p class="eq__s">適用於 k_B T ≪ ε_F；推導中令 τ ≡ k_B T、x ≡ (ε − ε_F)/τ，並用 ∫₋∞^∞ dx x²eˣ/(eˣ+1)² = π²/3。</p></div><div class="eq"><p class="eq__l">自由電子氣的電子熱容（以費米溫度表示）</p><p class="eq__f">C_el = (1/2) π² N k_B T / T_F</p><span class="eq__r">(36) 　p.144</span><p class="eq__s">由 (34) 代入 D(ε_F) = 3N/2ε_F = 3N/2k_B T_F 得到；k_B T_F ≡ ε_F。C_el 正比於 T，室溫下比古典值 (3/2)Nk_B 小約 0.01 或更少（T_F ~ 5×10⁴ K）。</p></div><div class="eq"><p class="eq__l">金屬低溫總熱容的實驗作圖式（電子項＋聲子項）</p><p class="eq__f">C = γT + AT³ ，作圖用 C/T = γ + AT²</p><span class="eq__r">(37) 　p.145</span><p class="eq__s">適用於遠低於德拜溫度 θ 與費米溫度 T_F；γ 為 Sommerfeld 參數（電子項係數），A 為聲子項係數，兩者皆為材料特徵常數。以 C/T 對 T² 作圖應得斜率 A、截距 γ 的直線。</p></div><div class="eq"><p class="eq__l">熱有效質量（由觀測 γ 與自由電子 γ 之比定義）</p><p class="eq__f">m_th/m ≡ γ(observed) / γ(free)</p><span class="eq__r">(38) 　p.145</span><p class="eq__s">m_th 為熱有效質量，m 為電子質量。此形式自然出現是因為 ε_F 反比於電子質量，故 γ ∝ m。偏離 1 源自傳導電子與週期位能、與聲子、與其他電子的交互作用。</p></div><div class="eq"><p class="eq__l">歐姆定律與電導率（自由電子）</p><p class="eq__f">j = nqv = ne²τE/m ，σ = ne²τ/m ，ρ = m/ne²τ</p><span class="eq__r">(42) 在 p.147；(43)(44) 在 p.148 　p.147</span><p class="eq__s">j 為電流密度；n 為單位體積內電荷 q = −e 的電子數；τ 為碰撞時間；E 為電場；σ 為電導率；ρ 為電阻率。定常態下費米球位移 δk = −eEτ/ℏ，增量速度 v = ℏδk/m = −eEτ/m。</p></div><div class="eq"><p class="eq__l">Wiedemann-Franz 定律與 Lorenz 數</p><p class="eq__f">K/σ = (π²/3)(k_B/e)² T ，L ≡ K/σT = (π²/3)(k_B/e)² = 2.45×10⁻⁸ watt-ohm/deg²</p><span class="eq__r">(57) 在 p.156；(58)(59) 在次頁 　p.156</span><p class="eq__s">K 為電子熱導率（由 K = (1/3)Cvℓ 與 (36) 得 K_el = π² n k_B² T τ/3m）；σ 為電導率；L 為 Lorenz 數。此結果與 n 和 m 皆無關，實驗值（0°C 與 100°C）與之符合良好。</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>自由電子費米氣模型加上包立原理與費米-狄拉克統計，正確解出了古典理論失敗的電子熱容問題：只有費米面附近 k_BT 範圍內的電子能被熱激發，因此電子熱容線性正比於溫度，C_el = (1/3)π²D(ε_F)k_B²T = (1/2)π²Nk_BT/T_F，室溫下僅為古典值的 1% 量級。實驗上以 C/T 對 T² 作圖分離出電子項 γ 與聲子項 A，而 γ(觀測)/γ(自由電子) 定義的熱有效質量比反映了週期位能、電子-聲子與電子-電子交互作用；重費米子化合物的 γ 可高出二至三個數量級。同一模型也給出歐姆定律 σ = ne²τ/m 與 Wiedemann-Franz 定律 K/σT = (π²/3)(k_B/e)²，後者不含 n 與 m，在金屬理論史上支持了「電子氣同時攜帶電荷與能量」的圖像。但霍爾係數在 Al、In、Be、As 出現正號，是自由電子模型無法解釋、必須交給第 7–9 章能帶理論的關鍵失敗。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"By a free electron Fermi gas, we shall mean a gas of free electrons subject to the Pauli principle." (p.134)</p><p>"the specific heat vanishes at absolute zero and that at low temperatures it is proportional to the absolute temperature" — Fermi, quoted by Kittel (p.141)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>與 Ch5 平行——一個處理聲子、一個處理電子，兩者在 p.145 的 C = γT + AT³ 合流。本章的 D(ε_F) 與 Ch11 的 Pauli 順磁、Ch5 的 D(ω) 在數學上同構（都是「只有費米面／截止頻率附近的態能響應」）。往後 Ch7 用週期位能修正本章的自由電子假設。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">直接</span>
+    <p>金屬熱容的電子項。書中稱電子熱容是早期金屬電子論最大的困難：古典預測每電子 k_B，實測只有古典值的 0.01 倍或更小。C/T 對 T² 作圖分離電子項 γ 與聲子項 A，是低溫量測的標準手法。讀 p.141–147。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-05.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">05</span> 聲子 II：熱性質</span></a>
+<a href="ch-07.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">07</span> 能帶</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

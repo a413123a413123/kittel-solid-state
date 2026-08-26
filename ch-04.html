@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 4 章 聲子 I：晶格振動 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 4 章「Phonons I. Crystal Vibrations」（書本 p.89–103）的六欄整理：研究問題、核心概念、12 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 4 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">04</span><h1>聲子 I：晶格振動</h1><p class="uhead__en">Phonons I. Crystal Vibrations</p><p class="chap__meta"><span>書本 p.89–103</span><span>公式 12 條</span><span>核心概念 10 條</span><span>熱容關聯 <span class="tag tag--indirect">間接</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" aria-current="page" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章要在晶格離散性下求出彈性波（晶格振動）的頻率 ω 與波向量 K 的關係，即聲子色散關係。先處理每個原胞只有一個原子（monatomic basis）沿 [100]、[110]、[111] 傳播的一維化問題，導出 ω(K) 並說明為何只有第一布里淵區內的 K 有物理意義；再推廣到每個原胞兩個原子（two atoms per primitive basis），說明聲學支（acoustical）與光學支（optical）如何出現。接著把彈性波量子化為聲子，討論聲子的「動量」性質（crystal momentum），最後說明實驗上如何用中子非彈性散射量測 ω(K)。書中亦說明如何從實驗色散關係反推各階平面間力常數 C_p。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>晶體的彈性響應假設為位移的線性函數（等價於彈性能為相對位移的二次函數），三次以上的項在小形變下可忽略，這就是諧近似。</li><li>以單一座標 u_s 描述第 s 個原子平面的位移，可把沿高對稱方向傳播的三維問題化為一維問題；每個 K 有三個模態，一個縱向極化、兩個橫向極化。</li><li>色散關係 ω(K) 在布里淵區邊界 K = ±π/a 斜率為零，該處解不是行波而是駐波（相鄰原子反相振動），與 X 光的布拉格反射條件等價。</li><li>第一布里淵區以外的 K 不帶新資訊：減去適當的倒晶格向量後可得區內的等價波向量，故所有彈性波都能用第一區內的 K 描述。</li><li>每個原胞有 p 個原子時，色散關係有 3p 個分支：3 個聲學支與 3p − 3 個光學支；分支數由自由度計數（pN 個原子、3pN 自由度、每支 N 個 K 值）決定。</li><li>雙原子基底在區邊界出現頻率間隙（frequency gap）：介於 (2C/M₁)^{1/2} 與 (2C/M₂)^{1/2} 之間沒有波動解。光學支在 K = 0 時兩原子反相振動而質心不動，可與光波電場耦合。</li><li>晶格振動的能量量子稱為聲子（phonon），能量本徵值與量子諧振子相同，含零點能 ½ℏω。</li><li>聲子帶有 ℏK 的「準動量」，與光子、中子、電子交互作用時表現得像有動量 ℏK，但因聲子座標是相對座標，實際上不攜帶物理動量。</li><li>晶體中的交互作用波總波向量守恆，但可差一個倒晶格向量 G；這是非彈性散射選擇律的基礎。</li><li>實驗上主要以中子非彈性散射（伴隨聲子的產生或吸收）決定 ω(K)，需同時使用波向量選擇律與能量守恆。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">單原子基底晶格的運動方程（僅最近鄰交互作用）</p><p class="eq__f">M d²u_s/dt² = C(u_{s+1} + u_{s−1} − 2u_s)</p><span class="eq__r">(2) 　p.91</span><p class="eq__s">M 為原子質量；C 為最近鄰平面間的力常數（對縱波與橫波不同），定義為平面上「一個原子」的力常數；u_s 為第 s 個平面偏離平衡的位移</p></div><div class="eq"><p class="eq__l">單原子基底的色散關係</p><p class="eq__f">ω² = (2C/M)(1 − cos Ka)</p><span class="eq__r">(7) 　p.92</span><p class="eq__s">a 為平面間距（其值取決於 K 的方向）；K 為波向量；第一布里淵區邊界在 K = ±π/a</p></div><div class="eq"><p class="eq__l">色散關係的三角恆等式等價形式</p><p class="eq__f">ω² = (4C/M) sin²(½Ka)，  ω = (4C/M)^{1/2} |sin(½Ka)|</p><span class="eq__r">(9) 　p.92</span><p class="eq__s">同上；此式即書中 Fig. 4 所繪的 ω-K 曲線</p></div><div class="eq"><p class="eq__l">群速度（波包能量傳遞速度）</p><p class="eq__f">v_g = dω/dK = grad_K ω(K)；由 (9) 得 v_g = (Ca²/M)^{1/2} cos(½Ka)</p><span class="eq__r">(13), (14) 　p.94</span><p class="eq__s">v_g 為群速度，在區邊界 K = π/a 處為零，對應駐波無淨傳遞速度</p></div><div class="eq"><p class="eq__l">長波極限（連續介質極限，Ka ≪ 1）</p><p class="eq__f">ω² = (C/M)K²a²</p><span class="eq__r">(15) 　p.94</span><p class="eq__s">由 cos Ka ≅ 1 − ½(Ka)² 展開 (7) 得；此時 ω 正比於 K，等價於聲速與頻率無關，v = ω/K</p></div><div class="eq"><p class="eq__l">推廣到 p 個鄰近平面交互作用的色散關係</p><p class="eq__f">ω² = (2/M) Σ_{p&gt;0} C_p (1 − cos pKa)</p><span class="eq__r">(16a) 　p.95</span><p class="eq__s">C_p 為相隔 p 個平面（距離 pa）的平面間力常數；金屬中有效力程可長達 20 個平面</p></div><div class="eq"><p class="eq__l">由實驗色散關係反求平面間力常數</p><p class="eq__f">C_p = −(Ma/2π) ∫_{−π/a}^{π/a} dK ω²(K) cos pKa</p><span class="eq__r">(17) 　p.95</span><p class="eq__s">將 (16a) 兩邊乘 cos rKa 並對第一區積分，只有 p = r 項不為零；此式給出單原子基底結構在力程 pa 處的力常數</p></div><div class="eq"><p class="eq__l">雙原子基底（每原胞兩原子）的久期方程</p><p class="eq__f">M₁M₂ω⁴ − 2C(M₁ + M₂)ω² + 2C²(1 − cos Ka) = 0</p><span class="eq__r">(22) 　p.98</span><p class="eq__s">M₁、M₂ 為交錯平面上兩種原子的質量；C 為相鄰平面間（假設全部相同）的力常數；a 為最近的「同種」平面間距（非最近鄰平面間距）</p></div><div class="eq"><p class="eq__l">光學支在 K → 0 的極限頻率</p><p class="eq__f">ω² ≅ 2C(1/M₁ + 1/M₂)</p><span class="eq__r">(23) 　p.98</span><p class="eq__s">由 cos Ka ≅ 1 − ½K²a² 代入 (22) 取小 Ka 極限所得之較高根，即光學分支</p></div><div class="eq"><p class="eq__l">區邊界 K_max = ±π/a 處的兩支頻率（頻率間隙）</p><p class="eq__f">ω² = 2C/M₁ ；  ω² = 2C/M₂</p><span class="eq__r">(25) 　p.98</span><p class="eq__s">介於 (2C/M₁)^{1/2} 與 (2C/M₂)^{1/2} 之間不存在波動解，此即多原子晶格的頻率間隙；圖示對應 M₁ &gt; M₂ 的情形</p></div><div class="eq"><p class="eq__l">彈性波能量量子化（聲子能量）</p><p class="eq__f">ε = (n + ½)ℏω</p><span class="eq__r">(27) 　p.99</span><p class="eq__s">n 為該模態被激發的量子數，即佔據該模態的聲子數；½ℏω 為零點能，源自其等價於頻率 ω 的量子諧振子</p></div><div class="eq"><p class="eq__l">中子非彈性散射的波向量選擇律</p><p class="eq__f">k + G = k′ ± K</p><span class="eq__r">(33) 　p.101</span><p class="eq__s">k、k′ 分別為入射與散射中子的波向量；K 為散射過程中產生（+）或吸收（−）的聲子波向量；G 為任一倒晶格向量，選 G 使 K 落在第一布里淵區內</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>晶格的離散性使彈性波的色散關係在布里淵區邊界飽和（群速度為零、解成為駐波），因此所有彈性波都可以用第一布里淵區內的波向量描述；長波極限下 ω 正比於 K，回歸連續介質彈性理論。每原胞 p 個原子時色散關係分裂成 3 個聲學支與 3p − 3 個光學支，兩原子基底在區邊界出現頻率間隙。晶格振動的能量量子化為聲子，能量為 (n + ½)ℏω；聲子帶有 ℏK 的準動量並遵守含倒晶格向量 G 的波向量選擇律，這使得中子非彈性散射成為量測 ω(K) 的標準實驗手段。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"The quantum unit of a crystal vibration is a phonon." (p.102)</p><p>"However, a phonon does not carry physical momentum." (p.100)</p><p>"The transmission velocity of a wave packet is the group velocity" (p.94)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>用 Ch2 的 Brillouin 區當定義域、用 Ch3 的彈性常數當長波極限的檢核。它產出的色散關係 ω(K)、以及每原胞兩原子時分裂出的聲學支與光學支，是 Ch5 態密度 D(ω) 的唯一輸入。Ch12 的磁振子量子化與本章的聲子量子化在數學上同構。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">間接</span>
+    <p>沒有 ω(K) 就沒有 D(ω)，沒有 D(ω) 就算不出熱容——Ch5 的一切建立在本章之上。也解釋了為何 Ch5 用 Debye 模型處理聲學支、用 Einstein 模型近似光學支。讀 Ch5 卡住時回頭讀這章。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-03.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">03</span> 晶體鍵結與彈性常數</span></a>
+<a href="ch-05.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">05</span> 聲子 II：熱性質</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

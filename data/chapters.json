@@ -1,0 +1,1909 @@
+{
+ "1": {
+  "ch": 1,
+  "researchQuestion": "本章處理「晶體是什麼、如何用數學描述晶體的週期性」。書中從晶體由相同建構單元（building blocks）連續堆疊而成的成長圖像出發，建立 lattice（晶格）＋ basis（基）＝ crystal structure 的核心框架，並定義 primitive translation vectors 與 primitive cell。接著討論晶格可容許的旋轉對稱（1、2、3、4、6 次軸，五次軸不可能），推出二維 5 種、三維 14 種 Bravais lattice。再引入 Miller 指標系統標定晶面，最後逐一檢視 NaCl、CsCl、hcp、diamond、cubic ZnS 五種基本結構，並談 STM 直接成像與 random stacking／polytypism 等非理想結構。",
+  "coreConcepts": [
+   "晶體＝lattice（數學點集）＋ basis（附著在每個晶格點上的原子群），兩者分開描述是全章的骨架。",
+   "primitive translation vectors a₁, a₂, a₃ 定義晶軸；任兩個看起來相同的點必滿足整數平移關係 (1)，此時晶格稱為 primitive。",
+   "primitive cell 是最小體積的晶胞，每個 primitive cell 恰含一個晶格點；選法不唯一，Wigner-Seitz cell 是其中一種對稱的選法。",
+   "晶格只能有 1、2、3、4、6 次旋轉軸；五次對稱與平移週期性不相容（正五邊形無法鋪滿平面）。",
+   "二維有 5 種 Bravais lattice（oblique 加四種特殊晶格）；三維點群要求 14 種晶格型態，歸為 7 大晶系。",
+   "立方系有 sc、bcc、fcc 三種晶格；conventional cell 中 bcc 含 2 個、fcc 含 4 個晶格點，只有 sc 的 conventional cell 本身就是 primitive cell。",
+   "晶面指標 (hkl)：取軸截距（以晶格常數為單位）的倒數，再化為最小整數比；立方晶中 [hkl] 方向垂直於 (hkl) 面，但其他晶系不然。",
+   "diamond structure 空間晶格為 fcc、基有兩個相同原子（000 與 ¼¼¼），填充率僅 0.34；cubic ZnS 為 diamond 的兩套 fcc 分別放 Zn 與 S，失去反演對稱。"
+  ],
+  "equations": [
+   {
+    "label": "晶格平移對稱條件（定義 lattice）",
+    "formula": "r′ = r + u₁a₁ + u₂a₂ + u₃a₃",
+    "bookPage": 4,
+    "eqNumber": "(1)",
+    "symbols": "r 為觀察點，r′ 為平移後的等價點；u₁, u₂, u₃ 為任意整數（arbitrary integers）；a₁, a₂, a₃ 為三個平移向量（primitive translation vectors）"
+   },
+   {
+    "label": "基中第 j 個原子中心相對晶格點的位置",
+    "formula": "rⱼ = xⱼa₁ + yⱼa₂ + zⱼa₃ ,  0 ≤ xⱼ, yⱼ, zⱼ ≤ 1",
+    "bookPage": 5,
+    "eqNumber": "(2)",
+    "symbols": "rⱼ 為基中原子 j 的中心相對於所屬晶格點的位置向量；xⱼ, yⱼ, zⱼ 為以軸長為單位的分數座標"
+   },
+   {
+    "label": "primitive cell 的體積（平行六面體體積）",
+    "formula": "V_c = |a₁ · a₂ × a₃|",
+    "bookPage": 6,
+    "eqNumber": "(3)",
+    "symbols": "V_c 為以 a₁, a₂, a₃ 為稜的平行六面體體積；書中稱此為 elementary vector analysis 的結果"
+   },
+   {
+    "label": "bcc 晶格的 primitive translation vectors",
+    "formula": "a₁ = ½a(x̂ + ŷ − ẑ) ; a₂ = ½a(−x̂ + ŷ + ẑ) ; a₃ = ½a(x̂ − ŷ + ẑ)",
+    "bookPage": 10,
+    "eqNumber": "",
+    "symbols": "a 為 conventional cube 的邊長；x̂, ŷ, ẑ 為 Cartesian unit vectors。此 primitive cell 為邊長 ½a√3 的菱面體，相鄰稜夾角 109°28′"
+   },
+   {
+    "label": "fcc 晶格的 primitive translation vectors",
+    "formula": "a₁ = ½a(x̂ + ŷ) ; a₂ = ½a(ŷ + ẑ) ; a₃ = ½a(ẑ + x̂)",
+    "bookPage": 11,
+    "eqNumber": "",
+    "symbols": "a 為 conventional cube 邊長；這三個向量連接原點的晶格點與各面心，軸間夾角為 60°"
+   },
+   {
+    "label": "三種立方晶格的最近鄰距離（Table 2）",
+    "formula": "sc: a ; bcc: 3^(1/2)a/2 = 0.866a ; fcc: a/2^(1/2) = 0.707a",
+    "bookPage": 10,
+    "eqNumber": "",
+    "symbols": "a 為 conventional cell 邊長。對應最近鄰數分別為 6、8、12；每個 conventional cell 的晶格點數為 1、2、4"
+   },
+   {
+    "label": "晶格平移算符（SUMMARY）",
+    "formula": "T = u₁a₁ + u₂a₂ + u₃a₃",
+    "bookPage": 22,
+    "eqNumber": "",
+    "symbols": "T 為 lattice translation operator；u₁, u₂, u₃ 為整數；a₁, a₂, a₃ 為晶軸（crystal axes）"
+   },
+   {
+    "label": "理想 hcp 結構的 c/a 比",
+    "formula": "c/a = (8/3)^(1/2) = 1.633",
+    "bookPage": 22,
+    "eqNumber": "",
+    "symbols": "a 為基面內的晶格參數，c 為堆疊軸方向的晶格參數；若 c/a 明顯大於此值，可視為緊密堆積面之間鬆散堆疊"
+   }
+  ],
+  "mainConclusion": "晶體結構完全由「晶格 ＋ 基」兩件事決定：晶格是滿足 T = u₁a₁ + u₂a₂ + u₃a₃ 的數學點集，基是附在每個晶格點上、組成與取向都相同的原子群。平移週期性強烈限制了可能的對稱性——旋轉軸只能是 1、2、3、4、6 次，因此二維僅有 5 種、三維僅有 14 種 Bravais lattice。實用上以 conventional cell 與 Miller 指標 (hkl) 描述結構與晶面，書中選 NaCl、CsCl、hcp、diamond、cubic ZnS 五種結構作為「general interest」的示例（p.13），其中 fcc 與 hcp 的填充率皆為 0.74（最密），diamond 結構則只有 0.34。",
+  "verbatimQuotes": [
+   "\"An ideal crystal is constructed by the infinite repetition of identical groups of atoms (Fig. 2).\" (p.4)",
+   "\"A primitive cell is a minimum-volume cell.\" ... \"There is always one lattice point per primitive cell.\" (p.6)",
+   "\"Bravais lattice is the common phrase for a distinct lattice type; we say that there are five Bravais lattices in two dimensions.\" (p.8)",
+   "\"The number of nearest-neighbor atoms is 12 for both hcp and fcc structures.\" (p.16)"
+  ]
+ },
+ "2": {
+  "ch": 2,
+  "researchQuestion": "本章問的是：波（X 光、中子、電子）打進晶體後，為什麼只在特定方向出現繞射峰，以及繞射圖樣攜帶了什麼結構訊息。書中先給 Bragg 的簡單反射式論證，指出它雖然結果正確卻不夠深入；接著用電子數密度 n(r) 的傅立葉分析重新建立散射振幅，由此定義 reciprocal lattice（倒晶格）與其基向量 b₁, b₂, b₃。繞射條件被證明等價於 Δk = G，並改寫成 2k·G = G²、Laue 方程、以及 Brillouin zone 的幾何形式。最後把基的內部結構納入，得到 structure factor S_G 與 atomic form factor f_j，說明 bcc、fcc 為何有系統性消光。",
+  "coreConcepts": [
+   "Bragg law 2d sinθ = nλ 是繞射條件最簡單的敘述，但它假設鏡面反射，只是「因為結果對才有說服力」。",
+   "晶體任何局域物理量（特別是電子數密度 n(r)）在晶格平移 T 下不變，因此可展成傅立葉級數 n(r) = Σ_G n_G exp(iG·r)。",
+   "倒晶格是傅立葉空間中的晶格；直接晶格向量的單位是 [長度]，倒晶格向量的單位是 [1/長度]，兩者由 bᵢ·aⱼ = 2πδᵢⱼ 綁定。",
+   "散射振幅 F 正比於 n(r) 對 exp(−iΔk·r) 的積分；只有當 Δk 等於某個倒晶格向量 G 時 F 才不可忽略（F = V n_G）。",
+   "彈性散射下 k² = k′²，繞射條件化為 2k·G + G² = 0，等價於 Bragg 條件，且 d(hkl) = 2π/|G|。",
+   "first Brillouin zone 定義為倒晶格的 Wigner-Seitz primitive cell；波向量 k 端點落在 zone boundary 上才會被繞射。bcc 的第一布里淵區是 rhombic dodecahedron，fcc 的是 truncated octahedron。",
+   "bcc 的倒晶格是 fcc，fcc 的倒晶格是 bcc；sc 的倒晶格仍是 sc，晶格常數 2π/a。",
+   "structure factor S_G 描述基內各原子的干涉，導致系統性消光：bcc 在 v₁+v₂+v₃ 為奇數時 S = 0；fcc 在指標奇偶混雜時 S = 0。",
+   "atomic form factor f_j 是實際電子分布散射振幅與單一點電子散射振幅之比；G → 0 時 f → Z（原子電子數）。"
+  ],
+  "equations": [
+   {
+    "label": "Bragg 定律",
+    "formula": "2d sin θ = nλ",
+    "bookPage": 25,
+    "eqNumber": "(1)",
+    "symbols": "d 為平行原子面間距，θ 為入射線與晶面（非法線）的夾角，n 為整數階數，λ 為波長。只有 λ ≤ 2d 才可能滿足"
+   },
+   {
+    "label": "電子數密度的三維傅立葉展開",
+    "formula": "n(r) = Σ_G n_G exp(iG · r)",
+    "bookPage": 28,
+    "eqNumber": "(9)",
+    "symbols": "n(r) 為電子數密度；G 為倒晶格向量集合；n_G 為傅立葉係數，n_G = V_c⁻¹ ∫_cell dV n(r) exp(−iG·r)（式 12），V_c 為晶胞體積"
+   },
+   {
+    "label": "倒晶格的基向量定義",
+    "formula": "b₁ = 2π (a₂ × a₃)/(a₁ · a₂ × a₃) ; b₂ = 2π (a₃ × a₁)/(a₁ · a₂ × a₃) ; b₃ = 2π (a₁ × a₂)/(a₁ · a₂ × a₃)",
+    "bookPage": 29,
+    "eqNumber": "(13)",
+    "symbols": "a₁, a₂, a₃ 為晶體晶格的 primitive vectors；由此得 bᵢ · aⱼ = 2πδᵢⱼ（式 14），且倒晶格向量 G = v₁b₁ + v₂b₂ + v₃b₃（式 15），v₁, v₂, v₃ 為整數。書中註明 2π 因子是固態物理的慣例，晶體學家不用"
+   },
+   {
+    "label": "散射振幅",
+    "formula": "F = ∫ dV n(r) exp[i(k − k′) · r] = ∫ dV n(r) exp(−iΔk · r)",
+    "bookPage": 31,
+    "eqNumber": "(18)",
+    "symbols": "k、k′ 分別為入射與出射波向量；Δk ≡ k′ − k 稱為 scattering vector，滿足 k + Δk = k′（式 19）；n(r) 為局域電子濃度"
+   },
+   {
+    "label": "彈性散射的繞射條件",
+    "formula": "2k · G + G² = 0  （等價寫法 2k · G = G²）",
+    "bookPage": 31,
+    "eqNumber": "(22) p.31；等價形式 2k·G = G² 另編為 (23) p.32",
+    "symbols": "k 為入射波向量，G 為倒晶格向量。書中稱此為「週期晶格中波的彈性散射理論的核心結果」；配合 d(hkl) = 2π/|G| 可還原成 2d sinθ = nλ（式 24）"
+   },
+   {
+    "label": "Brillouin zone 形式的繞射條件",
+    "formula": "k · (½G) = (½G)²",
+    "bookPage": 33,
+    "eqNumber": "(26)",
+    "symbols": "由式 (23) 兩邊除以 4 得到。幾何意義：從原點畫倒晶格向量 G，在其中點作垂直平分面，k 端點落在此面上即滿足繞射條件，繞射束方向為 k − G"
+   },
+   {
+    "label": "幾何結構因子（geometrical structure factor）",
+    "formula": "S_G(v₁v₂v₃) = Σⱼ fⱼ exp[−i2π(v₁xⱼ + v₂yⱼ + v₃zⱼ)]",
+    "bookPage": 40,
+    "eqNumber": "(46)",
+    "symbols": "j 跑遍基中的 s 個原子；fⱼ 為第 j 個原子的 atomic form factor；xⱼ, yⱼ, zⱼ 為原子 j 的分數座標；(v₁v₂v₃) 標記反射。由 S_G = Σⱼ fⱼ exp(−iG·rⱼ)（式 43）而來。bcc 情形化為 S = f{1 + exp[−iπ(v₁+v₂+v₃)]}（式 47）"
+   },
+   {
+    "label": "球對稱電子分布的原子形狀因子",
+    "formula": "fⱼ = 4π ∫ dr nⱼ(r) r² · (sin Gr)/(Gr)",
+    "bookPage": 42,
+    "eqNumber": "(50)",
+    "symbols": "nⱼ(r) 為第 j 個原子的球對稱電子濃度；G = |G|；當 Gr → 0（前向散射，G = 0）時 (sin Gr)/(Gr) → 1，f 化為 4π∫dr nⱼ(r)r² = Z（式 51），即原子電子數"
+   }
+  ],
+  "mainConclusion": "繞射的完整條件是 Δk = G：散射向量必須等於某個倒晶格向量，因此繞射圖樣就是晶體倒晶格的一張地圖。這個條件有三種等價敘述——Bragg 的 2d sinθ = nλ、Laue 方程 aᵢ·Δk = 2πvᵢ、以及 Brillouin zone 的 k·(½G) = (½G)²，後者把「可被繞射的 k」幾何化為布里淵區邊界。繞射峰的位置由晶格決定，強度則由基決定：structure factor S_G 與 atomic form factor fⱼ 一起解釋了 bcc（v₁+v₂+v₃ 為奇數）與 fcc（指標奇偶混雜）的系統性消光。第一布里淵區作為倒晶格的 Wigner-Seitz cell，後續成為能帶理論與各種元激發分析的基本舞台。",
+  "verbatimQuotes": [
+   "\"A diffraction pattern of a crystal is, as we shall show, a map of the reciprocal lattice of the crystal.\" (p.30)",
+   "\"This is the central result of the theory of elastic scattering of waves in a periodic lattice.\" (p.32)",
+   "\"A Brillouin zone is defined as a Wigner-Seitz primitive cell in the reciprocal lattice.\" (p.33)",
+   "\"Only waves whose wavevector k drawn from the origin terminates on a surface of the Brillouin zone can be diffracted by the crystal.\" (p.43)"
+  ]
+ },
+ "3": {
+  "ch": 3,
+  "researchQuestion": "本章問兩個相連的問題：「是什麼把晶體黏在一起？」以及「晶體被外力形變時如何反應？」前半處理 crystal binding，依序建立惰性氣體晶體（van der Waals-London 吸引 ＋ Pauli 排斥，合成 Lennard-Jones 位能）、離子晶體（Madelung 能量與指數排斥項）、共價晶體（電子對鍵與交換作用）、金屬鍵與氫鍵，並整理原子與離子半徑的可加性。後半把晶體視為連續彈性介質，定義應變分量 e_αβ 與應力分量、彈性剛度常數 C_λμ，證明立方晶只剩 C₁₁, C₁₂, C₄₄ 三個獨立常數，最後由 Hooke 定律加 Newton 第二定律導出彈性波方程與 [100]、[110] 方向的波速。",
+  "coreConcepts": [
+   "晶體的內聚完全來自電子負電荷與原子核正電荷之間的靜電吸引；磁力影響微弱，重力可忽略。exchange energy、van der Waals force、covalent bond 只是這件事在不同情境下的專門稱呼。",
+   "cohesive energy 定義為把晶體拆成靜止、無限遠分離的中性自由原子所需的能量；lattice energy 則是拆成自由「離子」所需的能量（用於離子晶體）。",
+   "van der Waals-London 交互作用來自兩個耦合諧振子零點能的降低，正比於 −1/R⁶，是量子效應（ℏ → 0 時 ΔU → 0），且不需要電荷密度重疊。",
+   "排斥作用主要來自 Pauli 不相容原理：閉殼層重疊時電子必須被提升到高能態，故總能上升。經驗上以 B/R¹² 或 λexp(−R/ρ) 表示。",
+   "惰性氣體晶體用 Lennard-Jones 位能加總後可得 R₀/σ = 1.09（fcc，與實驗 1.09–1.14 相符）與 U_tot(R₀) = −(2.15)(4Nε)，且參數全由氣相數據決定，無可調參數。",
+   "離子晶體的主要束縛能是 Madelung energy −Nαq²/R₀；Madelung 常數 α 依結構而定：NaCl 1.747565、CsCl 1.762675、cubic ZnS 1.6381；一維交錯離子鏈為 α = 2 ln 2。",
+   "應變由 6 個無因次分量 e_xx, e_yy, e_zz, e_xy, e_yz, e_zx 完全描述；dilation δ = e_xx + e_yy + e_zz 為體積分數變化。應力也由 9 個減為 6 個獨立分量（力矩為零）。",
+   "彈性能密度為應變的二次式，使 36 個剛度常數先降為 21 個；立方對稱（四條 [111] 三重旋轉軸）再降為 C₁₁, C₁₂, C₄₄ 三個獨立常數。",
+   "立方晶三個主方向（[100]、[111]、[110]）中，兩個模式的粒子運動恰好橫向、一個恰好縱向；[100] 與 [111] 方向的兩個橫波簡併，[110] 方向則分裂為 C₄₄ 與 ½(C₁₁ − C₁₂) 兩支。"
+  ],
+  "equations": [
+   {
+    "label": "van der Waals-London 吸引能（零點能降低量）",
+    "formula": "ΔU = ½ℏ(Δω_s + Δω_a) = −ℏω₀ · (1/8)(2e²/CR³)² = −A/R⁶",
+    "bookPage": 56,
+    "eqNumber": "(9)",
+    "symbols": "ω₀ = (C/m)^(1/2) 為未耦合振子頻率（取為原子最強光吸收線的頻率）；C 為力常數，m 為質量，±e 為振子電荷，R 為兩振子（原子）間距；A 為常數，近似值為 ℏω₀α，α 為電子極化率"
+   },
+   {
+    "label": "Lennard-Jones 位能",
+    "formula": "U(R) = 4ε[(σ/R)¹² − (σ/R)⁶]",
+    "bookPage": 58,
+    "eqNumber": "(10)",
+    "symbols": "ε 與 σ 為經驗參數，滿足 4εσ⁶ = A、4εσ¹² = B；R 為兩原子間距。極小值出現在 R/σ = 2^(1/6) ≈ 1.12，U 的極小值為 −ε，且 R = σ 時 U = 0。原子間力為 −dU/dR"
+   },
+   {
+    "label": "離子對的交互作用能（Madelung 模型的成對位能）",
+    "formula": "U_ij = λ exp(−r_ij/ρ) ± q²/r_ij   (CGS)",
+    "bookPage": 62,
+    "eqNumber": "(18)",
+    "symbols": "λ 為排斥強度、ρ 為排斥作用力程（r = ρ 時排斥項降為 r = 0 時的 e⁻¹）；r_ij 為離子 i、j 間距；同號電荷取 + 號、異號取 − 號。SI 制中庫侖項改為 ±q²/4πε₀r"
+   },
+   {
+    "label": "離子晶體的總晶格能（平衡分離下）",
+    "formula": "U_tot = −(Nαq²/R₀)(1 − ρ/R₀)   (CGS)",
+    "bookPage": 63,
+    "eqNumber": "(24)",
+    "symbols": "N 為分子數（2N 個離子），α 為 Madelung 常數，q 為離子電荷，R₀ 為平衡最近鄰距離，ρ 為排斥力程。−Nαq²/R₀ 即 Madelung energy；書中指出 ρ 約為 0.1R₀，故排斥作用力程極短"
+   },
+   {
+    "label": "立方晶的彈性能密度",
+    "formula": "U = ½C₁₁(e_xx² + e_yy² + e_zz²) + ½C₄₄(e_yz² + e_zx² + e_xy²) + C₁₂(e_yy e_zz + e_zz e_xx + e_xx e_yy)",
+    "bookPage": 78,
+    "eqNumber": "(43)",
+    "symbols": "C₁₁, C₁₂, C₄₄ 為立方晶三個獨立的 elastic stiffness constants；e_αβ 為應變分量。應力由 X_x = ∂U/∂e_xx 等關係取得，並得 C₁₂ = C₁₃、C₁₄ = C₁₅ = C₁₆ = 0、C₆₆ = C₄₄　[式號依書中彈性能密度處為準；先前誤植的 (62)(63) 已移除]"
+   },
+   {
+    "label": "立方晶的體積模數",
+    "formula": "B = ⅓(C₁₁ + 2C₁₂)",
+    "bookPage": 80,
+    "eqNumber": "(54)",
+    "symbols": "B 由 U = ½Bδ²（式 53）定義，等價於 −V dp/dV；δ 為 dilation（均勻膨脹 e_xx = e_yy = e_zz = δ/3）。壓縮率 K = 1/B"
+   },
+   {
+    "label": "[100] 方向縱波速度",
+    "formula": "ω²ρ = C₁₁K² ,  v_s = νλ = ω/K = (C₁₁/ρ)^(1/2)",
+    "bookPage": 82,
+    "eqNumber": "(59) 色散 ω²ρ=C₁₁K²；(60) 波速 v_s=(C₁₁/ρ)^½（同在 p.82）",
+    "symbols": "取試解 u = u₀ exp[i(Kx − ωt)]（式 58），K = 2π/λ 為波向量、ω = 2πν 為角頻率、ρ 為密度、u 為 x 方向粒子位移"
+   },
+   {
+    "label": "[100] 方向橫波（剪切波）速度",
+    "formula": "ω²ρ = C₄₄K² ,  v_s = (C₄₄/ρ)^(1/2)",
+    "bookPage": 82,
+    "eqNumber": "(62) 色散 ω²ρ=C₄₄K²；(63) 波速 v_s=(C₄₄/ρ)^½（同在 p.82）",
+    "symbols": "取試解 v = v₀ exp[i(Kx − ωt)]（式 61），波向量沿 x 立方稜、粒子位移 v 沿 y 方向。粒子位移改沿 z 亦得相同速度，故 K ∥ [100] 時兩支獨立剪切波速度相等"
+   }
+  ],
+  "mainConclusion": "晶體的結合力歸根究柢全是靜電作用，差別只在最外層電子的分布方式：惰性氣體靠 −A/R⁶ 的感應偶極吸引配上 Pauli 排斥（Lennard-Jones 位能），離子晶體靠 Madelung 靜電能 −Nαq²/R₀（占束縛能絕大部分，van der Waals 僅貢獻 1–2%），共價晶體靠自旋反平行電子對的重疊與交換作用（具強方向性，故 diamond 結構填充率僅 0.34），金屬則靠價電子動能相對自由原子的降低。在彈性方面，立方晶因四條 [111] 三重軸只剩 C₁₁、C₁₂、C₄₄ 三個獨立剛度常數，體積模數 B = ⅓(C₁₁ + 2C₁₂)；沿 [100]、[110]、[111] 三個主方向的三個簡正模式恰好可分成純縱波與純橫波，其速度分別由這三個常數的特定組合給出——這正是實驗上由三個波速反推三個彈性常數的依據。",
+  "verbatimQuotes": [
+   "\"The attractive electrostatic interaction between the negative charges of the electrons and the positive charges of the nuclei is entirely responsible for the cohesion of solids.\" (p.49)",
+   "\"The main contribution to the binding energy of ionic crystals is electrostatic and is called the Madelung energy.\" (p.61)",
+   "\"Hooke's law states that in an elastic solid the strain is directly proportional to the stress.\" (p.73)",
+   "\"There are three normal modes of wave motion in a crystal for a given magnitude and direction of the wavevector K.\" (p.85)"
+  ]
+ },
+ "4": {
+  "ch": 4,
+  "researchQuestion": "本章要在晶格離散性下求出彈性波（晶格振動）的頻率 ω 與波向量 K 的關係，即聲子色散關係。先處理每個原胞只有一個原子（monatomic basis）沿 [100]、[110]、[111] 傳播的一維化問題，導出 ω(K) 並說明為何只有第一布里淵區內的 K 有物理意義；再推廣到每個原胞兩個原子（two atoms per primitive basis），說明聲學支（acoustical）與光學支（optical）如何出現。接著把彈性波量子化為聲子，討論聲子的「動量」性質（crystal momentum），最後說明實驗上如何用中子非彈性散射量測 ω(K)。書中亦說明如何從實驗色散關係反推各階平面間力常數 C_p。",
+  "coreConcepts": [
+   "晶體的彈性響應假設為位移的線性函數（等價於彈性能為相對位移的二次函數），三次以上的項在小形變下可忽略，這就是諧近似。",
+   "以單一座標 u_s 描述第 s 個原子平面的位移，可把沿高對稱方向傳播的三維問題化為一維問題；每個 K 有三個模態，一個縱向極化、兩個橫向極化。",
+   "色散關係 ω(K) 在布里淵區邊界 K = ±π/a 斜率為零，該處解不是行波而是駐波（相鄰原子反相振動），與 X 光的布拉格反射條件等價。",
+   "第一布里淵區以外的 K 不帶新資訊：減去適當的倒晶格向量後可得區內的等價波向量，故所有彈性波都能用第一區內的 K 描述。",
+   "每個原胞有 p 個原子時，色散關係有 3p 個分支：3 個聲學支與 3p − 3 個光學支；分支數由自由度計數（pN 個原子、3pN 自由度、每支 N 個 K 值）決定。",
+   "雙原子基底在區邊界出現頻率間隙（frequency gap）：介於 (2C/M₁)^{1/2} 與 (2C/M₂)^{1/2} 之間沒有波動解。光學支在 K = 0 時兩原子反相振動而質心不動，可與光波電場耦合。",
+   "晶格振動的能量量子稱為聲子（phonon），能量本徵值與量子諧振子相同，含零點能 ½ℏω。",
+   "聲子帶有 ℏK 的「準動量」，與光子、中子、電子交互作用時表現得像有動量 ℏK，但因聲子座標是相對座標，實際上不攜帶物理動量。",
+   "晶體中的交互作用波總波向量守恆，但可差一個倒晶格向量 G；這是非彈性散射選擇律的基礎。",
+   "實驗上主要以中子非彈性散射（伴隨聲子的產生或吸收）決定 ω(K)，需同時使用波向量選擇律與能量守恆。"
+  ],
+  "equations": [
+   {
+    "label": "單原子基底晶格的運動方程（僅最近鄰交互作用）",
+    "formula": "M d²u_s/dt² = C(u_{s+1} + u_{s−1} − 2u_s)",
+    "bookPage": 91,
+    "eqNumber": "(2)",
+    "symbols": "M 為原子質量；C 為最近鄰平面間的力常數（對縱波與橫波不同），定義為平面上「一個原子」的力常數；u_s 為第 s 個平面偏離平衡的位移"
+   },
+   {
+    "label": "單原子基底的色散關係",
+    "formula": "ω² = (2C/M)(1 − cos Ka)",
+    "bookPage": 92,
+    "eqNumber": "(7)",
+    "symbols": "a 為平面間距（其值取決於 K 的方向）；K 為波向量；第一布里淵區邊界在 K = ±π/a"
+   },
+   {
+    "label": "色散關係的三角恆等式等價形式",
+    "formula": "ω² = (4C/M) sin²(½Ka)，  ω = (4C/M)^{1/2} |sin(½Ka)|",
+    "bookPage": 92,
+    "eqNumber": "(9)",
+    "symbols": "同上；此式即書中 Fig. 4 所繪的 ω-K 曲線"
+   },
+   {
+    "label": "群速度（波包能量傳遞速度）",
+    "formula": "v_g = dω/dK = grad_K ω(K)；由 (9) 得 v_g = (Ca²/M)^{1/2} cos(½Ka)",
+    "bookPage": 94,
+    "eqNumber": "(13), (14)",
+    "symbols": "v_g 為群速度，在區邊界 K = π/a 處為零，對應駐波無淨傳遞速度"
+   },
+   {
+    "label": "長波極限（連續介質極限，Ka ≪ 1）",
+    "formula": "ω² = (C/M)K²a²",
+    "bookPage": 94,
+    "eqNumber": "(15)",
+    "symbols": "由 cos Ka ≅ 1 − ½(Ka)² 展開 (7) 得；此時 ω 正比於 K，等價於聲速與頻率無關，v = ω/K"
+   },
+   {
+    "label": "推廣到 p 個鄰近平面交互作用的色散關係",
+    "formula": "ω² = (2/M) Σ_{p>0} C_p (1 − cos pKa)",
+    "bookPage": 95,
+    "eqNumber": "(16a)",
+    "symbols": "C_p 為相隔 p 個平面（距離 pa）的平面間力常數；金屬中有效力程可長達 20 個平面"
+   },
+   {
+    "label": "由實驗色散關係反求平面間力常數",
+    "formula": "C_p = −(Ma/2π) ∫_{−π/a}^{π/a} dK ω²(K) cos pKa",
+    "bookPage": 95,
+    "eqNumber": "(17)",
+    "symbols": "將 (16a) 兩邊乘 cos rKa 並對第一區積分，只有 p = r 項不為零；此式給出單原子基底結構在力程 pa 處的力常數"
+   },
+   {
+    "label": "雙原子基底（每原胞兩原子）的久期方程",
+    "formula": "M₁M₂ω⁴ − 2C(M₁ + M₂)ω² + 2C²(1 − cos Ka) = 0",
+    "bookPage": 98,
+    "eqNumber": "(22)",
+    "symbols": "M₁、M₂ 為交錯平面上兩種原子的質量；C 為相鄰平面間（假設全部相同）的力常數；a 為最近的「同種」平面間距（非最近鄰平面間距）"
+   },
+   {
+    "label": "光學支在 K → 0 的極限頻率",
+    "formula": "ω² ≅ 2C(1/M₁ + 1/M₂)",
+    "bookPage": 98,
+    "eqNumber": "(23)",
+    "symbols": "由 cos Ka ≅ 1 − ½K²a² 代入 (22) 取小 Ka 極限所得之較高根，即光學分支"
+   },
+   {
+    "label": "區邊界 K_max = ±π/a 處的兩支頻率（頻率間隙）",
+    "formula": "ω² = 2C/M₁ ；  ω² = 2C/M₂",
+    "bookPage": 98,
+    "eqNumber": "(25)",
+    "symbols": "介於 (2C/M₁)^{1/2} 與 (2C/M₂)^{1/2} 之間不存在波動解，此即多原子晶格的頻率間隙；圖示對應 M₁ > M₂ 的情形"
+   },
+   {
+    "label": "彈性波能量量子化（聲子能量）",
+    "formula": "ε = (n + ½)ℏω",
+    "bookPage": 99,
+    "eqNumber": "(27)",
+    "symbols": "n 為該模態被激發的量子數，即佔據該模態的聲子數；½ℏω 為零點能，源自其等價於頻率 ω 的量子諧振子"
+   },
+   {
+    "label": "中子非彈性散射的波向量選擇律",
+    "formula": "k + G = k′ ± K",
+    "bookPage": 101,
+    "eqNumber": "(33)",
+    "symbols": "k、k′ 分別為入射與散射中子的波向量；K 為散射過程中產生（+）或吸收（−）的聲子波向量；G 為任一倒晶格向量，選 G 使 K 落在第一布里淵區內"
+   }
+  ],
+  "mainConclusion": "晶格的離散性使彈性波的色散關係在布里淵區邊界飽和（群速度為零、解成為駐波），因此所有彈性波都可以用第一布里淵區內的波向量描述；長波極限下 ω 正比於 K，回歸連續介質彈性理論。每原胞 p 個原子時色散關係分裂成 3 個聲學支與 3p − 3 個光學支，兩原子基底在區邊界出現頻率間隙。晶格振動的能量量子化為聲子，能量為 (n + ½)ℏω；聲子帶有 ℏK 的準動量並遵守含倒晶格向量 G 的波向量選擇律，這使得中子非彈性散射成為量測 ω(K) 的標準實驗手段。",
+  "verbatimQuotes": [
+   "\"The quantum unit of a crystal vibration is a phonon.\" (p.102)",
+   "\"However, a phonon does not carry physical momentum.\" (p.100)",
+   "\"The transmission velocity of a wave packet is the group velocity\" (p.94)"
+  ]
+ },
+ "5": {
+  "ch": 5,
+  "researchQuestion": "本章處理聲子氣體的熱學性質，核心是晶格熱容（lattice heat capacity）以及非諧交互作用帶來的效應。首先用 Planck 分布寫出聲子的熱平衡佔據數與總能量，再把對 K 的求和換成對頻率的積分，因此中心問題變成求態密度 D(ω)。書中依序給出一維與三維的模態計數（固定端與週期性邊界條件）、Debye 模型（聲速為常數）與 Einstein 模型（單一頻率）的態密度與熱容，並導出低溫 Debye T³ 定律與 D(ω) 的一般表達式。後半部處理非諧晶格交互作用：熱膨脹的來源，以及熱傳導係數 K 的動力學理論、聲子氣體的熱阻、umklapp 過程與缺陷/尺寸效應。",
+  "coreConcepts": [
+   "熱容通常指定容熱容 C_V ≡ (∂U/∂T)_V，比實驗直接量到的 C_p 更基本；聲子對晶體熱容的貢獻稱為晶格熱容 C_lat。",
+   "聲子的熱平衡佔據數由 Planck 分布給出，此分布可由 Boltzmann 因子對諧振子各量子態求和直接導出。",
+   "把對波向量的求和換成對頻率的積分後，中心問題變成求態密度 D(ω)（單位頻率範圍內的模態數），此函數稱為 density of modes 或 density of states。",
+   "模態計數可用固定端邊界條件或週期性邊界條件；兩者給出相同的模態數（每個可動原子一個模態）。三維下每個極化、每個分支在 K 空間中每體積 (2π/L)³ 有一個允許的 K 值。",
+   "Debye 模型把聲速視為常數（ω = vK），並引入截斷頻率 ω_D 與截斷波向量 K_D，使模態總數恰等於原胞數 N，藉此定義 Debye 溫度 θ。",
+   "高溫時 Debye 熱容趨近古典值 3Nk_B；低溫時趨近 T³ 定律。T³ 行為的物理圖像是：只有 ℏω < k_BT 的長波聲學模被激發，佔 K 空間體積的比例約為 (T/θ)³。",
+   "Einstein 模型假設 N 個同頻率振子，態密度為 δ 函數；高溫給出 Dulong–Petit 值，但低溫以 exp(−ℏω/τ) 衰減，與實驗的 T³ 不符，故常用來近似光學聲子部分。",
+   "D(ω) 的一般式為對等頻率面的面積分除以群速度；群速度為零的臨界點造成 Van Hove 奇異點。",
+   "諧近似的推論（波不互相作用、無熱膨脹、絕熱與等溫彈性常數相等、彈性常數與壓力溫度無關、高溫熱容為常數）在真實晶體都不精確成立，偏差來自非諧項。",
+   "熱膨脹來自晶體位能中的非諧項；以 Boltzmann 分布計算平均位移可得古典區的 ⟨x⟩ 正比於溫度，且最低階只涉及反對稱項 gx³。",
+   "熱傳導以動力學理論 K = ⅓Cvℓ 描述；聲子平均自由程由幾何散射與聲子間散射決定，非諧耦合預測高溫時 ℓ 正比於 1/T。",
+   "只有會改變聲子總動量的 umklapp 過程（K₁ + K₂ = K₃ + G）才造成熱阻；純 N 過程保持聲子流不變，熱阻為零。低溫時 umklapp 失效，改由邊界尺寸效應與同位素散射主導。"
+  ],
+  "equations": [
+   {
+    "label": "Planck 分布（聲子熱平衡佔據數）",
+    "formula": "⟨n⟩ = 1 / [exp(ℏω/τ) − 1]，  τ ≡ k_B T",
+    "bookPage": 107,
+    "eqNumber": "(2) p.107；同式在小節末另編為 (7) p.108",
+    "symbols": "⟨n_{K,p}⟩ 為波向量 K、極化 p 的聲子熱平衡佔據數；τ ≡ k_BT；⟨…⟩ 表熱平衡平均"
+   },
+   {
+    "label": "晶格熱容的一般積分式",
+    "formula": "C_lat = k_B Σ_p ∫ dω D_p(ω) · x² eˣ / (eˣ − 1)²，  x ≡ ℏω/τ = ℏω/k_BT",
+    "bookPage": 108,
+    "eqNumber": "(10)",
+    "symbols": "D_p(ω) 為極化 p 的態密度（單位頻率的模態數）；由 U = Σ_p ∫dω D_p(ω)ℏω/[exp(ℏω/τ)−1] 對溫度微分而得"
+   },
+   {
+    "label": "Debye 模型的態密度",
+    "formula": "ω = vK  ⟹  D(ω) = Vω² / (2π²v³)",
+    "bookPage": 112,
+    "eqNumber": "(21), (22)",
+    "symbols": "v 為（每種極化視為常數的）聲速；V 為試樣體積；由一般式 D(ω) = dN/dω = (VK²/2π²)(dK/dω)（式 (20)）代入 ω = vK 得到"
+   },
+   {
+    "label": "Debye 截斷頻率與截斷波向量",
+    "formula": "ω_D³ = 6π²v³N/V ；  K_D = ω_D/v = (6π²N/V)^{1/3}",
+    "bookPage": 112,
+    "eqNumber": "(23), (24)",
+    "symbols": "N 為試樣中的原胞數；Debye 模型不允許 K > K_D 的模態，K ≤ K_D 的模態數恰好用盡單原子晶格的自由度"
+   },
+   {
+    "label": "Debye 溫度",
+    "formula": "θ = (ℏv/k_B) (6π²N/V)^{1/3}",
+    "bookPage": 112,
+    "eqNumber": "(28)",
+    "symbols": "θ 為 Debye 溫度，由 ω_D 定義；並定義 x ≡ ℏω/k_BT、x_D ≡ ℏω_D/k_BT = θ/T"
+   },
+   {
+    "label": "Debye 模型熱容（完整式）",
+    "formula": "C_V = 9Nk_B (T/θ)³ ∫₀^{x_D} dx · x⁴ eˣ / (eˣ − 1)²",
+    "bookPage": 113,
+    "eqNumber": "(30)",
+    "symbols": "由 U = 9Nk_BT(T/θ)³∫₀^{x_D}dx x³/(eˣ−1)（p.113 明言的式 (26) 中間表達式）對溫度微分；x_D = θ/T；T ≫ θ 時趨近古典值 3Nk_B"
+   },
+   {
+    "label": "Debye T³ 定律（極低溫極限）",
+    "formula": "C_V ≅ (12π⁴/5) N k_B (T/θ)³ ≅ 234 N k_B (T/θ)³",
+    "bookPage": 114,
+    "eqNumber": "(32)",
+    "symbols": "由把積分上限取為無窮大、並用 ∫₀^∞ dx x³/(eˣ−1) = π⁴/15（式 (31)）得到；實際晶體常需低於 θ/50 才有純 T³ 行為"
+   },
+   {
+    "label": "Einstein 模型熱容",
+    "formula": "C_V = (∂U/∂T)_V = N k_B (ℏω/τ)² · e^{ℏω/τ} / (e^{ℏω/τ} − 1)²",
+    "bookPage": 117,
+    "eqNumber": "(34)",
+    "symbols": "N 個同頻率 ω 的振子（一維）；三維時 N 換成 3N。高溫極限為 3Nk_B（Dulong–Petit 值），低溫則以 exp(−ℏω/τ) 衰減"
+   },
+   {
+    "label": "態密度的一般結果（等頻率面積分）",
+    "formula": "D(ω) = V/(2π)³ · ∮ dS_ω / v_g ，  v_g = |grad_K ω|",
+    "bookPage": 118,
+    "eqNumber": "(37)",
+    "symbols": "dS_ω 為 K 空間中等頻率面上的面積元；v_g 為聲子群速度大小；積分遍及 ω = 常數的曲面，結果對應色散關係的單一分支，亦可用於電子能帶理論"
+   },
+   {
+    "label": "非諧位能與古典熱膨脹",
+    "formula": "U(x) = cx² − gx³ − fx⁴ ；  ⟨x⟩ = (3g/4c²) k_B T",
+    "bookPage": 120,
+    "eqNumber": "(38), (40)",
+    "symbols": "x 為偏離絕對零度平衡間距的位移；c、g、f 皆為正；gx³ 項代表原子互斥的非對稱性，fx⁴ 項代表大振幅下振動的軟化。最低階的熱膨脹只牽涉反對稱項 gx³"
+   },
+   {
+    "label": "熱傳導係數（氣體動力學理論）",
+    "formula": "j_U = −K dT/dx ；  K = ⅓ C v ℓ",
+    "bookPage": 121,
+    "eqNumber": "(41) j_U=−K dT/dx 在 p.121；(42) K=⅓Cvℓ 在 p.122",
+    "symbols": "j_U 為熱能通量（單位時間單位面積傳遞的能量）；C 為單位體積的熱容；v 為平均粒子（聲子）速度；ℓ 為碰撞間的平均自由程。Debye 首先將此式用於介電固體的熱傳導"
+   },
+   {
+    "label": "Umklapp（U）過程的三聲子碰撞",
+    "formula": "K₁ + K₂ = K₃ + G",
+    "bookPage": 125,
+    "eqNumber": "(47)",
+    "symbols": "G 為倒晶格向量；G = 0 者稱 normal（N）過程。只有 U 過程會大幅改變聲子總動量 J = Σ_K n_K ℏK（式 (46)），因而造成熱阻；適合發生 umklapp 的聲子能量約為 ½k_Bθ，低溫下其數目大致隨 exp(−θ/2T) 變化"
+   }
+  ],
+  "mainConclusion": "聲子熱容的計算歸結為求態密度 D(ω)：Debye 模型（聲速常數、截斷於 ω_D）給出高溫的古典值 3Nk_B 與低溫的 T³ 定律 C_V ≅ 234 Nk_B(T/θ)³，與實驗（如固態氬）吻合；Einstein 模型雖然低溫以指數衰減而不符實驗，但常用來近似光學聲子部分。真實晶體的熱膨脹、聲子間散射與有限熱傳導都無法由諧近似解釋，必須引入非諧項。熱傳導以 K = ⅓Cvℓ 描述，而能造成熱阻的是會改變聲子總動量的 umklapp 過程 K₁ + K₂ = K₃ + G，不是 N 過程；低溫下 umklapp 失效，平均自由程改由試樣尺寸與同位素、雜質等缺陷散射決定，此時 K 隨 C 而呈 T³ 變化。",
+  "verbatimQuotes": [
+   "\"This function is called the density of modes or, more often, density of states.\" (p.108)",
+   "\"These processes, discovered by Peierls, are called umklapp processes.\" (p.125)",
+   "\"There is no thermal expansion.\" (p.119)"
+  ]
+ },
+ "6": {
+  "ch": 6,
+  "researchQuestion": "本章以「自由電子費米氣」（受包立原理約束的自由電子氣）為模型，解釋金屬的物理性質。書中先在一維求解無限位能井中的電子軌域與費米能，再推廣到三維週期性邊界條件下的平面波軌域、費米球與態密度。全章最核心的問題是電子熱容：古典統計預測每個自由電子貢獻 (3/2)k_B，但實測的電子熱容在室溫下不到該值的 0.01，書中明言這是早期電子論最大的困難。後半以費米球在 k 空間的位移處理電導率與歐姆定律、Matthiessen 規則、umklapp 散射，再處理磁場中的運動（霍爾效應）與金屬熱導率，最後導出 Wiedemann-Franz 定律與 Lorenz 數。",
+  "coreConcepts": [
+   "自由電子費米氣＝受包立不相容原理約束的自由電子氣；價電子成為傳導電子，離子實只佔約 15% 體積（鹼金屬）。",
+   "orbital（軌域）指單電子波方程的解；N 電子系統的近似量子態由 N 個電子分佔 N 個不同軌域構成，僅在電子間無交互作用時為精確。",
+   "費米能 ε_F 定義為 N 電子系統基態中最高被佔據能階的能量；絕對零度時化學勢 μ 等於 ε_F。",
+   "三維基態中被佔據的軌域填滿 k 空間中半徑 k_F 的費米球，k_F 只取決於電子濃度 N/V。",
+   "加熱時並非每個電子都獲得 ~k_BT 的能量，只有費米能階附近 k_BT 能量範圍內的電子能被熱激發，因此電子熱容遠小於古典值。",
+   "電子熱容正比於 T，與晶格的 T³ 項合成 C = γT + AT³；γ 稱為 Sommerfeld 參數。",
+   "實測 γ 與自由電子值的比值定義熱有效質量 m_th/m，偏離 1 來自週期位能、電子-聲子交互作用、電子-電子交互作用三種效應；重費米子化合物的 γ 可高出常見值二至三個數量級。",
+   "電導率由費米球在定常態下的位移給出（σ = ne²τ/m）；電阻在室溫由聲子散射主導、在液氦溫度由雜質與缺陷主導，低溫電阻主要來自 umklapp 散射。",
+   "霍爾係數 R_H = E_y/(j_x B)，自由電子模型給 R_H = −1/nec；Al、In、Be、As 出現正號，需能帶理論（電洞）才能解釋。"
+  ],
+  "equations": [
+   {
+    "label": "費米-狄拉克分布函數（軌域被佔據的機率）",
+    "formula": "f(ε) = 1 / (exp[(ε − μ)/k_B T] + 1)",
+    "bookPage": 136,
+    "eqNumber": "(5)",
+    "symbols": "ε 為軌域能量；μ 為化學勢（隨溫度變化，需使總粒子數等於 N）；k_B 為波茲曼常數；T 為溫度。絕對零度時 μ = ε_F。"
+   },
+   {
+    "label": "三維費米波向量（僅取決於電子濃度）",
+    "formula": "k_F = (3π²N/V)^(1/3)",
+    "bookPage": 138,
+    "eqNumber": "(16)",
+    "symbols": "k_F 為費米面上波向量的大小；N 為電子數；V 為體積。由 2·(4πk_F³/3)/(2π/L)³ = V k_F³/3π² = N 得到，左側因子 2 來自兩個自旋值。"
+   },
+   {
+    "label": "費米能與電子濃度的關係",
+    "formula": "ε_F = (ℏ²/2m)(3π²N/V)^(2/3)",
+    "bookPage": 140,
+    "eqNumber": "(17)",
+    "symbols": "ℏ 為約化普朗克常數；m 為電子質量；N/V 為電子濃度。費米溫度定義為 T_F ≡ ε_F/k_B（與電子氣的實際溫度無關）。"
+   },
+   {
+    "label": "三維自由電子氣的態密度",
+    "formula": "D(ε) ≡ dN/dε = (V/2π²)(2m/ℏ²)^(3/2) · ε^(1/2)",
+    "bookPage": 140,
+    "eqNumber": "(20)",
+    "symbols": "D(ε) 為單位能量範圍內的軌域數（嚴格說是單粒子態密度／軌域密度）；由總軌域數 N = (V/3π²)(2mε/ℏ²)^(3/2) 對 ε 微分而得。"
+   },
+   {
+    "label": "態密度的簡化式（比較 (19) 與 (20)）",
+    "formula": "D(ε) ≡ dN/dε = 3N/2ε",
+    "bookPage": 141,
+    "eqNumber": "(21)",
+    "symbols": "在 ε 處成立；在費米能處 D(ε_F) = 3N/2ε_F = 3N/2k_B T_F，即費米能處單位能量的軌域數約等於總傳導電子數除以費米能。"
+   },
+   {
+    "label": "電子熱容的一般積分式",
+    "formula": "C_el = dU/dT = ∫₀^∞ dε (ε − ε_F) (df/dT) D(ε)",
+    "bookPage": 142,
+    "eqNumber": "(28)",
+    "symbols": "ΔU = U(T) − U(0) 為 N 個電子由 0 加熱到 T 的總能量增量；f(ε) 為費米-狄拉克函數，是 (27) 式中唯一與溫度相關的項；D(ε) 為單位能量範圍的軌域數。"
+   },
+   {
+    "label": "低溫電子熱容（Sommerfeld 展開結果）",
+    "formula": "C_el = (1/3) π² D(ε_F) k_B² T",
+    "bookPage": 144,
+    "eqNumber": "(34)",
+    "symbols": "適用於 k_B T ≪ ε_F；推導中令 τ ≡ k_B T、x ≡ (ε − ε_F)/τ，並用 ∫₋∞^∞ dx x²eˣ/(eˣ+1)² = π²/3。"
+   },
+   {
+    "label": "自由電子氣的電子熱容（以費米溫度表示）",
+    "formula": "C_el = (1/2) π² N k_B T / T_F",
+    "bookPage": 144,
+    "eqNumber": "(36)",
+    "symbols": "由 (34) 代入 D(ε_F) = 3N/2ε_F = 3N/2k_B T_F 得到；k_B T_F ≡ ε_F。C_el 正比於 T，室溫下比古典值 (3/2)Nk_B 小約 0.01 或更少（T_F ~ 5×10⁴ K）。"
+   },
+   {
+    "label": "金屬低溫總熱容的實驗作圖式（電子項＋聲子項）",
+    "formula": "C = γT + AT³ ，作圖用 C/T = γ + AT²",
+    "bookPage": 145,
+    "eqNumber": "(37)",
+    "symbols": "適用於遠低於德拜溫度 θ 與費米溫度 T_F；γ 為 Sommerfeld 參數（電子項係數），A 為聲子項係數，兩者皆為材料特徵常數。以 C/T 對 T² 作圖應得斜率 A、截距 γ 的直線。"
+   },
+   {
+    "label": "熱有效質量（由觀測 γ 與自由電子 γ 之比定義）",
+    "formula": "m_th/m ≡ γ(observed) / γ(free)",
+    "bookPage": 145,
+    "eqNumber": "(38)",
+    "symbols": "m_th 為熱有效質量，m 為電子質量。此形式自然出現是因為 ε_F 反比於電子質量，故 γ ∝ m。偏離 1 源自傳導電子與週期位能、與聲子、與其他電子的交互作用。"
+   },
+   {
+    "label": "歐姆定律與電導率（自由電子）",
+    "formula": "j = nqv = ne²τE/m ，σ = ne²τ/m ，ρ = m/ne²τ",
+    "bookPage": 147,
+    "eqNumber": "(42) 在 p.147；(43)(44) 在 p.148",
+    "symbols": "j 為電流密度；n 為單位體積內電荷 q = −e 的電子數；τ 為碰撞時間；E 為電場；σ 為電導率；ρ 為電阻率。定常態下費米球位移 δk = −eEτ/ℏ，增量速度 v = ℏδk/m = −eEτ/m。"
+   },
+   {
+    "label": "Wiedemann-Franz 定律與 Lorenz 數",
+    "formula": "K/σ = (π²/3)(k_B/e)² T ，L ≡ K/σT = (π²/3)(k_B/e)² = 2.45×10⁻⁸ watt-ohm/deg²",
+    "bookPage": 156,
+    "eqNumber": "(57) 在 p.156；(58)(59) 在次頁",
+    "symbols": "K 為電子熱導率（由 K = (1/3)Cvℓ 與 (36) 得 K_el = π² n k_B² T τ/3m）；σ 為電導率；L 為 Lorenz 數。此結果與 n 和 m 皆無關，實驗值（0°C 與 100°C）與之符合良好。"
+   }
+  ],
+  "mainConclusion": "自由電子費米氣模型加上包立原理與費米-狄拉克統計，正確解出了古典理論失敗的電子熱容問題：只有費米面附近 k_BT 範圍內的電子能被熱激發，因此電子熱容線性正比於溫度，C_el = (1/3)π²D(ε_F)k_B²T = (1/2)π²Nk_BT/T_F，室溫下僅為古典值的 1% 量級。實驗上以 C/T 對 T² 作圖分離出電子項 γ 與聲子項 A，而 γ(觀測)/γ(自由電子) 定義的熱有效質量比反映了週期位能、電子-聲子與電子-電子交互作用；重費米子化合物的 γ 可高出二至三個數量級。同一模型也給出歐姆定律 σ = ne²τ/m 與 Wiedemann-Franz 定律 K/σT = (π²/3)(k_B/e)²，後者不含 n 與 m，在金屬理論史上支持了「電子氣同時攜帶電荷與能量」的圖像。但霍爾係數在 Al、In、Be、As 出現正號，是自由電子模型無法解釋、必須交給第 7–9 章能帶理論的關鍵失敗。",
+  "verbatimQuotes": [
+   "\"By a free electron Fermi gas, we shall mean a gas of free electrons subject to the Pauli principle.\" (p.134)",
+   "\"the specific heat vanishes at absolute zero and that at low temperatures it is proportional to the absolute temperature\" — Fermi, quoted by Kittel (p.141)"
+  ]
+ },
+ "7": {
+  "ch": 7,
+  "researchQuestion": "本章要解決自由電子模型無法回答的問題：金屬、半金屬、半導體、絕緣體之間的區別，霍爾係數出現正值的原因，以及傳導電子與自由原子價電子的關係。書中指出純金屬電阻率可低至 10⁻¹⁰ ohm-cm，良好絕緣體可高達 10²² ohm-cm，這 10³² 的跨度可能是固體中最寬的物理性質範圍。為此必須把自由電子模型擴充到考慮晶格週期性，最重要的新性質就是能隙的出現。全章依序建立近自由電子模型（能隙起源於布拉格反射與駐波）、布洛赫定理、Kronig-Penney 模型、週期位能中的波方程與中央方程（central equation），最後計算能帶中的軌域數並據以區分金屬與絕緣體。",
+  "coreConcepts": [
+   "晶體中的電子排列成能帶，其間隔著沒有波狀電子軌域存在的禁區，稱為能隙（energy gap）或能帶隙（band gap），來自傳導電子波與離子實的交互作用。",
+   "能隙的物理起源是電子波在晶體中的布拉格反射：在 k = ±nπ/a 處行進波被反射，時間無關的狀態由駐波表示。",
+   "兩個駐波 ψ(+) ∝ cos(πx/a) 與 ψ(−) ∝ sin(πx/a) 把電子分別堆積在正離子實上與離子之間，因而有不同的位能期望值，這就是能隙的來源。",
+   "布洛赫定理：週期位能下波方程的本徵函數是平面波 exp(ik·r) 乘上一個具晶格週期性的函數 u_k(r)。",
+   "晶體動量 ℏk：k 是標記布洛赫函數的指標，也是碰撞過程守恆律（選擇律）中的量，電子吸收波向量 q 的聲子時選擇律為 k + q = k' + G。",
+   "中央方程（central equation）把週期位能中的微分波方程換成一組耦合的代數方程，未知數為傅立葉係數 C(k − G)；實務上常只需二到四項就夠。",
+   "在區邊界處二分量近似給出 ε = λ ± U，即位能的傅立葉分量 U 在區邊界造出寬度 2U 的能隙；能量對偏離區邊界的波向量 K̃ 呈二次相依。",
+   "每個原胞對每個能帶恰貢獻一個獨立的 k 值；計入自旋後每個能帶有 2N 個獨立軌域，N 為原胞數。",
+   "晶體只有在每個原胞的價電子數為偶整數時才可能是絕緣體；若能帶重疊，偶數價電子也會給出金屬（如鹼土金屬）。"
+  ],
+  "equations": [
+   {
+    "label": "一維布拉格反射條件（第一布里淵區邊界）",
+    "formula": "k = ±(1/2)G = ±nπ/a",
+    "bookPage": 165,
+    "eqNumber": "(4)",
+    "symbols": "布拉格條件 (k + G)² = k² 在一維的結果；G = 2πn/a 為倒晶格向量，n 為整數，a 為晶格常數。−π/a 與 π/a 之間的 k 空間區域為第一布里淵區。"
+   },
+   {
+    "label": "區邊界處的兩個駐波",
+    "formula": "ψ(+) = exp(iπx/a) + exp(−iπx/a) = 2 cos(πx/a) ； ψ(−) = exp(iπx/a) − exp(−iπx/a) = 2i sin(πx/a)",
+    "bookPage": 165,
+    "eqNumber": "(5)",
+    "symbols": "(+)、(−) 依 x → −x 時是否變號而標記；兩者皆由等量的右行波與左行波組成。對應機率密度 ρ(+) ∝ cos²(πx/a) 把電子堆在 x = 0, a, 2a 的正離子上，ρ(−) ∝ sin²(πx/a) 則把電子集中在離子之間。"
+   },
+   {
+    "label": "能隙等於晶體位能的傅立葉分量",
+    "formula": "E_g = ∫₀¹ dx U(x) [|ψ(+)|² − |ψ(−)|²] = 2∫dx U cos(2πx/a)(cos²(πx/a) − sin²(πx/a)) = U",
+    "bookPage": 167,
+    "eqNumber": "(6)",
+    "symbols": "取晶體位能 U(x) = U cos(2πx/a)；ψ(+) = cos(πx/a)、ψ(−) = sin(πx/a) 在單位長度上歸一化。此為兩駐波態之間的一階能量差。"
+   },
+   {
+    "label": "布洛赫定理（布洛赫函數形式）",
+    "formula": "ψ_k(r) = u_k(r) exp(ik·r) ， u_k(r) = u_k(r + T)",
+    "bookPage": 167,
+    "eqNumber": "(7)",
+    "symbols": "u_k(r) 具晶格週期性；T 為晶格平移向量。單電子波函數若為此形式即稱布洛赫函數，可分解為行進波之和，也可組成波包描述電子在離子實位能場中自由傳播。"
+   },
+   {
+    "label": "Kronig-Penney 模型（δ 函數位能極限）",
+    "formula": "(P/Ka) sin Ka + cos Ka = cos ka",
+    "bookPage": 169,
+    "eqNumber": "(21b)",
+    "symbols": "由 b → 0、U₀ → ∞ 且 Q²ba/2 = P 保持有限的極限取得；K 由 ε = ℏ²K²/2m 定義（井內平面波波數），k 為布洛赫指標，a 為晶格常數。方程有解的 K 範圍即允許能帶，其餘為能隙。"
+   },
+   {
+    "label": "中央方程（週期位能中的波方程的代數形式）",
+    "formula": "(λ_k − ε) C(k) + Σ_G U_G C(k − G) = 0 ， λ_k ≡ ℏ²k²/2m",
+    "bookPage": 172,
+    "eqNumber": "(27),(28)",
+    "symbols": "C(k) 為波函數傅立葉展開 ψ = Σ_k C(k)e^{ikx} 的係數；U_G 為位能 U(x) = Σ_G U_G e^{iGx} 的傅立葉分量；G 為倒晶格向量。原則上有無限多個 C(k − G) 待定，實務上二到四項常已足夠。"
+   },
+   {
+    "label": "區邊界處的兩個能量根（能隙 2U）",
+    "formula": "ε = λ ± U = (ℏ²/2m)((1/2)G)² ± U ，且 C(−G/2)/C(G/2) = ±1",
+    "bookPage": 178,
+    "eqNumber": "(47),(48)",
+    "symbols": "λ = ℏ²((1/2)G)²/2m 為區邊界處的自由電子動能；U 為位能的傅立葉分量。兩根一個比自由電子動能低 U、一個高 U，故位能 2U cos Gx 在區邊界造出 2U 的能隙；對應波函數 ψ(x) = exp(iGx/2) ± exp(−iGx/2) 即 (5) 式的駐波。"
+   },
+   {
+    "label": "區邊界附近的兩支能帶",
+    "formula": "ε = (1/2)(λ_{k−G} + λ_k) ± [(1/4)(λ_{k−G} − λ_k)² + U²]^(1/2)",
+    "bookPage": 179,
+    "eqNumber": "(50)",
+    "symbols": "以 ψ(x) = C(k)e^{ikx} + C(k−G)e^{i(k−G)x} 的二分量近似求得；λ_k = ℏ²k²/2m。兩個根各描述一個能帶。以 K̃ ≡ k − (1/2)G 展開後得 ε_K̃(±) = ε(±) + (ℏ²K̃²/2m)(1 ± 2λ/U)，顯示能量對 K̃ 的二次相依。"
+   }
+  ],
+  "mainConclusion": "晶體中的電子波在布里淵區邊界發生布拉格反射，形成駐波而非行進波；兩個駐波把電荷分別堆積在離子實上與離子之間，位能期望值不同，於是在區邊界張開能隙——書中稱 Fig. 3 是理解能隙起源的關鍵。週期位能下的解必為布洛赫形式 ψ_k(r) = e^{ik·r}u_k(r)，而波方程可改寫成中央方程這組代數方程；在二分量近似下區邊界能隙寬度就等於位能的傅立葉分量所給的 2U。每個能帶含 2N 個軌域（N 為原胞數），因此只有當每個原胞的價電子數為偶整數且能帶不重疊時晶體才是絕緣體；鹼金屬與貴金屬每原胞一個價電子必為金屬，鹼土金屬雖有兩個價電子卻因能帶重疊而成為（不甚好的）金屬，而金剛石、矽、鍺每原胞八個價電子且能帶不重疊，在絕對零度為絕緣體。",
+  "verbatimQuotes": [
+   "\"Bragg reflection of electron waves in crystals is the cause of energy gaps.\" (p.164)",
+   "\"The number of orbitals in a band is 2N, where N is the number of primitive cells in the specimen.\" (p.182)"
+  ]
+ },
+ "8": {
+  "ch": 8,
+  "researchQuestion": "本章處理半導體晶體（特別是 Si、Ge、GaAs）的中心物理：能隙如何決定導電性、載子在外場中如何運動、以及本質與雜質載子濃度如何隨溫度變化。書中先由 Bloch 波包導出電子在能帶中的運動方程，再引入電洞與有效質量張量，說明迴旋共振如何量得有效質量。接著以拋物線能帶邊近似計算本質載子濃度與 np 乘積，並用修正的 Bohr 模型估算施體／受體游離能。最後討論熱電效應、半金屬與超晶格中的 Bloch 振盪與 Zener 穿隧。",
+  "coreConcepts": [
+   "半導體以室溫電阻率 10⁻² 至 10⁹ ohm-cm 分類，且強烈依賴溫度；絕對零度下純完美晶體多為絕緣體。",
+   "能隙分直接與間接：直接吸收在 ℏω_g 起始，間接吸收必須同時涉及一個聲子以滿足波向量守恆。",
+   "波包在外力下的運動由 ℏdk/dt = F 描述，晶格對電子的作用完全包含在色散關係 ε(k) 中。",
+   "電洞是填滿能帶中的空軌域，具有 k_h = −k_e、ε_h(k_h) = −ε_e(k_e)、v_h = v_e、m_h = −m_e，且在外場中行為如同正電荷 +e。",
+   "有效質量由能帶曲率倒數決定；能隙越小，能帶邊附近的 |m*| 越小。",
+   "迴旋共振以 ω_c = eB/m*c 直接量測載子有效質量，需滿足 ω_cτ ≳ 1。",
+   "np 乘積在給定溫度下為常數且與費米能階無關，此即質量作用定律，是補償（compensation）的基礎。",
+   "施體游離能可由氫原子 Bohr 模型代入介電常數與有效質量得到，Ge 約 5 meV（模型值），Si 約 20 meV；玻爾半徑放大 ε m/m_e 倍，故施體軌域重疊在相當低的濃度即發生。"
+  ],
+  "equations": [
+   {
+    "label": "直接能隙的光吸收閾值",
+    "formula": "E_g = ℏω_g",
+    "bookPage": 188,
+    "eqNumber": "",
+    "symbols": "E_g 為能隙；ω_g 為連續光吸收的起始頻率（直接躍遷）"
+   },
+   {
+    "label": "波包的群速度",
+    "formula": "v_g = ℏ⁻¹ dε/dk ,  即 v = ℏ⁻¹ ∇_k ε(k)",
+    "bookPage": 191,
+    "eqNumber": "(1)",
+    "symbols": "v_g 群速度；ε(k) 能帶色散關係；晶格對電子運動的效應全含於 ε(k) 中"
+   },
+   {
+    "label": "能帶中電子的運動方程",
+    "formula": "ℏ dk/dt = F",
+    "bookPage": 192,
+    "eqNumber": "(5)",
+    "symbols": "F 為作用於電子的外力（含電場與磁場之勞侖茲力）；ℏdk/dt 等於外力，而非 d(mv)/dt"
+   },
+   {
+    "label": "電洞的波向量",
+    "formula": "k_h = −k_e",
+    "bookPage": 194,
+    "eqNumber": "(17)",
+    "symbols": "k_e 為缺失電子原本所在軌域的波向量；k_h 為電洞的波向量；填滿能帶總波向量為零"
+   },
+   {
+    "label": "有效質量的定義",
+    "formula": "1/m* = (1/ℏ²) d²ε/dk²",
+    "bookPage": 198,
+    "eqNumber": "(28)",
+    "symbols": "m* 有效質量；d²ε/dk² 為能帶曲率。書中另以 (1/m*)_{μν} = (1/ℏ²) ∂²ε_k/∂k_μ∂k_ν 推廣為倒有效質量張量（式 29）"
+   },
+   {
+    "label": "迴旋共振頻率",
+    "formula": "ω_c = eB/(m*c)  [CGS] ；ω_c = eB/m*  [SI]",
+    "bookPage": 200,
+    "eqNumber": "(30)",
+    "symbols": "ω_c 角旋轉頻率；B 靜磁場；m* 適當的迴旋有效質量；電子與電洞旋轉方向相反"
+   },
+   {
+    "label": "電子—電洞濃度乘積（質量作用定律）",
+    "formula": "np = 4 (k_B T / 2πℏ²)³ (m_e m_h)^{3/2} exp(−E_g / k_B T)",
+    "bookPage": 206,
+    "eqNumber": "(43)",
+    "symbols": "n、p 為導帶電子與價帶電洞濃度；m_e、m_h 為有效質量；E_g = E_c − E_v。此結果不含費米能階 μ，對雜質游離同樣成立"
+   },
+   {
+    "label": "本質載子濃度",
+    "formula": "n_i = p_i = 2 (k_B T / 2πℏ²)^{3/2} (m_e m_h)^{3/4} exp(−E_g / 2k_B T)",
+    "bookPage": 207,
+    "eqNumber": "(45)",
+    "symbols": "下標 i 表示本質（intrinsic）；本質載子濃度隨 E_g/2k_BT 指數變化"
+   }
+  ],
+  "mainConclusion": "半導體的電性由能隙與能帶邊曲率共同決定：載子在外場中依 ℏdk/dt = F 運動，並以由能帶曲率倒數定義的有效質量響應，能隙越小有效質量越小、遷移率越高。填滿能帶中的空軌域可完整地以帶正電、正質量的電洞描述。本質載子濃度隨 exp(−E_g/2k_BT) 變化，而 np 乘積在固定溫度下為與費米能階、與摻雜無關的常數，因此摻雜提高一種載子必然壓低另一種（補償效應）。施體與受體的游離能可用介電常數與有效質量修正的 Bohr 模型估得，在 Si 中與室溫 k_BT（26 meV）相當，故室溫熱游離主導矽的導電行為。",
+  "verbatimQuotes": [
+   "\"Impurity atoms that can give up an electron are called donors.\" (p.209)",
+   "\"Vacant orbitals in a band are commonly called holes\" (p.194)"
+  ]
+ },
+ "9": {
+  "ch": 9,
+  "researchQuestion": "本章問：金屬的費米面是什麼形狀，以及如何從實驗把它測出來。書中先建立化約區與週期區能帶表示法，示範用 Harrison 作圖法從自由電子球構造各布里淵區的費米面，並依軌道所包圍的是滿態或空態區分電子軌道、電洞軌道與開放軌道。接著介紹三種能帶計算法：緊束縛法（適合內插與 d 能帶）、Wigner-Seitz 法（解釋鹼金屬的凝聚能）與贗勢法。最後以 de Haas-van Alphen 效應為主線，說明磁場中軌道量子化如何造成物理量對 1/B 的週期性，並由此重建費米面。",
+  "coreConcepts": [
+   "費米面是 k 空間中能量等於 ε_F 的等能面，在絕對零度分隔已填與未填軌域；金屬的電性由費米面的體積與形狀決定。",
+   "能帶能量在倒晶格中具週期性 ε_k = ε_{k+G}，故有延伸區、化約區、週期區三種等價的表示法。",
+   "費米面所包圍的總體積只取決於電子濃度，與晶格交互作用細節無關；晶格位能只會在區邊界開能隙並把尖角磨圓。",
+   "磁場中電子沿等能面上的軌道運動；包圍滿態者為電子軌道，包圍空態者為電洞軌道，不閉合而跨區者為開放軌道，後者強烈影響磁阻。",
+   "緊束縛（LCAO）近似把自由原子波函數線性組合成 Bloch 函數，能帶寬度正比於近鄰重疊積分 γ；重疊越小，能帶越窄、有效質量越大。",
+   "Wigner-Seitz 法指出簡單金屬的凝聚來自邊界條件由 Schrödinger 改為 dψ/dr = 0，使 k = 0 軌域的曲率（動能）大幅降低。",
+   "磁場中軌道由 Bohr-Sommerfeld 條件量子化，導致 k 空間軌道面積與磁通量取分立值，且相鄰軌道對應等間隔的 1/B。",
+   "dHvA 效應的主要貢獻來自極值軌道（extremal orbits），因為非極值軌道之間相位互相抵消；銅的費米面在 [111] 方向有八個「頸部」與六角面接觸。"
+  ],
+  "equations": [
+   {
+    "label": "能帶能量的倒晶格週期性",
+    "formula": "ε_k = ε_{k+G}",
+    "bookPage": 225,
+    "eqNumber": "(2)",
+    "symbols": "G 為倒晶格向量；ε_{k+G} 指的是與 ε_k 同一條能帶"
+   },
+   {
+    "label": "緊束縛法的 Bloch 型試探波函數",
+    "formula": "ψ_k(r) = N^{−1/2} Σ_j exp(ik·r_j) φ(r − r_j)",
+    "bookPage": 234,
+    "eqNumber": "(5)",
+    "symbols": "φ(r − r_j) 為位於格點 r_j 的自由原子（s 態）軌域；N 為晶體中原子數；假設原胞含一個原子"
+   },
+   {
+    "label": "緊束縛法的一階能量",
+    "formula": "⟨k|H|k⟩ = −α − γ Σ_m exp(−ik·ρ_m) = ε_k",
+    "bookPage": 234,
+    "eqNumber": "(10)",
+    "symbols": "α = −∫dV φ*(r)Hφ(r) 為在位項；γ = −∫dV φ*(r−ρ)Hφ(r) 為近鄰重疊能；ρ_m 為近鄰向量"
+   },
+   {
+    "label": "簡單立方晶格的緊束縛能帶",
+    "formula": "ε_k = −α − 2γ (cos k_x a + cos k_y a + cos k_z a)",
+    "bookPage": 235,
+    "eqNumber": "(13)",
+    "symbols": "a 為晶格常數；能帶總寬度為 12γ；小 ka 時 ε_k ≅ −α − 6γ + γk²a²，對應有效質量 m* = ℏ²/2γa²"
+   },
+   {
+    "label": "磁場中軌道的 Bohr-Sommerfeld 量子化",
+    "formula": "∮ p·dr = (n + γ)2πℏ",
+    "bookPage": 243,
+    "eqNumber": "(23)",
+    "symbols": "p = p_kin + p_field = ℏk + qA/c 為總動量；n 為整數；γ 為相位修正，自由電子為 1/2"
+   },
+   {
+    "label": "軌道所包磁通量的量子化",
+    "formula": "Φ_n = (n + γ)(2πℏc/e)",
+    "bookPage": 243,
+    "eqNumber": "(27)",
+    "symbols": "Φ_n 為實空間軌道所包磁通量；通量單位 2πℏc/e = 4.14×10⁻⁷ gauss·cm²（或 T·m²）"
+   },
+   {
+    "label": "k 空間軌道面積的量子化",
+    "formula": "S_n = (n + γ)(2πe/ℏc) B",
+    "bookPage": 244,
+    "eqNumber": "(30)",
+    "symbols": "S_n 為 k 空間中第 n 條軌道所圍面積；相鄰軌道面積差 ΔS = 2πeB/ℏc（式 32）"
+   },
+   {
+    "label": "de Haas-van Alphen 的 1/B 週期",
+    "formula": "Δ(1/B) = 2πe/(ℏc S)",
+    "bookPage": 247,
+    "eqNumber": "(37)",
+    "symbols": "S 為費米面垂直於 B 方向的極值截面積；此式亦列於本章 SUMMARY（p.252）"
+   }
+  ],
+  "mainConclusion": "金屬最有意義的定義是「具有費米面的固體」，其電性完全由費米面的體積與形狀決定。費米面所包體積只由電子濃度定；晶格位能改變的是形狀與連通性，並據此把軌道分成電子型、電洞型與開放型。在磁場中軌道被 Bohr-Sommerfeld 條件量子化，k 空間面積滿足 S_n = (n+γ)(2πe/ℏc)B，因此所有磁振盪效應（磁阻、磁化率、熱容）都對 1/B 呈週期性。de Haas-van Alphen 振盪的週期 Δ(1/B) = 2πe/ℏcS 直接給出費米面垂直於磁場的極值截面積，是重建整個費米面的主要實驗手段——銅、金的頸部與「狗骨」軌道即由此確認。",
+  "verbatimQuotes": [
+   "\"An energy band is a single branch of the ε_k versus k surface.\" (p.224)",
+   "\"Orbits that enclose filled states are electron orbits.\" (p.232)"
+  ]
+ },
+ "10": {
+  "ch": 10,
+  "researchQuestion": "本章處理超導性：先做實驗綜述——零電阻、臨界磁場 H_c(T)、Meissner 效應、熵與熱容的下降、能隙的存在、微波與紅外性質、以及同位素效應；再做理論綜述——由熱力學導出超導態的穩定化自由能、以 London 方程解釋 Meissner 效應並定義穿透深度、引入同調長度、介紹 BCS 理論的具體成就、環中磁通量子化、持續電流的壽命估算、第二類超導體與渦旋態、單粒子穿隧與 Josephson 效應，最後簡述高溫超導體。",
+  "coreConcepts": [
+   "超導態不只是零電阻：塊材在弱磁場中表現為完美反磁性，B = 0（Meissner 效應），此結果無法僅由 ρ = 0 推得。",
+   "臨界磁場 H_c(T) 隨溫度上升而下降，在 T_c 為零；零磁場下的正常—超導轉變是二級相變，無潛熱但熱容有不連續。",
+   "超導態熵較低，代表電子比正常態更有序；超導態電子熱容呈 exp(−E_g/2k_BT) 形式，指向能隙的存在。",
+   "同位素效應 M^α T_c = 常數顯示晶格振動與電子—晶格交互作用深涉超導性；原始 BCS 模型給 α = 1/2，但庫侖交互作用會改變此關係。",
+   "London 方程把電流密度直接正比於向量位 A，並導出磁場自表面呈指數衰減，衰減尺度即 London 穿透深度 λ_L。",
+   "同調長度 ξ 是超導電子濃度不能急遽變化的最短距離；λ/ξ ≡ κ 決定超導體屬第一類（ξ > λ）或第二類（ξ < λ）。",
+   "BCS 基態由 k↑ 與 −k↓ 的 Cooper 對組成，這些對具有玻色子屬性，並使有效電荷為 2e，導致磁通量子為 2πℏc/2e。",
+   "Josephson 效應：無外加電壓時直流超電流 J = J₀ sin δ 可跨越弱連結；外加直流電壓 V 則產生頻率 ω = 2eV/ℏ 的射頻振盪電流，1 μV 對應 483.6 MHz。"
+  ],
+  "equations": [
+   {
+    "label": "Meissner 效應（長細試樣）",
+    "formula": "B = B_a + 4πM = 0 ，即 M/B_a = −1/4π  [CGS]",
+    "bookPage": 263,
+    "eqNumber": "(1)",
+    "symbols": "B_a 為外加磁場；M 為對應試樣內超導電流的磁化強度；SI 為 B = B_a + μ₀M = 0，M/B_a = −1/μ₀"
+   },
+   {
+    "label": "同位素效應",
+    "formula": "M^α T_c = constant",
+    "bookPage": 269,
+    "eqNumber": "(2)",
+    "symbols": "M 為同位素質量；α 為實驗指數（Hg 為 0.50±0.03，Zn 0.45，Ru 與 Zr 為 0.00）"
+   },
+   {
+    "label": "超導態的穩定化自由能密度",
+    "formula": "ΔF ≡ F_N(0) − F_S(0) = B_ac² / 8π  [CGS]",
+    "bookPage": 272,
+    "eqNumber": "(9)",
+    "symbols": "F_N、F_S 為正常態與超導態自由能密度；B_ac 為臨界外加磁場（CGS 中 H_c ≡ B_ac）。鋁在絕對零度 B_ac = 105 G，ΔF = 439 erg cm⁻³"
+   },
+   {
+    "label": "London 方程",
+    "formula": "j = −(c/4πλ_L²) A ；curl j = −(c/4πλ_L²) B  [CGS]",
+    "bookPage": 274,
+    "eqNumber": "(10) j=−(c/4πλ_L²)A；curl j 形式為獨立編號的 (11)",
+    "symbols": "j 為超導電流密度；A 為 London 規範（div A = 0）下的向量位；SI 為 j = −A/(μ₀λ_L²)。與 curl B = 4πj/c 結合得 ∇²B = B/λ_L²（式 13）"
+   },
+   {
+    "label": "London 穿透深度",
+    "formula": "λ_L = (m c² / 4π n q²)^{1/2}  [CGS]",
+    "bookPage": 275,
+    "eqNumber": "(14a)",
+    "symbols": "n 為電荷 q、質量 m 的粒子濃度；SI 為 λ_L = (ε₀ m c² / n q²)^{1/2}。場的衰減為 B(x) = B(0) exp(−x/λ_L)（式 14）"
+   },
+   {
+    "label": "BCS 的轉變溫度判據",
+    "formula": "T_c = 1.14 θ exp[−1 / U D(ε_F)]",
+    "bookPage": 278,
+    "eqNumber": "(18)",
+    "symbols": "θ 為德拜溫度；U 為吸引性電子—晶格—電子交互作用；D(ε_F) 為費米能階處單一自旋的軌域態密度；適用於 U D(ε_F) ≪ 1"
+   },
+   {
+    "label": "超導環中的磁通量子",
+    "formula": "Φ = (2πℏc/q) s ，q = −2e ⇒ Φ₀ = 2πℏc/2e ≅ 2.0678×10⁻⁷ gauss·cm²",
+    "bookPage": 281,
+    "eqNumber": "(27)",
+    "symbols": "s 為整數；q = 2e 為電子對電荷（由實驗確定）；SI 為 Φ₀ = 2πℏ/2e ≅ 2.0678×10⁻¹⁵ T·m²。此量子稱為 fluxoid 或 fluxon"
+   },
+   {
+    "label": "直流 Josephson 效應",
+    "formula": "J = J₀ sin δ = J₀ sin(θ₂ − θ₁)",
+    "bookPage": 290,
+    "eqNumber": "(47)",
+    "symbols": "δ = θ₂ − θ₁ 為接面兩側 Cooper 對機率幅的相位差；J₀ 正比於穿隧轉移交互作用 T，是接面在零電壓下所能通過的最大電流"
+   }
+  ],
+  "mainConclusion": "超導態是一個由 Cooper 對（k↑, −k↓）構成、與最低激發態之間隔著能隙 E_g 的有序基態。其電磁行為的核心是 Meissner 效應 B = 0，可由 London 方程 j ∝ −A 直接導出，並給出磁場自表面按 exp(−x/λ_L) 衰減的穿透深度；配對電荷為 2e 使超導環中的磁通量子化為 Φ₀ = 2πℏc/2e。超導態相對正常態的穩定化自由能密度為 H_c²/8π，臨界磁場因而是該能量差的量度。同調長度 ξ 與穿透深度 λ 的比值 κ = λ/ξ 決定超導體型別：ξ < λ 者為第二類，在 H_c1 與 H_c2 之間進入渦旋態，仍保有超導電性，這正是強場超導磁鐵的基礎。Josephson 弱連結進一步展現宏觀量子相位：零電壓下有 J = J₀ sin δ 的直流超電流，加上直流電壓則產生 ω = 2eV/ℏ 的交流振盪，可用於精確測定 e/ℏ 與製作高靈敏磁強計。",
+  "verbatimQuotes": [
+   "\"a bulk superconductor behaves as if B = 0 inside the specimen\" (p.262)",
+   "\"A superconductor exhibits infinite conductivity.\" (p.294)"
+  ]
+ },
+ "11": {
+  "ch": 11,
+  "researchQuestion": "本章處理「未進入磁有序」的磁性：自由原子與離子在外加磁場下的抗磁與順磁反應。書中一開始即指出磁性與量子力學不可分割，因為嚴格古典的熱平衡系統即使在磁場中也不會顯示磁矩。自由原子磁矩有三個來源：電子自旋、電子繞核的軌道角動量、以及外加磁場所誘發的軌道磁矩變化；前兩者給出順磁貢獻，第三者給出抗磁貢獻。章內依序建立 Langevin 抗磁公式、抗磁的量子（微擾）推導、Brillouin 函數與 Curie 定律、稀土與鐵族離子的有效磁子數、晶場劈裂與軌道角動量凍結（quenching）、Van Vleck 溫度無關順磁性、等熵去磁冷卻，最後以 Pauli 傳導電子順磁性作結。核心問題是：什麼決定 χ 的正負號、大小與溫度依賴？",
+  "coreConcepts": [
+   "磁化率定義 χ = M/B；χ<0 稱抗磁、χ>0 稱順磁；莫耳磁化率寫作 χ_M。",
+   "抗磁性源自電荷部分屏蔽外加磁場的傾向；Larmor 定理指出磁場只是在原運動上疊加一個進動，該進動電流產生與外場反向的磁矩。",
+   "抗磁磁化率只與電子分布的 ⟨r²⟩ 有關，與溫度無關（Langevin 結果），對惰性氣體與離子實核（ion core）近似成立。",
+   "順磁性出現在：奇數電子系統、內殼層未填滿的自由原子與離子（過渡族、稀土、錒系）、少數偶電子化合物（如 O₂）、以及金屬。",
+   "磁矩 μ = γℏJ = −gμ_B J；自由原子的 g 由 Landé 公式給出，磁場中有 2J+1 個等間距能階。",
+   "Brillouin 函數描述任意 J 的磁化，其高溫極限給出 Curie 定律 χ = C/T，並定義有效磁子數 p = g[J(J+1)]^{1/2}。",
+   "Hund 規則決定基態：S 最大、在該 S 下 L 最大、殼層未過半時 J = |L−S|、過半時 J = L+S。",
+   "鐵族離子的 3d 殼層是最外層，會受到強而不均勻的晶場，使 L–S 耦合被破壞、L_z 平均為零（軌道角動量凍結），故實驗 p 值接近純自旋值 2[S(S+1)]^{1/2}。",
+   "等熵（絕熱）去磁：固定溫度下磁場降低自旋熵，撤場時熵由晶格流入自旋系統，達到 T₂ = T₁(B_Δ/B)；核去磁可再低約 100 倍（Cu 曾達 1.2×10⁻⁶ K）。",
+   "傳導電子只有費米面附近約 T/T_F 比例的電子能翻轉，故 Pauli 自旋順磁性與溫度無關；Landau 抗磁再抵掉其中 1/3。"
+  ],
+  "equations": [
+   {
+    "label": "Larmor 進動角頻率（抗磁的古典基礎）",
+    "formula": "ω = eB/2mc （CGS）;  ω = eB/2m （SI）",
+    "bookPage": 300,
+    "eqNumber": "(2)",
+    "symbols": "e 電子電荷，m 電子質量，B 外加磁場，c 光速。此為磁場中電子繞核運動額外疊加的進動頻率，須遠低於原中心場運動頻率才成立。"
+   },
+   {
+    "label": "Langevin 抗磁磁化率",
+    "formula": "χ = Nμ/B = −NZe²⟨r²⟩ / 6mc² （CGS）;  χ = μ₀Nμ/B = −μ₀NZe²⟨r²⟩ / 6m （SI）",
+    "bookPage": 301,
+    "eqNumber": "(5)",
+    "symbols": "N 每單位體積原子數，Z 原子序（電子數），⟨r²⟩ = ⟨x²⟩+⟨y²⟩+⟨z²⟩ 為電子到原子核的均方距離。書中同時由式 (4) 的 μ = −(Ze²B/4mc²)⟨ρ²⟩ 與球對稱關係 ⟨ρ²⟩ = (2/3)⟨r²⟩ 得到。"
+   },
+   {
+    "label": "Landé g 因子（自由原子的譜線劈裂因子）",
+    "formula": "g = 1 + [J(J+1) + S(S+1) − L(L+1)] / [2J(J+1)]",
+    "bookPage": 302,
+    "eqNumber": "(13)",
+    "symbols": "J 總角動量量子數，S 總自旋，L 總軌道角動量。g 定義為 gμ_B ≡ −γℏ；電子自旋的 g = 2.0023，通常取 2.00。"
+   },
+   {
+    "label": "磁場中的 Zeeman 能階",
+    "formula": "U = −μ·B = m_J g μ_B B",
+    "bookPage": 303,
+    "eqNumber": "(14)",
+    "symbols": "m_J 為方位量子數，取值 J, J−1, …, −J；μ_B = eℏ/2mc（CGS）= eℏ/2m（SI）為 Bohr 磁子。單一自旋無軌道矩時 m_J = ±1/2、g = 2，得 U = ±μ_B B。"
+   },
+   {
+    "label": "Curie–Brillouin 定律（任意 J 的磁化）",
+    "formula": "M = N g J μ_B B_J(x),  x = g J μ_B B / k_B T;  B_J(x) = [(2J+1)/2J]·ctnh[(2J+1)x/2J] − (1/2J)·ctnh(x/2J)",
+    "bookPage": 303,
+    "eqNumber": "(19) 在 p.303；Brillouin 函數本體 (20) 在次頁",
+    "symbols": "B_J 為 Brillouin 函數，N 為單位體積離子數。J = 1/2 時退化為式 (17) 的 M = Nμ tanh(μB/k_BT)。"
+   },
+   {
+    "label": "Curie 定律與有效磁子數",
+    "formula": "M/B = N J(J+1) g² μ_B² / 3k_B T = N p² μ_B² / 3k_B T = C/T,  p ≡ g[J(J+1)]^{1/2}",
+    "bookPage": 304,
+    "eqNumber": "(22), (23)",
+    "symbols": "C 為 Curie 常數，p 為有效 Bohr 磁子數。此為 x = μB/k_BT ≪ 1 的展開結果（ctnh x = 1/x + x/3 − x³/45 + …）。"
+   },
+   {
+    "label": "等熵去磁所達最終溫度",
+    "formula": "T₂ = T₁ (B_Δ / B)",
+    "bookPage": 314,
+    "eqNumber": "(41)",
+    "symbols": "B 為初始外加磁場，T₁ 為初始溫度，B_Δ 為對應局域交互作用的有效內場。書中 Cu 核去磁實驗擬合出 T₂ = T₁(3.1/B)（B 以高斯計），即 B_Δ = 3.1 gauss。"
+   },
+   {
+    "label": "Pauli 傳導電子自旋順磁性（含 Landau 修正）",
+    "formula": "M = μ²D(ε_F)B = 3Nμ²B / 2k_B T_F  →  χ = 3Nμ²/2ε_F;  含 Landau 抗磁後 M = N μ_B² B / k_B T_F",
+    "bookPage": 317,
+    "eqNumber": "(45), (46)",
+    "symbols": "D(ε_F) 為費米能處的軌道態密度（= 3N/2ε_F），T_F 為費米溫度，μ = μ_B。Landau 證明自由電子波函數受磁場修正會產生等於順磁矩 −1/3 的抗磁矩，故總磁化為 Pauli 值的 2/3。"
+   }
+  ],
+  "mainConclusion": "抗磁性是普遍存在的誘發效應，其大小僅由電子分布的 ⟨r²⟩ 決定且與溫度無關（Langevin 結果）；順磁性則來自未填滿殼層的永久磁矩，其磁化由 Brillouin 函數描述，高溫下服從 Curie 定律 χ = C/T。稀土離子的 4f 殼層深埋於 5s5p 之內，實驗有效磁子數與 Landé/Hund 預測相符；鐵族離子的 3d 為最外層，晶場凍結軌道角動量，故實驗值接近純自旋值。金屬中的傳導電子因 Fermi–Dirac 統計，只有費米面附近 T/T_F 比例的電子能翻轉，因而給出與溫度無關的 Pauli 順磁性 χ = 3Nμ²/2ε_F。 但書中同時指出（p.306）實驗磁子數與此計算仍有不符之處，並非全然吻合。",
+  "verbatimQuotes": [
+   "\"Magnetism is inseparable from quantum mechanics\" (p.299)",
+   "\"When Lz averages to zero, the orbital angular momentum is said to be quenched.\" (p.308)"
+  ]
+ },
+ "12": {
+  "ch": 12,
+  "researchQuestion": "本章處理電子自旋的有序排列：鐵磁、亞鐵磁與反鐵磁。書中先以 Weiss 平均場（分子場、交換場）把自發磁矩問題化約為自洽方程，導出 Curie 溫度與 Curie–Weiss 定律，並把平均場常數 λ 連回 Heisenberg 交換積分 J。接著處理低溫的基本激發——磁振子（magnon），推導色散關係並得到 Bloch T^{3/2} 定律，說明中子散射如何直接量測磁振子譜。之後推廣到亞鐵磁（兩個不等值的反平行次晶格、鐵石榴石 YIG）與反鐵磁（MnO、Néel 溫度、χ⊥ 與 χ∥ 的差異、反鐵磁磁振子）。最後處理巨觀結構問題：為什麼鐵磁體會分成磁疇、Bloch 壁的厚度與能量由何決定、以及矯頑力與磁滯。",
+  "coreConcepts": [
+   "平均場（分子場／Weiss 場）近似：每個磁性原子感受到正比於磁化的交換場 B_E = λM，鐵中 B_E 可達 10⁷ G ≈ 10³ T，遠大於相鄰磁性離子的真實偶極場（約 10³ G）。",
+   "交換場只是交換交互作用的近似表示；真正的機制是 Heisenberg 模型 U = −2J S_i·S_j，J 與相鄰原子電荷分布的重疊有關，其符號決定鐵磁（J>0）或反鐵磁（J<0）。",
+   "Curie 溫度以上服從 Curie–Weiss 定律 χ = C/(T−T_c)；T_c 以下由自洽方程 m = tanh(m/t) 給出自發磁化，屬二階相變。",
+   "平均場在低溫描述不佳：它給出指數型的 ΔM，實驗卻是 T^{3/2}；正確解釋來自自旋波理論。",
+   "磁振子是量子化的自旋波，能量 ε_k = (n_k + 1/2)ℏω_k，激發一個磁振子相當於翻轉一個自旋；其熱佈居服從 Planck 分布。",
+   "中子同時看到原子核分布與電子磁化分布，故中子繞射可定出磁矩的分布、方向與有序方式；非彈性中子散射（動量與能量守恆）可直接測出磁振子譜。",
+   "亞鐵磁：兩個反平行但磁矩不等的次晶格；1/χ 對 T 的曲線呈現特徵彎曲。反鐵磁是 C_A = C_B 的特例，T_N 處 χ 出現尖點（kink）而非發散。",
+   "反鐵磁在 T_N 以下的磁化率具方向性：垂直方向 χ⊥ = 1/μ，平行方向在 0 K 時 χ∥(0) = 0，並隨溫度平滑上升至 T_N。",
+   "反鐵磁磁振子色散在長波長時線性於 k（ω ≈ ω_ex|ka|），與鐵磁的 ω ∝ k² 截然不同，因此低溫熱容給出 T³ 項。",
+   "磁疇源自能量最小化（交換能、異向能、磁能的競爭）；Bloch 壁厚度與壁能由交換能（偏好厚壁）與異向能（偏好薄壁）的平衡決定，鐵中約 300 個晶格常數、壁能約 1 erg/cm²。",
+   "矯頑力是鐵磁材料最敏感、可控範圍最廣的性質（跨七個數量級）；直徑小於 10⁻⁵–10⁻⁶ cm 的粒子必為單疇，反磁化只能靠整體轉動，故矯頑力高。"
+  ],
+  "equations": [
+   {
+    "label": "Weiss 交換場（平均場近似）",
+    "formula": "B_E = λM",
+    "bookPage": 323,
+    "eqNumber": "(1)",
+    "symbols": "M 為單位體積磁矩（磁化），λ 為與溫度無關的平均場常數。此式假設每個自旋感受到所有其他自旋的平均磁化。"
+   },
+   {
+    "label": "Curie–Weiss 定律與 Curie 溫度",
+    "formula": "χ = C/(T − T_c),  T_c = Cλ;  λ = T_c/C = 3k_B T_c / [N g² S(S+1) μ_B²]",
+    "bookPage": 324,
+    "eqNumber": "(3)(4) 在 p.324；(5) λ=T_c/C 在次頁",
+    "symbols": "C 為 Curie 常數，T_c 為 Curie 溫度。χ 在 T = Cλ 發散，即出現自發磁化。書中以鐵為例（T_c ≈ 1000 K, g ≈ 2, S ≈ 1）估得 λ ≈ 5000。"
+   },
+   {
+    "label": "Heisenberg 交換交互作用",
+    "formula": "U = −2J S_i·S_j",
+    "bookPage": 325,
+    "eqNumber": "(6)",
+    "symbols": "J 為交換積分，與原子 i、j 電荷分布的重疊有關；S_i、S_j 為兩原子的電子自旋。"
+   },
+   {
+    "label": "交換積分與 Curie 溫度的平均場關係",
+    "formula": "J = 3k_B T_c / [2 z S(S+1)]",
+    "bookPage": 325,
+    "eqNumber": "(7)",
+    "symbols": "z 為最近鄰數。書中指出更好的統計近似給出 k_B T_c/zJ = 0.28（sc）、0.325（bcc）、0.346（fcc），對比平均場的 0.500；以 S = 1 表示鐵時，觀測 T_c 對應 J = 11.9 meV。"
+   },
+   {
+    "label": "自發磁化的自洽方程（約化形式）",
+    "formula": "m = tanh(m/t),  m ≡ M/Nμ,  t ≡ k_B T / Nμ²λ = T/T_c",
+    "bookPage": 326,
+    "eqNumber": "(9)",
+    "symbols": "m 為約化磁化，t 為約化溫度。由 (8) 的 M = Nμ tanh(μλM/k_BT) 改寫；臨界溫度為 t = 1，即 T_c = Nμ²λ/k_B。"
+   },
+   {
+    "label": "鐵磁磁振子色散關係（一維最近鄰）",
+    "formula": "ℏω = 4JS(1 − cos ka);  ka ≪ 1 時 ℏω ≅ (2JSa²)k²",
+    "bookPage": 332,
+    "eqNumber": "(22), (23)",
+    "symbols": "J 交換積分，S 自旋量子數，a 晶格常數，k 波向量。三維立方晶格為 ℏω = 2JS[z − Σ_δ cos(k·δ)]（式 24），長波長極限同為 ℏω = (2JSa²)k² = Dk²。中子散射測得 D 在 295 K 分別為 Fe 281、Co 500、Ni 364 meV·Å²。"
+   },
+   {
+    "label": "Bloch T^{3/2} 定律（磁振子熱激發造成的磁化下降）",
+    "formula": "ΔM/M(0) = (0.0587 / S Q) · (k_B T / 2JS)^{3/2}",
+    "bookPage": 334,
+    "eqNumber": "(30)",
+    "symbols": "Q = 1, 2, 4 分別對應 sc、bcc、fcc（每單位晶胞原子數），S 為自旋，J 為交換積分。由磁振子態密度與 Planck 分布積分得到，實驗上 ΔM/M(0) = A T^{3/2}，Ni 的 A = (7.5±0.2)×10⁻⁶ deg^{−3/2}，Fe 為 (3.4±0.2)×10⁻⁶ deg^{−3/2}（式 11, p.327）。"
+   },
+   {
+    "label": "反鐵磁的 Néel 溫度與順磁區磁化率",
+    "formula": "T_N = μC;  χ = 2C / (T + T_N)，實驗形式 χ = 2C/(T + θ)",
+    "bookPage": 342,
+    "eqNumber": "(39)(40) 在 p.342；(38) T_N=μC 在前一頁",
+    "symbols": "C 為單一次晶格的 Curie 常數，μ 為 A–B 次晶格間的平均場常數，θ 為 Curie–Weiss 溫度。書中指出實測 θ/T_N 常明顯偏離 1；若引入次晶格內部的平均場常數 −ε，則 θ/T_N = (μ+ε)/(μ−ε)。"
+   },
+   {
+    "label": "反鐵磁磁振子色散關係",
+    "formula": "ω = ω_ex |sin ka|,  ω_ex ≡ 4|J|S/ℏ",
+    "bookPage": 345,
+    "eqNumber": "(52)",
+    "symbols": "J < 0 為反鐵磁交換積分。ka ≪ 1 時 ω ≅ ω_ex|ka|，即頻率線性於波向量；RbMnF₃ 的中子散射結果證實有很大一段線性區。"
+   },
+   {
+    "label": "Bloch 壁的厚度與單位面積壁能",
+    "formula": "σ_w ≅ π²JS²/Na² + KNa;  N = (π²JS²/Ka³)^{1/2};  σ_w = 2π(KJS²/a)^{1/2}",
+    "bookPage": 350,
+    "eqNumber": "(56), (58), (59)",
+    "symbols": "N 為壁內原子面數，a 晶格常數，K 異向能常數，J 交換積分，S 自旋。第一項為交換能（偏好厚壁），第二項為異向能（限制壁厚）。鐵中 N ≈ 300、σ_w ≈ 1 erg/cm²；(100) 面上 180° 壁的精確計算為 σ_w = 2(2K₁JS²/a)^{1/2}。"
+   }
+  ],
+  "mainConclusion": "鐵磁性可由 Weiss 平均場（交換場 B_E = λM）成功描述其高溫磁化率（Curie–Weiss 定律）與 T_c 附近的行為，交換場本身則是 Heisenberg 交換交互作用 U = −2J S_i·S_j 的近似表示。但平均場在低溫失效：正確的低溫圖像是量子化的自旋波（磁振子），其 ω ∝ k² 的色散給出實驗證實的 Bloch T^{3/2} 磁化衰減，並可由非彈性中子散射直接量測。把同一套平均場語言推廣到兩個次晶格，即得亞鐵磁（T_c = μ(C_AC_B)^{1/2}）與反鐵磁（T_N = μC、χ = 2C/(T+θ)、反鐵磁磁振子 ω ∝ |sin ka|）。巨觀上，鐵磁體分成磁疇是交換能、異向能與磁能競爭的自然結果；Bloch 壁的厚度 (J/Ka³)^{1/2} 與壁能 (KJ/a)^{1/2} 由交換與異向能的平衡決定，而矯頑力則是可跨七個數量級調控的、最敏感的工程性質。",
+  "verbatimQuotes": [
+   "\"A ferromagnet has a spontaneous magnetic moment\" (p.323)",
+   "\"A magnon is a quantized spin wave.\" (p.330)",
+   "\"This result is the Bloch T3/2 law and has been confirmed experimentally.\" (p.335)"
+  ]
+ },
+ "13": {
+  "ch": 13,
+  "researchQuestion": "本章處理與核自旋、電子自旋角動量相關的動力學磁效應，也就是各類磁共振：NMR、NQR、EPR/ESR、FMR、SWR、AFMR、CESR。書中先以 NMR 為基礎，建立共振條件 ω = γB₀、進動運動方程、縱向（T₁）與橫向（T₂）弛豫的 Bloch 方程與吸收功率的 Lorentz 線型。接著討論線寬的來源（剛性晶格中的偶極–偶極交互作用）與運動窄化（motional narrowing）——這是全章最具反直覺性的結果。再處理超精細分裂（接觸超精細交互作用、F 中心、矽中施體原子）與金屬中的 Knight 位移。後半部把同一套進動語言推廣到有序磁性系統：FMR 的形狀效應（去磁因子）、薄膜自旋波共振、反鐵磁共振（異向場與交換場的幾何平均）。最後以受激輻射的 maser／laser 原理與三能階 maser 作結。共同的問題是：共振線的位置、寬度與精細結構分別告訴我們固體的什麼資訊？",
+  "coreConcepts": [
+   "共振研究可提供四類資訊：單一缺陷的電子結構（由精細結構）、自旋或環境的運動（由線寬變化）、自旋所感受的內部磁場（由共振線位置，如化學位移、Knight 位移）、以及集體自旋激發。",
+   "核磁矩與角動量平行：μ = γℏI，γ 為磁旋比；磁場中 I = 1/2 有兩個能階，能差給出共振條件 ℏω = γℏB₀。",
+   "T₁（縱向／自旋–晶格弛豫時間）描述 M_z 趨向平衡的過程，能量由自旋系統流向晶格振動；絕緣體中主要靠聲子調制晶場，其過程分為 direct、Raman、Orbach 三種，溫度依賴不同。",
+   "T₂（橫向弛豫時間）是各個磁矩失相（dephasing）的時間；不同局域磁場使自旋以不同頻率進動，最終 M_x、M_y 歸零。因 M_x、M_y 變化不改變磁能，決定 T₂ 的條件可比 T₁ 寬鬆。",
+   "剛性晶格中線寬主要由磁偶極–偶極交互作用造成，量級 B_i ≈ μ/a³；質子在 2 Å 間距下約 2 gauss。",
+   "運動窄化：當原子快速相對運動、局域場隨機翻轉的特徵時間 τ 很短時，失相變成隨機行走問題，線寬被壓縮為 Δω = (Δω)₀²τ，τ 越短線越窄。水中的質子共振線僅為凍結情形的約 10⁻⁵。",
+   "接觸超精細交互作用 U = a I·S 源自電子自旋電流在核位置的磁場，正比於 |ψ(0)|²；只有 s 電子（L=0）貢獻接觸項。氫的基態超精細分裂為 1420 MHz。",
+   "超精細分裂可作為順磁點缺陷的結構探針：KCl 中的 F 中心與六個 K³⁹（I = 3/2）作用，I_max = 9，給出 2I_max+1 = 19 個超精細成分、4096 種自旋排列。矽中磷施體在高濃度時因快速跳躍而發生運動窄化，分裂線併為單一窄線。",
+   "Knight 位移是金屬中核共振相對於抗磁固體的偏移，正比於傳導電子的 Pauli 自旋磁化率乘以核位置電子密度與平均電子密度之比。",
+   "FMR 的特殊之處：橫向磁化率極大、試樣形狀（去磁場）扮演關鍵角色、交換耦合壓抑偶極線寬（YIG 球可窄至 0.2 G）、且在低射頻功率即飽和（激發自旋波模）。",
+   "反鐵磁共振頻率由異向場 B_A 與交換場 B_E 的幾何組合決定；maser／laser 的關鍵在於製造上能階的過剩佈居，三能階 maser 以泵浦飽和 3↔1 巧妙解決此問題。"
+  ],
+  "equations": [
+   {
+    "label": "核磁矩與角動量的關係",
+    "formula": "μ = γℏI",
+    "bookPage": 363,
+    "eqNumber": "(1)",
+    "symbols": "γ 為磁旋比（常數），I 為以 ℏ 為單位量度的核角動量。"
+   },
+   {
+    "label": "磁共振吸收的基本條件",
+    "formula": "ℏω = γℏB₀  →  ω = γB₀",
+    "bookPage": 364,
+    "eqNumber": "(4)",
+    "symbols": "B₀ 為靜磁場。對質子 γ = 2.675×10⁴ s⁻¹ G⁻¹ = 2.675×10⁸ s⁻¹ T⁻¹，故 ν(MHz) = 4.258 B₀(kilogauss) = 42.58 B₀(tesla)（式 4a）；電子自旋則為 ν(GHz) = 2.80 B₀(kilogauss) = 28.0 B₀(tesla)（式 4b）。"
+   },
+   {
+    "label": "磁化的陀螺（進動）運動方程",
+    "formula": "dM/dt = γ M × B_a",
+    "bookPage": 366,
+    "eqNumber": "(7)",
+    "symbols": "M = Σμ_i 為單位體積的核磁化，B_a 為外加磁場。由 ℏ dI/dt = μ × B_a（式 5）對所有核求和而得，前提是只有單一同位素（單一 γ）重要。"
+   },
+   {
+    "label": "Bloch 方程（含縱向與橫向弛豫）",
+    "formula": "dM_x/dt = γ(M×B)_x − M_x/T₂;  dM_y/dt = γ(M×B)_y − M_y/T₂;  dM_z/dt = γ(M×B)_z + (M₀ − M_z)/T₁",
+    "bookPage": 368,
+    "eqNumber": "(13)",
+    "symbols": "T₁ 為縱向（自旋–晶格）弛豫時間，T₂ 為橫向（失相）弛豫時間，M₀ = χ₀B₀ 為平衡磁化。方程不對 x, y, z 對稱，因系統被沿 ẑ 的靜場所偏置。書中註明 Bloch 方程只是合理近似而非嚴格，未能描述全部固體中的自旋現象。"
+   },
+   {
+    "label": "自由進動解與共振半高半寬",
+    "formula": "M_x = m e^{−t/T′} cos ωt,  M_y = −m e^{−t/T′} sin ωt;  ω₀ = γB₀, T′ = T₂;  (Δω)_{1/2} = 1/T₂",
+    "bookPage": 369,
+    "eqNumber": "(15) 自由進動解、(17) ω₀=γB₀ 皆在 p.369",
+    "symbols": "吸收功率為 𝒫(ω) = ωγM_zT₂B₁² / [1 + (ω₀ − ω)²T₂²]（式 19），B₁ 為旋轉射頻場振幅。運動類比於二維阻尼諧振子。"
+   },
+   {
+    "label": "剛性晶格的偶極線寬",
+    "formula": "ΔB = [3(μ·r₁₂)r₁₂ − μ r₁₂²] / r₁₂⁵;  B_i ≈ μ/a³",
+    "bookPage": 370,
+    "eqNumber": "(21), (23)",
+    "symbols": "μ 為鄰近磁偶極矩，r₁₂ 為兩偶極間位置向量，a 為最近鄰間距。對間距 2 Å 的質子，B_i ≈ 2 gauss = 2×10⁻⁴ tesla（p.371）。轉換到 SI 需將右式乘以 μ₀/4π。"
+   },
+   {
+    "label": "運動窄化（motional narrowing）",
+    "formula": "T₂ = 1/(γ²B_i²τ);  Δω = 1/T₂ = (Δω)₀² τ",
+    "bookPage": 373,
+    "eqNumber": "(26) 在 p.372 末；(27)(28) 在 p.373",
+    "symbols": "τ 為局域場隨機翻轉（原子跳躍）的特徵時間，(Δω)₀ ≈ γB_i 為剛性晶格線寬。成立條件為 (Δω)₀τ ≪ 1。此結果與剛性晶格的 T₂ ≈ 1/γB_i 截然不同。"
+   },
+   {
+    "label": "接觸超精細交互作用",
+    "formula": "U = −μ_I·B̄ ≅ γℏμ_B|ψ(0)|² I·S;  U = a I·S",
+    "bookPage": 374,
+    "eqNumber": "(33), (34)",
+    "symbols": "|ψ(0)|² 為電子波函數在核位置的機率密度，μ_B = eℏ/2mc 為 Bohr 磁子，a 為超精細常數，I 為以 ℏ 為單位的核自旋。因球殼平均場為零，只有 s 電子（L = 0）貢獻接觸項。"
+   },
+   {
+    "label": "Knight 位移",
+    "formula": "K = −ΔB/B₀ = a χ_s / (g_N μ_B γ_I ℏ)",
+    "bookPage": 378,
+    "eqNumber": "(38)",
+    "symbols": "χ_s 為傳導電子的 Pauli 自旋磁化率，a 為超精細耦合常數，γ_I 為核磁旋比。近似上 K ≈ χ_s|ψ(0)|²/N，即 Pauli 磁化率再乘上核位置電子濃度與平均電子濃度之比。"
+   },
+   {
+    "label": "鐵磁共振（均勻模）與形狀效應",
+    "formula": "ω₀ = γ{[B₀ + (N_y − N_z)M][B₀ + (N_x − N_z)M]}^{1/2};  垂直薄板 ω₀ = γ(B₀ − 4πM);  平行薄板 ω₀ = γ[B₀(B₀ + 4πM)]^{1/2}",
+    "bookPage": 381,
+    "eqNumber": "(41), (42), (43)",
+    "symbols": "N_x, N_y, N_z 為橢球的去磁因子，M 為磁化，B₀ 為外加靜場。球體 N_x = N_y = N_z 時退化為 ω₀ = γB₀。薄膜自旋波共振再加上交換項 Dk²，k = nπ/L（式 44）。"
+   },
+   {
+    "label": "反鐵磁共振頻率",
+    "formula": "ω₀² = γ² B_A (B_A + 2B_E)",
+    "bookPage": 384,
+    "eqNumber": "(48)",
+    "symbols": "B_A = 2K/M 為異向場（K 為異向能密度、M = |M₁| = |M₂|），B_E = λM 為交換場。此為零外加磁場、單軸反鐵磁的結果。"
+   },
+   {
+    "label": "Maser 作用條件與交換窄化",
+    "formula": "n_u − n_l > V ΔB / (8πμQ) （CGS）;  交換窄化 Δω ≈ (Δω)₀² / ω_ex",
+    "bookPage": 387,
+    "eqNumber": "(53) 在 p.387；交換窄化 (49) 在 p.386",
+    "symbols": "n_u、n_l 為上、下能階的原子數，V 為腔體體積，Q 為腔體品質因子，μ 為磁矩，ΔB 由 μΔB = ℏΔω 定義。交換窄化式中 ω_ex ≈ J/ℏ 扮演跳躍頻率 1/τ 的角色，(Δω)₀² = γ²⟨B_i²⟩ 為無交換時的靜態偶極線寬平方（p.386）。"
+   }
+  ],
+  "mainConclusion": "所有磁共振現象都建立在同一個核心關係上：自旋在磁場中以 ω = γB₀ 進動，並透過 Bloch 方程中的 T₁（能量流向晶格）與 T₂（相位失序）弛豫。共振線的三個特徵各自攜帶不同的固體資訊——位置給出自旋所感受的內場（化學位移、Knight 位移、FMR 的去磁場、AFMR 的 B_A 與 B_E），寬度給出運動與交換（運動窄化 Δω = (Δω)₀²τ、交換窄化 Δω ≈ (Δω)₀²/ω_ex），精細結構則給出單一缺陷的電子結構（F 中心、矽中的施體原子）。把同一套進動語言推廣到有序系統即得 FMR、SWR 與 AFMR；而在非平衡的上能階過剩佈居下，同一組能階便可用於受激輻射放大，這就是 maser 與 laser 的原理。",
+  "verbatimQuotes": [
+   "\"This is the fundamental condition for magnetic resonance absorption.\" (p.364)",
+   "\"We can think of T2 as a dephasing time.\" (p.368)",
+   "\"The shorter is τ, the narrower is the resonance line!\" (p.373)"
+  ]
+ },
+ "14": {
+  "ch": 14,
+  "researchQuestion": "本章以電子氣的介電函數 ε(ω,K) 為主軸，說明它對固體物理性質的決定性影響。書中明言在 ε(ω,0) 這一極限描述費米海的集體激發（體電漿子與表面電漿子），而在 ε(0,K) 這一極限描述電子—電子、電子—晶格、電子—雜質交互作用的靜電屏蔽。接著用離子晶體的介電函數導出 polariton 光譜，並討論 LST 關係。最後處理電子—電子交互作用（Fermi liquid）、電子—聲子交互作用產生的 polaron，以及線性金屬的 Peierls 不穩定性。",
+  "coreConcepts": [
+   "介電函數 ε(ω,K) 可由外加電荷密度與感應電荷密度的傅立葉分量定義，ε(K)=ρext(K)/ρ(K)=1−ρind(K)/ρ(K)。",
+   "ε 的零點決定縱波（longitudinal）振盪頻率，ε 的極點決定介質自由振盪頻率；ε<0 的頻段電磁波不能傳播而被全反射。",
+   "電漿子（plasmon）是電漿振盪的量子，可用電子穿過金屬薄膜或反射電子／光子來激發，反射電子會損失整數倍的電漿子能量。",
+   "Thomas–Fermi 近似假設可定義隨位置變化的局域化學勢，得到靜態屏蔽介電函數與屏蔽長度 1/ks（Cu 約 0.55 Å）。",
+   "Mott 金屬—絕緣體轉變：屏蔽庫侖位能在 ks 夠小時才存在束縛態，臨界晶格常數 ac ≈ 4.5a0。",
+   "Polariton 是耦合的 TO 聲子—光子橫波場的量子，耦合由 Maxwell 方程式必然帶來，在 ωT<ω<ωL 形成禁止傳播帶。",
+   "Landau Fermi liquid 理論用 quasiparticle 描述有交互作用的電子系統；包立不相容原理與屏蔽使電子—電子平均自由程極長（室溫下 >10⁴ Å）。",
+   "Polaron 是電子加上它拖著的晶格應變場，耦合常數 α 可視為「圍繞慢速電子的聲子數」，離子晶體中 α 大、共價晶體中 α 小。"
+  ],
+  "equations": [
+   {
+    "label": "自由電子氣的介電函數",
+    "formula": "ε(ω) = 1 − 4πne²/(mω²)   (CGS);   ε(ω) = 1 − ne²/(ε₀mω²)   (SI)",
+    "bookPage": 397,
+    "eqNumber": "(8)",
+    "symbols": "n＝電子濃度，e＝電子電荷，m＝電子質量，ω＝頻率"
+   },
+   {
+    "label": "電漿頻率定義",
+    "formula": "ωp² = 4πne²/m   (CGS);   ωp² = ne²/(ε₀m)   (SI)",
+    "bookPage": 397,
+    "eqNumber": "(9)",
+    "symbols": "ωp＝電漿頻率；ε(ω)=1−ωp²/ω²（式(10)）"
+   },
+   {
+    "label": "電磁波在介質中的色散關係",
+    "formula": "ε(ω,K) ω² = c²K²   (CGS);   ε(ω,K) ω²/c² = K²   (SI)",
+    "bookPage": 397,
+    "eqNumber": "(14)",
+    "symbols": "K＝波向量，c＝真空光速；ε 實數且為正時橫波以相速度 c/ε^(1/2) 傳播"
+   },
+   {
+    "label": "電漿中橫向電磁波的色散關係",
+    "formula": "ω² = ω̄p² + c²K²/ε(∞)",
+    "bookPage": 398,
+    "eqNumber": "(16)",
+    "symbols": "ω̄p² = 4πne²/[ε(∞)m]（式(12)），ε(∞)＝離子實背景的介電常數；ω<ω̄p 時波被全反射"
+   },
+   {
+    "label": "Thomas–Fermi 靜態介電函數與屏蔽波數",
+    "formula": "ε(0,K) = 1 + ks²/K² ,  ks² = 6πn₀e²/ε_F = 4(3/π)^(1/3) n₀^(1/3)/a₀ = 4πe²D(ε_F)",
+    "bookPage": 405,
+    "eqNumber": "(33)(34)",
+    "symbols": "n₀＝均勻電子濃度，ε_F＝費米能，a₀＝波耳半徑，D(ε_F)＝費米能處的態密度，1/ks＝Thomas–Fermi 屏蔽長度"
+   },
+   {
+    "label": "屏蔽庫侖位勢",
+    "formula": "φ(K) = 4πq/(K² + ks²) ,  φ(r) = (q/r) exp(−ks r)",
+    "bookPage": 406,
+    "eqNumber": "(39)(40)",
+    "symbols": "q＝置入電子海中的點電荷；n₀→0 時 ks→0，回到裸庫侖位勢 q/r"
+   },
+   {
+    "label": "含離子實電子貢獻的離子晶體介電函數",
+    "formula": "ε(ω) = ε(∞) + (4πNq²/M)/(ωT² − ω²)",
+    "bookPage": 411,
+    "eqNumber": "(58)",
+    "symbols": "N＝單位體積的離子對數，q＝有效電荷，M＝約化質量，ωT＝TO 聲子頻率，ε(∞)＝光學介電常數"
+   },
+   {
+    "label": "Lyddane–Sachs–Teller 關係",
+    "formula": "ωL²/ωT² = ε(0)/ε(∞)   （等價於 ε(∞)ωL² = ε(0)ωT²）",
+    "bookPage": 414,
+    "eqNumber": "(62)",
+    "symbols": "ωL＝LO 聲子頻率，ωT＝TO 聲子頻率，ε(0)＝靜態介電常數；ωT→0 的軟模對應 ε(0)→∞，即鐵電性特徵"
+   }
+  ],
+  "mainConclusion": "介電函數 ε(ω,K) 把金屬與離子晶體中一系列看似不同的現象統一起來：ε 的零點給出縱向集體模（電漿子頻率 ωp、LO 聲子頻率 ωL），ε 的極點給出 TO 聲子頻率 ωT，而 ε<0 的區間對應電磁波不能傳播、被全反射的頻段。在靜態極限下 ε(0,K)=1+ks²/K² 給出 Thomas–Fermi 屏蔽，使庫侖位勢變成 (q/r)exp(−ks r)，這是合金殘餘電阻、Mott 轉變與金屬中縱聲學聲子速度的共同基礎。橫向光學聲子與光子必然透過 Maxwell 方程式耦合成 polariton，並導出 LST 關係 ωL²/ωT²=ε(0)/ε(∞)，其與中子散射的實驗值符合極佳。",
+  "verbatimQuotes": [
+   "\"A plasma oscillation in a metal is a collective longitudinal excitation of the conduction electron gas.\" (p.401)",
+   "\"The quantum of the coupled phonon-photon transverse wave field is called a polariton.\" (p.410)",
+   "\"In an insulator the combination of the electron and its strain field is known as a polaron.\" (p.420)"
+  ]
+ },
+ "15": {
+  "ch": 15,
+  "researchQuestion": "本章問：如何從實驗上可直接量到的量（反射率 R(ω)、折射率 n(ω)、消光係數 K(ω)）反推出介電函數 ε(ω)，並藉此決定晶體的能帶結構。書中指出介電函數本身無法由光學量測直接取得，因此第一個目標是把可觀測量與 ε 的實部、虛部連結起來，工具是 Kramers–Kronig 關係。第二個主題是激子（exciton）：光子能量略低於能隙時出現的結構，來自被庫侖吸引束縛在一起的電子—電洞對，分為 Frenkel（緊束縛）與 Mott–Wannier（弱束縛）兩個極限。最後討論晶體中的 Raman 效應，以及快速帶電粒子在固體中的能量損失如何由 −Im{1/ε(ω)} 描述。",
+  "coreConcepts": [
+   "在紅外、可見光、紫外區，輻射的波向量遠小於最短倒晶格向量，因此可取 K=0，只需考慮 ε(ω)=ε′(ω)+iε″(ω)。",
+   "Kramers–Kronig 關係建立在三個性質上：α(ω) 的極點都在實軸下方、無窮大半圓上的積分為零、α′ 為偶函數而 α″ 為奇函數。",
+   "把 r(ω) 視為入射波與反射波之間的響應函數，可由全頻段的 R(ω) 反推相位 θ(ω)，再得到 n、K 與 ε。",
+   "能帶邊以上的吸收帶並非展寬的譜線，而是靠微分（波長、電場、溫度、壓力、單軸應力）作 modulation spectroscopy 才顯出結構；臨界點出現在能帶平行處。",
+   "激子是束縛的電子—電洞對，可在晶體中移動並傳輸能量，但因電中性而不傳輸電荷；束縛能範圍約 1 meV 到 1 eV。",
+   "Frenkel 激子的平移態具有 Bloch 波形式，能量隨波向量呈 ε+2T cos ka；Mott–Wannier 激子則是修正的 Rydberg 問題。",
+   "Ge、Si 中激子可凝聚成電子—電洞液滴（EHD），滴內激子解離成金屬性的簡併電子—電洞費米氣。",
+   "Raman 效應源自電子極化率對聲子振幅的依賴 α=α₀+α₁u+α₂u²+⋯；一階過程給 Stokes/anti-Stokes 線，二階過程來自 α₂u² 項。"
+  ],
+  "equations": [
+   {
+    "label": "複折射率與介電函數的關係",
+    "formula": "ε(ω)^(1/2) ≡ n(ω) + iK(ω) ≡ N(ω)",
+    "bookPage": 429,
+    "eqNumber": "(3)",
+    "symbols": "n＝折射率，K＝消光係數（勿與波向量混淆），N＝複折射率；由此 ε′=n²−K²、ε″=2nK（式(7)，p.430）"
+   },
+   {
+    "label": "垂直入射的反射係數",
+    "formula": "r(ω) = (n + iK − 1)/(n + iK + 1) ,  R = r*r = ρ²",
+    "bookPage": 429,
+    "eqNumber": "(2) 在 p.429；(6) R=r*r=ρ² 在 p.430",
+    "symbols": "r(ω)＝E(refl)/E(inc)＝ρ(ω)exp[iθ(ω)]，R＝反射率；書末總結給出 R=[(n−1)²+K²]/[(n+1)²+K²]（p.449）"
+   },
+   {
+    "label": "Kramers–Kronig 關係",
+    "formula": "α′(ω) = (2/π) P ∫₀^∞ s α″(s)/(s² − ω²) ds ;  α″(ω) = −(2ω/π) P ∫₀^∞ α′(s)/(s² − ω²) ds",
+    "bookPage": 432,
+    "eqNumber": "(11a)(11b) 在 p.432；p.449 SUMMARY 重列同式但無式號",
+    "symbols": "α(ω)=α′(ω)+iα″(ω)＝線性被動系統的響應函數，P＝主值積分"
+   },
+   {
+    "label": "由反射率求反射相位",
+    "formula": "θ(ω) = −(ω/π) P ∫₀^∞ ln R(s)/(s² − ω²) ds",
+    "bookPage": 432,
+    "eqNumber": "(13)",
+    "symbols": "θ(ω)＝反射波相位；反射率為常數的頻段對積分無貢獻"
+   },
+   {
+    "label": "直接能帶間躍遷的能量守恆條件",
+    "formula": "ℏω = ε_c(k) − ε_v(k) ;  ∇_k[ε_c(k) − ε_v(k)] = 0（臨界點）",
+    "bookPage": 434,
+    "eqNumber": "(21) 在 p.434；臨界點條件 (22) 在 p.435",
+    "symbols": "c＝空能帶（導電帶），v＝滿能帶（價帶）；臨界點處聯合態密度 D_c D_v 發散"
+   },
+   {
+    "label": "Frenkel 激子的能量本徵值",
+    "formula": "E_k = ε + 2T cos ka",
+    "bookPage": 439,
+    "eqNumber": "(29)",
+    "symbols": "ε＝自由原子激發能，T＝激發由 j 傳到最近鄰 j±1 的轉移積分，a＝晶格常數，k=2πs/Na"
+   },
+   {
+    "label": "Mott–Wannier 激子的修正 Rydberg 能階",
+    "formula": "E_n = E_g − μe⁴/(2ℏ²ε²n²) ,  1/μ = 1/m_e + 1/m_h",
+    "bookPage": 441,
+    "eqNumber": "(32)(33)",
+    "symbols": "E_g＝能隙，n＝主量子數，μ＝約化質量，ε＝適當的介電常數；庫侖位勢 U(r)=−e²/εr（式(31)）"
+   },
+   {
+    "label": "Stokes 與 anti-Stokes 線的強度比",
+    "formula": "I(ω+Ω)/I(ω−Ω) = ⟨n_K⟩/(⟨n_K⟩+1) = exp(−ℏΩ/k_BT)",
+    "bookPage": 445,
+    "eqNumber": "(39)",
+    "symbols": "Ω＝聲子頻率，⟨n_K⟩＝Planck 分布 1/[exp(ℏΩ/k_BT)−1]；選擇律為 ω=ω′±Ω、k=k′±K（式(34)）"
+   }
+  ],
+  "mainConclusion": "光學反射量測搭配 Kramers–Kronig 關係，可由單一可測量 R(ω) 完整重建 ε(ω)，因而使光譜學成為決定能帶結構最重要的實驗工具；再配合微分（modulation）光譜與贗位勢計算，能帶間能量差可算到 0.1 eV 的精度。能隙以下的吸收結構來自激子，它是庫侖束縛的電子—電洞對，在緊束縛（Frenkel）極限下以 Bloch 波形式在晶體中傳播，在弱束縛（Mott–Wannier）極限下服從修正的 Rydberg 公式，Cu₂O 的實驗與之符合良好。電磁波在固體中的能量損失由 Im{ε(ω)} 決定，而帶電粒子穿透固體的能量損失則由 −Im{1/ε(ω)} 決定，兩者的實驗結果彼此吻合。",
+  "verbatimQuotes": [
+   "\"The bound electron-hole pair is called an exciton.\" (p.435)",
+   "\"In the Raman effect a photon is scattered inelastically by a crystal, with creation or annihilation of a phonon or magnon.\" (p.444)"
+  ]
+ },
+ "16": {
+  "ch": 16,
+  "researchQuestion": "本章先問兩個問題：在介電物質內部，Maxwell 方程式中的巨觀電場 E 與極化 P 有何關係？以及作用在晶格中某個原子位置上的局域電場與極化有何關係？後者決定該原子的偶極矩。接著由局域場與極化率導出介電常數，得到 Clausius–Mossotti 關係。第二半章討論結構相變，特別是鐵電相變：以「極化災變（polarization catastrophe）」與「橫向光學聲子軟化（soft mode）」兩個互補觀點理解位移型（displacive）轉變，並用 Landau 自由能展開處理一階與二階相變，最後談反鐵電性、鐵電疇與壓電性。",
+  "coreConcepts": [
+   "極化 P 定義為單位體積的偶極矩（對晶胞體積平均）；巨觀電場 E 定義為微觀電場 e(r) 對晶胞體積的平均。",
+   "均勻極化物體所產生的巨觀場等於虛擬表面電荷密度 σ=n̂·P 在真空中的場；橢球體具有均勻極化產生均勻退極化場的優點。",
+   "局域場分解為 Elocal=E₀+E₁+E₂+E₃，其中只有 E₃（球內偶極的場）隨晶胞內位置急速變化；立方對稱位置 E₃=0。",
+   "Lorentz 關係：立方位置的局域場等於巨觀場 E 加上 4πP/3（CGS）或 P/3ε₀（SI），實驗數據支持此關係。",
+   "總極化率可分為電子、離子、偶極三部分；光頻下只剩電子極化率，此時 Clausius–Mossotti 化為 (n²−1)/(n²+2)=(4π/3)ΣNjαj。",
+   "結構相變由自由能 F=U−TS 的極小決定；聲子譜較軟的結構熵較大，因此可能在高溫變成穩定相。",
+   "鐵電轉變是結構相變的一個子類，特徵是晶體中出現自發介電極化；鈣鈦礦結構因 O²⁻ 位置非立方、局域場因子異常大而特別容易發生位移型轉變。",
+   "LST 關係把高靜態介電常數與低頻 TO 模連結起來：ωT→0 時 ε(0)→∞；SrTiO₃ 的中子散射證實 ωT²∝(T−T₀)。"
+  ],
+  "equations": [
+   {
+    "label": "橢球體的退極化場與退極化因子",
+    "formula": "E₁x = −Nx Px , E₁y = −Ny Py , E₁z = −Nz Pz ;  Nx+Ny+Nz = 4π (CGS)，=1 (SI)",
+    "bookPage": 458,
+    "eqNumber": "(8)",
+    "symbols": "N＝退極化因子，依橢球主軸比而定；球體 N=4π/3（CGS）、1/3（SI），薄板法向 N=4π、長圓柱縱向 N=0"
+   },
+   {
+    "label": "Lorentz 局域場關係",
+    "formula": "E_local = E₀ + E₁ + (4π/3)P = E + (4π/3)P   (CGS);   E_local = E + P/(3ε₀)   (SI)",
+    "bookPage": 462,
+    "eqNumber": "(17)",
+    "symbols": "E₂=(4π/3)P＝Lorentz 空腔表面極化電荷的場；立方位置 E₃=0"
+   },
+   {
+    "label": "Clausius–Mossotti 關係",
+    "formula": "(ε − 1)/(ε + 2) = (4π/3) Σ_j N_j α_j   (CGS);   (ε−1)/(ε+2) = (1/3ε₀) Σ_j N_j α_j   (SI)",
+    "bookPage": 464,
+    "eqNumber": "(24)",
+    "symbols": "N_j＝j 類原子濃度，α_j＝其極化率（p=αE_local）；僅對滿足 Lorentz 局域場的晶體結構成立"
+   },
+   {
+    "label": "極化災變條件",
+    "formula": "Σ_i N_i α_i = 3/4π   (CGS)",
+    "bookPage": 472,
+    "eqNumber": "(31)",
+    "symbols": "α_i＝i 型離子的電子加離子極化率，N_i＝其單位體積數目；此時 ε→∞，零外場下可有有限極化"
+   },
+   {
+    "label": "順電態的 Curie–Weiss 型介電常數",
+    "formula": "取 (4π/3)ΣN_iα_i = 1 − 3s，s ≪ 1，則 ε ≅ 1/s ;  若 s ≅ (T − Tc)/ξ，則 ε ≅ ξ/(T − Tc)",
+    "bookPage": 472,
+    "eqNumber": "(32)(33)(34)(35)",
+    "symbols": "s＝偏離臨界值的小量，ξ＝常數，Tc＝轉變溫度；與鈣鈦礦順電態的觀測溫度變化相符"
+   },
+   {
+    "label": "Landau 自由能密度展開與平衡條件",
+    "formula": "F̂(P;T,E) = −EP + g₀ + ½g₂P² + ¼g₄P⁴ + ⅙g₆P⁶ + ⋯ ;  ∂F̂/∂P = 0 = −E + g₂P + g₄P³ + g₆P⁵ + ⋯",
+    "bookPage": 475,
+    "eqNumber": "(37)(38)",
+    "symbols": "g_n＝隨溫度變化的係數；若晶體未極化態具反演中心則無奇次項；取 g₂ = γ(T − T₀)（式(39)），γ>0"
+   },
+   {
+    "label": "二階相變的自發極化",
+    "formula": "γ(T − T₀)P_s + g₄P_s³ = 0  ⟹  |P_s| = (γ/g₄)^(1/2) (T₀ − T)^(1/2)",
+    "bookPage": 475,
+    "eqNumber": "(40) 在 p.475 末；(41) |P_s| 在 p.476",
+    "symbols": "g₄>0 時為二階轉變，T₀＝Curie 溫度，P_s＝自發極化；LiTaO₃ 為例。g₄<0 時為一階轉變（式(42)(43)，p.477）"
+   },
+   {
+    "label": "轉變溫度以上的介電常數",
+    "formula": "ε(T > Tc) = 1 + 4πP/E = 1 + 4π/[γ(T − T₀)]",
+    "bookPage": 478,
+    "eqNumber": "(44)",
+    "symbols": "一階或二階轉變皆適用；二階時 T₀=Tc，一階時 T₀<Tc"
+   }
+  ],
+  "mainConclusion": "介電常數必須透過局域場才能與原子極化率連結：在立方位置採用 Lorentz 局域場 E+4πP/3，即得 Clausius–Mossotti 關係 (ε−1)/(ε+2)=(4π/3)ΣNjαj。當 ΣNiαi 逼近臨界值 3/4π 時發生極化災變，ε 發散並在零外場下出現自發極化，這正是位移型鐵電轉變；同一件事的等價說法是橫向光學聲子凝聚（軟模），由 LST 關係 ωT²/ωL²=ε(∞)/ε(0) 可知 ε(0) 很大必然對應 ωT 很低，SrTiO₃ 的中子散射數據證實了這一點。Landau 自由能展開則統一描述兩類轉變：g₄>0 給二階轉變、極化連續趨零（|Ps|∝(T₀−T)^½），g₄<0 給一階轉變、極化在 Tc 不連續跳變（BaTiO₃）。",
+  "verbatimQuotes": [
+   "\"The polarization P is defined as the dipole moment per unit volume, averaged over the volume of a cell.\" (p.455)",
+   "\"Ferroelectric transitions are a subgroup of structural phase transitions, a subgroup marked by the appearance of a spontaneous dielectric polarization in the crystal.\" (p.467)",
+   "\"All crystals in a ferroelectric state are also piezoelectric.\" (p.481)"
+  ]
+ },
+ "17": {
+  "ch": 17,
+  "researchQuestion": "本章處理晶體表面與界面的物理。前半部問：真空中晶體表面最外約三層原子與塊材有何差異（弛豫與重構）、表面的二維週期性如何以 mesh／net 與 Wood 記號描述、以及 LEED 與 RHEED 如何利用倒晶格「桿（rod）」與 Ewald 球來繞射成像。接著討論表面電子結構：功函數、熱離子發射、能隙中的表面態，以及 MOSFET 中由閘極電壓調控的表面導電通道。後半部轉向二維通道的磁阻與整數／分數量子霍爾效應，再處理 p-n 接面整流、Schottky 位障、異質結構（heterostructure）、半導體雷射與發光二極體。",
+  "coreConcepts": [
+   "表面弛豫（relaxation）只改變層間距而保持表面內結構；表面重構（reconstruction）則產生新的表面原胞，源自表面斷鍵（dangling bonds）重新成鍵。",
+   "表面結構一般只有二維週期性，用 mesh 基底向量 c₁、c₂ 相對於基材參考網 a₁、a₂ 的矩陣 P 或 Wood 記號描述；共有五種二維網。",
+   "二維倒晶格點在三維中應視為垂直表面的無限長「桿」；Ewald 球與桿的交點給出繞射束，這是 LEED 與 RHEED 成像的基礎。",
+   "功函數 W 定義為真空能階與費米能階之間的電子位能差，其值受暴露晶面影響，因為表面電雙層強度取決於表面正離子實的濃度。",
+   "半導體自由表面常有能隙中的表面束縛態；束縛態不能有垂直表面的電流，此條件迫使 k 只能取布里淵區邊界的離散值 k=½G。",
+   "MOSFET 以閘極電壓調變表面電荷密度 n_s，形成導電通道，是微電子系統的核心三端元件。",
+   "IQHE：強磁場下 ℏωc≫k_BT，當費米能恰落在填滿的 Landau 能階時，包立原理禁止彈性碰撞、且缺少足夠能量的熱聲子，因此碰撞時間大增，ρxx→0 而 ρH 精確量子化為 h/se²（25,813/s 歐姆）。",
+   "p-n 接面因擴散造成電荷雙層與內建電場；順偏降低位障使復合電流指數上升，而熱生成電流不受偏壓影響，於是產生整流特性。"
+  ],
+  "equations": [
+   {
+    "label": "MOSFET 表面電荷與表面層電導",
+    "formula": "Δn_s = C_g ΔV_g ;  G = (W/L) n_s e μ",
+    "bookPage": 497,
+    "eqNumber": "",
+    "symbols": "C_g＝閘極與半導體間單位面積電容，V_g＝閘極電壓，n_s＝單位面積表面載子密度，W、L＝表面層寬與長，μ＝載子遷移率"
+   },
+   {
+    "label": "二維通道的表面磁導率張量",
+    "formula": "σxx = σ₀/[1 + (ωcτ)²] ,  σxy = σ₀ωcτ/[1 + (ωcτ)²]",
+    "bookPage": 498,
+    "eqNumber": "(16)",
+    "symbols": "σ₀ = n_s e²τ/m，ωc = eB/mc (CGS) 或 eB/m (SI)，τ＝弛豫時間；ωcτ≫1 時 σxx→0、σxy→n_s e c/B（式(17)）"
+   },
+   {
+    "label": "霍爾電阻（古典二維結果）",
+    "formula": "ρ_H = V_y/I_x = B/(n_s e c)",
+    "bookPage": 498,
+    "eqNumber": "(18a)",
+    "symbols": "V_y＝橫向電壓，I_x＝縱向電流，B＝垂直表面的磁場；由漂移速度 v_D = cE_y/B_z 導出"
+   },
+   {
+    "label": "費米能落在 Landau 能階上的條件",
+    "formula": "s e B/(h c) = n_s",
+    "bookPage": 499,
+    "eqNumber": "(21)",
+    "symbols": "s＝任意整數（填滿的 Landau 能階數），n_s＝電子面密度；此時彈性碰撞被包立原理禁止"
+   },
+   {
+    "label": "整數量子霍爾效應的量子化霍爾電阻",
+    "formula": "ρ_H = h/(s e²) = 2π/(s c α)",
+    "bookPage": 500,
+    "eqNumber": "(22)",
+    "symbols": "α = e²/ℏc ≅ 1/137＝精細結構常數，s＝整數；h/e² = 25,813 歐姆，實驗測得 ρ_H 精確等於 25,813/s 歐姆"
+   },
+   {
+    "label": "p-n 接面的整流方程式",
+    "formula": "I = I_s [exp(eV/k_BT) − 1]",
+    "bookPage": 506,
+    "eqNumber": "(33)",
+    "symbols": "I_s＝兩個熱生成電流之和，V＝外加偏壓；由 J_nr(V)=J_nr(0)exp(±e|V|/k_BT) 與 J_ng(V)=J_ng(0) 得到"
+   },
+   {
+    "label": "Schottky 位障的電位分布與位障厚度",
+    "formula": "d²φ/dx² = −4πne/ε ⟹ φ = −(2πne/ε)x² ;  x_b = (ε|φ|/2πne)^(1/2)   (CGS)",
+    "bookPage": 506,
+    "eqNumber": "(35)(36) 在 p.506；(37) x_b 在 p.507",
+    "symbols": "n＝施體濃度，ε＝半導體介電常數，x_b＝耗盡層（位障）厚度；SI 為 x_b=(2εε₀|φ|/ne)^(1/2)。以 ε=16、e|φ|=0.5 eV、n=10¹⁶ cm⁻³ 得 x_b=0.3 μm"
+   },
+   {
+    "label": "半導體雷射的粒子數反轉條件",
+    "formula": "μ_c > μ_v + ε_g",
+    "bookPage": 510,
+    "eqNumber": "(38)",
+    "symbols": "μ_c、μ_v＝導電帶與價帶各自的準費米能階（相對於各自能帶邊緣），ε_g＝能隙；即準費米能階分裂必須大於能隙"
+   }
+  ],
+  "mainConclusion": "表面是只有二維週期性的系統，其倒空間為垂直表面的桿陣列，這使 LEED／RHEED 的 Ewald 球構圖與塊材繞射有本質差異；表面同時帶來能隙中的表面態與能帶彎曲，而外加垂直電場可調控表面層厚度與載子濃度，正是 MOSFET 的原理。在強磁場、低溫的二維通道中，ρxx 趨近於零且霍爾電阻精確量子化為 h/se²（25,813/s 歐姆），且此精度與樣品純度無關——Laughlin 以規範不變性一般性地解釋了這一點；更低溫、更高磁場下還出現分數量子霍爾效應。界面工程方面，異質結構讓摻雜與能帶偏移可獨立設計，n-N 接面的能帶彎曲形成電子位能井並把高遷移率電子與游離施體在空間上分離（GaAs/(Al,Ga)As 低溫遷移率可達 10⁷ cm²V⁻¹s⁻¹），雙異質結構則是實用注入式雷射與高效率 LED 的基礎。",
+  "verbatimQuotes": [
+   "\"The work function W of the uniform surface of a metal is defined as the difference in potential energy of an electron between the vacuum level and the Fermi level.\" (p.494)",
+   "\"For laser action the quasi-Fermi levels must be separated by more than the band gap.\" (p.510)"
+  ]
+ },
+ "18": {
+  "ch": 18,
+  "researchQuestion": "本章（由 Cornell 大學 Paul McEuen 撰寫）處理在兩個或三個正交方向上被侷限到奈米尺度的固體，也就是準一維（1D）與零維（0D）奈米結構，例如碳奈米管、量子線、導電高分子，以及半導體奈米晶、金屬奈米粒子、微影定義的量子點。核心問題是：當固體的尺寸在一個以上的方向縮小時，電子態與振動態如何被量子化，而這些量子化如何決定光學、電性與熱學性質。章節先介紹奈米結構的成像技術（TEM、光學顯微、STM、AFM），再依序建立 1D 電子結構（1D 子能帶與 van Hove 奇異點）、1D 電輸運（電導量子化、Landauer 公式、共振穿隧、局域化、Büttiker 多端點形式）、0D 電子結構與電輸運（量子化能階、充電能、庫侖振盪、Kondo 效應、Cooper 配對），最後處理量子化振動模與熱容／熱傳導。書中明言此類量子化現象通常在 1–100 奈米尺度才重要。",
+  "coreConcepts": [
+   "製作奈米結構有兩大路線：top-down 用微影把巨觀材料切到奈米尺度，bottom-up 用生長與自組裝從原子／分子前驅物堆出結構；前者難做小於 50 nm，後者難做大於 50 nm。",
+   "奈米粒子表面原子佔比極高（R = 6a ≈ 1 nm 時約一半原子在表面），使內聚能大幅下降，因此奈米粒子的熔點遠低於對應塊材。",
+   "1D 線的能量為橫向侷限能階加上沿線的自由色散，總態密度是各 1D 子能帶態密度之和，並在每個子能帶閾值發散為 (ε−ε_ij)^(−1/2)，稱為 van Hove 奇異點。",
+   "1D 金屬的費米面只有 ±k_F 兩個點；能量與動量守恆在此等價，使得散射相空間限制較弱，基態被認為不是 Fermi 液體而是 Luttinger 液體。",
+   "完美傳輸的單一 1D 通道具有有限電導 2e²/h（電導量子），與電子速度無關；有散射時電導為 Landauer 公式 G = (2e²/h)ℑ。",
+   "兩個位障串聯時，若保持相位相干，在共振條件 φ* = 2πn 下透射被大幅增強；對稱位障時共振透射率為 1（共振穿隧）。若相位被破壞而改用機率相加，則得到歐姆定律：接觸電阻加上各位障電阻相加。",
+   "只考慮彈性（保相位）散射時，平均電阻隨長度指數成長 ⟨R⟩ ∝ exp(2L/ℓ_e)，這就是局域化；有限溫度下相位相干長度 ℓ_φ 限制了指數段的長度。",
+   "金屬點的 addition energy 由充電能主導；半導體點則是充電能與能階間距「同等重要」（p.551 逐字：the charging energy and the level spacing are of comparable importance）。",
+   "奈米結構的振動模同樣量子化：薄壁圓柱有縱向模、徑向呼吸模（RBM）與橫向模；RBM 頻率 ω = v_L/R 可用 Raman 光譜量測並反推奈米管半徑。",
+   "細長梁的橫向聲子不是剪切而是彎曲（flexural），色散由線性 ω = v_T K 變成二次 ω ∝ K²，且由縱波聲速決定而非橫波聲速。",
+   "室溫下侷限方向的振動模能量通常小於 k_BT，因此奈米結構的晶格熱性質接近塊材（∝ T³）；但低溫時侷限方向的模凍結，系統變成 1D 熱系統，熱容與熱導都線性正比於 T。",
+   "彈道極限下每個 1D 聲子子能帶的熱導 G_th 只由基本常數與絕對溫度決定，與 1D 電導量子化完全類比。"
+  ],
+  "equations": [
+   {
+    "label": "1D 線的本徵態與色散（橫向量子化 + 沿線平面波）",
+    "formula": "ε = ε_{i,j} + ℏ²k²/2m ;  ψ(x,y,z) = ψ_{i,j}(x,y) e^{ikz}",
+    "bookPage": 528,
+    "eqNumber": "(13)",
+    "symbols": "i, j 為 x,y 平面內本徵態的量子數；k 為 z 方向波向量；m 為有效質量；ε_{i,j} 為橫向能量態"
+   },
+   {
+    "label": "1D 子能帶態密度與 van Hove 奇異點",
+    "formula": "D_{i,j}(ε) = (dN_{i,j}/dk)(dk/dε) = (2)(2)(L/2πℏ)[m/2(ε−ε_{i,j})]^{1/2} = 4L/hν_{i,j}  (ε > ε_{i,j})，  = 0  (ε < ε_{i,j})",
+    "bookPage": 528,
+    "eqNumber": "(15)",
+    "symbols": "第一個因子 2 來自自旋簡併，第二個 2 來自 ±k 兩個方向；ν_{i,j} 為動能 ε−ε_{i,j} 的電子在 i,j 子能帶中的速度；L 為線長"
+   },
+   {
+    "label": "單一 1D 通道的淨電流（速度與態密度剛好抵消）",
+    "formula": "I = Δn q v = D_R(ε) qV/L · qv = (2/hv)·v q²V = (2e²/h) V",
+    "bookPage": 533,
+    "eqNumber": "(20)",
+    "symbols": "Δn 為右行載子的過剩密度；D_R(ε) 為右行載子態密度；V 為兩端電化學位能差 μ₁−μ₂ = qV；q = −e（電子）或 +e（電洞）"
+   },
+   {
+    "label": "電導量子與電阻量子",
+    "formula": "G_Q = 2e²/h ;  R_Q = h/2e² = 12.906 kΩ",
+    "bookPage": 534,
+    "eqNumber": "(21)",
+    "symbols": "e 為基本電荷，h 為 Planck 常數；此值對任意色散的 1D 能帶皆成立"
+   },
+   {
+    "label": "Landauer 公式（兩端點電導）",
+    "formula": "G(ε_F) = (2e²/h) ℑ(ε_F)",
+    "bookPage": 534,
+    "eqNumber": "(22)",
+    "symbols": "ℑ(ε_F) 為費米能處電子穿過通道的透射機率；多通道時 ℑ(ε_F) = Σ_{i,j} ℑ_{i,j}(ε_F)（式 23）"
+   },
+   {
+    "label": "有限溫度／偏壓下的電流（Landauer 積分形式）",
+    "formula": "I(ε_F, V, T) = (2e/h) ∫_{−∞}^{∞} dε [ f_L(ε − eV) − f_R(ε) ] ℑ(ε)",
+    "bookPage": 536,
+    "eqNumber": "(24)",
+    "symbols": "f_L、f_R 分別為左、右電極的 Fermi–Dirac 分布；淨電流是左行與右行電流對所有能量積分之差"
+   },
+   {
+    "label": "雙位障串聯的相干透射機率（共振穿隧）",
+    "formula": "ℑ = |c|² = |t₁|²|t₂|² / [ 1 + |r₁|²|r₂|² − 2|r₁||r₂| cos(φ*) ]，  φ* = 2kL + φ_{r1} + φ_{r2}",
+    "bookPage": 536,
+    "eqNumber": "(29)",
+    "symbols": "t_j、r_j 為第 j 個位障的複數透射／反射振幅；L 為兩位障間距；φ = 2kL 為往返累積相位；共振條件為 φ* = 2πn（式 30），對稱位障時 ℑ = 1（式 32）"
+   },
+   {
+    "label": "局域化：電阻隨長度指數成長",
+    "formula": "⟨R⟩ = (h/2e²) exp(2L/ℓ_e)",
+    "bookPage": 539,
+    "eqNumber": "(43)",
+    "symbols": "ℓ_e 為彈性背向散射長度；L 為導體長度；局域化長度 ξ ~ ℓ_e（準 1D 時 ξ ~ N ℓ_e，N 為佔據的子能帶數）"
+   },
+   {
+    "label": "量子點增加一個電子所需的閘極電壓變化",
+    "formula": "ΔV_g = (1/αe)( ε_{N+1} − ε_N + e²/C )",
+    "bookPage": 550,
+    "eqNumber": "(62)",
+    "symbols": "α 為閘極電壓對點電位的耦合率；C 為量子點總靜電電容；e²/C 即充電能 U；ε_{N+1} − ε_N 為單粒子能階間距"
+   },
+   {
+    "label": "薄壁圓柱徑向呼吸模（RBM）頻率",
+    "formula": "ω_RBM = (YV/MR²)^{1/2} = (Y/ρ)^{1/2}/R = v_L/R",
+    "bookPage": 558,
+    "eqNumber": "(72)",
+    "symbols": "Y 為楊氏模數，V 為圓柱體積，M 為質量，ρ 為密度，R 為半徑，v_L ≡ (Y/ρ)^{1/2} 為縱向聲速；奈米管取 v_L = 21 km/s 時 ℏω_RBM = 14 meV / R[nm]"
+   },
+   {
+    "label": "細梁橫向彎曲（flexural）模的二次色散",
+    "formula": "ω_T = v_L h K² / √12",
+    "bookPage": 559,
+    "eqNumber": "(76)",
+    "symbols": "h 為梁厚度，K 為沿梁軸的波向量，v_L 為縱向聲速；此模的頻率由縱波聲速而非橫波聲速決定，因為其本質是壓縮／伸張"
+   },
+   {
+    "label": "單一 1D 聲學聲子子能帶的熱容（線性正比於 T）",
+    "formula": "C_V^{(1D)} = 2π² L k_B² T / (3 h v)",
+    "bookPage": 561,
+    "eqNumber": "(77)",
+    "symbols": "L 為長度，v 為聲速（色散 ω = vk），k_B 為 Boltzmann 常數，h 為 Planck 常數；對比 3D 的 T³ 行為，模數隨 K^D 標度故 1D 給出 T"
+   },
+   {
+    "label": "單一 1D 聲子子能帶的彈道熱導（熱導量子）",
+    "formula": "G_th^{(1D)} = (π² k_B² T / 3h) ℑ",
+    "bookPage": 561,
+    "eqNumber": "(78)",
+    "symbols": "ℑ 為聲子穿過結構的透射機率；完美透射時 G_th 只由基本常數與絕對溫度決定，與電導量子 2e²/h 類比"
+   }
+  ],
+  "mainConclusion": "當固體在兩或三個方向被侷限到奈米尺度時，電子與振動的激發都被量子化，而這些量子化直接決定材料性質。電性方面，1D 通道的電導由 Landauer 公式 G = (2e²/h)ℑ 給出，完美通道的電導只由基本常數決定；量子干涉進一步造成共振穿隧、局域化與 Aharonov–Bohm 效應，而 0D 量子點加一個電子需要付出 U + Δε 的電化學位能。熱學方面，室溫下奈米結構的晶格熱性質仍近似塊材的 T³ 行為，但低溫時侷限方向的模凍結，系統轉為 1D，熱容與彈道熱導都變成線性正比於 T，且熱導量子 π²k_B²T/3h 只由基本常數與溫度決定。",
+  "verbatimQuotes": [
+   "\"Note that the density of states diverges as (ε − εi,j)−1/2 at each subband threshold. These are called van Hove singularities.\" (p.528)",
+   "\"Both (77) and (78) are linear in temperature, in contrast to the T3 result for 3D.\" (p.561)"
+  ]
+ },
+ "19": {
+  "ch": 19,
+  "researchQuestion": "本章處理非晶固體：amorphous solid、noncrystalline solid、disordered solid、glass 或 liquid。書中明白指出這些名詞除了「在任何顯著尺度上都不是晶體」之外沒有精確的結構意義，唯一存在的主要結構秩序是最近鄰原子或分子間距近似固定。章節先問：非晶材料的繞射圖樣（幾個寬而瀰散的環）能告訴我們什麼？答案是只能直接得到徑向分布函數。接著以熔融石英為例建立氧化物玻璃的隨機網路模型，討論玻璃轉變溫度與黏度的跳躍模型，再處理非晶鐵磁體與非晶半導體，最後是本章最反直覺的部分：非晶固體在 1 K 以下出現異常的線性熱容項，以及玻璃極低的熱導率與極短的聲子平均自由程；章末以光纖的 Rayleigh 衰減收尾。",
+  "coreConcepts": [
+   "非晶材料的 x 射線或中子繞射圖樣是一個或數個寬而瀰散的環；由此只能直接決定徑向分布函數，需對實驗散射曲線做 Fourier 分析取得。",
+   "晶體與非晶之間沒有明確界線：晶體粉末顆粒愈小，繞射線愈寬，最後與液體或玻璃的圖樣相似。",
+   "熔融石英的第一個峰在 1.62 Å（接近晶態矽酸鹽的平均 Si–O 距離），每個 Si 被四個 O 四面體包圍，每個 O 鍵結兩個 Si，符合 Zachariasen 的隨機網路模型。",
+   "玻璃是由液體冷卻但未結晶而來，兼具液體的隨機結構與各向同性固體的彈性；依約定當黏度達 10¹³ poise 時定義玻璃轉變溫度 T_g，這不是熱力學相變，只是「實用上」的轉變。",
+   "液體黏度由分子熱重排（跳躍到空位或與鄰居互換）的速率決定；分子必須越過高度 E 的位能障，成功跳躍的機率為 exp(−E/k_BT)，因此黏度隨溫度指數上升。玻璃形成者的活化能約 1 eV 以上。",
+   "非晶金屬合金由極快淬冷（melt-spin）製得；因近乎各向同性而磁晶各向異性能幾乎為零，故矯頑力低、磁滯損失小、導磁率高（如 Metglas）。",
+   "非晶半導體中 Bloch 定理不適用，電子態無法用明確定義的 k 描述，光學躍遷的動量選擇律放寬；但能帶與能隙仍然存在，因為態密度形式主要由局部電子鍵結組態決定。Anderson 提出能帶邊緣附近的態可能是局域化的。",
+   "純介電晶體低溫熱容遵守 Debye T³ 律，但許多絕緣玻璃在 1 K 以下出現非預期的線性熱容項；25 mK 時熔融石英的觀測熱容超過 Debye 聲子貢獻達 1000 倍。此異常被認為來自二能階系統（可被強聲子場飽和），而非多能階振子系統。",
+   "經驗結果是所有無序固體都有約 N ~ 10¹⁷ cm⁻³ 的「新型」低能激發，均勻分布在 0 到 1 K 的能量區間。",
+   "玻璃的熱導率極低：室溫以上由結構無序尺度限制聲子平均自由程（熔融石英約 6 × 10⁻⁸ cm，即數個原子間距），這是靠相位抵消過程達成的；1 K 以下則由聲子被那些神祕的二能階（穿隧）態散射所限制。",
+   "光纖在 1.55 μm 附近有最小衰減約 0.20 dB/km；光學窗口低頻側受聲子吸收帶限制，高頻側受 Rayleigh 散射與最終的電子吸收限制，衰減正比於頻率的四次方。"
+  ],
+  "equations": [
+   {
+    "label": "非晶材料散射強度的 Debye 結果",
+    "formula": "I(K) = Σ_m Σ_n f_m f_n (sin K r_mn)/(K r_mn)",
+    "bookPage": 568,
+    "eqNumber": "(5)",
+    "symbols": "f_m 為原子形狀因子；K 為散射向量 Δk 的大小；r_mn 為 |r_m − r_n|；已對球面平均相位因子 ⟨exp(iKr cos α)⟩ = (sin Kr_mn)/(K r_mn)（式 4）"
+   },
+   {
+    "label": "液體結構因子與徑向分布函數的關係",
+    "formula": "S(K) = 1 + 4πρ̄ ∫₀^∞ dr [g(r) − 1] r² (sin Kr)/(Kr)",
+    "bookPage": 569,
+    "eqNumber": "(12)",
+    "symbols": "S(K) ≡ I/(N f²)（式 9）；ρ̄ 為平均濃度；g(r) 由 ρ(r) = g(r) ρ̄ 定義（式 11）；(sin Kr)/Kr 是 exp(iK·r) 展開中的球對稱 s 項"
+   },
+   {
+    "label": "由結構因子反算徑向分布函數（雙原子關聯函數）",
+    "formula": "g(r) − 1 = (1/8π³ρ̄) ∫ dK [S(K) − 1] exp(−iK·r) = (1/2π²ρ̄r) ∫ dK [S(K) − 1] K sin Kr",
+    "bookPage": 569,
+    "eqNumber": "(13)",
+    "symbols": "由三維 Fourier 積分定理得到；g(r) 又稱雙原子關聯函數，可由量測到的 S(K) 計算"
+   },
+   {
+    "label": "分子越過位能障的時間比例（跳躍機率）",
+    "formula": "f ≅ exp(−E/k_B T)",
+    "bookPage": 574,
+    "eqNumber": "(16)",
+    "symbols": "E 為適當的自由能，稱為決定跳躍速率之過程的活化能，與自擴散活化能相關；黏度隨成功跳躍機率下降而上升，η ≅ η(min)/f"
+   },
+   {
+    "label": "單一二能階系統的熱容",
+    "formula": "C_V = k_B(∂U/∂τ) = k_B (Δ/2τ)² sech²(Δ/2τ)",
+    "bookPage": 578,
+    "eqNumber": "(22)",
+    "symbols": "τ = k_B T；Δ 為能階分裂（遠小於 Debye 截止 k_Bθ）；配分函數 Z = 2cosh(Δ/2τ)（式 20），熱平均能量 U = −(1/2)Δ tanh(Δ/2τ)（式 21）"
+   },
+   {
+    "label": "二能階系統在低溫給出的線性熱容",
+    "formula": "C_V ≅ 2 k_B² T / (3 Δ₀)",
+    "bookPage": 579,
+    "eqNumber": "(24)",
+    "symbols": "設 Δ 在 0 到 Δ₀ 之間均勻分布；適用於 τ ≪ Δ₀（即 T < Δ₀/k_B）；此時式 (23) 的積分約為 1/3。此線性項與傳導電子熱容的線性項無關"
+   },
+   {
+    "label": "熔融石英低溫熱容的實驗表達式",
+    "formula": "C_V = c₁ T + c₃ T³",
+    "bookPage": 579,
+    "eqNumber": "(28)",
+    "symbols": "c₁ = 12 erg g⁻¹ K⁻²，c₃ = 18 erg g⁻¹ K⁻⁴；c₁T 為二能階系統的異常線性項，c₃T³ 為 Debye 聲子項"
+   },
+   {
+    "label": "玻璃熱導率與聲子平均自由程",
+    "formula": "K = (1/3) c v ℓ",
+    "bookPage": 580,
+    "eqNumber": "(29)",
+    "symbols": "c 為單位體積熱容，v 為平均聲子速度，ℓ 為聲子平均自由程；熔融石英室溫下 c ≅ 1.6 J cm⁻³K⁻¹、K ≅ 1.4×10⁻² J cm⁻¹s⁻¹K⁻¹、⟨v⟩ ≅ 4.2×10⁵ cm/s，得 ℓ ≅ 6×10⁻⁸ cm"
+   }
+  ],
+  "mainConclusion": "非晶固體唯一的結構秩序來自近似固定的最近鄰間距，因此繞射只能給出徑向分布函數，而熔融石英的結果完全符合 Zachariasen 的隨機網路模型。玻璃的定義是黏度達 10¹³ poise，其溫度依賴由分子越過位能障的活化跳躍決定。最重要也最違反直覺的結論是：純晶體低溫熱容遵守 Debye T³ 律，但幾乎所有非晶固體在 1 K 以下都多出一個線性項，其來源被認為是濃度約 10¹⁷ cm⁻³、能量均勻分布在 0–1 K 的二能階系統；同樣這些二能階（穿隧）態在低溫散射聲子，加上室溫以上結構無序把聲子平均自由程壓到僅數個原子間距，共同造成玻璃極低的熱導率。",
+  "verbatimQuotes": [
+   "\"However, many insulating glasses show an unexpected linear term in the heat capacity below 1 K.\" (p.578)",
+   "\"The normal modes of vibration of the glass structure are utterly unlike plane waves.\" (p.581)"
+  ]
+ },
+ "20": {
+  "ch": 20,
+  "researchQuestion": "本章處理晶體中的點缺陷：化學雜質、空缺晶格位（lattice vacancy）與不在正常晶格位上的額外原子。書中強調某些晶體性質受缺陷控制的程度與受主體成分控制的程度相當——某些半導體的導電度完全來自微量化學雜質，許多晶體的顏色與發光來自雜質或缺陷，原子擴散可被雜質或缺陷大幅加速，機械與塑性性質通常由缺陷控制。章節依序處理：晶格空缺（Schottky 缺陷、Frenkel 缺陷、離子晶體中的成對空缺、二價離子摻雜造成的空缺）、擴散（Fick 定律、活化能、跳躍頻率、離子導電度與 Einstein 關係、金屬中的自擴散），以及色心（F 心、F_A 心、M 心、R 心、V_K 心）。",
+  "coreConcepts": [
+   "最簡單的缺陷是晶格空缺（Schottky 缺陷）：把內部晶格位的原子搬到晶體表面的晶格位；熱平衡下永遠存在一定數量的空缺，因為無序增加了熵。",
+   "緊密堆積金屬在接近熔點時的空缺比例約 10⁻³ 到 10⁻⁴，但某些合金（如硬質過渡金屬碳化物 TiC）某一成分的空缺比例可高達 50%。",
+   "離子晶體中形成數目大致相等的正、負離子空缺在能量上通常較有利，因為成對空缺可在局部尺度維持電中性。純鹼金屬鹵化物以 Schottky 缺陷為主，純鹵化銀以 Frenkel 缺陷為主。",
+   "Frenkel 缺陷是原子從晶格位移到間隙位（interstitial position），即正常不被原子佔據的位置。",
+   "在 KCl 中摻入 CaCl₂ 時，每個 Ca²⁺ 進入正常 K⁺ 位就必須產生一個 K⁺ 空缺以維持電中性，因此密度下降；這些額外空缺才是離子導電度增強的原因，而非二價離子本身特別可動。",
+   "空缺沿一方向的擴散等價於原子沿反方向的擴散；熱生成的缺陷其形成能會對晶體熱容產生額外貢獻（如溴化銀）。",
+   "擴散遵守 Fick 定律，但嚴格說驅動力是化學位能梯度而非僅濃度梯度；擴散常數隨溫度呈 Arrhenius 形式，活化能即原子越過最近鄰位能障所需的能量。",
+   "帶電雜質（p.590 逐字 If the impurities are charged）的擴散率可經 Einstein 關係 k_BT μ = qD 轉換成遷移率與導電度；在空缺數由二價離子決定的溫度區間，ln σ 對 1/k_BT 的斜率給出正離子空缺跳躍的活化能 E₊；在熱生成主導的區間，斜率則為 E₊ + (1/2)E_f。",
+   "室溫下跳躍頻率約 1 s⁻¹，100 K 時約 10⁻²⁵ s⁻¹，可見低溫擴散極慢。",
+   "色心是會吸收可見光的晶格缺陷；一般的晶格空缺並不會使鹼金屬鹵化物著色，只影響紫外吸收。可用化學雜質、過量金屬離子、x/γ 射線與電子轟擊、或電解來著色。",
+   "F 心（源自德文 Farbe）已由電子自旋共振確認為被束縛在負離子空缺上的一個電子；負離子空缺在完美週期晶格中等效於一個孤立正電荷，會吸引並束縛電子。兩個相鄰 F 心組成 M 心，三個組成 R 心。",
+   "電洞形成的色心不如電子色心單純：鹵素離子的 p⁵ 組態是非對稱的，會因 Jahn–Teller 效應扭曲鄰近環境；最著名的捕獲電洞中心是 V_K 心，形如負鹵素分子離子（KCl 中為 Cl₂⁻）。"
+  ],
+  "equations": [
+   {
+    "label": "熱平衡下的晶格空缺數（Boltzmann 因子）",
+    "formula": "n/(N − n) = exp(−E_V / k_B T) ;  n/N ≅ exp(−E_V / k_B T)  (n ≪ N)",
+    "bookPage": 585,
+    "eqNumber": "(1), (2)",
+    "symbols": "N 為原子數，n 為平衡空缺數，E_V 為把原子從晶體內部晶格位搬到表面晶格位所需的能量；E_V ≈ 1 eV、T ≈ 1000 K 時 n/N ≈ e⁻¹² ≈ 10⁻⁵"
+   },
+   {
+    "label": "離子晶體中成對空缺（Schottky pair）的平衡數",
+    "formula": "n ≅ N exp(−E_p / 2 k_B T)",
+    "bookPage": 586,
+    "eqNumber": "(3)",
+    "symbols": "n 為空缺對數目，E_p 為形成一對正負離子空缺的能量；由統計計算得到"
+   },
+   {
+    "label": "Frenkel 缺陷的平衡數",
+    "formula": "n ≅ (N N')^{1/2} exp(−E_I / 2 k_B T)",
+    "bookPage": 586,
+    "eqNumber": "(4)",
+    "symbols": "N 為晶格位數，N' 為可能的間隙位數，E_I 為把原子從晶格位移到間隙位所需能量；適用於 n ≪ N, N'"
+   },
+   {
+    "label": "Fick 擴散定律",
+    "formula": "J_N = −D grad N",
+    "bookPage": 588,
+    "eqNumber": "(5)",
+    "symbols": "J_N 為單位時間通過單位面積的原子數；D 為擴散常數（擴散率），單位 cm²/s 或 m²/s；負號表示擴散離開高濃度區"
+   },
+   {
+    "label": "擴散常數的溫度依賴（Arrhenius 形式）",
+    "formula": "D = D₀ exp(−E / k_B T)",
+    "bookPage": 588,
+    "eqNumber": "(6)",
+    "symbols": "E 為該過程的活化能；碳在 α 鐵中的實驗值為 E = 0.87 eV、D₀ = 0.020 cm²/s"
+   },
+   {
+    "label": "由跳躍頻率導出的擴散常數",
+    "formula": "p ≅ ν exp(−E / k_B T) ;  D = ν a² exp(−E / k_B T)",
+    "bookPage": 590,
+    "eqNumber": "(7), (9)",
+    "symbols": "ν 為特徵原子振動頻率，p 為單位時間跳躍頻率，a 為晶格常數（兩平面間距）；對應式 (6) 中的 D₀ = ν a²"
+   },
+   {
+    "label": "帶電雜質的離子導電度（經 Einstein 關係）",
+    "formula": "σ = N q μ = (N q² ν a² / k_B T) exp(−E / k_B T)",
+    "bookPage": 590,
+    "eqNumber": "(11)",
+    "symbols": "N 為帶電荷 q 的雜質離子濃度；遷移率 μ = (qνa²/k_BT) exp(−E/k_BT)（式 10），由 Einstein 關係 k_BT μ = qD 得到"
+   },
+   {
+    "label": "熱生成主導區間的空缺比例",
+    "formula": "f ≅ exp(−E_f / 2 k_B T)",
+    "bookPage": 590,
+    "eqNumber": "(12)",
+    "symbols": "E_f 為形成一對空缺的能量（依 Schottky 或 Frenkel 缺陷理論）；此區間 ln σ 對 1/k_BT 的斜率為 E₊ + (1/2)E_f"
+   }
+  ],
+  "mainConclusion": "點缺陷（空缺、間隙原子、化學雜質）在熱平衡下必然存在，其濃度由 Boltzmann 因子 exp(−E/k_BT) 決定，Schottky 與 Frenkel 缺陷的成對形成則給出 exp(−E/2k_BT) 的一半指數。這些缺陷是原子擴散的載體：擴散常數 D = νa²exp(−E/k_BT) 具 Arrhenius 形式，並可透過 Einstein 關係與離子導電度連結，因此量測 ln σ 對 1/k_BT 的斜率可在不同溫度區間分別得到空缺跳躍活化能 E₊ 與空缺對形成能 E_f。缺陷也決定光學性質：F 心已由電子自旋共振確認為束縛在負離子空缺上的電子，是鹼金屬鹵化物中最簡單的捕獲電子中心。",
+  "verbatimQuotes": [
+   "\"The simplest imperfection is a lattice vacancy, which is a missing atom or ion, also known as a Schottky defect.\" (p.585)",
+   "\"A color center is a lattice defect that absorbs visible light.\" (p.592)"
+  ]
+ },
+ "21": {
+  "ch": 21,
+  "researchQuestion": "本章用差排理論解釋晶體固體的塑性力學性質（塑性為不可逆變形，彈性為可逆）。核心問題是：為什麼純單晶如此容易塑性變形？完美晶體彈性極限應變的理論估計可比觀測到的最低值高 10³ 到 10⁴ 倍（10² 倍較常見）。章節先用 Frenkel 的方法估計完美晶體的理論剪切強度，發現與實驗值差距巨大，只能靠缺陷解釋；接著引入差排（刃差排、螺旋差排、Burgers 向量），推導差排的應力場與彈性能、差排間的作用力，再處理低角度晶界（差排陣列，間距 D = b/θ）、差排密度與 Frank–Read 源的增殖機制，然後討論合金強化的四種機制，最後是差排對晶體生長的控制作用（螺旋生長）、whisker 與材料硬度。",
+  "coreConcepts": [
+   "Frenkel 用簡單模型估計完美晶體的理論剪切強度：若 a ≈ d，理想臨界剪應力約為剪切模數的 1/6；Mackenzie 進一步修正後約為 G/30，對應約 2 度的臨界剪切應變角。實驗彈性極限遠低於此。",
+   "塑性變形靠滑移（slip）發生：晶體的一部分整體滑過相鄰部分，滑移面與滑移方向都高度各向異性（fcc 滑移方向為 ⟨110⟩，bcc 為 ⟨111⟩），滑移向量必須等於晶格平移向量。",
+   "滑移遵守 Schmid 臨界剪應力定律：當對應的剪應力分量達到臨界值時，沿該滑移面與方向發生滑移。另一種塑性模式是孿晶（twinning），常見於 hcp 與 bcc。",
+   "刃差排是已滑移區與未滑移區的邊界，位置由擠入上半晶體的額外半原子面終端標示；其運動類比於地毯上皺褶的傳遞——皺褶比整張地毯容易移動。移動差排所需的外加應力很小，鍵結力非高度方向性時低於 10⁵ dyn/cm²。",
+   "螺旋差排的邊界平行於滑移方向（刃差排則垂直），可視為用刀部分切開晶體再沿切口邊緣剪切一個原子間距；它把連續的原子面轉成螺旋面。",
+   "Burgers 向量 b 由「切開—位移—補料或去料—重新接合」的一般構造定義；b 必須等於晶格向量，否則重新接合無法維持晶體性。螺旋差排的 b 平行差排線，刃差排的 b 垂直差排線且位於滑移面內。",
+   "差排的彈性能都含 ln(R/r₀) 因子；r₀ 取 Burgers 向量大小或晶格常數量級，R 不能超過晶體尺寸，但因為進入對數項，R/r₀ 的值影響不大。",
+   "Burgers 提出低角度晶界由差排陣列組成：純傾斜（pure tilt）晶界是間距 D = b/θ 的刃差排陣列；Vogel 等人以蝕坑計數量測 D 並由 θ = b/D 算得的傾角與 x 射線直接量測吻合。純傾斜晶界在適當應力下會整體垂直移動，由陣列中各差排協同滑移完成。",
+   "差排密度從最好的 Ge、Si 晶體的 10² cm⁻² 以下，到重度變形金屬的 10¹¹–10¹² cm⁻²；塑性變形使密度從約 10⁸ 增至 10¹¹ cm⁻²，代表差排在變形中增殖。兩端被釘住的差排段稱為 Frank–Read 源，可在單一滑移面上產生大量同心差排環；雙交叉滑移是最常見的來源。",
+   "提高合金降伏強度的四種重要方式：機械阻擋差排運動（析出第二相粒子）、溶質原子釘住差排（溶質雲）、短程有序阻礙差排運動、以及提高差排密度造成糾結（加工硬化）。第五種是把差排全部移除（whisker）。",
+   "所有強化機制在擴散變得可觀的溫度都開始失效，導致隨時間變化的變形即潛變（creep）；尋找高溫合金就是尋找低擴散率。但強合金的核心問題不是強度而是延性，因為破壞常以斷裂發生。",
+   "低過飽和度（約 1%）下晶體生長速率遠快於理想晶體的計算值；若存在螺旋差排就永遠不必成核新的單層，晶體沿不連續處以螺旋方式生長，若生長速率與方向無關則圖樣為 Archimedes 螺線 r = aθ。",
+   "Whisker（細髮狀晶體）在高過飽和度下生長，可能只含一根軸向螺旋差排，因此具有接近理論完美晶體的彈性性質；Herring 與 Galt 觀測到半徑約 10⁻⁴ cm 的錫 whisker 降伏應變約 10⁻²，對應剪應力約 10⁻² G，約為塊材錫的 1000 倍。"
+  ],
+  "equations": [
+   {
+    "label": "完美晶體的理論臨界剪應力（Frenkel 估計）",
+    "formula": "σ = (Ga/2πd) sin(2πx/a) ,  σ_c = Ga/2πd",
+    "bookPage": 599,
+    "eqNumber": "(2), (3)",
+    "symbols": "G 為適當的剪切模數，d 為面間距，a 為剪切方向上的原子間距，x 為位移；小應變時化為 σ = Gx/d（式 1）。若 a ≈ d 則 σ_c ≈ G/2π，即剪切模數的 1/6"
+   },
+   {
+    "label": "螺旋差排的剪應力場",
+    "formula": "σ = G e = G b / (2π r)",
+    "bookPage": 605,
+    "eqNumber": "(4)",
+    "symbols": "周長 2πr 的殼被剪切了 b，故剪應變 e = b/2πr；b 為 Burgers 向量大小，r 為到差排線的距離。此式在差排線鄰近區域不成立（應變太大）"
+   },
+   {
+    "label": "螺旋差排單位長度的彈性能",
+    "formula": "E_S = (G b² / 4π) ln(R / r₀)",
+    "bookPage": 606,
+    "eqNumber": "(5)",
+    "symbols": "由 dE_s = ½Ge² dV = (Gb²/4π) dr/r 積分而得；R 與 r₀ 分別為 r 的上下限，r₀ 約為 b 或晶格常數，R 不超過晶體尺寸"
+   },
+   {
+    "label": "刃差排的應力場（等向彈性連續體）",
+    "formula": "σ_rr = σ_θθ = −[G b / 2π(1 − ν)] · (sin θ)/r ;  σ_rθ = [G b / 2π(1 − ν)] · (cos θ)/r",
+    "bookPage": 606,
+    "eqNumber": "(6)",
+    "symbols": "σ_rr、σ_θθ 為徑向與圓周方向的拉應力，σ_rθ 為剪應力；ν 為 Poisson 比，多數晶體 ν ≅ 0.3"
+   },
+   {
+    "label": "刃差排單位長度的應變能",
+    "formula": "E_e = [G b² / 4π(1 − ν)] ln(R / r₀)",
+    "bookPage": 606,
+    "eqNumber": "(7)",
+    "symbols": "與螺旋差排式 (5) 相比多了 1/(1−ν) 因子；ν 為 Poisson 比"
+   },
+   {
+    "label": "刃差排間的作用力（滑移方向分量）",
+    "formula": "F = b σ_xy = [G b² / 2π(1 − ν)] · (sin 4θ) / (4y)",
+    "bookPage": 606,
+    "eqNumber": "(9)",
+    "symbols": "位於原點的刃差排施於位置 (y, θ) 處同類差排的單位長度作用力；由 σ_xy = [Gb/2π(1−ν)]·x(x²−y²)/(x²+y²)²（式 8）與 F = bσ（習題 3）得到"
+   },
+   {
+    "label": "低角度純傾斜晶界的差排間距",
+    "formula": "D = b / θ",
+    "bookPage": 607,
+    "eqNumber": "",
+    "symbols": "D 為刃差排陣列的間距，b 為差排的 Burgers 向量，θ 為兩晶粒繞共同 [001] 軸的小角度相對旋轉；Vogel 等人以蝕坑計數量測 D，由 θ = b/D 算得的角度與 x 射線量測吻合"
+   },
+   {
+    "label": "析出粒子強化：迫使差排穿過間距 L 粒子所需的應力",
+    "formula": "σ / G = b / L",
+    "bookPage": 614,
+    "eqNumber": "(10)",
+    "symbols": "L 為滑移面上粒子的間距，b 為 Burgers 向量，G 為剪切模數；L 愈小降伏應力愈高。析出完成後 L 最小、強度最大，高溫久置後粒子粗化使 L 增大、強度下降"
+   }
+  ],
+  "mainConclusion": "純晶體觀測到的臨界剪應力遠低於 Frenkel 對完美晶體的理論估計（理想值約 G/2π，修正後約 G/30），這個差距只能用差排這種線缺陷的運動來解釋——差排通過晶體等價於一部分晶體的滑移位移，而移動差排所需的應力極小。差排的應力場隨 1/r 衰減、彈性能正比於 Gb² 並含 ln(R/r₀) 因子；低角度晶界就是間距 D = b/θ 的差排陣列，此模型已由電子顯微鏡、蝕坑計數與 x 射線量測證實。反過來，一切合金強化機制（析出粒子、溶質雲、短程有序、加工硬化）本質上都是阻礙差排運動，可把降伏強度提高到 10⁻³ G 至 10⁻² G；而完全沒有差排的 whisker 則可達到接近理論完美晶體的強度。",
+  "verbatimQuotes": [
+   "\"The ease with which pure single crystals deform plastically is striking.\" (p.599)",
+   "\"The tilt boundary is represented as an array of edge dislocations of spacing D = b/θ, where b is the Burgers vector of the dislocations.\" (p.607)"
+  ]
+ },
+ "22": {
+  "ch": 22,
+  "researchQuestion": "本章問：如果晶體由 A、B 兩種元素隨機佔據規則晶格位（組成 A_xB_{1−x}），平移對稱性不再完美，能帶理論的結論（費米面、能隙）還成立嗎？絕緣體會不會因能隙消失而變導體？書中的答案是：完美平移對稱性被破壞的後果幾乎總是遠比乍看之下輕微，因為有效屏蔽位能本身就比自由離子位能弱，而且主體原子與添加原子的有效位能差異可能非常小（Si-Ge、Cu-Ag 是經典例子）。章節接著處理取代型固溶體的 Hume-Rothery 規則與電子化合物（電子/原子比與費米球接觸布里淵區邊界的關聯）、order–disorder 轉變與有序度的基本統計理論（長程有序參數 P、混合熵、轉變溫度）、相圖與共晶、過渡金屬合金的磁矩與 s-d 散射，最後是 Kondo 效應與電阻極小值。",
+  "coreConcepts": [
+   "低濃度雜質原子無法對負責能隙與費米面形狀的有效位能 Fourier 分量 U_G 造成太大影響；雜質引入的非倒晶格向量處的分量，在低濃度下相對 U_G 從不算大。",
+   "無序合金的殘餘電阻率隨無序增加；Cu_xAu_{1−x} 的殘餘電阻率隨組成變化為 x(1−x)，即 Nordheim 規則；緩慢冷卻形成 Cu₃Au 與 CuAu 有序結構時，殘餘電阻率因有序而降低。",
+   "銀中溶入 1 原子% 銅只增加 0.077 μΩ-cm 的殘餘電阻率，對應的幾何散射截面僅為雜質原子「投影面積」的 3%，可見散射效應非常小。",
+   "Hume-Rothery 規則：固溶體穩定要求原子直徑差不超過約 15%（Cu-Zn 有利，Zn 可溶到 38 原子%；Cu-Cd 不利，Cd 只能溶 1.7 原子%）；但若 A、B 有強烈形成金屬間化合物的化學傾向，即使直徑有利也不會形成固溶體。",
+   "合金的電子結構常可用每原子平均傳導（價）電子數 n 描述；CuZn 的 n = 1.50，CuAl 的 n = 2.00。結構序列 fcc → bcc → γ → hcp 隨 n 增加而出現，對應費米球內接接觸各晶格布里淵區邊界的濃度（fcc 1.36、bcc 1.48、γ 1.54、理想 c/a 的 hcp 1.69）。",
+   "有序 AB 合金（bcc）中 B 原子的最近鄰全是 A 原子、反之亦然；這出現在 A-B 吸引為主導交互作用時。合金在絕對零度完全有序，升溫後有序度下降，超過轉變溫度即無序。",
+   "轉變溫度標誌長程有序（跨越許多原子間距的秩序）的消失，但近鄰的短程有序或關聯可以在轉變溫度之上持續存在。",
+   "有序 CuZn 是 CsCl 結構（簡單立方空間晶格，基底 Cu 在 000、Zn 在 ½½½），結構因子不會消失，故簡單立方空間晶格的所有反射都出現；無序時平均結構因子退化成 bcc 形式，h+k+l 為奇數的反射消失。因此有序晶格多出「超晶格線」。",
+   "AB 合金（bcc）的轉變是二階，以熱容不連續為標誌；A₃B 則是一階，以潛熱為標誌。",
+   "本章的有序度基本理論只考慮 AA、AB、BB 最近鄰對的鍵能，並假設機率互相獨立；平衡有序度由自由能 F = E − TS 對 P 極小化決定，得到可用圖解法求解的超越方程式。",
+   "短程有序參數 r 量度最近鄰鍵中 AB 鍵所佔的比例（完全無序時 AB 合金每個 A 原子平均有 4 個 AB 鍵，總數為 8）；r 只反映原子周圍的局部秩序，而 P 反映整個次晶格的純度。轉變溫度之上長程有序嚴格為零，但短程有序不為零。",
+   "把銅加入鎳時，每原子有效磁子數線性下降並在 Cu₀.₆₀Ni₀.₄₀ 附近歸零，因為銅提供的額外電子填滿了 3d 能帶。過渡金屬 3d 能帶的平均態密度比 4s 能帶高一個數量級。",
+   "過渡金屬的電阻率比緊接其後的貴金屬高約 5 倍（Ni/Pd/Pt 為 7.4/10.8/10.5 μΩ-cm，Cu/Ag/Au 為 1.7/1.6/2.2），因為 s 電子路徑被 d 電子碰撞增加電阻——這是 d 能帶填滿時不存在的強力額外散射機制（s-d 散射）。",
+   "在非磁性金屬中稀薄溶入磁性離子時，傳導電子氣在磁性離子附近被磁化，造成間接交換作用（Friedel 或 RKKY 交互作用）；由此產生的 Kondo 效應在低溫給出電阻極小值，且電阻極小值出現處必然存在局域磁矩。"
+  ],
+  "equations": [
+   {
+    "label": "無序合金的平均結構因子（超晶格線消失）",
+    "formula": "⟨S(hkl)⟩ = ⟨f⟩ + ⟨f⟩ e^{−iπ(h+k+l)} ,  ⟨f⟩ = (1/2)(f_Cu + f_Zn)",
+    "bookPage": 629,
+    "eqNumber": "(2)",
+    "symbols": "有序 CuZn（CsCl 結構）的結構因子為 S(hkl) = f_Cu + f_Zn e^{−iπ(h+k+l)}（式 1），因 f_Cu ≠ f_Zn 而不會消失；無序時退化為 bcc 形式，h+k+l 為奇數時反射消失"
+   },
+   {
+    "label": "以長程有序參數表示的最近鄰鍵數（bcc，配位數 8）",
+    "formula": "N_AA = N_BB = 2(1 − P²)N ;  N_AB = 4(1 + P²)N",
+    "bookPage": 630,
+    "eqNumber": "(4)",
+    "symbols": "P 為長程有序參數，定義為次晶格 a 上 A 原子數等於 (1/2)(1+P)N、次晶格 b 上 A 原子數等於 (1/2)(1−P)N；P = ±1 為完全有序，P = 0 為無長程有序"
+   },
+   {
+    "label": "鍵能總和與有序參數的關係",
+    "formula": "E = N_AA U_AA + N_BB U_BB + N_AB U_AB = E₀ + 2N P² U",
+    "bookPage": 630,
+    "eqNumber": "(3)(4) 在 p.630；(5)(6) 在 p.631",
+    "symbols": "E₀ = 2N(U_AA + U_BB + 2U_AB)，有效交互作用 U = 2U_AB − U_AA − U_BB（式 6）；U_ij 為 ij 鍵的能量"
+   },
+   {
+    "label": "混合熵（configurational entropy）",
+    "formula": "S = 2N k_B ln 2 − N k_B [ (1 + P) ln(1 + P) + (1 − P) ln(1 − P) ]",
+    "bookPage": 631,
+    "eqNumber": "(8)",
+    "symbols": "由 S = k_B ln G 與 Stirling 近似得到，其中 G = { N! / [(1/2)(1+P)N]! [(1/2)(1−P)N]! }²（式 7）；P = ±1 時 S = 0，P = 0 時 S = 2N k_B ln 2"
+   },
+   {
+    "label": "平衡有序度的條件（自由能對 P 極小）",
+    "formula": "4N P U + N k_B T ln[ (1 + P)/(1 − P) ] = 0",
+    "bookPage": 631,
+    "eqNumber": "(9)",
+    "symbols": "由 F = E − TS 對 P 微分得到；此超越方程式可用圖解法求解，給出平滑下降的 P(T) 曲線"
+   },
+   {
+    "label": "order–disorder 轉變溫度",
+    "formula": "T_c = −2U / k_B",
+    "bookPage": 631,
+    "eqNumber": "(10)",
+    "symbols": "在轉變點附近展開式 (9) 得 4NPU + 2N k_B T P = 0，並在 T_c 處 P = 0；要發生轉變，有效交互作用 U 必須為負"
+   },
+   {
+    "label": "Kondo 效應：自旋相關電阻率隨低溫上升",
+    "formula": "ρ_spin = c ρ_M [ 1 + (3zJ/ε_F) ln T ] = c a − c b ln T",
+    "bookPage": 639,
+    "eqNumber": "(12)",
+    "symbols": "J 為交換能，z 為最近鄰數，c 為磁性雜質濃度，ρ_M 量度交換散射的強度；J 為負時自旋電阻率隨溫度下降而上升"
+   },
+   {
+    "label": "電阻極小值的位置",
+    "formula": "ρ = α T⁵ + c a − c b ln T ,  dρ/dT = 5αT⁴ − c b/T = 0 ,  T_min = (c b / 5α)^{1/5}",
+    "bookPage": 640,
+    "eqNumber": "(13), (14), (15)",
+    "symbols": "αT⁵ 為此溫區的聲子貢獻；電阻極小值溫度隨磁性雜質濃度的五分之一次方變化，與實驗（至少 Cu 中的 Fe）相符"
+   }
+  ],
+  "mainConclusion": "隨機取代型合金雖破壞了完美平移對稱性，但後果遠比預期輕微：低濃度雜質不足以改變決定能隙與費米面的 Fourier 分量 U_G，因此能帶理論的結論大致保留，殘餘電阻率只隨無序度以 x(1−x) 的 Nordheim 形式增加。合金的相結構主要由每原子電子數 n 控制，fcc→bcc→γ→hcp 的序列對應費米球接觸各布里淵區邊界的電子濃度。order–disorder 轉變可用只含最近鄰鍵能的簡單統計理論描述：長程有序參數 P 由自由能極小化決定，轉變溫度 T_c = −2U/k_B，且必須 U < 0 才會發生轉變；長程有序在 T_c 之上嚴格為零，但短程有序仍存在。稀薄磁性合金則因交換散射的動態本質與低溫費米面的銳利，出現 Kondo 電阻極小值，其位置隨雜質濃度的 1/5 次方變化。",
+  "verbatimQuotes": [
+   "\"For a transition to occur, the effective interaction U must be negative.\" (p.631)",
+   "\"Where a resistance minimum is found, there is inevitably a local moment.\" (p.638)"
+  ]
+ }
+}

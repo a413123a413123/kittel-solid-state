@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>熱容專題整理（建置中） — Kittel 固態物理</title>
+<meta name="description" content="熱容專題整理：11 個主題沿 C(T) 溫度軸排列，每主題六個固定面向。第二次交付，尚未產出。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html">全書逐章</a>
+      <a href="thermal.html" aria-current="page">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<main id="main">
+  <header class="hero">
+    <div class="wrap">
+      <p class="kicker">第二次交付 · 建置中</p>
+      <h1>熱容專題整理</h1>
+      <p class="hero__lede">11 個熱容主題沿 C(T) 溫度軸排列，每個主題六個固定面向：物理意義與直觀解釋／重要公式與符號定義／推導所用假設／適用條件與限制／高溫與低溫行為／對應的 Kittel 章節小節與頁碼。最後附一張熱容知識地圖。</p>
+      <p class="hero__claim">熱容不是 Ch5 一章的事——它散在七章裡。</p>
+    </div>
+  </header>
+  <section class="plate">
+    <div class="wrap--text">
+      <span class="lead">尚未產出</span>
+      <p>這一頁還沒有內容。依約定分兩次交付：<strong>第一次是<a href="index.html">全書逐章整理</a>（已完成，22 章 ＋ 199 條公式）</strong>，第二次才是本頁的熱容專題。</p>
+      <p>本頁完成後將包含：晶格振動與聲子／聲子色散關係與態密度／Dulong–Petit 定律／Einstein 模型／Debye 模型與 Debye 溫度／高溫極限與低溫 T³ 定律／金屬的電子熱容／晶格、電子、磁性及其他熱容貢獻／非諧性、熱膨脹及 Cp、Cv 的差異／超導或相變附近的熱容異常／熱容 Cth、比熱、熱導率及熱阻的差別。</p>
+      <p>其中「元件熱容 Cth 與元件熱阻 Rth」<strong>全書皆無</strong>，該主題將整段標為「延伸知識」。</p>
+    </div>
+  </section>
+  <section class="sect wrap--text">
+    <h2>先看得到的部分</h2>
+    <p>與熱容<strong>直接相關</strong>的四章已經在全書逐章整理裡完成，可以先讀：</p>
+    <ul>
+      <li><a href="ch-05.html">第 5 章 聲子 II：熱性質</a>（p.105–129）——Debye 模型、T³ 定律、Einstein 模型、非諧性與熱膨脹、熱導率 K = ⅓Cvℓ</li>
+      <li><a href="ch-06.html">第 6 章 自由電子費米氣</a>（p.131–158）——電子熱容 C_el = γT，以及 C = γT + AT³ 的低溫拆解</li>
+      <li><a href="ch-18.html">第 18 章 奈米結構</a>（p.515–563）——p.557–562 的振動與熱性質</li>
+      <li><a href="ch-19.html">第 19 章 非晶固體</a>（p.565–582）——p.578–580 的低溫熱容線性項與二能階系統</li>
+    </ul>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

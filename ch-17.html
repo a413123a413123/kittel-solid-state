@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 17 章 表面與界面物理 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 17 章「Surface and Interface Physics」（書本 p.487–513）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 17 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">17</span><h1>表面與界面物理</h1><p class="uhead__en">Surface and Interface Physics</p><p class="chap__meta"><span>書本 p.487–513</span><span>公式 8 條</span><span>核心概念 8 條</span><span>熱容關聯 <span class="tag tag--none">無明顯關聯</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" aria-current="page" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章處理晶體表面與界面的物理。前半部問：真空中晶體表面最外約三層原子與塊材有何差異（弛豫與重構）、表面的二維週期性如何以 mesh／net 與 Wood 記號描述、以及 LEED 與 RHEED 如何利用倒晶格「桿（rod）」與 Ewald 球來繞射成像。接著討論表面電子結構：功函數、熱離子發射、能隙中的表面態，以及 MOSFET 中由閘極電壓調控的表面導電通道。後半部轉向二維通道的磁阻與整數／分數量子霍爾效應，再處理 p-n 接面整流、Schottky 位障、異質結構（heterostructure）、半導體雷射與發光二極體。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>表面弛豫（relaxation）只改變層間距而保持表面內結構；表面重構（reconstruction）則產生新的表面原胞，源自表面斷鍵（dangling bonds）重新成鍵。</li><li>表面結構一般只有二維週期性，用 mesh 基底向量 c₁、c₂ 相對於基材參考網 a₁、a₂ 的矩陣 P 或 Wood 記號描述；共有五種二維網。</li><li>二維倒晶格點在三維中應視為垂直表面的無限長「桿」；Ewald 球與桿的交點給出繞射束，這是 LEED 與 RHEED 成像的基礎。</li><li>功函數 W 定義為真空能階與費米能階之間的電子位能差，其值受暴露晶面影響，因為表面電雙層強度取決於表面正離子實的濃度。</li><li>半導體自由表面常有能隙中的表面束縛態；束縛態不能有垂直表面的電流，此條件迫使 k 只能取布里淵區邊界的離散值 k=½G。</li><li>MOSFET 以閘極電壓調變表面電荷密度 n_s，形成導電通道，是微電子系統的核心三端元件。</li><li>IQHE：強磁場下 ℏωc≫k_BT，當費米能恰落在填滿的 Landau 能階時，包立原理禁止彈性碰撞、且缺少足夠能量的熱聲子，因此碰撞時間大增，ρxx→0 而 ρH 精確量子化為 h/se²（25,813/s 歐姆）。</li><li>p-n 接面因擴散造成電荷雙層與內建電場；順偏降低位障使復合電流指數上升，而熱生成電流不受偏壓影響，於是產生整流特性。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">MOSFET 表面電荷與表面層電導</p><p class="eq__f">Δn_s = C_g ΔV_g ;  G = (W/L) n_s e μ</p><span class="eq__r">p.497</span><p class="eq__s">C_g＝閘極與半導體間單位面積電容，V_g＝閘極電壓，n_s＝單位面積表面載子密度，W、L＝表面層寬與長，μ＝載子遷移率</p></div><div class="eq"><p class="eq__l">二維通道的表面磁導率張量</p><p class="eq__f">σxx = σ₀/[1 + (ωcτ)²] ,  σxy = σ₀ωcτ/[1 + (ωcτ)²]</p><span class="eq__r">(16) 　p.498</span><p class="eq__s">σ₀ = n_s e²τ/m，ωc = eB/mc (CGS) 或 eB/m (SI)，τ＝弛豫時間；ωcτ≫1 時 σxx→0、σxy→n_s e c/B（式(17)）</p></div><div class="eq"><p class="eq__l">霍爾電阻（古典二維結果）</p><p class="eq__f">ρ_H = V_y/I_x = B/(n_s e c)</p><span class="eq__r">(18a) 　p.498</span><p class="eq__s">V_y＝橫向電壓，I_x＝縱向電流，B＝垂直表面的磁場；由漂移速度 v_D = cE_y/B_z 導出</p></div><div class="eq"><p class="eq__l">費米能落在 Landau 能階上的條件</p><p class="eq__f">s e B/(h c) = n_s</p><span class="eq__r">(21) 　p.499</span><p class="eq__s">s＝任意整數（填滿的 Landau 能階數），n_s＝電子面密度；此時彈性碰撞被包立原理禁止</p></div><div class="eq"><p class="eq__l">整數量子霍爾效應的量子化霍爾電阻</p><p class="eq__f">ρ_H = h/(s e²) = 2π/(s c α)</p><span class="eq__r">(22) 　p.500</span><p class="eq__s">α = e²/ℏc ≅ 1/137＝精細結構常數，s＝整數；h/e² = 25,813 歐姆，實驗測得 ρ_H 精確等於 25,813/s 歐姆</p></div><div class="eq"><p class="eq__l">p-n 接面的整流方程式</p><p class="eq__f">I = I_s [exp(eV/k_BT) − 1]</p><span class="eq__r">(33) 　p.506</span><p class="eq__s">I_s＝兩個熱生成電流之和，V＝外加偏壓；由 J_nr(V)=J_nr(0)exp(±e|V|/k_BT) 與 J_ng(V)=J_ng(0) 得到</p></div><div class="eq"><p class="eq__l">Schottky 位障的電位分布與位障厚度</p><p class="eq__f">d²φ/dx² = −4πne/ε ⟹ φ = −(2πne/ε)x² ;  x_b = (ε|φ|/2πne)^(1/2)   (CGS)</p><span class="eq__r">(35)(36) 在 p.506；(37) x_b 在 p.507 　p.506</span><p class="eq__s">n＝施體濃度，ε＝半導體介電常數，x_b＝耗盡層（位障）厚度；SI 為 x_b=(2εε₀|φ|/ne)^(1/2)。以 ε=16、e|φ|=0.5 eV、n=10¹⁶ cm⁻³ 得 x_b=0.3 μm</p></div><div class="eq"><p class="eq__l">半導體雷射的粒子數反轉條件</p><p class="eq__f">μ_c &gt; μ_v + ε_g</p><span class="eq__r">(38) 　p.510</span><p class="eq__s">μ_c、μ_v＝導電帶與價帶各自的準費米能階（相對於各自能帶邊緣），ε_g＝能隙；即準費米能階分裂必須大於能隙</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>表面是只有二維週期性的系統，其倒空間為垂直表面的桿陣列，這使 LEED／RHEED 的 Ewald 球構圖與塊材繞射有本質差異；表面同時帶來能隙中的表面態與能帶彎曲，而外加垂直電場可調控表面層厚度與載子濃度，正是 MOSFET 的原理。在強磁場、低溫的二維通道中，ρxx 趨近於零且霍爾電阻精確量子化為 h/se²（25,813/s 歐姆），且此精度與樣品純度無關——Laughlin 以規範不變性一般性地解釋了這一點；更低溫、更高磁場下還出現分數量子霍爾效應。界面工程方面，異質結構讓摻雜與能帶偏移可獨立設計，n-N 接面的能帶彎曲形成電子位能井並把高遷移率電子與游離施體在空間上分離（GaAs/(Al,Ga)As 低溫遷移率可達 10⁷ cm²V⁻¹s⁻¹），雙異質結構則是實用注入式雷射與高效率 LED 的基礎。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"The work function W of the uniform surface of a metal is defined as the difference in potential energy of an electron between the vacuum level and the Fermi level." (p.494)</p><p>"For laser action the quasi-Fermi levels must be separated by more than the band gap." (p.510)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>把 Ch7–8 的能帶帶到界面：功函數、表面態、p-n 接面、Schottky 位障、異質結構。量子霍爾效應一節用的是 Ch6 的二維電子氣。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">無明顯關聯</span>
+    <p>無明顯關聯——但這章最需要提醒：章名有「Interface」，卻完全不含熱邊界阻（TBR／Kapitza resistance）。整章講的是電子界面（能帶對齊、接面、表面態）。要找界面熱傳，這本書沒有。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-16.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">16</span> 介電體與鐵電體</span></a>
+<a href="ch-18.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">18</span> 奈米結構</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

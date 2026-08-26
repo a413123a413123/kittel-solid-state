@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 18 章 奈米結構 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 18 章「Nanostructures」（書本 p.515–563）的六欄整理：研究問題、核心概念、13 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 18 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">18</span><h1>奈米結構</h1><p class="uhead__en">Nanostructures</p><p class="chap__meta"><span>書本 p.515–563</span><span>公式 13 條</span><span>核心概念 12 條</span><span>熱容關聯 <span class="tag tag--direct">直接</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" aria-current="page" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章（由 Cornell 大學 Paul McEuen 撰寫）處理在兩個或三個正交方向上被侷限到奈米尺度的固體，也就是準一維（1D）與零維（0D）奈米結構，例如碳奈米管、量子線、導電高分子，以及半導體奈米晶、金屬奈米粒子、微影定義的量子點。核心問題是：當固體的尺寸在一個以上的方向縮小時，電子態與振動態如何被量子化，而這些量子化如何決定光學、電性與熱學性質。章節先介紹奈米結構的成像技術（TEM、光學顯微、STM、AFM），再依序建立 1D 電子結構（1D 子能帶與 van Hove 奇異點）、1D 電輸運（電導量子化、Landauer 公式、共振穿隧、局域化、Büttiker 多端點形式）、0D 電子結構與電輸運（量子化能階、充電能、庫侖振盪、Kondo 效應、Cooper 配對），最後處理量子化振動模與熱容／熱傳導。書中明言此類量子化現象通常在 1–100 奈米尺度才重要。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>製作奈米結構有兩大路線：top-down 用微影把巨觀材料切到奈米尺度，bottom-up 用生長與自組裝從原子／分子前驅物堆出結構；前者難做小於 50 nm，後者難做大於 50 nm。</li><li>奈米粒子表面原子佔比極高（R = 6a ≈ 1 nm 時約一半原子在表面），使內聚能大幅下降，因此奈米粒子的熔點遠低於對應塊材。</li><li>1D 線的能量為橫向侷限能階加上沿線的自由色散，總態密度是各 1D 子能帶態密度之和，並在每個子能帶閾值發散為 (ε−ε_ij)^(−1/2)，稱為 van Hove 奇異點。</li><li>1D 金屬的費米面只有 ±k_F 兩個點；能量與動量守恆在此等價，使得散射相空間限制較弱，基態被認為不是 Fermi 液體而是 Luttinger 液體。</li><li>完美傳輸的單一 1D 通道具有有限電導 2e²/h（電導量子），與電子速度無關；有散射時電導為 Landauer 公式 G = (2e²/h)ℑ。</li><li>兩個位障串聯時，若保持相位相干，在共振條件 φ* = 2πn 下透射被大幅增強；對稱位障時共振透射率為 1（共振穿隧）。若相位被破壞而改用機率相加，則得到歐姆定律：接觸電阻加上各位障電阻相加。</li><li>只考慮彈性（保相位）散射時，平均電阻隨長度指數成長 ⟨R⟩ ∝ exp(2L/ℓ_e)，這就是局域化；有限溫度下相位相干長度 ℓ_φ 限制了指數段的長度。</li><li>金屬點的 addition energy 由充電能主導；半導體點則是充電能與能階間距「同等重要」（p.551 逐字：the charging energy and the level spacing are of comparable importance）。</li><li>奈米結構的振動模同樣量子化：薄壁圓柱有縱向模、徑向呼吸模（RBM）與橫向模；RBM 頻率 ω = v_L/R 可用 Raman 光譜量測並反推奈米管半徑。</li><li>細長梁的橫向聲子不是剪切而是彎曲（flexural），色散由線性 ω = v_T K 變成二次 ω ∝ K²，且由縱波聲速決定而非橫波聲速。</li><li>室溫下侷限方向的振動模能量通常小於 k_BT，因此奈米結構的晶格熱性質接近塊材（∝ T³）；但低溫時侷限方向的模凍結，系統變成 1D 熱系統，熱容與熱導都線性正比於 T。</li><li>彈道極限下每個 1D 聲子子能帶的熱導 G_th 只由基本常數與絕對溫度決定，與 1D 電導量子化完全類比。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">1D 線的本徵態與色散（橫向量子化 + 沿線平面波）</p><p class="eq__f">ε = ε_{i,j} + ℏ²k²/2m ;  ψ(x,y,z) = ψ_{i,j}(x,y) e^{ikz}</p><span class="eq__r">(13) 　p.528</span><p class="eq__s">i, j 為 x,y 平面內本徵態的量子數；k 為 z 方向波向量；m 為有效質量；ε_{i,j} 為橫向能量態</p></div><div class="eq"><p class="eq__l">1D 子能帶態密度與 van Hove 奇異點</p><p class="eq__f">D_{i,j}(ε) = (dN_{i,j}/dk)(dk/dε) = (2)(2)(L/2πℏ)[m/2(ε−ε_{i,j})]^{1/2} = 4L/hν_{i,j}  (ε &gt; ε_{i,j})，  = 0  (ε &lt; ε_{i,j})</p><span class="eq__r">(15) 　p.528</span><p class="eq__s">第一個因子 2 來自自旋簡併，第二個 2 來自 ±k 兩個方向；ν_{i,j} 為動能 ε−ε_{i,j} 的電子在 i,j 子能帶中的速度；L 為線長</p></div><div class="eq"><p class="eq__l">單一 1D 通道的淨電流（速度與態密度剛好抵消）</p><p class="eq__f">I = Δn q v = D_R(ε) qV/L · qv = (2/hv)·v q²V = (2e²/h) V</p><span class="eq__r">(20) 　p.533</span><p class="eq__s">Δn 為右行載子的過剩密度；D_R(ε) 為右行載子態密度；V 為兩端電化學位能差 μ₁−μ₂ = qV；q = −e（電子）或 +e（電洞）</p></div><div class="eq"><p class="eq__l">電導量子與電阻量子</p><p class="eq__f">G_Q = 2e²/h ;  R_Q = h/2e² = 12.906 kΩ</p><span class="eq__r">(21) 　p.534</span><p class="eq__s">e 為基本電荷，h 為 Planck 常數；此值對任意色散的 1D 能帶皆成立</p></div><div class="eq"><p class="eq__l">Landauer 公式（兩端點電導）</p><p class="eq__f">G(ε_F) = (2e²/h) ℑ(ε_F)</p><span class="eq__r">(22) 　p.534</span><p class="eq__s">ℑ(ε_F) 為費米能處電子穿過通道的透射機率；多通道時 ℑ(ε_F) = Σ_{i,j} ℑ_{i,j}(ε_F)（式 23）</p></div><div class="eq"><p class="eq__l">有限溫度／偏壓下的電流（Landauer 積分形式）</p><p class="eq__f">I(ε_F, V, T) = (2e/h) ∫_{−∞}^{∞} dε [ f_L(ε − eV) − f_R(ε) ] ℑ(ε)</p><span class="eq__r">(24) 　p.536</span><p class="eq__s">f_L、f_R 分別為左、右電極的 Fermi–Dirac 分布；淨電流是左行與右行電流對所有能量積分之差</p></div><div class="eq"><p class="eq__l">雙位障串聯的相干透射機率（共振穿隧）</p><p class="eq__f">ℑ = |c|² = |t₁|²|t₂|² / [ 1 + |r₁|²|r₂|² − 2|r₁||r₂| cos(φ*) ]，  φ* = 2kL + φ_{r1} + φ_{r2}</p><span class="eq__r">(29) 　p.536</span><p class="eq__s">t_j、r_j 為第 j 個位障的複數透射／反射振幅；L 為兩位障間距；φ = 2kL 為往返累積相位；共振條件為 φ* = 2πn（式 30），對稱位障時 ℑ = 1（式 32）</p></div><div class="eq"><p class="eq__l">局域化：電阻隨長度指數成長</p><p class="eq__f">⟨R⟩ = (h/2e²) exp(2L/ℓ_e)</p><span class="eq__r">(43) 　p.539</span><p class="eq__s">ℓ_e 為彈性背向散射長度；L 為導體長度；局域化長度 ξ ~ ℓ_e（準 1D 時 ξ ~ N ℓ_e，N 為佔據的子能帶數）</p></div><div class="eq"><p class="eq__l">量子點增加一個電子所需的閘極電壓變化</p><p class="eq__f">ΔV_g = (1/αe)( ε_{N+1} − ε_N + e²/C )</p><span class="eq__r">(62) 　p.550</span><p class="eq__s">α 為閘極電壓對點電位的耦合率；C 為量子點總靜電電容；e²/C 即充電能 U；ε_{N+1} − ε_N 為單粒子能階間距</p></div><div class="eq"><p class="eq__l">薄壁圓柱徑向呼吸模（RBM）頻率</p><p class="eq__f">ω_RBM = (YV/MR²)^{1/2} = (Y/ρ)^{1/2}/R = v_L/R</p><span class="eq__r">(72) 　p.558</span><p class="eq__s">Y 為楊氏模數，V 為圓柱體積，M 為質量，ρ 為密度，R 為半徑，v_L ≡ (Y/ρ)^{1/2} 為縱向聲速；奈米管取 v_L = 21 km/s 時 ℏω_RBM = 14 meV / R[nm]</p></div><div class="eq"><p class="eq__l">細梁橫向彎曲（flexural）模的二次色散</p><p class="eq__f">ω_T = v_L h K² / √12</p><span class="eq__r">(76) 　p.559</span><p class="eq__s">h 為梁厚度，K 為沿梁軸的波向量，v_L 為縱向聲速；此模的頻率由縱波聲速而非橫波聲速決定，因為其本質是壓縮／伸張</p></div><div class="eq"><p class="eq__l">單一 1D 聲學聲子子能帶的熱容（線性正比於 T）</p><p class="eq__f">C_V^{(1D)} = 2π² L k_B² T / (3 h v)</p><span class="eq__r">(77) 　p.561</span><p class="eq__s">L 為長度，v 為聲速（色散 ω = vk），k_B 為 Boltzmann 常數，h 為 Planck 常數；對比 3D 的 T³ 行為，模數隨 K^D 標度故 1D 給出 T</p></div><div class="eq"><p class="eq__l">單一 1D 聲子子能帶的彈道熱導（熱導量子）</p><p class="eq__f">G_th^{(1D)} = (π² k_B² T / 3h) ℑ</p><span class="eq__r">(78) 　p.561</span><p class="eq__s">ℑ 為聲子穿過結構的透射機率；完美透射時 G_th 只由基本常數與絕對溫度決定，與電導量子 2e²/h 類比</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>當固體在兩或三個方向被侷限到奈米尺度時，電子與振動的激發都被量子化，而這些量子化直接決定材料性質。電性方面，1D 通道的電導由 Landauer 公式 G = (2e²/h)ℑ 給出，完美通道的電導只由基本常數決定；量子干涉進一步造成共振穿隧、局域化與 Aharonov–Bohm 效應，而 0D 量子點加一個電子需要付出 U + Δε 的電化學位能。熱學方面，室溫下奈米結構的晶格熱性質仍近似塊材的 T³ 行為，但低溫時侷限方向的模凍結，系統轉為 1D，熱容與彈道熱導都變成線性正比於 T，且熱導量子 π²k_B²T/3h 只由基本常數與溫度決定。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"Note that the density of states diverges as (ε − εi,j)−1/2 at each subband threshold. These are called van Hove singularities." (p.528)</p><p>"Both (77) and (78) are linear in temperature, in contrast to the T3 result for 3D." (p.561)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>把 Ch6–9 的電子輸運縮到低維（一維次能帶、Landauer 公式、庫侖振盪），再把 Ch3 的連續體彈性與 Ch4–5 的聲子縮到奈米尺度。全書唯一由他人（Paul McEuen）撰寫的一章。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">直接</span>
+    <p>p.557–562 是全書唯一處理奈米尺度熱性質的地方。p.561 明講：量子化振動模的能量在室溫下通常小於 k_BT（極小結構除外），因此受限方向的模式在室溫仍會被熱激發——這是「結構縮小時熱容儲存能力不消失」的直接依據。p.562 的彈道熱導量子化則是低溫細線實驗，不可直接外推到室溫元件。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-17.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">17</span> 表面與界面物理</span></a>
+<a href="ch-19.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">19</span> 非晶固體</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

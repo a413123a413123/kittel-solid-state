@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 2 章 波繞射與倒晶格 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 2 章「Wave Diffraction and the Reciprocal Lattice」（書本 p.23–45）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 2 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">02</span><h1>波繞射與倒晶格</h1><p class="uhead__en">Wave Diffraction and the Reciprocal Lattice</p><p class="chap__meta"><span>書本 p.23–45</span><span>公式 8 條</span><span>核心概念 9 條</span><span>熱容關聯 <span class="tag tag--indirect">間接</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" aria-current="page" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章問的是：波（X 光、中子、電子）打進晶體後，為什麼只在特定方向出現繞射峰，以及繞射圖樣攜帶了什麼結構訊息。書中先給 Bragg 的簡單反射式論證，指出它雖然結果正確卻不夠深入；接著用電子數密度 n(r) 的傅立葉分析重新建立散射振幅，由此定義 reciprocal lattice（倒晶格）與其基向量 b₁, b₂, b₃。繞射條件被證明等價於 Δk = G，並改寫成 2k·G = G²、Laue 方程、以及 Brillouin zone 的幾何形式。最後把基的內部結構納入，得到 structure factor S_G 與 atomic form factor f_j，說明 bcc、fcc 為何有系統性消光。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>Bragg law 2d sinθ = nλ 是繞射條件最簡單的敘述，但它假設鏡面反射，只是「因為結果對才有說服力」。</li><li>晶體任何局域物理量（特別是電子數密度 n(r)）在晶格平移 T 下不變，因此可展成傅立葉級數 n(r) = Σ_G n_G exp(iG·r)。</li><li>倒晶格是傅立葉空間中的晶格；直接晶格向量的單位是 [長度]，倒晶格向量的單位是 [1/長度]，兩者由 bᵢ·aⱼ = 2πδᵢⱼ 綁定。</li><li>散射振幅 F 正比於 n(r) 對 exp(−iΔk·r) 的積分；只有當 Δk 等於某個倒晶格向量 G 時 F 才不可忽略（F = V n_G）。</li><li>彈性散射下 k² = k′²，繞射條件化為 2k·G + G² = 0，等價於 Bragg 條件，且 d(hkl) = 2π/|G|。</li><li>first Brillouin zone 定義為倒晶格的 Wigner-Seitz primitive cell；波向量 k 端點落在 zone boundary 上才會被繞射。bcc 的第一布里淵區是 rhombic dodecahedron，fcc 的是 truncated octahedron。</li><li>bcc 的倒晶格是 fcc，fcc 的倒晶格是 bcc；sc 的倒晶格仍是 sc，晶格常數 2π/a。</li><li>structure factor S_G 描述基內各原子的干涉，導致系統性消光：bcc 在 v₁+v₂+v₃ 為奇數時 S = 0；fcc 在指標奇偶混雜時 S = 0。</li><li>atomic form factor f_j 是實際電子分布散射振幅與單一點電子散射振幅之比；G → 0 時 f → Z（原子電子數）。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">Bragg 定律</p><p class="eq__f">2d sin θ = nλ</p><span class="eq__r">(1) 　p.25</span><p class="eq__s">d 為平行原子面間距，θ 為入射線與晶面（非法線）的夾角，n 為整數階數，λ 為波長。只有 λ ≤ 2d 才可能滿足</p></div><div class="eq"><p class="eq__l">電子數密度的三維傅立葉展開</p><p class="eq__f">n(r) = Σ_G n_G exp(iG · r)</p><span class="eq__r">(9) 　p.28</span><p class="eq__s">n(r) 為電子數密度；G 為倒晶格向量集合；n_G 為傅立葉係數，n_G = V_c⁻¹ ∫_cell dV n(r) exp(−iG·r)（式 12），V_c 為晶胞體積</p></div><div class="eq"><p class="eq__l">倒晶格的基向量定義</p><p class="eq__f">b₁ = 2π (a₂ × a₃)/(a₁ · a₂ × a₃) ; b₂ = 2π (a₃ × a₁)/(a₁ · a₂ × a₃) ; b₃ = 2π (a₁ × a₂)/(a₁ · a₂ × a₃)</p><span class="eq__r">(13) 　p.29</span><p class="eq__s">a₁, a₂, a₃ 為晶體晶格的 primitive vectors；由此得 bᵢ · aⱼ = 2πδᵢⱼ（式 14），且倒晶格向量 G = v₁b₁ + v₂b₂ + v₃b₃（式 15），v₁, v₂, v₃ 為整數。書中註明 2π 因子是固態物理的慣例，晶體學家不用</p></div><div class="eq"><p class="eq__l">散射振幅</p><p class="eq__f">F = ∫ dV n(r) exp[i(k − k′) · r] = ∫ dV n(r) exp(−iΔk · r)</p><span class="eq__r">(18) 　p.31</span><p class="eq__s">k、k′ 分別為入射與出射波向量；Δk ≡ k′ − k 稱為 scattering vector，滿足 k + Δk = k′（式 19）；n(r) 為局域電子濃度</p></div><div class="eq"><p class="eq__l">彈性散射的繞射條件</p><p class="eq__f">2k · G + G² = 0  （等價寫法 2k · G = G²）</p><span class="eq__r">(22) p.31；等價形式 2k·G = G² 另編為 (23) p.32 　p.31</span><p class="eq__s">k 為入射波向量，G 為倒晶格向量。書中稱此為「週期晶格中波的彈性散射理論的核心結果」；配合 d(hkl) = 2π/|G| 可還原成 2d sinθ = nλ（式 24）</p></div><div class="eq"><p class="eq__l">Brillouin zone 形式的繞射條件</p><p class="eq__f">k · (½G) = (½G)²</p><span class="eq__r">(26) 　p.33</span><p class="eq__s">由式 (23) 兩邊除以 4 得到。幾何意義：從原點畫倒晶格向量 G，在其中點作垂直平分面，k 端點落在此面上即滿足繞射條件，繞射束方向為 k − G</p></div><div class="eq"><p class="eq__l">幾何結構因子（geometrical structure factor）</p><p class="eq__f">S_G(v₁v₂v₃) = Σⱼ fⱼ exp[−i2π(v₁xⱼ + v₂yⱼ + v₃zⱼ)]</p><span class="eq__r">(46) 　p.40</span><p class="eq__s">j 跑遍基中的 s 個原子；fⱼ 為第 j 個原子的 atomic form factor；xⱼ, yⱼ, zⱼ 為原子 j 的分數座標；(v₁v₂v₃) 標記反射。由 S_G = Σⱼ fⱼ exp(−iG·rⱼ)（式 43）而來。bcc 情形化為 S = f{1 + exp[−iπ(v₁+v₂+v₃)]}（式 47）</p></div><div class="eq"><p class="eq__l">球對稱電子分布的原子形狀因子</p><p class="eq__f">fⱼ = 4π ∫ dr nⱼ(r) r² · (sin Gr)/(Gr)</p><span class="eq__r">(50) 　p.42</span><p class="eq__s">nⱼ(r) 為第 j 個原子的球對稱電子濃度；G = |G|；當 Gr → 0（前向散射，G = 0）時 (sin Gr)/(Gr) → 1，f 化為 4π∫dr nⱼ(r)r² = Z（式 51），即原子電子數</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>繞射的完整條件是 Δk = G：散射向量必須等於某個倒晶格向量，因此繞射圖樣就是晶體倒晶格的一張地圖。這個條件有三種等價敘述——Bragg 的 2d sinθ = nλ、Laue 方程 aᵢ·Δk = 2πvᵢ、以及 Brillouin zone 的 k·(½G) = (½G)²，後者把「可被繞射的 k」幾何化為布里淵區邊界。繞射峰的位置由晶格決定，強度則由基決定：structure factor S_G 與 atomic form factor fⱼ 一起解釋了 bcc（v₁+v₂+v₃ 為奇數）與 fcc（指標奇偶混雜）的系統性消光。第一布里淵區作為倒晶格的 Wigner-Seitz cell，後續成為能帶理論與各種元激發分析的基本舞台。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"A diffraction pattern of a crystal is, as we shall show, a map of the reciprocal lattice of the crystal." (p.30)</p><p>"This is the central result of the theory of elastic scattering of waves in a periodic lattice." (p.32)</p><p>"A Brillouin zone is defined as a Wigner-Seitz primitive cell in the reciprocal lattice." (p.33)</p><p>"Only waves whose wavevector k drawn from the origin terminates on a surface of the Brillouin zone can be diffracted by the crystal." (p.43)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>直接建在 Ch1 的 a₁,a₂,a₃ 上。它產出的第一 Brillouin 區成為後續三條主線的共同定義域：Ch4–5 的聲子色散與模式計數、Ch7 的能帶、Ch9 的費米面。Ch12 的磁振子色散也畫在同一個倒空間裡。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">間接</span>
+    <p>Ch5 的 Debye 截止波向量 K_D、以及「模式總數 = 3N」這個論證，全部活在第一 Brillouin 區這個空間裡。不需精讀，知道 Brillouin 區是什麼即可。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-01.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">01</span> 晶體結構</span></a>
+<a href="ch-03.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">03</span> 晶體鍵結與彈性常數</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

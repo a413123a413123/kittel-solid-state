@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 5 章 聲子 II：熱性質 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 5 章「Phonons II. Thermal Properties」（書本 p.105–129）的六欄整理：研究問題、核心概念、12 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 5 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">05</span><h1>聲子 II：熱性質</h1><p class="uhead__en">Phonons II. Thermal Properties</p><p class="chap__meta"><span>書本 p.105–129</span><span>公式 12 條</span><span>核心概念 12 條</span><span>熱容關聯 <span class="tag tag--direct">直接</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" aria-current="page" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章處理聲子氣體的熱學性質，核心是晶格熱容（lattice heat capacity）以及非諧交互作用帶來的效應。首先用 Planck 分布寫出聲子的熱平衡佔據數與總能量，再把對 K 的求和換成對頻率的積分，因此中心問題變成求態密度 D(ω)。書中依序給出一維與三維的模態計數（固定端與週期性邊界條件）、Debye 模型（聲速為常數）與 Einstein 模型（單一頻率）的態密度與熱容，並導出低溫 Debye T³ 定律與 D(ω) 的一般表達式。後半部處理非諧晶格交互作用：熱膨脹的來源，以及熱傳導係數 K 的動力學理論、聲子氣體的熱阻、umklapp 過程與缺陷/尺寸效應。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>熱容通常指定容熱容 C_V ≡ (∂U/∂T)_V，比實驗直接量到的 C_p 更基本；聲子對晶體熱容的貢獻稱為晶格熱容 C_lat。</li><li>聲子的熱平衡佔據數由 Planck 分布給出，此分布可由 Boltzmann 因子對諧振子各量子態求和直接導出。</li><li>把對波向量的求和換成對頻率的積分後，中心問題變成求態密度 D(ω)（單位頻率範圍內的模態數），此函數稱為 density of modes 或 density of states。</li><li>模態計數可用固定端邊界條件或週期性邊界條件；兩者給出相同的模態數（每個可動原子一個模態）。三維下每個極化、每個分支在 K 空間中每體積 (2π/L)³ 有一個允許的 K 值。</li><li>Debye 模型把聲速視為常數（ω = vK），並引入截斷頻率 ω_D 與截斷波向量 K_D，使模態總數恰等於原胞數 N，藉此定義 Debye 溫度 θ。</li><li>高溫時 Debye 熱容趨近古典值 3Nk_B；低溫時趨近 T³ 定律。T³ 行為的物理圖像是：只有 ℏω &lt; k_BT 的長波聲學模被激發，佔 K 空間體積的比例約為 (T/θ)³。</li><li>Einstein 模型假設 N 個同頻率振子，態密度為 δ 函數；高溫給出 Dulong–Petit 值，但低溫以 exp(−ℏω/τ) 衰減，與實驗的 T³ 不符，故常用來近似光學聲子部分。</li><li>D(ω) 的一般式為對等頻率面的面積分除以群速度；群速度為零的臨界點造成 Van Hove 奇異點。</li><li>諧近似的推論（波不互相作用、無熱膨脹、絕熱與等溫彈性常數相等、彈性常數與壓力溫度無關、高溫熱容為常數）在真實晶體都不精確成立，偏差來自非諧項。</li><li>熱膨脹來自晶體位能中的非諧項；以 Boltzmann 分布計算平均位移可得古典區的 ⟨x⟩ 正比於溫度，且最低階只涉及反對稱項 gx³。</li><li>熱傳導以動力學理論 K = ⅓Cvℓ 描述；聲子平均自由程由幾何散射與聲子間散射決定，非諧耦合預測高溫時 ℓ 正比於 1/T。</li><li>只有會改變聲子總動量的 umklapp 過程（K₁ + K₂ = K₃ + G）才造成熱阻；純 N 過程保持聲子流不變，熱阻為零。低溫時 umklapp 失效，改由邊界尺寸效應與同位素散射主導。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">Planck 分布（聲子熱平衡佔據數）</p><p class="eq__f">⟨n⟩ = 1 / [exp(ℏω/τ) − 1]，  τ ≡ k_B T</p><span class="eq__r">(2) p.107；同式在小節末另編為 (7) p.108 　p.107</span><p class="eq__s">⟨n_{K,p}⟩ 為波向量 K、極化 p 的聲子熱平衡佔據數；τ ≡ k_BT；⟨…⟩ 表熱平衡平均</p></div><div class="eq"><p class="eq__l">晶格熱容的一般積分式</p><p class="eq__f">C_lat = k_B Σ_p ∫ dω D_p(ω) · x² eˣ / (eˣ − 1)²，  x ≡ ℏω/τ = ℏω/k_BT</p><span class="eq__r">(10) 　p.108</span><p class="eq__s">D_p(ω) 為極化 p 的態密度（單位頻率的模態數）；由 U = Σ_p ∫dω D_p(ω)ℏω/[exp(ℏω/τ)−1] 對溫度微分而得</p></div><div class="eq"><p class="eq__l">Debye 模型的態密度</p><p class="eq__f">ω = vK  ⟹  D(ω) = Vω² / (2π²v³)</p><span class="eq__r">(21), (22) 　p.112</span><p class="eq__s">v 為（每種極化視為常數的）聲速；V 為試樣體積；由一般式 D(ω) = dN/dω = (VK²/2π²)(dK/dω)（式 (20)）代入 ω = vK 得到</p></div><div class="eq"><p class="eq__l">Debye 截斷頻率與截斷波向量</p><p class="eq__f">ω_D³ = 6π²v³N/V ；  K_D = ω_D/v = (6π²N/V)^{1/3}</p><span class="eq__r">(23), (24) 　p.112</span><p class="eq__s">N 為試樣中的原胞數；Debye 模型不允許 K &gt; K_D 的模態，K ≤ K_D 的模態數恰好用盡單原子晶格的自由度</p></div><div class="eq"><p class="eq__l">Debye 溫度</p><p class="eq__f">θ = (ℏv/k_B) (6π²N/V)^{1/3}</p><span class="eq__r">(28) 　p.112</span><p class="eq__s">θ 為 Debye 溫度，由 ω_D 定義；並定義 x ≡ ℏω/k_BT、x_D ≡ ℏω_D/k_BT = θ/T</p></div><div class="eq"><p class="eq__l">Debye 模型熱容（完整式）</p><p class="eq__f">C_V = 9Nk_B (T/θ)³ ∫₀^{x_D} dx · x⁴ eˣ / (eˣ − 1)²</p><span class="eq__r">(30) 　p.113</span><p class="eq__s">由 U = 9Nk_BT(T/θ)³∫₀^{x_D}dx x³/(eˣ−1)（p.113 明言的式 (26) 中間表達式）對溫度微分；x_D = θ/T；T ≫ θ 時趨近古典值 3Nk_B</p></div><div class="eq"><p class="eq__l">Debye T³ 定律（極低溫極限）</p><p class="eq__f">C_V ≅ (12π⁴/5) N k_B (T/θ)³ ≅ 234 N k_B (T/θ)³</p><span class="eq__r">(32) 　p.114</span><p class="eq__s">由把積分上限取為無窮大、並用 ∫₀^∞ dx x³/(eˣ−1) = π⁴/15（式 (31)）得到；實際晶體常需低於 θ/50 才有純 T³ 行為</p></div><div class="eq"><p class="eq__l">Einstein 模型熱容</p><p class="eq__f">C_V = (∂U/∂T)_V = N k_B (ℏω/τ)² · e^{ℏω/τ} / (e^{ℏω/τ} − 1)²</p><span class="eq__r">(34) 　p.117</span><p class="eq__s">N 個同頻率 ω 的振子（一維）；三維時 N 換成 3N。高溫極限為 3Nk_B（Dulong–Petit 值），低溫則以 exp(−ℏω/τ) 衰減</p></div><div class="eq"><p class="eq__l">態密度的一般結果（等頻率面積分）</p><p class="eq__f">D(ω) = V/(2π)³ · ∮ dS_ω / v_g ，  v_g = |grad_K ω|</p><span class="eq__r">(37) 　p.118</span><p class="eq__s">dS_ω 為 K 空間中等頻率面上的面積元；v_g 為聲子群速度大小；積分遍及 ω = 常數的曲面，結果對應色散關係的單一分支，亦可用於電子能帶理論</p></div><div class="eq"><p class="eq__l">非諧位能與古典熱膨脹</p><p class="eq__f">U(x) = cx² − gx³ − fx⁴ ；  ⟨x⟩ = (3g/4c²) k_B T</p><span class="eq__r">(38), (40) 　p.120</span><p class="eq__s">x 為偏離絕對零度平衡間距的位移；c、g、f 皆為正；gx³ 項代表原子互斥的非對稱性，fx⁴ 項代表大振幅下振動的軟化。最低階的熱膨脹只牽涉反對稱項 gx³</p></div><div class="eq"><p class="eq__l">熱傳導係數（氣體動力學理論）</p><p class="eq__f">j_U = −K dT/dx ；  K = ⅓ C v ℓ</p><span class="eq__r">(41) j_U=−K dT/dx 在 p.121；(42) K=⅓Cvℓ 在 p.122 　p.121</span><p class="eq__s">j_U 為熱能通量（單位時間單位面積傳遞的能量）；C 為單位體積的熱容；v 為平均粒子（聲子）速度；ℓ 為碰撞間的平均自由程。Debye 首先將此式用於介電固體的熱傳導</p></div><div class="eq"><p class="eq__l">Umklapp（U）過程的三聲子碰撞</p><p class="eq__f">K₁ + K₂ = K₃ + G</p><span class="eq__r">(47) 　p.125</span><p class="eq__s">G 為倒晶格向量；G = 0 者稱 normal（N）過程。只有 U 過程會大幅改變聲子總動量 J = Σ_K n_K ℏK（式 (46)），因而造成熱阻；適合發生 umklapp 的聲子能量約為 ½k_Bθ，低溫下其數目大致隨 exp(−θ/2T) 變化</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>聲子熱容的計算歸結為求態密度 D(ω)：Debye 模型（聲速常數、截斷於 ω_D）給出高溫的古典值 3Nk_B 與低溫的 T³ 定律 C_V ≅ 234 Nk_B(T/θ)³，與實驗（如固態氬）吻合；Einstein 模型雖然低溫以指數衰減而不符實驗，但常用來近似光學聲子部分。真實晶體的熱膨脹、聲子間散射與有限熱傳導都無法由諧近似解釋，必須引入非諧項。熱傳導以 K = ⅓Cvℓ 描述，而能造成熱阻的是會改變聲子總動量的 umklapp 過程 K₁ + K₂ = K₃ + G，不是 N 過程；低溫下 umklapp 失效，平均自由程改由試樣尺寸與同位素、雜質等缺陷散射決定，此時 K 隨 C 而呈 T³ 變化。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"This function is called the density of modes or, more often, density of states." (p.108)</p><p>"These processes, discovered by Peierls, are called umklapp processes." (p.125)</p><p>"There is no thermal expansion." (p.119)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>承 Ch4 的色散關係，接上 Planck 分佈得到聲子熱容；本章後半的熱導率與 Ch6 的電子熱導形成對照（並在 Ch6 p.156 由 Wiedemann–Franz 定律接起來）。Ch19 討論非晶低溫熱容時直接回指本章的 Debye T³ 律並指出偏離；Ch18 把本章的連續體圖像縮到奈米尺度。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">直接</span>
+    <p>全書的熱容主場。Debye 模型、T³ 律、Dulong–Petit、Einstein 模型、非諧性與熱膨脹、熱導率 K = ⅓Cvℓ 全在這一章。必讀 p.107–118 與 p.121–128。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-04.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">04</span> 聲子 I：晶格振動</span></a>
+<a href="ch-06.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">06</span> 自由電子費米氣</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

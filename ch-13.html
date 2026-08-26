@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 13 章 磁共振 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 13 章「Magnetic Resonance」（書本 p.361–391）的六欄整理：研究問題、核心概念、12 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 13 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">13</span><h1>磁共振</h1><p class="uhead__en">Magnetic Resonance</p><p class="chap__meta"><span>書本 p.361–391</span><span>公式 12 條</span><span>核心概念 11 條</span><span>熱容關聯 <span class="tag tag--none">無明顯關聯</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" aria-current="page" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章處理與核自旋、電子自旋角動量相關的動力學磁效應，也就是各類磁共振：NMR、NQR、EPR/ESR、FMR、SWR、AFMR、CESR。書中先以 NMR 為基礎，建立共振條件 ω = γB₀、進動運動方程、縱向（T₁）與橫向（T₂）弛豫的 Bloch 方程與吸收功率的 Lorentz 線型。接著討論線寬的來源（剛性晶格中的偶極–偶極交互作用）與運動窄化（motional narrowing）——這是全章最具反直覺性的結果。再處理超精細分裂（接觸超精細交互作用、F 中心、矽中施體原子）與金屬中的 Knight 位移。後半部把同一套進動語言推廣到有序磁性系統：FMR 的形狀效應（去磁因子）、薄膜自旋波共振、反鐵磁共振（異向場與交換場的幾何平均）。最後以受激輻射的 maser／laser 原理與三能階 maser 作結。共同的問題是：共振線的位置、寬度與精細結構分別告訴我們固體的什麼資訊？</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>共振研究可提供四類資訊：單一缺陷的電子結構（由精細結構）、自旋或環境的運動（由線寬變化）、自旋所感受的內部磁場（由共振線位置，如化學位移、Knight 位移）、以及集體自旋激發。</li><li>核磁矩與角動量平行：μ = γℏI，γ 為磁旋比；磁場中 I = 1/2 有兩個能階，能差給出共振條件 ℏω = γℏB₀。</li><li>T₁（縱向／自旋–晶格弛豫時間）描述 M_z 趨向平衡的過程，能量由自旋系統流向晶格振動；絕緣體中主要靠聲子調制晶場，其過程分為 direct、Raman、Orbach 三種，溫度依賴不同。</li><li>T₂（橫向弛豫時間）是各個磁矩失相（dephasing）的時間；不同局域磁場使自旋以不同頻率進動，最終 M_x、M_y 歸零。因 M_x、M_y 變化不改變磁能，決定 T₂ 的條件可比 T₁ 寬鬆。</li><li>剛性晶格中線寬主要由磁偶極–偶極交互作用造成，量級 B_i ≈ μ/a³；質子在 2 Å 間距下約 2 gauss。</li><li>運動窄化：當原子快速相對運動、局域場隨機翻轉的特徵時間 τ 很短時，失相變成隨機行走問題，線寬被壓縮為 Δω = (Δω)₀²τ，τ 越短線越窄。水中的質子共振線僅為凍結情形的約 10⁻⁵。</li><li>接觸超精細交互作用 U = a I·S 源自電子自旋電流在核位置的磁場，正比於 |ψ(0)|²；只有 s 電子（L=0）貢獻接觸項。氫的基態超精細分裂為 1420 MHz。</li><li>超精細分裂可作為順磁點缺陷的結構探針：KCl 中的 F 中心與六個 K³⁹（I = 3/2）作用，I_max = 9，給出 2I_max+1 = 19 個超精細成分、4096 種自旋排列。矽中磷施體在高濃度時因快速跳躍而發生運動窄化，分裂線併為單一窄線。</li><li>Knight 位移是金屬中核共振相對於抗磁固體的偏移，正比於傳導電子的 Pauli 自旋磁化率乘以核位置電子密度與平均電子密度之比。</li><li>FMR 的特殊之處：橫向磁化率極大、試樣形狀（去磁場）扮演關鍵角色、交換耦合壓抑偶極線寬（YIG 球可窄至 0.2 G）、且在低射頻功率即飽和（激發自旋波模）。</li><li>反鐵磁共振頻率由異向場 B_A 與交換場 B_E 的幾何組合決定；maser／laser 的關鍵在於製造上能階的過剩佈居，三能階 maser 以泵浦飽和 3↔1 巧妙解決此問題。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">核磁矩與角動量的關係</p><p class="eq__f">μ = γℏI</p><span class="eq__r">(1) 　p.363</span><p class="eq__s">γ 為磁旋比（常數），I 為以 ℏ 為單位量度的核角動量。</p></div><div class="eq"><p class="eq__l">磁共振吸收的基本條件</p><p class="eq__f">ℏω = γℏB₀  →  ω = γB₀</p><span class="eq__r">(4) 　p.364</span><p class="eq__s">B₀ 為靜磁場。對質子 γ = 2.675×10⁴ s⁻¹ G⁻¹ = 2.675×10⁸ s⁻¹ T⁻¹，故 ν(MHz) = 4.258 B₀(kilogauss) = 42.58 B₀(tesla)（式 4a）；電子自旋則為 ν(GHz) = 2.80 B₀(kilogauss) = 28.0 B₀(tesla)（式 4b）。</p></div><div class="eq"><p class="eq__l">磁化的陀螺（進動）運動方程</p><p class="eq__f">dM/dt = γ M × B_a</p><span class="eq__r">(7) 　p.366</span><p class="eq__s">M = Σμ_i 為單位體積的核磁化，B_a 為外加磁場。由 ℏ dI/dt = μ × B_a（式 5）對所有核求和而得，前提是只有單一同位素（單一 γ）重要。</p></div><div class="eq"><p class="eq__l">Bloch 方程（含縱向與橫向弛豫）</p><p class="eq__f">dM_x/dt = γ(M×B)_x − M_x/T₂;  dM_y/dt = γ(M×B)_y − M_y/T₂;  dM_z/dt = γ(M×B)_z + (M₀ − M_z)/T₁</p><span class="eq__r">(13) 　p.368</span><p class="eq__s">T₁ 為縱向（自旋–晶格）弛豫時間，T₂ 為橫向（失相）弛豫時間，M₀ = χ₀B₀ 為平衡磁化。方程不對 x, y, z 對稱，因系統被沿 ẑ 的靜場所偏置。書中註明 Bloch 方程只是合理近似而非嚴格，未能描述全部固體中的自旋現象。</p></div><div class="eq"><p class="eq__l">自由進動解與共振半高半寬</p><p class="eq__f">M_x = m e^{−t/T′} cos ωt,  M_y = −m e^{−t/T′} sin ωt;  ω₀ = γB₀, T′ = T₂;  (Δω)_{1/2} = 1/T₂</p><span class="eq__r">(15) 自由進動解、(17) ω₀=γB₀ 皆在 p.369 　p.369</span><p class="eq__s">吸收功率為 𝒫(ω) = ωγM_zT₂B₁² / [1 + (ω₀ − ω)²T₂²]（式 19），B₁ 為旋轉射頻場振幅。運動類比於二維阻尼諧振子。</p></div><div class="eq"><p class="eq__l">剛性晶格的偶極線寬</p><p class="eq__f">ΔB = [3(μ·r₁₂)r₁₂ − μ r₁₂²] / r₁₂⁵;  B_i ≈ μ/a³</p><span class="eq__r">(21), (23) 　p.370</span><p class="eq__s">μ 為鄰近磁偶極矩，r₁₂ 為兩偶極間位置向量，a 為最近鄰間距。對間距 2 Å 的質子，B_i ≈ 2 gauss = 2×10⁻⁴ tesla（p.371）。轉換到 SI 需將右式乘以 μ₀/4π。</p></div><div class="eq"><p class="eq__l">運動窄化（motional narrowing）</p><p class="eq__f">T₂ = 1/(γ²B_i²τ);  Δω = 1/T₂ = (Δω)₀² τ</p><span class="eq__r">(26) 在 p.372 末；(27)(28) 在 p.373 　p.373</span><p class="eq__s">τ 為局域場隨機翻轉（原子跳躍）的特徵時間，(Δω)₀ ≈ γB_i 為剛性晶格線寬。成立條件為 (Δω)₀τ ≪ 1。此結果與剛性晶格的 T₂ ≈ 1/γB_i 截然不同。</p></div><div class="eq"><p class="eq__l">接觸超精細交互作用</p><p class="eq__f">U = −μ_I·B̄ ≅ γℏμ_B|ψ(0)|² I·S;  U = a I·S</p><span class="eq__r">(33), (34) 　p.374</span><p class="eq__s">|ψ(0)|² 為電子波函數在核位置的機率密度，μ_B = eℏ/2mc 為 Bohr 磁子，a 為超精細常數，I 為以 ℏ 為單位的核自旋。因球殼平均場為零，只有 s 電子（L = 0）貢獻接觸項。</p></div><div class="eq"><p class="eq__l">Knight 位移</p><p class="eq__f">K = −ΔB/B₀ = a χ_s / (g_N μ_B γ_I ℏ)</p><span class="eq__r">(38) 　p.378</span><p class="eq__s">χ_s 為傳導電子的 Pauli 自旋磁化率，a 為超精細耦合常數，γ_I 為核磁旋比。近似上 K ≈ χ_s|ψ(0)|²/N，即 Pauli 磁化率再乘上核位置電子濃度與平均電子濃度之比。</p></div><div class="eq"><p class="eq__l">鐵磁共振（均勻模）與形狀效應</p><p class="eq__f">ω₀ = γ{[B₀ + (N_y − N_z)M][B₀ + (N_x − N_z)M]}^{1/2};  垂直薄板 ω₀ = γ(B₀ − 4πM);  平行薄板 ω₀ = γ[B₀(B₀ + 4πM)]^{1/2}</p><span class="eq__r">(41), (42), (43) 　p.381</span><p class="eq__s">N_x, N_y, N_z 為橢球的去磁因子，M 為磁化，B₀ 為外加靜場。球體 N_x = N_y = N_z 時退化為 ω₀ = γB₀。薄膜自旋波共振再加上交換項 Dk²，k = nπ/L（式 44）。</p></div><div class="eq"><p class="eq__l">反鐵磁共振頻率</p><p class="eq__f">ω₀² = γ² B_A (B_A + 2B_E)</p><span class="eq__r">(48) 　p.384</span><p class="eq__s">B_A = 2K/M 為異向場（K 為異向能密度、M = |M₁| = |M₂|），B_E = λM 為交換場。此為零外加磁場、單軸反鐵磁的結果。</p></div><div class="eq"><p class="eq__l">Maser 作用條件與交換窄化</p><p class="eq__f">n_u − n_l &gt; V ΔB / (8πμQ) （CGS）;  交換窄化 Δω ≈ (Δω)₀² / ω_ex</p><span class="eq__r">(53) 在 p.387；交換窄化 (49) 在 p.386 　p.387</span><p class="eq__s">n_u、n_l 為上、下能階的原子數，V 為腔體體積，Q 為腔體品質因子，μ 為磁矩，ΔB 由 μΔB = ℏΔω 定義。交換窄化式中 ω_ex ≈ J/ℏ 扮演跳躍頻率 1/τ 的角色，(Δω)₀² = γ²⟨B_i²⟩ 為無交換時的靜態偶極線寬平方（p.386）。</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>所有磁共振現象都建立在同一個核心關係上：自旋在磁場中以 ω = γB₀ 進動，並透過 Bloch 方程中的 T₁（能量流向晶格）與 T₂（相位失序）弛豫。共振線的三個特徵各自攜帶不同的固體資訊——位置給出自旋所感受的內場（化學位移、Knight 位移、FMR 的去磁場、AFMR 的 B_A 與 B_E），寬度給出運動與交換（運動窄化 Δω = (Δω)₀²τ、交換窄化 Δω ≈ (Δω)₀²/ω_ex），精細結構則給出單一缺陷的電子結構（F 中心、矽中的施體原子）。把同一套進動語言推廣到有序系統即得 FMR、SWR 與 AFMR；而在非平衡的上能階過剩佈居下，同一組能階便可用於受激輻射放大，這就是 maser 與 laser 的原理。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"This is the fundamental condition for magnetic resonance absorption." (p.364)</p><p>"We can think of T2 as a dephasing time." (p.368)</p><p>"The shorter is τ, the narrower is the resonance line!" (p.373)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>本章是量測工具章——量的是 Ch11–12 建立的磁性量（磁矩、交換場、異向性場）。其中的 F 中心與矽中施體原子接到 Ch20 的點缺陷；maser／雷射一節連到 Ch15 的光學過程。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">無明顯關聯</span>
+    <p>無明顯關聯。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-12.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">12</span> 鐵磁性與反鐵磁性</span></a>
+<a href="ch-14.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">14</span> 電漿子、極化子與極子</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 9 章 費米面與金屬 — Kittel 全書逐章</title>
+<meta name="description" content="Kittel 第 8 版第 9 章「Fermi Surfaces and Metals」（書本 p.221–255）的六欄整理：研究問題、核心概念、8 條公式（含頁碼式號）、結論、與前後章的關係、與熱容的關聯程度。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html" aria-current="page">全書逐章</a>
+      <a href="thermal.html">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="index.html">全書逐章</a> ／ 第 9 章</p></div>
+<header class="uhead wrap"><span class="uhead__no num">09</span><h1>費米面與金屬</h1><p class="uhead__en">Fermi Surfaces and Metals</p><p class="chap__meta"><span>書本 p.221–255</span><span>公式 8 條</span><span>核心概念 8 條</span><span>熱容關聯 <span class="tag tag--none">無明顯關聯</span></span></p></header>
+<main id="main" class="wrap layout">
+<nav class="scale" aria-label="章節刻度尺">
+<p class="scale__title">22 章 · 熱容關聯</p>
+<ol>
+<li class="g-indirect"><a href="ch-01.html" title="晶體結構｜Crystal Structure"><span class="num">01</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體結構</span></a></li>
+<li class="g-indirect"><a href="ch-02.html" title="波繞射與倒晶格｜Wave Diffraction and the Reciprocal Lattice"><span class="num">02</span><span class="bar" aria-hidden="true"></span><span class="vh">波繞射與倒晶格</span></a></li>
+<li class="g-indirect"><a href="ch-03.html" title="晶體鍵結與彈性常數｜Crystal Binding and Elastic Constants"><span class="num">03</span><span class="bar" aria-hidden="true"></span><span class="vh">晶體鍵結與彈性常數</span></a></li>
+<li class="g-indirect"><a href="ch-04.html" title="聲子 I：晶格振動｜Phonons I. Crystal Vibrations"><span class="num">04</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 I：晶格振動</span></a></li>
+<li class="g-direct"><a href="ch-05.html" title="聲子 II：熱性質｜Phonons II. Thermal Properties"><span class="num">05</span><span class="bar" aria-hidden="true"></span><span class="vh">聲子 II：熱性質</span></a></li>
+<li class="g-direct"><a href="ch-06.html" title="自由電子費米氣｜Free Electron Fermi Gas"><span class="num">06</span><span class="bar" aria-hidden="true"></span><span class="vh">自由電子費米氣</span></a></li>
+<li class="g-none"><a href="ch-07.html" title="能帶｜Energy Bands"><span class="num">07</span><span class="bar" aria-hidden="true"></span><span class="vh">能帶</span></a></li>
+<li class="g-none"><a href="ch-08.html" title="半導體晶體｜Semiconductor Crystals"><span class="num">08</span><span class="bar" aria-hidden="true"></span><span class="vh">半導體晶體</span></a></li>
+<li class="g-none"><a href="ch-09.html" aria-current="page" title="費米面與金屬｜Fermi Surfaces and Metals"><span class="num">09</span><span class="bar" aria-hidden="true"></span><span class="vh">費米面與金屬</span></a></li>
+<li class="g-none"><a href="ch-10.html" title="超導｜Superconductivity"><span class="num">10</span><span class="bar" aria-hidden="true"></span><span class="vh">超導</span></a></li>
+<li class="g-none"><a href="ch-11.html" title="反磁性與順磁性｜Diamagnetism and Paramagnetism"><span class="num">11</span><span class="bar" aria-hidden="true"></span><span class="vh">反磁性與順磁性</span></a></li>
+<li class="g-none"><a href="ch-12.html" title="鐵磁性與反鐵磁性｜Ferromagnetism and Antiferromagnetism"><span class="num">12</span><span class="bar" aria-hidden="true"></span><span class="vh">鐵磁性與反鐵磁性</span></a></li>
+<li class="g-none"><a href="ch-13.html" title="磁共振｜Magnetic Resonance"><span class="num">13</span><span class="bar" aria-hidden="true"></span><span class="vh">磁共振</span></a></li>
+<li class="g-none"><a href="ch-14.html" title="電漿子、極化子與極子｜Plasmons, Polaritons, and Polarons"><span class="num">14</span><span class="bar" aria-hidden="true"></span><span class="vh">電漿子、極化子與極子</span></a></li>
+<li class="g-none"><a href="ch-15.html" title="光學過程與激子｜Optical Processes and Excitons"><span class="num">15</span><span class="bar" aria-hidden="true"></span><span class="vh">光學過程與激子</span></a></li>
+<li class="g-none"><a href="ch-16.html" title="介電體與鐵電體｜Dielectrics and Ferroelectrics"><span class="num">16</span><span class="bar" aria-hidden="true"></span><span class="vh">介電體與鐵電體</span></a></li>
+<li class="g-none"><a href="ch-17.html" title="表面與界面物理｜Surface and Interface Physics"><span class="num">17</span><span class="bar" aria-hidden="true"></span><span class="vh">表面與界面物理</span></a></li>
+<li class="g-direct"><a href="ch-18.html" title="奈米結構｜Nanostructures"><span class="num">18</span><span class="bar" aria-hidden="true"></span><span class="vh">奈米結構</span></a></li>
+<li class="g-direct"><a href="ch-19.html" title="非晶固體｜Noncrystalline Solids"><span class="num">19</span><span class="bar" aria-hidden="true"></span><span class="vh">非晶固體</span></a></li>
+<li class="g-indirect"><a href="ch-20.html" title="點缺陷｜Point Defects"><span class="num">20</span><span class="bar" aria-hidden="true"></span><span class="vh">點缺陷</span></a></li>
+<li class="g-none"><a href="ch-21.html" title="差排｜Dislocations"><span class="num">21</span><span class="bar" aria-hidden="true"></span><span class="vh">差排</span></a></li>
+<li class="g-none"><a href="ch-22.html" title="合金｜Alloys"><span class="num">22</span><span class="bar" aria-hidden="true"></span><span class="vh">合金</span></a></li>
+</ol><div class="scale__key"><span><i style="background:var(--ember)"></i>直接</span><span><i style="background:var(--indigo);width:56%"></i>間接</span><span><i style="background:var(--line-strong);width:22%"></i>無</span></div></nav>
+<article>
+<section class="facet" id="f1"><p class="facet__k"><b>①</b>主要內容與研究問題</p><p>本章問：金屬的費米面是什麼形狀，以及如何從實驗把它測出來。書中先建立化約區與週期區能帶表示法，示範用 Harrison 作圖法從自由電子球構造各布里淵區的費米面，並依軌道所包圍的是滿態或空態區分電子軌道、電洞軌道與開放軌道。接著介紹三種能帶計算法：緊束縛法（適合內插與 d 能帶）、Wigner-Seitz 法（解釋鹼金屬的凝聚能）與贗勢法。最後以 de Haas-van Alphen 效應為主線，說明磁場中軌道量子化如何造成物理量對 1/B 的週期性，並由此重建費米面。</p></section>
+<section class="facet" id="f2"><p class="facet__k"><b>②</b>核心物理概念</p><ul><li>費米面是 k 空間中能量等於 ε_F 的等能面，在絕對零度分隔已填與未填軌域；金屬的電性由費米面的體積與形狀決定。</li><li>能帶能量在倒晶格中具週期性 ε_k = ε_{k+G}，故有延伸區、化約區、週期區三種等價的表示法。</li><li>費米面所包圍的總體積只取決於電子濃度，與晶格交互作用細節無關；晶格位能只會在區邊界開能隙並把尖角磨圓。</li><li>磁場中電子沿等能面上的軌道運動；包圍滿態者為電子軌道，包圍空態者為電洞軌道，不閉合而跨區者為開放軌道，後者強烈影響磁阻。</li><li>緊束縛（LCAO）近似把自由原子波函數線性組合成 Bloch 函數，能帶寬度正比於近鄰重疊積分 γ；重疊越小，能帶越窄、有效質量越大。</li><li>Wigner-Seitz 法指出簡單金屬的凝聚來自邊界條件由 Schrödinger 改為 dψ/dr = 0，使 k = 0 軌域的曲率（動能）大幅降低。</li><li>磁場中軌道由 Bohr-Sommerfeld 條件量子化，導致 k 空間軌道面積與磁通量取分立值，且相鄰軌道對應等間隔的 1/B。</li><li>dHvA 效應的主要貢獻來自極值軌道（extremal orbits），因為非極值軌道之間相位互相抵消；銅的費米面在 [111] 方向有八個「頸部」與六角面接觸。</li></ul></section>
+<section class="facet" id="f3"><p class="facet__k"><b>③</b>重要模型與公式</p><div class="eqs"><div class="eq"><p class="eq__l">能帶能量的倒晶格週期性</p><p class="eq__f">ε_k = ε_{k+G}</p><span class="eq__r">(2) 　p.225</span><p class="eq__s">G 為倒晶格向量；ε_{k+G} 指的是與 ε_k 同一條能帶</p></div><div class="eq"><p class="eq__l">緊束縛法的 Bloch 型試探波函數</p><p class="eq__f">ψ_k(r) = N^{−1/2} Σ_j exp(ik·r_j) φ(r − r_j)</p><span class="eq__r">(5) 　p.234</span><p class="eq__s">φ(r − r_j) 為位於格點 r_j 的自由原子（s 態）軌域；N 為晶體中原子數；假設原胞含一個原子</p></div><div class="eq"><p class="eq__l">緊束縛法的一階能量</p><p class="eq__f">⟨k|H|k⟩ = −α − γ Σ_m exp(−ik·ρ_m) = ε_k</p><span class="eq__r">(10) 　p.234</span><p class="eq__s">α = −∫dV φ*(r)Hφ(r) 為在位項；γ = −∫dV φ*(r−ρ)Hφ(r) 為近鄰重疊能；ρ_m 為近鄰向量</p></div><div class="eq"><p class="eq__l">簡單立方晶格的緊束縛能帶</p><p class="eq__f">ε_k = −α − 2γ (cos k_x a + cos k_y a + cos k_z a)</p><span class="eq__r">(13) 　p.235</span><p class="eq__s">a 為晶格常數；能帶總寬度為 12γ；小 ka 時 ε_k ≅ −α − 6γ + γk²a²，對應有效質量 m* = ℏ²/2γa²</p></div><div class="eq"><p class="eq__l">磁場中軌道的 Bohr-Sommerfeld 量子化</p><p class="eq__f">∮ p·dr = (n + γ)2πℏ</p><span class="eq__r">(23) 　p.243</span><p class="eq__s">p = p_kin + p_field = ℏk + qA/c 為總動量；n 為整數；γ 為相位修正，自由電子為 1/2</p></div><div class="eq"><p class="eq__l">軌道所包磁通量的量子化</p><p class="eq__f">Φ_n = (n + γ)(2πℏc/e)</p><span class="eq__r">(27) 　p.243</span><p class="eq__s">Φ_n 為實空間軌道所包磁通量；通量單位 2πℏc/e = 4.14×10⁻⁷ gauss·cm²（或 T·m²）</p></div><div class="eq"><p class="eq__l">k 空間軌道面積的量子化</p><p class="eq__f">S_n = (n + γ)(2πe/ℏc) B</p><span class="eq__r">(30) 　p.244</span><p class="eq__s">S_n 為 k 空間中第 n 條軌道所圍面積；相鄰軌道面積差 ΔS = 2πeB/ℏc（式 32）</p></div><div class="eq"><p class="eq__l">de Haas-van Alphen 的 1/B 週期</p><p class="eq__f">Δ(1/B) = 2πe/(ℏc S)</p><span class="eq__r">(37) 　p.247</span><p class="eq__s">S 為費米面垂直於 B 方向的極值截面積；此式亦列於本章 SUMMARY（p.252）</p></div></div></section>
+<section class="facet" id="f4"><p class="facet__k"><b>④</b>本章最重要的結論</p><p>金屬最有意義的定義是「具有費米面的固體」，其電性完全由費米面的體積與形狀決定。費米面所包體積只由電子濃度定；晶格位能改變的是形狀與連通性，並據此把軌道分成電子型、電洞型與開放型。在磁場中軌道被 Bohr-Sommerfeld 條件量子化，k 空間面積滿足 S_n = (n+γ)(2πe/ℏc)B，因此所有磁振盪效應（磁阻、磁化率、熱容）都對 1/B 呈週期性。de Haas-van Alphen 振盪的週期 Δ(1/B) = 2πe/ℏcS 直接給出費米面垂直於磁場的極值截面積，是重建整個費米面的主要實驗手段——銅、金的頸部與「狗骨」軌道即由此確認。</p><div class="quote"><p class="quote__k">書中逐字</p><p>"An energy band is a single branch of the ε_k versus k surface." (p.224)</p><p>"Orbits that enclose filled states are electron orbits." (p.232)</p></div></section>
+<section class="facet facet--rel" id="f5"><p class="facet__k"><b>⑤</b>與前後章的關係　（我的判讀）</p><p>把 Ch7 的能帶畫進 Ch2 的 Brillouin 區，得到費米面的幾何；再用 de Haas–van Alphen 等實驗手段量它。為 Ch10（超導的費米面配對）與 Ch22（合金的電子結構）鋪路。</p></section>
+</article></main>
+<section class="plate" id="f6">
+  <div class="wrap--text">
+    <p class="facet__k"><b>⑥</b>與熱容 Cth 的關聯程度　（我的判讀）</p>
+    <span class="lead">無明顯關聯</span>
+    <p>無明顯關聯。</p>
+  </div>
+</section>
+<div class="wrap"><nav class="stepnav" aria-label="章之間">
+<a href="ch-08.html"><span class="dir">← 上一章</span><span class="t"><span class="n num">08</span> 半導體晶體</span></a>
+<a href="ch-10.html"><span class="dir">下一章 →</span><span class="t"><span class="n num">10</span> 超導</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>
