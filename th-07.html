@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>金屬的電子熱容 — Kittel 熱容專題</title>
+<meta name="description" content="Kittel 第 8 版的熱容專題：金屬的電子熱容。物理意義、公式與符號定義、推導假設、適用條件與限制、高低溫行為，以及對應的章節小節與頁碼。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html">全書逐章</a>
+      <a href="thermal.html" aria-current="page">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="thermal.html">熱容專題</a> ／ 主題 7</p></div>
+<header class="uhead wrap"><span class="uhead__no num">07</span><h1>金屬的電子熱容</h1><p class="topic__zone">溫區定位：低溫區　T ≪ θ　·　θ 的十分之一以下</p></header>
+<main id="main" class="wrap--text">
+<section class="aspect"><p class="aspect__k"><b>①</b>物理意義與直觀解釋　（我寫的教學說明）</p><p>古典預測是災難性的錯誤：若每個傳導電子都像理想氣體分子那樣帶 ³⁄₂k_BT，金屬的熱容應該比實測大兩個數量級。Kittel 稱這是早期金屬電子論**最大的困難**。</p><p>解答是 **Pauli 不相容原理**。電子填滿費米海之後，絕大多數電子被「鎖死」——它上方的能階都被佔滿，它拿了 k_BT 的能量也無處可去。只有費米面附近寬約 k_BT 的那一薄層電子有空位可跳。這層電子佔全部的比例約 T/T_F，其中 T_F 是費米溫度（金屬中約 5×10⁴ K）。</p><p>於是：能被激發的電子數 ∝ N(T/T_F)，每個帶 k_BT，總能量 ∝ Nk_BT²/T_F，微分得 **C_el ∝ Nk_BT/T_F——線性於 T**，而且比古典值小了 T/T_F ~ 0.01 這個因子。這一步的推理形式與 Pauli 順磁磁化率完全同構（Ch11），兩者都源自「只有費米面附近的電子能響應」。</p><p>**實驗上怎麼用**：低溫金屬的總熱容是電子項與聲子項相加，**C = γT + AT³**。把數據畫成 **C/T 對 T²**，就會是一條直線——斜率給聲子項 A（進而給 Debye 溫度 θ），截距給電子項 γ（稱 Sommerfeld 參數，正比於費米面的態密度 D(ε_F)）。這是固態實驗最經典的一張圖，一次量到兩個完全不同來源的物理量。</p><p>**什麼時候電子項才重要**：C_el/C_phonon ∝ T/T³ = 1/T²，所以溫度越低電子項越佔優。室溫下聲子完全主宰，電子項是百分比量級的修正；到了幾 K 的低溫，電子項反而變成主角。</p></section>
+<section class="aspect"><p class="aspect__k"><b>②</b>重要公式與符號定義　（書中）</p><div class="eqs"><div class="eq"><p class="eq__l">電子熱容的一般積分式</p><p class="eq__f">C_el = dU/dT = ∫₀^∞ dε (ε − ε_F) (df/dT) D(ε)</p><span class="eq__r">(28) 　Ch6 p.142</span><p class="eq__s">ΔU = U(T) − U(0) 為 N 個電子由 0 加熱到 T 的總能量增量；f(ε) 為費米-狄拉克函數，是 (27) 式中唯一與溫度相關的項；D(ε) 為單位能量範圍的軌域數。</p></div><div class="eq"><p class="eq__l">低溫電子熱容（Sommerfeld 展開結果）</p><p class="eq__f">C_el = (1/3) π² D(ε_F) k_B² T</p><span class="eq__r">(34) 　Ch6 p.144</span><p class="eq__s">適用於 k_B T ≪ ε_F；推導中令 τ ≡ k_B T、x ≡ (ε − ε_F)/τ，並用 ∫₋∞^∞ dx x²eˣ/(eˣ+1)² = π²/3。</p></div><div class="eq"><p class="eq__l">自由電子氣的電子熱容（以費米溫度表示）</p><p class="eq__f">C_el = (1/2) π² N k_B T / T_F</p><span class="eq__r">(36) 　Ch6 p.144</span><p class="eq__s">由 (34) 代入 D(ε_F) = 3N/2ε_F = 3N/2k_B T_F 得到；k_B T_F ≡ ε_F。C_el 正比於 T，室溫下比古典值 (3/2)Nk_B 小約 0.01 或更少（T_F ~ 5×10⁴ K）。</p></div><div class="eq"><p class="eq__l">金屬低溫總熱容的實驗作圖式（電子項＋聲子項）</p><p class="eq__f">C = γT + AT³ ，作圖用 C/T = γ + AT²</p><span class="eq__r">(37) 　Ch6 p.145</span><p class="eq__s">適用於遠低於德拜溫度 θ 與費米溫度 T_F；γ 為 Sommerfeld 參數（電子項係數），A 為聲子項係數，兩者皆為材料特徵常數。以 C/T 對 T² 作圖應得斜率 A、截距 γ 的直線。</p></div><div class="eq"><p class="eq__l">熱有效質量（由觀測 γ 與自由電子 γ 之比定義）</p><p class="eq__f">m_th/m ≡ γ(observed) / γ(free)</p><span class="eq__r">(38) 　Ch6 p.145</span><p class="eq__s">m_th 為熱有效質量，m 為電子質量。此形式自然出現是因為 ε_F 反比於電子質量，故 γ ∝ m。偏離 1 源自傳導電子與週期位能、與聲子、與其他電子的交互作用。</p></div></div></section>
+<section class="aspect"><p class="aspect__k"><b>③</b>推導所使用的假設　（書中）</p><ul><li>自由電子模型：組成原子的價電子成為傳導電子，在金屬體積內自由運動；傳導電子與晶格離子的交互作用留到下一章（能帶理論）才處理（p.133）。</li><li>書中把「free electron Fermi gas」定義為「遵守 Pauli 原理的自由電子氣」；並明講 orbital（單電子軌域）模型只有在電子之間沒有交互作用時才是嚴格的（p.134）。</li><li>三維推導採週期性邊界條件的平面波 ψ_k = exp(ik·r)，單電子能量 ε_k = ℏ²k²/2m；基態下被佔據的軌域填滿 k 空間中半徑 k_F 的球，ε_F = (ℏ²/2m)(3π²N/V)^(2/3)（p.137–138, p.140）。</li><li>有限溫度下軌域被佔據的機率由 Fermi–Dirac 分布 f(ε) = 1/(exp[(ε−μ)/k_BT]+1) 給出，μ 由總粒子數守恆定出，且 T→0 時 μ = ε_F（p.136）。</li><li>低溫定量推導假設 k_BT ≪ ε_F，因此把態密度 D(ε) 在 ε_F 取值後提到積分外（書中稱此為 a good approximation）（p.142–143）。</li><li>同樣基於 k_BT ≪ ε_F：忽略化學勢 μ 的溫度依賴、直接用常數 ε_F 取代 μ；並把積分下限由 x = −ε_F/τ 延伸到 −∞（書中理由是低溫時 ε_F/τ ~ 100 以上，被積函數已可忽略）（p.143–144）。</li></ul></section>
+<section class="aspect aspect--limit"><p class="aspect__k"><b>④</b>適用條件與限制　（書中）</p><ul><li>定量結果 C_el = (1/3)π²D(ε_F)k_B²T = (1/2)π²N k_B T/T_F 是「valid at low temperatures k_BT ≪ ε_F」的表示式，書中明確如此限定（p.142, p.144）。</li><li>C = γT + AT³ 這個電子項＋聲子項的分解，書中限定在「溫度遠低於 Debye 溫度 θ 與 Fermi 溫度 T_F」時才寫得出來（p.145）。</li><li>古典統計力學的預測（每個自由粒子 (3/2)k_B、電子總貢獻 (3/2)Nk_B）與實驗牴觸：室溫觀測到的電子貢獻通常小於此值的 0.01。書中明講這是古典 Maxwell 分布函數的失敗，而不是自由電子模型本身的失敗（p.133, p.141）。</li><li>觀測到的 γ（Sommerfeld parameter，數值列於 p.146 的 Table 2）數量級是對的，但常與用自由電子質量 m 算出的值「不太吻合」；書中因此定義熱有效質量 m_th/m ≡ γ(observed)/γ(free)（p.145）。</li><li>γ 偏離自由電子值的三個來源，書中逐條列出：傳導電子與剛性晶格週期位能的交互作用（band effective mass）、傳導電子與聲子的交互作用（電子拖動鄰近離子）、傳導電子彼此之間的交互作用（p.145, p.147）。</li><li>重費米子化合物（UBe₁₃、CeAl₃、CeCu₂Si₂）的 γ 比一般金屬高 2–3 個數量級，書中提到其 f 電子慣性質量可能高達 1000 m —— 自由電子估計在此完全不適用（p.147）。</li></ul></section>
+<section class="aspect"><p class="aspect__k"><b>⑤</b>高溫與低溫行為　（書中）</p><h4>高溫　T ≫ θ</h4><p>書中所謂「高溫端」主要是與古典預測的對照：古典統計力學預測自由粒子的熱容為 (3/2)k_B，若 N 個原子各貢獻一個價電子，電子對熱容的貢獻應為 (3/2)Nk_B，如同單原子理想氣體（p.141）。但實際上室溫觀測到的電子貢獻通常小於此值的 0.01（p.141）；書中給的量化理由是：因 T_F ~ 5×10⁴ K，室溫下 C_el 比古典值小約 0.01 或更小（p.142）。書中並在 Fig. 8 說明常見金屬室溫下 τ/ε_F ≈ 0.01，故 μ 非常接近 ε_F，也就是說「室溫」對電子氣而言仍屬簡併的低溫區（p.144）。書中在此章沒有處理 T 接近或超過 T_F（非簡併）時電子熱容如何過渡到古典值。</p><h4>低溫　T ≪ θ</h4><p>書中引 Fermi 的話指出比熱在絕對零度消失、低溫下正比於絕對溫度（p.141）。定性論證：從絕對零度加熱時，並非每個電子都獲得 ~k_BT 的能量，只有落在費米能附近 k_BT 能量範圍內軌域的電子被熱激發，佔比約 T/T_F；故 U_el ≈ (N T/T_F)k_BT，C_el = ∂U/∂T ≈ N k_B (T/T_F)，與 T 成正比（p.141）。定量結果為 C_el = (1/3)π²D(ε_F)k_B²T（用到 ∫ x²e^x/(e^x+1)² dx = π²/3），再代入自由電子氣的 D(ε_F) = 3N/2ε_F = 3N/2k_BT_F，得 C_el = (1/2)π² N k_B T/T_F（p.144）。實驗上，在遠低於 θ 與 T_F 時金屬熱容寫成 C = γT + AT³，電子項線性於 T 且在足夠低溫佔主導；作 C/T 對 T² 圖應得直線，斜率 A、截距 γ（鉀的實測例見 Fig. 9：C/T = 2.08 + 2.57 T²）（p.145）。</p></section>
+<section class="aspect"><p class="aspect__k"><b>⑥</b>對應的 Kittel 章節、小節與頁碼</p><ul class="srcs"><li>Ch6　HEAT CAPACITY OF THE ELECTRON GAS　p.141</li><li>Ch6　Experimental Heat Capacity of Metals　p.145</li><li>Ch6　Heavy Fermions　p.147</li><li>Ch6　FREE ELECTRON GAS IN THREE DIMENSIONS　p.137</li><li>Ch6　EFFECT OF TEMPERATURE ON THE FERMI-DIRAC DISTRIBUTION　p.136</li></ul><div class="quote"><p class="quote__k">書中逐字</p><p>"the observed electronic contribution at room temperature is usually less than 0.01 of this value" (p.141)</p><p>"The electronic term is linear in T and is dominant at sufficiently low temperatures." (p.145)</p><p>"In common metals τ/εF ≈ 0.01 at room temperature" (p.144, Fig. 8 圖說)</p></div></section>
+<div class="ext"><span class="ext__k">【延伸知識】書中沒有處理的部分</span><p>【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。</p></div>
+</main>
+<div class="wrap"><nav class="stepnav" aria-label="主題之間">
+<a href="th-06.html"><span class="dir">← 上一主題</span><span class="t"><span class="n num">06</span> 高溫極限與低溫 T³ 定律</span></a>
+<a href="th-08.html"><span class="dir">下一主題 →</span><span class="t"><span class="n num">08</span> 晶格、電子、磁性及其他熱容貢獻</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

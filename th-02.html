@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>聲子色散關係與態密度 — Kittel 熱容專題</title>
+<meta name="description" content="Kittel 第 8 版的熱容專題：聲子色散關係與態密度。物理意義、公式與符號定義、推導假設、適用條件與限制、高低溫行為，以及對應的章節小節與頁碼。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html">全書逐章</a>
+      <a href="thermal.html" aria-current="page">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="thermal.html">熱容專題</a> ／ 主題 2</p></div>
+<header class="uhead wrap"><span class="uhead__no num">02</span><h1>聲子色散關係與態密度</h1><p class="topic__zone">溫區定位：過渡區　T ~ θ　·　熱容爬升最陡的一段</p></header>
+<main id="main" class="wrap--text">
+<section class="aspect"><p class="aspect__k"><b>①</b>物理意義與直觀解釋　（我寫的教學說明）</p><p>**色散關係 ω(K)** 回答的是「某個波長的振動，頻率是多少」。它不是一條線而是好幾支：每原胞有 p 個原子，三維下就有 3p 支——3 支**聲學支**（acoustic，長波極限下相鄰原子同相位運動，ω → vK 線性趨近零）與 3(p−1) 支**光學支**（optical，相鄰原子反相位，即使 K → 0 頻率也不為零）。矽是每原胞 2 個原子的鑽石結構，所以有 3 支聲學支與 3 支光學支。</p><p>但算熱容時我們**不需要**知道每個 K 對應哪個 ω，只需要知道「頻率落在 ω 到 ω+dω 之間有幾個模式」——這就是**態密度** D(ω)。從 ω(K) 到 D(ω) 是一次資訊壓縮：K 空間的三維資訊被壓成一維的頻率分佈。</p><p>直觀上 D(ω) 是「等頻率面在 K 空間掃過的面積除以它推進的速度」——所以群速度 v_g = |∇_K ω| 越小，同樣一點頻率變化就掃過越多 K 空間，D(ω) 越大。群速度為零的地方（色散曲線的水平處）出現**van Hove 奇異點**，D(ω) 發散。這個結構會直接印在熱容曲線上。</p><p>**整條路是這樣的**：ω(K) → D(ω) → 配上 Planck 分佈 → 總能量 U(T) → 對 T 微分 → 熱容 C(T)。後面 Einstein 與 Debye 兩個模型的差別，就只是**對 D(ω) 做了不同的簡化假設**。</p></section>
+<section class="aspect"><p class="aspect__k"><b>②</b>重要公式與符號定義　（書中）</p><div class="eqs"><div class="eq"><p class="eq__l">Debye 模型的態密度</p><p class="eq__f">ω = vK  ⟹  D(ω) = Vω² / (2π²v³)</p><span class="eq__r">(21), (22) 　Ch5 p.112</span><p class="eq__s">v 為（每種極化視為常數的）聲速；V 為試樣體積；由一般式 D(ω) = dN/dω = (VK²/2π²)(dK/dω)（式 (20)）代入 ω = vK 得到</p></div><div class="eq"><p class="eq__l">晶格熱容的一般積分式</p><p class="eq__f">C_lat = k_B Σ_p ∫ dω D_p(ω) · x² eˣ / (eˣ − 1)²，  x ≡ ℏω/τ = ℏω/k_BT</p><span class="eq__r">(10) 　Ch5 p.108</span><p class="eq__s">D_p(ω) 為極化 p 的態密度（單位頻率的模態數）；由 U = Σ_p ∫dω D_p(ω)ℏω/[exp(ℏω/τ)−1] 對溫度微分而得</p></div><div class="eq"><p class="eq__l">態密度的一般結果（等頻率面積分）</p><p class="eq__f">D(ω) = V/(2π)³ · ∮ dS_ω / v_g ，  v_g = |grad_K ω|</p><span class="eq__r">(37) 　Ch5 p.118</span><p class="eq__s">dS_ω 為 K 空間中等頻率面上的面積元；v_g 為聲子群速度大小；積分遍及 ω = 常數的曲面，結果對應色散關係的單一分支，亦可用於電子能帶理論</p></div></div></section>
+<section class="aspect"><p class="aspect__k"><b>③</b>推導所使用的假設　（書中）</p><ul><li>以週期性邊界條件在邊長 L 的立方體（N³ 個原胞）上列舉模：K 空間中每 (2π/L)³ 體積有一個允許的 K 值，即每單位 K 空間體積有 V/8π³ 個允許值，對每個偏振、每個分支各自成立（書本 p.111）</li><li>Debye 近似：對每個偏振型態，聲速取為常數，如同古典彈性連續體，色散關係寫成 ω = vK（書本 p.112）</li><li>若試樣中有 N 個原胞，聲學聲子總模數即為 N；由此定出截止頻率 ω_D³ = 6π²v³N/V 與截止波向量 K_D = ω_D/v，且不允許波向量大於 K_D 的模，K ≤ K_D 的模數目正好耗盡單原子晶格的自由度（書本 p.112）</li><li>為簡潔假設聲子速度與偏振無關，因而把單一偏振的結果乘以因子 3（書本 p.112）</li><li>Einstein 模型：一維中 N 個同頻率 ω 的振子，態密度取為 δ 函數 D(ω) = Nδ(ω − ω₀（書中 p.114 用 ω₀，非 ω_E）)；三維時 N 換成 3N，因每個振子有三個模（書本 p.114、117）</li><li>熱平衡佔據由 Planck 分布 ⟨n⟩ = 1/[exp(ℏω/τ) − 1] 給出（τ ≡ k_BT）；所論熱容一律是定容熱容 C_V，且只計聲子貢獻，即晶格熱容 C_lat（書本 p.107）</li></ul></section>
+<section class="aspect aspect--limit"><p class="aspect__k"><b>④</b>適用條件與限制　（書中）</p><ul><li>Debye T³ 只在「僅長波聲學模被熱激發」時成立——正是那些能以巨觀彈性常數當成彈性連續體處理的模；近似失效的短波長模能量太高，低溫下不會被顯著佔據（書本 p.114）</li><li>真實晶體中 T³ 成立的溫度相當低：書中明講可能必須低到 T = θ/50 以下才能得到相當純的 T³ 行為（書本 p.114）</li><li>書中明講的失效：Einstein 模型在低溫時熱容以 exp(−ℏω/τ) 衰減，而實驗上已知聲子貢獻是 T³（由上述 Debye 模型說明）；不過 Einstein 模型常被用來近似聲子譜中的光學聲子部分（書本 p.117）</li><li>Debye 的 D(ω) ∝ ω² 是理想化：實際晶體的譜雖然在小 ω 也以 ω² 起始，但在奇異點處會發展出不連續（書本 p.119，Fig. 14）</li><li>一般式 D(ω) = (V/8π³)∮dS_ω/v_g 只對色散關係的單一分支成立；群速度為零的臨界點會產生 Van Hove 奇異點（書本 p.118–119）。一維情形同樣是：色散關係水平（群速為零）處 D₁(ω) 就有奇異點（書本 p.111）</li><li>定容熱容 C_V 比實驗實際測得的定壓 C_p 更基本；書中以熱力學關係說明兩者在固體中的分數差通常很小、常可略去，且 T → 0 時 C_p → C_V（書本 p.107 註 1）</li></ul></section>
+<section class="aspect"><p class="aspect__k"><b>⑤</b>高溫與低溫行為　（書中）</p><h4>高溫　T ≫ θ</h4><p>Debye 模型在 T ≫ θ 時熱容趨近古典值 3Nk_B（書本 p.113）；Fig. 7 標示 T/θ 大時的漸近值為 24.943 J mol⁻¹ deg⁻¹（書本 p.113）。Einstein 模型的高溫極限同樣是 C_V → 3Nk_B，書中稱之為 Dulong and Petit 值（書本 p.117）。底層原因是 Planck 分布在高溫下對某態的佔據數近似正比於溫度（書本 p.106）。書中並把「熱容在 T &gt; θ 變成常數」列為諧振理論的後果之一（書本 p.119）。</p><h4>低溫　T ≪ θ</h4><p>極低溫時把 (29) 式的積分上限取到無窮大（用 ∫₀^∞ x³/(eˣ−1) dx = π⁴/15），得 U ≅ 3π⁴Nk_BT⁴/5θ³，故 T ≪ θ 時 C_V ≅ (12π⁴/5)Nk_B(T/θ)³ ≅ 234 Nk_B(T/θ)³，即 Debye T³ 近似（書本 p.114）。書中另給定性論證：只有 ℏω &lt; k_BT 的模會被顯著激發，佔 K 空間 (K_T/K_D)³ = (T/θ)³ 的比例，約 3N(T/θ)³ 個模各帶約 k_BT 能量，得 U ≈ 3Nk_BT(T/θ)³、C_V = ∂U/∂T = 12Nk_B(T/θ)³（書本 p.114–115）。實驗上固態氬的低溫熱容對 T³ 作圖，與 θ = 92.0 K 的 Debye T³ 律吻合極佳（書本 p.115）。相對地，Einstein 模型低溫以 exp(−ℏω/τ) 指數衰減，與實驗的 T³ 不符（書本 p.117）。</p></section>
+<section class="aspect"><p class="aspect__k"><b>⑥</b>對應的 Kittel 章節、小節與頁碼</p><ul class="srcs"><li>Ch4　TWO ATOMS PER PRIMITIVE BASIS　p.95</li><li>Ch5　Density of States in Three Dimensions　p.111</li><li>Ch5　Debye Model for Density of States　p.112</li><li>Ch5　Debye T3 Law　p.114</li><li>Ch5　Einstein Model of the Density of States　p.114</li></ul><div class="quote"><p class="quote__k">書中逐字</p><p>"In the Debye approximation the velocity of sound is taken as constant for each polarization type, as it would be for a classical elastic continuum." (書本 p.112)</p><p>"There is a singularity in D₁(ω) whenever the dispersion relation ω(K) is horizontal; that is, whenever the group velocity is zero." (書本 p.111)</p><p>"At low temperatures (34) decreases as exp(−ℏω/τ), whereas the experimental form of the phonon contribution is known to be T³ as accounted for by the Debye model treated above." (書本 p.117)</p></div></section>
+<div class="ext"><span class="ext__k">【延伸知識】書中沒有處理的部分</span><p>【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。</p></div>
+</main>
+<div class="wrap"><nav class="stepnav" aria-label="主題之間">
+<a href="th-01.html"><span class="dir">← 上一主題</span><span class="t"><span class="n num">01</span> 晶格振動與聲子</span></a>
+<a href="th-03.html"><span class="dir">下一主題 →</span><span class="t"><span class="n num">03</span> Dulong–Petit 定律</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

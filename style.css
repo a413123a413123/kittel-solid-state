@@ -344,3 +344,77 @@ td.mono, th.mono { font-family: var(--font-mono); white-space: nowrap; }
 
 .plate .facet__k { color: var(--on-plate-2); margin-bottom: var(--s3); }
 .plate .facet__k b { color: var(--ember-on-plate); }
+
+/* ---------- 招牌時刻 B：Debye 熱容曲線導覽 ---------- */
+.curve { margin: 0; }
+.curve__svg { display: block; width: 100%; height: auto; }
+.c-axis  { stroke: var(--on-plate-2); stroke-width: 1.2; fill: none; }
+.c-guide { stroke: var(--on-plate-2); stroke-width: 1; stroke-dasharray: 3 4; opacity: .6; }
+.c-asym  { stroke: var(--ember-on-plate); stroke-width: 1.4; stroke-dasharray: 6 4; }
+.c-curve { stroke: var(--on-plate); stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.c-zone-lo { fill: var(--ember-on-plate); opacity: .10; }
+.c-tick text, .c-lab { fill: var(--on-plate-2); font-family: var(--font-mono); font-size: 13px; }
+.c-tick line { stroke: var(--on-plate-2); stroke-width: 1; }
+.c-lab--warm { fill: var(--ember-on-plate); }
+.c-band-lo  { fill: var(--ember-on-plate); opacity: .22; }
+.c-band-mid { fill: var(--on-plate); opacity: .14; }
+.c-band-hi  { fill: var(--on-plate); opacity: .08; }
+.c-band-t   { fill: var(--on-plate); font-family: var(--font-zh); font-size: 13px; font-weight: 500; }
+.c-drop line { stroke: var(--on-plate-2); stroke-width: 1; stroke-dasharray: 2 3; opacity: .5; }
+
+/* 主題晶片：依溫區分組 */
+.zones { display: grid; gap: var(--s5); margin-top: var(--s6); }
+@media (min-width: 860px) { .zones { grid-template-columns: 1fr 1fr 1fr; } }
+.zone__t { font-size: var(--f-label); color: var(--on-plate-2); margin: 0 0 var(--s3); }
+.zone ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); }
+.zone a {
+  display: block; text-decoration: none; padding: var(--s2) var(--s3);
+  border: 1px solid var(--on-plate-2); border-radius: 2px; color: var(--on-plate);
+  font-size: var(--f-num); line-height: 1.5;
+}
+.zone a:hover { border-color: var(--ember-on-plate); color: var(--ember-on-plate); }
+.zone a .n { font-family: var(--font-mono); font-size: var(--f-label); color: var(--on-plate-2); margin-right: var(--s2); }
+.zone--base { margin-top: var(--s6); padding-top: var(--s5); border-top: 1px solid var(--on-plate-2); }
+.zone--base ul { grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
+
+/* ---------- 熱容主題規格卡 ---------- */
+.topic { scroll-margin-top: var(--s4); padding-block: var(--s7) 0; }
+.topic__head { display: grid; grid-template-columns: auto 1fr; gap: var(--s4); align-items: start;
+  padding-bottom: var(--s4); border-bottom: var(--rail) solid var(--indigo); }
+.topic__n { font-size: var(--f-lead); font-weight: 600; line-height: 1.15; color: var(--indigo); font-variant-numeric: tabular-nums; }
+.topic__t { margin: 0; font-size: var(--f-h2); line-height: 1.3; }
+.topic__zone { font-size: var(--f-label); color: var(--ink-3); margin: var(--s2) 0 0; }
+.aspect { padding-top: var(--s5); }
+.aspect__k { font-size: var(--f-label); color: var(--ink-3); margin: 0 0 var(--s2); display: flex; align-items: baseline; gap: var(--s2); }
+.aspect__k b { color: var(--indigo); font-weight: 600; font-family: var(--font-mono); }
+.aspect p { font-size: var(--f-num); line-height: 1.8; }
+.aspect ul { margin: 0; padding-left: 1.2em; font-size: var(--f-num); line-height: 1.8; max-width: 36em; }
+.aspect li { margin-bottom: var(--s2); }
+.aspect--limit ul li::marker { color: var(--ember); }
+.ext { background: var(--ember-wash); border-left: var(--rail) solid var(--ember);
+  border-radius: 0 var(--radius) var(--radius) 0; padding: var(--s3) var(--s4); margin: var(--s3) 0; }
+.ext p { margin: 0; font-size: var(--f-num); line-height: 1.8; }
+.ext__k { font-size: var(--f-label); font-weight: 600; color: var(--ember-deep); display: block; margin-bottom: var(--s1); }
+.srcs { display: flex; flex-wrap: wrap; gap: var(--s2); margin: 0; padding: 0; list-style: none; }
+.srcs li { font-family: var(--font-mono); font-size: var(--f-label); color: var(--ink-2);
+  border: 1px solid var(--line); border-radius: 2px; padding: 1px var(--s2); background: var(--card); }
+
+/* 知識地圖 */
+.mapgrid { display: grid; gap: var(--s4); margin-top: var(--s6); }
+@media (min-width: 780px) { .mapgrid { grid-template-columns: repeat(3, 1fr); } }
+.maplane { border: 1px solid var(--on-plate-2); border-radius: var(--radius); padding: var(--s4); }
+.maplane h3 { margin: 0 0 var(--s3); font-size: var(--f-h3); color: var(--on-plate); }
+.maplane ol { margin: 0; padding-left: 1.3em; font-size: var(--f-num); line-height: 1.75; color: var(--on-plate-2); }
+.maplane li { margin-bottom: var(--s2); }
+.maplane b { color: var(--ember-on-plate); font-weight: 600; }
+
+.curve__cap { margin-top: var(--s4); }
+.curve__cap p { color: var(--on-plate-2); font-size: var(--f-label); line-height: 1.8; max-width: 42em; margin-bottom: var(--s2); }
+.curve__cap strong { color: var(--ember-on-plate); }
+
+/* 窄螢幕：曲線不縮到標籤看不清，改為可橫向捲動 */
+@media (max-width: 760px) {
+  .curve { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .curve__svg { min-width: 700px; }
+  .curve__cap { padding-right: var(--s4); }
+}

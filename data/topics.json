@@ -1,0 +1,589 @@
+{
+ "lattice-vibration": {
+  "key": "lattice-vibration",
+  "assumptions": [
+   "**在立方晶體中**，波沿 [100]、[110]、[111] 這三個方向傳播時數學解最簡單：整個原子平面同相位移（平行或垂直於波向量），問題因而化為一維、用單一座標 u_s 描述第 s 平面的位移（書本 p.91 原文限定 in cubic crystals，且說的是「解最簡單」而非普遍成立）",
+   "晶體的彈性響應是力的線性函數，等價於彈性能是任兩點相對位移的二次函數；位移的線性項在平衡處消失，足夠小的彈性形變下三次及更高階項可略去（即諧振近似）（書本 p.91）",
+   "平面 s 因平面 s+p 位移所受的力正比於位移差 u_{s+p} − u_s；為簡潔只取最近鄰交互作用 p = ±1，力常數 C 定義成對平面中一個原子而言，且縱波與橫波的 C 不同（書本 p.91）",
+   "取所有位移的時間相依為 exp(−iωt)，並以行進波形式 u_s = u exp(isKa) 代入差分方程求解（書本 p.91–92）",
+   "雙原子基底時，假設每個平面只與最近鄰平面交互作用、且所有最近鄰平面對之間的力常數相同；傳播方向取在「單一平面只含單一種離子」的對稱方向（NaCl 結構的 [111]、CsCl 結構的 [100]）（書本 p.97）",
+   "彈性模的能量量子化為 (n + 1/2)ℏω，因為它等價於頻率 ω 的量子諧振子；½ℏω 為該模的零點能（書本 p.99）"
+  ],
+  "validity": [
+   "只有第一布里淵區 −π/a < K ≤ π/a 內的波向量有物理意義；區外的 K 只是重複區內已描述的晶格運動，減去適當的倒晶格向量即得區內等價波向量（書本 p.93）",
+   "在區邊界 K_max = ±π/a，解 u_s = u(−1)^s 是駐波而非行進波，dω/dK = 0、群速度為零；書中說此情形等同於 X 光滿足 Bragg 條件時行進波無法傳播、經來回反射建立駐波（書本 p.93–94）",
+   "只有在長波極限 Ka ≪ 1 才回到 ω² = (C/M)K²a²、ω ∝ K，等同連續體彈性波理論，此時聲速與頻率無關（書本 p.94）",
+   "最近鄰假設是簡化：書中明講在金屬中有效力可能相當長程、經傳導電子海由離子傳到離子，已發現相隔多達 20 個平面之間的交互作用（書本 p.94）",
+   "雙原子晶格在 (2C/M₁)^{1/2} 與 (2C/M₂)^{1/2} 之間不存在波動解，第一布里淵區邊界 K_max = ±π/a 處出現頻率能隙；書中說這是多原子晶格中彈性波的特徵（書本 p.99）",
+   "諧振理論（位能只到二次項）的各項後果在真實晶體中沒有一項精確成立：兩晶格波不交互作用、無熱膨脹、絕熱與等溫彈性常數相等、彈性常數與壓力溫度無關、高溫 T > θ 熱容為常數；偏差歸因於忽略非諧（高於二次）項（書本 p.119–120）。另外若晶體結構不穩定，ω² 為負、ω 為虛數（書本 p.100）"
+  ],
+  "highT": "第 4 章不含熱佔據與熱容，屬**與溫度無關**的簡諧晶格動力學；章末明講熱性質留給第 5 章（書本 p.89）。（先前版本寫「通篇是 T = 0」，書中無此陳述，且該章圖說帶有溫度：Fig. 8a 鍺 80 K、Fig. 8b KBr 90 K、Fig. 11 鈉 90 K。）第 4 章唯一與熱佔據相扣的結果是量子化均方振幅 u₀² = 4(n + ½)ℏ/ρVω，把某模的位移與該模的聲子佔據數 n 連起來，但 n 的溫度相依要由第 5 章的 Planck 分佈決定（書本 p.99、107）。",
+  "lowT": "第 4 章同樣沒有低溫行為的討論。與 T → 0 相關的唯一書中陳述是零點能：能量 (n + ½)ℏω 中的 ½ℏω 項對聲子與光子都存在，是它們等價於量子諧振子的結果，即使模未被激發（n = 0）也仍在（書本 p.99）。對應地，均方振幅 u₀² = 4(n + ½)ℏ/ρVω 在 n = 0 時不為零（書本 p.99）。低溫熱容的 T³ 行為完全屬於第 5 章的 Debye 討論（書本 p.114），第 4 章未提。",
+  "sections": [
+   {
+    "chapter": 4,
+    "section": "VIBRATIONS OF CRYSTALS WITH MONATOMIC BASIS",
+    "page": 91
+   },
+   {
+    "chapter": 4,
+    "section": "First Brillouin Zone",
+    "page": 93
+   },
+   {
+    "chapter": 4,
+    "section": "Long Wavelength Limit",
+    "page": 94
+   },
+   {
+    "chapter": 4,
+    "section": "TWO ATOMS PER PRIMITIVE BASIS",
+    "page": 95
+   },
+   {
+    "chapter": 4,
+    "section": "QUANTIZATION OF ELASTIC WAVES",
+    "page": 99
+   }
+  ],
+  "verbatim": [
+   "\"We assume that the elastic response of the crystal is a linear function of the forces.\" (書本 p.91)",
+   "\"The energy of a lattice vibration is quantized.\" (書本 p.99)",
+   "\"However, a phonon does not carry physical momentum.\" (書本 p.100)"
+  ],
+  "notInBook": "【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。"
+ },
+ "dispersion-dos": {
+  "key": "dispersion-dos",
+  "assumptions": [
+   "以週期性邊界條件在邊長 L 的立方體（N³ 個原胞）上列舉模：K 空間中每 (2π/L)³ 體積有一個允許的 K 值，即每單位 K 空間體積有 V/8π³ 個允許值，對每個偏振、每個分支各自成立（書本 p.111）",
+   "Debye 近似：對每個偏振型態，聲速取為常數，如同古典彈性連續體，色散關係寫成 ω = vK（書本 p.112）",
+   "若試樣中有 N 個原胞，聲學聲子總模數即為 N；由此定出截止頻率 ω_D³ = 6π²v³N/V 與截止波向量 K_D = ω_D/v，且不允許波向量大於 K_D 的模，K ≤ K_D 的模數目正好耗盡單原子晶格的自由度（書本 p.112）",
+   "為簡潔假設聲子速度與偏振無關，因而把單一偏振的結果乘以因子 3（書本 p.112）",
+   "Einstein 模型：一維中 N 個同頻率 ω 的振子，態密度取為 δ 函數 D(ω) = Nδ(ω − ω₀（書中 p.114 用 ω₀，非 ω_E）)；三維時 N 換成 3N，因每個振子有三個模（書本 p.114、117）",
+   "熱平衡佔據由 Planck 分布 ⟨n⟩ = 1/[exp(ℏω/τ) − 1] 給出（τ ≡ k_BT）；所論熱容一律是定容熱容 C_V，且只計聲子貢獻，即晶格熱容 C_lat（書本 p.107）"
+  ],
+  "validity": [
+   "Debye T³ 只在「僅長波聲學模被熱激發」時成立——正是那些能以巨觀彈性常數當成彈性連續體處理的模；近似失效的短波長模能量太高，低溫下不會被顯著佔據（書本 p.114）",
+   "真實晶體中 T³ 成立的溫度相當低：書中明講可能必須低到 T = θ/50 以下才能得到相當純的 T³ 行為（書本 p.114）",
+   "書中明講的失效：Einstein 模型在低溫時熱容以 exp(−ℏω/τ) 衰減，而實驗上已知聲子貢獻是 T³（由上述 Debye 模型說明）；不過 Einstein 模型常被用來近似聲子譜中的光學聲子部分（書本 p.117）",
+   "Debye 的 D(ω) ∝ ω² 是理想化：實際晶體的譜雖然在小 ω 也以 ω² 起始，但在奇異點處會發展出不連續（書本 p.119，Fig. 14）",
+   "一般式 D(ω) = (V/8π³)∮dS_ω/v_g 只對色散關係的單一分支成立；群速度為零的臨界點會產生 Van Hove 奇異點（書本 p.118–119）。一維情形同樣是：色散關係水平（群速為零）處 D₁(ω) 就有奇異點（書本 p.111）",
+   "定容熱容 C_V 比實驗實際測得的定壓 C_p 更基本；書中以熱力學關係說明兩者在固體中的分數差通常很小、常可略去，且 T → 0 時 C_p → C_V（書本 p.107 註 1）"
+  ],
+  "highT": "Debye 模型在 T ≫ θ 時熱容趨近古典值 3Nk_B（書本 p.113）；Fig. 7 標示 T/θ 大時的漸近值為 24.943 J mol⁻¹ deg⁻¹（書本 p.113）。Einstein 模型的高溫極限同樣是 C_V → 3Nk_B，書中稱之為 Dulong and Petit 值（書本 p.117）。底層原因是 Planck 分布在高溫下對某態的佔據數近似正比於溫度（書本 p.106）。書中並把「熱容在 T > θ 變成常數」列為諧振理論的後果之一（書本 p.119）。",
+  "lowT": "極低溫時把 (29) 式的積分上限取到無窮大（用 ∫₀^∞ x³/(eˣ−1) dx = π⁴/15），得 U ≅ 3π⁴Nk_BT⁴/5θ³，故 T ≪ θ 時 C_V ≅ (12π⁴/5)Nk_B(T/θ)³ ≅ 234 Nk_B(T/θ)³，即 Debye T³ 近似（書本 p.114）。書中另給定性論證：只有 ℏω < k_BT 的模會被顯著激發，佔 K 空間 (K_T/K_D)³ = (T/θ)³ 的比例，約 3N(T/θ)³ 個模各帶約 k_BT 能量，得 U ≈ 3Nk_BT(T/θ)³、C_V = ∂U/∂T = 12Nk_B(T/θ)³（書本 p.114–115）。實驗上固態氬的低溫熱容對 T³ 作圖，與 θ = 92.0 K 的 Debye T³ 律吻合極佳（書本 p.115）。相對地，Einstein 模型低溫以 exp(−ℏω/τ) 指數衰減，與實驗的 T³ 不符（書本 p.117）。",
+  "sections": [
+   {
+    "chapter": 4,
+    "section": "TWO ATOMS PER PRIMITIVE BASIS",
+    "page": 95
+   },
+   {
+    "chapter": 5,
+    "section": "Density of States in Three Dimensions",
+    "page": 111
+   },
+   {
+    "chapter": 5,
+    "section": "Debye Model for Density of States",
+    "page": 112
+   },
+   {
+    "chapter": 5,
+    "section": "Debye T3 Law",
+    "page": 114
+   },
+   {
+    "chapter": 5,
+    "section": "Einstein Model of the Density of States",
+    "page": 114
+   }
+  ],
+  "verbatim": [
+   "\"In the Debye approximation the velocity of sound is taken as constant for each polarization type, as it would be for a classical elastic continuum.\" (書本 p.112)",
+   "\"There is a singularity in D₁(ω) whenever the dispersion relation ω(K) is horizontal; that is, whenever the group velocity is zero.\" (書本 p.111)",
+   "\"At low temperatures (34) decreases as exp(−ℏω/τ), whereas the experimental form of the phonon contribution is known to be T³ as accounted for by the Debye model treated above.\" (書本 p.117)"
+  ],
+  "notInBook": "【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。"
+ },
+ "dulong-petit": {
+  "key": "dulong-petit",
+  "assumptions": [
+   "晶體被當成簡諧振子的集合處理：晶格位能只保留位移的二次項，這就是書中所稱的 harmonic theory（p.119）",
+   "佔據數由 Planck 分布 ⟨n⟩ = 1/(exp(ℏω/τ) − 1) 給出，而高溫下一個態的佔據數近似正比於溫度（Fig. 1 說明，p.106；p.107）",
+   "三維時每個振子有三個模式，因此 N 由 3N 取代（p.117）",
+   "取高溫極限 ℏω/τ ≪ 1，對 Debye 模型即 T ≫ θ（p.113、p.117）",
+   "所討論的是定容熱容 CV ≡ (∂U/∂T)V，且只計聲子（晶格）貢獻 Clat（p.107）"
+  ],
+  "validity": [
+   "3NkB 是高溫極限值：Einstein 模型與 Debye 模型的高溫極限都收斂到它（p.113、p.117）",
+   "Debye 曲線在 T/θ 大時的漸近值書中給為 24.943 J mol⁻¹ deg⁻¹（Fig. 7 說明，p.113）",
+   "「熱容在高溫 T > θ 變成常數」被書中列為簡諧理論的推論之一；書中緊接著明講在真實晶體中這些推論沒有一個被精確滿足，偏差歸因於非簡諧（高於二次）項（p.119、p.120）",
+   "實驗量到的是 Cp 而非 CV；書中腳註給 Cp − CV = 9α²BVT，並說固體中兩者的相對差通常很小、常可忽略（p.107）",
+   "低溫完全不適用：矽與鍺的實驗熱容在低溫明顯下降（Fig. 8，p.113），Debye 給 T³、Einstein 給 exp(−ℏω/τ)（p.114、p.117）",
+   "金屬在遠低於 θ 與 Fermi 溫度 TF 時熱容為 C = γT + AT³，含電子的線性項（p.145）"
+  ],
+  "highT": "高溫極限下晶格熱容趨於古典值 3NkB，書中在 Einstein 模型處明白稱之為 Dulong and Petit 值（p.117）。Debye 模型也在 T ≫ θ 時趨近同一古典值 3NkB（p.113），Fig. 7 給出的高 T/θ 漸近值為 24.943 J mol⁻¹ deg⁻¹（p.113）。書中另把「熱容在高溫 T > θ 變成常數」列為簡諧理論的直接推論（p.119）。",
+  "lowT": "書中並未把 Dulong–Petit 值用於低溫；相反地，低溫是它失效的區域。Fig. 8 的矽與鍺實驗值在低溫明顯下降（p.113）。書中給的低溫行為分別是 Debye 模型的 T³ 律（p.114）與 Einstein 模型的 exp(−ℏω/τ) 指數衰減（p.117），兩者都遠小於 3NkB。",
+  "sections": [
+   {
+    "chapter": 5,
+    "section": "PHONON HEAT CAPACITY",
+    "page": 107
+   },
+   {
+    "chapter": 5,
+    "section": "Debye Model for Density of States",
+    "page": 113
+   },
+   {
+    "chapter": 5,
+    "section": "Einstein Model of the Density of States",
+    "page": 117
+   },
+   {
+    "chapter": 5,
+    "section": "ANHARMONIC CRYSTAL INTERACTIONS",
+    "page": 119
+   }
+  ],
+  "verbatim": [
+   "\"The high temperature limit of CV becomes 3NkB, which is known as the Dulong and Petit value.\" (p.117)",
+   "\"The heat capacity becomes constant at high temperatures T > θ.\" (p.119)"
+  ],
+  "notInBook": "【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。"
+ },
+ "einstein": {
+  "key": "einstein",
+  "assumptions": [
+   "考慮 N 個具有同一頻率的振子，且是在一維下處理（p.114）",
+   "Einstein 態密度取為 delta 函數 D(ω) = Nδ(ω − ωE)，即所有模式共用單一頻率，完全沒有色散（p.114）",
+   "振子為量子簡諧振子，其平均佔據數由 Planck 分布 ⟨n⟩ = 1/(exp(ℏω/τ) − 1) 給出（p.107、p.114）",
+   "系統熱能取為 U = N⟨n⟩ℏω = Nℏω/(e^{ℏω/τ} − 1)（p.114）",
+   "三維推廣時 N 由 3N 取代，理由是每個振子有三個模式（p.117）",
+   "對應的特徵溫度由 θE = ℏω/kB 定義（Fig. 11 說明，鑽石取 θE = 1320 K，p.117）"
+  ],
+  "validity": [
+   "熱容式 CV = (∂U/∂T)V = NkB (ℏω/τ)² e^{ℏω/τ}/(e^{ℏω/τ} − 1)² 即 Einstein (1907) 對 N 個相同振子貢獻的結果（p.117）",
+   "高溫端可用：極限值為 3NkB，即 Dulong and Petit 值（p.117）",
+   "低溫端書中明講失效：(34) 式在低溫以 exp(−ℏω/τ) 衰減，而實驗上聲子貢獻的形式已知為 T³，那是由前面的 Debye 模型解釋的（p.117）",
+   "書中指出 Einstein 模型的實際用途是拿來近似聲子譜中的光學聲子部分（p.117）",
+   "Fig. 11 是把鑽石熱容的實驗值與最早的量子（Einstein）模型比較，屬定性比較而非定量擬合結果（p.117）",
+   "模型完全丟棄色散（ω 與 K 無關），因此無法描述長波長聲學模式，而那正是低溫下唯一被熱激發的模式（對照 p.114 的 Debye T³ 論證）"
+  ],
+  "highT": "三維時 N 換成 3N，CV 的高溫極限為 3NkB，書中直接把它命名為 Dulong and Petit 值（p.117）。Fig. 11 中隨 T/θE 上升，計算值與鑽石的實驗值一同趨向古典平台（p.117）。",
+  "lowT": "低溫下熱容式 (34) 以 exp(−ℏω/τ) 的形式衰減，也就是指數式凍結（p.117）。書中緊接著明說實驗上聲子貢獻的形式已知為 T³，並由前面處理過的 Debye 模型說明——這是 Kittel 對 Einstein 模型低溫失效的明確陳述（p.117）。",
+  "sections": [
+   {
+    "chapter": 5,
+    "section": "Planck Distribution",
+    "page": 107
+   },
+   {
+    "chapter": 5,
+    "section": "Einstein Model of the Density of States",
+    "page": 114
+   },
+   {
+    "chapter": 5,
+    "section": "Einstein Model of the Density of States",
+    "page": 117
+   },
+   {
+    "chapter": 5,
+    "section": "General Result for D(ω)",
+    "page": 117
+   }
+  ],
+  "verbatim": [
+   "\"At low temperatures (34) decreases as exp(−ℏω/τ), whereas the experimental form of the phonon contribution is known to be T3 as accounted for by the Debye model treated above.\" (p.117)",
+   "\"The Einstein model, however, is often used to approximate the optical phonon part of the phonon spectrum.\" (p.117)"
+  ],
+  "notInBook": "【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。"
+ },
+ "debye": {
+  "key": "debye",
+  "assumptions": [
+   "Debye 近似把聲速對每一種偏振都取為常數，就像古典彈性連續體那樣（p.112）",
+   "色散關係寫成 ω = vK，v 為該常數聲速（p.112）",
+   "對邊長 L 的立方體內 N³ 個原胞施加週期性邊界條件，於是 K 空間中每體積 (2π/L)³ 對應一個允許的 K，即每單位 K 空間體積有 V/8π³ 個允許值（p.111）",
+   "若試樣有 N 個原胞，聲學聲子模式總數即為 N；由此定出截止頻率 ωD³ = 6π²v³N/V 與截止波向量 KD = ωD/v = (6π²N/V)^{1/3}，且不允許 K > KD 的模式（p.112）",
+   "為求簡潔，假設聲子速度與偏振無關，因而直接乘上因子 3（p.112）",
+   "熱能由 Planck 分布佔據數積分而得：U = ∫dω D(ω)⟨n(ω)⟩ℏω（p.112）",
+   "Debye 溫度定義為 θ = (ℏv/kB)(6π²N/V)^{1/3}（p.112）"
+  ],
+  "validity": [
+   "低溫下 T³ 近似「相當好」的條件是：只有長波長聲學模式被熱激發，而這些正是可以用宏觀彈性常數當成彈性連續體處理的模式（p.114）",
+   "此近似會失效的短波長模式，其能量太高，低溫下不會被顯著佔據（p.114）",
+   "實際晶體要看到相當純的 T³ 行為，溫度必須很低——書中說可能需要低於 θ/50（p.114）",
+   "Fig. 7 標明 T³ 律的區域在 0.1θ 以下（p.113）",
+   "Debye 的態密度並非實際晶體的態密度：Fig. 14 對比 Debye 固體與真實晶體，真實晶體的譜在小 ω 時同樣起於 ω²，但在奇異點處出現不連續，即 Van Hove 奇異點（p.119）",
+   "高溫端趨近 3NkB（p.113），但「高溫熱容為常數」屬於簡諧理論的推論，書中明說真實晶體並不精確滿足，偏差來自非簡諧項（p.119、p.120）",
+   "金屬在遠低於 θ 與 TF 時，熱容須寫成電子與聲子兩項之和 C = γT + AT³，Debye 的 T³ 只是其中的 AT³ 項（p.145）"
+  ],
+  "highT": "T ≫ θ 時 Debye 熱容趨近古典值 3NkB（p.113）。Fig. 7 給出 T/θ 大時的漸近值為 24.943 J mol⁻¹ deg⁻¹（p.113）。矽與鍺的實測值（Fig. 8）在室溫附近即接近此平台，並在低溫下降（p.113）。",
+  "lowT": "極低溫時把 (29) 式的積分上限取為無窮，得 U ≅ 3π⁴NkBT⁴/5θ³，於是 T ≪ θ 時 CV ≅ (12π⁴/5)NkB(T/θ)³ ≅ 234 NkB(T/θ)³，即 Debye T³ 近似（p.114）。書中另給一個簡單論證：只有 ℏω < kBT 的模式會被明顯激發，其在 K 空間所佔分率約為 (KT/KD)³ = (T/θ)³，故約有 3N(T/θ)³ 個模式各帶能量 kBT，得 U ≈ 3NkBT(T/θ)³ 與 CV ≈ 12NkB(T/θ)³（p.114、Fig. 10 說明 p.115）。固態氬的低溫實驗對 T³ 作圖與 Debye T³ 律極佳吻合，θ = 92.0 K（Fig. 9，p.115）。",
+  "sections": [
+   {
+    "chapter": 5,
+    "section": "PHONON HEAT CAPACITY",
+    "page": 107
+   },
+   {
+    "chapter": 5,
+    "section": "Density of States in Three Dimensions",
+    "page": 111
+   },
+   {
+    "chapter": 5,
+    "section": "Debye Model for Density of States",
+    "page": 112
+   },
+   {
+    "chapter": 5,
+    "section": "Debye T3 Law",
+    "page": 114
+   },
+   {
+    "chapter": 6,
+    "section": "Experimental Heat Capacity of Metals",
+    "page": 145
+   }
+  ],
+  "verbatim": [
+   "\"In the Debye approximation the velocity of sound is taken as constant for each polarization type, as it would be for a classical elastic continuum.\" (p.112)",
+   "\"At sufficiently low temperature the T3 approximation is quite good; that is, when only long wavelength acoustic modes are thermally excited.\" (p.114)",
+   "\"It may be necessary to be below T = θ/50 to get reasonably pure T3 behavior.\" (p.114)"
+  ],
+  "notInBook": "【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。"
+ },
+ "hight-lowt": {
+  "key": "hight-lowt",
+  "assumptions": [
+   "晶格熱容來自簡諧振子集合，各聲子模的熱平衡佔據數服從 Planck 分布 ⟨n⟩ = 1/(exp(ℏω/τ) − 1)，τ ≡ k_B T；總能為各模能量之和 U_lat = Σ_K Σ_p ⟨n_{K,p}⟩ℏω_{K,p}（p.107）。",
+   "態密度計數採週期性邊界條件，在邊長 L 的立方體內含 N³ 個原胞，K 空間中每 (2π/L)³ 體積有一個允許的 K 值（p.111）。",
+   "Debye 近似：聲速對每一種偏振都取為常數，「如同古典彈性連續體」，色散關係寫成 ω = vK（p.112）。",
+   "為簡便假設聲子速度與偏振無關，故乘以因子 3 得到三個偏振的總和（p.112）。",
+   "截止頻率 ω_D 由「聲學聲子模總數等於原胞數 N」決定：ω_D³ = 6π²v³N/V，對應截止波向量 K_D = (6π²N/V)^{1/3}；Debye 模型不允許 K > K_D 的模，K ≤ K_D 的模已用盡單原子晶格的自由度（p.112）。",
+   "Debye 溫度定義 θ = (ℏv/k_B)(6π²N/V)^{1/3}，並令 x ≡ ℏω/τ、x_D ≡ θ/T（p.112）。",
+   "低溫 T³ 定律的推導是把積分上限 x_D 放到無窮大，並用 ∫₀^∞ dx x³/(eˣ−1) = π⁴/15（p.114）。",
+   "整章的晶格振動理論在位能上只保留原子位移的二次項，即簡諧理論（p.119）。"
+  ],
+  "validity": [
+   "T³ 近似在「足夠低溫」才成立，也就是只有長波長聲學模被熱激發時；這些正是可以用巨觀彈性常數當作彈性連續體處理的模（p.114）。",
+   "短波長模（近似對它們失效者）的能量太高，低溫下無法被顯著佔據，所以低溫下可忽略（p.114）。",
+   "對真實晶體，T³ 近似成立的溫度相當低；書中明講「可能必須低於 T = θ/50 才能得到相當純的 T³ 行為」（p.114）；圖 7 圖說另註明 T³ 定律的區域在 0.1θ 以下（p.113）。",
+   "Einstein 模型低溫時 C_V 以 exp(−ℏω/τ) 衰減，與實驗已知的聲子貢獻 T³ 形式不符——後者要由 Debye 模型才能解釋；但 Einstein 模型常被用來近似聲子譜中的光學聲子部分（p.117）。",
+   "高溫熱容變成常數是簡諧理論的推論之一（T > θ）；書中明講「在真實晶體中這些推論沒有一項被準確滿足」，偏差歸因於忽略了非簡諧（高於二次）項（p.119–120）。",
+   "書中討論的是定容熱容 C_V，而實驗量到的是 C_p；熱力學關係 C_p − C_V = 9α²BVT，其分數差在固體中通常很小、常可忽略，且 T → 0 時 C_V → C_p（p.107 註腳）。",
+   "Debye 的 D(ω) 只是理想化：真實晶體的頻譜在小 ω 時同樣以 ω² 起始，但在奇異點會出現不連續（Van Hove 奇異性）（p.119）。"
+  ],
+  "highT": "在 T ≫ θ 時 Debye 熱容趨近古典值 3Nk_B（p.113）；圖 7 的圖說給出高 T/θ 的漸近值為 24.943 J mol⁻¹ deg⁻¹（p.113）。Einstein 模型的高溫極限同樣是 C_V → 3Nk_B，書中稱之為 Dulong and Petit 值（p.117）。從 Planck 分布看，高溫時某態的佔據數約與溫度成線性（p.106，圖 1 圖說）。簡諧理論的推論之一即「高溫（T > θ）時熱容變成常數」（p.119）。",
+  "lowT": "極低溫時把式 (29) 的積分上限放到無窮大，得 U ≅ 3π⁴Nk_BT⁴/5θ³，以及 C_V ≅ (12π⁴/5)Nk_B(T/θ)³ ≅ 234 Nk_B(T/θ)³，即 Debye T³ 近似（p.114）。書中另給一個簡單論證：低溫下只有 ℏω < k_BT 的模會被顯著激發、每個約帶 k_BT 的古典能量，K 空間中被佔據的比例約為 (K_T/K_D)³ = (T/θ)³，故被激發的模約 3N(T/θ)³ 個，U ~ 3Nk_BT(T/θ)³，C_V ~ 12Nk_B(T/θ)³（p.114–115，圖 10）。實驗上固態氬的低溫熱容對 T³ 作圖與 Debye T³ 定律吻合極佳，θ = 92.0 K（p.115，圖 9）。相對地，Einstein 模型低溫是 exp(−ℏω/τ) 指數衰減，與實驗的 T³ 不符（p.117）。",
+  "sections": [
+   {
+    "chapter": 5,
+    "section": "PHONON HEAT CAPACITY",
+    "page": 107
+   },
+   {
+    "chapter": 5,
+    "section": "Debye Model for Density of States",
+    "page": 112
+   },
+   {
+    "chapter": 5,
+    "section": "Debye T3 Law",
+    "page": 114
+   },
+   {
+    "chapter": 5,
+    "section": "Einstein Model of the Density of States",
+    "page": 114
+   },
+   {
+    "chapter": 5,
+    "section": "ANHARMONIC CRYSTAL INTERACTIONS",
+    "page": 119
+   }
+  ],
+  "verbatim": [
+   "\"In the Debye approximation the velocity of sound is taken as constant for each polarization type, as it would be for a classical elastic continuum.\" (p.112)",
+   "\"At sufficiently low temperature the T3 approximation is quite good; that is, when only long wavelength acoustic modes are thermally excited.\" (p.114)",
+   "\"It may be necessary to be below T = θ/50 to get reasonably pure T3 behavior.\" (p.114)"
+  ],
+  "notInBook": "【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。"
+ },
+ "electron-heat": {
+  "key": "electron-heat",
+  "assumptions": [
+   "自由電子模型：組成原子的價電子成為傳導電子，在金屬體積內自由運動；傳導電子與晶格離子的交互作用留到下一章（能帶理論）才處理（p.133）。",
+   "書中把「free electron Fermi gas」定義為「遵守 Pauli 原理的自由電子氣」；並明講 orbital（單電子軌域）模型只有在電子之間沒有交互作用時才是嚴格的（p.134）。",
+   "三維推導採週期性邊界條件的平面波 ψ_k = exp(ik·r)，單電子能量 ε_k = ℏ²k²/2m；基態下被佔據的軌域填滿 k 空間中半徑 k_F 的球，ε_F = (ℏ²/2m)(3π²N/V)^(2/3)（p.137–138, p.140）。",
+   "有限溫度下軌域被佔據的機率由 Fermi–Dirac 分布 f(ε) = 1/(exp[(ε−μ)/k_BT]+1) 給出，μ 由總粒子數守恆定出，且 T→0 時 μ = ε_F（p.136）。",
+   "低溫定量推導假設 k_BT ≪ ε_F，因此把態密度 D(ε) 在 ε_F 取值後提到積分外（書中稱此為 a good approximation）（p.142–143）。",
+   "同樣基於 k_BT ≪ ε_F：忽略化學勢 μ 的溫度依賴、直接用常數 ε_F 取代 μ；並把積分下限由 x = −ε_F/τ 延伸到 −∞（書中理由是低溫時 ε_F/τ ~ 100 以上，被積函數已可忽略）（p.143–144）。"
+  ],
+  "validity": [
+   "定量結果 C_el = (1/3)π²D(ε_F)k_B²T = (1/2)π²N k_B T/T_F 是「valid at low temperatures k_BT ≪ ε_F」的表示式，書中明確如此限定（p.142, p.144）。",
+   "C = γT + AT³ 這個電子項＋聲子項的分解，書中限定在「溫度遠低於 Debye 溫度 θ 與 Fermi 溫度 T_F」時才寫得出來（p.145）。",
+   "古典統計力學的預測（每個自由粒子 (3/2)k_B、電子總貢獻 (3/2)Nk_B）與實驗牴觸：室溫觀測到的電子貢獻通常小於此值的 0.01。書中明講這是古典 Maxwell 分布函數的失敗，而不是自由電子模型本身的失敗（p.133, p.141）。",
+   "觀測到的 γ（Sommerfeld parameter，數值列於 p.146 的 Table 2）數量級是對的，但常與用自由電子質量 m 算出的值「不太吻合」；書中因此定義熱有效質量 m_th/m ≡ γ(observed)/γ(free)（p.145）。",
+   "γ 偏離自由電子值的三個來源，書中逐條列出：傳導電子與剛性晶格週期位能的交互作用（band effective mass）、傳導電子與聲子的交互作用（電子拖動鄰近離子）、傳導電子彼此之間的交互作用（p.145, p.147）。",
+   "重費米子化合物（UBe₁₃、CeAl₃、CeCu₂Si₂）的 γ 比一般金屬高 2–3 個數量級，書中提到其 f 電子慣性質量可能高達 1000 m —— 自由電子估計在此完全不適用（p.147）。"
+  ],
+  "highT": "書中所謂「高溫端」主要是與古典預測的對照：古典統計力學預測自由粒子的熱容為 (3/2)k_B，若 N 個原子各貢獻一個價電子，電子對熱容的貢獻應為 (3/2)Nk_B，如同單原子理想氣體（p.141）。但實際上室溫觀測到的電子貢獻通常小於此值的 0.01（p.141）；書中給的量化理由是：因 T_F ~ 5×10⁴ K，室溫下 C_el 比古典值小約 0.01 或更小（p.142）。書中並在 Fig. 8 說明常見金屬室溫下 τ/ε_F ≈ 0.01，故 μ 非常接近 ε_F，也就是說「室溫」對電子氣而言仍屬簡併的低溫區（p.144）。書中在此章沒有處理 T 接近或超過 T_F（非簡併）時電子熱容如何過渡到古典值。",
+  "lowT": "書中引 Fermi 的話指出比熱在絕對零度消失、低溫下正比於絕對溫度（p.141）。定性論證：從絕對零度加熱時，並非每個電子都獲得 ~k_BT 的能量，只有落在費米能附近 k_BT 能量範圍內軌域的電子被熱激發，佔比約 T/T_F；故 U_el ≈ (N T/T_F)k_BT，C_el = ∂U/∂T ≈ N k_B (T/T_F)，與 T 成正比（p.141）。定量結果為 C_el = (1/3)π²D(ε_F)k_B²T（用到 ∫ x²e^x/(e^x+1)² dx = π²/3），再代入自由電子氣的 D(ε_F) = 3N/2ε_F = 3N/2k_BT_F，得 C_el = (1/2)π² N k_B T/T_F（p.144）。實驗上，在遠低於 θ 與 T_F 時金屬熱容寫成 C = γT + AT³，電子項線性於 T 且在足夠低溫佔主導；作 C/T 對 T² 圖應得直線，斜率 A、截距 γ（鉀的實測例見 Fig. 9：C/T = 2.08 + 2.57 T²）（p.145）。",
+  "sections": [
+   {
+    "chapter": 6,
+    "section": "HEAT CAPACITY OF THE ELECTRON GAS",
+    "page": 141
+   },
+   {
+    "chapter": 6,
+    "section": "Experimental Heat Capacity of Metals",
+    "page": 145
+   },
+   {
+    "chapter": 6,
+    "section": "Heavy Fermions",
+    "page": 147
+   },
+   {
+    "chapter": 6,
+    "section": "FREE ELECTRON GAS IN THREE DIMENSIONS",
+    "page": 137
+   },
+   {
+    "chapter": 6,
+    "section": "EFFECT OF TEMPERATURE ON THE FERMI-DIRAC DISTRIBUTION",
+    "page": 136
+   }
+  ],
+  "verbatim": [
+   "\"the observed electronic contribution at room temperature is usually less than 0.01 of this value\" (p.141)",
+   "\"The electronic term is linear in T and is dominant at sufficiently low temperatures.\" (p.145)",
+   "\"In common metals τ/εF ≈ 0.01 at room temperature\" (p.144, Fig. 8 圖說)"
+  ],
+  "notInBook": "【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。"
+ },
+ "contributions": {
+  "key": "contributions",
+  "assumptions": [
+   "晶格（聲子）貢獻：把晶體總能寫成所有聲子模態（以波向量 K 與偏極化指標 p 標記）能量之和 U_lat = Σ_K Σ_p ⟨n_{K,p}⟩ℏω_{K,p}，模態佔據數服從 Planck 分布 ⟨n⟩ = 1/(exp(ℏω/τ)−1)，τ ≡ k_B T（書本 p.107）。",
+   "熱容一律取定容值 C_V ≡ (∂U/∂T)_V；書中明說 C_V 比實驗實際量到的 C_p 更基本，並在註腳給出 C_p − C_V = 9α²BVT，且說固體中兩者的分數差通常很小、常可忽略（書本 p.107）。",
+   "電子貢獻用自由電子 Fermi 氣體：加熱時並非每個電子都獲得 ~k_BT，只有落在 Fermi 能階附近 k_BT 能量範圍內的軌域電子被熱激發；定量推導時把態密度 D(ε) 取在 ε_F 處提出積分外，並忽略化學勢 μ 的溫度依賴、以常數 ε_F 取代 μ（書本 p.141, 143–144）。",
+   "金屬中電子項與聲子項可直接相加：在遠低於 Debye 溫度 θ 與 Fermi 溫度 T_F 時 C = γT + AT³，γ 與 A 是材料特性常數（書本 p.145）。",
+   "磁性貢獻用 magnon（量子化自旋波）：鐵磁基態全部自旋平行、只取最近鄰 Heisenberg 交換 U = −2J Σ S_p·S_{p+1}、以小振幅線性化（S^x, S^y ≪ S，取 S_p^z = S 並略去 S^x 與 S^y 乘積項），magnon 佔據數同樣用 Planck 分布，且每個 k 只有單一偏極化（書本 p.330, 332, 334）。",
+   "非晶固體的「其他」貢獻：假設存在濃度 N 的二能階系統，其能階分裂 Δ 遠小於聲子 Debye 截止 k_Bθ，且 Δ 在 0 到 Δ₀ 之間以均勻機率分布（書本 p.578）。"
+  ],
+  "validity": [
+   "Debye T³ 只在「僅長波聲學模被熱激發」時成立——這些正是可用巨觀彈性常數當彈性連續體處理的模態；書中明說實際晶體要達到相當純的 T³ 行為，可能必須低到 T = θ/50（書本 p.114）。",
+   "書中明講的失效情形：Einstein 模型低溫下熱容以 exp(−ℏω/τ) 指數衰減，而實驗已知聲子貢獻是 T³（由 Debye 模型解釋）；不過 Einstein 模型常被用來近似聲子譜中的光學聲子部分（書本 p.117）。",
+   "電子熱容的定量表式只在 k_BT ≪ ε_F 的低溫成立（書本 p.142）；書中並註明把積分下限由 −ε_F/τ 延伸到 −∞ 是安全的，前提是 ε_F/τ ~ 100 或更大（書本 p.144）。",
+   "觀測到的 γ（Sommerfeld parameter）數量級雖對，但常與自由電子質量 m 算出的值不很吻合，因此改用熱有效質量 m_th，定義 m_th/m ≡ γ(observed)/γ(free)；偏離 1 涉及三個效應：能帶有效質量、電子與聲子交互作用、電子與電子交互作用（書本 p.145, 147）。重費米子化合物（UBe₁₃、CeAl₃、CeCu₂Si₂）的 γ 高出常值兩到三個數量級（書本 p.147）。",
+   "C = γT + AT³ 這個「電子 + 聲子」分解只被書中限定在「遠低於 θ 與 T_F」的溫度區間使用；電子線性項只在足夠低溫時才是主導項（書本 p.145）。",
+   "書中明講的失效情形：玻璃與非晶固體不遵守純 Debye T³。許多絕緣玻璃在 1 K 以下出現非預期的線性項；25 mK 時熔融矽石（vitreous silica）觀測熱容超出 Debye 聲子貢獻達 1000 倍；此異常線性項雖也正比於 T，書中明說它與一般的傳導電子熱容無關，且為何非晶態必然如此，細節仍不清楚（書本 p.578, 579）。"
+  ],
+  "highT": "非晶固體的二能階系統：在 k_BT ≫ Δ₀ 時，積分值約為 (Δ₀/2k_BT)³，得式 (25) C_V ≅ **Δ₀²/12k_BT²** —— 隨溫度上升而趨近零（書本 p.579）。注意 Δ₀ 帶平方，否則量綱不成立。高溫端真正主宰熱容的是晶格項，趨近 Dulong–Petit 的 3Nk_B（p.113、117）；電子項 γT 相對於聲子項的比值 ∝ 1/T²，因此高溫下可忽略。",
+  "lowT": "非晶固體的二能階系統：在 k_BT ≪ Δ₀ 時（書中寫 for T < Δ₀/k_B），積分值約為 1/3，得式 (24) C_V ≅ 2k_B²T/3Δ₀ —— **線性於 T**（書本 p.579）。這正是許多絕緣玻璃在 1 K 以下出現預期外線性項的來源；書中明言在 25 mK 時石英玻璃的實測熱容遠高於 Debye 預測（p.578）。同一溫區內，純介電晶體的聲子項為 Debye T³（p.114）、金屬的電子項為 γT（p.144）、磁有序材料的磁振子項為 T³ᐟ²（p.334）。四者冪次不同，是低溫下拆解各貢獻的依據。",
+  "sections": [
+   {
+    "chapter": 5,
+    "section": "PHONON HEAT CAPACITY",
+    "page": 107
+   },
+   {
+    "chapter": 6,
+    "section": "HEAT CAPACITY OF THE ELECTRON GAS",
+    "page": 141
+   },
+   {
+    "chapter": 6,
+    "section": "Experimental Heat Capacity of Metals",
+    "page": 145
+   },
+   {
+    "chapter": 12,
+    "section": "Thermal Excitation of Magnons",
+    "page": 334
+   },
+   {
+    "chapter": 19,
+    "section": "LOW ENERGY EXCITATIONS IN AMORPHOUS SOLIDS",
+    "page": 578
+   }
+  ],
+  "verbatim": [
+   "\"the heat capacity of metals may be written as the sum of electron and phonon contributions: C = γT + AT3\" (p.145)",
+   "\"many insulating glasses show an unexpected linear term in the heat capacity below 1 K\" (p.578)",
+   "\"The thermal excitation of magnons leads at low temperatures to a heat capacity and to a fractional magnetization change both proportional to T 3/2.\" (p.357)"
+  ],
+  "notInBook": "【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。"
+ },
+ "anharmonic-cpcv": {
+  "key": "anharmonic-cpcv",
+  "assumptions": [
+   "書中預設「熱容」指定容積熱容 C_V ≡ (∂U/∂T)_V，並明講它比實驗實際量到的定壓熱容 C_p 更基本（p.107）",
+   "C_p 與 C_V 之差由一條熱力學關係給出：C_p − C_V = 9α²BVT，其中 α 為線膨脹係數（temperature coefficient of linear expansion）、V 為體積、B 為體積模量（p.107 腳註 1）",
+   "推得 C_p → C_V 的低溫極限時，假設 α 與 B 為常數（p.107 腳註 1）",
+   "諧和（harmonic）理論假設晶格位能只保留原子間位移的二次項；書中把非諧效應定義為「高於二次項」的部分（p.119–120）",
+   "熱膨脹推導取一維古典振子，位能寫成 U(x) = cx² − gx³ − fx⁴，且 c、g、f 皆為正；x 是相對絕對零度平衡間距的位移。gx³ 代表原子互斥的不對稱性，fx⁴ 代表大振幅時振動的軟化（p.120）",
+   "以 Boltzmann 分布對 x 加權求 ⟨x⟩；並假設非諧項的能量遠小於 k_BT，故把 exp(βgx³+βfx⁴) 展開為 1+βgx³+βfx⁴+…，而指數中的 cx² 項保留不展開（p.120–121）"
+  ],
+  "validity": [
+   "C_p 與 C_V 的分數差在固體中通常很小，常常可以忽略——這是書中對「用 C_V 代替 C_p」的唯一辯護（p.107）",
+   "僅在 α 與 B 可視為常數時，才能說 T → 0 時 C_p → C_V（p.107）",
+   "諧和理論的五項推論在真實晶體中「沒有一項被精確滿足」；偏差歸因於忽略了非諧項（p.119–120）",
+   "熱膨脹結果 ⟨x⟩ = 3g k_BT/(4c²) 只在古典區（classical region）成立（p.120–121）",
+   "U(x) 在 x = 0 的極小並非絕對極小；只有小振幅時這個形式才是原子間位能的適當表示（p.120）",
+   "最低階的熱膨脹不涉及對稱項 fx⁴，只涉及反對稱項 gx³；膨脹係數在 T → 0 時消失（p.121）",
+   "非諧耦合對熱阻的理論預測「聲子平均自由程 ℓ ∝ 1/T」只適用於高溫（p.123）"
+  ],
+  "highT": "諧和理論的推論之一就是「熱容在高溫 T > θ_D 時變成常數」，而書中明講真實晶體並不精確滿足此推論（p.119–120）。古典區的平均位移 ⟨x⟩ = 3g k_BT/(4c²)，即熱膨脹隨溫度線性增加（p.120–121）。高溫時所有聲子模態都被激發（k_BT > ℏω_max），被激發聲子總數 ∝ T，碰撞頻率隨可碰撞聲子數增加，故非諧耦合理論預測 ℓ ∝ 1/T、晶格熱阻 ∝ T，與許多實驗吻合（p.123, p.126）。注意：書中並未針對高溫另行討論 C_p − C_V 的大小，只給了 9α²BVT 這條式子與「固體中分數差通常很小」的通則（p.107）。",
+  "lowT": "T → 0 時 C_p → C_V（前提是 α 與 B 為常數），這是書中唯一明講的低溫 C_p/C_V 陳述（p.107）。熱膨脹方面，固體氬的晶格常數量測（Fig. 15）中曲線斜率正比於熱膨脹係數；書中明講「膨脹係數在 T → 0 時消失」，並指向 Problem 5（p.121）。與非諧性相關的低溫熱傳：能發生 umklapp 的高能聲子數大致隨 exp(−θ/2T) 變化，指數形式與實驗吻合；再低溫時 U 過程失效、尺寸效應主導，K ≈ CvD，而其中唯一隨溫度變的是熱容 C ∝ T³，故低溫熱導率隨 T³ 變化（p.126–127）。",
+  "sections": [
+   {
+    "chapter": 5,
+    "section": "PHONON HEAT CAPACITY",
+    "page": 107
+   },
+   {
+    "chapter": 5,
+    "section": "ANHARMONIC CRYSTAL INTERACTIONS",
+    "page": 119
+   },
+   {
+    "chapter": 5,
+    "section": "Thermal Expansion",
+    "page": 120
+   },
+   {
+    "chapter": 5,
+    "section": "THERMAL CONDUCTIVITY",
+    "page": 121
+   },
+   {
+    "chapter": 5,
+    "section": "Thermal Resistivity of Phonon Gas",
+    "page": 123
+   }
+  ],
+  "verbatim": [
+   "\"The fractional difference between Cp and CV is usually small in solids and often may be neglected.\" (p.107)",
+   "\"In real crystals none of these consequences is satisfied accurately.\" (p.120)"
+  ],
+  "notInBook": "（1）C_p − C_V = 9α²BVT 只出現在 p.107 的一條腳註，書中沒有推導它，也沒有給任何材料 C_p/C_V 的實測比值或表格。（2）Grüneisen 常數 γ 只出現在第 5 章 Problem 5（p.129，且標為「somewhat difficult」），正文完全沒有 Grüneisen 關係；書中沒有寫出 α = γC_V/(3BV) 這種常見形式，Problem 5 給的是 Δ = γU(T)/B。（3）書中沒有討論非諧性對熱容本身的修正（例如高溫下 C_V 超過 3Nk_B 的線性 T 修正項），非諧性只被用來解釋熱膨脹與熱阻。（4）沒有半導體／矽／薄膜材料的 C_p 與 C_V 差異的具體數據。（5）**元件層級的熱容 C_th [J/K] 與熱阻 R_th [K/W] 全書都沒有**：第 5 章只給材料層級的熱導率 K [W cm⁻¹K⁻¹] 與單位體積熱容 C [J cm⁻³K⁻¹]（p.122 Table 2），完全沒有自加熱、熱時間常數、暫態熱響應、或幾何相依的熱阻網路。書中唯一碰到幾何的是低溫尺寸效應 K ≈ CvD（p.126），且那是熱導率而非熱阻。"
+ },
+ "transition-anomaly": {
+  "key": "transition-anomaly",
+  "assumptions": [
+   "熱力學處理限定在 type I 超導體且 Meissner 效應完整，故超導體內部 B = 0（p.271）",
+   "正常態與超導態之間的轉變是熱力學可逆的，「就像物質的液相與氣相之間的轉變一樣」，因此可以直接套用熱力學（p.270）",
+   "實驗上的「正常態」定義為施加大於 H_c 的磁場後的同一個超導體；熱容須分別對超導態與此正常態量測，兩者之差即可算出穩定化自由能（p.271；圖 8 中鎵用 B_a = 200 G 恢復正常態，p.267）",
+   "忽略正常態非磁性金屬的微小磁化率，故取 M = 0、正常金屬的能量與磁場無關（p.272，腳註 4 明講這對 type I 是足夠的假設）",
+   "在臨界場 B_ac 下兩態自由能相等：F_N(B_ac) = F_S(B_ac) = F_S(0) + B_ac²/8π（CGS），由此得穩定化自由能密度 ΔF ≡ F_N(0) − F_S(0) = B_ac²/8π（p.272）",
+   "零磁場下由超導態到正常態的轉變「被觀測為」二階相變——這是實驗事實而非假設，書中據此推論熱容行為（p.266）"
+  ],
+  "validity": [
+   "二階轉變 ⇒ 沒有潛熱，但熱容有不連續（discontinuity），書中指 Fig. 8a 為證（p.268）",
+   "若是一階轉變，則會以潛熱與能量隙的不連續為特徵——書中明講超導轉變不是這樣（p.268）",
+   "兩相自由能曲線在 T_c 交會且 dF/dT 斜率相等，故 T_c 沒有潛熱（p.267 圖 7 說明；p.273）",
+   "能量隙是超導態的「特徵、但非普適」的性質（characteristic, but not universal），因此不能假設所有超導體的熱容都呈指數形式（p.266）",
+   "電子熱容指數項的幅角是 −E_g/2k_BT 而非 −E_g/k_BT；此結論是由與光學及電子穿隧量測的能隙比對而得，不是由熱容本身定出（p.266）",
+   "正常態熱容含電子、晶格、以及低溫下的核四極矩（nuclear quadrupole）貢獻，鎵的擬合為 C/T = 0.596 + 0.0568 T²；分析超導態異常前必須先扣掉這些（p.267 圖 8 說明）",
+   "熵變極小：鋁約為 10⁻⁴ k_B/atom，代表只有約 10⁻⁴ 比例的傳導電子參與這個轉變——熱容異常本身是小訊號（p.264）",
+   "H_c 一律指塊材（bulk specimen），絕不指薄膜；對 type II 超導體，H_c 須理解為與穩定化自由能相關的「熱力學臨界場」（p.271）"
+  ],
+  "highT": "T_c 以上為正常態，傳導電子是無序的（disordered above the transition temperature, p.259）。此時熱容就是正常態值，含電子、晶格與（低溫下）核四極矩貢獻，例如鎵的 C/T = 0.596 + 0.0568 T²（p.267）。隨溫度升高，能量隙連續減小到零（在 T_c 為零），書中以 Fig. 10 的 E_g(T)/E_g(0) 對 T/T_c 曲線呈現，並與 BCS 曲線比較（p.268–269）；臨界場亦在 T_c 歸零，H_c(T_c) = 0（p.262）。書中在此章沒有討論遠高於 T_c 的熱容行為。",
+  "lowT": "冷卻到 T_c 以下時，所有超導體的熵都明顯下降，代表超導態比正常態更有序（p.264）。超導態的電子熱容 C_es 對 1/T 呈指數形式——書中明講這「暗示電子被激發跨越一個能量隙」，鎵的實驗擬合為 C_es/γT_c = 7.46 exp(−1.39 T_c/T)，其中 γ = 0.60 mJ mol⁻¹ deg⁻²（p.266；p.267 圖 8b 說明）。T_c 以下超導態自由能較低（鋁 T_c = 1.180 K，p.267）。絕對零度的穩定化自由能密度為 ΔF = B_ac²/8π；鋁的 B_ac = 105 gauss，得 ΔF = 439 erg cm⁻³，與熱量測結果 430 erg cm⁻³ 「極佳吻合」——這正是「用熱容量測反推自由能」的校驗（p.272–273）。",
+  "sections": [
+   {
+    "chapter": 10,
+    "section": "EXPERIMENTAL SURVEY",
+    "page": 259
+   },
+   {
+    "chapter": 10,
+    "section": "Heat Capacity",
+    "page": 264
+   },
+   {
+    "chapter": 10,
+    "section": "Energy Gap",
+    "page": 266
+   },
+   {
+    "chapter": 10,
+    "section": "THEORETICAL SURVEY",
+    "page": 270
+   },
+   {
+    "chapter": 10,
+    "section": "Thermodynamics of the Superconducting Transition",
+    "page": 270
+   }
+  ],
+  "verbatim": [
+   "\"In all superconductors the entropy decreases markedly on cooling below the critical temperature Tc.\" (p.264)",
+   "\"At a second-order transition there is no latent heat, but there is a discontinuity in the heat capacity\" (p.268)"
+  ],
+  "notInBook": "（1）書中沒有給熱容跳躍的任何定量公式：沒有 BCS 的 ΔC/γT_c = 1.43，也沒有 Rutgers 關係 ΔC = (T_c/4π)(dH_c/dT)²（已全文搜尋，PDF 中無 \"Rutgers\"）。正文只說「有不連續」並以 Fig. 8a 圖示，跳躍大小完全沒有量化。（2）沒有臨界指數、沒有把 Landau 平均場理論套用到超導熱容、也沒有臨界漲落造成的熱容尖峰（λ 形異常）。（3）指定範圍 p.263–272 只處理超導轉變；其他相變的熱容異常不在此範圍——若要對照，第 22 章 \"Elementary Theory of Order\"（p.629）才提到 AB 合金的二階序–無序轉變以「熱容不連續」為特徵、A₃B 則為帶潛熱的一階轉變。（4）沒有第二類超導體在磁場中的熱容異常（渦旋態的熱容）之討論。（5）**元件層級的熱容 C_th [J/K] 與熱阻 R_th [K/W] 全書都沒有**：第 10 章的熱量測全部是每莫耳或每單位體積的材料量（mJ mol⁻¹ K⁻¹、erg cm⁻³），沒有任何熱時間常數、暫態熱響應、或把樣品當成集總熱網路的處理。"
+ },
+ "cth-vs-k": {
+  "key": "cth-vs-k",
+  "assumptions": [
+   "熱容一律指定容熱容 C_V ≡ (∂U/∂T)_V；書中明說定容比定壓「更基本」，而實驗實際量到的是定壓熱容 C_p（p.107）。",
+   "晶格熱容 C_lat 由聲子模能量總和 U_lat = Σ_K Σ_p ⟨n_K,p⟩ℏω_K,p 對 T 微分而得，⟨n⟩ 取 Planck 分布（p.107–108）。",
+   "Debye 模型假設聲速為常數（對每個偏振），如同古典彈性連續體，色散關係取 ω = vK，並設截止波向量 K_D 使模數等於自由度數（p.112）。",
+   "熱導率 K 由 j_U = −K dT/dx 定義，前提是沿長棒的穩態熱流，且能量傳遞是「隨機（擴散）過程」而非彈道式直達；若是彈道式，熱流將只取決於兩端溫差而與棒長無關（p.121）。",
+   "K = (1/3)Cvℓ 來自氣體動力論：粒子流為 (1/2)n⟨|v_x|⟩，自由程 ℓ = vτ（τ 為平均碰撞時間），粒子由 T+ΔT 區移到 T 區交出能量 cΔT，並對聲子取 v 為常數（p.122）。",
+   "(42) 中三個量的身分被明確指定：C 是「單位體積的熱容」、v 是聲子速度、ℓ 是聲子平均自由程；要能定義熱導率，晶體中還必須存在使聲子分布局部達熱平衡的機制，僅限制自由程並不足夠（p.122–123）。"
+  ],
+  "validity": [
+   "C_p 與 C_V 之差為 9α²BVT；書中說在固體中此分數差通常很小、常可忽略，且 T→0 時 C_p → C_V（前提 α 與 B 為常數）（p.107）。",
+   "Debye T³ 只在「僅長波長聲學模被熱激發、可視為具巨觀彈性常數的彈性連續體」時成立；短波長模能量太高、低溫下佈居可忽略。實際晶體可能要低到 T = θ/50 才有相當純粹的 T³ 行為（p.114）。",
+   "書中明講的失效情形：Einstein 模型低溫下熱容以 exp(−ℏω/τ) 衰減，而實驗已知的聲子貢獻為 T³（由 Debye 模型解釋）；不過 Einstein 模型常被用來近似聲子譜的光學聲子部分（p.117）。",
+   "若原子間作用力純為簡諧，就沒有聲子間碰撞的機制，平均自由程只受晶體邊界與晶格不完美限制；簡諧理論還會導致無熱膨脹、高溫熱容為常數（p.119, p.123）。",
+   "只有 N 過程（K1+K2=K3）時無法建立完全熱平衡，因聲子總動量 J = Σ n_K ℏK 不變，熱阻為零、熱導率為無限大；故進入 (42) 的 ℓ 是 umklapp 碰撞的平均自由程，而非全部聲子碰撞的平均自由程（p.123–124, p.126）。",
+   "低溫下當 ℓ 與試片寬度相當時，ℓ 受寬度限制，熱導率變成試片尺寸的函數（de Haas 與 Biermasz 發現的尺寸效應）；此時 K 已非純材料常數（p.126）。",
+   "(42) 的用法針對介電固體中的聲子熱導；金屬中電子對熱導率的貢獻書中明說留到第 6 章處理（p.122, p.128）。"
+  ],
+  "highT": "熱容方面：T ≫ θ 時 Debye 熱容趨近古典值 3Nk_B（p.113），Einstein 模型的高溫極限同樣為 3Nk_B，即 Dulong–Petit 值（p.117）；簡諧理論的後果之一就是 T > θ 時熱容變成常數（p.119）。熱導率方面：非簡諧耦合對熱阻的理論預測 ℓ ∝ 1/T，與許多實驗相符；書中的理解方式是高溫下被激發的聲子總數 ∝ T，某聲子的碰撞頻率正比於可與之碰撞的聲子數，故 ℓ ∝ 1/T（p.123）。T > θ 時因 k_BT > ℏω_max 而所有聲子模都被激發，相當比例的碰撞為 U 過程（動量變化大），此區間可不特別區分 N 與 U 過程，並預期晶格熱阻率 ∝ T（p.126）。",
+  "lowT": "熱容方面：低溫下 Debye 結果為 C_V ≅ (12π⁴/5)Nk_B(T/θ)³ ≅ 234 Nk_B(T/θ)³，即 T³ 律（p.114）；實驗上固態氬的低溫熱容與 θ = 92.0 K 的 Debye T³ 律吻合極佳（p.115）。熱導率方面：適合發生 umklapp 的聲子能量約為 (1/2)k_Bθ（因兩個聲子的波向量需約 (1/2)G），低溫下這類高能聲子的數目依 Boltzmann 因子大致隨 exp(−θ/2T) 變化，此指數形式與實驗相符（p.126）。當 umklapp 在低溫失效、尺寸效應主導時，ℓ 為常數且約等於試片直徑 D，故 K ≈ CvD；此式右邊唯一與溫度有關的是熱容 C，低溫下 ∝ T³，因此熱導率低溫下 ∝ T³（p.126–127）。純晶體低溫熱導率的陡降即由尺寸效應造成；書中舉鍺為例，5 K 以下富集試片為 K = 0.06 T³，與 Casimir 的邊界散射熱阻理論吻合（p.126–127）。",
+  "sections": [
+   {
+    "chapter": 5,
+    "section": "PHONON HEAT CAPACITY",
+    "page": 107
+   },
+   {
+    "chapter": 5,
+    "section": "THERMAL CONDUCTIVITY",
+    "page": 121
+   },
+   {
+    "chapter": 5,
+    "section": "Thermal Resistivity of Phonon Gas",
+    "page": 123
+   },
+   {
+    "chapter": 5,
+    "section": "Umklapp Processes",
+    "page": 125
+   },
+   {
+    "chapter": 5,
+    "section": "Imperfections",
+    "page": 126
+   }
+  ],
+  "verbatim": [
+   "C is the heat capacity per unit volume, v is the average particle velocity (p.122)",
+   "the mean free path for umklapp collisions between phonons and not for all collisions (p.126)"
+  ],
+  "notInBook": "【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。"
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "_note": "術語表。page 為 Kittel 第 8 版書本頁碼；page 為 0 者表示該詞不出自本書（延伸知識），src 欄註明。",
+ "groups": [
+  {"name": "振動與聲子", "items": [
+   {"en": "normal mode", "zh": "簡正模式", "page": 91, "def": "晶體中彼此獨立的集體振動模式，每個模式有自己的波向量 K 與頻率 ω。任何複雜振動都能分解成簡正模式的疊加——這是整個熱容理論的入口。"},
+   {"en": "phonon", "zh": "聲子", "page": 99, "def": "晶格振動的量子。書中 Ch4 SUMMARY 逐字：「The quantum unit of a crystal vibration is a phonon.」模式被激發到第 n 階＝該模式有 n 個聲子。"},
+   {"en": "acoustic branch", "zh": "聲學支", "page": 95, "def": "每原胞多原子時色散關係分裂出的低頻分支，長波極限下相鄰原子同相位運動，ω → vK 線性趨近零。Debye 模型近似的就是這一支。"},
+   {"en": "optical branch", "zh": "光學支", "page": 95, "def": "高頻分支，相鄰原子反相位運動，K → 0 時頻率仍不為零。色散曲線平坦，因此常用 Einstein 模型近似。"},
+   {"en": "dispersion relation ω(K)", "zh": "色散關係", "page": 91, "def": "頻率與波向量的關係。三維下每原胞 p 個原子共有 3p 支：3 支聲學、3(p−1) 支光學。"},
+   {"en": "group velocity v_g", "zh": "群速度", "page": 94, "def": "v_g = ∇_K ω，能量傳播的速度。v_g → 0 處態密度出現奇異點。"},
+   {"en": "phonon momentum", "zh": "聲子動量", "page": 100, "def": "ℏK。聲子攜帶的類動量，在散射過程中守恆（可差一個倒晶格向量，即 Umklapp）。"}
+  ]},
+  {"name": "態密度與熱容模型", "items": [
+   {"en": "density of states D(ω)", "zh": "態密度", "page": 108, "def": "單位頻率範圍內的模式數，書中亦稱 density of modes。從 ω(K) 到 D(ω) 是一次資訊壓縮——算熱容只需要 D(ω)，不需要知道每個 K 對應哪個 ω。"},
+   {"en": "van Hove singularity", "zh": "van Hove 奇異點", "page": 111, "def": "群速度為零處 D(ω) 出現的發散。書中在一維態密度處明言：色散關係水平時 D₁(ω) 出現奇異點。"},
+   {"en": "Planck distribution", "zh": "Planck 分佈", "page": 107, "def": "⟨n⟩ = 1/[exp(ℏω/τ) − 1]，τ ≡ k_BT。聲子在熱平衡下的平均佔據數，是熱容統計計算的基礎。"},
+   {"en": "Einstein model", "zh": "Einstein 模型", "page": 114, "def": "假設 3N 個模式全部同頻 ω_E，態密度塌縮成 δ 函數。高溫回到 Dulong–Petit，但低溫呈指數衰減，與實驗的 T³ 不符。實務上用來近似光學支。"},
+   {"en": "Debye model", "zh": "Debye 模型", "page": 112, "def": "把晶體當古典彈性連續體，取 ω = vK、聲速 v 為常數，並用截斷頻率 ω_D 把模式數卡在 3N。低溫極準（只有長波被激發），短波不準但低溫下無所謂。"},
+   {"en": "Debye temperature θ", "zh": "Debye 溫度", "page": 112, "def": "θ = (ℏv/k_B)(6π²N/V)^(1/3)。判斷「這個溫度算高還是低」的唯一尺規：T ≫ θ 為古典區、T ≪ θ 為量子區。數值表在書本 p.116。"},
+   {"en": "Debye cutoff K_D, ω_D", "zh": "Debye 截斷", "page": 112, "def": "為使模式總數恰為 3N 而引入的頻率／波向量上限。Debye 模型中不允許波向量大於 K_D 的模式。"}
+  ]},
+  {"name": "極限行為", "items": [
+   {"en": "Dulong–Petit value", "zh": "Dulong–Petit 值", "page": 117, "def": "高溫極限 C = 3Nk_B，每莫耳 3R。書中 Fig. 7 標明漸近值 24.943 J·mol⁻¹·deg⁻¹，與材料無關。"},
+   {"en": "Debye T³ law", "zh": "Debye T³ 定律", "page": 114, "def": "低溫下 C ∝ T³。指數 3 來自空間維度——被激發的模式數正比於 K 空間中半徑 K_T 的球體積。書中 Fig. 7 明言適用區在 0.1θ 以下。"},
+   {"en": "equipartition", "zh": "能量均分", "page": 117, "def": "古典極限下每個簡正模式帶 k_BT（動能與位能各 ½k_BT）。這是 Dulong–Petit 的來源，也是量子化失效區的標誌。"}
+  ]},
+  {"name": "電子與其他貢獻", "items": [
+   {"en": "Fermi–Dirac distribution", "zh": "費米–狄拉克分佈", "page": 136, "def": "軌域被佔據的機率。溫度只讓費米能附近寬約 k_BT 的區間變模糊——這是電子熱容遠小於古典值的根源。"},
+   {"en": "Fermi temperature T_F", "zh": "費米溫度", "page": 142, "def": "T_F ≡ ε_F/k_B。金屬中約 5×10⁴ K，遠高於室溫，因此室溫下也只有 T/T_F ~ 0.01 的電子能響應。書中提醒：它不是電子的溫度，只是方便的參考記法。"},
+   {"en": "Sommerfeld parameter γ", "zh": "Sommerfeld 參數", "page": 145, "def": "C = γT + AT³ 中的電子項係數，正比於費米面的態密度 D(ε_F)。實驗上由 C/T 對 T² 作圖的截距取得。"},
+   {"en": "thermal effective mass", "zh": "熱有效質量", "page": 145, "def": "由觀測到的 γ 與自由電子模型的 γ 之比定義，反映能帶與交互作用對電子熱容的修正。"},
+   {"en": "magnon", "zh": "磁振子", "page": 330, "def": "自旋波的量子，磁有序系統的基本激發。色散 ω ∝ K²（非線性），因此其熱容 ∝ T³ᐟ²，與聲子的 T³ 不同。"},
+   {"en": "two-level system (TLS)", "zh": "二能階系統", "page": 578, "def": "非晶固體中的局域雙井態，造成 1 K 以下預期外的線性熱容項。書中特別提醒：此線性項與傳導電子熱容的線性項毫無關係，儘管兩者都 ∝ T。"}
+  ]},
+  {"name": "非諧性與輸運", "items": [
+   {"en": "anharmonic interaction", "zh": "非諧交互作用", "page": 119, "def": "位能中超出二次項的部分。簡諧近似下沒有熱膨脹、聲子不互撞、彈性常數與溫度無關——這三件事都與實驗矛盾，非諧性正是修正它們的來源。"},
+   {"en": "thermal expansion coefficient α", "zh": "線膨脹係數", "page": 120, "def": "書中指出最低階的熱膨脹只涉及位能中的非對稱項，對稱的四次項不貢獻。"},
+   {"en": "C_p − C_v", "zh": "定壓與定容熱容之差", "page": 107, "def": "C_p − C_v = 9α²BVT（α 線膨脹係數、B 體積模數、V 體積）。書中 p.107 註腳明言：固體中兩者差異通常很小、常可忽略，且 T → 0 時 C_v → C_p。理論算 C_v、實驗量 C_p。"},
+   {"en": "thermal conductivity K", "zh": "熱導率", "page": 121, "def": "Fourier 定律 j_U = −K dT/dx 的比例係數。書中強調此形式蘊含熱傳是隨機過程，能量不是彈道式直穿。"},
+   {"en": "kinetic-theory relation K = ⅓Cvℓ", "zh": "動力論關係式", "page": 122, "def": "熱導率同時包含儲存量 C、傳播速度 v 與平均自由徑 ℓ。書中註明這是 Debye 首先用於介電固體的結果。全書唯一把儲存與輸運接起來的式子。"},
+   {"en": "mean free path ℓ (Λ)", "zh": "平均自由徑", "page": 123, "def": "聲子兩次散射間的平均距離。書中明言：若作用力純簡諧，聲子根本不會互撞，ℓ 只受晶界與晶格缺陷限制。高溫下理論預測 ℓ ∝ 1/T。"},
+   {"en": "Umklapp process", "zh": "Umklapp 過程", "page": 125, "def": "三聲子碰撞中總波向量差一個倒晶格向量的過程。它會改變熱流方向，是有限熱阻的主要來源。"},
+   {"en": "thermal resistivity", "zh": "熱阻率", "page": 123, "def": "熱導率的倒數，材料性質。注意與工程上的元件熱阻 Rth [K/W] 不同——後者不在本書中。"}
+  ]},
+  {"name": "相變與其他", "items": [
+   {"en": "energy gap E_g (superconductor)", "zh": "超導能隙", "page": 266, "def": "分隔超導電子與正常電子的能隙，E_g ≈ 4k_BT_c。熱容在 T < T_c 的指數衰減正是能隙存在的指紋。"},
+   {"en": "heat capacity jump", "zh": "熱容跳變", "page": 264, "def": "二階相變（如超導轉變）在 T_c 處的熱容不連續。無潛熱，但熱容跳一階。與元件熱容無關，只是同名。"}
+  ]},
+  {"name": "延伸知識（書中沒有）", "items": [
+   {"en": "thermal capacitance Cth", "zh": "元件熱容", "page": 0, "def": "元件層級的熱容 [J/K] ＝ 體積熱容 × 參與升溫的體積。工程熱學／元件物理的量。", "src": "不在 Kittel 中"},
+   {"en": "thermal resistance Rth", "zh": "元件熱阻", "page": 0, "def": "穩態溫升除以耗散功率 [K/W]。與 Cth 組成熱時間常數 τ = Rth·Cth，是電子元件暫態熱分析的基礎。", "src": "不在 Kittel 中"},
+   {"en": "thermal boundary resistance (Kapitza)", "zh": "熱邊界阻", "page": 0, "def": "界面上的溫度跳變係數 [m²·K/W]。注意 Ch17 雖名為 Surface and Interface Physics，但講的是電子界面，不含此量。", "src": "不在 Kittel 中"}
+  ]}
+ ]
+}

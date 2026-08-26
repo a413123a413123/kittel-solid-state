@@ -1,0 +1,426 @@
+[
+ [
+  "T12",
+  {
+   "key": "dispersion-dos / verbatim[1]（p.111）",
+   "severity": "blocker",
+   "detail": "逐字引用不成立。擷取寫「There is a singularity in D1(ω) whenever the dispersion relation is horizontal.」，但書本 p.111（PDF 131）原文為：「There is a singularity in D₁(ω) whenever the dispersion relation ω(K) is horizontal; that is, whenever the group velocity is zero.」以 pypdf layout 模式可清楚看到 '…whenever the dispersion relation /H9275(K) is hori-zontal'（/H9275 = ω）。引文漏掉 ω(K) 兩字，並在分號處截斷卻補上句點、未加刪節號。內容上「群速為零處出現奇異點」的物理沒錯，但不符逐字標準，必須補回 ω(K) 或改為非逐字轉述。"
+  }
+ ],
+ [
+  "T12",
+  {
+   "key": "dispersion-dos / verbatim[0]、verbatim[2]",
+   "severity": "minor",
+   "detail": "兩條 verbatim 都是原句攔腰截斷後自行補句點，未標刪節號。(a) p.112 原文：「In the Debye approximation the velocity of sound is taken as constant for each polarization type, as it would be for a classical elastic continuum.」引文停在 'type.'。(b) p.117 原文：「At low temperatures (34) decreases as exp(−ℏω/τ), whereas the experimental form of the phonon contribution is known to be T3 as accounted for by the Debye model treated above.」引文停在 'T3.'。字詞本身未被竄改，但以完整句形式呈現片段句，仍屬引用瑕疵。"
+  }
+ ],
+ [
+  "T12",
+  {
+   "key": "dispersion-dos / notInBook (1) 與 (4)",
+   "severity": "minor",
+   "detail": "「也沒有熱阻」與「沒有…聲子邊界散射」寫得太滿，書中其實有，只是掛在熱傳導而非熱容底下：p.123 有整節 'Thermal Resistivity of Phonon Gas'（並推得高溫下平均自由程 ∝ 1/T 的熱阻機制）、p.125 'Umklapp Processes'、p.126 'Imperfections' 明講低溫時平均自由程受試樣寬度限制的 size effect（de Haas 與 Biermasz），p.127 Fig. 19 更引 Casimir 邊界散射理論 K = 0.06T³。此外 p.122 Table 2 與 p.116 Table 1 都列 W cm⁻¹K⁻¹ 的熱傳導數值。原本要主張的「元件層級 Cth [J/K]／Rth [K/W]、熱時間常數、等效熱 RC 網路書中沒有」是對的，但必須把 scope 明寫成元件層級，不能寫成無限定的「也沒有熱阻」「沒有聲子邊界散射」。"
+  }
+ ],
+ [
+  "T12",
+  {
+   "key": "lattice-vibration / highT",
+   "severity": "minor",
+   "detail": "「第 4 章通篇是 T = 0 的簡諧晶格動力學，沒有任何溫度變數」是擷取者自撰的定性，書中無此陳述。書上實際只有 p.89 章末一句 'Chapter 5 treats the thermal properties of phonons.'。第 4 章的簡諧動力學是「與溫度無關」而非「T = 0」（零點能只是 n = 0 的情形，不等於全章設定在 T = 0）；且該章圖說明確帶溫度：Fig. 8a 鍺 80 K、Fig. 8b KBr 90 K、Fig. 11 鈉 90 K。建議改寫為「第 4 章不含熱佔據與熱容，屬溫度無關的簡諧動力學」。"
+  }
+ ],
+ [
+  "T12",
+  {
+   "key": "dispersion-dos / assumptions[4]（Einstein 模型）",
+   "severity": "minor",
+   "detail": "符號與原文不符。書本 p.114 原文為 'Consider N oscillators of the same frequency ω₀ and in one dimension. The Einstein density of states is D(ω) = Nδ(ω − ω₀)'，並在下一句寫 'with ω now written in place of ω₀, for convenience'——書中此處用的是 ω₀，不是 ω_E（ω_E 只在 Fig. 11 以 θ_E = ℏω/k_B = 1320 K 間接出現）。其餘敘述（一維 N 個振子、三維 N 換成 3N 因每振子三個模，p.117）與原文相符。"
+  }
+ ],
+ [
+  "T12",
+  {
+   "key": "lattice-vibration / assumptions[0]（p.91）",
+   "severity": "minor",
+   "detail": "適用條件被放寬。書本 p.91 原文為 'The mathematical solution is simplest in the [100], [110], and [111] propagation directions in cubic crystals.'——限定立方晶體，且說的是「解最簡單」，不是普遍成立的對稱方向。擷取寫成「波沿 [100]、[110]、[111] 等對稱方向傳播」，漏掉 cubic crystals 的限制，並用「等」把三個具體方向擴張為不特定集合。同段其餘（整個原子平面同相位移、平行或垂直於波向量、化為一維、以 u_s 描述第 s 平面位移）與原文相符。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "dulong-petit.notInBook / einstein.notInBook / debye.notInBook（三個主題重複同一句）",
+   "severity": "blocker",
+   "detail": "三個主題的 notInBook 都宣稱「全書沒有元件層級的熱容 Cth [J/K] 與熱阻 Rth [K/W]」「沒有集總熱路模型」。書中有。Kittel 第 18 章 Nanostructures 的 'Heat Capacity and Thermal Transport' 一節（書本 p.561，PDF 581）明確定義：'The thermal conductance Gth of the wire is defined as the ratio of the net energy flow through the wire divided by the temperature difference ΔT between its ends.'，並給出 Gth(1D) = (πkB²T/3h)ℑ〔單位 W/K，即 Rth 的倒數〕與 CV(1D) = 2πLkB²T/3ℏv〔含試樣長度 L，量綱就是 J/K 的外延熱容，不是每莫耳量〕，p.562 還說這兩者都已在低溫窄線實驗中被觀測到。另外第 5 章本身就有一整節 'Thermal resistivity of phonon gas'（p.123）。因此「全書沒有 Cth/Rth」的斷言是錯的；正確說法應限縮為「書中沒有自熱、暫態熱響應與熱時間常數的 RC 網路討論」。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "debye.notInBook",
+   "severity": "blocker",
+   "detail": "宣稱「沒有薄膜、奈米結構或 FinFET 等受限幾何對聲子態密度、Debye 溫度或熱容的修正；全書唯一與尺寸有關的是低溫下聲子平均自由程受試樣寬度限制的 size effect（p.126）」。此宣稱被書中兩處直接推翻：(1) 第 18 章 'VIBRATIONAL AND THERMAL PROPERTIES'（p.557–562）整節處理受限幾何的量子化振動模式（p.557–558：薄壁圓柱 ωLj、RBM、ωTj ∝ j²；p.559–560：薄樑撓曲模 ωT = vL h K²/√12，並明說只要 Kh ≪ 1 即適用、不限奈米尺度），p.561 進一步討論受限方向模式在 T < ℏω/kB 凍結、系統降維成 1D 熱系統、熱容由 T³ 變成線性 T。(2) 第 5 章 Problem 4 'Heat capacity of layer lattice'（p.128）要求證明層狀晶體在 Debye 近似低溫極限下聲子熱容正比於 T²，這正是幾何/維度受限對熱容的修正。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "dulong-petit.notInBook",
+   "severity": "blocker",
+   "detail": "宣稱「Kittel 只處理每原子／每莫耳的 CV」與「書中也沒有把莫耳熱容換算成工程上常用的體積比熱或質量比熱的做法」。書中 p.122 導出 K = (1/3)Cvℓ 時明文寫 'where C is the heat capacity per unit volume'，同頁 Table 2（Phonon mean free paths）直接列出 quartz 與 NaCl 的 C 值，單位就是 J cm⁻³ K⁻¹，即體積比熱。p.156 的 THERMAL CONDUCTIVITY OF METALS 也重述 'heat capacity C per unit volume'。所以「只處理每莫耳」是錯的；書中確實在用（並列表）體積熱容，只是沒有示範莫耳↔體積的換算步驟。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "dulong-petit.sections[1] / dulong-petit.sections[2] / einstein.sections[2]",
+   "severity": "minor",
+   "detail": "小節標題掛的頁碼與標題實際出現頁不符。(a) dulong-petit 把 'Debye Model for Density of States' 掛在 p.113，但該標題在 p.112（p.113 是該節的續頁，只有 (29)(30) 式與 Fig. 7/8）。(b) dulong-petit 與 einstein 都把 'Einstein Model of the Density of States' 掛在 p.117，但該標題在 p.114；p.117 上實際出現的標題是 'General Result for D(ω)'（p.116 是 Table 1 圖檔頁）。標題拼字本身全部正確，內容也確實落在所引頁上，屬頁碼歸屬錯誤。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "einstein.validity[4]",
+   "severity": "minor",
+   "detail": "「Fig. 11 …屬定性比較而非定量擬合結果（p.117）」的後半句是擷取者自行加的判斷，書中沒有這個評語，而且與圖說相牴觸：Fig. 11 圖說寫 'using the characteristic temperature θE = ℏω/kB = 1320 K'，1320 K 正是為鑽石選定的擬合參數，難以稱為「非定量擬合」。書中原話只是 'Comparison of experimental values of the heat capacity of diamond with values calculated on the earliest quantum (Einstein) model'。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "einstein.validity[5]",
+   "severity": "minor",
+   "detail": "「模型完全丟棄色散（ω 與 K 無關），因此無法描述長波長聲學模式，而那正是低溫下唯一被熱激發的模式」整條是擷取者以物理知識補的推論，書中（p.114、p.117）並未這樣論述；擷取者自己以「對照 p.114」標示，但它被放在 validity 清單中會被誤讀為書中原話。p.114 只說 'when only long wavelength acoustic modes are thermally excited'，並未把它與 Einstein 模型缺乏色散連起來。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "einstein.assumptions[1]",
+   "severity": "minor",
+   "detail": "寫成 D(ω) = Nδ(ω − ωE)。書中 p.114 原式用的是 ω₀：'The Einstein density of states is D(ω) = Nδ(ω − ω₀)'，θE 這個符號在書中只出現於 p.117 Fig. 11 圖說（θE = ℏω/kB = 1320 K），並未被用在態密度式裡。另「完全沒有色散」一語也是擷取者的補述，非書中字句（雖然物理上等價）。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "debye.highT",
+   "severity": "minor",
+   "detail": "「矽與鍺的實測值（Fig. 8）在室溫附近即接近此平台」書中未如此說。p.113 Fig. 8 圖說全文只有 'Heat capacity of silicon and germanium. Note the decrease at low temperatures. To convert a value in cal/mol-K to J/mol-K, multiply by 4.186.' 「接近 3NkB 平台」是擷取者讀圖外推（Si 的 θ 遠高於室溫，室溫 Cp 明顯低於 3R），非書中主張。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "einstein.highT",
+   "severity": "minor",
+   "detail": "「Fig. 11 中隨 T/θE 上升，計算值與鑽石的實驗值一同趨向古典平台（p.117）」是讀圖外推。Fig. 11 橫軸只畫到 T/θE = 1.0，書中對該圖沒有任何「趨向古典平台」的敘述；p.117 談高溫極限 3NkB 時是就 (34) 式的數學極限說的，未與 Fig. 11 掛鉤。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "dulong-petit.assumptions[3]",
+   "severity": "minor",
+   "detail": "「取高溫極限 ℏω/τ ≪ 1」的不等式寫法不是書中文字。p.117 只寫 'The high temperature limit of CV becomes 3NkB'，p.113 只寫 'At T ≫ θ the heat capacity approaches the classical value of 3NkB'。物理上正確，但屬擷取者補的數學條件。"
+  }
+ ],
+ [
+  "T345",
+  {
+   "key": "dulong-petit.notInBook",
+   "severity": "minor",
+   "detail": "「高溫下超出 3NkB 的非簡諧修正只在 p.119–120 定性帶過，沒有任何定量修正式」措辭過寬。就熱容本身確實沒有定量修正式，但書中緊鄰處給了多個定量的非簡諧結果：p.120 式 (40) ⟨x⟩ = 3g/4c²·kBT（熱膨脹）、p.129 Problem 5 完整的 Grüneisen 常數推導（γ = −∂lnω/∂lnV、Δ = γU(T)/B），以及 p.107 腳註的 Cp − CV = 9α²BVT，後者正是實驗上量到的 Cp 高於 3NkB 的定量來源。建議把範圍明確限縮為「對 CV 本身」。"
+  }
+ ],
+ [
+  "T6",
+  {
+   "key": "hight-lowt.notInBook[2]",
+   "severity": "blocker",
+   "detail": "捏造的「書中沒有」。該條宣稱「沒有奈米尺度／薄膜的尺寸效應：聲子邊界散射、聲子平均自由程受限」，但第 5 章同章就有整段專講這件事。書本 p.126（PDF 146）\"Imperfections\" 小節：\"Geometrical effects may also be important in limiting the mean free path. We must consider scattering by crystal boundaries, the distribution of isotopic masses... When at low temperatures the mean free path becomes comparable with the width of the test specimen, the value of ℓ is limited by the width, and the thermal conductivity becomes a function of the dimensions of the specimen. This effect was discovered by de Haas and Biermasz. The abrupt decrease in thermal conductivity of pure crystals at low temperatures is caused by the size effect.\" 並給出 K ≅ CvD（式 48）。p.123（PDF 143）也明說純簡諧時「mean free path would be limited solely by collisions of a phonon with the crystal boundary, and by lattice imperfections」。p.127（PDF 147）圖 19 圖說更直接寫 \"Casimir's theory for thermal resistance caused by boundary scattering\"。可保留的只有窄化後的版本：Kittel 只在熱傳導脈絡處理邊界散射／尺寸效應，其 Debye 態密度推導（塊材＋週期性邊界條件）未把 phonon confinement 對『熱容』的修正納入；phonon confinement / fin / nanowire 確實全書沒有。現行寫法把「熱傳導的尺寸效應」也一併否定，是錯的。"
+  }
+ ],
+ [
+  "T6",
+  {
+   "key": "hight-lowt.notInBook[4]",
+   "severity": "blocker",
+   "detail": "捏造的「書中沒有」。該條宣稱「沒有半導體元件相關的其他熱容來源（載子、缺陷、two-level 系統、玻璃態低溫線性項等）」，但 two-level 系統熱容與玻璃態低溫線性項在書中都有專節。第 19 章 Noncrystalline Solids，\"LOW ENERGY EXCITATIONS IN AMORPHOUS SOLIDS\"（書 p.578，PDF 598）：\"many insulating glasses show an unexpected linear term in the heat capacity below 1 K\"，並在 \"Heat Capacity Calculation\"（p.578）中 \"Consider an amorphous solid with a concentration N of two-level systems at low energies\"，p.579（PDF 599）給出 C_V = c₁T + c₃T³ 並明說 two-level system 貢獻一個線性項。另外第 11 章也有 two-level 系統熱容（Schottky anomaly）：p.318 Problem 4、p.319 圖 11、p.320 Problem 7 \"Two-level system\"（索引 p.680 亦列 \"Two-level system, 320\"）。此條若要留，必須改成「第 5 章的聲子熱容推導不含這些來源」，並註明書中他處（Ch.19 p.578–579、Ch.11 p.318–320）有 two-level 與玻璃線性項。載子熱容、缺陷熱容確實沒查到。"
+  }
+ ],
+ [
+  "T6",
+  {
+   "key": "hight-lowt.notInBook[1]",
+   "severity": "minor",
+   "detail": "措辭誤導。該條在「元件層級 Cth [J/K] 與 Rth [K/W]」的框架下是對的（書中確實沒有把 C_V 換算成某結構的絕對熱容量、沒有 τ_th = Rth·Cth、沒有熱等效 RC 網路、沒有 self-heating／暫態熱響應——這些搜遍全書沒有），但條文中夾了一句無限定的「也沒有熱阻」，與同一章的小節標題直接衝突：第 5 章有 \"Thermal Resistivity of Phonon Gas\"（書 p.123，PDF 143，目次 p.105 亦列），內文反覆使用 thermal resistivity／thermal resistance（p.124「the thermal resistivity is zero」、p.126「a lattice thermal resistivity ∝ T at high temperatures」、p.127 圖 19「thermal resistance caused by boundary scattering」）。另外「這一段只給每莫耳／每原胞的 C_V」也漏了 p.122（PDF 142）Table 2 與式 (42) K = ⅓Cvℓ 中的 C 是『單位體積熱容』（J cm⁻³ K⁻¹）。建議改為：書中只有材料本徵的 thermal resistivity（1/K，材料屬性），沒有元件層級 Rth [K/W]。"
+  }
+ ],
+ [
+  "T6",
+  {
+   "key": "hight-lowt.notInBook[5]",
+   "severity": "minor",
+   "detail": "「中間區只給數值曲線（圖 7）」不精確。書 p.113（PDF 133）式 (30) C_V = 9Nk_B(T/θ)³∫₀^{x_D} dx x⁴eˣ/(eˣ−1)² 是 Debye 模型下全溫區通用的解析表式（只是積分需數值求值），圖 7 是它的曲線。原條文「沒有介於 T³ 與 3Nk_B 之間的中間溫區解析近似」本身成立（書中確實沒給封閉形近似），但「只給數值曲線」會讓人誤以為書中連通式都沒有。至於「沒有給出 θ 的溫度相依」查證屬實：p.112–116 與第 6 章（p.141、p.145）都只把 θ 當常數，未討論 θ(T)。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "notInBook[1] — 「元件層級的 Cth [J/K] 與熱阻 Rth [K/W] 全書都沒有出現」",
+   "severity": "blocker",
+   "detail": "宣稱錯誤，是把 Ch.6 的情況誤推成全書。符號 Cth/Rth 確實沒出現，但「熱阻／熱導」概念全書多處出現，且正是使用者要找的量：(a) Ch.5 有整節 Thermal Resistivity of Phonon Gas（書 p.123 / PDF 143），p.124 原文有 the thermal resistivity is zero and the thermal conductivity is infinite 以及 Therefore there is no thermal resistance；p.127 講 Casimir 邊界散射造成的 thermal resistance。(b) 更關鍵：Ch.18 Nanostructures 書 p.561（PDF 581）明確定義熱導 The thermal conductance G_th of the wire is defined as the ratio of the net energy flow through the wire divided by the temperature difference dT between its ends，並給出 1D 量子化熱導 G_th(1D) = (pi^2 kB^2 T / 3h) * T_transmission（eq. 78）。G_th 單位 W/K，就是 Rth 的倒數，定義方式與元件自加熱分析中的 Rth 完全對應。修正方向：把範圍限縮成「Ch.6 未使用元件層級 Cth/Rth 記號」，並補上 p.123–127、p.561–562。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "notInBook[4] — 「沒有處理薄膜/奈米線/FinFET 等受限幾何下的尺寸效應或量子侷限修正」",
+   "severity": "blocker",
+   "detail": "同樣是把 Ch.6 的情況誤推成全書。Ch.18 Nanostructures 正面處理量子侷限：(a) 書 p.529（PDF 549）Fig. 9 給出 quasi-1D wire 的 1D 子帶色散與態密度，並命名 Van Hove singularities；同頁原文寫 ...(Chapter 6), and two dimensions, where D(e) steps up a constant value at the bottom of each 2D subband (Prob. 17.3)，即二維階梯狀 D(e) 書中有交代。(b) p.562 摘要條列 The density of states of a 1D subband, D(E) = 4L/hv, diverges at the subband thresholds。(c) p.561 給出受限 1D 結構的熱容 C_V(1D) = 2*pi^2*L*kB^2*T/(3hv)（eq. 77）與 T-線性 vs 3D 的 T^3 對比。分寸：p.561 那個是聲子熱容，書中確實未推導受限幾何下的「電子」熱容——但因為 C_el = (pi^2/3)D(eF)kB^2 T 只透過 D(eF) 進入，Ch.18 的 1D/2D 子帶 D(e) 就是量子侷限修正的來源，寫成「沒有量子侷限修正」對做 FinFET 的讀者是實質誤導。原句中「本章的 D(e) 一律是三維（p.140）」與「僅習題 3 在 p.157 提到二維 D(e)=m/pi*hbar^2 且未據此推導二維熱容」這兩點經核對正確。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "verbatim[3] — Fig. 8 圖說符號不符",
+   "severity": "minor",
+   "detail": "逐字比對差一個符號。書 p.144（PDF 164）Fig. 8 圖說在 PDF 內的原始 glyph 是 /H11229；經全書交叉比對（p.81 泰勒展開 X(x+dx) 該符號 X(x)+...、p.205 f_e 該符號 exp[(mu-e)/kBT]）確定該 glyph 是「≅」而非「≈」。原文應為 In common metals tau/eF ≅ 0.01 at room temperature, so that mu is closely equal to eF.。verbatim[1]（p.141）與 verbatim[2]（p.145）逐字完全正確。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "notInBook[2] — Appendix D 頁碼範圍",
+   "severity": "minor",
+   "detail": "Appendix D 起於書 p.652 而非 654。PDF 672 頁面上有標題 appendix D: fermi-dirac distribution function，前言目次（PDF 19）亦列 APPENDIX D: FERMI-DIRAC DISTRIBUTION FUNCTION 652，全篇 p.652–655（Appendix E 從 p.655 接續）。Gibbs factor 段落確實在 p.654–655，所以內容判斷沒錯，只是頁碼範圍少列了 p.652–653（Boltzmann factor、熵與化學勢的鋪陳）。「沒有做 Sommerfeld 展開」經全文搜尋確認為真（全書只在 p.145 出現 Sommerfeld parameter，無 Sommerfeld expansion）。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "validity[6] — 「自由電子估計在此完全不適用」為擷取者自加",
+   "severity": "minor",
+   "detail": "書 p.147（PDF 167）Heavy Fermions 段原文只寫到 It has been suggested that f electrons in these compounds may have inertial masses as high as 1000 m, because of the weak overlap of wavefunctions of f electrons on neighboring ions (see Chapter 9, tight binding)。書中沒有下「自由電子估計在此完全不適用」這個結論句，那是擷取者的推論。另外擷取漏掉了書中給的物理成因（f 電子波函數在鄰近離子上重疊很弱）與轉引 Chapter 9 tight binding。該條其餘部分（UBe13、CeAl3、CeCu2Si2；two or three orders of magnitude higher than usual）逐字對得上。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "highT — 「書中在此章沒有處理 T 接近或超過 T_F 的過渡」+ 簡併區的歸屬",
+   "severity": "minor",
+   "detail": "兩個小偏差。(a)「沒有處理」過強：書 p.143（PDF 163）Fig. 6 把 dU/(N eF) 對 kB T/eF 一路畫到約 1.0（其斜率即熱容），Fig. 7 更直接在圖上標出 Region of degenerate quantum gas 與 Region of classical gas。準確的說法是「書中以圖示呈現簡併/古典兩區，但未推導 C_el 過渡到 (3/2)NkB 的解析式」。(b)「室溫對電子氣仍屬簡併低溫區」這個結論掛在 Fig. 8 / p.144，但 Fig. 8 圖說只說 mu 非常接近 eF；標出簡併區的是 p.143 的 Fig. 7。(c) 附帶：「因 T_F ~ 5x10^4 K，室溫下 C_el 比古典值小約 0.01 或更小」該句跨頁——At room temperature Cel is smaller 在 p.141 末，than the classical value (3/2)NkB by a factor of the order of 0.01 or less, for TF ~ 5x10^4 K 在 p.142 首；單標 p.142 不完整，應標 p.141–142。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "assumptions[5] — 把 D(e) 提出積分的理由與書中措辭不同",
+   "severity": "minor",
+   "detail": "書 p.142 末至 p.143 首（PDF 162–163）給的直接理由是被積函數形狀：At the temperatures of interest in metals, tau/eF < 0.01, and we see from Fig. 3 that (e - eF) df/dT has large positive peaks at energies near eF. It is a good approximation to evaluate the density of states D(e) at eF and take it outside of the integral。擷取寫成「因為 kBT << eF，所以把 D(e) 提出積分外」——條件等價但不是書中的論證措辭（書是「尖峰集中在 eF 附近」）。頁碼 p.142–143 與 a good approximation 的引用皆正確。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "assumptions[1] — 漏掉 p.133 緊接的但書（適用條件被削弱）",
+   "severity": "minor",
+   "detail": "書 p.133（PDF 153）在「價電子成為傳導電子、在金屬體積內自由運動」之後緊接一句限制：Even in metals for which the free electron model works best, the charge distribution of the conduction electrons reflects the strong electrostatic potential of the ion cores. 以及 The utility of the free electron model is greatest for properties that depend essentially on the kinetic properties of the conduction electrons.。這兩句正是自由電子模型的適用條件，卻沒有進到 assumptions 或 validity，使該模型的適用範圍在擷取結果中被寫得比書中更寬。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "方法性風險 — 解碼器 kittel_extract.py 的符號對照表有多處錯誤",
+   "severity": "minor",
+   "detail": "不是本次結果的錯誤，但會污染任何 verbatim 比對，必須提醒：C:/Users/阿光/Desktop/cth/tools/kittel_extract.py 的 OPS 表把 /H11408 對成 '≥'（實為 '/'）、/H11015 對成 '×'（實為 '~'）、/H11349 對成 '≈'（實為 '≤'）、/H11350 對成 '≅'（實為 '≥'）。實例：書 p.157 習題 3 的 D(e) = m/pi*hbar^2 被解碼成 m≥pi□；書 p.158 習題 4(c) 的 ~10^8 eV 被解碼成 ×10^8 eV。另外 pi^2 等上標會被 regex 貪婪吃掉（/H92662）而輸出成 □，例如 eq (34)(36) 的 pi^2 全部變成 □。本次擷取者顯然自行還原了這些符號，結論沒被帶偏，但 verbatim[3] 的 ≈/≅ 之誤正是同一類問題。"
+  }
+ ],
+ [
+  "T7",
+  {
+   "key": "已核對通過（無問題）",
+   "severity": "minor",
+   "detail": "以下逐項回原文核對後全部正確，列出以免下游重複查：sections 五條的英文標題與頁碼與 p.131 章前目次、前言總目次（PDF 19）完全一致（HEAT CAPACITY OF THE ELECTRON GAS 141 / Experimental heat capacity of metals 145 / Heavy fermions 147 / FREE ELECTRON GAS IN THREE DIMENSIONS 137 / EFFECT OF TEMPERATURE ON THE FERMI-DIRAC DISTRIBUTION 136；章號 6 正確，章正文起於 p.133，p.131 為章前目次頁）。assumptions[2] p.134（By a free electron Fermi gas... subject to the Pauli principle；The orbital model is exact only if there are no interactions between electrons）、assumptions[3] p.137–138 平面波與週期邊界條件、p.138 費米球、p.140 eq(17) eF=(hbar^2/2m)(3 pi^2 N/V)^(2/3)、assumptions[4] p.136 FD 分布與 T→0 時 mu=eF、assumptions[6] p.143–144（忽略 mu(T) 換成常數 eF；下限延伸到 -infinity，理由 eF/tau ~ 100 or more）、validity[1] p.142 valid at low temperatures kBT << eF 與 eq(34)(36)、validity[2] p.145 At temperatures much below both the Debye temperature theta and the Fermi temperature TF... sum of electron and phonon contributions、validity[3] p.133 括號句 These are not failures of the free electron model, but failures of the classical Maxwell distribution function 與 p.141 (3/2)kB、(3/2)NkB、validity[4] p.145 Sommerfeld parameter 與 m_th/m 定義（Table 2 在 p.146）、validity[5] 三個成因（p.145 band effective mass；p.147 電子-聲子拖曳、電子-電子慣性反作用）、lowT 全段（Fermi 引言、T/TF 比例論證 eq(22)(23)、eq(33) 積分值 pi^2/3、eq(35) D(eF)=3N/2eF=3N/2kB TF、eq(37) C/T vs T^2、Fig. 9 鉀 C/T = 2.08 + 2.57 T^2、單位 mJ/mol-K^2）、notInBook[3]（全文搜尋無 two-temperature）、notInBook[5]（p.146 Table 2 確為表格影像，文字層完全抽不出內容）。"
+  }
+ ],
+ [
+  "T8",
+  {
+   "key": "contributions.highT / contributions.lowT（非晶二能階系統：兩個極限條件寫反）",
+   "severity": "blocker",
+   "detail": "擷取結果的 highT 說「在 τ ≪ Δ₀ 的極限 C_V ≅ Δ₀/12k_BT²」、lowT 說「τ ≫ Δ₀ 時二能階系統給出線性項 C_V ≅ 2k_B²T/3Δ₀」。書本 p.579（PDF 599）原文完全相反，原始 glyph 可確認不是解碼歧義：「For τ /H11270 Δ₀（≪）, ... whence (24) ... for T < Δ₀/k_B」對應的正是線性項 C_V ≅ 2k_B²T/3Δ₀；「For τ /H11271 Δ₀（≫）, the value of the integral is roughly (Δ₀/2k_BT)³, so that in this limit (25) ... which approaches zero as T increases」對應的才是 1/T² 項。物理上也只能如此：τ ≪ Δ₀ 是低溫、給線性項（且書中緊接著說 the interesting region is at low temperatures），τ ≫ Δ₀ 是高溫、給 ∝1/T² 並隨 T 上升趨近零。兩個極限標籤被整組對調。"
+  }
+ ],
+ [
+  "T8",
+  {
+   "key": "contributions.highT（Δ₀ 漏平方，量綱錯誤）",
+   "severity": "blocker",
+   "detail": "擷取結果寫「C_V ≅ Δ₀/12k_BT²」。書本 p.579 式 (25) 的原始文字為 `CV /H33360 /H9004 2 0/12kBT 2`，即 C_V ≅ Δ₀²/12k_BT²（Δ 帶上標 2、下標 0）。少一個平方後量綱不成立（能量/(能量·溫度)≠ 熱容），且與 p.579 式 (23)、(24) 的推導不自洽。這是原文有平方、擷取時掉字，不是書中如此。"
+  }
+ ],
+ [
+  "T8",
+  {
+   "key": "contributions.notInBook 第(5)項（Schottky anomaly 宣稱書中未出現）",
+   "severity": "blocker",
+   "detail": "宣稱「書中只在第 19 章以『二能階系統』的形式做該類計算（p.578–579），未使用該名稱、也未給一般性討論」。實際上書本 p.318（PDF 338）第 11 章習題 4「Heat capacity from internal degrees of freedom」明寫：兩能階系統熱容 C = k_B(Δ/T)²e^{Δ/T}/(1+e^{Δ/T})²，並接著說 “Peaks of this type in the heat capacity are often known as Schottky anomalies.”；p.319（PDF 339）Fig. 11 圖說更給了一般性討論：“The Schottky anomaly in the heat capacity is a very useful tool for determining energy level splittings of ions in rare-earth and transition-group metals, compounds, and alloys.” 名稱有、一般性討論也有，且與第 19 章 p.578–579 是同一類計算的兩處出現。"
+  }
+ ],
+ [
+  "T8",
+  {
+   "key": "contributions.notInBook 第(1)項（宣稱書中完全沒有元件層級 Cth/Rth、從未縮併成集總參數）",
+   "severity": "blocker",
+   "detail": "宣稱「元件層級的熱容 Cth [J/K] 與熱阻 Rth [K/W] 完全沒有。Kittel 只給每莫耳／每單位體積的比熱與熱導率 K = (1/3)cvℓ（p.580），從未把它們縮併成集總熱網路參數」。實際上書本 p.561（PDF 581）第 18 章 Nanostructures 的小節「Heat Capacity and Thermal Transport」原文：“The thermal conductance G_th of the wire is defined as the ratio of the net energy flow through the wire divided by the temperature difference ΔT between its ends.”，並給出 G_th(1D) = (π²k_B²T/3h)ℑ。這正是集總熱導 [W/K]，即 R_th 的倒數，定義方式（淨熱流 ÷ 兩端溫差）就是元件級熱阻的定義。同頁式 (77) C_V(1D) = 2πLk_B²T/3hv 也是隨線長 L 正比的整體熱容 [J/K]，不是每莫耳／每體積量。（另註：第 5 章 p.123 另有小節標題 Thermal Resistivity of Phonon Gas，雖屬材料熱阻率而非 R_th，「完全沒有熱阻」的措辭也失準。）"
+  }
+ ],
+ [
+  "T8",
+  {
+   "key": "contributions.notInBook 第(4)項（奈米尺度熱容被列為不涵蓋且未加保留）",
+   "severity": "blocker",
+   "detail": "該項把「奈米尺度／薄膜／受限結構的熱容修正」與超導態、核熱容並列為本批頁面不涵蓋，但保留語（「前兩者是否在本書其他章節出現，本次未查證」）只涵蓋前兩者，等於默示奈米尺度熱容書中沒有。實際上第 18 章 p.557–562（PDF 577–582）整節「Vibrational and Thermal Properties of Nanostructures」處理受限結構，p.561 明講：室溫下奈米結構晶格熱性質與塊材相似、C 與 κ 皆 ∝T³；低溫下受限方向的振動模在 T < ℏω/k_B 凍結，長細結構表現為 1D 熱系統，C_V(1D) = 2πLk_B²T/3hv 與 G_th 皆線性於 T（1D 給 T、3D 給 T³）。對 FinFET Cth 用途而言這是全書最相關的一節，卻被歸為「不涵蓋」。"
+  }
+ ],
+ [
+  "T8",
+  {
+   "key": "contributions.notInBook 第(2)項（「只在兩處給出兩項相加」的窮舉宣稱不成立）",
+   "severity": "minor",
+   "detail": "核心結論（書中沒有一條統一列出晶格＋電子＋磁性＋其他的通式）成立，但「只在兩處各自給出兩項相加：p.145 與 p.579」的窮舉宣稱是錯的。至少另有兩處：p.267（PDF 287）Fig. 8 鎵正常態 C/T = 0.596 + 0.0568T²（即 C = 0.596T + 0.0568T³），圖說並明列 “has electronic, lattice, and (at low temperatures) nuclear quadrupole contributions”；p.319（PDF 339）Fig. 12 鎵 C_N T² = 4.3×10⁻⁴ + 0.596T³（核四極 CT⁻² 與電子 CT 兩項相加）。"
+  }
+ ],
+ [
+  "T8",
+  {
+   "key": "contributions.notInBook 第(4)項（超導態與核熱容的「未查證」保留，實際兩者都在書中）",
+   "severity": "minor",
+   "detail": "該項的保留語沒有說錯，但結論可以定案：兩者書中都有。超導態熱容：第 10 章 p.264（PDF 284）有小節標題 Heat Capacity，p.266–267 給 Fig. 8 與 C_es/γT_c = 7.46 exp(−1.39T_c/T)，書末索引亦列「Heat capacity, ... superconductors, 264」。核（超精細）熱容：p.318 習題 4(b) 原文說超精細交互作用造成 Δ ~ 1 到 100 mK 的分裂，“often detected experimentally by the presence of a term in 1/T² in the heat capacity in the region T ≫ Δ”，並配 p.319 Fig. 12。因此以全書而論，contributions 的貢獻清單（晶格／電子／磁性／非晶二能階）並不完整。"
+  }
+ ],
+ [
+  "T8",
+  {
+   "key": "contributions.assumptions 第2條（「熱容一律取定容值」過度強化）",
+   "severity": "minor",
+   "detail": "書本 p.107 原文是 “By heat capacity we shall usually mean the heat capacity at constant volume”——是 usually，不是「一律」。書中實際多處畫的是 C_p：p.113 Fig. 8（矽、鍺，縱軸 C_p, in cal/mol-K）、p.117 Fig. 11（鑽石，縱軸 C_p）。同一條其餘內容（C_V ≡ (∂U/∂T)_V、C_V 較 C_p 基本、註腳 C_p − C_V = 9α²BVT、固體中分數差通常很小可忽略）與 p.107 原文逐字相符，α² 的平方經原始 glyph（/H9251 2）確認無誤。"
+  }
+ ],
+ [
+  "T8",
+  {
+   "key": "contributions.lowT（反鐵磁 magnon T³ 的頁碼掛載過寬）",
+   "severity": "minor",
+   "detail": "「反鐵磁體的 magnon 則在低溫給出 T³ 熱容項，疊加在聲子的 T³ 項之上」掛在（p.334, 335, 357）。此敘述只在 p.357 SUMMARY 出現（“The thermal excitation of magnons leads at low temperatures to a term in T³ in the heat capacity, in addition to the phonon term in T³.”）。p.334–335 只有鐵磁 magnon 的 Planck 分布、態密度與 Bloch T^{3/2}；p.344–345 的 Antiferromagnetic Magnons 小節只推色散關係、不談熱容。頁碼群組應收斂到 p.357。"
+  }
+ ],
+ [
+  "T910",
+  {
+   "key": "anharmonic-cpcv / validity[0]",
+   "severity": "minor",
+   "detail": "宣稱「C_p 與 C_V 分數差小」是書中對「用 C_V 代替 C_p」的『唯一辯護』。核對 p.107 正文：'By heat capacity we shall usually mean the heat capacity at constant volume, which is more fundamental than the heat capacity at constant pressure, which is what the experiments determine.' — 書中的首要理由是「C_V 更基本」，腳註的「分數差通常很小」是第二個理由。『唯一』一詞不成立，應刪或改為「另一個理由」。其餘引述與頁碼正確。"
+  }
+ ],
+ [
+  "T910",
+  {
+   "key": "anharmonic-cpcv / notInBook(3)",
+   "severity": "minor",
+   "detail": "後半句「非諧性只被用來解釋熱膨脹與熱阻」與書中內容牴觸，也與本物件自己的 highT 欄位自相矛盾。p.119 把「The heat capacity becomes constant at high temperatures T > θ」列為諧和理論五項推論之一，p.120 緊接著說 'In real crystals none of these consequences is satisfied accurately. The deviations may be attributed to the neglect of anharmonic (higher than quadratic) terms' —— 書中確實把「高溫熱容不精確為常數」歸因於非諧項（只是沒給修正式）。此外 p.120 用非諧性解釋三聲子過程、p.475（第 16 章鐵電）用 'anharmonic lattice interactions' 解釋 g₂ 隨溫度的變化。前半句（書中沒有任何量化的非諧熱容修正、如 C_V 超過 3Nk_B 的線性 T 項）經全文查核屬實，'constant pressure' 全書僅出現於 p.107，也確認 (1)(4) 無誤。"
+  }
+ ],
+ [
+  "T910",
+  {
+   "key": "transition-anomaly / verbatim[1]",
+   "severity": "minor",
+   "detail": "引文文字逐字無誤，但頁碼標註不精確。'At a' 位於 p.266 該頁最後（'...is observed to be a second-order phase transition. At a'），p.267 是整頁圖，句子續於 p.268 開頭 'second-order transition there is no latent heat, but there is a discontinuity in the heat capacity, evident in Fig. 8a.' 宜標為 (p.266–268)。"
+  }
+ ],
+ [
+  "T910",
+  {
+   "key": "transition-anomaly / validity[3]",
+   "severity": "minor",
+   "detail": "「能量隙是 characteristic, but not universal」確為 p.266 原文（'An energy gap (Fig. 9) is a characteristic, but not universal, feature of the superconducting state.'），但後半句「因此不能假設所有超導體的熱容都呈指數形式」是擷取者自行加上的推論，書中未由此推出任何關於熱容形式的普適性結論。屬合理但非書中的宣稱，應標記為推論而非書中說法。"
+  }
+ ],
+ [
+  "T910",
+  {
+   "key": "transition-anomaly / validity[5]",
+   "severity": "minor",
+   "detail": "「分析超導態異常前必須先扣掉這些（電子／晶格／核四極矩）貢獻」不在書中。p.267 Fig. 8 說明僅陳述 'The normal state (which is restored by a 200 G field) has electronic, lattice, and (at low temperatures) nuclear quadrupole contributions.'，並無任何「必須先扣除」的程序性要求。擬合式 C/T = 0.596 + 0.0568 T² 與 γ = 0.60 mJ mol⁻¹ deg⁻²、B_a = 200 G 皆與原書一致。"
+  }
+ ],
+ [
+  "T910",
+  {
+   "key": "transition-anomaly / validity[6]",
+   "severity": "minor",
+   "detail": "前半（鋁熵變約 10⁻⁴ k_B/atom、僅約 10⁻⁴ 比例傳導電子參與）與 p.264 原文一致；但結語「熱容異常本身是小訊號」是擷取者的引申，p.264 只談熵變與參與電子比例，未對熱容異常的訊號大小作任何陳述（書中對跳躍大小自始至終未量化，這點與 notInBook(1) 相符）。"
+  }
+ ],
+ [
+  "T910",
+  {
+   "key": "transition-anomaly / notInBook(3)",
+   "severity": "minor",
+   "detail": "自述「指定範圍 p.263–272」，但同一物件的 sections 引用 p.259（EXPERIMENTAL SURVEY）、lowT 引用 p.272–273（ΔF = 439 vs 430 erg cm⁻³ 在 p.273）、highT 引用 p.259/262/268–269，範圍宣告與實際引用不一致。內容本身無誤：已核 p.629「Elementary Theory of Order」原文 'The case A₃B differs from AB, the former having a first-order transition marked by a latent heat and the latter having a second-order transition marked by a discontinuity in the heat capacity (Fig. 9).'"
+  }
+ ],
+ [
+  "T11",
+  {
+   "key": "cth-vs-k/verbatim[1]",
+   "severity": "minor",
+   "detail": "引文『the mean free path for umklapp collisions between phonons and not for all collisions (p.126)』逐字比對通過（確為書中子字串），但在句中被截斷且未加省略號。p.126 原句為：『the phonon mean free path ℓ which enters (42) is the mean free path for umklapp collisions between phonons and not for all collisions between phonons.』引文砍掉句尾的 between phonons，語意不變但形式上不是完整子句。建議補全或加省略號。（verbatim[0]『C is the heat capacity per unit volume, v is the average particle velocity』經全書 grep 唯一命中，一字不差，p.122 正確。）"
+  }
+ ],
+ [
+  "T11",
+  {
+   "key": "cth-vs-k/assumptions[5]",
+   "severity": "minor",
+   "detail": "『(42) 中三個量的身分被明確指定：C 是單位體積的熱容、v 是聲子速度、ℓ 是聲子平均自由程』把 p.122 兩個不同句子併成一句。書上第一句是通式定義：『C is the heat capacity per unit volume, v is the average particle velocity, and ℓ is the mean free path of a particle between collisions.』第二句才是 Debye 應用到介電固體時的對應：『with C as the heat capacity of the phonons, v the phonon velocity, and ℓ the phonon mean free path.』第二句並未重述 C 是「每單位體積」。三項說法都真的在 p.122，非捏造，但混用會與同一份結果的 verbatim[0]（v is the average particle velocity）表面矛盾。"
+  }
+ ],
+ [
+  "T11",
+  {
+   "key": "cth-vs-k/validity[4]",
+   "severity": "minor",
+   "detail": "『熱阻為零、熱導率為無限大』頁碼 p.123–124 正確，但兩半出處強度不同。p.124 內文對純 N 過程聲子只寫到『Therefore there is no thermal resistance.』；Fig. 16c 圖說為『Just as in (a) the thermal resistivity is zero.』。全書唯一出現『thermal conductivity is infinite』的地方是 p.124 的 Fig. 16a 圖說，講的是無摩擦管中氣體分子的類比，並非直接針對聲子 N 過程。書中確以『just as in (a)』把兩者等同，推論成立，但不是對聲子案例的直述。"
+  }
+ ],
+ [
+  "T11",
+  {
+   "key": "cth-vs-k/validity[5]",
+   "severity": "minor",
+   "detail": "『此時 K 已非純材料常數』是擷取者的補述，p.126 原文只說『the thermal conductivity becomes a function of the dimensions of the specimen』。語意等價，屬無害改寫而非書中原話。同條其餘部分（ℓ 與試片寬度相當、ℓ 受寬度限制、de Haas 與 Biermasz 發現）p.126 逐項屬實。"
+  }
+ ],
+ [
+  "T11",
+  {
+   "key": "cth-vs-k/notInBook(2)",
+   "severity": "minor",
+   "detail": "『(30) 式的 3Nk_B』掛錯位置。p.113 的 (30) 式本身是 C_V = 9Nk_B(T/θ)³∫₀^{x_D} dx x⁴eˣ/(eˣ−1)²；3Nk_B 出現在 (30) 之後的正文『At T ≫ θ the heat capacity approaches the classical value of 3Nk_B』。該條要表達的「歸一為每試片／每莫耳」結論本身正確（Fig. 7 縱軸確為 J mol⁻¹K⁻¹，Table 2 的 C 確為 J cm⁻³K⁻¹，p.122 的 c 確為 heat capacity of a particle），且書中確實沒有把 (30) 與 (42) 的 C 做歸一對照。"
+  }
+ ],
+ [
+  "T11",
+  {
+   "key": "cth-vs-k/notInBook(1)",
+   "severity": "minor",
+   "detail": "『書中只有…thermal resistivity（熱阻率）』略不精確：全書 grep 顯示 thermal resistance 一詞也出現兩次，皆在第 5 章——p.124『Therefore there is no thermal resistance.』與 p.127 Fig. 19 圖說『Casimir's theory for thermal resistance caused by boundary scattering』。兩處都不是集總 R_th [K/W]，故該條的實質主張（無元件級 C_th/R_th、無 ΔT = P·R_th）成立：全書搜尋 lumped、thermal circuit、thermal capacitance、thermal impedance、K/W、W/K 皆零命中。"
+  }
+ ]
+]

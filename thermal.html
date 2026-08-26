@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>熱容專題整理（建置中） — Kittel 固態物理</title>
-<meta name="description" content="熱容專題整理：11 個主題沿 C(T) 溫度軸排列，每主題六個固定面向。第二次交付，尚未產出。">
+<title>熱容專題整理 — Kittel 固態物理</title>
+<meta name="description" content="Kittel 第 8 版的熱容專題：11 個主題沿 C(T) 溫度軸排列，每主題六個固定面向，跨 6 章，附熱容知識地圖。">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
 <script>
@@ -31,29 +31,142 @@ b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色�
 <main id="main">
   <header class="hero">
     <div class="wrap">
-      <p class="kicker">第二次交付 · 建置中</p>
-      <h1>熱容專題整理</h1>
-      <p class="hero__lede">11 個熱容主題沿 C(T) 溫度軸排列，每個主題六個固定面向：物理意義與直觀解釋／重要公式與符號定義／推導所用假設／適用條件與限制／高溫與低溫行為／對應的 Kittel 章節小節與頁碼。最後附一張熱容知識地圖。</p>
-      <p class="hero__claim">熱容不是 Ch5 一章的事——它散在七章裡。</p>
+      <p class="kicker">從 Dulong–Petit 到 Debye T³</p>
+      <h1>熱容，一條溫度軸</h1>
+      <p class="hero__lede">11 個主題、每個六個固定面向：物理意義與直觀解釋／重要公式與符號定義／推導所使用的假設／適用條件與限制／高溫與低溫行為／對應的 Kittel 章節小節與頁碼。</p>
+      <p class="hero__claim">熱容不是 Ch5 一章的事——它散在 6 章裡。</p>
+      <p class="anchors__cap">這份專題的實際規模</p>
+      <ul class="anchors">
+        <li><span class="v num">11</span><span class="k">個主題，各六個固定面向</span></li>
+        <li><span class="v num">53</span><span class="k">筆章節小節出處，逐筆核對頁碼</span></li>
+        <li><span class="v num">6</span><span class="k">章：Ch4、Ch5、Ch6、Ch10、Ch12、Ch19</span></li>
+      </ul>
     </div>
   </header>
+
   <section class="plate">
-    <div class="wrap--text">
-      <span class="lead">尚未產出</span>
-      <p>這一頁還沒有內容。依約定分兩次交付：<strong>第一次是<a href="index.html">全書逐章整理</a>（已完成，22 章 ＋ 199 條公式）</strong>，第二次才是本頁的熱容專題。</p>
-      <p>本頁完成後將包含：晶格振動與聲子／聲子色散關係與態密度／Dulong–Petit 定律／Einstein 模型／Debye 模型與 Debye 溫度／高溫極限與低溫 T³ 定律／金屬的電子熱容／晶格、電子、磁性及其他熱容貢獻／非諧性、熱膨脹及 Cp、Cv 的差異／超導或相變附近的熱容異常／熱容 Cth、比熱、熱導率及熱阻的差別。</p>
-      <p>其中「元件熱容 Cth 與元件熱阻 Rth」<strong>全書皆無</strong>，該主題將整段標為「延伸知識」。</p>
+    <div class="wrap">
+      <h2 style="margin-top:0">溫度軸上的 11 個主題</h2>
+      <p style="max-width:38em">熱容的主題不是平行的分類——它們各自活在 C(T) 曲線的不同區段。下圖的曲線由 Debye 積分實際取樣繪出，不是示意圖。</p>
+      <figure class="curve">
+<svg viewBox="0 0 960 400" role="img" aria-labelledby="curveT curveD" class="curve__svg">
+  <title id="curveT">Debye 熱容曲線與 11 個主題的溫區定位</title>
+  <desc id="curveD">縱軸為莫耳熱容（0 到 24.943 J/mol·K 的 Dulong–Petit 漸近線），橫軸為 T 除以 Debye 溫度 θ（0 到 1.6）。曲線由 Debye 積分實際取樣繪出。曲線下方分三個溫區帶，11 個主題依其發生的溫度區間定位。</desc>
+
+  <!-- T³ 區（書中 p.113 Fig.7 標明在 0.1θ 以下） -->
+  <rect x="92" y="40" width="50.5" height="260" class="c-zone-lo"/>
+  <!-- Dulong–Petit 漸近線 -->
+  <line x1="92" y1="40" x2="900" y2="40" class="c-asym"/>
+  <text x="896" y="32" class="c-lab c-lab--warm" text-anchor="end">3Nk_B = 24.943　p.113 Fig.7</text>
+  <!-- 軸 -->
+  <line x1="92" y1="300" x2="912" y2="300" class="c-axis"/>
+  <line x1="92" y1="30" x2="92" y2="300" class="c-axis"/>
+  <!-- 刻度 -->
+  <g class="c-tick">
+    <line x1="92" y1="300" x2="86" y2="300"/><text x="80" y="304" text-anchor="end">0</text>
+    <line x1="92" y1="170" x2="86" y2="170"/><text x="80" y="174" text-anchor="end">12.5</text>
+    <line x1="92" y1="40" x2="86" y2="40"/><text x="80" y="44" text-anchor="end">24.9</text>
+    <line x1="142.5" y1="300" x2="142.5" y2="306"/><text x="142.5" y="320" text-anchor="middle">0.1</text>
+    <line x1="597" y1="300" x2="597" y2="306"/><text x="597" y="320" text-anchor="middle">1.0</text>
+    <line x1="900" y1="300" x2="900" y2="306"/><text x="900" y="320" text-anchor="middle">1.6</text>
+  </g>
+  <text x="60" y="24" class="c-lab">C　[J·mol⁻¹·K⁻¹]</text>
+  <text x="920" y="304" class="c-lab">T/θ</text>
+
+  <!-- θ 位置 -->
+  <line x1="597" y1="53" x2="597" y2="300" class="c-guide"/>
+  <text x="603" y="120" class="c-lab">T = θ</text>
+
+  <!-- Debye 曲線（141 個實際取樣點，非手繪貝茲） -->
+  <path d="M92.0,300.0 L97.8,300.0 L103.5,299.8 L109.3,299.2 L115.1,298.1 L120.9,296.2 L126.6,293.5 L132.4,289.7 L138.2,284.7 L143.9,278.7 L149.7,271.5 L155.5,263.5 L161.3,254.9 L167.0,245.8 L172.8,236.4 L178.6,227.0 L184.3,217.7 L190.1,208.6 L195.9,199.8 L201.7,191.3 L207.4,183.2 L213.2,175.6 L219.0,168.3 L224.7,161.5 L230.5,155.1 L236.3,149.0 L242.1,143.4 L247.8,138.1 L253.6,133.1 L259.4,128.4 L265.1,124.1 L270.9,120.0 L276.7,116.2 L282.5,112.6 L288.2,109.2 L294.0,106.1 L299.8,103.1 L305.5,100.3 L311.3,97.7 L317.1,95.3 L322.9,93.0 L328.6,90.8 L334.4,88.7 L340.2,86.8 L345.9,84.9 L351.7,83.2 L357.5,81.6 L363.3,80.0 L369.0,78.6 L374.8,77.2 L380.6,75.8 L386.3,74.6 L392.1,73.4 L397.9,72.3 L403.7,71.2 L409.4,70.1 L415.2,69.2 L421.0,68.2 L426.7,67.3 L432.5,66.5 L438.3,65.7 L444.1,64.9 L449.8,64.2 L455.6,63.4 L461.4,62.8 L467.1,62.1 L472.9,61.5 L478.7,60.9 L484.5,60.3 L490.2,59.8 L496.0,59.2 L501.8,58.7 L507.5,58.2 L513.3,57.8 L519.1,57.3 L524.9,56.9 L530.6,56.4 L536.4,56.0 L542.2,55.7 L547.9,55.3 L553.7,54.9 L559.5,54.6 L565.3,54.2 L571.0,53.9 L576.8,53.6 L582.6,53.3 L588.3,53.0 L594.1,52.7 L599.9,52.4 L605.7,52.1 L611.4,51.9 L617.2,51.6 L623.0,51.4 L628.7,51.2 L634.5,50.9 L640.3,50.7 L646.1,50.5 L651.8,50.3 L657.6,50.1 L663.4,49.9 L669.1,49.7 L674.9,49.5 L680.7,49.3 L686.5,49.1 L692.2,49.0 L698.0,48.8 L703.8,48.6 L709.5,48.5 L715.3,48.3 L721.1,48.2 L726.9,48.0 L732.6,47.9 L738.4,47.8 L744.2,47.6 L749.9,47.5 L755.7,47.4 L761.5,47.2 L767.3,47.1 L773.0,47.0 L778.8,46.9 L784.6,46.8 L790.3,46.7 L796.1,46.6 L801.9,46.5 L807.7,46.4 L813.4,46.3 L819.2,46.2 L825.0,46.1 L830.7,46.0 L836.5,45.9 L842.3,45.8 L848.1,45.7 L853.8,45.6 L859.6,45.5 L865.4,45.5 L871.1,45.4 L876.9,45.3 L882.7,45.2 L888.5,45.2 L894.2,45.1 L900.0,45.0" class="c-curve"/>
+
+  <!-- T³ 區註記 -->
+  <text x="146" y="270" class="c-lab c-lab--warm">T³ 區　&lt; 0.1θ</text>
+
+  <!-- 三個溫區帶 -->
+  <g class="c-band">
+    <rect x="92" y="348" width="120" height="34" class="c-band-lo"/>
+    <rect x="212" y="348" width="330" height="34" class="c-band-mid"/>
+    <rect x="542" y="348" width="358" height="34" class="c-band-hi"/>
+    <text x="152" y="370" text-anchor="middle" class="c-band-t">低溫區　T ≪ θ</text>
+    <text x="377" y="370" text-anchor="middle" class="c-band-t">過渡區　T ~ θ</text>
+    <text x="721" y="370" text-anchor="middle" class="c-band-t">高溫區　T ≫ θ</text>
+  </g>
+  <g class="c-drop">
+    <line x1="152" y1="300" x2="152" y2="348"/>
+    <line x1="377" y1="300" x2="377" y2="348"/>
+    <line x1="721" y1="300" x2="721" y2="348"/>
+  </g>
+</svg>
+<figcaption class="curve__cap">
+  <p>曲線由 Debye 積分（p.113 式 30）<strong>實際取樣 141 點</strong>繪出，不是示意圖。低溫端數值積分得 C/3R = 0.0097，與 T³ 律解析值 (12π⁴/5)(T/θ)³/3 = 0.00974 相符；高溫漸近線 3R = 24.943 J·mol⁻¹·K⁻¹ 與書中 Fig. 7 標示的數值一致。</p>
+  <p>陰影區為書中 p.113 明言的 T³ 律適用範圍（<strong>0.1θ 以下</strong>，不是「T &lt; θ」）。下方三帶對應 11 個主題的發生溫區；另有兩個主題不隨溫度定位（基礎與定義層），列於帶外。</p>
+</figcaption>
+</figure>
+      <div class="zones">
+        <div class="zone"><p class="zone__t">低溫區　T ≪ θ　·　θ 的十分之一以下</p><ul><li><a href="th-06.html"><span class="n">06</span>高溫極限與低溫 T³ 定律</a></li><li><a href="th-07.html"><span class="n">07</span>金屬的電子熱容</a></li><li><a href="th-08.html"><span class="n">08</span>晶格、電子、磁性及其他熱容貢獻</a></li><li><a href="th-10.html"><span class="n">10</span>超導或相變附近的熱容異常</a></li></ul></div>
+        <div class="zone"><p class="zone__t">過渡區　T ~ θ　·　熱容爬升最陡的一段</p><ul><li><a href="th-02.html"><span class="n">02</span>聲子色散關係與態密度</a></li><li><a href="th-04.html"><span class="n">04</span>Einstein 模型</a></li><li><a href="th-05.html"><span class="n">05</span>Debye 模型與 Debye 溫度</a></li></ul></div>
+        <div class="zone"><p class="zone__t">高溫區　T ≫ θ　·　趨近 Dulong–Petit 飽和</p><ul><li><a href="th-03.html"><span class="n">03</span>Dulong–Petit 定律</a></li><li><a href="th-09.html"><span class="n">09</span>非諧性、熱膨脹及 Cp、Cv 的差異</a></li></ul></div>
+      </div>
+      <div class="zone zone--base">
+        <p class="zone__t">基礎與定義層　·　不隨溫度定位</p>
+        <ul><li><a href="th-01.html"><span class="n">01</span>晶格振動與聲子</a></li><li><a href="th-11.html"><span class="n">11</span>熱容、比熱、熱導率及熱阻的差別</a></li></ul>
+      </div>
     </div>
   </section>
+
+  <section class="sect wrap">
+    <h2>主題總表</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>#</th><th>主題</th><th>溫區</th><th>出處章</th><th>假設 / 限制</th></tr></thead>
+        <tbody><tr><td class="mono">01</td><td><a href="th-01.html"><b>晶格振動與聲子</b></a></td><td>基礎與定義層</td><td class="mono">Ch4</td><td class="mono">6 / 6</td></tr><tr><td class="mono">02</td><td><a href="th-02.html"><b>聲子色散關係與態密度</b></a></td><td>過渡區　T ~ θ</td><td class="mono">Ch4、Ch5</td><td class="mono">6 / 6</td></tr><tr><td class="mono">03</td><td><a href="th-03.html"><b>Dulong–Petit 定律</b></a></td><td>高溫區　T ≫ θ</td><td class="mono">Ch5</td><td class="mono">5 / 6</td></tr><tr><td class="mono">04</td><td><a href="th-04.html"><b>Einstein 模型</b></a></td><td>過渡區　T ~ θ</td><td class="mono">Ch5</td><td class="mono">6 / 6</td></tr><tr><td class="mono">05</td><td><a href="th-05.html"><b>Debye 模型與 Debye 溫度</b></a></td><td>過渡區　T ~ θ</td><td class="mono">Ch5、Ch6</td><td class="mono">7 / 7</td></tr><tr><td class="mono">06</td><td><a href="th-06.html"><b>高溫極限與低溫 T³ 定律</b></a></td><td>低溫區　T ≪ θ</td><td class="mono">Ch5</td><td class="mono">8 / 7</td></tr><tr><td class="mono">07</td><td><a href="th-07.html"><b>金屬的電子熱容</b></a></td><td>低溫區　T ≪ θ</td><td class="mono">Ch6</td><td class="mono">6 / 6</td></tr><tr><td class="mono">08</td><td><a href="th-08.html"><b>晶格、電子、磁性及其他熱容貢獻</b></a></td><td>低溫區　T ≪ θ</td><td class="mono">Ch5、Ch6、Ch12、Ch19</td><td class="mono">6 / 6</td></tr><tr><td class="mono">09</td><td><a href="th-09.html"><b>非諧性、熱膨脹及 Cp、Cv 的差異</b></a></td><td>高溫區　T ≫ θ</td><td class="mono">Ch5</td><td class="mono">6 / 7</td></tr><tr><td class="mono">10</td><td><a href="th-10.html"><b>超導或相變附近的熱容異常</b></a></td><td>低溫區　T ≪ θ</td><td class="mono">Ch10</td><td class="mono">6 / 8</td></tr><tr><td class="mono">11</td><td><a href="th-11.html"><b>熱容、比熱、熱導率及熱阻的差別</b></a></td><td>基礎與定義層</td><td class="mono">Ch5</td><td class="mono">6 / 7</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="plate">
+    <div class="wrap">
+      <h2 style="margin-top:0">Kittel 熱容知識地圖</h2>
+      <p style="max-width:38em">各章的概念如何串成一套完整的固體熱容理論。三條路徑最後在「低溫總熱容 C = γT + AT³」與「熱導率 k = ⅓C v Λ」兩處合流。</p>
+      <div class="mapgrid">
+        <div class="maplane">
+          <h3>主線：晶格</h3>
+          <ol>
+            <li><b>Ch1–2</b> 晶格與倒晶格 → 給出原胞數 N/V 與第一 Brillouin 區（模式計數的定義域）</li>
+            <li><b>Ch3</b> 彈性常數 → 給出聲速 v（Debye 模型與 k=⅓CvΛ 都要它）</li>
+            <li><b>Ch4</b> 色散關係 ω(K)、聲學支與光學支</li>
+            <li><b>Ch5</b> 態密度 D(ω) ＋ Planck 分佈 → <b>晶格熱容 C_lat</b></li>
+            <li>兩個簡化：<b>Einstein</b>（單一頻率，近似光學支）與 <b>Debye</b>（ω=vK，近似聲學支）→ 高溫 Dulong–Petit、低溫 T³</li>
+          </ol>
+        </div>
+        <div class="maplane">
+          <h3>支線：其他自由度</h3>
+          <ol>
+            <li><b>Ch6</b> 費米氣 ＋ Pauli 原理 → <b>電子熱容 γT</b>（只有費米面附近能響應）</li>
+            <li><b>Ch12</b> 磁振子色散 ω∝K² → <b>磁性熱容 ∝ T³ᐟ²</b></li>
+            <li><b>Ch19</b> 非晶的二能階系統 → <b>TLS 線性項</b>（與電子項同冪次但無關）</li>
+            <li><b>Ch10</b> 超導能隙 → 相變處的<b>熱容跳變</b>與指數衰減</li>
+            <li><b>Ch18</b> 奈米結構：受限方向的模式在室溫仍被熱激發</li>
+          </ol>
+        </div>
+        <div class="maplane">
+          <h3>修正與橋接</h3>
+          <ol>
+            <li><b>Ch5 非諧性</b> → 熱膨脹、聲子互撞（簡諧近似下兩者都不存在）</li>
+            <li>非諧性 → <b>C_p − C_v = 9α²BVT</b>（p.107 註腳）：理論算 C_v、實驗量 C_p</li>
+            <li>非諧性 → 有限的平均自由徑 Λ → <b>熱導率 k = ⅓ C v Λ</b>（p.122 式 42）</li>
+            <li>這條式子是全書唯一把<b>儲存</b>（C）與<b>輸運</b>（v、Λ）接起來的橋</li>
+            <li><b>【延伸知識】</b>再往前是元件層級的 Cth 與 Rth、以及熱阻抗網路——<b>Kittel 全書皆無</b></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sect wrap--text">
-    <h2>先看得到的部分</h2>
-    <p>與熱容<strong>直接相關</strong>的四章已經在全書逐章整理裡完成，可以先讀：</p>
-    <ul>
-      <li><a href="ch-05.html">第 5 章 聲子 II：熱性質</a>（p.105–129）——Debye 模型、T³ 定律、Einstein 模型、非諧性與熱膨脹、熱導率 K = ⅓Cvℓ</li>
-      <li><a href="ch-06.html">第 6 章 自由電子費米氣</a>（p.131–158）——電子熱容 C_el = γT，以及 C = γT + AT³ 的低溫拆解</li>
-      <li><a href="ch-18.html">第 18 章 奈米結構</a>（p.515–563）——p.557–562 的振動與熱性質</li>
-      <li><a href="ch-19.html">第 19 章 非晶固體</a>（p.565–582）——p.578–580 的低溫熱容線性項與二能階系統</li>
-    </ul>
+    <h2>姊妹頁：全書逐章</h2>
+    <p>本頁按熱容這條主線走，跨章串接。若你要的是「這一章在講什麼」的定位，請看 <a href="index.html">全書逐章整理</a>：22 章每章六欄，199 條公式全部標到書本頁碼與式號。</p>
   </section>
 </main>
 <footer class="foot">

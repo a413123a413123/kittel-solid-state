@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>晶格振動與聲子 — Kittel 熱容專題</title>
+<meta name="description" content="Kittel 第 8 版的熱容專題：晶格振動與聲子。物理意義、公式與符號定義、推導假設、適用條件與限制、高低溫行為，以及對應的章節小節與頁碼。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html">全書逐章</a>
+      <a href="thermal.html" aria-current="page">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="thermal.html">熱容專題</a> ／ 主題 1</p></div>
+<header class="uhead wrap"><span class="uhead__no num">01</span><h1>晶格振動與聲子</h1><p class="topic__zone">溫區定位：基礎與定義層　·　不隨溫度定位</p></header>
+<main id="main" class="wrap--text">
+<section class="aspect"><p class="aspect__k"><b>①</b>物理意義與直觀解釋　（我寫的教學說明）</p><p>固體的熱不是「原子亂動」這麼含糊的東西——它是一組**簡正模式**（normal modes）的集體振動。把晶體想成用彈簧連起來的質點陣列：任何複雜的振動都能拆成有限個彼此獨立的簡正模式，每個模式有自己的波向量 K 與頻率 ω。這一步很關鍵，因為獨立的簡正模式在數學上就是一組獨立的諧振子，而諧振子的量子力學我們完全會解。</p><p>把每個簡正模式量子化，能量就只能取 (n + ½)ℏω 這些離散值，其中的能量量子 ℏω 就叫**聲子**（phonon）。「一個模式被激發到第 n 階」與「這個模式裡有 n 個聲子」是同一件事的兩種說法。聲子不是真的粒子（它是集體激發，不能離開晶體獨立存在），但它像粒子一樣有能量、有動量般的量、會被散射、數目還會隨溫度改變——正因如此，整個熱容問題才能改寫成「一團聲子氣體有多少能量」。</p><p>這是後面所有熱容討論的**唯一入口**：沒有簡正模式的分解，就沒有 3N 個模式可數；沒有量子化，高溫古典極限與低溫凍結的區別就無從談起。</p></section>
+<section class="aspect"><p class="aspect__k"><b>②</b>重要公式與符號定義　（書中）</p><div class="eqs"><div class="eq"><p class="eq__l">單原子基底的色散關係</p><p class="eq__f">ω² = (2C/M)(1 − cos Ka)</p><span class="eq__r">(7) 　Ch4 p.92</span><p class="eq__s">a 為平面間距（其值取決於 K 的方向）；K 為波向量；第一布里淵區邊界在 K = ±π/a</p></div><div class="eq"><p class="eq__l">彈性波能量量子化（聲子能量）</p><p class="eq__f">ε = (n + ½)ℏω</p><span class="eq__r">(27) 　Ch4 p.99</span><p class="eq__s">n 為該模態被激發的量子數，即佔據該模態的聲子數；½ℏω 為零點能，源自其等價於頻率 ω 的量子諧振子</p></div></div></section>
+<section class="aspect"><p class="aspect__k"><b>③</b>推導所使用的假設　（書中）</p><ul><li>**在立方晶體中**，波沿 [100]、[110]、[111] 這三個方向傳播時數學解最簡單：整個原子平面同相位移（平行或垂直於波向量），問題因而化為一維、用單一座標 u_s 描述第 s 平面的位移（書本 p.91 原文限定 in cubic crystals，且說的是「解最簡單」而非普遍成立）</li><li>晶體的彈性響應是力的線性函數，等價於彈性能是任兩點相對位移的二次函數；位移的線性項在平衡處消失，足夠小的彈性形變下三次及更高階項可略去（即諧振近似）（書本 p.91）</li><li>平面 s 因平面 s+p 位移所受的力正比於位移差 u_{s+p} − u_s；為簡潔只取最近鄰交互作用 p = ±1，力常數 C 定義成對平面中一個原子而言，且縱波與橫波的 C 不同（書本 p.91）</li><li>取所有位移的時間相依為 exp(−iωt)，並以行進波形式 u_s = u exp(isKa) 代入差分方程求解（書本 p.91–92）</li><li>雙原子基底時，假設每個平面只與最近鄰平面交互作用、且所有最近鄰平面對之間的力常數相同；傳播方向取在「單一平面只含單一種離子」的對稱方向（NaCl 結構的 [111]、CsCl 結構的 [100]）（書本 p.97）</li><li>彈性模的能量量子化為 (n + 1/2)ℏω，因為它等價於頻率 ω 的量子諧振子；½ℏω 為該模的零點能（書本 p.99）</li></ul></section>
+<section class="aspect aspect--limit"><p class="aspect__k"><b>④</b>適用條件與限制　（書中）</p><ul><li>只有第一布里淵區 −π/a &lt; K ≤ π/a 內的波向量有物理意義；區外的 K 只是重複區內已描述的晶格運動，減去適當的倒晶格向量即得區內等價波向量（書本 p.93）</li><li>在區邊界 K_max = ±π/a，解 u_s = u(−1)^s 是駐波而非行進波，dω/dK = 0、群速度為零；書中說此情形等同於 X 光滿足 Bragg 條件時行進波無法傳播、經來回反射建立駐波（書本 p.93–94）</li><li>只有在長波極限 Ka ≪ 1 才回到 ω² = (C/M)K²a²、ω ∝ K，等同連續體彈性波理論，此時聲速與頻率無關（書本 p.94）</li><li>最近鄰假設是簡化：書中明講在金屬中有效力可能相當長程、經傳導電子海由離子傳到離子，已發現相隔多達 20 個平面之間的交互作用（書本 p.94）</li><li>雙原子晶格在 (2C/M₁)^{1/2} 與 (2C/M₂)^{1/2} 之間不存在波動解，第一布里淵區邊界 K_max = ±π/a 處出現頻率能隙；書中說這是多原子晶格中彈性波的特徵（書本 p.99）</li><li>諧振理論（位能只到二次項）的各項後果在真實晶體中沒有一項精確成立：兩晶格波不交互作用、無熱膨脹、絕熱與等溫彈性常數相等、彈性常數與壓力溫度無關、高溫 T &gt; θ 熱容為常數；偏差歸因於忽略非諧（高於二次）項（書本 p.119–120）。另外若晶體結構不穩定，ω² 為負、ω 為虛數（書本 p.100）</li></ul></section>
+<section class="aspect"><p class="aspect__k"><b>⑤</b>高溫與低溫行為　（書中）</p><h4>高溫　T ≫ θ</h4><p>第 4 章不含熱佔據與熱容，屬**與溫度無關**的簡諧晶格動力學；章末明講熱性質留給第 5 章（書本 p.89）。（先前版本寫「通篇是 T = 0」，書中無此陳述，且該章圖說帶有溫度：Fig. 8a 鍺 80 K、Fig. 8b KBr 90 K、Fig. 11 鈉 90 K。）第 4 章唯一與熱佔據相扣的結果是量子化均方振幅 u₀² = 4(n + ½)ℏ/ρVω，把某模的位移與該模的聲子佔據數 n 連起來，但 n 的溫度相依要由第 5 章的 Planck 分佈決定（書本 p.99、107）。</p><h4>低溫　T ≪ θ</h4><p>第 4 章同樣沒有低溫行為的討論。與 T → 0 相關的唯一書中陳述是零點能：能量 (n + ½)ℏω 中的 ½ℏω 項對聲子與光子都存在，是它們等價於量子諧振子的結果，即使模未被激發（n = 0）也仍在（書本 p.99）。對應地，均方振幅 u₀² = 4(n + ½)ℏ/ρVω 在 n = 0 時不為零（書本 p.99）。低溫熱容的 T³ 行為完全屬於第 5 章的 Debye 討論（書本 p.114），第 4 章未提。</p></section>
+<section class="aspect"><p class="aspect__k"><b>⑥</b>對應的 Kittel 章節、小節與頁碼</p><ul class="srcs"><li>Ch4　VIBRATIONS OF CRYSTALS WITH MONATOMIC BASIS　p.91</li><li>Ch4　First Brillouin Zone　p.93</li><li>Ch4　Long Wavelength Limit　p.94</li><li>Ch4　TWO ATOMS PER PRIMITIVE BASIS　p.95</li><li>Ch4　QUANTIZATION OF ELASTIC WAVES　p.99</li></ul><div class="quote"><p class="quote__k">書中逐字</p><p>"We assume that the elastic response of the crystal is a linear function of the forces." (書本 p.91)</p><p>"The energy of a lattice vibration is quantized." (書本 p.99)</p><p>"However, a phonon does not carry physical momentum." (書本 p.100)</p></div></section>
+<div class="ext"><span class="ext__k">【延伸知識】書中沒有處理的部分</span><p>【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。</p></div>
+</main>
+<div class="wrap"><nav class="stepnav" aria-label="主題之間">
+<a href="thermal.html"><span class="dir">← 回到</span><span class="t">熱容專題導覽</span></a>
+<a href="th-02.html"><span class="dir">下一主題 →</span><span class="t"><span class="n num">02</span> 聲子色散關係與態密度</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

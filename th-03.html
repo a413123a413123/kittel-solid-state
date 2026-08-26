@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dulong–Petit 定律 — Kittel 熱容專題</title>
+<meta name="description" content="Kittel 第 8 版的熱容專題：Dulong–Petit 定律。物理意義、公式與符號定義、推導假設、適用條件與限制、高低溫行為，以及對應的章節小節與頁碼。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html">全書逐章</a>
+      <a href="thermal.html" aria-current="page">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="thermal.html">熱容專題</a> ／ 主題 3</p></div>
+<header class="uhead wrap"><span class="uhead__no num">03</span><h1>Dulong–Petit 定律</h1><p class="topic__zone">溫區定位：高溫區　T ≫ θ　·　趨近 Dulong–Petit 飽和</p></header>
+<main id="main" class="wrap--text">
+<section class="aspect"><p class="aspect__k"><b>①</b>物理意義與直觀解釋　（我寫的教學說明）</p><p>溫度夠高時，每個振動模式都被充分激發，量子化就看不見了——這時古典的**能量均分定理**接管：每個簡正模式平均帶 k_BT 的能量（動能 ½k_BT ＋ 位能 ½k_BT）。一個含 N 個原子的晶體有 3N 個模式，總能量 U = 3Nk_BT，對溫度微分得 **C = 3Nk_B**；換成一莫耳就是 3R ≈ 24.9 J·mol⁻¹·K⁻¹。</p><p>這個結果最驚人的地方是它**與材料完全無關**：不管是鋁、銅還是矽，只要溫度夠高，每莫耳原子的熱容都趨近同一個數。這正是它在 1819 年被實驗發現時的意義——當時還沒有原子論的量子描述，Dulong 與 Petit 靠這個常數反推原子量。</p><p>它同時也是**古典物理的失敗現場**：實驗上熱容在低溫會掉下去、趨近零，古典理論卻預測它永遠是 3Nk_B。這個矛盾正是 Einstein 與 Debye 引入量子化的動機。所以 Dulong–Petit 不只是「高溫的答案」，它是整個熱容量子理論的**參照基準線**——後面兩個模型都必須在高溫回到這條線，否則就是錯的。</p></section>
+<section class="aspect"><p class="aspect__k"><b>②</b>重要公式與符號定義　（書中）</p><div class="eqs"><div class="eq"><p class="eq__l">Einstein 模型熱容</p><p class="eq__f">C_V = (∂U/∂T)_V = N k_B (ℏω/τ)² · e^{ℏω/τ} / (e^{ℏω/τ} − 1)²</p><span class="eq__r">(34) 　Ch5 p.117</span><p class="eq__s">N 個同頻率 ω 的振子（一維）；三維時 N 換成 3N。高溫極限為 3Nk_B（Dulong–Petit 值），低溫則以 exp(−ℏω/τ) 衰減</p></div><div class="eq"><p class="eq__l">Debye 模型熱容（完整式）</p><p class="eq__f">C_V = 9Nk_B (T/θ)³ ∫₀^{x_D} dx · x⁴ eˣ / (eˣ − 1)²</p><span class="eq__r">(30) 　Ch5 p.113</span><p class="eq__s">由 U = 9Nk_BT(T/θ)³∫₀^{x_D}dx x³/(eˣ−1)（p.113 明言的式 (26) 中間表達式）對溫度微分；x_D = θ/T；T ≫ θ 時趨近古典值 3Nk_B</p></div></div></section>
+<section class="aspect"><p class="aspect__k"><b>③</b>推導所使用的假設　（書中）</p><ul><li>晶體被當成簡諧振子的集合處理：晶格位能只保留位移的二次項，這就是書中所稱的 harmonic theory（p.119）</li><li>佔據數由 Planck 分布 ⟨n⟩ = 1/(exp(ℏω/τ) − 1) 給出，而高溫下一個態的佔據數近似正比於溫度（Fig. 1 說明，p.106；p.107）</li><li>三維時每個振子有三個模式，因此 N 由 3N 取代（p.117）</li><li>取高溫極限 ℏω/τ ≪ 1，對 Debye 模型即 T ≫ θ（p.113、p.117）</li><li>所討論的是定容熱容 CV ≡ (∂U/∂T)V，且只計聲子（晶格）貢獻 Clat（p.107）</li></ul></section>
+<section class="aspect aspect--limit"><p class="aspect__k"><b>④</b>適用條件與限制　（書中）</p><ul><li>3NkB 是高溫極限值：Einstein 模型與 Debye 模型的高溫極限都收斂到它（p.113、p.117）</li><li>Debye 曲線在 T/θ 大時的漸近值書中給為 24.943 J mol⁻¹ deg⁻¹（Fig. 7 說明，p.113）</li><li>「熱容在高溫 T &gt; θ 變成常數」被書中列為簡諧理論的推論之一；書中緊接著明講在真實晶體中這些推論沒有一個被精確滿足，偏差歸因於非簡諧（高於二次）項（p.119、p.120）</li><li>實驗量到的是 Cp 而非 CV；書中腳註給 Cp − CV = 9α²BVT，並說固體中兩者的相對差通常很小、常可忽略（p.107）</li><li>低溫完全不適用：矽與鍺的實驗熱容在低溫明顯下降（Fig. 8，p.113），Debye 給 T³、Einstein 給 exp(−ℏω/τ)（p.114、p.117）</li><li>金屬在遠低於 θ 與 Fermi 溫度 TF 時熱容為 C = γT + AT³，含電子的線性項（p.145）</li></ul></section>
+<section class="aspect"><p class="aspect__k"><b>⑤</b>高溫與低溫行為　（書中）</p><h4>高溫　T ≫ θ</h4><p>高溫極限下晶格熱容趨於古典值 3NkB，書中在 Einstein 模型處明白稱之為 Dulong and Petit 值（p.117）。Debye 模型也在 T ≫ θ 時趨近同一古典值 3NkB（p.113），Fig. 7 給出的高 T/θ 漸近值為 24.943 J mol⁻¹ deg⁻¹（p.113）。書中另把「熱容在高溫 T &gt; θ 變成常數」列為簡諧理論的直接推論（p.119）。</p><h4>低溫　T ≪ θ</h4><p>書中並未把 Dulong–Petit 值用於低溫；相反地，低溫是它失效的區域。Fig. 8 的矽與鍺實驗值在低溫明顯下降（p.113）。書中給的低溫行為分別是 Debye 模型的 T³ 律（p.114）與 Einstein 模型的 exp(−ℏω/τ) 指數衰減（p.117），兩者都遠小於 3NkB。</p></section>
+<section class="aspect"><p class="aspect__k"><b>⑥</b>對應的 Kittel 章節、小節與頁碼</p><ul class="srcs"><li>Ch5　PHONON HEAT CAPACITY　p.107</li><li>Ch5　Debye Model for Density of States　p.113</li><li>Ch5　Einstein Model of the Density of States　p.117</li><li>Ch5　ANHARMONIC CRYSTAL INTERACTIONS　p.119</li></ul><div class="quote"><p class="quote__k">書中逐字</p><p>"The high temperature limit of CV becomes 3NkB, which is known as the Dulong and Petit value." (p.117)</p><p>"The heat capacity becomes constant at high temperatures T &gt; θ." (p.119)</p></div></section>
+<div class="ext"><span class="ext__k">【延伸知識】書中沒有處理的部分</span><p>【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。</p></div>
+</main>
+<div class="wrap"><nav class="stepnav" aria-label="主題之間">
+<a href="th-02.html"><span class="dir">← 上一主題</span><span class="t"><span class="n num">02</span> 聲子色散關係與態密度</span></a>
+<a href="th-04.html"><span class="dir">下一主題 →</span><span class="t"><span class="n num">04</span> Einstein 模型</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

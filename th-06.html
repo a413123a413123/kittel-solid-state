@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>高溫極限與低溫 T³ 定律 — Kittel 熱容專題</title>
+<meta name="description" content="Kittel 第 8 版的熱容專題：高溫極限與低溫 T³ 定律。物理意義、公式與符號定義、推導假設、適用條件與限制、高低溫行為，以及對應的章節小節與頁碼。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html">全書逐章</a>
+      <a href="thermal.html" aria-current="page">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="thermal.html">熱容專題</a> ／ 主題 6</p></div>
+<header class="uhead wrap"><span class="uhead__no num">06</span><h1>高溫極限與低溫 T³ 定律</h1><p class="topic__zone">溫區定位：低溫區　T ≪ θ　·　θ 的十分之一以下</p></header>
+<main id="main" class="wrap--text">
+<section class="aspect"><p class="aspect__k"><b>①</b>物理意義與直觀解釋　（我寫的教學說明）</p><p>Debye 積分式沒有初等解析解，但它的**兩個極限**都有，而且這兩個極限就是全部的物理。</p><p>**高溫（T ≫ θ）**：所有模式都被激發，量子化不可見，回到 Dulong–Petit 的 3Nk_B。數學上是把積分中的 x = ℏω/k_BT 當小量展開。</p><p>**低溫（T ≪ θ）**：積分上限 θ/T → ∞，變成一個可以查表的定積分，結果是 **C ∝ T³**。</p><p>T³ 的**物理來源**用數格子就能理解：溫度 T 時只有能量 ℏω ≲ k_BT 的模式會被激發，也就是波向量小於某個「熱波向量」K_T 的那些。在三維 K 空間裡，被激發的模式數正比於半徑 K_T 的球體積，也就是 ∝ K_T³ ∝ T³。每個被激發的模式大約帶 k_BT 的能量，所以 U ∝ T³ · T = T⁴，微分得 **C ∝ T³**。指數 3 直接來自**空間維度**——這也是為什麼二維系統會得到 T²、一維會得到 T。</p><p>**適用範圍要記清楚**：Kittel 明講 T³ 律的適用區在 **0.1θ 以下**，不是「T < θ」。在 0.1θ 到 θ 之間是過渡區，兩個極限都不準，只能算完整的 Debye 積分。這一點在解讀實驗數據時很容易搞錯。</p></section>
+<section class="aspect"><p class="aspect__k"><b>②</b>重要公式與符號定義　（書中）</p><div class="eqs"><div class="eq"><p class="eq__l">Debye T³ 定律（極低溫極限）</p><p class="eq__f">C_V ≅ (12π⁴/5) N k_B (T/θ)³ ≅ 234 N k_B (T/θ)³</p><span class="eq__r">(32) 　Ch5 p.114</span><p class="eq__s">由把積分上限取為無窮大、並用 ∫₀^∞ dx x³/(eˣ−1) = π⁴/15（式 (31)）得到；實際晶體常需低於 θ/50 才有純 T³ 行為</p></div><div class="eq"><p class="eq__l">Debye 模型熱容（完整式）</p><p class="eq__f">C_V = 9Nk_B (T/θ)³ ∫₀^{x_D} dx · x⁴ eˣ / (eˣ − 1)²</p><span class="eq__r">(30) 　Ch5 p.113</span><p class="eq__s">由 U = 9Nk_BT(T/θ)³∫₀^{x_D}dx x³/(eˣ−1)（p.113 明言的式 (26) 中間表達式）對溫度微分；x_D = θ/T；T ≫ θ 時趨近古典值 3Nk_B</p></div></div></section>
+<section class="aspect"><p class="aspect__k"><b>③</b>推導所使用的假設　（書中）</p><ul><li>晶格熱容來自簡諧振子集合，各聲子模的熱平衡佔據數服從 Planck 分布 ⟨n⟩ = 1/(exp(ℏω/τ) − 1)，τ ≡ k_B T；總能為各模能量之和 U_lat = Σ_K Σ_p ⟨n_{K,p}⟩ℏω_{K,p}（p.107）。</li><li>態密度計數採週期性邊界條件，在邊長 L 的立方體內含 N³ 個原胞，K 空間中每 (2π/L)³ 體積有一個允許的 K 值（p.111）。</li><li>Debye 近似：聲速對每一種偏振都取為常數，「如同古典彈性連續體」，色散關係寫成 ω = vK（p.112）。</li><li>為簡便假設聲子速度與偏振無關，故乘以因子 3 得到三個偏振的總和（p.112）。</li><li>截止頻率 ω_D 由「聲學聲子模總數等於原胞數 N」決定：ω_D³ = 6π²v³N/V，對應截止波向量 K_D = (6π²N/V)^{1/3}；Debye 模型不允許 K &gt; K_D 的模，K ≤ K_D 的模已用盡單原子晶格的自由度（p.112）。</li><li>Debye 溫度定義 θ = (ℏv/k_B)(6π²N/V)^{1/3}，並令 x ≡ ℏω/τ、x_D ≡ θ/T（p.112）。</li><li>低溫 T³ 定律的推導是把積分上限 x_D 放到無窮大，並用 ∫₀^∞ dx x³/(eˣ−1) = π⁴/15（p.114）。</li><li>整章的晶格振動理論在位能上只保留原子位移的二次項，即簡諧理論（p.119）。</li></ul></section>
+<section class="aspect aspect--limit"><p class="aspect__k"><b>④</b>適用條件與限制　（書中）</p><ul><li>T³ 近似在「足夠低溫」才成立，也就是只有長波長聲學模被熱激發時；這些正是可以用巨觀彈性常數當作彈性連續體處理的模（p.114）。</li><li>短波長模（近似對它們失效者）的能量太高，低溫下無法被顯著佔據，所以低溫下可忽略（p.114）。</li><li>對真實晶體，T³ 近似成立的溫度相當低；書中明講「可能必須低於 T = θ/50 才能得到相當純的 T³ 行為」（p.114）；圖 7 圖說另註明 T³ 定律的區域在 0.1θ 以下（p.113）。</li><li>Einstein 模型低溫時 C_V 以 exp(−ℏω/τ) 衰減，與實驗已知的聲子貢獻 T³ 形式不符——後者要由 Debye 模型才能解釋；但 Einstein 模型常被用來近似聲子譜中的光學聲子部分（p.117）。</li><li>高溫熱容變成常數是簡諧理論的推論之一（T &gt; θ）；書中明講「在真實晶體中這些推論沒有一項被準確滿足」，偏差歸因於忽略了非簡諧（高於二次）項（p.119–120）。</li><li>書中討論的是定容熱容 C_V，而實驗量到的是 C_p；熱力學關係 C_p − C_V = 9α²BVT，其分數差在固體中通常很小、常可忽略，且 T → 0 時 C_V → C_p（p.107 註腳）。</li><li>Debye 的 D(ω) 只是理想化：真實晶體的頻譜在小 ω 時同樣以 ω² 起始，但在奇異點會出現不連續（Van Hove 奇異性）（p.119）。</li></ul></section>
+<section class="aspect"><p class="aspect__k"><b>⑤</b>高溫與低溫行為　（書中）</p><h4>高溫　T ≫ θ</h4><p>在 T ≫ θ 時 Debye 熱容趨近古典值 3Nk_B（p.113）；圖 7 的圖說給出高 T/θ 的漸近值為 24.943 J mol⁻¹ deg⁻¹（p.113）。Einstein 模型的高溫極限同樣是 C_V → 3Nk_B，書中稱之為 Dulong and Petit 值（p.117）。從 Planck 分布看，高溫時某態的佔據數約與溫度成線性（p.106，圖 1 圖說）。簡諧理論的推論之一即「高溫（T &gt; θ）時熱容變成常數」（p.119）。</p><h4>低溫　T ≪ θ</h4><p>極低溫時把式 (29) 的積分上限放到無窮大，得 U ≅ 3π⁴Nk_BT⁴/5θ³，以及 C_V ≅ (12π⁴/5)Nk_B(T/θ)³ ≅ 234 Nk_B(T/θ)³，即 Debye T³ 近似（p.114）。書中另給一個簡單論證：低溫下只有 ℏω &lt; k_BT 的模會被顯著激發、每個約帶 k_BT 的古典能量，K 空間中被佔據的比例約為 (K_T/K_D)³ = (T/θ)³，故被激發的模約 3N(T/θ)³ 個，U ~ 3Nk_BT(T/θ)³，C_V ~ 12Nk_B(T/θ)³（p.114–115，圖 10）。實驗上固態氬的低溫熱容對 T³ 作圖與 Debye T³ 定律吻合極佳，θ = 92.0 K（p.115，圖 9）。相對地，Einstein 模型低溫是 exp(−ℏω/τ) 指數衰減，與實驗的 T³ 不符（p.117）。</p></section>
+<section class="aspect"><p class="aspect__k"><b>⑥</b>對應的 Kittel 章節、小節與頁碼</p><ul class="srcs"><li>Ch5　PHONON HEAT CAPACITY　p.107</li><li>Ch5　Debye Model for Density of States　p.112</li><li>Ch5　Debye T3 Law　p.114</li><li>Ch5　Einstein Model of the Density of States　p.114</li><li>Ch5　ANHARMONIC CRYSTAL INTERACTIONS　p.119</li></ul><div class="quote"><p class="quote__k">書中逐字</p><p>"In the Debye approximation the velocity of sound is taken as constant for each polarization type, as it would be for a classical elastic continuum." (p.112)</p><p>"At sufficiently low temperature the T3 approximation is quite good; that is, when only long wavelength acoustic modes are thermally excited." (p.114)</p><p>"It may be necessary to be below T = θ/50 to get reasonably pure T3 behavior." (p.114)</p></div></section>
+<div class="ext"><span class="ext__k">【延伸知識】書中沒有處理的部分</span><p>【範圍已校正】書中**有**的：熱導率 K 與熱阻率（Ch5「Thermal Resistivity of Phonon Gas」p.123）、Umklapp 過程（p.125）、缺陷與晶界的尺寸效應與 Casimir 邊界散射（p.126–127）、體積比熱（p.122 式 42 明寫 C is the heat capacity per unit volume，Table 2 單位為 J cm⁻³ K⁻¹）、以及**一維通道的彈道熱導 G_th**（Ch18 p.561–562、564）。全書**零次出現**的（已逐頁搜尋確認）：Kapitza／thermal boundary resistance、thermal time constant、thermal impedance。因此真正「書中沒有」的是**元件層級的暫態熱分析那一整套**——熱阻抗 Zth(t)／Zth(jω)、熱時間常數 τ = Rth·Cth、Foster／Cauer 熱 RC 網路、structure function，以及界面熱阻 TBR。</p></div>
+</main>
+<div class="wrap"><nav class="stepnav" aria-label="主題之間">
+<a href="th-05.html"><span class="dir">← 上一主題</span><span class="t"><span class="n num">05</span> Debye 模型與 Debye 溫度</span></a>
+<a href="th-07.html"><span class="dir">下一主題 →</span><span class="t"><span class="n num">07</span> 金屬的電子熱容</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>

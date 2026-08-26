@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>超導或相變附近的熱容異常 — Kittel 熱容專題</title>
+<meta name="description" content="Kittel 第 8 版的熱容專題：超導或相變附近的熱容異常。物理意義、公式與符號定義、推導假設、適用條件與限制、高低溫行為，以及對應的章節小節與頁碼。">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23F0F1F5'/><rect x='5' y='7' width='4' height='18' fill='%233F4FA8'/><rect x='11' y='11' width='4' height='14' fill='%233F4FA8'/><rect x='17' y='5' width='4' height='20' fill='%23B4541F'/><rect x='23' y='15' width='4' height='10' fill='%233F4FA8'/></svg>">
+<script>
+(function(){var r=document.documentElement,k='kittel-theme',s=null;try{s=localStorage.getItem(k)}catch(e){}
+if(s){r.setAttribute('data-theme',s)}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-toggle-theme]');if(!b)return;
+var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+b.setAttribute('aria-label',n==='dark'?'切換為淺色主題':'切換為深色主題')});})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <span class="topbar__id"><a href="index.html">Kittel</a><span class="topbar__sep">·</span>固態物理</span>
+    <nav class="topbar__nav" aria-label="兩個入口">
+      <a href="index.html">全書逐章</a>
+      <a href="thermal.html" aria-current="page">熱容專題</a>
+    </nav>
+    <button type="button" class="tbtn" data-toggle-theme aria-label="切換深淺色主題">深／淺</button>
+  </div>
+</div>
+<div class="wrap"><p class="crumb"><a href="thermal.html">熱容專題</a> ／ 主題 10</p></div>
+<header class="uhead wrap"><span class="uhead__no num">10</span><h1>超導或相變附近的熱容異常</h1><p class="topic__zone">溫區定位：低溫區　T ≪ θ　·　θ 的十分之一以下</p></header>
+<main id="main" class="wrap--text">
+<section class="aspect"><p class="aspect__k"><b>①</b>物理意義與直觀解釋　（我寫的教學說明）</p><p>熱容是**探測相變最靈敏的熱力學量之一**。理由很直接：熱容是內能對溫度的導數，而相變意味著系統的內部組織在某個溫度突然改變——導數自然會出現不連續或發散。</p><p>**超導轉變**是二階相變的教科書例子：在 T_c 沒有潛熱（不像熔化），但熱容在 T_c 有一個**跳變**（jump）——正常態的 γT 線性項在 T_c 突然跳到一個較高的值，然後在 T < T_c 迅速下降。</p><p>這個「迅速下降」比跳變本身更有訊息量：超導態的電子熱容大致以 **exp(−E_g/2k_BT)** 的指數形式衰減，而指數衰減是「有能隙」的**指紋**——就像 Einstein 模型的指數衰減來自單一頻率的能量門檻一樣。當年正是熱容的指數行為，成為超導體存在能隙的關鍵實驗證據之一，也支持了 BCS 理論。</p><p>**與本專題其他主題的對照**：注意這裡的「熱容異常」指的是**相變**造成的、對溫度的奇異行為，與 Ch5、Ch6 討論的「正常態下各種激發的熱容」是不同層次的東西。書中 p.264 那一節雖然也叫「Heat Capacity」，但講的是相變的熱力學特徵，不是元件熱容。搜尋文獻時這是常見的撞名來源。</p></section>
+<section class="aspect"><p class="aspect__k"><b>②</b>重要公式與符號定義　（書中）</p><div class="eqs"><div class="eq"><p class="eq__l">超導態的穩定化自由能密度</p><p class="eq__f">ΔF ≡ F_N(0) − F_S(0) = B_ac² / 8π  [CGS]</p><span class="eq__r">(9) 　Ch10 p.272</span><p class="eq__s">F_N、F_S 為正常態與超導態自由能密度；B_ac 為臨界外加磁場（CGS 中 H_c ≡ B_ac）。鋁在絕對零度 B_ac = 105 G，ΔF = 439 erg cm⁻³</p></div><div class="eq"><p class="eq__l">BCS 的轉變溫度判據</p><p class="eq__f">T_c = 1.14 θ exp[−1 / U D(ε_F)]</p><span class="eq__r">(18) 　Ch10 p.278</span><p class="eq__s">θ 為德拜溫度；U 為吸引性電子—晶格—電子交互作用；D(ε_F) 為費米能階處單一自旋的軌域態密度；適用於 U D(ε_F) ≪ 1</p></div></div></section>
+<section class="aspect"><p class="aspect__k"><b>③</b>推導所使用的假設　（書中）</p><ul><li>熱力學處理限定在 type I 超導體且 Meissner 效應完整，故超導體內部 B = 0（p.271）</li><li>正常態與超導態之間的轉變是熱力學可逆的，「就像物質的液相與氣相之間的轉變一樣」，因此可以直接套用熱力學（p.270）</li><li>實驗上的「正常態」定義為施加大於 H_c 的磁場後的同一個超導體；熱容須分別對超導態與此正常態量測，兩者之差即可算出穩定化自由能（p.271；圖 8 中鎵用 B_a = 200 G 恢復正常態，p.267）</li><li>忽略正常態非磁性金屬的微小磁化率，故取 M = 0、正常金屬的能量與磁場無關（p.272，腳註 4 明講這對 type I 是足夠的假設）</li><li>在臨界場 B_ac 下兩態自由能相等：F_N(B_ac) = F_S(B_ac) = F_S(0) + B_ac²/8π（CGS），由此得穩定化自由能密度 ΔF ≡ F_N(0) − F_S(0) = B_ac²/8π（p.272）</li><li>零磁場下由超導態到正常態的轉變「被觀測為」二階相變——這是實驗事實而非假設，書中據此推論熱容行為（p.266）</li></ul></section>
+<section class="aspect aspect--limit"><p class="aspect__k"><b>④</b>適用條件與限制　（書中）</p><ul><li>二階轉變 ⇒ 沒有潛熱，但熱容有不連續（discontinuity），書中指 Fig. 8a 為證（p.268）</li><li>若是一階轉變，則會以潛熱與能量隙的不連續為特徵——書中明講超導轉變不是這樣（p.268）</li><li>兩相自由能曲線在 T_c 交會且 dF/dT 斜率相等，故 T_c 沒有潛熱（p.267 圖 7 說明；p.273）</li><li>能量隙是超導態的「特徵、但非普適」的性質（characteristic, but not universal），因此不能假設所有超導體的熱容都呈指數形式（p.266）</li><li>電子熱容指數項的幅角是 −E_g/2k_BT 而非 −E_g/k_BT；此結論是由與光學及電子穿隧量測的能隙比對而得，不是由熱容本身定出（p.266）</li><li>正常態熱容含電子、晶格、以及低溫下的核四極矩（nuclear quadrupole）貢獻，鎵的擬合為 C/T = 0.596 + 0.0568 T²；分析超導態異常前必須先扣掉這些（p.267 圖 8 說明）</li><li>熵變極小：鋁約為 10⁻⁴ k_B/atom，代表只有約 10⁻⁴ 比例的傳導電子參與這個轉變——熱容異常本身是小訊號（p.264）</li><li>H_c 一律指塊材（bulk specimen），絕不指薄膜；對 type II 超導體，H_c 須理解為與穩定化自由能相關的「熱力學臨界場」（p.271）</li></ul></section>
+<section class="aspect"><p class="aspect__k"><b>⑤</b>高溫與低溫行為　（書中）</p><h4>高溫　T ≫ θ</h4><p>T_c 以上為正常態，傳導電子是無序的（disordered above the transition temperature, p.259）。此時熱容就是正常態值，含電子、晶格與（低溫下）核四極矩貢獻，例如鎵的 C/T = 0.596 + 0.0568 T²（p.267）。隨溫度升高，能量隙連續減小到零（在 T_c 為零），書中以 Fig. 10 的 E_g(T)/E_g(0) 對 T/T_c 曲線呈現，並與 BCS 曲線比較（p.268–269）；臨界場亦在 T_c 歸零，H_c(T_c) = 0（p.262）。書中在此章沒有討論遠高於 T_c 的熱容行為。</p><h4>低溫　T ≪ θ</h4><p>冷卻到 T_c 以下時，所有超導體的熵都明顯下降，代表超導態比正常態更有序（p.264）。超導態的電子熱容 C_es 對 1/T 呈指數形式——書中明講這「暗示電子被激發跨越一個能量隙」，鎵的實驗擬合為 C_es/γT_c = 7.46 exp(−1.39 T_c/T)，其中 γ = 0.60 mJ mol⁻¹ deg⁻²（p.266；p.267 圖 8b 說明）。T_c 以下超導態自由能較低（鋁 T_c = 1.180 K，p.267）。絕對零度的穩定化自由能密度為 ΔF = B_ac²/8π；鋁的 B_ac = 105 gauss，得 ΔF = 439 erg cm⁻³，與熱量測結果 430 erg cm⁻³ 「極佳吻合」——這正是「用熱容量測反推自由能」的校驗（p.272–273）。</p></section>
+<section class="aspect"><p class="aspect__k"><b>⑥</b>對應的 Kittel 章節、小節與頁碼</p><ul class="srcs"><li>Ch10　EXPERIMENTAL SURVEY　p.259</li><li>Ch10　Heat Capacity　p.264</li><li>Ch10　Energy Gap　p.266</li><li>Ch10　THEORETICAL SURVEY　p.270</li><li>Ch10　Thermodynamics of the Superconducting Transition　p.270</li></ul><div class="quote"><p class="quote__k">書中逐字</p><p>"In all superconductors the entropy decreases markedly on cooling below the critical temperature Tc." (p.264)</p><p>"At a second-order transition there is no latent heat, but there is a discontinuity in the heat capacity" (p.268)</p></div></section>
+<div class="ext"><span class="ext__k">【延伸知識】書中沒有處理的部分</span><p>（1）書中沒有給熱容跳躍的任何定量公式：沒有 BCS 的 ΔC/γT_c = 1.43，也沒有 Rutgers 關係 ΔC = (T_c/4π)(dH_c/dT)²（已全文搜尋，PDF 中無 "Rutgers"）。正文只說「有不連續」並以 Fig. 8a 圖示，跳躍大小完全沒有量化。（2）沒有臨界指數、沒有把 Landau 平均場理論套用到超導熱容、也沒有臨界漲落造成的熱容尖峰（λ 形異常）。（3）指定範圍 p.263–272 只處理超導轉變；其他相變的熱容異常不在此範圍——若要對照，第 22 章 "Elementary Theory of Order"（p.629）才提到 AB 合金的二階序–無序轉變以「熱容不連續」為特徵、A₃B 則為帶潛熱的一階轉變。（4）沒有第二類超導體在磁場中的熱容異常（渦旋態的熱容）之討論。（5）**元件層級的熱容 C_th [J/K] 與熱阻 R_th [K/W] 全書都沒有**：第 10 章的熱量測全部是每莫耳或每單位體積的材料量（mJ mol⁻¹ K⁻¹、erg cm⁻³），沒有任何熱時間常數、暫態熱響應、或把樣品當成集總熱網路的處理。</p></div>
+</main>
+<div class="wrap"><nav class="stepnav" aria-label="主題之間">
+<a href="th-09.html"><span class="dir">← 上一主題</span><span class="t"><span class="n num">09</span> 非諧性、熱膨脹及 Cp、Cv 的差異</span></a>
+<a href="th-11.html"><span class="dir">下一主題 →</span><span class="t"><span class="n num">11</span> 熱容、比熱、熱導率及熱阻的差別</span></a>
+</nav></div>
+<footer class="foot">
+  <div class="wrap--text">
+    <p><b>版本與依據。</b>教材為 <strong>Kittel《Introduction to Solid State Physics》第 8 版</strong>（John Wiley &amp; Sons；第 18 章由 Paul McEuen 撰寫）。版本由 PDF 書名頁逐字辨識；章名、節名與頁碼逐字取自書本目錄 p.vii–xix。<strong>頁碼一律為書本頁碼</strong>（此 PDF 的 PDF 頁 = 書本頁 + 20）。</p>
+    <ul class="lvl">
+      <li class="is-book"><b>書中內容</b><span>①②③④ 四欄：主要內容與研究問題、核心物理概念、公式（含頁碼與式號）、結論與逐字引用。由 PDF 文字層擷取，並經獨立代理回原文逐條核對頁碼、式號與字句。</span></li>
+      <li class="is-mine"><b>我的判讀</b><span>⑤⑥ 兩欄：與前後章的關係、與熱容的關聯程度。書中不會直說章與章的依賴，這是依實際內容所做的判斷。</span></li>
+      <li><b>延伸知識</b><span>書中沒有直接討論但對讀者有用的補充，一律標明「【延伸知識】」。元件熱容 Cth 與元件熱阻 Rth 全書皆無，相關敘述都屬此類。</span></li>
+    </ul>
+    <p class="foot__tail">整理日期 2026-08-25。<a href="index.html">全書逐章</a>　·　<a href="thermal.html">熱容專題</a></p>
+  </div>
+</footer>
+</body>
+</html>
