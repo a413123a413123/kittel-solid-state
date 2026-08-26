@@ -16,6 +16,14 @@ spec = importlib.util.spec_from_file_location('a', os.path.join(BASE, 'build_a.p
 A = importlib.util.module_from_spec(spec); spec.loader.exec_module(A)
 shell, e = A.shell, A.e
 
+import re
+def md(t):
+    """先轉義再處理 **粗體**／`code`；intuition 是我手寫的 Markdown 片段。"""
+    t = e(t)
+    t = re.sub(r'\*\*(.+?)\*\*', lambda m: '<strong>' + m.group(1) + '</strong>', t, flags=re.S)
+    t = re.sub(r'`(.+?)`', lambda m: '<code>' + m.group(1) + '</code>', t)
+    return t
+
 ORDER = M['order']
 ZONES = M['zones']
 ZONE_SEQ = ['base', 'low', 'mid', 'high']
@@ -47,15 +55,15 @@ def topic_page(key):
          '<main id="main" class="wrap--text">']
 
     # ① 物理意義與直觀解釋（我寫的）
-    para = ''.join(f'<p>{ln}</p>' for ln in m['intuition'].split('\n\n') if ln.strip() and not ln.strip().startswith('|'))
+    para = ''.join(f'<p>{md(ln)}</p>' for ln in m['intuition'].split('\n\n') if ln.strip() and not ln.strip().startswith('|'))
     tbl = [ln for ln in m['intuition'].split('\n') if ln.strip().startswith('|')]
     if tbl:
         rows = [[c.strip() for c in ln.strip().strip('|').split('|')] for ln in tbl]
         rows = [r for r in rows if not all(set(c) <= set('-: ') for c in r)]
         head, body_r = rows[0], rows[1:]
         para += ('<div class="tablewrap"><table><thead><tr>'
-                 + ''.join(f'<th>{h}</th>' for h in head) + '</tr></thead><tbody>'
-                 + ''.join('<tr>' + ''.join(f'<td>{c}</td>' for c in r) + '</tr>' for r in body_r)
+                 + ''.join(f'<th>{md(h)}</th>' for h in head) + '</tr></thead><tbody>'
+                 + ''.join('<tr>' + ''.join(f'<td>{md(c)}</td>' for c in r) + '</tr>' for r in body_r)
                  + '</tbody></table></div>')
     b.append(aspect('①', '物理意義與直觀解釋　（我寫的教學說明）', para))
 
@@ -74,12 +82,12 @@ def topic_page(key):
         b.append(aspect('②', '重要公式與符號定義　（書中）', ''.join(blocks)))
 
     b.append(aspect('③', '推導所使用的假設　（書中）',
-                    '<ul>' + ''.join(f'<li>{e(x)}</li>' for x in t['assumptions']) + '</ul>'))
+                    '<ul>' + ''.join(f'<li>{md(x)}</li>' for x in t['assumptions']) + '</ul>'))
     b.append(aspect('④', '適用條件與限制　（書中）',
-                    '<ul>' + ''.join(f'<li>{e(x)}</li>' for x in t['validity']) + '</ul>', 'aspect--limit'))
+                    '<ul>' + ''.join(f'<li>{md(x)}</li>' for x in t['validity']) + '</ul>', 'aspect--limit'))
     b.append(aspect('⑤', '高溫與低溫行為　（書中）',
-                    f'<h4>高溫　T ≫ θ</h4><p>{e(t["highT"])}</p>'
-                    f'<h4>低溫　T ≪ θ</h4><p>{e(t["lowT"])}</p>'))
+                    f'<h4>高溫　T ≫ θ</h4><p>{md(t["highT"])}</p>'
+                    f'<h4>低溫　T ≪ θ</h4><p>{md(t["lowT"])}</p>'))
 
     srcs = ''.join(f'<li>Ch{s["chapter"]}　{e(s["section"])}　p.{s["page"]}</li>' for s in t['sections'])
     vq = ('<div class="quote"><p class="quote__k">書中逐字</p>'
@@ -89,7 +97,7 @@ def topic_page(key):
 
     if t.get('notInBook', '').strip():
         b.append('<div class="ext"><span class="ext__k">【延伸知識】書中沒有處理的部分</span>'
-                 f'<p>{e(t["notInBook"])}</p></div>')
+                 f'<p>{md(t["notInBook"])}</p></div>')
 
     b.append('</main>')
 
