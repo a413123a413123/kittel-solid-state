@@ -1,0 +1,78 @@
+{
+  "section": "d",
+  "blockers": [
+    {
+      "where": "blocks[14].body（「接到熱容研究：從 a = 5.430 Å 到矽的原子數密度」最後一段）",
+      "problem": "數值錯（差 2 倍）。「以 a = 5.430 Å 計，5 nm 寬的 fin 只有約 9 個晶胞寬、沿寬度方向約 18 層原子」——前半正確（50 Å / 5.430 Å = 9.2），後半錯。鑽石結構沿 <100> 的原子層間距是 a/4，不是 a/2；50 Å / (5.430/4 Å) = 50 / 1.3575 = 36.8，應為約 37 層。撰寫者顯然用了「每晶胞 2 層」而不是 4 層。",
+      "evidence": "原文 p.17 Fig. 22 圖說本身就給出答案：「Atomic positions in the cubic cell of the diamond structure projected on a cube face; fractions denote height above the base in units of a cube edge. The points at 0 and [1/2] are on the fcc lattice; those at [1/4] and [3/4] are on a similar lattice displaced along the body diagonal by one-fourth of its length.」——高度只有 0、¼、½、¾ 四個值，即每個慣用立方晶胞沿 <100> 有 4 個原子層，層距 a/4 = 1.3575 Å。撰寫者自己在 blocks[11].body 也把這四個高度抄對了，卻在此處算成每晶胞 2 層。",
+      "fix": "改成「5 nm 寬的 fin 只有約 9 個晶胞寬、沿寬度方向約 37 層原子（<100> 方向層距 a/4 = 1.36 Å）」。或直接寫「約 9 個晶胞寬，每個晶胞沿該方向 4 層原子，合計約 37 層」以免再出錯。"
+    },
+    {
+      "where": "blocks[0].body 第一句",
+      "problem": "事實錯誤：對原書章節結構的敘述錯了。「第 1 章前四節建立的是語彙：Bravais lattice、primitive translation vectors、primitive cell、basis、Miller 指標」——本節（SIMPLE CRYSTAL STRUCTURES）本身就是第 1 章的第四個主節，它前面只有三節。",
+      "evidence": "第 1 章章首目錄（PDF 21 / 書本 p.1）逐字為：「PERIODIC ARRAYS OF ATOMS 3 / Lattice translation vectors 4 / Basis and the crystal structure 5 / Primitive lattice cell 6 / FUNDAMENTAL TYPES OF LATTICES 6 / ... / INDEX SYSTEM FOR CRYSTAL PLANES 11 / SIMPLE CRYSTAL STRUCTURES 13 / ...」。SIMPLE CRYSTAL STRUCTURES 之前只有 PERIODIC ARRAYS OF ATOMS、FUNDAMENTAL TYPES OF LATTICES、INDEX SYSTEM FOR CRYSTAL PLANES 三個主節；所列五個術語也全部出自這三節。",
+      "fix": "「第 1 章前四節」→「第 1 章前三節」。（此條純屬編輯性事實錯，不影響任何物理內容，改一個字即可。）"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[12].steps[1]–steps[2]（鑽石配位數推導）",
+      "problem": "方向的正負號視角不一致。步驟寫「取 B 子晶格上位於 τ = (¼,¼,¼) 的那顆原子，找它周圍最近的 A 原子」，但實際列出的向量 τ − R 是「由 A 指向 B」的向量；接著說「方向分別是 [111]、[1̄1̄1] 一類（即四個 ⟨111⟩ 方向中帶偶數個負號者）」，這組方向也是 A→B。從 B 看出去到四顆 A 的方向應是其反向，即帶奇數個負號的四個 ⟨111⟩。四個向量本身、距離 √3a/4、正四面體、鍵角 109.47° 全部正確，只是敘述的觀察點與計算的觀察點相反。",
+      "evidence": "檔中：「把 τ 減去 fcc 的三個面心平移向量：τ − (0,½,½) = (¼,−¼,−¼)…」→ 這是 (0,½,½) 這顆 A 指向 B 的位移；而「連同 000 這顆」對應 τ − 000 = (¼,¼,¼) = [111]，同樣是 A→B。",
+      "fix": "把敘述改為「這四顆 A 原子指向 B 的鍵向量分別是 [111]、[11̄1̄]、[1̄11̄]、[1̄1̄1]（⟨111⟩ 中帶偶數個負號者）」，或保留原視角但把四個向量寫成 R − τ。"
+    },
+    {
+      "where": "blocks[9].body 第三段",
+      "problem": "百分比範圍略為浮誇。「表中最極端的兩個是 Zn 1.861 與 Cd 1.886，都比理想值大了 14%～16%」——實際 Zn: 1.861/1.633 − 1 = +13.96%，Cd: 1.886/1.633 − 1 = +15.49%。Zn 略低於 14%，Cd 未達 16%。",
+      "evidence": "原文 p.16 表：Zn 1.861、Cd 1.886；理想值 1.632993。",
+      "fix": "改為「大了約 14%～15.5%」或「大了 14% 上下與 15% 上下」。（blocks[19] 誤解（六）寫的「偏離理想值 14% 以上」則正確，可比照。）"
+    },
+    {
+      "where": "blocks[19].body 開頭宣告 + 誤解清單（七）",
+      "problem": "宣稱過強。開頭寫「以下彙整表由我製作，所有數值取自本節原文 p.13–18，未加入原文以外的數據」，但同一段的「最近鄰距離 a/2」「最近鄰距離 √3a/2」都是推導值（原文從未寫出這兩個距離），誤解（七）的 (200) 消光更是借用第 2 章結構因子的結論。",
+      "evidence": "p.14 只寫「Each atom has as nearest neighbors six atoms of the opposite kind.」、p.15 只寫「…the number of nearest neighbors or coordination number is eight.」，均無距離數值；pp.13–18 全文無結構因子與 (200) 的任何討論。",
+      "fix": "把宣告改為「材料常數全部取自原文 p.13–18；最近鄰距離與 (200) 消光為本文推導／借用第 2 章的結果，已於各處註明」。"
+    },
+    {
+      "where": "blocks[19].body 誤解清單（四）",
+      "problem": "自相矛盾。先說「『基向量長度就是最近鄰距離。』只有 CsCl 這種情況才對」，下一句卻說「鑽石的基向量長 √3a/4，這時剛好等於最近鄰距離」——鑽石也是「剛好對」的情況，與前句的『只有 CsCl』衝突。",
+      "evidence": "檔中原句：「只有 CsCl 這種情況才對。NaCl 的基向量長 √3a/2，最近鄰卻是 a/2；鑽石的基向量長 √3a/4，這時剛好等於最近鄰距離。」",
+      "fix": "改為「有時對、有時不對：CsCl 與鑽石剛好相等，NaCl 就不是（基向量 √3a/2，最近鄰 a/2）。必須逐例驗算。」"
+    },
+    {
+      "where": "blocks[1].body（單位換算那一句）",
+      "problem": "用詞不精確：原文用的是恆等號 ≡（定義），檔中寫成等號 =。非英文引號內容，故不算引用不逐字，但可更貼原文。",
+      "evidence": "p.14 原文：「The cube edge a is given in angstroms; 1 Å ≡10 −8 cm ≡10−10 m ≡0.1 nm.」",
+      "fix": "寫成「1 Å ≡ 10⁻⁸ cm ≡ 10⁻¹⁰ m ≡ 0.1 nm（原文用恆等號，係定義式）」。"
+    },
+    {
+      "where": "blocks[2]（tier=book）與 blocks[13]（tier=book）的 eq.numeric / eq.symbols / eq.limits",
+      "problem": "tier 標示的粒度可能造成誤讀。這兩個 equation block 標 tier=\"book\"，但其 numeric / symbols / limits 欄位含撰寫者自算的內容：blocks[2].numeric 的「a/2 = 2.815 Å、a/√2 = 3.98 Å」，blocks[13].symbols 的「角落 8 × ⅛ + 面心 6 × ½ = 4」與 limits 的「任何原始晶胞都至少含 2 顆」對照。formula 本身確實出自原文，且全檔一致採「tier 描述 formula 出處、附欄位為作者註解」的慣例（blocks[8] 標 derived 卻在 numeric 引原文表，即為反例），因此不判為 tier 標錯成 book；但這兩處的推導值未加「（本文計算）」字樣，讀者可能誤以為是書上的數字。",
+      "evidence": "pp.13–18 原文只給 NaCl a = 5.63 Å，未給 2.815 Å 或 3.98 Å；fcc 每晶胞 4 格點的分數計數也不在本節（本節只寫「the conventional unit cube of the fcc lattice contains 4 lattice points」這個結果）。",
+      "fix": "在這兩處推導值前加「（本文計算）」，與 blocks[8]、blocks[12] 的做法一致。"
+    },
+    {
+      "where": "blocks[15].body / blocks[16].eq.from（閃鋅礦座標的版面描述）",
+      "problem": "無法從 PDF 文字層證實的版面宣稱。撰寫者寫「原文 p.17 把這兩串座標排成並列的兩行」。文字層只能證明兩串座標被抽成獨立片段並且順序顛倒（¼ 組在前、000 組在後），無法證明它們在紙本上是「並列的兩行」。",
+      "evidence": "PDF 37 文字層：「The coordinates of the Zn atoms are the coordinates of the S atoms are 1 4 1 4 1 4; 1 4 3 4 3 4; 3 4 1 4 3 4; 3 4 3 4 1 4. 000; 0 1 2 1 2; 1 2 0 1 2; 1 2 1 2 0; …」——句子文字與座標分離、兩組座標順序與句中順序相反，僅此而已。",
+      "fix": "改為「原文以行內顯示方式列出這兩串座標；PDF 文字層把兩串浮出到句尾且順序顛倒」，不對紙本排版下斷言。"
+    }
+  ],
+  "verified": [
+    "頁碼全部正確。以第 1 章章首目錄（書本 p.1）為獨立基準：Sodium chloride structure 13、Cesium chloride structure 14、Hexagonal close-packed structure 15、Diamond structure 16、Cubic zinc sulfide structure 17，DIRECT IMAGING 起於 18。檔中 pages=\"13-18\" 與每個 block／eq.bookPage 的頁碼宣稱（14、16、16、17）逐一比對 PDF 33–38 文字層，無一錯誤。",
+    "跨頁切分正確。NaCl 跨 p.13/14：p.13 末止於「…one Na+ ion and one Cl− ion」，p.14 首起於「separated by one-half the body diagonal of a unit cube.」；CsCl 跨 p.14/15：p.14 末止於「Each atom may be viewed as at the center」，p.15 首起於「of a cube of atoms of the opposite kind, so that the number of nearest neighbors or coordination number is eight.」兩處都與文字層完全吻合。",
+    "式號：pp.13–18 文字層確實不含任何編號公式（本章編號式全部落在 p.13 之前），檔中也未宣稱任何式號。撰寫者「本節完全沒有編號公式」的宣稱成立。",
+    "逐字引用：程式化比對全檔 43 段英文引用（把 PDF 斷字連字號、空白、下標一律正規化後做子字串比對），43/43 全部命中原文，0 不符。撰寫者「43 段中 42 段逐字連續、1 段明示省略」的宣稱成立；該省略段為 Fig. 22 圖說「The points at 0 and ... are on the fcc lattice」，其省略號正對應 PDF 文字層中被浮出的分數 ½，屬誠實標記。",
+    "36+ 組晶格常數：以 PDF 文字層的五張表為基準，逐項程式化比對全檔 109 處「材料名＋數值」出現（41 個材料名，每個在 2–4 個 block 重複出現），0 不符。NaCl 型 LiH 4.08 / MgO 4.20 / MnO 4.43 / NaCl 5.63 / AgBr 5.77 / PbS 5.92 / KCl 6.29 / KBr 6.59（p.14）全對；CsCl 型 BeCu 2.70 / AlNi 2.88 / CuZn(β-brass) 2.94 / CuPd 2.99 / AgMg 3.28 / LiHg 3.29 / NH₄Cl 3.87 / TlBr 3.97 / CsCl 4.11 / TlI 4.20（p.15）全對；hcp c/a He 1.633 / Be 1.581 / Mg 1.623 / Ti 1.586 / Zn 1.861 / Cd 1.886 / Co 1.622 / Y 1.570 / Zr 1.594 / Gd 1.592 / Lu 1.586（p.16）全對；diamond C 3.567 / Si 5.430 / Ge 5.658 / Sn 6.49（p.17）全對；zinc blende SiC 4.35 / ZnS 5.41 / AlP 5.45 / GaP 5.45 / ZnSe 5.65 / GaAs 5.65 / AlAs 5.66 / InSb 6.46（p.18）全對。含小數位（5.430 而非 5.43、1.570 而非 1.57、6.49 而非 6.490）皆與原文一致。",
+    "其他書上數值：0.74（p.15）、12 最近鄰（p.16）、2×4=8 原子／慣用晶胞（p.16）、4 最近鄰與 12 次近鄰（p.17）、0.34 與「46 percent」（p.17）、four units of NaCl per unit cube（p.14）、one molecule per primitive cell（CsCl, p.14）、coordination number eight（p.15）、four molecules of ZnS per conventional cell（p.17）、理想 c = 1.633 a（Fig. 21, p.16）全部核對無誤。",
+    "NaCl 座標還原正確，且有兩條獨立證據。(1) 物理自洽：Fig. 15 圖說明寫「the basis has one Cl− ion at 000 and one Na+ ion at ½½½」，故含 000 的那組 fcc 必為 Cl、含 ½½½ 的那組必為 Na，正是撰寫者的還原 Cl = 000; ½½0; ½0½; 0½½ / Na = ½½½; 00½; 0½0; ½00。(2) 文字層自洽：PDF 標籤欄抽出的順序是「Cl: Na:」（Cl 在上列），而座標序列以 000 開頭並嚴格奇偶交錯（000, ½½½, ½½0, 00½, ½0½, 0½0, 0½½, ½00），奇數位正好是 Cl 列、偶數位正好是 Na 列。撰寫者的奇偶位還原與兩條證據都吻合。",
+    "zinc blende 座標還原正確。PDF 文字層確實把 S 的 ¼ 組排在 Zn 的 000 組之前（與句中「Zn … are [X] the coordinates of the S atoms are [Y]」的順序相反），撰寫者依 p.17 正文「Zn atoms are placed on one fcc lattice and S atoms on the other fcc lattice」以及「displaced from each other by one-quarter of a body diagonal」把 Zn 指派給 fcc 原點組、S 指派給 +¼¼¼ 組，還原正確。",
+    "五段 derived 數學全部正確，逐步覆算無誤。(1) 理想 c/a：a = 2r、正三角形外接圓半徑 a/√3、h² = a² − a²/3 = (2/3)a²、c = 2h = a(8/3)^½ = 1.632993，幾何鏈完整且每一步成立。(2) 堆積比例：hcp 路徑 V = (√3/2)a²c、2 顆球、f = 2πa/(3√3 c)，代 c = a(8/3)^½ 得 √3·(8/3)^½ = 2√2，f = π/(3√2) = 0.74048；fcc 路徑 r = a/(2√2)、4 顆球、f = (16π/3)/(16√2) = π/(3√2)，兩路獨立算出同一封閉式，與原文 0.74 相符。(3) 鑽石：四個鄰居向量 (¼,¼,¼)、(¼,−¼,−¼)、(−¼,¼,−¼)、(−¼,−¼,¼)，距離皆 √3a/4 = 0.4330a，配位數 4、鍵角 arccos(−1/3) = 109.47°；次近鄰為同子晶格 fcc 的 12 個、距離 a/√2 = 0.707a，與原文「12 next nearest neighbors」相符；r = √3a/8、f = 8·(4/3)πr³/a³ = √3π/16 = 0.34009 ≈ 0.34；0.3401/0.7405 = 45.93% ≈ 46%，兩個核對點都對上原文。(4) 鍵長 √3a/4：C 1.545 Å、Si 2.351 Å、Ge 2.450 Å，代入原文 a 值計算正確。(5) 結構因子：diamond S = f[1 + exp(−iπ(h+k+l)/2)]，(200) → exp(−iπ) = −1 → S = 0；(111) → exp(−3iπ/2) = +i → |S| = √2 f；(400) → S = 2f；zinc blende (200) → S = f_A − f_B。全部正確。",
+    "(200)／結構因子段落確實有明確標示為引用後面章節，未講成本節內容。blocks[17] 的 tier = \"derived\"，steps[0] 開頭即寫「第 2 章會導出結構因子 S_hkl = …」，body 再寫「原文在 p.18 只陳述了對稱性事實…沒有說這件事怎麼被測到。這段推導借用第 2 章的結構因子把它接起來，因此標為 derived；在讀完第 2 章之前，可以先把結論記下來。」標示充分。",
+    "tier 標注沒有「作者自補內容被標成 book」的情形。五個 tier=book 的 block（blocks[1]、[4]、[6]、[11]、[15]）正文逐句核對，全部是逐字引用或忠實中譯，未夾帶原文沒有的物理宣稱。所有課外內容都落在 tier=mine 或 derived，且多處另加免責語：半徑比法則（blocks[3]「此段為課外補充，非本節原文」）、有序—無序轉變（blocks[5]「此段…不在本節原文，屬課外補充」）、Kepler 猜想與 Hales 1998（blocks[10]「此歷史註記非本節原文內容」）、Cth 銜接與矽室溫比熱 1.6 J cm⁻³K⁻¹（blocks[14]「此處引用的室溫實測值與德拜溫度屬課外常用數據，不出自本節原文」）、Neumann 原理／壓電／SHG／極性面／LO-TO 分裂（blocks[18]「這些內容不出自本節原文」）。",
+    "未發現捏造。所有歸給原文的句子都能在 pp.13–18 文字層找到對應；Fig. 15–24 的文字化描述（含 Fig. 16 模型、Fig. 17 Joplin PbS、Fig. 19 ABAB/ABCABC、Fig. 20「do not constitute a space lattice」、Fig. 21 ⅔⅓½ 與 r = ⅔a₁+⅓a₂+½a₃、Fig. 22 高度 0/¼/½/¾、Fig. 23 四面體鍵、Fig. 24）逐條與圖說對照無誤。",
+    "blocks[14] 除「18 層原子」外的算術全部正確：a³ = (5.430×10⁻⁸ cm)³ = 1.6010×10⁻²² cm³、n = 8/a³ = 5.00×10²² cm⁻³、3nk_B = 3×5.00×10²²×1.3806×10⁻²³ = 2.07 J cm⁻³K⁻¹、3R = 24.94 J mol⁻¹K⁻¹、10²⁰ cm⁻³ 對應每 500 顆矽原子一顆、5 nm/5.430 Å = 9.2 個晶胞，皆覆算無誤。",
+    "其他零散數值覆算無誤：NaCl a = 5.63 Å → a/2 = 2.815 Å、a/√2 = 3.98 Å；CsCl a = 4.11 Å → √3a/2 = 3.559 ≈ 3.56 Å；基向量 √3a/2 = 0.866a；hcp 偏小群 Be/Y/Ti/Zr/Gd/Lu 相對理想值為 −2.4% ~ −3.9%（檔稱「−2% 到 −4% 之間」成立）；AlAs 5.66 與 GaAs 5.65 相差 0.18% ≈ 0.2%。",
+    "物理判斷正確、無誤導：NaCl/diamond/zinc blende 空間晶格皆 fcc、CsCl 為 simple cubic（非 bcc）、hcp 為 simple hexagonal + 兩原子基；CsCl 原始晶胞 a³ 對 bcc 原始晶胞 a³/2 的對照；鑽石 0.34 不等於力學鬆軟；理想 c/a 非對稱性要求（P6₃/mmc 對任意 c/a 成立）；Si/Ge 點群 m3̄m 無壓電與體 SHG、閃鋅礦 4̄3m 有；GaAs (111)A/(1̄1̄1̄)B 極性面；III-V 的 LO–TO 分裂對 Si/Ge 在 Γ 點簡併。以上皆正確。"
+  ]
+}

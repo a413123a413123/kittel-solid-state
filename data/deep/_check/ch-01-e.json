@@ -1,0 +1,89 @@
+{
+  "section": "e",
+  "blockers": [
+    {
+      "where": "blocks[7] body（393R 推導的「解讀」段）",
+      "problem": "長寬比算錯。把 c = 989.6 Å 與 a = 3.079 Å 的比值說成「接近 500:1」，實際是 989.6 / 3.079 = 321.4，約 321:1。看起來是把同段稍後「V_c 比 Al 原始晶胞大了將近 500 倍」（8124/16.6 = 489）的體積比誤植成長寬比。",
+      "evidence": "原文 p.19：「The polytype of SiC known as 393R has a primitive cell with a = 3.079 Å and c = 989.6 Å.」989.6 ÷ 3.079 = 321.4。",
+      "fix": "改成「長寬比約 320:1」（或「超過 300:1」）；體積比 ~489 倍另外講，不要兩個數字互相污染。"
+    },
+    {
+      "where": "blocks[7] steps[4][5][6][7] + body；blocks[12] eq.limits / eq.numeric；blocks[13] eq.numeric",
+      "problem": "把 393 層的六方晶胞當成原始晶胞，所有與「每個原始晶胞含多少原子」有關的數字都差 3 倍。Ramsdell 記號 nR 的 n 是六方晶胞（hexagonal setting）的層數，R 代表菱方格心，六方晶胞含 3 個晶格點，真正的原始（菱方）晶胞只有 393/3 = 131 層 = 262 顆原子（393 可被 3 整除正是 R 型的必要條件）。撰寫者自己在 steps[3] 寫出「R 代表 rhombohedral」，卻仍在 steps[5] 斷言「晶胞含 393 個 SiC 單元、共 786 顆原子」、在 blocks[12] 把 s = 786 當成原始基底原子數並據此宣稱「2355 支光學分支」（正確應為 s = 262、3s−3 = 783 支）。連帶：V_c = 8.12×10³ Å³ 是六方晶胞體積（原始晶胞為其 1/3 ≈ 2.71×10³ Å³）、blocks[13]「比 Al 的原始晶胞大了將近 500 倍」應為約 163 倍、body 的 zone folding「1/393」在 R 格子沿 c* 只允許 l = 3n 的倒晶格點，折疊倍率應為 131。密度核算（3.22 g cm⁻³）不受影響，因為密度與晶胞選取無關。",
+      "evidence": "原文 p.19 自己就寫「has a primitive cell with a = 3.079 Å and c = 989.6 Å」——書中把六方晶胞稱作 primitive cell 是這個錯誤的誘因，但「原始基底含 786 顆原子」「2355 支光學分支」是撰寫者自行加上的物理宣稱，不是書中的話。393 = 3 × 131。",
+      "fix": "兩種改法擇一：(a) 全段改稱「書中所謂 primitive cell 其實是 393 層的六方晶胞」，並加一句「因 R 為菱方格心，真正的原始晶胞是其 1/3，含 131 層 262 顆原子」，把 s、光學分支數、體積比、折疊倍率同步改成 262 / 783 / 163 倍 / 131；(b) 若要保留書中用語，至少把 blocks[12] 的 s = 786、2355 支光學分支拿掉或改寫，因為那是明確的物理錯誤。"
+    },
+    {
+      "where": "blocks[5] body 首句；blocks[14] body（「p.18 那句 …」）；blocks[4] body 的三句引文",
+      "problem": "跨頁引文的頁碼標錯。Nonideal Crystal Structures 的開頭三句橫跨 p.18 與 p.19：p.18 只印到「But no general proof has been given that」為止，其餘全在 p.19。因此 blocks[5]「設定：書本 p.18 只說 \"At finite temperatures this is likely not to be true.\"」是錯的（該句完整落在 p.19）；blocks[14] 把 \"no general proof has been given that the ideal crystal is the state of minimum energy\" 整串標成 p.18，也只有前七個字在 p.18。blocks[4] 逐字引三句時完全沒標明跨頁——而同一份深講在 blocks[9] 處理 Crystal Structure Data 的跨頁句時是有標的（d 節處理 NaCl、CsCl 跨頁句也有標），標準不一致。",
+      "evidence": "p.18 末：「The ideal crystal of classical crystallographers is formed by the periodic repetition of identical units in space. But no general proof has been given that」／p.19 首：「the ideal crystal is the state of minimum energy of identical atoms at the temperature of absolute zero. At finite temperatures this is likely not to be true. We give a further example here.」",
+      "fix": "blocks[5] 改成「書本 p.19 只說 …」；blocks[14] 改成「p.18–19 那句（第二句跨頁）…」；blocks[4] 比照 blocks[9] 的寫法標出「本句於 \"…given that\" 處跨到 p.19」。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[9] body 的技術說明 vs blocks[10] steps[4]-[8]",
+      "problem": "自訂規則與實際做法矛盾。blocks[9] 明言「我只交代表格的標題、說明文字與欄位結構，不逐格轉錄數值」，但 blocks[10] 大量引用 Table 3／Table 4 的格內數值（Al 4.05、2.70、6.02、2.86；Si 5.430、2.33、5.00、2.35；Cu 3.61、8.45、2.56；Pt 3.92、2.77）並直接寫「Table 4 為 …」。",
+      "evidence": "獨立核對：我把 pdf p.40／p.41（書 p.20／21）以 200 dpi 算繪後逐格目視比對，上述每一個數字都與書中表格完全一致（Cu 密度 8.93、Pt 密度 21.47、Pt 濃度 6.62 亦相符）。也就是說沒有任何捏造，問題只在自訂聲明與實作不一致，會讓讀者誤以為這些數字沒有來源。",
+      "fix": "把聲明改成「表格為影像、無文字層；下列少數數值係放大目視判讀並以公式交叉核算後才引用，其餘不逐格轉錄」，或在 blocks[10] 每處數值加註「（目視判讀，已與換算值互校）」。"
+    },
+    {
+      "where": "blocks[6] body 第一段",
+      "problem": "引文出處易被誤讀。「出發點是本章 p.15–16 已經建立的事實：…書中寫：\"The fcc and hcp structures are made up of close-packed planes of atoms. The structures differ in the stacking sequence…\"」這段引文並不在 p.15–16，而是 p.19 Random Stacking and Polytypism 節的開頭兩句。",
+      "evidence": "p.19：「Random Stacking and Polytypism / The fcc and hcp structures are made up of close-packed planes of atoms. The structures differ in the stacking sequence of the planes, fcc having the sequence ABCABC . . . and hcp having the sequence ABABAB . . . .」p.15 的 Fig. 19 圖說與 p.16 正文講的是同一件事，但用字不同。",
+      "fix": "改成「本節（p.19）開頭書中先把 p.15–16 的結論重述一次：\"The fcc and hcp structures are…\"」。"
+    },
+    {
+      "where": "blocks[6] body 最後一段（tier: book）",
+      "problem": "tier 邊界鬆動：書外的機制解釋寫在 book 區塊裡且未標記。書中對成因只有一句「arises from spiral steps due to dislocations in the growth nucleus (Chapter 20)」，但區塊裡把它擴寫成「生長核中的螺旋差排造成一道永不消失的台階，晶體沿著這個螺旋一圈一圈長，螺距就把週期鎖死了」，並加了括號論證「沒有任何已知的凝態作用力能跨越 1000 Å 還保持相位資訊」。後者是撰寫者自己的物理論證（雖然合理），不是書中的話。",
+      "evidence": "p.19 全句：「The mechanism that induces such long-range crystallographic order is not a long-range force, but arises from spiral steps due to dislocations in the growth nucleus (Chapter 20).」——沒有台階、螺距、相位資訊等說法。",
+      "fix": "比照 blocks[5] 的作法加一句「以下螺旋生長的細節是我的補充，書中只寫到 spiral steps 為止（正式處理見 Ch21 p.615）」，或整段移到相鄰的 mine 區塊。"
+    },
+    {
+      "where": "blocks[4] body 第二段（tier: book）",
+      "problem": "同樣的 tier 邊界問題：「在數學物理裡稱為 crystallization problem，只有在若干一維與特殊二維模型有嚴格結果」是書外知識，寫在 book 區塊內且未標註來源。",
+      "evidence": "p.18–19 原文只說「no general proof has been given that the ideal crystal is the state of minimum energy of identical atoms at the temperature of absolute zero」，沒有提 crystallization problem 或任何嚴格結果的現況。",
+      "fix": "加「（此為書外補充）」或移入 mine 區塊。"
+    },
+    {
+      "where": "blocks[9] body 後兩段（tier: book）",
+      "problem": "「為什麼第 1 章就要放這兩張表？」整段，以及「每個欄位都同時標出 CGS 與 SI 兩套單位…後面章節（尤其第 6 章的費米能量、第 5 章的德拜溫度）的數值習慣就是從這裡定下來的」，都是撰寫者的教學論述與跨章推斷，不是 p.19–22 的內容，卻放在 tier: book 的區塊。",
+      "evidence": "p.19 與 p.22 的正文只有三句（In Table 3 we list… / Values of the atomic concentration and the density are given in Table 4. / Many elements occur in several crystal structures and transform from one to the other…），沒有任何關於「為什麼放表」或單位習慣的敘述。欄位標籤本身確實同時標了 CGS 與 SI（已核對影像），這部分屬實。",
+      "fix": "把這兩段標為補充，或拆到相鄰的 mine 區塊。"
+    },
+    {
+      "where": "blocks[4] body 第三段 vs blocks[14] body",
+      "problem": "同一章的頁碼前後不一致：blocks[4] 與 blocks[5] 寫「第 20 章 Point Defects（p.585）」，blocks[14] 寫「第 20 章 Point Defects（p.583）」。",
+      "evidence": "目次（p. xvii）：「CHAPTER 20: POINT DEFECTS 583 / Lattice Vacancies 585」。583 是章起始頁，585 是 Lattice Vacancies 節（也是空位數值與 10⁻³–10⁻⁴ 引文的實際出處）。",
+      "fix": "統一寫成「第 20 章 Point Defects（p.583），其中 Lattice Vacancies 一節 p.585」。"
+    },
+    {
+      "where": "blocks[11] / blocks[12] / blocks[13] 的 eqNumber 與 bookPage 欄位",
+      "problem": "欄位語意易誤讀：三個 eq 區塊都標 bookPage: 22 + eqNumber: \"(1)/(2)/(3)\"，但 p.22 的 Summary 本身沒有替這三條式子編號，編號 (1)(2)(3) 分別屬於 p.4、p.5、p.6。第一條尤其明顯：p.4 的式 (1) 是 r′ = r + u₁a₁ + u₂a₂ + u₃a₃，與 Summary 的 T = u₁a₁ + u₂a₂ + u₃a₃ 形式不同。",
+      "evidence": "已核對：p.4 式 (1) = r′ = r + u₁a₁ + u₂a₂ + u₃a₃；p.5 式 (2) = rⱼ = xⱼa₁ + yⱼa₂ + zⱼa₃；p.6 式 (3) = V_c = |a₁ · a₂ × a₃|。撰寫者在 from 欄位已把這層關係解釋清楚，所以不是事實錯誤，只是欄位組合會讓人誤以為「式 (1) 在 p.22」。",
+      "fix": "eqNumber 改成「p.4 式 (1)（Summary 未編號）」之類的寫法，或新增 originPage 欄位。"
+    },
+    {
+      "where": "blocks[7] body 第二段",
+      "problem": "「一個原始晶胞在單一方向上長達 0.15 微米，超過可見光波長的四分之一」——0.15 μm 只大於約 0.6 μm 以下波長的四分之一，對紅光（0.7 μm，四分之一為 0.175 μm）不成立。",
+      "evidence": "0.150 μm 對可見光 0.38–0.75 μm，四分之一波長範圍是 0.095–0.19 μm。",
+      "fix": "改成「與可見光波長的四分之一同量級」或直接寫「約 0.15 μm，是可見光波長的 1/3 到 1/5」。"
+    }
+  ],
+  "verified": [
+    "頁碼與節次：目次（p.1 章首）確認 Direct Imaging of Atomic Structure 18、Nonideal Crystal Structures 18、Random stacking and polytypism 19、Crystal Structure Data 19、Summary 22、Problems 22，與檔案宣稱的 pages 18-22 及各區塊的頁碼標註相符（唯一例外見 blockers 第 3 條的跨頁引文）。",
+    "式號：Summary 三條式子的原式出處全部正確——p.4 式 (1)、p.5 式 (2)、p.6 式 (3)（V_c = |a₁ · a₂ × a₃| 逐字相符），Summary 本身在 p.22。",
+    "Direct Imaging 一節只提 transmission electron microscopy 與 scanning tunneling microscopy，確實沒有 AFM、沒有場離子顯微鏡、沒有 X 光全像術；全節正文確為四句。AFM 在第 18 章 p.526（目次核對）亦正確。",
+    "Fig. 25 圖說逐字相符：\"A scanning tunneling microscope image of atoms on a (111) surface of fcc platinum at 4 K. The nearest-neighbor spacing is 2.78 Å. (Photo courtesy of D. M. Eigler, IBM Research Division.)\"——fcc Pt (111)、4 K、2.78 Å、Eigler/IBM 全部正確（圖說印在 p.19，blocks[10] 也正確標成 p.19）。",
+    "本節所有英文引句逐字核對通過：Direct Imaging 四句、\"in STM (Chapter 19) one exploits the large variations…\"、Nonideal 開頭三句、\"We give a further example here.\"、fcc/hcp 堆疊序列句、random stacking 兩句、polytypism 定義句、\"The best known example is zinc sulfide, ZnS\"、\"A given sequence is repeated many times within a single crystal.\"、螺旋差排機制句、Crystal Structure Data 三句（含 p.19→p.22 斷句）、Summary 三點、p.5 \"Every basis in a given crystal is identical…\"、p.16 \"If the binding energy (or free energy) depended only on…\"、p.16 \"There is no way to choose a primitive cell…\"、p.585 \"In metals with close-packed structures…10⁻³ to 10⁻⁴.\"",
+    "書中數字全部正確：ZnS 超過 150 種 polytype／最長週期 360 層；SiC 超過 45 種堆疊序列；393R 的 a = 3.079 Å、c = 989.6 Å；最長重複距離 594 層；且「最著名的例子」確實是 ZnS 而非 SiC（撰寫者的提醒成立）。",
+    "p.20–21 影像表格：未發現任何捏造。我以 PyMuPDF 確認 pdf p.40／41 的文字層各只有 2 個字元（頁碼），內嵌影像確為 896×1159 與 874×1138 的 JP2——撰寫者的技術描述精確到像素數。再以 200 dpi 算繪後目視核對，Table 3 標題「Crystal structures of the elements」、說明「The data given are at room temperature for the most common form, or at the stated temperature in deg K. (Inorganic Crystal Structure Database (ICSD) online.)」、三個箭頭欄位（Crystal structure／a lattice parameter, in A／c lattice parameter, in A）、ABAC 標註（La、Pr、Am）、溫度標註（Li 78K、Na 5K、K 5K、He⁴ 2K、Ne 4K）、complex 分類、未測定標「—」等敘述全部屬實；Table 4 標題「Density and atomic concentration」、說明「…at atmospheric pressure and room temperature, or at the stated temperature in deg K. (Crystal modifications as for Table 3.)」、三欄位（Density in g cm⁻³ (10³kg m⁻³)／Concentration in 10²² cm⁻³ (10²⁸ m⁻³)／Nearest-neighbor distance, in A (10⁻¹⁰m)）亦全部正確。",
+    "tier 標註的關鍵一項正確：「STM 影像的亮點是 LDOS 等值面而非原子核」書中完全沒有提及，blocks[3] 標 tier: mine 正確；同區塊的 Tersoff–Hamann、偏壓極性、HRTEM 的 CTF／散焦對比反轉等敘述在物理上也站得住。",
+    "三處章號交叉引用的宣稱全部成立：p.18「semiconductor heterojunctions (Chapter 19)」、p.18「in STM (Chapter 19)」、p.19「dislocations in the growth nucleus (Chapter 20)」三句都逐字存在於原文，且都與目次不符；撰寫者給的正確位置也全部與目次相符——Heterostructures 在第 17 章（節在 p.507，章起 p.487）、Scanning Tunneling Microscopy 在第 18 章 p.523（同章 Electron Microscopy p.520、AFM p.526）、Dislocations 是第 21 章（章起 p.597，Dislocations and Crystal Growth p.615）、第 19 章確為 Noncrystalline Solids（p.565）。blocks[14] 引用的其餘頁碼（Ch22 Alloys 619、Ch5 Thermal Conductivity 121、Imperfections 126）亦與目次相符。",
+    "STM 穿隧推導數學正確：κ = √(2mφ)/ℏ 代入後為 0.5123√(φ/eV) Å⁻¹（實算 0.51226）；φ = 4 eV → κ = 1.02 Å⁻¹、2κ = 2.05 Å⁻¹；exp(−2.05) = 0.129 ≈ 1/7.8；Δz = ln(1.01)/2κ = 0.00486 ≈ 0.005 Å。適用範圍（z ≳ 3–5 Å、彈性穿隧、偏壓 ≪ φ）與典型工作點皆合理。",
+    "空位自由能推導正確：∂F/∂n = E_V − k_BT ln[(N−n)/n]，解得 n/(N−n) = exp(−E_V/k_BT)，與 Kittel p.585 式 (1)(2) 完全一致；n → 0 時 ∂F/∂n → −∞ 的論證正確。自行核算 k_BT(1000K) = 0.0862 eV、E_V/k_BT = 11.6、e⁻¹¹·⁶ = 9×10⁻⁶ 正確，且與書中「n/N ≈ e⁻¹² ≈ 10⁻⁵」相容；TiC 某一成分空位可達 50% 亦與 p.585 相符。",
+    "SiC 393R 的兩個關鍵數字重算無誤：c/393 = 989.6/393 = 2.5181 Å；a√(2/3) = 3.079 × 0.816497 = 2.5140 Å；相差 0.16%（撰寫者所報一致）。六方晶胞體積 (√3/2)a²c = 8.12×10³ Å³、ρ(SiC) = 393 × 40.10/(6.022×10²³ × 8.12×10⁻²¹) = 3.22 g cm⁻³，與公認的 3.21 相符；594 × 2.518 = 1.50×10³ Å = 0.150 μm。（這些算式本身對，但「原始晶胞」的認定見 blockers 第 2 條。）",
+    "Table 3 ↔ Table 4 交叉核算全部正確且與書中表格相符：Al（fcc, 4.05）n = 6.02×10²²、d_nn = 2.86、ρ = 2.70；Si（diamond, 5.430）n = 5.00×10²²、d_nn = 2.35、ρ = 2.33；Cu（fcc, 3.61）算得 8.50 vs 表列 8.45（0.6%，撰寫者歸因於 a 只給三位有效數字，正確）、d_nn 2.55 vs 表列 2.56；Pt（fcc, 3.92）d_nn = 2.77 vs 表列 2.77 vs Fig. 25 實測 2.78（0.4% 內一致，論證成立）。Z 值（sc 1／bcc 2／fcc 4／diamond 8）與 d_nn 幾何關係（a/√2、(√3/2)a、(√3/4)a）皆正確，diamond 的 2×4 = 8 確由 p.16 明文給出。Al 的 V_c = a³/4 = 16.6 Å³ → n = 6.02×10²² cm⁻³ 亦正確。",
+    "Summary 忠實反映 p.22：確實只有三點、全部關於 lattice + basis、沒有自行增補條目，也正確指出 Summary 未涵蓋 Miller 指標、七大晶系／十四種布拉菲晶格與各具體結構。Problems 1–3 的敘述（四面體鍵角＝立方體體對角線夾角、fcc (100)/(001) 改用 primitive 軸、理想 hcp 的 c/a = (8/3)^(1/2) = 1.633 與「planes being loosely stacked」）逐條與 p.22 相符。"
+  ]
+}

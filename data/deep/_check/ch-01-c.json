@@ -1,0 +1,82 @@
+{
+  "section": "c",
+  "_method": "以 pypdf 抽文字層（tools/kittel_extract.py, pdf 31–33）為主，另以 PyMuPDF 將 pdf p.31–33 以 3–14 倍解析度算繪成影像目視判讀，才能看到文字層抽不出的上橫線與分數。上橫線的三處還原因此是「看圖確認」而非推斷。",
+  "blockers": [
+    {
+      "where": "blocks[10].steps[5]（證明「[hkl] ⊥ (hkl)」只在立方晶成立 → 反例一）",
+      "problem": "「兩者只有在 a = b = c 時才平行」這句以現行寫法是錯的。缺了「對一般的 (hkl) 而言」這個量詞。正交晶系中 (100)、(010)、(001)（以及任何兩位為零的指標）恆有法線 ∝ (1/a,0,0) 與 R ∝ (a,0,0) 互相平行，也就是 [100] ⊥ (100) 在正交／四方晶系照樣成立。讀者照字面讀會建立「只要不是立方晶，[hkl] 就永不垂直於 (hkl)」的錯誤信念——而四方晶的 [001] ⊥ (001)（c 軸／c 面）正是實務上天天用到的反例。同一 steps 的下一句具體例（a = 2b、(110)）本身完全正確，錯的只有這句全稱敘述。",
+      "evidence": "自身推導：法線 ∝ (h/a, k/b, l/c)、R ∝ (ha, kb, lc)。代 (h,k,l) = (1,0,0)：法線 ∝ (1/a, 0, 0)、R ∝ (a, 0, 0)，對任意 a,b,c 都平行。書中對應的通則在第 2 章 p.31：「The result of Problem 1 is that the spacing d(hkl) between parallel lattice planes that are normal to the direction G = hb1 + kb2 + lb3 is d(hkl) = 2π/|G|.」——法線是 G，不是 R，兩者是否平行要逐 (hkl) 判斷。",
+      "fix": "改為「兩者一般不平行；要對所有 (hkl) 都平行，充要條件是 a = b = c。（特例仍成立：h、k、l 中有兩個為零時，例如 (100)、(001)，法線與同指標晶向恆平行，所以四方晶的 [001] 仍垂直於 (001)。）」body 末段的實務教訓也建議加一句「兩位為零的指標是例外」。"
+    },
+    {
+      "where": "blocks[6]（負指標的上橫線記法）逐字引用中的 (hkl̄)",
+      "problem": "逐字引用不逐字：上橫線畫錯位置。原書印的是 (hk̄l)（橫線在 k 上），撰寫者寫成 (hkl̄)（橫線在 l 上）。這句話的全部內容就是「負號放在哪一位的正上方」，把示範的那一位標錯等於示範失敗。更值得注意的是流程問題：撰寫者為另外三處上橫線都加了「校註」，唯獨這一處沒有標記就直接放了一個錯的還原——代表他的還原清單漏掉了本節第一個、也是最靠前的上橫線案例。",
+      "evidence": "算繪 pdf p.33（書本 p.13）行首放大 14 倍目視：「above the index: (hk̄l). The cube faces of a cubic crystal are (100), (010), (001), (1̄00), (01̄0), and (001̄).」橫線明確落在第二個字母 k 的正上方（量測：橫線橫向範圍與 k 的字身完全重合，h 與 l 上方皆無線）。",
+      "fix": "引文改成「…indicated by placing a minus sign above the index: (hk̄l).」並補一條校註，說明文字層完全不帶上橫線、此處依算繪影像確認橫線在 k 上。同時把 body 的中文說明例子一併對齊。"
+    },
+    {
+      "where": "blocks[11].eq.numeric（立方晶面間距的數值代入）",
+      "problem": "矽晶格常數用 5.431 Å，與書本 p.17 印的 5.430 Å 不符；連帶五個導出值也偏。且與本站其他小節不一致——ch-01-d.json（含正文、numeric、標題「接到熱容研究：從 a = 5.430 Å 到矽的原子數密度」）與 ch-01-e.json 全部採 5.430，只有本節用 5.431。5.431 Å 本身是 300 K 的實測值沒錯，但本站的數值紀律是「代入原文的 a 值」（ch-01-d 正文明講），不該在同一章出現兩個 a。",
+      "evidence": "書本 p.17 逐字：「Carbon, silicon, germanium, and tin can crystallize in the diamond structure, with lattice constants a = 3.567, 5.430, 5.658, and 6.49 Å, respectively. Here a is the edge of the conventional cubic cell.」書中未附任何溫度標註，本節卻寫「a = 5.431 Å（300 K）」。",
+      "fix": "改用 a = 5.430 Å 並重算：d(111) = 3.135 Å、d(110) = 3.840 Å、d(100) = 5.430 Å、d(200) = 2.715 Å、d(400) = 1.358 Å（文末「(111) 晶圓…d = 3.136 Å」一併改為 3.135 Å）。若堅持用 300 K 實測值，必須明寫「書本 p.17 印 5.430 Å；此處取 300 K 實測 5.4310 Å」，並與 ch-01-d/e 統一口徑。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[2]（規則二）末段",
+      "problem": "在 tier = book 的區塊裡，把撰寫者自己的理由掛到原文身上。「原文沒有把「取最簡」寫死，因為 (200)、(400) 這類非最簡形式另有意義，原文稍後講 (200) 時會回到這一點」——書中寫 usually 沒有給任何理由，後面講 (200) 時也完全沒有回頭呼應 usually；(400) 更是第 1 章從頭到尾沒出現過的指標。",
+      "evidence": "p.13 原文講 (200) 的全部內容只有一句：「When we speak of the (200) plane we mean a plane parallel to (100) but cutting the a1 axis at ½a.」沒有任何一句連回 usually 或談非最簡指標的意義。全章搜尋亦無 (400)。",
+      "fix": "改成「原文只寫 usually 而未說明理由；（以下為我的推論）從後面 (200) 的定義可以反推，非最簡指標在繞射脈絡下另有意義。」把 (400) 的例子明確標成補充。"
+    },
+    {
+      "where": "blocks[7]（圖 14 的文字還原）",
+      "problem": "「(200) 與 (100) 平行但位在立方體的半高處」用詞不精確。「半高」會讓人想成水平中分面；圖 14 的 (200) 面是一張垂直的中分面，位置是沿 a₁ 方向的一半處（切 a₁ 於 ½a），與「高度」無關。",
+      "evidence": "算繪 pdf p.32 的圖 14 第四格：陰影面為垂直面，位於立方體沿 a₁ 方向的正中央，與第一格 (100)（立方體的一個側面）平行。原文對應句：「cutting the a1 axis at ½a」。",
+      "fix": "改為「(200) 與 (100) 平行，位在立方體沿 a₁ 方向的正中央（切 a₁ 於 ½a）」。"
+    },
+    {
+      "where": "blocks[11].eq.bookPage = 13",
+      "problem": "網頁會把這個欄位算繪成公式旁的「p.13」標籤（build_deep.py:69），但 d = a/√(h²+k²+l²) 不在書本 p.13，也不在第 1 章任何一頁；它是第 2 章的內容。eq.from 已誠實說明「本節原文沒有這條式子」，兩者互相打架。",
+      "evidence": "書本 p.43 第 2 章 Problem 1（Interplanar separation）(c)：「Show for a simple cubic lattice that d² = a²/(h² + k² + l²).」另 p.31 正文：「…d(hkl) = 2π/|G|.」書本 p.13 全頁無任何公式。",
+      "fix": "要嘛把標籤改指第 2 章（p.43，或 p.31 的 d = 2π/|G|），要嘛在 label 上明寫「（本節外推：第 2 章結果）」，避免 p.13 被讀成出處。blocks[4]（hx+ky+lz=n，bookPage 12）性質相同但 12 是規則二所在頁，可接受。"
+    },
+    {
+      "where": "blocks[10].steps[6]（反例二的通則）",
+      "problem": "「bᵢ ∥ aᵢ，正交晶系才滿足」把條件說窄了。三軸互相正交的晶系有正交、四方、立方三種，全都滿足 bᵢ ∥ aᵢ；「正交晶系」在中文晶體學裡專指 orthorhombic。",
+      "evidence": "b₁ = 2π (a₂×a₃)/(a₁·a₂×a₃)（書本 p.43 Summary）。只要 a₁⊥a₂⊥a₃，a₂×a₃ 就沿 a₁，與軸長無關。",
+      "fix": "改為「（三軸互相正交的晶系——正交、四方、立方——都滿足）」。"
+    },
+    {
+      "where": "blocks[15]（這一節之後會在哪裡用到）第 3 章條目",
+      "problem": "「第 3 章（彈性波）」的章名與書不符，且舉的方向多了一個書上沒算的。第 3 章標題是 CRYSTAL BINDING AND ELASTIC CONSTANTS，彈性波只是其中最後一段。",
+      "evidence": "目次（書本 p.viii）：「CHAPTER 3: CRYSTAL BINDING AND ELASTIC CONSTANTS 47 … Elastic Waves in Cubic Crstals 80 / Waves in the [100] Direction 81 / Waves in the [110] Direction 82」。書中只處理 [100] 與 [110] 兩個方向，沒有 [111]。",
+      "fix": "改為「第 3 章（晶體鍵結與彈性常數，彈性波在 p.80–85）」；[111] 的部分加註「書中只算 [100] 與 [110]，[111] 為我的補充」。"
+    },
+    {
+      "where": "blocks[3].steps[1]",
+      "problem": "「這是原文唯一明講的技術好處（For an intercept at infinity, the corresponding index is zero）」——原文把這句寫成一條約定／規則，並沒有把它當成「取倒數的好處」來論述。在 derived 區塊裡這樣轉述仍屬於替原文加了論證意圖。",
+      "evidence": "p.12 原文該句前後無任何評價性字眼：「For an intercept at infinity, the corresponding index is zero. The indices of some important planes in a cubic crystal are illustrated by Fig. 14.」",
+      "fix": "改為「原文只把它寫成一條約定（For an intercept at infinity, the corresponding index is zero），沒有說這是取倒數的好處——這層意義是我加的。」"
+    }
+  ],
+  "verified": [
+    "頁碼：pages 11-13 正確。小節起點在書本 p.11「INDEX SYSTEM FOR CRYSTAL PLANES」標題（前一段結束於六方初基晶胞與圖 12），終點在書本 p.13「…not generally true in other crystal systems.」之後緊接 SIMPLE CRYSTAL STRUCTURES。",
+    "式號：「本節完全沒有編號公式」屬實。算繪 p.11–13 三頁目視確認全節無任何帶編號的展示式（p.11 開頭那個 (2) 屬於前一小節），檔案中兩個 equation 區塊也都沒有 eqNumber 欄位，標記一致。",
+    "逐字引用（10 處）全部逐字核對通過：三點定面句、coordinates of the points… 句、However, it turns out to be more useful for structure analysis… 句、規則一整段、規則二整段、(142) 例句、For an intercept at infinity… 句、The indices (hkl) may denote a single plane or a set of parallel planes.、If a plane cuts an axis on the negative side… 句（僅上橫線位置錯，見 blocker）、Planes equivalent by symmetry… {100} 句、When we speak of the (200) plane… ½a 句、圖 13 圖說全文、圖 14 圖說全文、[uvw] 定義句、The a1 axis is the [100] direction… 句、In cubic crystals the direction [hkl]… 句。",
+    "tier 宣稱一：「書中沒有給取倒數的動機論證」屬實。全節關於動機的文字只有一句 However, it turns out to be more useful for structure analysis…，其後三條規則與例子都沒有任何解釋性論述。blocks[3] 五步推理標 derived 正確，且 body 已先劃清界線。",
+    "tier 宣稱二：「In cubic crystals the direction [hkl] is perpendicular to a plane (hkl) having the same indices, but this is not generally true in other crystal systems.」逐字一字不差（已用算繪影像逐字比對），blocks[8] 標 book 正確，限制條件也如實保留。",
+    "tier 宣稱三：⟨uvw⟩ 角括號本節原文確實完全沒有出現（p.11–13 文字層與算繪影像皆無角括號），blocks[9] 標 mine 並自行聲明「不是本節內容」，處理正確。",
+    "上橫線還原三處全部正確（以算繪影像目視確認，非推斷）：p.13 六個立方面 (100), (010), (001), (1̄00), (01̄0), (001̄)；圖 14 圖說 The plane (200) is parallel to (100) and to (1̄00)；the −a₂ axis is the [01̄0] direction。另外「cutting the a₁ axis at ½a」的分數還原也正確。",
+    "算術：(142) 例（1/4 : 1 : 1/2 同乘 4 → 1:4:2）與圖 13 的 (233) 例（1/3 : 1/2 : 1/2 同乘 6 → 2:3:3）皆正確，最小公倍數說明也對。",
+    "數學：hx + ky + lz = n 由截距 (n/h, n/k, n/l) 的截距式導出，完全正確；limits 中 l = 0 平行 a₃、(200) 面數加倍間距減半的討論正確。",
+    "數學：d(hkl) = a/√(h²+k²+l²) 的推導（換算到實際長度座標後用平面族 AX+BY+CZ=n 的間距 1/√(A²+B²+C²)）正確，且 eq.from 宣稱「它屬於第 2 章繞射的內容」屬實——書本 p.43 第 2 章 Problem 1(c) 即「Show for a simple cubic lattice that d² = a²/(h² + k² + l²)」。limits 中 (110)=0.707a、(111)=0.577a、(200)=a/2 以及 fcc 沿 [100] 原子面間距為 a/2 的提醒都正確。",
+    "37° 反例算術正確：a = 2b 時法線 ∝ (1,2,0)、晶向 ∝ (2,1,0)，cos θ = 4/5 → θ = 36.87°，「將近 37°」無誤。（唯該 step 的全稱敘述有問題，見 blocker。）",
+    "blocks[3] step 5 的倒晶格陳述與書本第 2 章一致：p.31「d(hkl) between parallel lattice planes that are normal to the direction G = hb1 + kb2 + lb3 is d(hkl) = 2π/|G|」——G ⊥ 晶面族、|G| = 2π/d 皆正確。",
+    "blocks[1] 引用的圖 11 資料正確：書本 p.11 圖 11 圖說給 a₁ = ½a(x̂+ŷ)、a₂ = ½a(ŷ+ẑ)、a₃ = ½a(ẑ+x̂)，且「The angles between the axes are 60°」。",
+    "blocks[14] 的定位正確：六方初基晶胞（含 120° 夾角）與圖 12 確實在書本 p.11，就在本節之前；i = −(h+k) 與「三指標下同族面寫成 (100)、(010)、(1̄10) 看不出等價」的舉例正確。",
+    "圖 14 的文字還原與實圖相符：五個標籤 (100)、(110)、(111)、(200)、(1̄00)，(100) 為立方體一面、(110) 沿面對角線斜切、(111) 截去一角、(1̄00) 為相對面（唯 (200) 的位置描述用詞見 minor）。圖 13 的文字還原（三軸共原點、軸上有 1/2/3 刻度、截於 3、2、2）亦與實圖相符。",
+    "mine 區塊的幾何與物理數字抽查全對：{100}=6、{110}=12、{111}=8 面；⟨100⟩=6、⟨111⟩=8、⟨110⟩=12 方向；(110) 截面 a × √2a、面積 √2a²；(111) 截面正三角形邊長 √2a、面積 (√3/2)a² ≈ 0.866a²；[111] 與軸夾角 cos θ = 1/√3 → 54.74°；(213) 與 (321) 同屬立方 {123}；鑽石結構消光規則下 (100)、(200) 禁制而 (400)、(111) 允許。",
+    "blocks[15] 的第 2 章、第 9 章章名對應正確（目次：CHAPTER 2 WAVE DIFFRACTION AND THE RECIPROCAL LATTICE；CHAPTER 9 FERMI SURFACES AND METALS）；立方晶熱導率由對稱性退化為純量的說法正確。",
+    "標題：檔案用 in-text 標題「Index System for Crystal Planes」（單數 System），與書本 p.11 正文標題一致；目次（p.vii）印的是複數 Index Systems。兩種寫法書中都有，不算錯。"
+  ]
+}

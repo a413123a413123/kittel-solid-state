@@ -418,3 +418,158 @@ td.mono, th.mono { font-family: var(--font-mono); white-space: nowrap; }
   .curve__svg { min-width: 700px; }
   .curve__cap { padding-right: var(--s4); }
 }
+
+
+/* ============================================================
+   深度章節頁（data/deep/ch-NN.json）
+   一章兩萬字以上，節奏靠三件事撐住：小節的重分界、推導的獨立表面、
+   非「書中」內容的層級標籤。
+   ============================================================ */
+
+/* 左欄放得下小節標題，比六欄版的 128px 寬 */
+@media (min-width: 1000px) {
+  /* 文字欄不超過量度，否則右側會留下一整條死空白（實測縮圖發現） */
+  .layout--deep { grid-template-columns: 208px minmax(0, 660px); justify-content: center; }
+}
+
+/* ---- 本章小節目錄 ---- */
+.secnav { font-size: var(--f-label); margin-top: var(--s5); padding-top: var(--s4);
+  border-top: 1px solid var(--line); }
+.secnav__t { font-size: var(--f-label); color: var(--ink-3); margin: 0 0 var(--s3); }
+.secnav ol { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); counter-reset: sn; }
+/* 只套用在清單項目，不要套到標題裡的連結（會把標題擠成直書） */
+.secnav ol a { display: grid; grid-template-columns: 1.5em 1fr; gap: var(--s2);
+  text-decoration: none; color: var(--ink-2); line-height: 1.45; }
+.secnav ol a:hover { color: var(--indigo); }
+.secnav .n { color: var(--indigo); font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* ---- 小節 ---- */
+.sec { padding-top: var(--s8); scroll-margin-top: var(--s4); }
+.sec:first-of-type { padding-top: var(--s5); }
+.sec__h { display: grid; gap: var(--s1); margin: 0 0 var(--s4);
+  padding-top: var(--s4); border-top: var(--rail) solid var(--indigo); }
+.sec__t { font-size: var(--f-h2); line-height: 1.45; margin: 0; }
+.sec__t .n { color: var(--indigo); font-family: var(--font-mono); margin-right: .4em; }
+.sec__en { font-size: var(--f-label); color: var(--ink-3); margin: 0; font-style: italic; }
+.sec__p  { font-size: var(--f-label); color: var(--ink-3); margin: 0; font-variant-numeric: tabular-nums; }
+.sec__lede { font-size: var(--f-h3); line-height: 1.6; color: var(--ink-2);
+  max-width: 31em; margin: 0 0 var(--s5); }
+
+/* ---- 講解單元 ---- */
+.blk { margin-bottom: var(--s7); }
+.blk__h { font-size: var(--f-h3); line-height: 1.4; margin: 0 0 var(--s3);
+  display: flex; align-items: baseline; gap: var(--s3); flex-wrap: wrap; }
+.blk p { font-size: var(--f-body); line-height: 1.85; max-width: 34em; margin: 0 0 var(--s4); }
+.blk p:last-child { margin-bottom: 0; }
+.blk ul, .blk ol { font-size: var(--f-body); line-height: 1.85; max-width: 34em;
+  margin: 0 0 var(--s4); padding-left: 1.3em; }
+.blk li { margin-bottom: var(--s2); }
+
+/* ---- 層級標籤：只標非「書中」的內容，未標示者即書中 ---- */
+.tier { font-size: 11px; font-weight: 600; white-space: nowrap;   /* 中文不加字距 */
+  padding: 2px var(--s2); border-radius: 2px; border: 1px solid; }
+.tier--derived { color: var(--indigo-deep); border-color: var(--indigo); background: var(--indigo-wash); }
+.tier--mine    { color: var(--ink-2);      border-color: var(--line-strong); background: var(--paper-sunk); }
+.tier--ext     { color: var(--ember-deep); border-color: var(--ember); background: var(--ember-wash); }
+
+/* ---- 推導：獨立表面，與敘述一眼分得開 ---- */
+.deriv { background: var(--indigo-wash); border: 1px solid var(--line);
+  border-left: var(--rail) solid var(--indigo); border-radius: 0 var(--radius) var(--radius) 0;
+  padding: var(--s5); margin-bottom: var(--s8); }
+.deriv .blk__h { margin-bottom: var(--s4); }
+.deriv p { max-width: 34em; }
+.deriv__steps { list-style: none; counter-reset: st; margin: var(--s4) 0; padding: 0;
+  display: grid; gap: var(--s3); max-width: 530px; }
+.deriv__steps li { counter-increment: st; display: grid; grid-template-columns: 1.9em 1fr;
+  gap: var(--s3); font-size: var(--f-num); line-height: 1.75; margin: 0;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: var(--s3) var(--s4); box-shadow: var(--sh-card); }
+.deriv__steps li::before { content: counter(st); color: var(--indigo); font-weight: 600;
+  font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* ---- 公式：補上出處／極限／數值三列 ---- */
+.eq__meta { grid-column: 1 / -1; display: grid; gap: var(--s2); margin: var(--s3) 0 0;
+  padding-top: var(--s3); border-top: 1px solid var(--line); }
+.eq__row { display: grid; grid-template-columns: 4.5em 1fr; gap: var(--s3);
+  font-size: var(--f-label); line-height: 1.7; }
+.eq__rk { color: var(--ink-3); }
+.eq__rv { color: var(--ink-2); max-width: 34em; }
+
+/* ---- 常見誤解 ---- */
+.misc { margin-top: var(--s7); }
+.misc__l { display: grid; gap: var(--s4); list-style: none; margin: var(--s4) 0 0; padding: 0; }
+.misc__i { background: var(--card); border: 1px solid var(--line);
+  border-left: var(--rail) solid var(--ember); border-radius: 0 var(--radius) var(--radius) 0;
+  padding: var(--s4) var(--s5); box-shadow: var(--sh-card); }
+.misc__w { font-size: var(--f-num); font-weight: 600; line-height: 1.6; margin: 0 0 var(--s2);
+  color: var(--ember-deep); max-width: 34em; }
+.misc__w::before { content: "✗ "; }
+.misc__r { font-size: var(--f-num); line-height: 1.75; margin: var(--s2) 0 0; max-width: 34em; }
+.misc__r::before { content: "✓ "; color: var(--indigo); font-weight: 600; }
+.misc__why { font-size: var(--f-num); line-height: 1.75; margin: 0; color: var(--ink-2); max-width: 34em; }
+
+/* ---- 章首的規模標示 ---- */
+.chap__meta .big { color: var(--ember-deep); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 760px) {
+  .sec { padding-top: var(--s7); }
+  .deriv { padding: var(--s4); }
+  .deriv__steps li { grid-template-columns: 1.6em 1fr; padding: var(--s3); }
+  .eq__row { grid-template-columns: 1fr; gap: var(--s1); }
+}
+
+/* ---- 章總覽的小節導覽卡（放在反轉板面上，替整頁提供一條暗帶） ---- */
+.plate__lede { color: var(--on-plate-2); font-size: var(--f-num); line-height: 1.8;
+  max-width: 34em; margin: 0 0 var(--s6); }
+.seclist { display: grid; gap: var(--s4); }
+@media (min-width: 720px)  { .seclist { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1080px) { .seclist { grid-template-columns: repeat(3, 1fr); } }
+.seccard { display: grid; gap: var(--s2); align-content: start; text-decoration: none;
+  background: var(--card); border: 1px solid transparent; border-radius: var(--radius);
+  padding: var(--s5); box-shadow: var(--sh-card); }
+.seccard:hover { box-shadow: var(--sh-card-hi); border-color: var(--line-hover); }
+.seccard__n { font-size: var(--f-h2); line-height: 1.5; color: var(--indigo); }
+.seccard__t { font-size: var(--f-h3); line-height: 1.45; font-weight: 600; color: var(--ink); }
+.seccard__en { font-size: var(--f-label); line-height: 1.5; color: var(--ink-3); font-style: italic; }
+.seccard__p { font-size: var(--f-label); line-height: 1.6; color: var(--ink-3);
+  font-variant-numeric: tabular-nums; }
+.seccard__l { font-size: var(--f-num); line-height: 1.75; color: var(--ink-2); max-width: 30em; }
+
+.secnav__t a { color: var(--ink-3); text-decoration: none; }
+.secnav__t a:hover { color: var(--indigo); }
+.secnav ol a[aria-current="page"] { color: var(--ember-deep); font-weight: 600; }
+
+/* 小節頁的 h1 沿用小節標題樣式，但字級升一階 */
+article > .sec__h .sec__t { font-size: var(--f-lead); line-height: 1.25; }
+@media (max-width: 760px) { article > .sec__h .sec__t { font-size: var(--f-h2); line-height: 1.45; } }
+
+/* 小節頁的推導區塊改用 <section>，padding 與 .sec 不同款，也讓版面多一種區塊節奏 */
+section.deriv { padding: var(--s5) var(--s5) var(--s6); }
+@media (max-width: 760px) { section.deriv { padding: var(--s4); } }
+
+
+/* ---- 小節頁的頁首做成全幅反轉板面：長頁需要一條明確的起始帶 ---- */
+.plate--sec { padding-block: var(--s7) var(--s8); }
+.plate--sec .sec__h { border-top: 0; padding-top: 0; margin-bottom: var(--s4); }
+.plate--sec .sec__t { color: var(--on-plate); }
+.plate--sec .sec__t .n { color: var(--ember-on-plate); }
+.plate--sec .sec__en,
+.plate--sec .sec__p { color: var(--on-plate-2); }
+.plate--sec .sec__lede { color: var(--on-plate); margin-bottom: 0; }
+
+/* ---- 小節頁的閱讀欄給獨立卡面：長頁需要一個明確的「紙面」邊界 ---- */
+.layout--deep article {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: var(--s6) var(--s7) var(--s8); box-shadow: var(--sh-card);
+}
+/* 公式在白紙面上改為內凹，靠明度差而非陰影與紙面區隔 */
+.layout--deep article .eq { background: var(--paper-sunk); box-shadow: var(--sh-flat); }
+.layout--deep article .deriv__steps li { background: var(--card); }
+@media (max-width: 760px) {
+  .layout--deep article { padding: var(--s5) var(--s4) var(--s6); }
+}
+
+/* 概念標題前留一段空白，讓 32 屏的長頁出現可辨識的分段呼吸 */
+.layout--deep article .blk__h { margin-top: var(--s6); }
+.layout--deep article > .sec > :first-child .blk__h { margin-top: 0; }
+.eqs { margin-block: var(--s5) var(--s7); }

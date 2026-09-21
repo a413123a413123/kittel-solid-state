@@ -1,0 +1,74 @@
+{
+  "section": "a",
+  "blockers": [
+    {
+      "where": "blocks[12]（heading:「補充辨析：primitive cell 與 conventional cell」, tier: mine）body，「要『數東西』」那一條",
+      "problem": "物理方向錯誤。原文句為：「要『數東西』——每胞原子數、狀態數、聲子分支數、電子填充數、Brillouin zone 體積、k 點數目——一律用 primitive cell。這些量全都和 primitive cell 綁定；用 conventional cell 會把數字整整放大 m 倍（fcc 是 4 倍、bcc 是 2 倍）。」清單中的『Brillouin zone 體積』與『k 點數目』並不是放大 m 倍，而是縮小為 1/m。把 conventional cell 誤當 primitive cell 時，對應的倒空間 cell 體積是 (2π)³/V_conv = (2π)³/(m·V_c) = V_BZ(真)/m，區變小；同一塊晶體中的 cell 個數 N_conv = N/m，對應的 k 點數目也是變少而非變多。只有『每胞原子數／狀態數／聲子分支數／電子填充數』這類 per-cell 計數才是 ×m。",
+      "evidence": "此為推導層面的錯誤，非引文錯誤。書 p.6 只給出「There is always one lattice point per primitive cell.」與「The number of atoms in a primitive cell or primitive basis is always the same for a given crystal structure.」；倒空間體積與格點密度互為倒數（V_BZ = (2π)³/V_c，見本檔 blocks[10] 自己導出的 V_c = 1/n），與 per-cell 計數的縮放方向相反。",
+      "fix": "拆成兩條：(i) per-cell 的計數量（每胞原子數、狀態數、聲子分支數、電子填充數）用 conventional cell 會放大 m 倍；(ii) 倒空間量（Brillouin zone 體積、同樣取樣密度下的 k 點總數）則是縮小為 1/m，並會造成 band folding。"
+    },
+    {
+      "where": "blocks[13]（heading:「Wigner–Seitz cell：另一種取 primitive cell 的方法（書 p.6, Fig. 4）」, tier: book）body",
+      "problem": "對原文的描述不實。文中寫「原文把作圖程序寫成明確編號的三步（以下逐步轉述）」，並自行列出「(3) 用這種方式所圍出的最小體積…」。書中 Fig. 4 圖說只有 (1)(2) 兩個編號步驟，第三句「The smallest volume enclosed in this way is the Wigner-Seitz primitive cell.」是未編號的結論句，不是編號步驟 (3)。在 tier: book 的 block 裡把自己加的編號說成是原文的編號，屬於對原文的捏造式陳述。",
+      "evidence": "書 p.6 Fig. 4 圖說原文：「A primitive cell may also be chosen following this procedure: (1) draw lines to connect a given lattice point to all nearby lattice points; (2) at the midpoint and normal to these lines, draw new lines or planes. The smallest volume enclosed in this way is the Wigner-Seitz primitive cell. All space may be filled by these cells, just as by the cells of Fig. 3.」（全頁僅此處出現 (1)(2)；該頁的 (3) 是 V_c 那條式子的式號，不屬於此圖說）",
+      "fix": "改成「原文圖說編號了兩步 (1)(2)，之後接一句未編號的結論句：這樣圍出的最小體積就是 Wigner–Seitz primitive cell」。若要保留三段式的教學排版，需明講第三段是本講解為了條列而自行切出的，不是原文的編號。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "檔案頂層 title / pages",
+      "problem": "節名與頁碼範圍與原書略有出入。書中節標題為複數形「PERIODIC ARRAYS OF ATOMS」，檔案寫成單數「Periodic Array of Atoms」；pages 寫「1-6」，但該節正文起於書 p.3（p.1 為章首目錄與單位換算，p.2 整頁只有 Fig. 1）。",
+      "evidence": "書 p.1 目錄：「PERIODIC ARRAYS OF ATOMS 3 / Lattice translation vectors 4 / Basis and the crystal structure 5 / Primitive lattice cell 6」；書 p.3 正文標題同樣印為「PERIODIC ARRAYS OF ATOMS」。",
+      "fix": "title 改為「Periodic Arrays of Atoms」；pages 若要涵蓋 Fig. 1 與章首目錄可註明「3–6（含 p.1 目錄、p.2 Fig. 1）」。"
+    },
+    {
+      "where": "blocks[7].eq.formula（式 (2)）",
+      "problem": "把書中兩個分開的東西併成一條編號式。書中式 (2) 只有「rj = xj a1 + yj a2 + zj a3」；「0 ≤ xj, yj, zj ≤ 1」是緊接其後的獨立句子（且帶有 We may arrange… 的條件語氣），並未包含在編號式 (2) 之內。檔案的 formula 欄寫成「rⱼ = xⱼa₁ + yⱼa₂ + zⱼa₃ ,   0 ≤ xⱼ, yⱼ, zⱼ ≤ 1」，讀者會誤以為範圍限制是原文式 (2) 的一部分。",
+      "evidence": "書 p.5：「The position of the center of an atom j of the basis relative to the associated lattice point is (2) … rj = xja1 + yja2 + zja3 . / We may arrange the origin, which we have called the associated lattice point, so that 0 ≤ xj, yj, zj ≤ 1.」",
+      "fix": "formula 只留「rⱼ = xⱼa₁ + yⱼa₂ + zⱼa₃」，範圍限制移到 symbols/from 欄（該欄目前的敘述已經正確，只需把式子本身切乾淨）。"
+    },
+    {
+      "where": "blocks[17]（heading:「這一節會在後面哪裡回來找你」, tier: mine）body，熱容與熱傳導段末的括號",
+      "problem": "「每單位體積的振動模態數 = 3p / V_c … 如果你不小心用了 conventional cell，矽會差 4 倍」這句作為警語是誤導的：3p/V 本身是與 cell 選法無關的不變量（矽用 primitive：3×2/(a³/4) = 24/a³；用 conventional：3×8/a³ = 24/a³，完全相同）。真正會差 4 倍的是『混用』——拿 conventional 的體積 a³ 配 primitive 的原子數 2（或反過來）。",
+      "evidence": "Si 為 diamond 結構：primitive cell 2 原子、V_c = a³/4；conventional cubic cell 8 原子、V = a³。兩者給出的 per-volume 模態密度相同。",
+      "fix": "改成「危險的是混用：p 用 primitive 的 2、V 卻用 conventional 的 a³（或相反），矽會差 4 倍；只要 p 與 V 取自同一個 cell，答案不變。」"
+    },
+    {
+      "where": "blocks[9].eq.limits（式 (3)）",
+      "problem": "低對稱晶系的描述不精確。單斜晶系的體積是 V = abc·sin β，只有一個 sin 因子、沒有 cos 乘積；只有三斜才會出現 √(1−cos²α−cos²β−cos²γ+2cosαcosβcosγ) 這種含 cos 乘積的因子。另外「此時 V_c 明顯小於 a₁a₂a₃」在軸間角接近 90° 時並不「明顯」。",
+      "evidence": "此為公式層面的敘述，書中未展開（原文只有『by elementary vector analysis』）。",
+      "fix": "改成「單斜為 V = a₁a₂a₃·sin β；三斜另含 cos 的乘積修正項。軸間角偏離 90° 愈多，V_c 比 a₁a₂a₃ 小得愈多。」"
+    },
+    {
+      "where": "blocks[0]（章首導言, tier: book）body，Fig. 1 段與「兩層實驗證據」段",
+      "problem": "tier: book 的 block 裡夾入兩處書中沒有的說法而未標示：(i)「解理面沿著特定的晶面走，這是內部週期結構在巨觀尺度留下的可見痕跡」——Fig. 1 圖說只寫「(c) Cleaving a crystal of rocksalt.」，沒有提解理面與晶面的關係；(ii)「這是有理指數定律」——書中只說 index numbers are exact integers，沒有給這個定律名稱。兩者本身都正確，問題在於被寫成書中內容。",
+      "evidence": "書 p.2 Fig. 1 圖說全文：「Relation of the external form of crystals to the form of the elementary building blocks. The building blocks are identical in (a) and (b), but different crystal faces are developed. (c) Cleaving a crystal of rocksalt.」；書 p.3：「…the index numbers that define the orientations of the faces of a crystal are exact integers.」",
+      "fix": "兩處加上「（此為補充，原文未明說）」，或移到相鄰的 tier: mine block。"
+    },
+    {
+      "where": "blocks[4]（heading:「『primitive』這個形容詞到底在要求什麼（書 p.4）」, tier: book）第 3 段",
+      "problem": "「原文緊接著給了一個等價的體積判準…這兩種說法是同一件事的兩面——如果你漏掉了某個等價平移 T，那麼把 T 也拿進來一起張，就能切出比原來更小的 cell；反之若已經是最小體積，就不可能還有漏網的平移」——書中只是並列陳述這兩句，從未說它們等價，這個等價性論證是撰寫者自己補的。雖然行文有「把邏輯拆開會清楚很多」的暗示，但在 tier: book 的 block 裡仍建議明標。",
+      "evidence": "書 p.4 原文只有：「The lattice is said to be primitive if any two points from which the atomic arrangement looks the same always satisfy (1) with a suitable choice of the integers ui. This statement defines the primitive translation vectors ai. There is no cell of smaller volume than a1·a2×a3 that can serve as a building block for the crystal structure.」",
+      "fix": "在該段加「（等價性的論證為本講解自補，原文只並列這兩句）」，或把該段搬進 blocks[5] 那個 tier: derived 的 block。"
+    }
+  ],
+  "verified": [
+    "式 (1)：bookPage 4、eqNumber (1) 正確；formula「r′ = r + u₁a₁ + u₂a₂ + u₃a₃」與書 p.4 逐字相符；「arbitrary integers」「由 (1) 對所有 u 定義的 r′ 集合就是 lattice」皆有原文依據。",
+    "式 (2)：bookPage 5、eqNumber (2) 正確（式子本身無誤，只有併入不等式的排版問題，見 minors）。",
+    "式 (3)：bookPage 6、eqNumber (3) 正確；formula「V_c = |a₁ · a₂ × a₃|」與書 p.6「Vc = |a1 · a2 × a3|」完全一致，「by elementary vector analysis」引述正確。",
+    "所有英文引號內引文逐字核對通過，無截斷補句點或併句：the set of mathematical points to which the basis is attached / looks the same / respond dramatically / an average over the order / apart from any imperfections and impurities / the tool of choice / of course the lattice points are just mathematical constructions / We may arrange / The adjective unit is superfluous and not needed. / There are many ways of choosing… / No basis contains fewer atoms than a primitive basis contains. / draw lines to connect a given lattice point to all nearby lattice points / at the midpoint and normal to these lines, draw new lines or planes / the smallest volume enclosed in this way / All space may be filled by these cells / by elementary vector analysis / two different ions / different crystal faces are developed / identical atoms / index numbers / exact integers / minimum-volume cell。",
+    "「conventional cell 這個詞在書 p.1–6 還沒出現」——查證屬實：pdf 21–26 全文檢索 conventional 零命中，該範圍只出現過 unit cell（p.6，且原文說 unit 是多餘的）。blocks[12] 的這個宣稱成立。",
+    "「整數矩陣 |det M| = 1」判準確實不在書 p.1–6（書只在 Fig. 3a 圖說給了 a₁‴, a₂‴ 連不到 T 的具體反例），tier: derived 標示正確。",
+    "blocks[5] 的行列式推導數學正確：b = M a、a = M⁻¹ b 的指標位置（aⱼ = Σᵢ (M⁻¹)ⱼᵢ bᵢ）正確；det M·det M⁻¹ = 1 ⇒ det M = ±1；adjugate 論證的反向充分性正確；V_b = |det M|·V_a；|det M| = n > 1 時為指數 n 子格、漏掉 n−1 類（陪集）平移——皆無誤。",
+    "章首導言內容確實出自書 p.3（Fig. 1 出自 p.2，檔案已正確標為 p.2）；半導體／玻璃的對比、石英生長、1912 Laue、中子與電子繞射、condensed matter physics 收尾，全部可在 p.3 找到對應句。",
+    "Fig. 2（書 p.4）三格標籤與圖說要點（by looking at (c) 反推 basis 再抽象出 space lattice；It does not matter where the basis is put in relation to a lattice point）轉述正確，頁碼正確。",
+    "Fig. 3a（書 p.5）圖說四項要點全部轉述正確：所有成對 a₁,a₂ 都是平移向量；a₁‴,a₂‴ 非 primitive 且理由是無法用整數組合形成 T；平行四邊形 1、2、3 等面積且任一可取作 primitive cell；平行四邊形 4 面積為兩倍。Fig. 3b、Fig. 3c 的頁碼（p.5）與內容（三維 primitive cell；『假設這些點是相同原子』的圖上習題）亦正確。",
+    "書 p.6 三個關鍵事實與計數示範（選 primitive axes/cell 的方法很多、primitive cell 或 primitive basis 的原子數對給定晶體結構恆定、每個 primitive cell 恰一個格點、8 × 1/8 = 1）轉述正確，頁碼 p.6 正確。",
+    "Wigner–Seitz cell 的定義與歸類與書中一致：書 p.6 確實把它放在 Primitive Lattice Cell 小節結尾、作為「Another way of choosing a primitive cell」，blocks[13] 與 blocks[14] 的『它就是 primitive cell 的一種選法』與 Voronoi（最近格點勢力範圍）等價敘述皆正確（唯編號步數問題見 blockers）。",
+    "blocks[10]（V_c = 1/n）與 blocks[15]（WS 必為 primitive cell）的補推導數學正確：熱力學極限的表面項處理、不重疊性的反證、平移覆蓋、V_WS = 1/n = V_c、cell 內部只含中心格點，邏輯完整無漏。",
+    "blocks[11] fcc 算例逐步驗算無誤：a₂ × a₃ = (a²/4)(x̂ + ŷ − ẑ)；a₁·(a₂×a₃) = a³/4；V_c = a³/4；m = 4；分攤法 8×(1/8) + 6×(1/2) = 4 與之一致。所取三向量確為 fcc 的標準 primitive 向量。",
+    "數值全部複核正確：Si–Si 鍵長 (√3/4)a = 0.4330 × 5.43 ≈ 2.35 Å；fcc primitive 向量長 a/√2、兩兩夾 60°（cos = (a²/4)/(a²/2) = 1/2）；Si 的 a/√2 ≈ 3.84 Å；1 Å³ = 10⁻²⁴ cm³（與書 p.1 的 1 Å = 10⁻⁸ cm 一致）；a = 3 Å ⇒ V_c = 27 Å³ = 2.7 × 10⁻²³ cm³、1/V_c ≈ 3.7 × 10²² cm⁻³；金剛石 basis (0,0,0) 與 (¼,¼,¼)；SIMPLE CRYSTAL STRUCTURES 起於書 p.13（與 p.1 目錄相符）。",
+    "bcc 的 Wigner–Seitz cell 為截角八面體、fcc 為菱形十二面體；倒晶格的 WS cell 即第一 Brillouin zone；3p 支聲子分支（3 聲學 + 3p−3 光學）、矽 p = 2 ⇒ 6 支——這些 tier: mine/derived 的補充內容物理正確。",
+    "tier 標示整體正確：blocks[1][12][14][16][17] 的補充內容確實不在 p.1–6，標 mine 無誤；blocks[5][10][11][15] 標 derived 無誤；未發現書中明明有卻被標成 mine 的情形。"
+  ]
+}

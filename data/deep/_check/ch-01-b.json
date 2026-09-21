@@ -1,0 +1,112 @@
+{
+  "section": "b",
+  "blockers": [
+    {
+      "where": "blocks[9].steps[6]（「為什麼 centered rectangular 要獨立算一種」推導的最後一步）",
+      "problem": "數學錯誤。宣稱「在六方格每個菱形 cell 的中心加點，得到的仍是六方格，邊長 a/√3、轉 30°」。把菱形 cell 置心後得到的根本不是六方格，而是「矩形格」；a/√3 與 30° 這組數字屬於另一種完全不同的操作（在 (1/3,2/3) 與 (2/3,1/3) 加兩個點的 H-centering／三倍胞），被張冠李戴。前一步 centered square 的檢查是對的，但這一步的類比因此誤導讀者：centered square 真的退回正方格，centered hexagonal 卻是掉到另一個晶系。",
+      "evidence": "實算：取 a₁ = a(1,0)、a₂ = a(−1/2, √3/2)（夾角 120°）。菱形中心 c = ½(a₁+a₂) = a(1/4, √3/4)，|c| = a/2（不是 a/√3 ≈ 0.577a）。新點陣 L′ = ⟨a₁, c⟩，其最短基底可取 u = c、v = a₁ − c = a(3/4, −√3/4)；u·v = a²(3/16 − 3/16) = 0（互相垂直），|u| = a/2、|v| = (√3/2)a。即 L′ 是邊長 a/2 × (√3/2)a 的「矩形格」，六重軸已被破壞。另驗面積：|a₁ × c| = a²√3/4 = 原六方 cell 面積 a²√3/2 的一半，與置心加倍密度相符；若真是邊長 s 的六方格則 s²√3/2 = a²√3/4 → s = a/√2 ≈ 0.707a，但實際最短向量只有 0.5a，矛盾。／a/√3 與 30° 的正確出處：在 (1/3)a₁+(2/3)a₂ 與 (2/3)a₁+(1/3)a₂ 加兩點，得 |p| = a/√3、兩向量夾 60°、整體轉 30°，那是三倍胞不是置心胞。",
+      "fix": "改寫成：「在六方格的 120° 菱形 cell 中心加點，得到的是邊長 a/2 與 (√3/2)a 的矩形格（六重軸被破壞、掉出六方晶系），而矩形格已經在清單裡，所以不是新的 Bravais lattice。」若要保留 a/√3、轉 30° 的說法，必須改述為「在菱形的兩個三角形重心加點（H-centering／三倍胞）」，並另作為補充說明，不可與置心混為一談。"
+    },
+    {
+      "where": "blocks[1].body 最後一段（「對稱操作的清單」，tier: \"book\"）",
+      "problem": "物理錯誤＋在 tier:book 區塊裡把不完整的枚舉宣稱成「完整內容」。原文只在 Fig. 6 圖說給出軸的數目（three tetrad / four triad / six diad），沒有給鏡面數目，也沒有說這些就是點群全部。實際上立方晶格點群 m3̄m（Oₕ）有 48 個操作：24 個真旋轉（E + 3×3 個四重軸操作 + 4×2 個三重軸操作 + 6 個二重軸操作）與 24 個非真操作（i、3 個 σh、6 個 σd、6 個 S₄、8 個 S₆）。文中列的「3+4+6 條軸、3+6 個鏡面、反演、恆等」漏掉了 6 個 S₄ 與 8 個 S₆ 旋轉反演操作，湊不出 48。",
+      "evidence": "原文 p.7 Fig. 6 圖說全文：「(a) A plane of symmetry parallel to the faces of a cube. (b) A diagonal plane of symmetry in a cube. (c) The three tetrad axes of a cube. (d) The four triad axes of a cube. (e) The six diad axes of a cube.」—— (a)(b) 用單數、沒有數目；全節也沒有任何「完整點群內容」的陳述。",
+      "fix": "刪掉「就是立方晶格點群的完整內容」這個宣稱。改成：「書上只以圖示點出軸（3 條 tetrad、4 條 triad、6 條 diad）與兩類鏡面的存在，沒有清點鏡面數目、也沒有給出點群的完整階數。（補充：立方晶格點群 m3̄m 共 48 個操作，除了上述軸與鏡面外還含 6 個 S₄ 與 8 個 S₆ 旋轉反演操作。）」"
+    },
+    {
+      "where": "blocks[0].body 第三點（「張量的獨立分量數由晶系決定」）",
+      "problem": "物理錯誤。把四階張量（彈性剛度）和二階張量（熱導率、介電常數）混在一起套同一組數字 1 / 2 / 3。1、2、3 只對二階對稱張量成立；彈性剛度張量在立方系有 3 個獨立分量（C₁₁、C₁₂、C₄₄），六方系 5 個，正交系 9 個。",
+      "evidence": "文中原句：「熱導率、介電常數、彈性剛度這些二階／四階張量，在立方系只剩 1 個獨立分量（熱導率成為純量），在六方系是 2 個，在正交系是 3 個。」雖然此 block tier 為 mine，但這是明確的物理陳述錯誤。",
+      "fix": "拆成兩句：「二階對稱張量（熱導率、介電常數）：立方 1、六方／正方／三方 2、正交 3。四階張量（彈性剛度）：立方 3、六方 5、正交 9。」或直接把「彈性剛度」從這一句移除。"
+    },
+    {
+      "where": "blocks[21].body 第一段（「原文擷取的技術備註」）",
+      "problem": "事實錯誤（已失效的陳述被寫成現況）。宣稱「一般文字擷取工具（含本站使用的解碼器）不會還原 /HS11005（≠），會留下原始代碼字串」以及「『°』以 /H11034 儲存，容易被誤解成偏微分符號 ∂」。目前的解碼器兩者都正確處理，讀者照著這段去驗證會發現與事實不符。",
+      "evidence": "C:/Users/阿光/Desktop/cth/tools/kittel_extract.py 的 OPS 對映表中有 '11034': '°'、'11128': '∂'，以及註解「/HS11005 是「≠」：等號加斜槓自成一個字符，前綴多一個 S」與 'S11005': '≠'。實際跑 pdf 29（book 9）已直接輸出「a1 ≠a2 ≠a3 α=γ=90°≠β」等正確字元，未知字符現在輸出成 ⟦代碼⟧。",
+      "fix": "整段改寫或刪除。若要保留，改成：「這本 PDF 把數學符號存成自訂字符（≠ 為 /HS11005、° 為 /H11034），早期的解碼器曾漏處理或誤映；目前使用的解碼器已修正，Table 1／Table 2 可直接逐格核對。」其餘關於「Table 1、Table 2 有完整文字層」「Table 2 的上下標與分數在擷取時會錯位（原文擷取出現 `1 4a31 2a3` 這類浮動片段）」的敘述屬實，可保留。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[1].body（Fig. 6 五張子圖的描述，tier: \"book\"）",
+      "problem": "把「(a) 這種面有 3 個」「(b) 這種面有 6 個」寫進「這裡把五張子圖說清楚」的敘述裡，讀起來像是書上給的數目。幾何本身正確，但書上沒有給這兩個數字。",
+      "evidence": "原文 Fig. 6 圖說對 (a)(b) 用單數且不帶數目：「(a) A plane of symmetry parallel to the faces of a cube. (b) A diagonal plane of symmetry in a cube.」只有 (c)(d)(e) 帶數目 three / four / six。",
+      "fix": "在 3 與 6 前加註「（書上未標數目，這裡由幾何補上）」，或把兩個數字移到括號補充中。"
+    },
+    {
+      "where": "blocks[1].body（反演段落，tier: \"book\"）",
+      "problem": "「反演中心一定存在於任何 Bravais lattice 的每一個格點上」是撰寫者補的（正確但非書上內容），放在 tier:book 區塊未加區隔。",
+      "evidence": "原文 p.8 只寫：「The inversion operation is composed of a rotation of π followed by reflection in a plane normal to the rotation axis; the total effect is to replace r by −r.」沒有任何關於「每個格點都是反演中心」的陳述。",
+      "fix": "加「（補充）」標記，或移到 tier:mine 的區塊。"
+    },
+    {
+      "where": "blocks[2].body（「Fig. 5 的內容」段落，tier: \"book\"）",
+      "problem": "「正五邊形的內角是 108°，360°/108° = 3.33…，三片圍住一個頂點留下 36° 空隙，四片超過一圈」這段角度算術是撰寫者補的，書上完全沒有。算術本身正確，但寫在「Fig. 5 的內容：」之後，容易被當成書上的論證。",
+      "evidence": "原文 p.6–7 全部相關文字只有：「In Fig. 5 we show what happens if we try to construct a periodic lattice having fivefold symmetry: the pentagons do not fit together to fill all space, showing that we cannot combine fivefold point symmetry with the required translational periodicity.」與 Fig. 5 圖說，沒有任何角度數字。",
+      "fix": "把角度算術移出「Fig. 5 的內容」段，另起一句「（書上沒算，這裡把數字補上）」。"
+    },
+    {
+      "where": "blocks[19].eq.formula（式 (2)）",
+      "problem": "把「0 ≤ x_j , y_j , z_j ≤ 1」併進編號式 (2) 裡。書上的式 (2) 只有位置向量本身，不等式是緊接著的獨立句子，且是「我們可以把原點安排成使得…」的可選約定，不是式子的一部分。",
+      "evidence": "原文 p.5：「The position of the center of an atom j of the basis relative to the associated lattice point is (2) We may arrange the origin, which we have called the associated lattice point, so that 0 ≤ x j, yj, zj ≤ 1. rj = xja1 + yja2 + zja3 .」",
+      "fix": "formula 只留 r_j = x_j a₁ + y_j a₂ + z_j a₃，把 0 ≤ x_j,y_j,z_j ≤ 1 移到 symbols 或 limits，並註明書上是「可將原點安排成滿足此範圍」。"
+    },
+    {
+      "where": "blocks[15].eq.numeric",
+      "problem": "數值小錯：Si 的 conventional cell 體積寫成 160.2 Å³。",
+      "evidence": "5.43³ = 5.43 × 29.4849 = 160.10 Å³，應為 160.1 Å³（後續 160.1/4 = 40.03 ≈ 40.0 Å³ 與文中一致）。",
+      "fix": "改成 160.1 Å³。"
+    },
+    {
+      "where": "blocks[15].eq.limits 末句",
+      "problem": "用詞不精確：「也與『每 conventional cell 含 1、2、4 個格點』互為倒數關係」。實際關係是相除（V_c = a³/n），不是倒數。",
+      "evidence": "sc: a³/1、bcc: a³/2、fcc: a³/4。",
+      "fix": "改成「V_c = conventional cell 體積 ÷ cell 內格點數」。"
+    },
+    {
+      "where": "blocks[4].body（Penrose／準晶補充，tier: \"mine\"）",
+      "problem": "年份陳述不精確：「1984 年 Shechtman 在急冷的 Al–Mn 合金裡觀察到清晰的十重對稱電子繞射斑點」。Shechtman 的觀察在 1982 年（1982-04-08），論文發表於 1984 年 11 月。",
+      "evidence": "此為公認史實；文中把觀察年與發表年合併成 1984。",
+      "fix": "改成「1982 年 Shechtman 觀察到…，1984 年發表」。"
+    },
+    {
+      "where": "blocks[18].body（packing fraction 討論，tier: \"derived\"）",
+      "problem": "「Kepler 猜想，2017 年由 Hales 的形式化證明完成」時序不精確。Hales 的原始證明 1998 年提出，Flyspeck 形式化驗證於 2014 年 8 月宣告完成，論文 2017 年刊出。",
+      "evidence": "文中僅給 2017 一個年份，讀者會誤以為 2017 才有證明。",
+      "fix": "改成「1998 年 Hales 提出證明，形式化驗證（Flyspeck）2014 年完成、2017 年發表」。"
+    },
+    {
+      "where": "blocks[5].body 最後一段（tier: \"book\"）",
+      "problem": "「14 這個數字…是先問『有哪些點群可以當晶格的點群』，再問『每個點群可以配上幾種不等價的格點排列』，兩層一起數出來的結果」是撰寫者對 14 的方法論解釋，書上沒有。",
+      "evidence": "原文 p.9 只有一句：「The point symmetry groups in three dimensions require the 14 different lattice types listed in Table 1.」",
+      "fix": "加「（書上只給結論，這裡補上數法）」的區隔。"
+    },
+    {
+      "where": "blocks[7].body（二維五種 Bravais lattice，tier: \"book\"）",
+      "problem": "六方格段落補了「這是二維最密堆積的排法，石墨烯的碳原子網路就建在這個晶格上」，rectangular 段落補了點群描述，皆非書上內容，放在 tier:book 未區隔。",
+      "evidence": "原文 Fig. 7 圖說只有「(b) Hexagonal lattice a1 = a2; φ = 120°」，正文對四個特殊晶格沒有任何額外描述。",
+      "fix": "把石墨烯與點群補述用括號標為補充，或移入 tier:mine。"
+    }
+  ],
+  "verified": [
+    "Table 1（p.9）逐欄完全正確：7 列的晶格數 1/2/4/2/3/1/1 與原文一致，總和 14；軸角限制逐字對得上——Triclinic a₁≠a₂≠a₃, α≠β≠γ；Monoclinic α=γ=90°≠β；Orthorhombic α=β=γ=90°；Tetragonal a₁=a₂≠a₃；Cubic a₁=a₂=a₃；Trigonal a₁=a₂=a₃, α=β=γ<120°, ≠90°；Hexagonal a₁=a₂≠a₃, α=β=90°, γ=120°。撰寫者對這兩個曾被誤譯的字符（≠、°）的還原結果完全正確。",
+    "「Table 1 只給每個晶系的晶格數目、沒有列出 14 種各自的名字；書上唯一點名的是立方系的 sc/bcc/fcc」——查核屬實。Table 1 的三個欄位確為 System / Number of lattices / Restrictions on conventional cell axes and angles，無名稱欄。",
+    "Table 2（p.10）九列三欄全部與原文一致：conventional cell 體積 a³/a³/a³；每 cell 格點數 1/2/4；primitive cell 體積 a³/½a³/¼a³；單位體積格點數 1/a³、2/a³、4/a³；最近鄰數 6/8/12；最近鄰距離 a、3^(1/2)a/2=0.866a、a/2^(1/2)=0.707a；第二近鄰數 12/6/6；第二近鄰距離 2^(1/2)a、a、a；packing fraction (1/6)π=0.524、(1/8)π√3=0.680、(1/6)π√2=0.740。註腳「the maximum proportion of the available volume that can be filled with hard spheres」的中譯亦忠實。",
+    "blocks[18] 三個 packing fraction 的推導數學正確：sc r=a/2 → π/6=0.5236；bcc r=(√3/4)a、n=2 → (√3/8)π=0.6802（(8π/3)×(3√3/64) 展開無誤）；fcc r=(√2/4)a、n=4 → (√2/6)π=0.7405（(16π/3)×(2√2/64) 展開無誤）。",
+    "「五重不可能」的論證歸屬正確：原文 p.6–7 只有 Fig. 5 的鋪磚式說法，全節沒有任何 2cos φ 的代數，撰寫者把代數版標為 tier:\"derived\" 是對的。",
+    "blocks[3] 的 2cos φ ∈ ℤ 推導數學全對：A′ = (a − a cos φ, a sin φ)、B′ = (a cos φ, a sin φ)、A′ − B′ = a(1 − 2cos φ)x̂；N = 2cos φ ∈ {−2,−1,0,1,2} 對應 180°/120°/90°/60°/0°（2、3、4、6、1 重）；72° → 2cos φ = 0.61803、2π/7 → 1.24698 的數值亦正確。",
+    "逐字引用 “we cannot combine fivefold point symmetry with the required translational periodicity” 與原文 p.7 完全一致。Fig. 5 圖說「兩種不同設計的 tiles」一語亦屬實（“fill all the area of a plane with just two distinct designs of ‘tiles’ or elementary polygons”）。",
+    "「space group 在第 1 章從未出現」「quasicrystal / Penrose 在第 1 章從未出現」——以 pdf 21–50（含第 1 章全範圍 book p.1–22，第 2 章自 book p.23 開始）全文 grep space.?group / quasi / penrose / icosahed / Shechtman，零命中。兩個宣稱成立。",
+    "bcc primitive translation vectors 與原文 Fig. 10 逐字元一致：a₁=½a(x̂+ŷ−ẑ)、a₂=½a(−x̂+ŷ+ẑ)、a₃=½a(x̂−ŷ+ẑ)，bookPage 10 正確，且原文確實未印式號（JSON 未填 eqNumber，正確）。「Here x̂, ŷ, ẑ are the Cartesian unit vectors」的引述屬實。",
+    "fcc primitive translation vectors 與原文 Fig. 11 一致：a₁=½a(x̂+ŷ)、a₂=½a(ŷ+ẑ)、a₃=½a(ẑ+x̂)，bookPage 11 正確；圖說確有 “As drawn, the primitive vectors are” 與 “The angles between the axes are 60°”。",
+    "式 (3) V_c = |a₁ · a₂ × a₃| 出現在 book p.6 且確實編號 (3)（原文：「The volume of a parallelepiped with axes a1, a2, a3 is (3) by elementary vector analysis.」）；式 (2) r_j = x_j a₁ + y_j a₂ + z_j a₃ 出現在 book p.5 且編號 (2)。兩個 bookPage 與 eqNumber 都對。",
+    "blocks[16] 的三重積驗算全對：bcc a₂×a₃ = u²(2,2,0)、a₁·(a₂×a₃) = 4u³ = a³/2；fcc a₂×a₃ = u²(1,1,−1)、a₁·(a₂×a₃) = 2u³ = a³/4；bcc cos θ = −1/3 → 109.47° = 109°28′；fcc cos θ = 1/2 → 60°。",
+    "109°28′ 的出處與意義正確：原文 Fig. 9 圖說「The primitive cell shown is a rhombohedron of edge ½√3 a, and the angle between adjacent edges is 109°28′」，指 bcc 菱面體 primitive cell 相鄰兩稜的夾角，撰寫者的描述（含邊長 ½√3 a）完全吻合。",
+    "二維五種 Bravais lattice 的名稱與條件與原文 Fig. 7 一致：(a) Square a₁=a₂, φ=90°；(b) Hexagonal a₁=a₂, φ=120°；(c) Rectangular a₁≠a₂, φ=90°；(d) Centered rectangular，圖說確實註明「axes are shown for both the primitive cell and for the rectangular unit cell」。正文「four distinct types of restriction」「five distinct lattice types in two dimensions」「Bravais lattice is the common phrase for a distinct lattice type」三處引述皆屬實。",
+    "p.9「The cells in Fig. 8 are conventional cells: of these only the sc is a primitive cell」與「Often a nonprimitive cell has a more obvious relation with the point symmetry operations than has a primitive cell」兩句的轉述正確；p.10「conventional bcc cell contains two lattice points, and the fcc cell contains four」亦正確。",
+    "p.11 的六方系 primitive cell 敘述正確：「a right prism based on a rhombus with an included angle of 120°」；Fig. 12「Here a₁ = a₂ ≠ a₃」亦屬實。體心 ½½½、面心 ½½0 / 0½½ / ½0½ 三組座標與原文一致。",
+    "blocks[8]（二維五種的數法）與 blocks[9] 前六步（centered rectangular 為新類型、centered square 退回正方格）數學正確：centered square 的新基底 ½a(x̂±ŷ) 長 a/√2 且正交，確為邊長 a/√2、轉 45° 的正方格。",
+    "補充材料數值皆可覆算：α-Fe a=2.87 Å → 2.49 Å；W a=3.16 → 2.74 Å；Na a=4.225 → 3.66 Å；Cu a=3.61 → 2.55 Å；Al a=4.05 → 2.86 Å；Si a=5.43 → primitive 向量 3.84 Å、Si–Si 鍵長 (√3/4)a = 2.35 Å；Si 原子密度 5.0×10²² cm⁻³。",
+    "blocks[11] 補的 14 種 P/C/I/F/R 分配正確（1+2+4+2+3+1+1 = 14），且已明確標示「非 Kittel 本節內容」，tier 為 mine，處理得當。"
+  ]
+}

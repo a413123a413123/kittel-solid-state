@@ -8,6 +8,21 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 CH  = json.load(io.open(os.path.join(BASE, 'data/chapters.json'), encoding='utf-8'))
 REL = json.load(io.open(os.path.join(BASE, 'data/relations.json'), encoding='utf-8'))
 
+def _scan_deep():
+    """哪幾章已有逐節深講（data/deep/ch-NN.json），回傳 {章號: 小節數}。"""
+    d = os.path.join(BASE, 'data/deep'); out = {}
+    if os.path.isdir(d):
+        for f in os.listdir(d):
+            if len(f) == 10 and f.startswith('ch-') and f.endswith('.json'):
+                try:
+                    out[int(f[3:5])] = len(json.load(io.open(os.path.join(d, f),
+                                          encoding='utf-8'))['sections'])
+                except Exception:
+                    pass
+    return out
+
+DEEP = _scan_deep()
+
 META = {
  1:("Crystal Structure","晶體結構","1–22"),
  2:("Wave Diffraction and the Reciprocal Lattice","波繞射與倒晶格","23–45"),
@@ -203,6 +218,7 @@ def index_page():
         rows.append(f'<tr><td class="mono">{n:02d}</td>'
                     f'<td><a href="ch-{n:02d}.html"><b>{e(zh)}</b></a><br><span class="mine">{e(en)}</span></td>'
                     f'<td class="mono">{e(pages)}</td><td class="mono">{len(c["equations"])}</td>'
+                    f'<td class="mono">{("%d 節" % DEEP[n]) if n in DEEP else "—"}</td>'
                     f'<td><span class="tag {tagcls}">{label}</span></td>'
                     f'<td>{e(first)}</td></tr>')
 
@@ -215,13 +231,13 @@ def index_page():
     <div class="wrap">
       <p class="kicker">Kittel《Introduction to Solid State Physics》第 8 版</p>
       <h1>22 章，逐章拆解</h1>
-      <p class="hero__lede">每章六欄：主要內容與研究問題／核心物理概念／重要模型與公式／最重要的結論／與前後章的關係／與熱容的關聯程度。</p>
+      <p class="hero__lede">每章六欄：主要內容與研究問題／核心物理概念／重要模型與公式／最重要的結論／與前後章的關係／與熱容的關聯程度。已深講的章另有<strong>逐節講解</strong>——依書中實際小節切分，每個觀念講到底、每條公式補上推導出處與極限行為。</p>
       <p class="hero__claim">你不需要讀完 700 頁才知道哪一章與你有關。</p>
       <p class="anchors__cap">這份整理的實際規模</p>
       <ul class="anchors">
         <li><span class="v num">{neq}</span><span class="k">條公式，全部標到書本頁碼與式號</span></li>
         <li><span class="v num">{nconc}</span><span class="k">條核心概念，逐條回原文核對</span></li>
-        <li><span class="v num">{ndir} / 22</span><span class="k">章與熱容直接相關</span></li>
+        <li><span class="v num">{len(DEEP)} / 22</span><span class="k">章已完成逐節深講（依書本順序推進中）</span></li>
       </ul>
     </div>
   </header>
@@ -233,7 +249,7 @@ def index_page():
       <p>點章名進入該章的六欄整理。左側刻度尺的格子寬度就是「與熱容的關聯程度」——整本書的分佈一眼看完。</p>
       <div class="tablewrap">
         <table>
-          <thead><tr><th>章</th><th>章名</th><th>書本頁</th><th>公式</th><th>熱容關聯</th><th>核心概念（首條）</th></tr></thead>
+          <thead><tr><th>章</th><th>章名</th><th>書本頁</th><th>公式</th><th>逐節深講</th><th>熱容關聯</th><th>核心概念（首條）</th></tr></thead>
           <tbody>{''.join(rows)}</tbody>
         </table>
       </div>
