@@ -1,0 +1,92 @@
+{
+  "section": 3,
+  "blockers": [
+    {
+      "where": "blocks[9].eq.limits（式 21 的 limits 欄）",
+      "problem": "宣稱本章 SUMMARY 並列印出「四個」等價敘述，但緊接著自己只列了三個，而原文 SUMMARY 也確實只印三個。數字錯且與同一句話自相矛盾。",
+      "evidence": "書 p.43（pdf 63）SUMMARY 第一條逐字為：「• Various statements of the Bragg condition: 2d sin θ = nλ ; Δk = G ; 2k · G = G² .」——恰為三條，不是四條。",
+      "fix": "把「四個等價的敘述」改成「三個等價的敘述」。若原意是把 (24) 也算進來，也不能說是 SUMMARY 並列印出的（SUMMARY 只印三條），須改寫成「本章 SUMMARY（p.43）並列印出三個等價敘述：…」。"
+    },
+    {
+      "where": "blocks[19].body（heading「p.32 的指標陷阱：(200) 不是「(100) 的二階反射」的那種二階」，tier: \"book\"）",
+      "problem": "把「(200) 不是合法的晶面指標／第 1 章沒有 (200) 這族面」當成 Kittel 第 1 章的約定寫出來，但書上第 1 章明確把 (200) 當成晶面指標使用，而且 Miller 指標規則原文帶有 usually（並非硬性要求約到最簡）。這是 tier 標為 book 的區塊裡對書本內容的失實敘述（表格列「(200) **不是合法的面指標**（要約成 (100)）」、內文「在第 1 章的指標約定下是不合法的說法（沒有 (200) 這族面）」）。",
+      "evidence": "書 p.12（pdf 32）規則逐字：「Take the reciprocals of these numbers and then reduce to three integers having the same ratio, usually the smallest three integers.」——是 usually，非強制。同一頁 Fig. 14 標題為「Indices of important planes in a cubic crystal」，五個面板分別標 (100)、(110)、(111)、(200)、(1̄00)，圖說逐字：「The plane (200) is parallel to (100) and to (1̄00).」（已用 PyMuPDF 放大 5 倍目視確認 (200) 面板確實存在）。",
+      "fix": "改成：第 1 章的規則是「化成同比例的三個整數，通常取最小的三個」，而第 2 章 p.32 明講「in the definition of the indices in Chapter 1 the common factor has been eliminated」——兩處措辭其實不完全一致，書上 Fig. 1.14 也直接畫了 (200) 面。因此正確的講法是：作為 Miller 指標慣例上會約掉公因數，但 Kittel 自己在 Ch.1 Fig.14 仍以 (200) 標示晶面；不要斷言「(200) 不是合法的面指標／沒有 (200) 這族面」。"
+    },
+    {
+      "where": "blocks[25].steps[4]（Ewald 補推導最後一步，關於圖上 θ 的圓周角論證）",
+      "problem": "幾何敘述錯誤，且與同一句後半自相矛盾。文中寫「角 APB = θ 是『入射光束方向』與『連接兩格點之弦』之間的夾角」——但 ∠APB 的兩邊是 PA 與 PB，PB 並不是連接兩個倒晶格點的弦（弦是 AB，即 G）。入射方向與弦 AB 的夾角其實是 90° − θ，正是同句後半「90° − (90° − θ)」所用的值，前後打架。",
+      "evidence": "依該推導自身的設定：C 為球心、A 為 k 的尖端、B 為 k′ 的尖端、P 為圓最左端且 P、C、A 共線，故 PA 是直徑。由半圓上的圓周角定理 ∠PBA = 90°，於是在直角三角形 PBA 中 ∠PAB = 90° − θ——這才是「入射光束方向與弦 AB（G 方向）之間的夾角」。∠APB = θ 的另一邊 PB 與 AB 垂直，PB 其實平行於反射晶面。",
+      "fix": "改寫為：PA 是直徑，故由 Thales 定理 ∠PBA = 90°，即 PB ⊥ AB；因為 G（= 弦 AB）垂直於 (hkl) 面族，PB 就平行於該晶面。於是 ∠APB = θ 直接就是「入射光束與晶面」的夾角，也就是 Bragg 角。（若要走原路線，則應說：入射方向與弦 AB 的夾角是 ∠PAB = 90° − θ，故入射光束與晶面夾角 = 90° − (90° − θ) = θ。）"
+    },
+    {
+      "where": "blocks[5].eq.limits（式 19 的 limits 欄，tier: \"book\"）",
+      "problem": "章次引用錯誤：把「電子在晶格中的 Umklapp 過程」歸給第 9 章。Kittel 第 9 章是 Fermi Surfaces and Metals，並未處理該主題；電子的 Umklapp 散射在第 6 章。",
+      "evidence": "全書逐頁字串搜尋 'mklapp' 的命中頁為：書 p.125–126（第 5 章 Phonons II，小節 Umklapp Processes）、p.151–152（第 6 章 Free Electron Fermi Gas，小節 Umklapp Scattering）、p.217，無第 9 章（p.221 起）命中。前言目錄 p.vii–ix 亦列「CHAPTER 5 … Umklapp Processes 125」「CHAPTER 6: FREE ELECTRON FERMI GAS 131 … Umklapp Scattering 151」「CHAPTER 9: FERMI SURFACES AND METALS 221」。",
+      "fix": "把「第 9 章講電子在晶格中的 Umklapp 過程」改成「第 6 章 Umklapp Scattering（書 p.151）講電子—聲子 Umklapp 散射」，或一併提第 5 章 Umklapp Processes（p.125）。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[2].body（Fig. 6 的文字重建）",
+      "problem": "兩個直角符號的位置描述有一個不對。文中說兩條細線各自「與通過 dV 的那條入射／出射線相交並在交點標了直角符號」，但入射側的直角符號畫在 O，不在與上方入射線的交點。",
+      "evidence": "以 PyMuPDF 將 pdf 50（書 p.30）圖區放大 9 倍目視：從 O 往左上的細線（入射波前）與「由左下射入 O 的那條入射線」在 O 處夾直角，直角小方框畫在 O 的左下側；往右上的細線則確實在與「通過 dV 的出射線」的交點處標直角。",
+      "fix": "改為：入射側的直角符號畫在 O（波前與通過 O 的入射線在 O 處垂直），出射側的直角符號畫在細線與通過 dV 的出射線之交點。"
+    },
+    {
+      "where": "blocks[0].body（[l/length] 的校註）",
+      "problem": "校註內容正確但主客顛倒。寫成「是小寫 L 誤植為 1 的排版錯誤」，實際情形是「1 被誤植成小寫 L」。",
+      "evidence": "以 PyMuPDF 放大 14 倍目視 pdf 50（書 p.30）該行，印的確實是「[l/length]」，字形與同一字 length 的 l 完全相同，非數字 1；語意應為 1/length。校註抓錯無誤，只是敘述方向寫反。",
+      "fix": "改成「原文此處印成 [l/length]，是把 1 誤植為小寫 L 的排版錯誤，語意為 1/length」。"
+    },
+    {
+      "where": "blocks[15].eq.from（式 23 的 from 欄引文）",
+      "problem": "引號內把邊碼收了進去：「…and with this substitution we can write (22) as (23)」。原文句子到 as 就結束，(23) 是右側邊欄的式號，不是句子的一部分。",
+      "evidence": "書 p.32（pdf 52）放大 5 倍目視：正文為「If G is a reciprocal lattice vector, so is −G, and with this substitution we can write (22) as」，其下是灰底方框式 2k · G = G²，式號 (23) 印在右邊界。",
+      "fix": "引號結束在 as，改成「…we can write (22) as」，式號另外用中文交代。"
+    },
+    {
+      "where": "blocks[12].body（Problem 4 的數量級估算）",
+      "problem": "把 ε 當成繞射角。ε ≡ a·Δk − 2πh 是相位（弧度），2π/2000 ≈ 3×10⁻³ 是相位寬度；換算成真正的角寬並非同一個數量級。",
+      "evidence": "由 |Δk| = 2k sin θ 得 Δ(2θ) = λ/(L cos θ)。取 λ = 1.5418 Å、L = Ma = 1 μm = 10⁴ Å、θ ≈ 14°，得 Δ(2θ) ≈ 1.6×10⁻⁴ rad，約 10⁻⁴ 而非 10⁻³。",
+      "fix": "改成「相位寬 ε ≈ 2π/2000 ≈ 3×10⁻³ rad；換算成繞射角寬 Δ(2θ) = λ/(L cos θ) ≈ 10⁻⁴ rad」。結論（遠低於儀器解析度）不變。"
+    },
+    {
+      "where": "blocks[12].body（同段的 1 cm 完美晶體估算）",
+      "problem": "「取 M ≈ 10⁸（1 cm 的完美晶體）」與同段自訂的 a ≈ 5 Å 不符。",
+      "evidence": "1 cm / 5 Å = 10⁻² m / 5×10⁻¹⁰ m = 2×10⁷，不是 10⁸。（同段前一句 1 μm → M = 2000 的算法是對的。）",
+      "fix": "改成 M ≈ 2×10⁷，或寫「10⁷ 量級」。"
+    },
+    {
+      "where": "blocks[18].eq.numeric（式 24 的數值例）",
+      "problem": "「sin θ = λ/(2d) = 1.5418/6.271」中的 2d 寫成 6.271，與同句採用的 d(111) = 3.135 Å 對不上。",
+      "evidence": "d(111) = a/√3 = 5.430/1.732051 = 3.1350 Å，2d = 6.2700 Å。1.5418/6.270 = 0.24590（與後面寫的 0.2459 一致），1.5418/6.271 = 0.24586。",
+      "fix": "把 6.271 改成 6.270。"
+    },
+    {
+      "where": "blocks[19].body 的對照表",
+      "problem": "表中「(100)｜一族面，面間距 d(100) = a」與「|G₁| = 2π/a」只在簡單立方成立，但表格未註明晶格類型，而下一段馬上切換到 bcc 討論，容易誤導。",
+      "evidence": "僅當 a₁、a₂、a₃ 為簡單立方的立方邊時 d(100) = a、|G(100)| = 2π/a；fcc/bcc 的傳統立方胞則另有消光與實際面間距。",
+      "fix": "在表格前加一句「以下以簡單立方為例」。"
+    }
+  ],
+  "verified": [
+    "頁碼全部核對無誤：(18)(19)(20)(21)、無編號的 F = Vn_G 皆在書 p.31；(22) 在 p.31 末；(23)(24)(25) 與無編號的 2(2π/λ) sin θ = 2π/d(hkl) 皆在 p.32；Fig. 6 在 p.30、Fig. 7 在 p.31、Fig. 8 在 p.33（pdf = 書頁 + 20 一一比對過）。",
+    "式號全部正確：(18)(19)(20)(21)(22)(23)(24)(25) 與原文印的編號一致；書上沒編號的兩式（F = Vn_G、2(2π/λ) sin θ = 2π/d(hkl)）也確實沒標式號，並在 symbols 欄主動說明「此式在書上沒有編號」。",
+    "公式抄寫全部正確：F = ∫dV n(r)exp[i(k−k′)·r] = ∫dV n(r)exp(−iΔk·r)、k + Δk = k′、F = Σ_G ∫dV n_G exp[i(G−Δk)·r]、Δk = G、F = Vn_G、2k·G + G² = 0、2k·G = G²、2d sin θ = nλ、Laue 三式，與原文逐字元相符；符號、指數、下標無誤，量綱一致。",
+    "灰底方框的宣稱經放大目視確認：(21)、(22)、(23) 三式在書上確實都套了灰底方框。",
+    "逐字引用逐條核對（共 26 段英文引句）全部屬實，包含 p.25「The Bragg derivation is simple but is convincing only because it reproduces the correct result.」、p.26「gives a neat statement…」「We need a deeper analysis to determine the scattering」、p.30「A diffraction pattern of a crystal is, as we shall show, a map of the reciprocal lattice of the crystal.」「The set of reciprocal lattice vectors G determines the possible x-ray reflections.」、p.29「The factors 2π are not used by crystallographers but are convenient in solid state physics.」、p.32「This is the central result…」「Here θ is the angle between the incident beam and the crystal plane.」「The integers hkl that define G are not necessarily identical…」「The original result (21) of diffraction theory…」「which is a severe condition that can be satisfied only by systematic sweeping or searching in wavelength or crystal orientation—or by sheer accident.」、以及 Fig. 6／Fig. 7／Fig. 8 三段完整圖說。跨頁引句（p.30→p.31 的「the amplitude of the wave scattered from a volume element is proportional to the local electron concentration n(r)」）確認為書中連續的同一句。",
+    "Fig. 6 圖說已放大目視逐字比對：「…at the points O, r is r sin φ, and the difference in phase angle is (2πr sin φ)/λ, which is equal to k · r.…」與檔案引文完全相同（文字層把數學片段浮到句尾，檔案的重組是正確的）。",
+    "Fig. 6 的 e^{ik·r} 校註屬實：以 PyMuPDF 放大 16 倍目視，Outgoing beam 下方印的確實是 e^{ik·r}（無撇號），與 Incident beam 標籤相同，確為書上圖檔誤植。",
+    "Problem 4 的括號校註屬實：書 p.44 放大 10 倍目視，分子確實印成 1 − exp[−iM(a · Δk]，少一個右括號。",
+    "Problem 4 的完整解答數學正確：|F|² = sin²(½M(a·Δk))/sin²(½(a·Δk))、主峰高度 M²、第一個零點 ε = 2π/M，與書上題目 (a)(b) 的要求一致；等比級數半角提取、相位因子取模為 1 的步驟皆無誤。",
+    "所有數值重算後一致（λ = 1.5418 Å、k = 4.075 Å⁻¹、2k = 8.150 Å⁻¹、λ/2 = 0.77 Å、|G(111)| = 2.004 Å⁻¹、cos α = 0.2459、α = 75.8°、θ = 14.2°、2θ = 28.4°、d(111) = 3.135 Å、n=2 的 0.4918／29.5°／58.9°），且矽晶格常數 a = 5.430 Å 與書 p.17 原文「a = 3.567, 5.430, 5.658, and 6.49 Å」相符——沒有寫成常見的 5.431。",
+    "Fig. 7 的圖形描述與放大目視一致：共同起點、k 往右下實線、k′ 往右上實線、Δk 為由 k 尖端指到 k′ 尖端的虛線箭頭。",
+    "Fig. 8 的圖形描述與放大目視一致：右半部倒晶格點、球心處小空心圓、k 水平向右且尖端落在一個格點上、白線圓、k′ 指向右上另一格點、G 連接兩格點、球心處標 2θ、圓最左端標 θ。",
+    "「Theorem.」為跑進式小標、兩份目錄都沒收錄——經查前言目錄（書 p.vii）與章首小節列表（書 p.23）皆只列到 Diffraction conditions / Laue equations，確無 Theorem。",
+    "三處「全書未出現」的自我聲明全部經全文 700 頁掃描證實：phase problem、Scherrer（故 Debye-Scherrer 亦不出現）、Laue method、rotating crystal、powder method 均無命中。",
+    "外部知識的劃界誠實：blocks[26]（三種實驗做法）標為 tier \"ext\" 並在開頭聲明非書中內容；blocks[4] 的 Cu Kα 波長亦註明「不出自 Kittel 這幾頁」；blocks[11]、blocks[27]、blocks[28] 標為 tier \"mine\"。除 blockers 所列者外，tier \"book\" 區塊的實質宣稱都能在原文找到依據。",
+    "後續章節的交叉引用除 Umklapp 一處外皆正確：式 (26) k·(½G) = (½G)² 與「diffracted beam will then be in the direction k − G, as we see from (19) with Δk = −G」確在書 p.33；S_G ≡ Σ f_j exp(−ir_j·G) 確在 p.43 SUMMARY；reciprocal net rods 與「The radius k of the Ewald sphere for 100 keV electrons will be ≅10³ Å⁻¹, which is much longer than the shortest reciprocal lattice vector 2π/a ×1 Å⁻¹」確在書 p.491–494；Fig. 18（粉末鑽石中子繞射）確在 p.45；Fig. 3／Fig. 4 確在 p.26。",
+    "其餘 derived 區塊（r sin φ → k·r 的相位幾何、(9) 代入 (18) 得 (20)、彈性條件展開得 (22)、由 2k·G = G² 回到 2d sin θ = nλ 的指標換算、Δk = G 取內積得 Laue 三式含其逆向等價性論證）數學推導均正確。"
+  ]
+}

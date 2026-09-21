@@ -23,11 +23,20 @@ TIER = {'derived': ('補推導', 'tier--derived'),
         'ext':     ('延伸知識', 'tier--ext')}
 
 
+# *斜體*：本書的單星號大多是複數共軛（n*₋ₚ、S*S、a*_i），不能無條件當斜體。
+# 借 CommonMark 的側翼規則收緊：左星號前不可是英數／CJK、後不可是空白，右星號反之，
+# 且配對之間不得再出現星號。共軛星號一定緊貼字母，因此永遠當不成斜體的開頭。
+ITALIC = re.compile(r'(?<![^\W_])\*(?=[^\s*])([^*\n]+?)(?<=[^\s*])\*(?![^\W_])')
+
+
 def md(t):
-    """先轉義再處理 **粗體**／`行內碼`。內容是手寫的 Markdown 片段。"""
+    """先轉義再處理 **粗體**／*斜體*／`行內碼`，最後還原 \\| 跳脫。"""
     t = e(t)
     t = re.sub(r'\*\*(.+?)\*\*', lambda m: '<strong>' + m.group(1) + '</strong>', t, flags=re.S)
+    t = ITALIC.sub(lambda m: '<em>' + m.group(1) + '</em>', t)
     t = re.sub(r'`(.+?)`', lambda m: '<code>' + m.group(1) + '</code>', t)
+    # \| 是「字面豎線」的跳脫（絕對值 \|G\|）；切完欄之後才還原成 |
+    t = t.replace('\\|', '|')
     return t
 
 
@@ -35,13 +44,25 @@ def prose(body):
     """把多段文字轉成 <p>，其中的 Markdown 表格獨立成 <table>。"""
     if not body:
         return ''
-    out, tbl = [], []
+    out, tbl, quo = [], [], []
+
+    def flush_quote():
+        # 連續的「> 」行併成一個引用區塊，沿用章總覽既有的 .quote 樣式
+        if not quo:
+            return
+        out.append('<blockquote class="quote">'
+                   + ''.join(f'<p>{md(x)}</p>' for x in quo) + '</blockquote>')
+        quo.clear()
 
     def flush_table():
         # 表格連續行要收集完才輸出，並丟掉 |---|---| 這種分隔列
         if not tbl:
             return
-        rows = [[c.strip() for c in ln.strip().strip('|').split('|')] for ln in tbl]
+        # 只在「沒被 \ 跳脫的豎線」切欄，否則絕對值 \|G\| 會把一列切成兩倍欄數
+        rows = []
+        for ln in tbl:
+            s = re.sub(r'(?<!\\)\|\s*$', '', re.sub(r'^\s*\|', '', ln.strip()))
+            rows.append([c.strip() for c in re.split(r'(?<!\\)\|', s)])
         rows = [r for r in rows if not all(set(c) <= set('-: ') for c in r)]
         if rows:
             head, rest = rows[0], rows[1:]
@@ -54,13 +75,29 @@ def prose(body):
 
     for para in body.split('\n\n'):
         for ln in para.split('\n'):
-            if ln.strip().startswith('|'):
+            s = ln.strip()
+            if s.startswith('|'):            # 表格列：交給 flush_table 收集
+                flush_quote()
                 tbl.append(ln)
+                continue
+            flush_table()
+            if s.startswith('>'):            # 引用：連續行併成一塊
+                quo.append(s.lstrip('>').strip())
+                continue
+            flush_quote()
+            if not s:
+                continue
+            h = re.match(r'^(#{1,6})\s+(.+)$', s)
+            if h:                            # ## / ### 小標；全部走同一級，字級表不變胖
+                out.append(f'<h4 class="prose__h">{md(h.group(2).strip())}</h4>')
+            elif re.fullmatch(r'-{3,}|\*{3,}|_{3,}', s):
+                out.append('<hr class="prose__hr">')
             else:
-                flush_table()
-                if ln.strip():
-                    out.append(f'<p>{md(ln.strip())}</p>')
+                out.append(f'<p>{md(s)}</p>')
         flush_table()
+        flush_quote()
+    flush_table()
+    flush_quote()
     return ''.join(out)
 
 
@@ -83,7 +120,9 @@ def eq_html(q):
             f'<p class="eq__l">{e(q["label"])}</p>'
             f'<p class="eq__f">{e(q["formula"])}</p>'
             f'<span class="eq__r">{" 　".join(rt)}</span>'
-            + (f'<p class="eq__s">{e(q["symbols"])}</p>' if q.get('symbols') else '')
+            # symbols 與 from／limits／numeric 同屬手寫散文，一律走 md()；
+            # 只用 e() 會讓 **粗體** 以字面星號留在頁面上。
+            + (f'<p class="eq__s">{md(q["symbols"])}</p>' if q.get('symbols') else '')
             + meta + '</div>')
 
 

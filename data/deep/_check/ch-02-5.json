@@ -1,0 +1,73 @@
+{
+  "section": 5,
+  "blockers": [
+    {
+      "where": "blocks[1].eq.limits（(39) 的 limits，「但峰的角寬度 ∝ 1/N（這正是 Problem 4 要證的）」）",
+      "problem": "物理錯誤＋同一個 block 內自相矛盾：這裡的 N 在 symbols 裡明確定義為「晶體中的晶胞數」，但峰寬正比的是**線性方向上的晶胞數** M = N^(1/3)，不是 N。Problem 4 證的也是 ε = 2π/M（M 為一維鏈上的散射中心數），不是 1/N。照這裡的寫法，三維積分強度會變成 N²·(1/N)³ ∝ 1/N，與同一段後面「積分強度 ∝ N ∝ 樣品體積」的結論直接打架。",
+      "evidence": "原文 p.44 Problem 4 逐字：「We suppose that in a linear crystal there are identical point scattering centers at every lattice point ρ_m = ma」「Show that ε = 2π/M, so that the width of the diffraction maximum is proportional to 1/M」——M 是**一條線上**的散射中心數。本檔 blocks[1].eq.numeric 自己也算成「每邊約 3.3×10³ 個晶胞，N ≈ 3.7×10¹⁰…峰寬 ∝ 1/3.3×10³」，用的正是 N^(1/3) 而不是 N；blocks[28].steps[6] 也寫「Δk 的分量改變 ε/a = 2π/(Ma) = 2π/L，其中 L = Ma 是晶體在該方向的長度」。",
+      "fix": "改成「但峰在倒空間每個方向上的寬度 ∝ 1/M，M = N^(1/3) 是該方向上的晶胞數（Problem 4 證的就是這個）；峰在三維倒空間佔的體積 ∝ 1/M³ = 1/N，所以積分強度 ∝ N² × (1/N) = N，也就是 ∝ 樣品體積」。"
+    },
+    {
+      "where": "blocks[14].body（最後一段，「而 sc 的 (200) 是第二個峰（第一個是 (100)）」）",
+      "problem": "數值／排序錯誤，且與本檔 blocks[12].steps[9] 直接矛盾，還讓這句話自己要表達的對比（「序列不同，指紋不同」）失效——照它寫的，bcc 與 sc 的 (200) 都是「第二個峰」，反而變成一樣。sc 的 (200) 其實是第**四**個峰。",
+      "evidence": "sc 允許所有整數指標，h²+k²+l² 序列為 1, 2, 3, 4, 5, 6, 8, …，即 (100), (110), (111), (200), …，(200) 排第 4。本檔 blocks[12].steps[9] 自己就寫「sc 的序列是 1, 2, 3, 4, 5, 6, 8,…（缺 7…）」，據此 (200)（=4）必為第 4 個。bcc 部分無誤：序列 2, 4, 6, … → (110), (200)，(200) 確為第 2 個（blocks[12].steps[8] 一致）。",
+      "fix": "改成「而 sc 的 (200) 是它的第**四**個峰（前面依序是 (100)、(110)、(111)）——同一組指標在兩種點陣裡排序完全不同，指紋不同」。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[21].steps[7] 與 blocks[22].eq.from（(50) 印成等號的校註）",
+      "problem": "校註的**結論正確**（書上 (50) 確實把乘號印成等號），但給的理由「量綱上不可能成立」是錯的：等號兩邊其實都是無因次量。真正的毛病是 r 是積分的**啞變數**，右邊寫成 sin Gr/Gr 讓自由變數與束縛變數混用，式子根本無定義。",
+      "evidence": "已用 PyMuPDF 12 倍放大目視確認 pdf p.62（書本 p.42）(50) 印的是 f_j = 4π ∫ dr n_j(r) r² = (sin Gr)/(Gr)，字元層在 r² 與分數之間確有一個 MathematicalPi-One \\x02（等號），並非抽取誤差——這部分校註無誤。但量綱：n_j(r) 為 [L⁻³]，dr·r² 為 [L³]，故 4π∫dr n_j(r)r² 無因次（(51) 就等於 Z）；sin(Gr)/(Gr) 亦無因次。兩邊同為無因次，量綱論證不成立。",
+      "fix": "把「這在量綱上不可能成立（左邊是積分、右邊是無因次函數）」改成「右邊的 r 是左邊積分的啞變數，寫成等號在數學上無定義；而且由 (51) 這個積分本身等於 Z，不可能等於 sin Gr/Gr」。"
+    },
+    {
+      "where": "blocks[13].body（Fig. 16 的目視描述，「畫成一個正方形，四個角上有黑點（角原子），正中央有一個黑點（體心原子）」）",
+      "problem": "圖的描述與原圖不符：Fig. 16 畫的不是單一個晶胞，而是**三個並排的方胞**（一列三格）。",
+      "evidence": "以 PyMuPDF 4–5 倍算繪 pdf p.61（書本 p.41）目視：格線由 4 條垂直線分成 3 格，1st plane 與 3rd plane 線上各有 4 個角原子黑點，2nd plane 線上有 6 個體心原子黑點（左右各延伸出格線外一個）。三條白色光線分別打在三個平面上、π/π/「Phase difference 2π」大括號、右側標 a 的雙箭頭——這些描述皆正確。",
+      "fix": "「畫成一個正方形」→「畫成一列三個並排的方胞（每格四角有黑點、正中央有一個體心黑點）」。"
+    },
+    {
+      "where": "blocks[20].body 第一句（「(43) 已經把 fⱼ 定義出來了」）",
+      "problem": "式號指錯：定義 fⱼ 的是 (42)，(43) 是把 fⱼ 組合成 S_G 的結果。與本檔 blocks[6]（eqNumber (42)，label「原子形狀因子的定義」）自相矛盾。",
+      "evidence": "原文 p.39：「We now define the atomic form factor as (42) f_j = ∫ dV n_j(ρ) exp(−iG·ρ)」；p.41 書上自己回頭說「We defined the form factor in (42)」（本檔 blocks[21].body 也逐字引了這句）。",
+      "fix": "「(43) 已經把 fⱼ 定義出來了」→「(42) 已經把 fⱼ 定義出來了（(43) 只是把它組進 S_G）」。"
+    },
+    {
+      "where": "blocks[19].body（硬消光清單裡的「鑽石的 (222)」，以及「這些反射的 S 嚴格等於零…實驗上這些位置只有背景」）",
+      "problem": "拿鑽石 (222) 當「硬消光」的招牌例子是最不恰當的選擇：它正是教科書上最有名的「禁制卻量得到」的反射——X 光下因為價電子電荷分布非球對稱（四面體鍵結）而出現弱峰，正好違反同一段宣稱的「與原子是什麼無關、只有背景」。與本檔 blocks[24] 討論的 deformation density 是同一件事，前後有張力。",
+      "evidence": "blocks[19] 自己的定義是「硬消光…S 嚴格等於零…與原子是什麼、與溫度、與波長都無關。實驗上這些位置只有背景」。但 (50) 的球對稱假設（原文 p.41「If the electron distribution is spherically symmetric about the origin」）正是鑽石 (222) 為零的前提；一旦承認 blocks[24] 所說的價電子重分布，(222) 就不再嚴格為零。書上 Fig. 18 是**中子**繞射（散射自點狀核），那裡 (222) 才真的是零。",
+      "fix": "硬消光的例子改用 bcc 的奇數和與 fcc 的奇偶混合（純幾何、與 f 無關）；鑽石 (222) 另闢一句說明「在球對稱原子近似下嚴格為零，但 X 光實測會因鍵結電荷而出現極弱的殘留——這也是 blocks[24] 說『不是看不到、只是不敏感』的最佳例子」。"
+    },
+    {
+      "where": "blocks[5].steps[1]（「S_G = Σⱼ ∫_cell dV nⱼ(r − rⱼ) exp(−iG·r)。這就是書上 (41) 的第一行」）",
+      "problem": "書上 (41) 的第一行印的是不帶下標的 ∫ dV，沒有 cell 下標；這裡替書加了一個原文沒有的積分域，又在下一步說「積分域從 cell 悄悄放大成全空間」是書上的手腳，敘述會互相干擾。",
+      "evidence": "pdf p.59（書本 p.39）字元層：'SG = Σ_j ∫ dV nj(r − rj) exp(−iG · r)'，只有 (39) 那一式印了 ∫_cell。",
+      "fix": "改成「書上 (41) 第一行印的是 ∫ dV（已經不帶 cell 下標）——這個下標的消失就是下一步要講的『積分域悄悄放大』」。"
+    },
+    {
+      "where": "blocks[4].body 第一句（「(40) 下面書上寫了三句話，值得逐字讀」）",
+      "problem": "數量不符：引用的是兩個句子，後面卻按「第一句／第二句／第三句」拆成三段（實際是把第一句用逗號切成兩半）。",
+      "evidence": "原文 p.39：「The decomposition of n(r) is not unique, for we cannot always say how much charge density is associated with each atom. This is not an important difficulty.」——兩個句號，兩句。",
+      "fix": "「三句話」→「兩句話（可以拆成三個層次來讀）」，或把後面的「第一／二／三句」改成「第一／二／三層」。"
+    },
+    {
+      "where": "tier 標記一致性：blocks[13]、blocks[20]、blocks[24] 皆為 tier: \"book\"",
+      "problem": "這三個 block 的骨幹確實出自書上（引用全部逐字命中），但各自夾帶了原文完全沒有的延伸，且沒有像 blocks[2]、blocks[27] 那樣標明「以下是本站補的」。",
+      "evidence": "blocks[13] 末段的 CsCl 例子與「體心點陣（I 型點陣）消光」這個名稱，書上 p.40–41 沒有；blocks[20] 的「f 是無因次比值、單位是等效點電子個數」「international tables 把 f 列成 sinθ/λ 的函數」書上沒有；blocks[24] 後半整段（電荷密度研究、同步輻射、低溫壓抑 Debye–Waller、XPS/EELS/XANES 建議）書上沒有。對照 blocks[2]「書上就只寫了這一句，以下的理由是本站補的」、blocks[27]「解題要點與評註是本站補的」——同一份檔案有兩套標法。",
+      "fix": "在這三處各補一句「（以下為本站補充，非書上內容）」，或把純延伸段落切出成鄰近的 tier: mine block。"
+    }
+  ],
+  "verified": [
+    "式號與頁碼：9 個 equation block 的 eqNumber/bookPage 全部正確——(39)(40)(42)(43) p.39、(46)(47)(48) p.40、(50)(51) p.42；原文 (41)(44) 在 p.39、(45) 在 p.40、(49) 在 p.41，本檔未替它們開 equation block 也沒有錯標。內文提到的 p.29 (13)(14)(15)、p.31 (18)(20)(21)(22)、p.32 (23)(24)(25)、p.33 (26)、p.36/37/38 的倒晶格與 BZ、第 1 章 (2) 式 rⱼ = xⱼa₁+yⱼa₂+zⱼa₃（書本 p.5，對應 (44) 註的「as in (1.2)」）、附錄 A 起於 p.641 且用的是 (2.43)——逐一回原文核對皆相符。",
+    "英文逐字引用 40 餘處全部命中原文（含 PDF 文字層會漂走的行內數學，已用字元座標重組或放大算繪確認）：p.39「When the diffraction condition Δk = G of Eq. (21) is satisfied…」（Δk = G 確實印在 condition 與 of 之間）、「is defined as an integral over a single cell, with r = 0 at one corner」、「Often it is useful to write…」、「The decomposition of n(r) is not unique…This is not an important difficulty.」、「If nⱼ(ρ) is an atomic property, fⱼ is an atomic property」、「We combine (41) and (42) to obtain the structure factor of the basis in the form」；p.40 的 S*S 整句（放大目視逐字相符）、bcc 基底、鈉譜線清單整段、(100) 消光三句與「because the planes are identical in composition」「A similar cancellation can easily be found in the hcp structure.」；p.41 fcc 全奇全偶三句、「Thus in the fcc lattice no reflections can occur…」、「The point is beautifully illustrated by Fig. 17」與 KCl simulates an sc lattice 整句、Atomic Form Factor 開頭兩句、「We now give a classical calculation…」「…interference effects within the atom.」「We defined the form factor in (42)」；p.42 Fig. 17 圖說全文、「after integration over d(cos α) between −1 and 1」、「If the same total electron density were concentrated at r = 0…」、「Therefore f is the ratio of…one electron localized at a point.」、「In the forward direction G = 0…」、最後一段三句；p.43 SUMMARY 的 Bragg/Laue/結構因子/傅立葉/BZ 五條；p.37「…a regular 12-faced solid, a rhombic dodecahedron」、p.36/p.38 的互為倒晶格兩句；p.31「It is a simple exercise (Problem 4)…」；Problems 1–7 的題目敘述全部逐字相符（含 Problem 7 的 ½a 鍵長、Problem 6 的 fG = 16/(4+G²a₀²)²、Problem 5 的 4n 規則與括號註記）。",
+    "三處「書上排版錯誤」的校註（blocks[3]、blocks[21]/[22]、blocks[28]、彙整於 blocks[32]）獨立複驗全部屬實：(40) 求和下標確實印成 j−1（字元層為 NewCaledonia-Italic 'j' + MathematicalPi-One \\x03「−」+ '1'，14 倍放大目視為明確的減號）；(50) 在 r² 與 (sin Gr)/(Gr) 之間確實印了等號（字元層 MathematicalPi-One \\x02，12 倍放大確認）；Problem 4 分子確實印成 1 − exp[−iM(a · Δk]，少一個右括號（9 倍放大確認，分母則兩括號齊全）。",
+    "三處「解碼器失真、原書無誤」的校註亦屬實：p.40 (48) 的 ⟦20902⟧/⟦20903⟧ 是跨行大括號；p.44 Problem 4(b) 的符號放大後確為 ε（字元層 MathPiOneItalic \\x0a，四次出現位置一致），原句逐字為「We change Δk slightly and define ε in a·Δk = 2πh + ε such that ε gives the position of the first zero in sin ½M(a·Δk).」，本檔引用與之完全相符；Problem 3 的 (c ∑ a × b)a 確為點積被誤映，同樣誤映亦見於 p.30、p.31 的 exp[i(k−k′)·r]。",
+    "圖的目視判讀（以 PyMuPDF 4–6 倍算繪核對）：Fig. 17 橫軸確為 2θ 由右（20°）往左（80°）遞增並有向左箭頭、縱軸無刻度；KCl 標出 (200)(220)(222)(400)(420) 全偶指標、(200) 最高 (220) 次之；KBr 標出 (111)(200)(220)(311)(222)(400)(331)(420)、(200) 最高 (220) 次之 (111) 明顯較矮——與 blocks[17] 描述、blocks[15].eq.numeric 的 fcc 序列 3,4,8,11,12,16,19,20 完全吻合。Fig. 18 縱軸 0–800 counts/min、橫軸 Counter position 2θ 20°–75°、僅四個峰，讀數 (111)≈30°/約 615、(220)≈48°/約 525、(311)≈58°/約 375、(400)≈72°/約 130、背景約 50，峰寬標註與峰的對應為 (111) 0.45°、(220) 0.65°、(311) 0.70°、(400) 0.80°（以標註的 x 座標配對確認）——與 blocks[29].steps[7] 一致。",
+    "derived 區塊的數學逐步複核全部正確：(39)→(41)→(43) 的變數變換與相位提出；G·rⱼ = 2π(v₁xⱼ+v₂yⱼ+v₃zⱼ) 由 bᵢ·aⱼ = 2πδᵢⱼ 殺掉九項中的六項；bcc σ 奇偶判準與譜線逐條（(100)(300)(111)(221) 缺席、(110)(200)(222) 出現）；fcc 的 ABC = (−1)^{2(v₁+v₂+v₃)} = +1 恆等式與「只能全 +1 或恰兩個 −1」的窮舉；NaCl 型 S = [f₊+f₋(−1)^{v₁}]·S_fcc、全偶 4(f₊+f₋)／全奇 4(f₊−f₋)、8 個分數座標（陰離子 ½00, 0½0, 00½, ½½½）與「全偶 ⇒ 等效 a/2 的 sc」；(49)→(50) 的 φ 積分給 2π、sinα dα → d(cos α)、∫₋₁¹ e^{−iGru}du = (e^{iGr}−e^{−iGr})/(iGr) = 2sin(Gr)/(Gr)、2π×2 = 4π；Problem 4 的 |1−e^{iφ}|² = 4sin²(φ/2)、峰高 → M²、第一零點 ε = 2π/M、ε/a = 2π/L；Problem 5 的 S = f·S_fcc·[1+(−i)^σ]、全奇 |S|² = 32f²／σ≡0 mod 4 |S|² = 64f²／σ≡2 mod 4 為零、(200)(222) 缺席；Problem 6 的正規化 Z = 1、∫₀^∞ r e^{−pr} sin(qr) dr = 2pq/(p²+q²)²、f = 16/(4+G²a₀²)²、小 G 展開 f ≈ 1 − G²a₀²/2 對回 ⟨r²⟩ = 3a₀²（與氫基態真值相符）；Problem 7 的 S(n) = f_A + f_B(−1)^n 與 a·Δk = 2πn 的一維 Laue 推導、f_A = f_B 時退化成週期 a/2 的單原子鏈。",
+    "數值全部複算無誤（逐項對照，非肉眼掃）：1 μm/3 Å = 3.3×10³、N = 3.7×10¹⁰、N² = 1.4×10²¹、3×10⁻⁴ rad = 0.017°；Cu Kα λ = 1.5418 Å、G_max = 4π/1.5418 = 8.15 Å⁻¹；Na a ≈ 4.23 Å、d(110) = 2.99 Å、sinθ = 0.258、2θ = 29.9°、(100) 2θ = 21.0°；2θ = 60° ⇒ G = 4.07 Å⁻¹、Gr = 2 時 sin(Gr)/(Gr) = 0.44、Gr = 8 時 0.12；K⁺ 19−1 = 18、Cl⁻ 17+1 = 18、Br⁻ 35+1 = 36、|36−18|²:|36+18|² = 324:2916 = 1:9；Si 4/14 = 29%；氫 f = ½ ⇒ G²a₀² = 1.657、Ga₀ = 1.29、G = 2.43 Å⁻¹、sinθ/λ = 0.194 Å⁻¹、2θ ≈ 35°（a₀ = 0.529 Å）；Problem 4 的 M = 10⁵、a = 3 Å ⇒ L = 30 μm、Δ(2θ) ≈ 5×10⁻⁶ rad ≈ 3×10⁻⁴ 度；Fig. 18 強度驗算 m|S|²L 以 m = 8/12/24/6、L = 1/(sin²θcosθ) 複算得 2.9:3.5–3.7:2.7:1，與檔中所列一致，且「峰高×峰寬」未扣背景 2.9:3.5:2.7:1、扣 50 cpm 背景 4.6:5.5:4.0:1 亦複算相符。",
+    "晶體學事實核對無誤：bcc 的第一 BZ 為菱形十二面體（倒晶格為 fcc）、fcc 的第一 BZ 為截角八面體（倒晶格為 bcc）、sc 為邊長 2π/a 的立方體——與 p.36/37/38 及 SUMMARY 表一致，沒有把 BZ 誤當成實空間的 WS 胞；hcp 的 (001) 確因 (⅓,⅔,½) 那層而消光；CsCl 的 (100) 為 f_Cs − f_Cl 不消光；閃鋅礦 (222) 為 4(f_A − f_B) 不為零；全奇或全偶指標佔整數三元組的 2/8 = 1/4，剩下的 1/4 確為 bcc 排列的點陣；bcc 序列 2,4,6,8,10,12 ↔ (110)(200)(211)(220)(310)(222)、fcc 序列 3,4,8,11,12,16,19,20、sc 序列缺 7，皆正確。",
+    "跨章指涉正確：第 4–5 章聲子、第 6 章自由電子、第 7 章能帶（(26) 的 k·(½G) = (½G)²）、第 17 章 Surface and Interface Physics、第 20 章 Point Defects、第 22 章 Alloys、附錄 A p.641 Temperature Dependence of the Reflection Lines；Debye–Waller 因子 I = I₀ exp(−⅓⟨u²⟩G²) 與附錄 A 式 (4) 逐字相符，「升溫時峰變弱但不變寬」亦與 p.641 首段相符。",
+    "blocks[32] 宣稱「本段沒有上橫線掉字問題」屬實：p.39–45 出現的指標 (100)(300)(111)(221)(200)(110)(222)(220)(311)(331)(400)(420) 全為正指標，Fig. 17 兩格共 13 個標籤（KCl 5 個、KBr 8 個）數量與文字層一致，無重複或缺漏徵兆。"
+  ]
+}

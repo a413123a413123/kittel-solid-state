@@ -268,7 +268,9 @@ code, .mono { font-family: var(--font-mono); font-size: 1em; font-variant-numeri
 .plate__k { font-size: var(--f-label); color: var(--on-plate-2); margin-top: var(--s1); }
 
 /* ---------- 表格（Kittel 資料表：極細線、無斑馬紋） ---------- */
-.tablewrap { overflow-x: auto; margin: var(--s5) 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--sh-flat); }
+/* color 要寫死成 --ink：表格自帶 --card 白底，放進 .plate 時若讓 td 繼承
+   --on-plate（淺色，為深底而設）就會變成白底淺字，整張表讀不到。 */
+.tablewrap { overflow-x: auto; margin: var(--s5) 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); color: var(--ink); box-shadow: var(--sh-flat); }
 .tablewrap--narrow { max-width: 42em; }
 table { width: 100%; border-collapse: collapse; font-size: var(--f-num); }
 th, td { text-align: left; padding: var(--s2) var(--s4); border-bottom: 1px solid var(--line); vertical-align: top; }
@@ -464,6 +466,18 @@ td.mono, th.mono { font-family: var(--font-mono); white-space: nowrap; }
 .blk ul, .blk ol { font-size: var(--f-body); line-height: 1.85; max-width: 34em;
   margin: 0 0 var(--s4); padding-left: 1.3em; }
 .blk li { margin-bottom: var(--s2); }
+
+/* ---- 散文裡的 Markdown 小標與分隔線（prose() 產生） ----
+   刻意沿用 --f-body，不引入新字級：小標靠字重與間距分層，不靠放大。
+   行高 1.5 是標題元素在 <32px 時的上限，不可再放寬。 */
+.prose__h { font-size: var(--f-body); line-height: 1.5; font-weight: 600;
+  color: inherit; letter-spacing: 0; max-width: 34em;
+  margin: var(--s6) 0 var(--s3); }
+.prose__h:first-child { margin-top: 0; }
+/* color: inherit／currentColor 是必要的：這兩者同時出現在淺色卡片與深色 plate 上，
+   寫死 --ink 會讓 plate 上的小標變成深色壓深色。 */
+.prose__hr { border: 0; border-top: 1px solid currentColor; opacity: .25;
+  max-width: 34em; margin: var(--s6) 0; }
 
 /* ---- 層級標籤：只標非「書中」的內容，未標示者即書中 ---- */
 .tier { font-size: 11px; font-weight: 600; white-space: nowrap;   /* 中文不加字距 */

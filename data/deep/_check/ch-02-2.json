@@ -1,0 +1,68 @@
+{
+ "section": 2,
+ "blockers": [],
+ "minors": [
+  {
+   "where": "blocks[31].body（(16)→(17) 推導區塊的 body 第一段）",
+   "problem": "「這是整章唯一真正用到 (14) 的地方」不成立，且與本檔自己的兩處說法直接矛盾。",
+   "evidence": "原文 p.33 Laue equations 正是把 Δk = G 對 a₁,a₂,a₃ 取內積、用 (14) 得到 a_i·Δk = 2πv_i；本檔 blocks[34] 自己寫「Laue equations（p.33）…這一步完全靠 (14)，不靠 (13)」，blocks[26].eq.limits 也寫「凡是後面用到倒晶格的地方，真正被使用的都是 (14)」。",
+   "fix": "改成「這是本節唯一真正用到 (14) 的地方」或「(14) 在此第一次真正派上用場（p.33 的 Laue 方程會再用一次）」。"
+  },
+  {
+   "where": "blocks[16].body（Inversion of Fourier Series 段第一段）",
+   "problem": "把 run-in 小標的字體說成「粗斜體」，實際是粗體正體。",
+   "evidence": "以 PyMuPDF 讀 pdf p.48（書本 p.28）span 字型：'Inversion of Fourier Series.' 的字型為 NewCaledonia-Bold；而真正的小節標題 'Fourier Analysis'（p.27, y=94.5）與 'Reciprocal Lattice Vectors'（p.29, y=227.6）才是 NewCaledonia-BoldItalic。同段其餘宣稱（run-in、後面直接接正文、目錄未收錄）皆已核對正確——全書前 60 頁只在 p.28 出現這個字串。",
+   "fix": "「以粗斜體印在段落的開頭」→「以粗體（正體，與小節標題的粗斜體不同）印在段落的開頭」。"
+  },
+  {
+   "where": "blocks[4].eq.limits（(3) 的 limits）",
+   "problem": "n₀ 的量綱敘述與本檔其他三處自相矛盾：這裡說「每單位長度的平均電子數」（[1/length]），別處一律是電子數密度 [1/length³]。",
+   "evidence": "blocks[2].eq.symbols：「n(r)：電子數密度…量綱 [1/length³]」；blocks[17].eq.limits：「n₀ = (1/a)∫₀^a n(x) dx，恰為一個週期內的平均密度，量綱也對（[1/length³] 不變）」；甚至同一個 block 的 symbols 也寫「n₀：常數項，即一個週期內的平均電子密度」。原文 p.27 只說 n(x) 是 electron number density 的一維化，沒有改成線密度。",
+   "fix": "改成「n₀ 的物理意義是一個週期內的平均電子密度（量綱仍為 [1/length³]）」。"
+  },
+  {
+   "where": "blocks[19].body（正交性推導 body 最後一段）",
+   "problem": "「這條三維正交性的證明，用的正是 (17)」——實際用的是 (14)，不是 (17)。",
+   "evidence": "∫_cell dV exp[i(G′−G)·r] = V_c δ_{G′G} 的標準證法是換成分數座標 r = x₁a₁+x₂a₂+x₃a₃、dV = V_c dx₁dx₂dx₃，由 b_i·a_j = 2πδ_ij（即 (14)）把指數化成 2πi(Δv₁x₁+Δv₂x₂+Δv₃x₃)，再拆成三個一維積分。(17)（exp(iG·T)=1）只保證被積函數在晶格平移下不變，單憑它推不出積分為零。",
+   "fix": "「用的正是 (17)」→「用的正是 (14)」（可補一句：換分數座標後拆成三個一維積分）。"
+  },
+  {
+   "where": "blocks[3].body（一維先行 (3) 最後一段）",
+   "problem": "「(3) 裡允許出現的『頻率』只有 2πp/a 的整數倍」措辭有誤——2πp/a 本身已經是第 p 個倍數，再說「的整數倍」等於多乘一次。",
+   "evidence": "原文 p.27：「The factor 2π/a in the arguments ensures that n(x) has the period a」；(3) 中允許的幅角係數集合是 {2πp/a : p 正整數}，即 2π/a 的整數倍。",
+   "fix": "改成「允許出現的『頻率』只有 2π/a 的整數倍，也就是 2πp/a」。"
+  },
+  {
+   "where": "blocks[16].body（Inversion of Fourier Series 段倒數第二段）",
+   "problem": "「第 2 章後半所有的結構因子計算，用的都是 (12)」不精確：書上的結構因子比 (12) 少一個 V_c⁻¹。",
+   "evidence": "原文 p.39 (39)：F_G = N ∫_cell dV n(r) exp(−iG·r) = N S_G，S_G 定義為 over a single cell 的積分、沒有 V_c⁻¹。故 S_G = V_c n_G，不等於 (12) 本身。",
+   "fix": "改成「用的是與 (12) 同一個積分，差一個歸一化因子：書上的 S_G = V_c n_G」。"
+  },
+  {
+   "where": "blocks[23].body（Reciprocal Lattice Vectors 段第三段）",
+   "problem": "「Kittel 自己承認 (13) 看起來像是從天上掉下來的」把作者沒說的話寫成作者的自白（此 block tier 為 book）。",
+   "evidence": "原文 p.29 只寫 'There is a powerful, somewhat abstract procedure for doing this.'——somewhat abstract 形容的是整個程序，書上對 (13) 的外觀沒有任何評語。",
+   "fix": "改成「Kittel 只用 somewhat abstract 形容這個程序；(13) 看起來像天上掉下來是本文的評語」。"
+  },
+  {
+   "where": "blocks[1].body 末段、blocks[3].body 第四段（兩者 tier 皆為 book）",
+   "problem": "標記慣例前後不一致：這兩處是撰寫者自己的跨章預告與教學評語，卻沒有像檔案其他地方那樣標「（…是我補的）」。",
+   "evidence": "blocks[1] 末段「Bloch 定理（第 7 章）是把波函數這樣處理，聲子（第 4、5 章）…學會後面十幾章共用的那一招」；blocks[3]「為什麼要從實數級數起手？因為讀者對 sin/cos 級數沒有心理障礙…」。對照 blocks[7]、blocks[9]、blocks[13]、blocks[15]、blocks[19]、blocks[26]、blocks[30] 都明確標了「我補的」。內容本身無誤（第 4、5 章為聲子、第 7 章為能帶與 Bloch 函數），純屬標記遺漏。",
+   "fix": "補上「（此段為我補的延伸）」，或把這兩段移到鄰近的 tier: mine block。"
+  }
+ ],
+ "verified": [
+  "式號與頁碼：(2)(3)(4) p.27、(5)(6)(7)(8)(9)(10)(11) p.28、未編號正交性積分與 (12)(13)(14)(15)(16) p.29、(17) p.30——16 個式號與 17 個 bookPage 逐一比對原文，全部正確；p.29 頂端那條積分原書確實未編號，檔案也正確地沒有給它 eqNumber，並在 label 註明「原書未編號」。",
+  "公式抄寫：(3)(4) 的 2πp 相位、(7) 兩行、(8) 的負號、(10)(11) 的 a⁻¹ 與指數負號、a/(i2π(p′−p))·(e^{i2π(p′−p)}−1)=0、(12) 的 V_c⁻¹、(13) 三式的循環順序（b₂ 用 a₃×a₁）與共同分母、(14)(15)(16)(17) 全部與原文逐字相符，量綱亦成立（b_i：[length]²/[length]³=[1/length]）。",
+  "英文逐字引用全部命中原文：'the spatial distribution of electrons within each cell'（p.26）、'the p are positive integers'、'Fourier coefficients of the expansion'（p.27）、'the integrand is exp(i 0) = 1'（p.29）、'powerful, somewhat abstract'、'the order of the day'、'not used by crystallographers'、'the volume of a cell of the crystal'（p.29）。",
+  "粗體宣稱以 PyMuPDF 字型比對驗證屬實：p.27 'reciprocal lattice points' 為 NewCaledonia-Bold（跨行分成 'reciprocal lattice' + 'points'）；p.29 'reciprocal lattice'（(13) 前那句）與 'primitive vectors of the reciprocal lattice' 亦為粗體。",
+  "Fig. 5 的文字描述以 6–10 倍算繪影像目視核對，完全相符：上半每個 a 區間內確為一矮一高兩根長條、共五段標 a 的區間、縱軸 n(x)、橫軸右端 x；下半水平線最右端標 G、15 個等間距黑點、標籤為 −4π/a、−2π/a、0、2π/a、4π/a；圖說內容亦與原文一致。",
+  "數值全部複算無誤，且未被記憶中的常識值汙染：Si a = 5.430 Å（第 1 章原文印「3.567, 5.430, 5.658, 6.49 Å」，非 5.431）；V_c = a³/4 = 40.03 → 40.0 Å³；2 原子 28 電子；n₀ = 28/40.03 = 0.6996 → 0.70 e/Å³ = 7.0×10²³ cm⁻³；a/√2 = 3.8396 → 3.840 Å；2π√3/a = 2.0042 → 2.00 Å⁻¹；2π/3.840 = 1.6363 → 1.64 Å⁻¹。",
+  "跨頁引用的頁碼全部與章首目錄（書本 p.23）相符：BRILLOUIN ZONES 32、Laue equations 33、sc 34、bcc 36、fcc 37、FOURIER ANALYSIS OF THE BASIS 39、Problem 3 p.44、Problem 4 p.44、Problem 5 p.45。Problem 4 的 |F|² = sin²(½M(a·Δk))/sin²(½(a·Δk)) 與「峰寬正比於 1/M」逐字相符；Problem 5 括號「h, k, l may be written for v1, v2, v3 and this is often done」確實存在。",
+  "p.30 的引用正確：'Vectors in the direct lattice have the dimensions of [length]; vectors in the reciprocal lattice have the dimensions of [1/length]' 確實印在 p.30，(17) 及其後「2πi times an integer」的說明亦在 p.30，檔案也誠實註明此式已超出 p.27–29 範圍。",
+  "'Inversion of Fourier Series.' 確為 run-in heading（同一行 y=501.9，正文接在 x=275.2），且全書前 60 頁（含書前目錄與章首目錄）僅在 p.28 出現一次，「目錄未收錄」的宣稱正確。",
+  "derived 區塊的數學逐步複核全部正確：(4) 的 2π 週期性、(7)→(8) 的 i(n_p−n_{−p}) = −2Im{n_p}（i²=−1）、正交積分兩種情形與分子 a 的來源、I = a δ_{p′p} 代回 (11)、(13)⇄(14) 雙向（含 λ = 2π/(a₁·a₂×a₃)）、(16)→(17) 九項收三項與「必要性」補證（取 (1,0,0) 等三組 u 推出 x_j ∈ ℤ）、n_p = (C_p−iS_p)/2 與 C_p = 2Re、S_p = −2Im 的交叉驗算、2|n_p|cos(φ+arg n_p)、B = 2π(A⁻¹)ᵀ 與 V_倒 = (2π)³/V_c、ñ(κ) = Σ 2π n_p δ(κ−2πp/a)。",
+  "晶體學事實核對無誤：fcc 的倒晶格為 bcc、b₁ = (2π/a)(−x̂+ŷ+ẑ)（原文 p.38 (36)）、fcc primitive vectors a_i = ½a(ŷ+ẑ) 等使 |a_i| = a/√2、V = a³/4（p.37 (34)(35)）；sc 的倒晶格為邊長 2π/a 的 sc（p.35 (27b)）；bcc 中 h+k+l 為奇數消光、鑽石 (200) 消光。",
+  "(6) 的星號位置說明（星號標在 n₋ₚ 上）、(7) 兩行共用式號、(4) 被原書當成「級數」指涉的校註，三處對原書記號的評註都與原文實際排版相符。"
+ ]
+}

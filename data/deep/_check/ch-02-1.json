@@ -1,0 +1,111 @@
+{
+ "section": 1,
+ "blockers": [
+  {
+   "where": "blocks[11].body（concept / tier=\"book\" / 每層只反射 10⁻³–10⁻⁵）",
+   "problem": "數值換算錯一個 10⁵ 倍，且與同檔案 blocks[12].steps[7] 自相矛盾。原句：「N = 10⁵、R = 10⁻⁵ 時，峰值強度 ∝ N²R = 10¹⁰ × 10⁻⁵ = 10⁵ 倍的單層強度」。N²R = 10⁵ 是相對於「入射強度」的比值，不是相對於「單層反射強度」；單層反射強度本身是 R·I₀ = 10⁻⁵ I₀，所以峰值是單層的 N² = 10¹⁰ 倍，不是 10⁵ 倍。",
+   "evidence": "原文 p.25 只寫 “But each plane reflects 10⁻³ to 10⁻⁵ of the incident radiation, so that 10³ to 10⁵ planes may contribute…”，沒有任何強度換算；這段換算是撰寫者自己補的。同檔案 blocks[12].steps[7] 寫的是「峰值 I_max ∝ N²R = 10¹⁰ × 10⁻⁵ = 10⁵。與入射強度相比這個數字大於 1」——那裡的分母正確地取入射強度，兩處對同一個 10⁵ 給了兩種不同的參考基準。",
+   "fix": "改成「峰值強度 ∝ N²R = 10⁵ 倍的入射強度（等於單層反射強度的 N² = 10¹⁰ 倍）」，並與 blocks[12].steps[7] 一致地補一句：這個大於 1 的數字代表運動學近似在峰心已失效。"
+  },
+  {
+   "where": "blocks[7].eq.limits（equation / tier=\"book\" / Bragg 定律 (1)）",
+   "problem": "物理錯誤：「d → ∞（晶面間距趨於無窮，等於沒有週期性）時任意小的 θ 都能滿足式 (1)，峰擠成連續分佈，這對應非晶體沒有銳峰的極限。」d → ∞ 仍然是完美週期系統（只是週期很大），不等於「沒有週期性」；非晶體沒有銳峰的原因是長程序消失、同調層數 N 有限（峰寬 ∝ 1/N），與 d 的大小無關。",
+   "evidence": "原文 p.25 完全沒有討論 d → ∞ 或非晶體，這是撰寫者自加的極限。而同檔案 blocks[13].eq.limits 自己已經給了正確版本：「N → 1（單層原子）：Δθ → λ/(2d cos θ)…沒有多層干涉就沒有選擇性」——非晶／無銳峰該掛在 N 上而不是 d 上。",
+   "fix": "刪掉「等於沒有週期性」與「對應非晶體沒有銳峰」兩句；若要保留 d → ∞ 極限，只說「所有階都擠向 θ → 0」即可，非晶體的無銳峰改引 N 有限（blocks[13] 的 N → 1 極限）。"
+  },
+  {
+   "where": "blocks[5].body（Fig. 2 圖形描述，tier=\"book\"）與 blocks[6].steps[0]",
+   "problem": "對 Fig. 2 的圖形描述有誤：宣稱「一條往左下、與下方入射線垂直（垂足在圖上用一個白色小圓點標出來）」，blocks[6].steps[0] 再次寫「Fig. 2 上 A 就是那個白色小圓點」。圖上那顆白色小圓點並不是該虛線的垂足，兩者是明顯分開的兩個點。",
+   "evidence": "PDF p.24（pdf 44）向量資料：左下虛線是 (301.2,490.4) → (285.9,515.4)，其端點 A=(285.9,515.4) 落在下方入射線上且與之垂直（夾角 91.3°）；白色圓點的圓心約在 (292.2,520.0)，沿入射線比 A 再往前約 7.8 pt，在 24 倍放大圖上肉眼可見兩者分離。另一側 B 的描述則正確：右下虛線端點 (315.9,515.4) 與 d sin θ 延伸線起點 (316.9,517.1) 同位，且 OB 與出射線夾 88.9°。",
+   "fix": "改為「左下那條虛線的下端就是垂足 A（圖上沒有另外標記）；靠近第二層反射點的那顆白色小圓點是圖上另外畫的標記，不是垂足」，並把 blocks[6].steps[0] 的括號說明一併改掉（B 的說明維持不變即可）。"
+  },
+  {
+   "where": "blocks[11].tier",
+   "problem": "tier 標成 \"book\"，但該 block 後三段是撰寫者自己的定量推導，書上完全沒有：「每穿過一層強度被削掉 R，所以 N ≈ 1/R」「N 層同相相加強度長成 N² 倍」「角度容忍度縮成 1/N」「峰寬窄到角秒等級」。這些內容在同檔案另有 tier=\"derived\" 的 blocks[12]/[13] 承擔。",
+   "evidence": "原文 p.25 該段全文只有四句（“Although the reflection from each plane is specular…” 到 “Reflection by a single plane of atoms is treated in Chapter 17 on surface physics.”），沒有出現 N²、1/N、1/R、角秒或任何強度換算。檔案內其他 mine 區塊都會註明「以下是我的補充」（如 blocks[4]、blocks[10]），此處沒有。",
+   "fix": "把「請注意這兩組數字是互為倒數的…」以後的內容切出成獨立的 tier=\"derived\" block（或就併進 blocks[12]），讓 blocks[11] 只保留逐字引用與其直接文義。"
+  }
+ ],
+ "minors": [
+  {
+   "where": "blocks[2].body（Fig. 1 描述）",
+   "problem": "「由上到下在左端依序標著 X-ray photon、Neutrons、Electrons」——三條線在左端的高低順序確實如此，但三個標籤的位置不是都在左端。",
+   "evidence": "p.24 圖上：X-ray photon 標在左上區該線旁；Neutrons 標在圖的右側（橫座標約 50–100、λ≈0.5 處）；Electrons 標在圖中段（橫座標約 5–10、λ≈0.45 處）。",
+   "fix": "改成「三條線由上到下依序是 X-ray photon、Neutrons、Electrons（標籤分別印在左上、右側與中段）」。"
+  },
+  {
+   "where": "blocks[2].body（Fig. 1 描述）",
+   "problem": "「三條線在圖的正中央附近都經過 1 Å 上下」對電子線不成立。",
+   "evidence": "依同檔案 blocks[3].steps[7] 自己算出的數字：λ = 1 Å 對應光子 12.4 keV（橫座標 12.4，接近中央）、中子 0.0818 eV（橫座標 8.2，接近中央）、電子 150 eV（橫座標 1.5，貼近左邊界）。圖上電子線在最左端已是 λ≈1.2 Å。",
+   "fix": "改成「三條線都在 1 Å 上下通過（光子與中子在圖的中段，電子在靠左處）」。"
+  },
+  {
+   "where": "blocks[19].steps[2]",
+   "problem": "宣稱 Fig. 3 矮鼓包的「目視讀值約 8.4°–8.6°」，與圖實際位置不符，且與同檔案 blocks[18].body 自己寫的「θ 約 8°–9°」不一致。所報的範圍恰好把預測值 8.65° 夾在中間，讓吻合看起來比實際更好。",
+   "evidence": "p.26（pdf 46）Fig. 3 曲線向量資料：橫軸刻度 10°=x311.1、20°=x350.1、30°=x389.1、40°=x428.1（3.90 pt/度，0° 在 x272.1）。鼓包的平頂落在 x = 306.2–308.2，即 2θ… 即 θ = 8.74°–9.26°，峰心約 9.0°。（同一組資料下主束 1.56°、(220) 峰 17.62°／3682 c.p.m.、(440) 峰 37.54°／2328 c.p.m.，與檔案其餘讀值吻合。）",
+   "fix": "把讀值改成「約 8.7°–9.0°」，結論不變（預測 8.65°，差約 0.3°，仍在宣告的 ±0.5° 內），並與 blocks[18] 的「8°–9°」統一。"
+  },
+  {
+   "where": "blocks[20].body 與 blocks[10].body",
+   "problem": "Fig. 4 峰的角度範圍前後矛盾且高角度端偏高：blocks[20] 說「從二十幾度才開始出現峰，之後一路到一百六十幾度」，blocks[10] 說「峰從三十幾度一路展開到一百六十幾度」。",
+   "evidence": "Fig. 4 向量資料（橫軸刻度 0°=x96.50、180°=x445.00）：第一個真正的峰是未標指標的 111 峰，在 2θ ≈ 30.7°（其左側 2θ≈16.9° 只有一個 I≈86 的基線小記號）；最後一個峰 444 在 2θ ≈ 158.4°（標籤中心 158.4°，理論 Cu Kα 值 158.6°）。",
+   "fix": "兩處統一成「峰從約 30° 開始，最後一個 (444) 在約 158°」。"
+  },
+  {
+   "where": "blocks[23].body",
+   "problem": "「只有在最強的那兩個反射旁邊才高到看得見、值得標注」——圖上 111β 與 220β 的位置其實看不到任何可辨識的峰，基線是平的。",
+   "evidence": "Fig. 4 向量資料在 111β 標籤中心（2θ=25.7°，恰好等於 Cu Kβ 的 Si 111 理論位置 25.66°）與 220β 標籤中心（2θ=44.3°）處都沒有峰；曲線在 2θ=12°–30° 之間除了 2θ≈16.9° 一個 I≈86 的小記號外完全平坦。",
+   "fix": "改成「圖上只在最強的兩個反射旁保留了 β 標籤（複製品質下 β 峰本身已看不出來）」，避免宣稱峰可見。"
+  },
+  {
+   "where": "blocks[16].tier / blocks[15].body 末段",
+   "problem": "自訂慣例前後不一致。blocks[15] 明說「本站的慣例：這一段引用的句子來自書本 p.32，不在本段負責的 p.23–26 範圍內，所以整個 block 標為「我的判讀」」，但 blocks[16]（bookPage 32、eqNumber (24)）卻標 tier=\"book\"。",
+   "evidence": "blocks[15].tier = \"mine\"、blocks[16].tier = \"book\"，兩者引用的都是 p.32 的同一段內容。（式 (24) 本身確實印在 p.32，內容無誤。）",
+   "fix": "擇一：把慣例改寫成「引用範圍外的『原文印出的式子』仍標 book，撰寫者的判讀標 mine」，或把 blocks[16] 一併改標。"
+  },
+  {
+   "where": "blocks[13].eq.bookPage",
+   "problem": "bookPage 標 25，但 label 自己寫「書上未印」。同一個欄位同時表示「出現在 p.25」與「不存在於書中」，容易誤導。",
+   "evidence": "p.25 全頁只印了 2d sin θ = nλ (1) 與 λ ≤ 2d 兩條式子，沒有任何峰寬公式。",
+   "fix": "bookPage 改為 null（或改欄位語意為「相關頁」並在 label 中註明）。"
+  },
+  {
+   "where": "blocks[4].body",
+   "problem": "把 “Reflection by a single plane of atoms is treated in Chapter 17 on surface physics.” 稱為「原文在同一頁的最後一句」，位置描述不正確。",
+   "evidence": "p.25 該句之後還有一整段：“The Bragg law is a consequence of the periodicity of the lattice. Notice that the law does not refer to the composition of the basis of atoms associated…”（跨頁到 p.26）。該句是 p.25 倒數第二段的結尾。",
+   "fix": "改成「原文在 p.25 倒數第二段的結尾」。"
+  },
+  {
+   "where": "blocks[24].body",
+   "problem": "「新語言的入口在 p.27 第一句就給了：…把電子數密度 n(r) 當成主角」——p.27 第一句是 p.26 未完句子的續尾，n(r) 要到該頁第二段才出現。",
+   "evidence": "p.27 開頭是 “intensity from the basis of atoms, which means from the spatial distribution of electrons within each cell.”，接著才是 Fourier Analysis 小節；n(r) 首次出現在 “…the electron number density n(r) is a periodic function of r…”。",
+   "fix": "改成「新語言的入口就在 p.27 開頭的 Fourier Analysis 小節」。"
+  },
+  {
+   "where": "blocks[18].body",
+   "problem": "把單光器示意圖稱為「Fig. 3 下半部」。書上圖說只說 “The upper part of the figure shows the analysis”，並未把示意圖稱為下半部；實際版面上示意圖在頁面左半、分析曲線在右上。",
+   "evidence": "p.26 版面：Monochromating crystal 示意圖占左側（y 方向從頁首延伸到圖說之上），Count per minute vs Bragg angle 曲線在右上角。",
+   "fix": "改成「Fig. 3 的示意圖部分（版面在左側）」，保留「上半部」只用在分析曲線上，與圖說一致。"
+  }
+ ],
+ "verified": [
+  "全部英文引號內的句子逐字比對通過：p.25 的 “We study crystal structure through the diffraction of photons, neutrons, and electrons (Fig. 1).”、“The diffraction depends on the crystal structure and on the wavelength.”、“At optical wavelengths such as 5000 Å…ordinary optical refraction.”、“When the wavelength of the radiation is comparable with or smaller than the lattice constant…”、“W. L. Bragg presented a simple explanation…”、“The Bragg derivation is simple but is convincing only because it reproduces the correct result.”、“Suppose that the incident waves are reflected specularly…like a lightly silvered mirror.”、“In specular (mirrorlike) reflection…”、“The diffracted beams are found when…as in Fig. 2.”、“We treat elastic scattering…”、“Consider parallel lattice planes spaced d apart”、“The path difference for rays reflected from adjacent planes is 2d sin θ, where θ is measured from the plane.”、“Constructive interference…an integral number n of wavelengths λ”、“which can be satisfied only for wavelength λ ≤ 2d”、“Although the reflection from each plane is specular…”、“If each plane were perfectly reflecting…”、“But each plane reflects 10⁻³ to 10⁻⁵…10³ to 10⁵ planes…”、“Reflection by a single plane of atoms is treated in Chapter 17 on surface physics.”、“The Bragg law is a consequence of the periodicity of the lattice…”、p.26 的 “We shall see, however, that the composition of the basis determines the relative intensity of the various orders of diffraction (denoted by n above)…”、“Bragg reflection from a single crystal is shown in Fig. 3 and from a powder in Fig. 4.”、“The Bragg derivation of the diffraction condition (1) gives a neat statement…from the lattice points.”、“We need a deeper analysis to determine the scattering intensity from the basis of atoms, which means from the spatial distribution of electrons within each cell.”（跨到 p.27，已核對 p.27 原文）",
+  "四張圖的圖說全部逐字正確：Fig. 1（p.24）、Fig. 2（p.24，含 “The reflecting planes have nothing to do with the surface planes bounding the particular specimen.”）、Fig. 3（p.26，含 “…of a 1.16 Å beam of neutrons from a calcium fluoride crystal monochromator. (After G. Bacon.)”）、Fig. 4（p.26，“(Courtesy of W. Parrish.)”）",
+  "式號與頁碼：式 (1) 2d sin θ = nλ 在 p.25、編號 (1) 正確；λ ≤ 2d 正確地標記為「書上沒有印編號」（原文確實只是句中的行間式）；式 (24) 2d sin θ = nλ 在 p.32、編號 (24) 正確；相位版本正確標 bookPage 24（Fig. 2 圖說所在頁）並標 tier=derived",
+  "blocks[1] 的校註成立：章首目錄頁（p.23）確實印成「Laue equations 33 / BRILLOUIN ZONES 32」，而正文 p.32 確有 Laue Equations 小節（前有 Eq. (23)(24)，後給 Eq. (25)），BRILLOUIN ZONES 全大寫標題確實出現在 p.33 頁首（“Brillouin gave the statement of the diffraction condition that is most widely used…”）。目錄頁兩個數字互換屬實",
+  "blocks[20] 對 Fig. 4 縱軸的校註成立：PDF 文字層確實印出 0、640、1280、1920、2580、3200、3840、4480、5120、5760、6400，依 640 等差應為 2560，書上印 2580",
+  "Fig. 4 指標標籤清單與順序完全正確（以 PDF 文字層座標核對）：111β(x142.3)、【最高峰未標指標，2θ≈30.7°、I≈5.9×10³ c/sec】、220β(177.3)、220(187.8)、311(205.2)、400(229.4)、331(243.9)、422(265.4)、511/333(279.4/278.9)、440(301.2)、531(315.7)、620(340.9)、533(358.8)、444(399.8)；每個標籤中心都對準各自的峰（220→49.7°、311→58.6°、400→71.5°、331→79.0°、422→90.1°、511/333→96.2–96.4°、440→107.1°、531→114.6°、620→127.5°、533→137.0°、444→158.4°）",
+  "blocks[22] 的鑽石結構消光分析完全正確：N ≤ 48 內 fcc 允許而 Fig. 4 上缺席的正是 200(2)、222(6)、420(6)、600(6)/442(10)、622(10)，全部滿足 h+k+l ≡ 2 (mod 4)；出現的全偶指標 400(4)、422(8)、440(8)、620(8)、444(12) 皆 ≡ 0 (mod 4)，全奇指標一律保留。與圖上標籤一個不多一個不少",
+  "blocks[3] 三條色散關係與其後所有數值皆正確：λ[Å]=12.398/E[keV]（hc=12398.4 eV·Å）、中子 0.2860/√E[eV]（m_nc²=939.57 MeV）、電子 12.264/√E[eV]（m_ec²=0.511 MeV）；斜率 −1 / −1/2 / −1/2；λ_n/λ_e=√(10⁴/1839)=2.33 與圖上讀值 2.86/1.23 一致；橫座標 100 處 0.124/0.286/0.123 Å；光子–中子交點 x=18.8、λ=0.66 Å；光子–電子交點 x≈102（落在右邊界）；λ=1 Å 需 12.398 keV / 0.0818 eV / 150 eV。量綱與數量級全部成立",
+  "blocks[4] 的熱中子數字正確：k_BT(300K)=0.0259 eV → λ=0.2860/√0.0259=1.78 Å；Cu Kα 8.05 keV ↔ 1.54 Å、Mo Kα 17.5 keV ↔ 0.71 Å 皆與 12.398/E 自洽",
+  "blocks[12]/[13] 的 N 層干涉推導數學正確且量綱成立：A=r(1−e^{iNφ})/(1−e^{iφ})、I∝|r|²sin²(Nφ/2)/sin²(φ/2)、I_max∝|r|²N²、第一零點 Δφ=2π/N、FWHM≈0.886×2π/N（sinc² 的標準比值）、dφ/dθ=(4πd/λ)cos θ → Δθ≈λ/(2Nd cos θ)=λ/(2t cos θ)；數值 λ=1.5 Å、d=3 Å、θ=15° 下 N=10³→2.59×10⁻⁴ rad=53″、N=10⁵→0.53″，以及反推 Δθ=100″→t=0.16 µm，逐項複算皆正確",
+  "blocks[17] 的「n 階 ⇄ 一階」代數正確：立方 d_{nh,nk,nl}=a/(n√(h²+k²+l²))=d_{hkl}/n；一般晶系 G_{nh,nk,nl}=nG_{hkl} → d=2π/(n|G|)=d_{hkl}/n；與 p.32 原文 “where d is the spacing between adjacent parallel planes with indices h/n, k/n, l/n.” 一致",
+  "blocks[16] 對 p.32 的重建正確：原文確實依序給出 2k·G=G²（式 23）、“Equation (23) is another statement of the Bragg condition (1).”、“The result of Problem 1 is that the spacing d(hkl)…is d(hkl)=2π/|G|.”、2(2π/λ)sin θ=2π/d(hkl)、2d(hkl)sin θ=λ、“Here θ is the angle between the incident beam and the crystal plane.”，最後才是式 (24)",
+  "blocks[15] 引用 p.32 的兩段（“The integers hkl that define G are not necessarily identical with the indices of an actual crystal plane…” 與 “where d is the spacing between adjacent parallel planes with indices h/n, k/n, l/n.”）逐字無誤；blocks[21] 引用 p.32 Laue 段的 “a severe condition that can be satisfied only by systematic sweeping or searching in wavelength or crystal orientation— or by sheer accident” 亦逐字無誤（含原文的斷字空格）",
+  "blocks[18]/[19] 對 Fig. 3 的三個讀值經向量資料驗證為準確：(220) λ=1.16 Å 峰在 θ=17.62°、高 3682 c.p.m.（檔案寫 ~17.5°／~3700）；(440) λ=1.16 Å 峰在 θ=37.54°、高 2328 c.p.m.（檔案寫 ~37.5°／~2300，且確實較寬）；主束在 θ≈1.6°、180,000 c.p.m. 與 3,700 之比 49:1 正確。d=1.93 Å 這個「假想」間距其實正是 CaF₂ 的 d(220)=5.4626/√8=1.9314 Å，所以式 (1) 的算例與圖完全自洽",
+  "blocks[9] 的 λ ≤ 2d 換算正確：E ≥ 6.199/d[Å] keV；d=3→2.07 keV、d=1→6.2 keV、d=0.5→12.4 keV；θ→90° 時 dλ/dθ=2d cos θ→0（故波長解析度最好）亦正確",
+  "blocks[25] 誤解清單的數值正確：Si 111 在 Cu Kα 下 2θ=28.44°、θ=14.22°（a=5.4309 Å、d₁₁₁=3.1355 Å），與檔案寫的 28.4°／14.2° 相符。全檔未出現「矽晶格常數 5.431」這類憑記憶改寫的常識值",
+  "Fig. 2 的其餘圖形描述經 PDF 向量座標核對屬實：三條水平線確為等距（y=490.1／524.4／558.6，間距 34.3 與 34.2）；兩束白光平行；下層反射點 (300.8,525.2) 恰在上層反射點 (300.8,489.9) 正下方；自上層反射點畫出三條虛線（垂直線至第二層、左下與右下各一條垂線）；右側 d 雙箭頭量的是上兩條線的垂直距離；右下 d sin θ 雙箭頭量的是第二層反射點到出射線垂足 B 之間那一段（OB 與出射線夾 88.9°）",
+  "blocks[0] 的章首目錄轉錄與原文逐項相符（四個頂層區塊、所有子節頁碼、SUMMARY 43、PROBLEMS 43、七題題名與頁碼 43/44/44/44/45/45/45）；後續多處引用的習題頁碼（習題 1 p.43、習題 4 Width of diffraction maximum p.44、習題 5 Structure factor of diamond p.45）皆與目錄一致"
+ ]
+}
