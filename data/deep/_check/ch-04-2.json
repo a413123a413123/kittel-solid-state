@@ -1,0 +1,84 @@
+{
+  "section": 2,
+  "blockers": [
+    {
+      "where": "blocks[19]（heading:「Long Wavelength Limit…（書 p.94）」, tier: book）body 結論句；同一錯誤在 blocks[20].eq.limits 重複一次",
+      "problem": "單位換算錯誤，且與同一個 block 自己的表格互相矛盾。原句：「『Ka ≪ 1』在實務上大約是指 λ ≳ 10a，也就是 |K| ≲ 0.1 × (π/a)——第一布里淵區中央約 ±10% 的一小塊。」λ = 10a 對應 K = 2π/λ = 2π/(10a) = 0.2 × (π/a)，是第一區的 ±20%，不是 ±10%。反過來說 |K| ≲ 0.1 × (π/a) 對應的是 λ ≳ 20a。blocks[20].eq.limits 的「所以『Ka ≪ 1』在實務上大約是指 λ ≳ 10a，也就是第一布里淵區中央大約 ±10% 的一小塊」犯同一個錯。",
+      "evidence": "此為本文自補的量化結論，書上沒有給。用本 block 自己表格的換算式 λ/a = 2π/(Ka) 反推即可：λ = 10a ⇒ Ka = 2π/10 = 0.6283 ⇒ K = 0.6283/a；而 π/a = 3.1416/a，故 K/(π/a) = 0.6283/3.1416 = 0.200。表格自身的三行（Ka = 0.2 ↔ λ/a = 31；Ka = 0.5 ↔ 12.6；Ka = 1.0 ↔ 6.3）都是用同一條換算式算出來的，與 ±10% 不相容。",
+      "fix": "兩處都改成「λ ≳ 10a，也就是 |K| ≲ 0.2 × (π/a)——第一布里淵區中央約 ±20% 的一小塊」。若想維持 ±10% 的敘述，則門檻要改成 λ ≳ 20a（Ka ≲ 0.31，cos 展開相對誤差約 0.04%）。"
+    },
+    {
+      "where": "blocks[3]（heading:「Figure 5 的文字重建（書 p.93）」, tier: book）body 第 2 段",
+      "problem": "圖形描述的數值與原圖不符。文中寫實線「在整個圖寬裡擠了大約九到十個完整週期」、虛線「整個圖寬只走了一個多週期」，並下結論「兩條曲線…頻率差了將近十倍」。實測原圖：實線波長 38.6 pt、灰底寬 330 pt，是 8.6 個完整週期（可見 9 個波峰）；虛線週期 247 pt，走了 1.33 個週期。兩者頻率比為 247/38.6 ≈ 6.4，不是「將近十倍」。讀者照這段文字在腦中重建的圖會錯得相當明顯（虛線被想成只走一個週期）。",
+      "evidence": "以 PyMuPDF 取 pdf p.113 的向量路徑：白色實線（34 段 bezier，color 1,1,1）波峰 x = 97.5, 138.0, 176.2, 214.5, 252.8, 291.1, 329.4, 367.7, 405.9（平均間距 38.55 pt）；黑色虛線（8 段 bezier，dashes [3 2]）極值在 x = 183.7（下）與 x = 307.4（上），半週期 123.7 pt ⇒ 週期 247.3 pt。灰底方框 x = 76→406（330 pt）。原子黑點 7 個，x = 103.5 … 378.5，平均間距 a = 45.8 pt，故 λ(實線) ≈ 0.84a、λ(虛線) ≈ 5.4a。",
+      "fix": "改成「實線在圖寬裡走了約九個完整週期，虛線只走了一個多（約 1.3 個）週期，頻率差了約六倍」。（同段「兩條曲線的振幅相同」經實測為實線 45.9 pt、虛線 47.5 pt 的峰對峰值，可以保留。）"
+    },
+    {
+      "where": "blocks[19]（heading:「Long Wavelength Limit…（書 p.94）」, tier: book）body 第 2 段「物理動機」",
+      "problem": "對原書第 3 章的描述不實。原句：「第 3 章整章（Elastic Waves in Cubic Crystals，p.80 起）是把晶體當成連續彈性介質處理的：定義應力 X_x、應變 e_xx，寫出彈性勁度常數 C₁₁、C₁₂、C₄₄，導出連續體的波動方程，得到 p.82 的 (59)(60)。裡面完全沒有原子。」第 3 章的章名是 Crystal Binding and Elastic Constants，前半 p.49–72 整段都在講原子與離子之間的鍵結（惰性氣體晶體、van der Waals–London、排斥項、Madelung 能、共價、金屬、氫鍵、原子半徑），說「整章…裡面完全沒有原子」與事實相反。連續體處理只從 p.73 的 ANALYSIS OF ELASTIC STRAINS 開始，Elastic Waves in Cubic Crystals 則是 p.80 起的一個小節。",
+      "evidence": "書 p.47 章首目錄：「3 Crystal Binding and Elastic Constants / CRYSTALS OF INERT GASES 49 … IONIC CRYSTALS 60 … METALS 69 … ATOMIC RADII 70 / ANALYSIS OF ELASTIC STRAINS 73 … ELASTIC WAVES IN CUBIC CRYSTALS 80 …」。書 p.73 開頭：「We consider the elastic properties of a crystal viewed as a homogeneous continuous medium rather than as a periodic array of atoms.」——連續體觀點是從 p.73 才起算的。",
+      "fix": "改成「第 3 章後半（ANALYSIS OF ELASTIC STRAINS 起，p.73–85；其中 Elastic Waves in Cubic Crystals 在 p.80–84）把晶體當成連續彈性介質處理…這幾節裡完全沒有原子（p.73 原文：viewed as a homogeneous continuous medium rather than as a periodic array of atoms）」。同檔 blocks[17]、blocks[20] 的「第 3 章整章的彈性常數理論」「整個第 3 章的彈性理論」也建議一併改為「第 3 章的彈性常數理論」。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[1].eq.from、blocks[9].eq.from、blocks[13].body（三處都提到「(4)」）",
+      "problem": "把式 (4) 的內容記錯。三處分別寫「p.92 的 (4) 行進波解 u_s = u exp(isKa)」「代回 (4) 的 u_s = u exp(isKa)」「(4) 的單一平面波 u_s = u exp[i(sKa − ωt)]」。原書 p.92 印的 (4) 是 u_{s±1} = u exp(isKa) exp(±iKa)。u_s = u exp(isKa) 這個寫法確實出現在書中，但在 p.93（「the solution u_s = u exp(isKa) does not represent a traveling wave, but a standing wave」），不是 (4)。",
+      "evidence": "pdf p.112 放大目視：「This is a difference equation in the displacements u and has traveling wave solutions of the form: u_{s±1} = u exp(isKa) exp(±iKa) ,   (4) / where a is the spacing between planes and K is the wavevector.」",
+      "fix": "改成「(4) 印的是 u_{s±1} = u exp(isKa) exp(±iKa)，即行進波解 u_s = u exp(isKa) 的相鄰面寫法（該寫法書中在 p.93 明文出現）」，其餘論述不必動——Kittel 自己在 (10) 前就寫「From (4) the ratio of the displacements of two successive planes is given by」，所以「由 (4) 作比」的說法本身沒問題。"
+    },
+    {
+      "where": "blocks[17]（heading:「Figure 6 的文字重建（書 p.95 左上）」, tier: book）body：「最後在右邊界 K = π/a 處幾乎是垂直地落到 0」與「**為什麼終點是垂直落下的？**」",
+      "problem": "與原圖不符。Fig. 6 畫的是四分之一餘弦，右端點的斜率是有限且相當平緩的：歸一化後 d(v_g/v₀)/d(K/(π/a)) = −π/2 ≈ −1.57，在原圖的長寬比（x 軸 160 pt 對應 π/a、y 軸約 104 pt 對應 1.0）下大約只有 46°，目視絕不是「幾乎垂直」。「垂直落下」會讓讀者誤以為 v_g 在區邊界是不連續地掉到零。其後的解釋「因為 −sin x 在 x = π/2 取到最大值 −1，那是整條曲線最陡的地方」本身正確，錯的只是「垂直」這個形容。",
+      "evidence": "pdf p.115 放大目視 Fig. 6：曲線自 (0, 1.0) 水平出發，在 π/2a 通過約 0.71，末段以約 45–60° 的斜率交於橫軸。圖元框 x = 118→278（160 pt）、y = 64→168（104 pt）。",
+      "fix": "改成「最後在右邊界 K = π/a 處以整條曲線最陡的斜率交到 0（斜率有限，不是垂直）」，下一段的小標也改為「為什麼終點最陡？」。"
+    },
+    {
+      "where": "blocks[7].eq.limits（式 (11)）最後一段",
+      "problem": "對作者用意的推論過度，且與本檔自己後面的查證矛盾。原文寫「另外請留意 Kittel 在這一式用的是**恆等號 ≡ 而不是等號 =**。這不是隨手寫的…同一頁 (10) 與 (12) 用的都是普通等號，對比很明顯。」但 blocks[20].eq.limits 的【符號校註】自己查證出：Kittel 在 p.94 把純粹是二階截斷的 cos Ka ≈ 1 − ½(Ka)² 也印成 ≡（字符 /H11013），而 p.98 同一個展開卻印 ≅，並下結論「是原書自身的排版不一致」。既然書中 ≡ 會被用在明顯不是恆等式的地方，就不能反過來說 (11) 的 ≡「不是隨手寫的」。(11) 的兩步確實是恆等式，這一點沒錯；有問題的只是「Kittel 刻意如此」這個推論。",
+      "evidence": "本檔 blocks[20].eq.limits 自述；已獨立覆核：pdf p.114 原始文字流為「cos Ka /H11013 1 /H11002 1/2(Ka)2」，放大目視確為三橫線 ≡；pdf p.118 為「cos Ka /H33361 …」，放大目視確為 ≅。",
+      "fix": "把「這不是隨手寫的」改成「(11) 的這兩步對任意整數 s、n 都成立，本來就是恆等式；書上這裡剛好印了 ≡，不過 Kittel 的 ≡／≅ 用法並不嚴格（見後面 p.94 的符號校註），不宜由符號反推作者用意」。"
+    },
+    {
+      "where": "blocks[24]（heading:「Derivation of Force Constants from Experiment…（書 p.94）」, tier: book）body 第 2 段",
+      "problem": "用詞不精確。原句「以銅的 {100} 面間距 1.8 Å 估算，20 個面就是 **36 Å** 的作用範圍，是最近鄰距離的二十倍。」36 Å 確實是 {100} **面間距**的二十倍；但「最近鄰距離」在晶體學裡通常指最近鄰**原子**距離，fcc 銅是 a₀/√2 ≈ 2.55 Å，36 Å 約為其 14 倍。",
+      "evidence": "fcc 銅 a₀ = 3.61 Å（外部標準值，與本檔他處一致）：{100} 面間距 a₀/2 = 1.805 Å；最近鄰原子距離 a₀/√2 = 2.554 Å。20 × 1.805 = 36.1 Å。",
+      "fix": "改成「是最近鄰**面間距**的二十倍（若換算成最近鄰原子距離 2.55 Å，約為十四倍）」。"
+    },
+    {
+      "where": "blocks[22].eq.numeric（式 (15)）最後一句",
+      "problem": "對照組的描述不成立。原句「軟而重的鉛聲速低、硬而輕（相對而言）的材料聲速高，符合 v ∝ (勁度/密度)^{1/2} 的直覺」。同段的對照材料是鎢，而鎢的密度 19.317 g/cm³ 明顯**大於**鉛的 11.599 g/cm³，不能說「輕」。鎢聲速高完全是 C₁₁ 大（5.326 vs 0.555，差 9.6 倍）撐起來的，密度反而是反方向作用。",
+      "evidence": "書 p.84 Table 11：W C₁₁ = 5.326、ρ = 19.317；Pb C₁₁ = 0.555、ρ = 11.599（C₁₁ 單位 10¹¹ N/m²，皆 0 K 行）。v(W)/v(Pb) = (5.326/19.317)^{1/2}/(0.555/11.599)^{1/2} = 2.40，其中勁度比貢獻 √9.6 = 3.10、密度比貢獻 1/√1.67 = 0.774。",
+      "fix": "改成「鎢的勁度是鉛的 9.6 倍、密度只有 1.7 倍，勁度贏過密度，所以聲速高出約 2.4 倍——符合 v ∝ (勁度/密度)^{1/2}」。"
+    },
+    {
+      "where": "blocks[28].eq.symbols（式 (16b)）",
+      "problem": "與原文的限定條件略有出入。檔案寫「r 為任一正整數」，原文只寫 where r is an integer。雖然在 (16a) 求和只跑 p > 0 的脈絡下取正整數是合理的（也是後面正交性論證所需），但不該寫成原文的說法。",
+      "evidence": "書 p.95：「We solve for the interplanar force constants C_p by multiplying both sides by cos rKa, where r is an integer, and integrating over the range of independent values of K:」",
+      "fix": "改成「r 為整數（原文只說 an integer；因 (16a) 的求和僅跑 p > 0，實際取用的是正整數）」。"
+    },
+    {
+      "where": "blocks[32]（heading:「這三頁在全書的位置…」, tier: mine）「第 7 章（Energy Bands）」段",
+      "problem": "「與 p.94 那段講聲子的話幾乎一字不差」言過其實。兩處講的是同一個物理，但字面差距不小：p.94 是「through successive reflections back and forth, a standing wave is set up」，p.165 是「a wave traveling to the right is Bragg-reflected to travel to the left, and vice versa」。",
+      "evidence": "書 p.94 與 p.165 原文如上，兩句沒有共同的長片語。",
+      "fix": "改成「講的幾乎是同一句物理，只是把 K 換成 k、把彈性波換成電子波」。"
+    }
+  ],
+  "verified": [
+    "頁碼全數正確。所有 eq.bookPage：(10) 93、半開區間式 93、(11) 93、(12) 93、(13) 94、cos 展開式 94、(14) 94、(15) 94、(16a) 95、(16b) 95、(17) 95，逐條與 pdf 113/114/115 對得上。heading 裡宣稱的頁碼（p.93 兩處、p.94 四處、p.95 一處、p.34–35 與 p.37、p.25、p.82、p.84、p.91、p.92、p.98、p.100–102、p.103、p.109–111、p.118、p.119、p.165、p.177、p.223–228）全部查證屬實。",
+    "式號全數正確：(10)(11)(12)(13)(14)(15)(16a)(16b)(17) 與原書一致。兩條「原書未編號」的宣稱也都屬實——「−π < Ka ≤ π, or −π/a < K ≤ π/a」與「cos Ka ≡ 1 − ½(Ka)²」在原書確實沒有式號；blocks[14] 說純量式 v_g = dω/dK 未編號、(13) 標的是向量式，放大目視確認 (13) 的行號就印在 𝐯_g = grad_K ω(𝐊) 那一行的右緣，且 v_g 與 K 確為粗體，敘述完全正確。",
+    "所有英文引號內的引文逐字核對通過，未發現截斷補標點、併句或漏字：What range of K is physically significant… / The range −π to +π for the phase Ka covers all independent values of the exponential. / This range is the first Brillouin zone of the linear lattice, as defined in Chapter 2. / The extreme values are K_max = ±π/a. / merely reproduce lattice motions described by values within the limits ±π/a / because exp(i2πn) = 1 / We note that 2πn/a is a reciprocal lattice vector because 2π/a is a reciprocal lattice vector. / At the zone boundaries sK_max a = ±sπ, whence / This is a standing wave: alternate atoms oscillate in opposite phases… The wave moves neither to the right nor to the left. / This situation is equivalent to Bragg reflection of x-rays… a standing wave is set up. / The critical value K_max = ±π/a found here satisfies the Bragg condition 2d sin θ = nλ: we have θ = ½π, d = a, K = 2π/λ, n = 1, so that λ = 2a. / With x-rays it is possible to have n equal to other integers besides unity… only at the atoms themselves. / The transmission velocity of a wave packet is the group velocity / the gradient of the frequency with respect to K. This is the velocity of energy propagation in the medium. / This is zero at the edge of the zone where K = π/a… zero net transmission velocity for a standing wave. / When Ka ≪ 1 we expand cos Ka ≡ 1 − ½(Ka)², so that the dispersion relation (7) becomes / The result that the frequency is directly proportional… exactly as in the continuum theory of elastic waves—in the continuum limit Ka ≪ 1. / In metals the effective forces may be of quite long range… separated by as many as 20 planes. / The generalization of the dispersion relation (7) to p nearest planes is easily found to be / We solve for the interplanar force constants C_p by multiplying both sides by cos rKa… / The integral vanishes except for p = r. / gives the force constant at range pa, for a structure with a monatomic basis。跨章引文同樣逐字無誤：p.91 的四句（single coordinate u_s／time dependence exp(−iωt)／regard C as defined for one atom of the plane／For brevity… with p = ±1）、p.92 的三句（The value to use for a will depend on the direction of K／We show from (7) that the slope of ω versus K is zero at the zone boundary／The special significance of phonon wavevectors… developed in (12) below）、p.25 的兩句（path difference… where θ is measured from the plane／This is the Bragg law, which can be satisfied only for wavelength λ ≤ 2d）、p.34（first Brillouin zone 定義／A wave whose wavevector… will satisfy the condition for diffraction／is a Wigner-Seitz cell of the reciprocal lattice）、p.35 Fig. 11（The boundaries are at k = ±π/a）、p.37（Another primitive cell is the central (Wigner-Seitz) cell…）、p.103 習題 4（C_p = A sin(pk₀a)/(pa)… Such a form is expected in metals）、p.118（the magnitude of the group velocity of a phonon）、p.119（Such critical points produce singularities (known as Van Hove singularities) in the distribution function）、p.111（one allowed value of K per volume in K space）、p.165（the Bragg reflection condition k = ±π/a is satisfied…, and vice versa）、Fig. 5 與 Fig. 6 兩段圖說。",
+    "【抽取校註】（blocks[10]）成立。獨立覆核：pdf p.114 的文字層確實把該行抽成「we have so that λ = 2a.」並把分數浮出成「θ = 1 2π, …」；以 6 倍解析度算繪後目視，原書印的是堆疊分數 ½ 接 π，即 θ = ½π（90°）。校註的結論與處理方式正確。",
+    "【符號校註】（blocks[20]）整段成立，含字符代碼。實測 pdf p.114 原始文字流為「cos Ka /H11013 1 /H11002 1/2(Ka)2」、pdf p.118 為「cos Ka /H33361 1 /H11002 1/2 K 2a2 /H11001 . . .」；以 8 倍解析度目視，p.94 確為三橫線 ≡、p.98 確為帶波浪的 ≅。tools/kittel_extract.py 的 OPS 表中 '11013': '≡' 與 '33361': '≡' 也如檔案所述（後者應為 ≅，且 '33360' 已映射為 ≅）。",
+    "Figure 5 的其餘描述正確：灰底橫幅（圖元框 x 76–406, y 494–592，填色 0.70 灰）；白色實線（color 1,1,1）與黑色虛線（dashes [3 2]）；7 個黑色實心圓點（5×5 pt 方塊，等間距 45.8 pt）同時落在兩條曲線上（虛線的 8 段 bezier 節點 x 座標與 7 個黑點完全吻合）；左下角雙箭頭線段兩端各有短豎線、標字母 a、恰好跨越相鄰兩點（x 103→150, y 575–583）；兩條曲線振幅相同（峰對峰 45.9 vs 47.5 pt）；實線的 K 在區外、虛線在區內（λ 實 ≈ 0.84a、λ 虛 ≈ 5.4a）。",
+    "Figure 4 的描述（blocks[17] 後半）全部正確：縱軸 ω/(4C/M)^{1/2}、刻度標到 1.2、曲線最高 1.0；橫軸自 −π/a 畫到 2π/a；圖中確實印有解析式 ω/(4C/M)^{1/2} = |sin ½Ka|（絕對值豎線在放大圖中清楚可見）；K = 0 為 V 形尖點；±π/a 處為水平頂點；下方雙箭頭括弧自 −π/a 到 π/a 註記 First Brillouin zone（圖元 x 190→362，與軸上 −π/a=190、π/a≈363 相符）；caption 只講連續體近似，未提週期性，所以「圖同時在做兩件事」是本文自己的觀察——這一點檔案也已註明「書上沒有明說這一點」。",
+    "Figure 6 的其餘描述正確：圖確實在 p.95 左上（圖元 x 118–278、y 64–168，caption 在其右下 x≈293、y≈166）；縱軸為無因次比 v_g/(Ca²/M)^{1/2}、刻度 0／0.5／1.0；橫軸刻度 0／π/2a／π/a、軸標籤 K 在正下方；曲線自 (0, 1.0) 水平出發、於 π/2a 通過約 0.71、於 π/a 交零；圖說逐字無誤。",
+    "全部數值複核無誤（除 blockers 所列者外）：cos 展開誤差表四行（Ka=0.2 → cos 0.980067 vs 0.98，相對 0.0068%；0.5 → 0.877583 vs 0.875，0.294%；1.0 → 0.540302 vs 0.5，7.46%；π/2 → 0 vs −0.2337）與 λ/a 換算（31.4／12.57／6.28／4）全部正確，截斷誤差 +x⁴/24 的符號也對；cos(π/4) = 0.707、群速掉到 71%／偏離 29%；區邊界 v_p = 2v₀/π = 0.6366 ≈ 64%；銅 v = (1.762×10¹¹/9018)^{1/2} = 4.42 km/s、v_g(π/2a) = 3.13 km/s、π/a = 1.74×10¹⁰ m⁻¹；C = C₁₁a₀ = 1.762×10¹¹ × 3.61×10⁻¹⁰ = 63.6 ≈ 64 N/m；M = 63.5 u = 1.054×10⁻²⁵ kg；ω_max = 2(C/M)^{1/2} = 4.93×10¹³ rad/s、ν_max = 7.84 THz、ħω_max = 5.20×10⁻²¹ J = 32.5 meV、ħω_max/k_B = 377 K（對照銅德拜溫度 340 K，差約一成，敘述成立）；鎢 5.25 km/s、鉛 2.19 km/s；熱中子約 25 meV。",
+    "書本 Table 11（p.84）取值全部正確、且確實是 Table 11 而非同頁的 Table 12：Cu C₁₁ = 1.762、ρ = 9.018；W 5.326／19.317；Pb 0.555／11.599；表頭單位「10¹² dyne/cm² (10¹¹ N/m²)」，故寫成 ×10¹¹ N/m² 正確；三者的 C₁₁ 都取自 0 K 行，與檔案自述一致。第 3 章 p.82 的 (59) ω²ρ = C₁₁K² 與 (60) v_s = νλ = ω/K = (C₁₁/ρ)^{1/2} 式號與內容皆正確。",
+    "「本書的晶格常數表在 p.20–21，該處無文字層、抽不到，故不引用書上數字」查證屬實：pdf 40／41 兩頁的文字層只有頁碼與 ch01.qxd 頁尾（各 38 字元），確實抽不到表格內容。銅的 a₀ = 3.61 Å、德拜溫度 340 K 標為外部標準值，處理方式一致且已註明。",
+    "所有 tier: derived 的推導數學正確。逐條驗過：blocks[5] 半開區間（±π/a 相差一個倒晶格向量 2π/a；(10)(12)(9) 三路代入都給相同結果）；blocks[8] ω(K) 的週期性（cos(K′a + 2πn) = cos K′a），含群速那一步——v_g = v₀cos(½Ka)·sgn(sin ½Ka)，跨區邊界時 cos 與 sgn 各翻一次號，淨結果確實週期，檔案的說明正確；blocks[11] Bragg 代入（d = a、sin θ = 1、n = 1 ⇒ λ = 2a ⇒ K = π/a）與 θ 從晶面量起的說明；blocks[15] (9)→(14) 的鏈鎖律與 (4C/M)^{1/2}·(a/2) = (Ca²/M)^{1/2} 化簡，第二條路徑由 (8) dω²/dK = (2Ca/M) sin Ka 出發、用倍角公式回到同一答案（(8) 的式號與式子經查與書 p.92 完全一致），量綱檢查 [Ca²/M]^{1/2} = m/s 正確；blocks[18] v_p(π/a) = 2v₀/π、v_g(π/a) = 0、K→0 時 v_p = v_g = v₀；blocks[21] (7)→(15) 的 2 與 ½ 相消；blocks[23] C = C₁₁S/a 的推導（ρ = M/(aS)）、量綱 [C₁₁][S/a] = N/m、fcc {100} 的 a = a₀/2 與 S = a₀²/2 ⇒ S/a = a₀ ⇒ C = C₁₁a₀，全部正確；blocks[25] (16a) 的推廣（求和只跑 p > 0、退化到 p = 1 回到 (7)）；blocks[27] 餘弦正交性 ∫_{−π/a}^{π/a} cos pKa cos rKa dK = (π/a)δ_pr、常數項積分為零、(16b) 的 −2πC_r/a 與 (17) 的負號來源；blocks[30] 用 (7) 自檢 (17) 得 C₁ = C、C_{p≥2} = 0，以及 [Ma·dK·ω²] = N/m 的量綱檢查。未發現任何漏平方或量綱不成立的情形。",
+    "tier 標示整體恰當：blocks[2]（取樣定理類比）、blocks[31]（五個誤解）、blocks[32]（全書位置）標 mine 正確，且 blocks[2] 與 blocks[24] 都主動註明了哪幾句是本文補充（「取樣定理這個類比是本文補充的教學說明」「k₀ 對應 2k_F…是本文補充的背景」「表中的數值為本文計算，書上沒有給」），blocks[13] 也註明聲子聚焦「Kittel 在這幾頁沒有討論」。九個 derivation 全部標 derived，無把自補推導標成 book 的情形。",
+    "與後續章節的接點宣稱逐條查證屬實：p.109–111 的模態計數（p.111「Therefore, there is one allowed value of K per volume (2π/L)³ in K space」）；p.118 態密度積分式 D(ω) = V/(2π)³ ∮dS_ω/v_g 中的 v_g = |∇_Kω|；p.119 Van Hove 奇異點；p.165 電子在 k = ±π/a 的 Bragg 反射與駐波（原文還明寫 ψ(±) = exp(iπx/a) ± exp(−iπx/a)）；p.177 Fig. 8 caption「Energy bands drawn in this way are said to be in the reduced zone scheme」是本文中 reduced zone scheme 首次實質出現（p.161 僅為章首目錄條目）；p.223–228 確實反覆使用 reduced／periodic／extended 三種表示法（p.226 逐點列出三者）；p.100 起為 INELASTIC SCATTERING BY PHONONS；p.95 下半確為 TWO ATOMS PER PRIMITIVE BASIS；p.103 習題 4 題名確為 Kohn anomaly。另外 p.224 Fig. 2 圖說「Shall we count both A and A′ as lying in the first zone? Because they can be connected by a reciprocal lattice vector, we count them as one identical point in the zone.」正好是 blocks[5] 半開區間論證的獨立佐證。",
+    "物理內容未發現錯誤：區邊界駐波與 Bragg 反射的等價、n ≥ 2 的高階解「不是被禁止而是不是新解」、相速與群速的區分、(16a) 在 K→0 的 p² 加權與在區邊界只剩奇數鄰（由 u_s = u(−1)^s 推出偶數鄰相對位移為零）、(16a)/(17) 互為傅立葉正逆變換、要分離個別 C_p 必須量到區邊界故需中子非彈性散射、Kohn 異常的 1/p 衰減來源——這些論述均正確且可由原文或標準理論支持。"
+  ]
+}

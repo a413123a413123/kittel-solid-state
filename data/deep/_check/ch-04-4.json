@@ -1,0 +1,92 @@
+{
+ "section": 4,
+ "blockers": [
+  {
+   "where": "blocks[5].body（「Fig. 7 在說什麼」，tier: book）— 聲學支斜率式",
+   "problem": "把原書 (24) 抄漏了根號內的 1/2，數值差 √2 倍（約 41%），而且是掛在「由 (24) 給出」名下寫在 tier:\"book\" 的區塊裡。檔案寫「由 (24) 給出 ω ≅ [C/(M₁+M₂)]^{1/2}·Ka，斜率就是聲速」。正確的聲速應是 [C/(2(M₁+M₂))]^{1/2}·a。自我檢查：由 (22) 取 1−cos Ka ≈ ½K²a² 並略去 ω⁴ 項，得 ω² ≈ C²K²a²/[2C(M₁+M₂)] = CK²a²/[2(M₁+M₂)]，確實帶 1/2。",
+   "evidence": "書本 p.98（pdf 119 以 5 倍算繪目視確認分數排版）式 (24)：ω² ≅ [(½C)/(M₁+M₂)]·K²a²（acoustical branch）。文字層抽出亦為「ω2 ≡ 1 2C M1 + M2 K 2a2」，分子是 ½C。",
+   "fix": "改成「由 (24) ω² ≅ ½C K²a²/(M₁+M₂)，即 ω ≅ [C/(2(M₁+M₂))]^{1/2}·Ka，斜率（聲速）為 [C/(2(M₁+M₂))]^{1/2}·a」。"
+  },
+  {
+   "where": "blocks[6].steps[5]（「證明間隙內真的沒有實數 K」第六步）",
+   "problem": "數學錯，且與同一區塊的第七步自相矛盾。第六步結論寫「所以當 2C/M₁ < ω² < 2C/M₂（取 M₁ > M₂）時 cos Ka > 1，K 沒有實數解」。但第六步用的條件是 1 − cos Ka ≤ 2（即 cos Ka ≥ −1）；乘積為負時違反的是這一側，得到的是 1 − cos Ka > 2，也就是 cos Ka < −1，不是 cos Ka > 1。第七步緊接著自己寫「得到的是 cos Ka < −1，不是 cos Ka > 1」，第八步也建立在 cos Ka < −1（Ka = π + iκa）之上——三步之間互相打臉，讀者會以為第六步是結論。",
+   "evidence": "同檔 blocks[6].steps[6]：「注意 1 − cos Ka ≤ 2 等價於 cos Ka ≥ −1。所以在間隙裡…違反的是下界，得到的是 cos Ka < −1，不是 cos Ka > 1。」；blocks[6].steps[7] 令 Ka = π + iκa 得 cos Ka = −cosh(κa) ≤ −1。代數上：ω² 落在兩根之間 ⇒ M₁M₂ω⁴ − 2C(M₁+M₂)ω² + 4C² < 0 ⇒ 1 − cos Ka > 2 ⇒ cos Ka < −1。",
+   "fix": "第六步結論改為「…時 (ω²−2C/M₁)(ω²−2C/M₂) < 0，於是 1 − cos Ka > 2，即 cos Ka < −1，K 沒有實數解」，把「哪一側被違反」的說明併入第六步，第七步改成純粹強調而非更正。"
+  },
+  {
+   "where": "blocks[2].steps[3]（「補出一般 K 的 u/v」第四步）；同一錯誤複製到 blocks[3].eq.limits 末句",
+   "problem": "相位結論漏掉分母正負號，對光學支是錯的，並與自己下一步矛盾。第四步寫「模長 |u/v| = 2C|cos(Ka/2)|/|2C − M₁ω²|，相位差固定是 −Ka/2」，還加粗說「M₁ 相對 M₂ 的相位落後量正好是半個原胞的行進相位」。但 u/v = 2C cos(Ka/2)e^{−iKa/2}/(2C − M₁ω²) 的輻角還取決於分母符號：聲學支 ω² ≤ 2C/M₁ ⇒ 分母 ≥ 0，相位確為 −Ka/2；光學支 ω² ≥ 2C/M₂ 且 M₁ > M₂ ⇒ 2C − M₁ω² ≤ 2C(1 − M₁/M₂) < 0，相位是 π − Ka/2（近似反相），不是 −Ka/2。第五步自己算出光學支 K→0 的 u/v = −M₂/M₁（輻角 π），直接推翻第四步的「固定 −Ka/2」。",
+   "evidence": "書本 p.98 (25)：區邊界兩根 ω² = 2C/M₁、2C/M₂；p.98 (26)：K = 0 光學支 u/v = −M₂/M₁（負實數，相位 π）；p.98「The atoms vibrate against each other」——光學支本來就是反相。檔案自己的 blocks[2].steps[4] 也算出 −M₂/M₁。",
+   "fix": "第四步改為「相位差 = −Ka/2 + arg(2C − M₁ω²)：聲學支分母為正，相位差就是 −Ka/2（純粹是兩子晶格空間差半個原胞）；光學支分母為負，相位差是 π − Ka/2，即在反相的基礎上再加半個原胞的行進相位」。blocks[3].eq.limits 末句同步修正。"
+  }
+ ],
+ "minors": [
+  {
+   "where": "blocks[25].body（常見誤解清單・誤解七）",
+   "problem": "頁碼標錯。檔案寫「原文 p.100：『The equations of motion such as (2) are equations for ω²』」，但這句印在 p.99。該段落跨頁：p.99 末尾到「…+ or −. But the」為止，p.100 才接「energy of a phonon must be positive…」。",
+   "evidence": "書本 p.99 末段：「What is the sign of ω? The equations of motion such as (2) are equations for ω2, and if this is positive then ω can have either sign, + or −. But the」／p.100 開頭：「energy of a phonon must be positive, …」。",
+   "fix": "改成 p.99（或寫「p.99–100 跨頁段落」）。同檔 blocks[17] 對「ω will be imaginary」標 p.100 是正確的，不必動。"
+  },
+  {
+   "where": "blocks[19].steps[4]（「K ≠ 0 的模式總線性動量嚴格為零」第五步）",
+   "problem": "K = 0 的結論在自己的公式下算出來是 0，與第六步衝突。第五步寫「P = −iωNMu·exp(−iωt) ≠ 0」，但第六步立刻指出單原子鏈 K = 0 時 ω = 0；把 ω = 0 代進去 P 恆等於 0。真正帶動量的是 ω → 0 的簡併解（均勻漂移 u_s = u₀ + v₀t，P = NMv₀），這不是 exp(−iωt) 試解能表達的。",
+   "evidence": "檔案 blocks[19].steps[5]：「由單原子鏈的色散關係，K = 0 時 ω = 0」；書本 p.92 (9) ω = (4C/M)^{1/2}|sin ½Ka| 在 K = 0 給 ω = 0。書中對應敘述只說「the center of mass coordinate corresponds to the uniform mode K = 0 and can carry linear momentum」（p.100），並未用 exp(−iωt) 形式論證。",
+   "fix": "第五步改成：K = 0 時求和為 N，但因 ω = 0，振盪型試解退化；零頻模式的通解是均勻漂移 u_s(t) = u₀ + v₀t，總動量 P = NMv₀ ≠ 0，這才是「唯一帶真實動量的模式」。"
+  },
+  {
+   "where": "blocks[15].eq.numeric（(29) 的數值估算）",
+   "problem": "量級形容誇大。u₀ ≈ 3 × 10⁻²³ m，原子核尺度約 10⁻¹⁵ m（重核直徑約 10⁻¹⁴ m），差約 7–8 個數量級，不是「十幾個數量級」。",
+   "evidence": "檔案自算 u₀² ≈ 9 × 10⁻⁴⁶ m² ⇒ u₀ ≈ 3 × 10⁻²³ m（已複算無誤）；10⁻¹⁵ / 3 × 10⁻²³ ≈ 3 × 10⁷。",
+   "fix": "改成「比原子核尺度還小七、八個數量級」。"
+  },
+  {
+   "where": "blocks[5].body 末句（Ge 與 KBr 對照）",
+   "problem": "過度宣稱。「拿 Ge 跟 KBr 對比看，就是在看『M₁ = M₂ 與 M₁ ≠ M₂』這個唯一差別造成的後果」——Ge 是鑽石結構共價晶體，KBr 是 NaCl 結構離子晶體，力常數、鍵結性質、晶格常數、是否有 LO–TO 分裂（KBr 圖說特別標 ω_T、ω_L）全都不同，質量比不是唯一差別。",
+   "evidence": "書本 p.96 Figure 8b 圖說：「The extrapolation to K = 0 of the TO, LO branches are called ω_T, ω_L.」（離子晶體才有的 LO–TO 分裂）；p.95 指出 NaCl 與 diamond 是兩種不同結構。",
+   "fix": "改成「兩者的質量比差異最顯眼地反映在間隙寬度上」，並註明其餘差異（結構、鍵結、庫侖長程力）同時存在。"
+  },
+  {
+   "where": "blocks[4]、blocks[12]、blocks[18]、blocks[20]、blocks[24] 的 tier",
+   "problem": "tier 標記與檔案自訂的做法不一致。這幾個 tier:\"book\" 區塊的核心引文都逐字無誤，但各自夾帶了原書完全沒有的延伸內容：blocks[4] 的「間隙內 K 為複數、實部釘在 π/a、聲子晶體/光子晶體 stop band 原型」；blocks[12] 的「真空零點能發散」與「⁷⁶Ge 同位素效應使晶格常數收縮」；blocks[18] 的諾特定理與 crystal momentum 命名；blocks[20] 的對稱性—守恆量對照表；blocks[24] 的反衝能量估算與穆斯堡爾效應。檔案在 blocks[8]、blocks[16]、blocks[25]、blocks[26] 都明確寫「本節是我補的」，這幾個卻沒有。",
+   "evidence": "書本 p.99–100 的對應段落只有檔案已引用的那幾句，沒有 stop band、真空能、諾特定理、穆斯堡爾等字眼（全書 grep「fold」的做法同理可驗）。",
+   "fix": "維持 tier:\"book\"，但在這些延伸段落前加上與 blocks[8] 相同的「以下為本站補充，原書未寫」標記；或把純補充的段落切成獨立的 tier:\"mine\" 區塊。"
+  },
+  {
+   "where": "blocks[18].body（H₂ 類比的英文引文）",
+   "problem": "引文非逐字：漏掉句中的行內數學 ½(r₁ + r₂)，且未用刪節號標示。檔案其他地方（例如 (28) 段落把「½ρ(∂u/∂t)²」「¼ρVω²u₀² sin²ωt」都還原進引文）採的是「行內數學要補回去」的做法，這裡與自己的做法不一致。",
+   "evidence": "書本 p.100 原句：「…the center of mass coordinate ½(r₁ + r₂) corresponds to the uniform mode K = 0 and can carry linear momentum.」檔案引文為「…the center of mass coordinate corresponds to the uniform mode K = 0…」。（檔案下方表格另有列出 ½(r₁ + r₂)，所以只是引文本身的漏字。）",
+   "fix": "引文補回 ½(r₁ + r₂)。"
+  },
+  {
+   "where": "blocks[17].body（第四層・Problem 7）",
+   "problem": "出處描述不精確：「書末註明『*This problem is rather difficult.』」。這是 p.103 該頁底部的星號腳註，不在書末。",
+   "evidence": "書本 p.103 頁腳：「*This problem is rather difficult.」（與 *7. Soft phonon modes 同頁）。",
+   "fix": "改成「p.103 頁末腳註」。"
+  },
+  {
+   "where": "blocks[0].body 首句",
+   "problem": "節次起始頁不準：「第 4 章從 p.97 開始處理『每個原胞兩個原子』的鏈」。TWO ATOMS PER PRIMITIVE BASIS 這一節從 p.95 就開始（3p 支、3 聲學 + 3p−3 光學的計數在 p.95–97），p.97 開始的是具體的雙原子鏈模型（Fig. 9 與式 (18)–(20)）；另外句中列的 (21)(22) 印在 p.98 而非 p.97。",
+   "evidence": "書本 p.95 節標題「TWO ATOMS PER PRIMITIVE BASIS」；目錄（pdf 8）「Two Atoms per Primitive Basis 95」；p.97 為 Fig. 9 與 (18)(19)(20)；p.98 為 (21)(22)(23)(24)(25)(26)。",
+   "fix": "改成「這一節從 p.95 起，p.97 開始具體的雙原子鏈模型：(18)(19)(20) 在 p.97，(21)(22) 在 p.98」。"
+  },
+  {
+   "where": "blocks[7].eq.numeric（NaCl 力常數反推）",
+   "problem": "中間數值四捨五入偏高：以 ω_O ≈ 3 × 10¹³ rad/s、μ = 2.32 × 10⁻²⁶ kg 反推 C = μω_O²/2 = 10.4 N/m，檔案寫「C ≈ 11 N/m」。後面的 1.9–2.4 × 10¹³ rad/s 與 103–128 cm⁻¹ 都是用 C = 11 算的（自洽），但與給定輸入差約 6%。",
+   "evidence": "μω_O²/2 = 2.32 × 10⁻²⁶ × 9 × 10²⁶ / 2 = 10.44 N/m；用 C = 10.4 會得到 1.88–2.34 × 10¹³ rad/s ≈ 100–124 cm⁻¹。",
+   "fix": "把 C 寫成「≈ 10 N/m」並同步微調下游數字，或直接註明「取整到 11 N/m 後續算」。"
+  }
+ ],
+ "verified": [
+  "p.99–100 的英文引文全部逐字核對無誤：「At a general K the ratio u/v will be complex, as follows from either of the equations (20).」「Another solution for the amplitude ratio at small K is u = v, obtained as the K = 0 limit of (24).」「The atoms (and their center of mass) move together…whence the term acoustical branch.」「Wavelike solutions do not exist for certain frequencies, here between (2C/M₁)^{1/2} and (2C/M₂)^{1/2}…There is a frequency gap at the boundary K_max = ±π/a of the first Brillouin zone.」「The energy of a lattice vibration is quantized…」「when the mode is excited to quantum number n; that is, when the mode is occupied by n phonons.」「The term ½ℏω is the zero point energy…are also (n + ½)ℏω.」「The quantum theory of phonons is developed in Appendix C.」「This relates the displacement in a given mode to the phonon occupancy n of the mode.」「What is the sign of ω? …ω will be imaginary.」「A phonon of wavevector K…as if it had a momentum ℏK.」「However, a phonon does not carry physical momentum.」「In the reflection process the crystal as a whole will recoil with momentum −ℏG…rarely considered explicitly.」「The true momentum of the whole system always is rigorously conserved.」「Equation (30) is an example of the rule…addition of a reciprocal lattice vector G.」「Phonon dispersion relations ω(K) are most often determined experimentally…」「A neutron sees the crystal lattice chiefly by interaction with the nuclei」（唯一的漏字見 minors 第 6 條）。",
+  "章內標題確實印成「QUANTIZATON OF ELASTIC WAVES」（少一個 I），而目錄（pdf 8）印的是「Quantization of Elastic Waves 99」——檔案對這個排版錯字的描述兩邊都查證屬實。",
+  "式號與頁碼全部正確：(25) 在 p.98；(27)(28)(29) 在 p.99；(30)(31)(32) 在 p.100。(31) 對應「創造聲子」k′ + K = k + G、(32) 對應「吸收聲子」k′ = k + K + G 的配對沒有搞反（PDF 文字層把顯示式反序輸出，已依正文敘述順序逐一比對）。",
+  "公式抄寫正確：(22) M₁M₂ω⁴ − 2C(M₁+M₂)ω² + 2C²(1 − cos Ka) = 0；(25) ω² = 2C/M₁、2C/M₂；(26) u/v = −M₂/M₁；(20) 兩式；(27) ε = (n + ½)ℏω；(28) ⅛ρVω²u₀² = ½(n + ½)ℏω；(29) u₀² = 4(n + ½)ℏ/ρVω。(29) 的量綱檢查（ℏ/ρVω → m²）成立。",
+  "blocks[13] 從駐波導出 (28)(29) 的十個步驟全部複算正確，包含書上省略的 cos²Kx 空間平均 = ½（故體積分出現 ¼）、⟨sin²ωt⟩ = ½（故 ⅛）、以及 ⟨u²⟩ = u₀²/4。最後一步與第 5 章 Problem 3 的 ⟨R²⟩ = (ℏ/2ρV)Σω⁻¹ 完全對得上，且書中確實只寫「a factor of ½ to go from mean square amplitude to mean square displacement」（p.128 逐字確認），檔案對這個「容易只除一次」的提醒是對的。",
+  "blocks[6] 除第六步外的代數全部正確：cos Ka 反解、1 − cos Ka = (M₁M₂/2C²)ω²(ω_O² − ω²)、因式分解 M₁M₂(ω² − 2C/M₁)(ω² − 2C/M₂) = M₁M₂ω⁴ − 2C(M₁+M₂)ω² + 4C²、以及 Ka = π + iκa ⇒ cos Ka = −cosh(κa)、exp(isKa) = (−1)^s e^{−sκa} 的漸逝解圖像（含上界溢出時 Ka = iκa 不變號的對照）都成立。",
+  "Fig. 7 的文字還原（以 6 倍算繪目視）正確：橫軸 K 自 0 到 π/a、標註 M₁ > M₂、聲學支自原點升到 (2C/M₁)^{1/2} 並在區邊界呈水平切線、光學支自 [2C(1/M₁+1/M₂)]^{1/2} 以水平切線出發並降到 (2C/M₂)^{1/2}、兩者之間留空。圖說逐字無誤。Figure 8a（Ge 80 K，縱軸到 10 × 10¹² Hz，含「The LO and TO branches coincide at K = 0…」與中子非彈性散射出處）與 Figure 8b（KBr 90 K）皆在 p.96。",
+  "全書跨章引用逐頁查證屬實：ch4 Problem 3（p.103，「Show that at this value of K the two lattices act as if decoupled…」逐字）、Problem 5（p.103，力常數交錯 C 與 10C、質量相同）、Problem 7（p.103–104，σ = e²/γa³、σ > 0.475 = 4/7ζ(3)、(2 ln 2)⁻¹ = 0.721、結論句逐字）、p.97「It is not essential that the masses be different…nonequivalent sites.」與「We define a in Fig. 9 as the distance between nearest identical planes…」、p.96 腳註週期邊界條件、ch5 (1)(2) 在 p.107、Umklapp (47) K₁+K₂=K₃+G 在 p.125、ch5 Problem 3 在 p.128（含 ⟨R²⟩ = 3ℏω_D²/8π²ρv³、一維發散、⟨(∂R/∂x)²⟩ = ½ΣK²u₀²）、ANHARMONIC CRYSTAL INTERACTIONS 在 p.119、ch2 p.31（(19) k + Δk = k′、(21) Δk = G 與同頁 k + G = k′、(22) 2k·G + G² = 0、彈性散射 |k| = |k′| 引文）、附錄 A p.641–642（「instantaneous nearest-neighbor spacings differing by 10 percent at room temperature」、⅓ 為 cos²θ 球面平均、(4) I = I₀exp(−⅓⟨u²⟩G²)、「The exponential factor is the Debye-Waller factor.」、Fig. 1 鋁 (h00) 50–350 K）、附錄 C p.648（標題、H = Σ_s{p_s²/2M + ½C(q_{s+1}−q_s)²}、「make a Fourier transformation…known as phonon coordinates」逐字、ε_n = (n+½)ℏω）、ch16 p.473（LST (36) ω_T²/ω_L² = ε(∞)/ε(0)、「When ω_T = 0 the crystal is unstable…」逐字、BaTiO₃ 24 °C 的 12 cm⁻¹ TO 模式、SrTiO₃ 的 ω_T² ∝ (T − T₀) 與同頁 Figure 13）。",
+  "blocks[8] 關於「zone folding」的自述經獨立驗證屬實：以 PyMuPDF 全書 grep「fold」，只有 p.229「the particle on reaching the zone boundary at A is instantly folded back to B」是能帶折回的用法，其餘全是 fivefold/threefold 等對稱性用詞，Kittel 本書確實沒有「zone folding」一詞，也沒在第 4 章談單／雙原子鏈的折疊對應——檔案把這段標成 tier:\"mine\" 並自陳補充，處理正確。",
+  "數值全部重算過且與檔案一致：NaCl (35.45/22.99)^{1/2} = 1.242（間隙相對寬度 24%）、KBr (79.90/39.10)^{1/2} − 1 = 0.43、Ge 質量比 1 → 間隙 0；矽光學聲子 9.8 × 10¹³ rad/s = 15.6 THz、ℏω = 1.03 × 10⁻²⁰ J = 64 meV、300 K 下 ℏω/k_BT = 2.5、⟨n⟩ = 0.089、½ℏω = 32 meV；ω = 1 × 10¹³ rad/s 對應 6.6 meV、⟨n⟩ = 3.45、(n+½) = 3.9；(29) 的 u₀ = 3 × 10⁻²³ m、⟨R²⟩ ≈ 6.8 × 10⁻²³ m²、u_rms ≈ 0.082 Å ≈ Si–Si 鍵長 2.35 Å 的 3.5%；Bragg 反衝 ℏG ≈ 2 × 10⁻²⁴ kg·m/s、反衝能 ≈ 2 × 10⁻⁴⁵ J ≈ 10⁻²⁶ eV。（唯一偏差見 minors 第 9 條的 C ≈ 11 N/m。）",
+  "物理判讀無誤：K = 0 光學支質心不動（M₁u + M₂v = 0 由 (26) 直接得到）、區邊界兩子晶格解耦、ℏK 為準動量而非真動量、整塊晶體以 −ℏG 反衝使真動量嚴格守恆、(32) = (31) 取 K → −K、吸收過程速率 ∝ ⟨n⟩ 而產生 ∝ ⟨n⟩+1 造成中子能量得失兩側不對稱——這些都與書中敘述相容，沒有發現把書中沒說的話寫成書中說的（延伸內容的 tier 標記問題另見 minors 第 5 條）。"
+ ]
+}

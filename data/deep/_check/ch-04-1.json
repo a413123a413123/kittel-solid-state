@@ -1,0 +1,96 @@
+{
+ "section": 1,
+ "blockers": [
+  {
+   "where": "blocks[5].body（「問題的陳述」，tier: book）；同一錯誤在 blocks[22].after（(6)→(7) 補推導）重複一次",
+   "problem": "關於原文用詞的事實宣稱錯誤，位置與「第一次」兩件事都錯。檔案寫「Kittel 在**式 (7) 後面**第一次用到 “dispersion relation” 這個詞，用得恰到好處：那正是這條關係第一次脫離直線的時刻」；blocks[22].after 又寫「Kittel 在這裡第一次用了 “dispersion relation” 這個詞，時機是準確的」。(a) 位置錯：該詞印在**引出式 (7) 的那一句**裡，也就是式 (7) 之前，不是之後。(b)「第一次」錯：Kittel 在第 3 章 p.82 就已經用過這個詞，而且用在一條**完全無色散**的線性關係上。整段修辭（「時機是準確的」「用得恰到好處」）建立在這個錯誤前提上。",
+   "evidence": "書 p.92 原文序列：「With the identity 2 cos Ka = exp(iKa) + exp(−iKa), we have the dispersion relation ω(K).」→ 之後才印出 (7) ω² = (2C/M)(1 − cos Ka)。書 p.82（第 3 章）原文：「On substitution in (57b) this gives the dispersion relation (62) ω²ρ = C₄₄K² ;」。以 PyMuPDF/pypdf 對 pdf 1–111 頁全文檢索 “dispersion relation”，正文中最早出現處即 p.82（另有 pdf 14 的第 14 章目錄行 “Dispersion Relation for Electromagnetic Waves 397”）。",
+   "fix": "改成「Kittel 在引出式 (7) 的那句話裡稱它為 ‘the dispersion relation ω(K)’。這個詞第 3 章 p.82 已經用過一次（(62) ω²ρ = C₄₄K²），但那條關係其實是無色散的直線；到 (7) 才第一次名副其實。」兩處都要改，blocks[22].after 的「第一次」「時機是準確的」一併拿掉。"
+  },
+  {
+   "where": "blocks[0]（「第 4 章的地圖」）與 blocks[5]（「問題的陳述」）的 tier",
+   "problem": "tier 標成 \"book\"（build_deep.py 中 book 是唯一不加標籤的 tier，讀者會當成書上內容），但兩個區塊的主體都是撰寫者自己的教學論述，原書沒有對應文字。blocks[0]：前兩段是 p.89 目錄的逐字轉錄（正確），後兩段整段自撰——「這張目錄裡藏了一個很重要的結構訊號」「這不是編排上的疏忽，而是這門學科真實的邏輯順序」「色散關係 ω(K) 本身是純古典的結果」「**模式由古典晶格動力學決定，佔據數由 Planck 分布決定，兩件事可以分開算**」——最後這句被加粗並說成「第 5 章會兌現的一句非常關鍵的話」，但它不是書上的句子。blocks[5]：第一段引文正確，第二、三段（「已經把後面九條式子的目標寫死了」「不求振幅／不求相位／不求依賴激發強度的量」「『ω 是 K 的函數』這件事本身就是一個物理結論」）全部自撰。",
+   "evidence": "p.89 章首頁只印目錄與一行 “Chapter 5 treats the thermal properties of phonons.”；p.91 第一段只有 “Consider the elastic vibrations of a crystal with one atom in the primitive cell. We want to find the frequency of an elastic wave in terms of the wavevector that describes the wave and in terms of the elastic constants.” 兩句。上述被加粗的結論句在 p.89、p.91 皆無對應。",
+   "fix": "把兩個區塊各自拆成兩塊：引文／目錄轉錄的部分保留 tier:\"book\"，自撰論述的部分另立 tier:\"mine\"。（註：同專案 ch-04-4 的校對把同型問題列為 minor；若要沿用該慣例請統一標準，但目前 tier 與內容確實不符。）"
+  }
+ ],
+ "minors": [
+  {
+   "where": "blocks[4].body（Fig. 2 的文字還原，tier: book）",
+   "problem": "圖面描述與實圖不符：檔案寫「**每一條實線**相對於它自己的虛線，被水平地推開了一段距離，這段距離用水平箭頭標出並命名為 u_{s−1}、u_s、u_{s+1}、u_{s+2}、u_{s+3}、u_{s+4}」。實際上 s 這一面**既沒有虛線也沒有箭頭**（該瞬間 u_s = 0），只有一個孤立的標籤 u_s；虛線只有 5 條（s−1、s+1、s+2、s+3、s+4），實線 6 條。",
+   "evidence": "以 PyMuPDF 6 倍算繪 pdf 110（書 p.90）目視：s−1 的箭頭向左、s 無箭頭無虛線、s+1 至 s+4 的箭頭向右且逐漸變長；雙箭頭 a 標在 s+1 與 s+2 兩條**虛線**之間。文字層座標一致（u 標籤 6 個 x = 246.4/281.6/323.7/361.6/398.7/437.4，面編號 6 個）。",
+   "fix": "改成「六條實線各自對應一條虛線，但 s 面在該瞬間位移為零，所以圖上沒有畫出它的虛線與箭頭，只留下標籤 u_s；其餘五面的箭頭方向與長度逐面不同（s−1 向左，s+1 到 s+4 向右且遞增）。」"
+  },
+  {
+   "where": "blocks[15].after（(2) → (3) 補推導的「符號約定的一致性」）",
+   "problem": "頁碼不準：檔案寫「第 3 章 p.82 的式 (58)、(61)、(64) 用的也是 exp[i(Kx − ωt)]」。(61) 與 (64) 確實在 p.82，但 (58) 印在 p.81（“Waves in the [100] Direction” 一節從 p.81 開始，目錄 pdf 8 亦印 “Waves in the [100] Direction 81”）。",
+   "evidence": "書 p.81：「One solution of (57a) is given by a longitudinal wave (58) u = u₀ exp [i(Kx − ωt)] , where u is the x component of the particle displacement.」；書 p.82 才有 (61) v = v₀ exp[i(Kx − ωt)] 與 (64) w = w₀ exp[i(K_x x + K_y y − ωt)]。",
+   "fix": "改成「第 3 章 p.81 的式 (58) 與 p.82 的式 (61)、(64)」。"
+  },
+  {
+   "where": "blocks[0].body（第三段）vs blocks[3].body（Phonon ↔ Elastic wave 那一列）",
+   "problem": "檔案內部自相矛盾且頁數算錯：blocks[0] 寫「Kittel 整整八頁（p.91–99）都在解古典的力學問題」，blocks[3] 寫「先把『彈性波』修正成晶格上的離散波（**p.91–98**，純古典）」。p.91–99 是九頁；古典部分是 p.91–98（QUANTIZATION OF ELASTIC WAVES 從 p.99 開始），所以「八頁」對應的是 p.91–98。",
+   "evidence": "p.89 章首目錄：QUANTIZATION OF ELASTIC WAVES 99。",
+   "fix": "blocks[0] 改成「整整八頁（p.91–98）」，與 blocks[3] 一致。"
+  },
+  {
+   "where": "blocks[22].steps[0]、blocks[26].after（第二點）、blocks[27].eq.limits（K → −K 那一條）",
+   "problem": "歸因不精確（結論對、理由錯）。三處都把「ω² 是實數」「ω(−K) = ω(K)」歸給「晶格的反演對稱性」。實際上：(i) ω² 為實數來自力常數矩陣本身的對稱性 Φ_{ss′} = Φ_{s′s}（混合偏導數可交換）加平移不變性 Φ_p = Φ_{−p}，也就是動力學矩陣是厄米的，與晶體有沒有反演中心無關；(ii) ω(K) = ω(−K) 對**所有**晶體都成立（時間反演對稱），非中心對稱晶體的聲子色散一樣是偶函數。",
+   "evidence": "由檔案自己 blocks[9].steps[4] 寫下的 Φ_{ss′} ≡ (∂²U/∂u_s∂u_{s′})₀ 即可看出來源；本模型的 Φ_{s,s+1} = Φ_{s,s−1} = −C 是平移不變性 + 二階導數對稱的結果，不需要另外假設反演對稱。",
+   "fix": "把「因為晶體有反演對稱」改成「因為力常數矩陣對稱（Φ_p = Φ_{−p}），動力學矩陣是厄米的；ω(K) = ω(−K) 則是時間反演對稱的普遍結果」。"
+  },
+  {
+   "where": "blocks[10].body（第三項熱導率段末的 FinFET 段）vs blocks[31].body（第三段）",
+   "problem": "前後不一致且與原文不符。blocks[10] 寫「邊界散射把 ℓ 壓到**比鰭寬還小**」，blocks[31] 卻寫「邊界散射把平均自由程壓到**與鰭寬同量級**」。Kittel p.126 的說法是平均自由程受限於試片尺寸、與其直徑同量級。",
+   "evidence": "書 p.126：「When at low temperatures the mean free path becomes comparable with the width of the test specimen, the value of ℓ is limited by the width… One would expect then that the phonon mean free path would be constant and of the order of the diameter D of the specimen, so that (48) K ≅ CvD.」",
+   "fix": "blocks[10] 改成「把 ℓ 壓到與鰭寬同量級」，與 blocks[31] 及 p.126 一致。"
+  },
+  {
+   "where": "blocks[13].eq.numeric（式 (1) 的 AFM 對照）",
+   "problem": "過度宣稱 + 用詞不精確。(a)「這不是巧合，AFM 能感測單一鍵的作用力正是因為兩者匹配」是無根據的因果宣稱——AFM 懸臂樑勁度是依量測模式選的（接觸模式反而要求 k 遠小於鍵勁度以避免 jump-to-contact），同量級是設計與巧合，不是感測能力的成因。(b) 本段的 C 是「**每原子的面間力常數**」（原文 p.91 特別約定 C is defined for one atom of the plane），不等於「一根化學鍵的硬度」——鋁沿 [100] 每個原子對鄰面有四個最近鄰。",
+   "evidence": "書 p.91：「It is convenient hereafter to regard C as defined for one atom of the plane, so that F_s is the force on one atom in the plane s.」",
+   "fix": "改成「C ≈ 43 N/m 是『一個原子對相鄰面』的等效彈簧勁度，與 AFM 懸臂樑常用的 0.1–40 N/m 落在同一量級，方便建立直覺」，刪掉因果宣稱。"
+  },
+  {
+   "where": "blocks[7].body（第二層開頭）",
+   "problem": "出處描述不精確，會讓讀者以為 Kittel 沒定義 a。檔案寫「Kittel 在式 (4) 之後**只**淡淡寫了一句 “The value to use for a will depend on the direction of K.”」。原文在同一句之前就明確定義了 a：“where a is the spacing between planes and K is the wavevector.” 也就是「a 是面間距不是晶格常數」書上有寫，檔案真正在補的只有「面間距怎麼算」。",
+   "evidence": "書 p.92 式 (4) 下方：「where a is the spacing between planes and K is the wavevector. The value to use for a will depend on the direction of K.」",
+   "fix": "改成「Kittel 明說 a is the spacing between planes，並補一句 The value to use for a will depend on the direction of K.；他沒說的是三個方向的面間距各是多少、以及 fcc／bcc 要怎麼算。」"
+  },
+  {
+   "where": "blocks[7].body（面間距表下方的括號說明）",
+   "problem": "過度一般化，與檔案自己列的表矛盾。檔案寫「而且對 fcc 與 bcc，還不等於把立方晶格常數 a₀ 除以 √(h²+k²+l²)」。但同一個表裡 fcc 的 [111]（a₀/√3）與 bcc 的 [110]（a₀/√2）**正好等於** a₀/√(h²+k²+l²)；不等的只有 fcc 的 [100]、[110] 與 bcc 的 [100]、[111]。",
+   "evidence": "表中六格數值本身全部正確（以 d = 2π/|G_min| 逐一複算：fcc 允許全奇或全偶，[100]→(200)、[110]→(220)、[111]→(111)；bcc 允許 h+k+l 為偶，[100]→(200)、[110]→(110)、[111]→(222)）。",
+   "fix": "改成「對 fcc 與 bcc，**有些方向**不等於 a₀/√(h²+k²+l²)——要看該方向最短的**允許**倒晶格向量是哪一個（見下表）」。"
+  },
+  {
+   "where": "blocks[8].body（Fig. 3.6 圖說引文）",
+   "problem": "引文截斷未標示。檔案寫「圖說寫的是 …」後接引號，但原圖說最後還有一句被略去，且沒有用刪節號標記。所引部分逐字無誤。",
+   "evidence": "書 p.58 Figure 6 完整圖說：「Form of the Lennard-Jones potential (10) which describes the interaction of two inert gas atoms. The minimum occurs at R/σ = 2^{1/6} ≈ 1.12. Notice how steep the curve is inside the minimum, and how flat it is outside the minimum. **The value of U at the minimum is −ε; and U = 0 at R = σ.**」",
+   "fix": "補上最後一句，或在引文末加「…」表示截斷。"
+  },
+  {
+   "where": "blocks[3].body（最後一段的章號對照）",
+   "problem": "中譯章名不精確：「Plasmon 在第 14 章（電漿子、極化子、極子）」。第 14 章原名 PLASMONS, POLARITONS, AND POLARONS；「極化子」是 polaron，polariton 通常譯為「極化激元」，寫成「極子」不是通行譯法，且與同句的「極化子」容易互相混淆。章號本身（Plasmon／Polaron 第 14 章、Magnon 第 12 章、Exciton 第 15 章）全部正確。",
+   "evidence": "目錄 pdf 14：「CHAPTER 14: PLASMONS, POLARITONS, AND POLARONS 393 … Plasmons 401 … Polaritons 410 … Electron-Phonon Interaction: Polarons 420」；pdf 13：「Magnons 330」屬 CHAPTER 12；pdf 15：「Excitons 435」屬 CHAPTER 15。",
+   "fix": "改成「第 14 章（Plasmons, Polaritons, and Polarons：電漿子、極化激元、極化子）」。"
+  }
+ ],
+ "verified": [
+  "全部 23 段英文引文逐字比對原文無誤，含 p.91 的四段建模假設（“Consider the elastic vibrations…in terms of the elastic constants.”／“The mathematical solution is simplest in the [100], [110], and [111] propagation directions…body diagonal.”／“When a wave propagates along one of these directions, entire planes of atoms move in phase…”／“We can describe with a single coordinate u_s…The problem is now one dimensional.”／“For each wavevector there are three modes…two of transverse polarization (Fig. 3).”／“We assume that the elastic response…quadratic function of the relative displacement of any two points in the crystal.”／“Terms in the energy that are linear in the displacements will vanish in equilibrium—see the minimum in Fig. 3.6. Cubic and higher-order terms may be neglected for sufficiently small elastic deformations.”／“We assume that the force on the plane s caused by the displacement of the plane s + p…The total force on s from planes s ± 1:”／“This expression is linear in the displacements and is of the form of Hooke’s law.”／“The constant C is the force constant between nearest-neighbor planes and will differ for longitudinal and transverse waves.”／“It is convenient hereafter to regard C as defined for one atom of the plane, so that F_s is the force on one atom in the plane s.”／“where M is the mass of an atom”），以及 p.92 的全部引導語（“This is a difference equation in the displacements u and has traveling wave solutions of the form:”／“The value to use for a will depend on the direction of K.”／“With (4), we have from (3):”／“We cancel u exp(isKa) from both sides, to leave”／“With the identity 2 cos Ka = exp(iKa) + exp(−iKa), we have the dispersion relation ω(K).”／“The boundary of the first Brillouin zone lies at K = ±π/a. We show from (7) that the slope of ω versus K is zero at the zone boundary:”／“at K = ±π/a, for here sin Ka = sin (±π) = 0.”／“The special significance of phonon wavevectors that lie on the zone boundary is developed in (12) below.”／“By a trigonometric identity, (7) may be written as”／“A plot of ω versus K is given in Fig. 4.”）。",
+  "跨章引文逐頁查證屬實且逐字無誤：p.94「In metals the effective forces may be of quite long range and are carried from ion to ion through the conduction electron sea. Interactions have been found between planes of atoms separated by as many as 20 planes.」；p.93 Fig. 5 圖說「The wave represented by the solid curve conveys no information not given by the dashed curve. Only wavelengths longer than 2a are needed to represent the motion.」；p.126「the phonon mean free path which enters (42) is the mean free path for umklapp collisions between phonons and not for all collisions between phonons.」與「Geometrical effects may also be important in limiting the mean free path. We must consider scattering by crystal boundaries」；p.82「Thus for K parallel to [100] the two independent shear waves have equal velocities. This is not true for K in a general direction in the crystal.」與「because the three elastic constants can be found simply from the three propagation velocities in this direction」；p.167 BLOCH FUNCTIONS 的 ψ_k(r) = u_k(r) exp(ik·r)。",
+  "式號與頁碼全部正確：(1)(2)(3) 印在書 p.91，(4)(5)(6)(7)(8)(9) 印在書 p.92，九條 eq block 的 bookPage 與 eqNumber 全部對得上；另外提到的 p.93 (10)(11)(12)、p.94 (15) ω² = (C/M)K²a²、p.94 Bragg 條件（θ = ½π、d = a、n = 1 ⇒ λ = 2a）、p.122 (42) K = ⅓Cvℓ 的三個因子說明、p.95 起 TWO ATOMS PER PRIMITIVE BASIS、p.99 QUANTIZATION、p.100 PHONON MOMENTUM、p.102–103 七道習題與題名（含習題 4 Kohn anomaly、習題 7 Soft phonon modes），全部與原文相符。",
+  "九條公式抄寫零錯誤：(1) F_s = C(u_{s+1} − u_s) + C(u_{s−1} − u_s)；(2) M d²u_s/dt² = C(u_{s+1} + u_{s−1} − 2u_s)；(3) −Mω²u_s = C(u_{s+1} + u_{s−1} − 2u_s)；(4) u_{s±1} = u exp(isKa) exp(±iKa)；(5) −ω²Mu exp(isKa) = Cu{exp[i(s+1)Ka] + exp[i(s−1)Ka] − 2exp(isKa)}；(6) ω²M = −C[exp(iKa) + exp(−iKa) − 2]；(7) ω² = (2C/M)(1 − cos Ka)；(8) dω²/dK = (2Ca/M) sin Ka = 0；(9) ω² = (4C/M)sin²½Ka ; ω = (4C/M)^{1/2}|sin ½Ka|。指數、係數、下標與絕對值符號都與書上一致，量綱亦成立（C/M 為 s⁻²、a²C/M 為速度平方）。",
+  "blocks[2] 的 Fig. 1 配對與「校註」完全屬實：以 PyMuPDF 取 pdf 110 的 span 座標複核，Name 欄 x = 260.98–289.86、Field 欄 x = 315.33–416.17；y 座標配對 Photon 162.87 ↔ Electromagnetic wave 162.87、Phonon 180.53 ↔ Elastic wave 180.87、Plasmon 197.53 ↔ Collective electron wave 197.53、Magnon 215.37 ↔ Magnetization wave 215.53、Polaron 232.70 ↔ Electron + elastic deformation 232.53、Exciton 250.04 ↔ Polarization wave 249.87，Electron 位於 y = 145.53 且 Field 欄該高度確無文字（真空白）。檔案列出的每一個座標數字都與實測相符，七列配對正確。",
+  "blocks[28] 的 Fig. 4 文字還原全部正確（PyMuPDF 6 倍算繪目視）：縱軸為 ω/(4C/M)^{1/2}、刻度 0–1.2 每 0.2 一格；橫軸自 −π/a 經 0、π/a 到 2π/a（涵蓋 1.5 個週期）；K = −π/a 處為 1.0 且切線水平、K = 0 為 V 字尖角、K = π/a 為圓滑極大、K = 2π/a 回到 0；K = 0 與 K = π/a 各有一條細垂直參考線；底部雙箭頭自 −π/a 到 π/a 標 “First Brillouin zone”。**最值得記一筆的是絕對值符號**：圖中方程式的兩條豎線在 PDF 文字層完全抽不到（文字層只有 “= sin ½Ka”），但頁面的向量繪圖物件裡確實有兩條直線 x = 363.92 與 x = 396.62、y 自 504.71 到 520.46，就是那對絕對值豎線。檔案「絕對值符號在圖上是明確畫出來的」屬實，blocks[30] 誤解五的同一宣稱也屬實。",
+  "blocks[4] 的 Fig. 3（橫波）還原正確：五條實線標 u_{s−2} 至 u_{s+2}（x = 311.4／345.8／379.4／410.8／445.8），中間 u_s 的箭頭最長，平衡位置以一條水平參考線上的小虛圓圈標出，K 為右指粗箭頭。Fig. 2 與 Fig. 3 的圖說引文均逐字無誤。",
+  "p.116 Table 1 的三個目視判讀值全部正確（pdf 136 為無文字層旋轉影像，已用 PyMuPDF 3 倍算繪確認）：表名 “Table 1 Debye temperature and thermal conductivity”、表頭 “Low temperature limit of θ, in Kelvin” 與 “Thermal conductivity at 300 K, in W cm⁻¹K⁻¹”；Al 428／2.37、C 2230／1.29、Si 645／1.48。「鑽石 2230 K 是全表最高」亦屬實（次高 Be 1440）。",
+  "p.84 兩張表的引用全部正確：Table 11「Adiabatic elastic stiffness constants of cubic crystals at low temperature and at room temperature」Al 列 0 K 為 C₁₁ 1.143／C₁₂ 0.619／C₄₄ 0.316／密度 2.733，300 K 為 1.068／0.607／0.282 且密度欄確為「—」；Table 12「…at room temperature or 300 K」Diamond C₁₁ 10.76、Si C₁₁ 1.66 / C₄₄ 0.796，且表中九個材料的 C₁₁ 全部大於 C₄₄。單位「10¹² dyne/cm²（10¹¹ N/m²）」也對。",
+  "blocks[29] 的鋁數值鏈逐步複算全部正確：M = 26.98 × 1.6605×10⁻²⁷ = 4.480×10⁻²⁶ kg；a = a₀/2 = 2.025 Å；v = (1.068×10¹¹/2733)^{1/2} = 6.25×10³ m/s；C = Mv²/a² = 1.750×10⁻¹⁸/4.101×10⁻²⁰ = 42.7 N/m；ω_max = (4C/M)^{1/2} = 6.17×10¹³ rad/s；ν_max = 9.83 THz；ℏω_max/k_B = 6.51×10⁻²¹/1.3807×10⁻²³ = 471 K（與書上 428 K 差 10.0%，檔案說「差 10%」正確）；λ_min = 2a = 4.05 Å；ℏω_max ≈ 40.6 meV（檔案寫 ≈41 meV）；Si 能隙 1.1 eV ÷ 41 meV ≈ 27（檔案寫「差了 25 倍以上」）。C 取 43 或 42.7 造成的差異只在第三位（ω_max 6.17 vs 6.20×10¹³、471 vs 473 K），不影響結論。",
+  "blocks[23].eq.numeric 的半區點數值正確：Ka = π/2 時 ω = (2×43/4.48×10⁻²⁶)^{1/2} = 4.38×10¹³ rad/s → 6.97 THz；連續介質 ω = vK 給 7.75 THz；比值 sin(π/4)/(π/4) = 0.900，正好是「壓低約 10%」。blocks[29].after 的 ω_max/(vK_max) = 2/π = 0.6366 也正確。",
+  "blocks[7] 的面間距表六格數值全部複算正確（d = 2π/|G_min|，含結構因子允許條件）：sc 為 a₀、a₀/√2 = 0.707a₀、a₀/√3 = 0.577a₀；fcc 為 a₀/2、a₀/(2√2) = 0.354a₀、a₀/√3 = 0.577a₀；bcc 為 a₀/2、a₀/√2 = 0.707a₀、a₀/(2√3) = 0.289a₀。fcc [110] 取 (220)、bcc [111] 取 (222) 的理由也正確。「[100] 與 [111] 兩支橫波簡併、[110] 分裂」經書 p.83 Fig. 20 圖說證實（“The two transverse modes are degenerate for propagation in the [100] and [111] directions.”，且圖上 [110] 列出 T1: C₄₄ 與 T2: ½(C₁₁ − C₁₂) 兩個不同值）。",
+  "六段 derived 補推導的數學全部複算正確：泰勒展開 + 平移不變性給出 Φ_{ss} = 2C、Φ_{s,s±1} = −C 並回到 (1)；exp(−iωt) 分離變數；平移算符 T 的本徵值 |λ| = 1 ⇒ λ = exp(iKa)，週期邊界 λ^N = 1 給第一區內恰好 N 個 K；(5)→(6) 的公因子消去與符號檢查（2cos Ka − 2 ≤ 0 ⇒ ω² ≥ 0）；(6)→(7) 的歐拉恆等式；(7)→(9) 的 1 − cos θ = 2sin²(θ/2) 與開平方取 |sin|；以及 blocks[25] 最關鍵的那一條——dω²/dK = 2ω(dω/dK)，故區邊界（ω ≠ 0）可推得 dω/dK = 0，K = 0（ω = 0）推不出來且實際 dω/dK = ±a(C/M)^{1/2} = ±v_s。這個「書上沒提醒的陷阱」指認正確，且與 Fig. 4 的實際形狀（原點尖角、區邊界水平切線）吻合。",
+  "blocks[12] 的一般化公式屬實，而且其實書上就有：檔案寫「保留任意 p，式 (7) 會變成 ω² = (2/M)Σ_{p>0} C_p(1 − cos pKa)」，這正是書 p.95 印出的 (16a)（檔案未標式號，但內容正確）。",
+  "各 eq block 的 limits 極限檢查全部成立：(1) 剛體平移 F_s = 0、單面拉開 F_s = −2Cu_s；(2) 中央差分 → a²∂²u/∂x²（誤差 O(a⁴)）→ 波動方程 v = a(C/M)^{1/2}；(3) ω = 0 通解 u_s = α + βs、半正定 ⇒ ω² ≥ 0；(4) K 模 2π/a、第一區 −π/a < K ≤ π/a（與 p.93 原文一致）、K_max = π/a = 1.55×10¹⁰ m⁻¹、λ = 2a；(6) Ka = π 時方括號 = −4 ⇒ ω²M = 4C；(7) 長波 ω ≈ a(C/M)^{1/2}K、同位素 ω ∝ M^{−1/2}；(9) |sin| 使週期由 4π/a 折半回 2π/a。"
+ ]
+}

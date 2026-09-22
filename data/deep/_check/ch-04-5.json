@@ -1,0 +1,102 @@
+{
+  "section": 5,
+  "blockers": [
+    {
+      "where": "blocks[6].body（為什麼可以、也應該把 K 摺回第一區）",
+      "problem": "章次掛錯：把 reduced zone scheme / periodic zone scheme 說成「第 7 章」，但所引的書本 p.223、p.225 是第 9 章。",
+      "evidence": "pdf 243 / book 223 首行即「223 chapter 9: fermi surfaces and metals」；第 9 章章前目錄（book 221）列「Reduced zone scheme 223 / Periodic zone scheme 225」。第 7 章 Energy Bands 起於 book 161（pdf 181），其章前目錄從 NEARLY FREE ELECTRON MODEL 164 到 PROBLEMS 182，完全沒有這兩個小節。",
+      "fix": "改成「第 9 章 reduced zone scheme / periodic zone scheme（書本 p.223, p.225）」。同段末尾另一句「這一點直接預告第 7 章：電子在週期位能中的能隙」是對的（第 7 章 Energy Bands, p.161 起），不要一起改。"
+    },
+    {
+      "where": "blocks[11].steps[5]（Fig. 11 讀圖訓練（二）第六步）",
+      "problem": "解釋「為什麼 H 點群速度為零、P 點卻不必為零」的理由在物理上站不住：文中說「P 點是頂角而非面心，沿 [111] 前進並不垂直穿過任何一個區邊界面」，這暗示 H 是面心、[001] 垂直穿過某個區邊界面——兩者皆非事實。",
+      "evidence": "書本 p.37：bcc 第一區「is bounded by the planes normal to the 12 vectors of Eq. (33) at their midpoints. The zone is a regular 12-faced solid, a rhombic dodecahedron.」12 個面的法向是 {110}，面心正是 N 點 (½,½,0)。H = (0,0,1)（2π/a 單位）與 P = (½,½,½) 都是頂角（H 是四面交會的頂角、P 是三面交會的頂角），[001] 與 [111] 都不是任何一個面的法向。真正的判準是 2K 是否為倒晶格向量（時間反轉不變點）：2H = (2π/a)(0,0,2) 是 bcc 的倒晶格（fcc）向量（v1=1, v2=1, v3=−1），故 ω(H+q)=ω(H−q)、斜率必為零；2N = (2π/a)(1,1,0) 也是（v1=0, v2=0, v3=1）；而 2P = (2π/a)(1,1,1) 需 2(v1+v2+v3)=3，無整數解，故 P 沒有這個約束。",
+      "fix": "把理由改成「H 與 N 滿足 2K = G（倒晶格向量），由時間反轉對稱保證 ∂ω/∂K = 0；P 點的 2P = (2π/a)(1,1,1) 不是倒晶格向量，所以沒有零斜率的對稱性要求」。不要用「面心 vs 頂角」或「是否垂直穿過區邊界面」當判準——H 本身就是頂角，會自相矛盾。（結論本身正確，只是理由錯。）"
+    },
+    {
+      "where": "blocks[35].body（其餘四題速記 → Problem 6 重點）",
+      "problem": "把 Problem 6 的答案 ω² = e²/MR³ 說成「這就是離子的等離子頻率」，差了一個 √3（ω² 差 3 倍）。",
+      "evidence": "題目原文（book 103）：「Take the number density of ions (or of conduction electrons) as 3/4πR³, which defines R.」即 n = 3/(4πR³)。離子等離子頻率 ω_pi² = 4πne²/M = 4π·[3/(4πR³)]·e²/M = 3e²/(MR³)，是題目答案 e²/(MR³) 的 3 倍。此處 ω 是「單一離子在剛性電子背景中振盪」的愛因斯坦頻率 ω_E = ω_pi/√3，不是等離子頻率。另外括號裡說「第 14 章 p.410 的 (52) 會用約化質量重做一次」也對不上：(52) ω² = 4πne²/μ, 1/μ = 1/M + 1/m，書上明講那是「the electron plasma frequency (20), but with the reduced mass correction」，n 是電子密度，與本題的 e²/MR³ 不是同一個量。",
+      "fix": "改成「ω² = e²/MR³ 是單一離子在均勻電子海中的愛因斯坦（單粒子）振盪頻率，等於離子等離子頻率的 1/√3：ω_pi² = 4πne²/M = 3e²/MR³」。第 14 章 (52) 的對照要重寫，或改成只對照 p.409 的 (50) v = (m/3M)^{1/2} v_F（那條的對照本身是成立的）。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[12].body（Fig. 12 區塊末段）",
+      "problem": "「Fig. 11 上那一百多顆點，就是一百多次這樣的掃描」——點數誇大約兩倍。",
+      "evidence": "把 book 101 的 Fig. 11 以 10 倍算繪後做連通區塊計數，圓形標記（實心面積 ~820 px、空心環 ~230 px，尺寸 32×32 px）共約 55–62 個；目視分панель計數：[001] 約 11 實心 + 12 空心、[110] 8 實心 + 8 上橫 + 8 下橫、[111] 8 實心 + 4 空心，合計約 60。",
+      "fix": "改成「六十來顆點」或「數十次掃描」。"
+    },
+    {
+      "where": "blocks[10].body（Fig. 11 讀圖訓練（一）第 (3) 點）",
+      "problem": "「0.073 − 0.062 = 0.011，只有 C₄₄ 的八分之一」——引的數字與比值對不上。0.011/0.042 ≈ 1/3.8；八分之一是 ½(C₁₁−C₁₂)=0.0055 相對 C₄₄=0.042 的比（1/7.6）。",
+      "evidence": "Table 12（book 84）Na：C₁₁=0.073、C₁₂=0.062、C₄₄=0.042（10¹² dyne/cm²）。½(C₁₁−C₁₂)=0.0055；0.0055/0.042=0.131≈1/7.6。同一份檔案 blocks[36] 第 (7) 條寫「½(C₁₁ − C₁₂) … 只有前者的八分之一」才是對的。",
+      "fix": "改成「½(C₁₁ − C₁₂) = ½(0.073 − 0.062) = 0.0055，只有 C₄₄ = 0.042 的八分之一」。"
+    },
+    {
+      "where": "blocks[19].steps[5]（Problem 3 完整解 第六步）",
+      "problem": "「正文 Fig. 7 的**圖說**明訂 M₁ > M₂」——圖說（caption）沒有這句話。",
+      "evidence": "book 96 的 Fig. 7 圖說全文為「Figure 7 Optical and acoustical branches of the dispersion relation for a diatomic linear lattice, showing the limiting frequencies at K = 0 and K = K_max = π/a. The lattice constant is a.」M₁ > M₂ 是印在圖形內部的標註，另外正文 book 98 寫「The dependence of ω on K is shown in Fig. 7 for M₁ > M₂.」",
+      "fix": "改成「Fig. 7 的圖形內標註與 p.98 正文都指明 M₁ > M₂」。（同檔 blocks[20] 寫「M₁ > M₂（Fig. 7 的設定）」沒問題。）"
+    },
+    {
+      "where": "blocks[21].body 與 blocks[36].body 第 (9) 條",
+      "problem": "「Kittel 的正文從頭到尾沒有討論過 Kohn anomaly」「全書文字層搜尋顯示只出現在 p.89 / p.103 / p.677 三處」——逐字片語的計數正確，但漏了正文裡以別名出現的同一現象，而那正好是本文 k₀ ↔ 2k_F 論證最直接的書內佐證。",
+      "evidence": "全 PDF 搜尋「kohn」命中 pdf 109(book 89)、123(book 103)、262(book 242)、697(book 677)。book 242（第 9 章 Experimental Methods in Fermi Surface Studies）正文寫：「Further information on the momentum distribution is given by positron annihilation, Compton scattering, and the Kohn effect.」索引 book 677 確實印「Kohn anomaly, 103」。",
+      "fix": "把宣稱改成「『Kohn anomaly』這個字串只在 p.89 章前目錄、p.103 習題、p.677 索引出現；正文唯一的相關提及是 p.242 把『the Kohn effect』列為量費米面動量分布的方法之一，但沒有展開」。這一句還能順便強化 blocks[26] 的 2k_F 論證。"
+    },
+    {
+      "where": "blocks[27].body（Problem 7 校註三）",
+      "problem": "「閱讀 Kittel 時值得留意他對 ≡ 與 = 的使用相當一致」——同一章就有反例。",
+      "evidence": "book 94 印的是「cos Ka ≡ 1 − ½(Ka)²」（以 22 倍算繪目視確認為三橫線 ≡，該處語意應為 ≅）；book 98 的 (23)(24) 兩個小 Ka 近似根同樣印成「ω² ≡ …」。ω₀² ≡ 4γ/M 本身（book 104，26 倍算繪確認為三橫線）與 σ = e²/γa³（普通等號）的對比是對的，但推廣成「使用相當一致」不成立。",
+      "fix": "刪掉最後那句推廣，或改成「本頁 ω₀² 用 ≡、σ 用 =；不過 Kittel 全書並不嚴格，例如 p.94 的 cos Ka ≡ 1 − ½(Ka)² 與 p.98 的 (23)(24) 都把近似號印成 ≡」。"
+    },
+    {
+      "where": "blocks[1].tier、blocks[27].tier、blocks[35].tier",
+      "problem": "tier 標成 book，但區塊主體有相當比例是撰寫者自己的教學說明／校註／解題方向（雖然都有在文內揭露）。",
+      "evidence": "blocks[1]「為什麼是中子」的第一～三層論述只有『chiefly by interaction with the nuclei』一句有原文依據，文末自承「第二、三層是本講解補充的說明」；blocks[27] 的校註一（判定原書排版錯誤）、校註二、校註三都是本講解的推論；blocks[35] 自承「解題方向為本講解補充」。",
+      "fix": "把這三塊拆成 book（原文引述）＋ mine/derived（補充）兩段，或把 tier 降為 mine 並在塊內用引號標明哪幾句是原文。"
+    },
+    {
+      "where": "頂層 \"pages\": \"101-103\"",
+      "problem": "與內容自相矛盾：小節標題其實起於 p.100，Problem 7 題幹與 (b)(c) 小題落在 p.104，檔內也確有 bookPage: 104 的三個 eq 區塊。",
+      "evidence": "book 100 下半印 INELASTIC SCATTERING BY PHONONS；book 103 頁末「The interatomic potential is」被切斷，接續在 book 104；blocks[29]/[31]/[33] 的 bookPage 皆為 104。",
+      "fix": "改成 \"pages\": \"100-104\"，或保留 101-103 但在 lede 註明涵蓋 p.100 的節標題與 p.104 的續頁。"
+    },
+    {
+      "where": "blocks[35].body（Problem 1 重點）",
+      "problem": "說最後一步「用的正是 p.92 的 (7)」，但同一段剛引用的原文自己說用的是 (9)。",
+      "evidence": "book 103 原文：「where in the last step we have used the dispersion relation (9) for this problem.」(7) ω² = (2C/M)(1 − cos Ka) 與 (9) ω² = (4C/M)sin²(½Ka) 數學上等價，代進去結果相同。",
+      "fix": "改成「書上說用 (9)；因為 (7) 與 (9) 只差半角恆等式，用 (7) ω² = (2C/M)(1 − cos Ka) 代最直接」。"
+    },
+    {
+      "where": "blocks[34].body（Problem 7 的物理，引第 16 章 p.469）",
+      "problem": "標「逐字」的引句在句中被截斷且沒有加省略號。",
+      "evidence": "book 469 原文續為「…there is really not a phonon at all, but only a relaxation mode of the system.」（本頁末斷行），檔內引到「there is really not a phonon at all」就結束。",
+      "fix": "句末補「…」或把整句引完。"
+    },
+    {
+      "where": "blocks[0].body",
+      "problem": "「整章一開頭（p.94，Derivation of Force Constants from Experiment）」——p.94 不是章的開頭。",
+      "evidence": "第 4 章正文起於 book 91，止於 book 104；Derivation of Force Constants from Experiment 是 VIBRATIONS OF CRYSTALS WITH MONATOMIC BASIS 的最後一個小節（章前目錄 book 89 列在第 94 頁）。",
+      "fix": "改成「早在 p.94 的 Derivation of Force Constants from Experiment 小節」。"
+    }
+  ],
+  "verified": [
+    "頁碼與式號全數正確：(33) 在 book 101、(34) 在 book 102；全檔只給 (33)(34) 兩個 eqNumber，其餘無編號的式子（SUMMARY 選擇律、C_p^C、Problem 7(b) 色散關係）都正確地沒有捏造式號。所有跨章式號—頁碼配對（(7)(9)@92、(10)(11)(12)@93、(13)@94、(15)@94、(16a)(17)@95、(18)(19)(20)@97、(21)(22)(23)(24)(25)(26)@98、(27)(28)(29)@99、(30)(31)(32)@100）皆與原文相符。",
+    "全部英文逐字引句核對通過，包含 p.100→101（A neutron sees … the nuclei | of the atoms）、p.94→95（… observed experimental | dispersion relation for ω）、p.99→100（But the | energy of a phonon must be positive）三處跨頁斷句的標註位置正確；Fig. 11、Fig. 12 圖說、SUMMARY 四條、Problem 1~7 題幹、p.103 腳註「*This problem is rather difficult.」、Ch3 Fig. 20 圖說、Ch2 p.37 rhombic dodecahedron、Ch14 p.407 Friedel、Ch14 p.409 (50)、Ch16 p.469 soft mode 判準，全部逐字相符。",
+    "校註一（原書排版錯誤）成立：以 12 倍算繪 book 104 目視確認，紙面上印的確實是「ω²/ω₀² − sin² ½Ka + σ Σ_{p−1}^{∞} …」，關係符號印成減號、求和下標印成 p−1；同頁的 σ = e²/γa³ 用的是正常等號，可排除字型解碼問題。從 (16a) 獨立推導得到的等號版本 ω²/ω₀² = sin²(½Ka) + σ Σ_{p=1}^{∞}(−1)^p(1−cos pKa)p⁻³ 正確。",
+    "校註二成立：ζ(3)=1.2020569，4/(7ζ(3)) = 0.47538 與原文印的 0.475 相符；(4/7)ζ(3) = 0.687 不符，故「4/7ζ(3)」確應讀成 4/(7ζ(3))。",
+    "Ch3 p.83 的 [11̄0] 上橫線位置正確：以 24 倍算繪確認紙面印的是 [1 1̄ 0]（橫線在第二個 1 上），JSON 檔內的字元序列為 5B 31 31 0304 30 5D，組合符 U+0304 跟在第二個 1 之後，渲染結果一致。",
+    "Problem 4 封閉解與數值驗算全部復現：以 Abel 求和（r=0.9999995、4×10⁶ 項）重算 Σ_{p≥1} sin(pk₀a)(1−cos pKa)/p，(k₀a,Ka) = (1.0,0.5)/(2.0,1.0)/(0.8,0.3) 得 0.00000，(1.0,2.0)/(2.0,3.0)/(0.8,3.0) 得 1.57080 = π/2，與檔內第八步逐位相符；階梯函數 ω² = 0 (K<k₀)、πA/(Ma) (k₀<K<π/a) 正確，量綱檢查 [A]=N ⇒ πA/(Ma)=s⁻² 也成立。",
+    "Problem 7(c) 兩個臨界值與軟化波向量表全部復現：σ_c1 = 4/(7ζ(3)) = 0.47538、σ_c2 = 1/(2ln2) = 0.72135；以 4000 項數值求和，σ=0.475 在 Ka=π 得 +0.00079，零點位置 σ=0.476→3.103(0.988π)、0.50→2.770(0.882π)、0.55→2.316(0.737π)、0.60→1.885(0.600π)、0.65→1.407(0.448π)、0.70→0.752(0.239π)、0.72→0.187(0.060π)，與檔內兩張表逐項相符。",
+    "中子運動學數值全部復算無誤：λ=1.8 Å → k=3.4907 Å⁻¹、h²=4.390×10⁻⁶⁷、2M_nλ²=1.085×10⁻⁴⁶、E=4.045×10⁻²¹ J=25.2 meV、T=293 K；工作公式 λ[Å]=9.045/√(E[meV]) 及 25/5/100 meV 三組驗算（1.81/4.04/0.90 Å）正確；ℏω=hν(3.8 THz)=15.7 meV、ℏω/E=0.62；X 光 E=hc/λ=6.89 keV、ℏω/E=2.3×10⁻⁶；電子 1 Å ≈ 150 eV。Na 的 2π/a=1.49 Å⁻¹（a=4.23 Å，已標明為外部資料）、k/K_邊界≈2.3。",
+    "Ch3 Table 12（book 84）Na 的 C₁₁=0.073、C₁₂=0.062、C₄₄=0.042 抄錄正確，由此算出的六個有效彈性常數與四個 v_L/v_T（1.32 / 1.61 / 4.46 / 2.62）以及異向比 C₄₄/½(C₁₁−C₁₂)=7.6 全部復算相符；Fig. 20 三個方向的有效常數組合也與原圖逐項相符。",
+    "Fig. 11 的文字描述與目視讀值經 8–20 倍算繪核對無誤：三面板、縱軸 Frequency in 10¹² Hz（標 0/2/4、1 與 3 為無標記刻度）、橫軸 Wavevector in units 2π/a、終點 100 / ½½0 / ½½½、圖例在 [001] 面板內；區邊界讀值 [001] L≈3.64 T≈3.53、[110] L≈3.80（全圖最高）T₁≈2.53 T₂≈0.91、[111] L≈3.00 T≈2.88，[111] 縱支在 ζ≈0.29–0.39 形成 ≈3.49 的平頂後回落——與檔內「3.6 / 3.8、2.5、1.0 / 3.0、2.9、約 0.3 處衝到約 3.5」相符。文字層陷阱字串「00 1 20100 1 2 1 2 1 2 1 2」也與實際抽取一致。",
+    "區邊界幾何（blocks[11] 第一～五步）正確：2q·g = g²、{110} 型 g²=2 ⇒ q·g=1；(1,0,0)=H、(½,½,0)=N（|q|=0.707）、(½,½,½)=P（|q|=0.866）三點都在 bcc 第一區表面上，三面板橫軸長度不同的結論成立。",
+    "Problem 3 的完整解數學正確：Ka=π 時 1+exp(∓iKa)=0 使 (20) 脫鉤，兩根 ω²=2C/M₁、2C/M₂ 與 (25) 相符，振幅比 v=0 / u=0 的推導、(12) 駐波的力學檢查（v_s+v_{s−1}=0 ⇒ 力 = −2Cu_s）、M₁→M₂ 時間隙關閉＝區折疊的論證，全部成立；NaCl 頻率比 √(35.5/23)=1.24 復算相符。",
+    "Problem 7(a)(b) 推導正確：φ(r)=e²(−1)^p/r ⇒ φ″=2e²(−1)^p/r³ ⇒ C_p^C=2(−1)^p e²/(p³a³)；代入 (16a) 後短程項化為 ω₀² sin²(½Ka)、庫侖項前因子化為 σ=e²/γa³；Ka=π 時 Σ = −2Σ_{奇} p⁻³ = −(7/4)ζ(3)、小 Ka 時 Σ_{p≥1}(−1)^p/p = −ln2，兩步級數求和皆正確。量綱檢查 e²/a³ = dyne/cm ⇒ σ 無量綱、e²=14.40 eV·Å 與 a=2.8 Å 給 e²/a³=0.656 eV/Å²=10.5 N/m、γ=22 / 14.6 N/m 都復算相符。",
+    "跨章引用（除已列出的第 7/9 章錯置外）全部查證屬實：Ch2 p.24 Fig. 1 三條能量刻度、Ch2 p.36–37 bcc↔fcc 與式 (33)、Ch2 p.43 摘要表與 2k·G=G²、Ch3 p.69 METALS 小節、Ch5 p.107 Planck distribution / p.108 態密度 / p.119 Anharmonic / p.125 Umklapp、Ch6 p.131 章首與 p.139 Table 1（Na k_F = 0.92×10⁸ cm⁻¹ = 0.92 Å⁻¹ ⇒ 2k_F = 1.84 Å⁻¹）、Ch9 p.221 章首、Ch14 p.407/409/410/422、Ch15 p.444 Raman、Ch16 p.453/467/469/473 與習題 9 Soft modes and lattice transformations @485、Ch18 p.532–533 Peierls。「triple axis」全書僅 book 101 一處、「thermal neutron」全書零次，均與檔內宣稱相符。",
+    "Fig. 12 照片的文字描述（右側圓柱屏蔽鼓與環狀管線、中央水平屏蔽臂與圓柱探測器桶、左側穿毛衣者看資料、旁邊電子儀器機櫃、地面弧形軌道、照片內無可抽取文字）經 4 倍算繪目視確認屬實；三軸對應 k / k′ 方向 / k′ 大小的表格也正確。"
+  ]
+}

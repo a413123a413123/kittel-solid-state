@@ -1,0 +1,95 @@
+{
+  "section": 3,
+  "blockers": [
+    {
+      "where": "blocks[15].body（校註：(19) 印成 v₂，應為 v_s）",
+      "problem": "頁碼錯。該 block 寫「書本 p.98 的 (19) 第二式印的是 v₂」，但 (19) 印在書本 p.97（PDF 117），不在 p.98。而且這與同一份檔案 blocks[14].eq.bookPage = 97 自相矛盾。",
+      "evidence": "PDF 117 / 書本 p.97 的內文依序為：(18) 兩條運動方程、「We look for a solution in the form of a traveling wave...」、(19)「us = u exp(isKa) exp(−iωt) ; v2 = v exp(isKa) exp(−iωt) .」、「We define a in Fig. 9 as the distance between nearest identical planes...」、「On substitution of (19) in (18) we have」、(20)，以及 Fig. 9。書本 p.98（PDF 118）是從「The homogeneous linear equations have a solution only if the determinant...」＋(21) 開始的。（v₂ 的印刷事實本身正確：我用 PyMuPDF 以 9 倍算繪 p.97 的 (19)，左式下標是斜體 s、右式下標是直立數字 2，確為書上排版錯誤。）",
+      "fix": "把「書本 p.98 的 (19)」改成「書本 p.97 的 (19)」。"
+    },
+    {
+      "where": "blocks[6].body（Fig. 8a 逐筆讀圖）第（二）點「LO 與 TO 在中途交叉」",
+      "problem": "讀圖錯誤／與原圖不符。Fig. 8a 的 LO 與 TO 兩條曲線在 K = 0 到 K/K_max ≈ 0.44 之間是**完全重合畫在一起的**，到 ≈0.44–0.46 才分岔；兩條線從頭到尾沒有交叉，TO 在整個區間都 ≥ LO。「之後 LO 落到 TO 下面」隱含分岔前 LO 在 TO 上面，原圖不支持。分岔點的頻率也不是 8.8，而是 ≈8.70。",
+      "evidence": "以 14 倍算繪 p.96 的 Fig. 8a 後做像素量測（框架：左 x=210 對應 K/K_max=0、右 x=2625 對應 1.0；上 y=156 對應 10、下 y=2575 對應 0）：光學線段在 K/K_max = 0.05、0.15、0.25、0.35 的筆畫厚度都是 13 px，與單一條曲線（LA 在 0.5 處亦為 13 px）完全相同，代表兩條線疊合成一條；厚度在 0.40 起變為 15→18→22→27 px，到 0.48 才分裂成兩段 13 px 與 14 px。分岔處中心值 ν ≈ 8.70×10¹² Hz。區邊界量得 TO 8.64、LO 7.28。",
+      "fix": "改成：「LO 與 TO 在 K = 0 到 K/K_max ≈ 0.45 之間簡併（圖上畫成同一條線），之後分岔，LO 下降而 TO 幾乎維持水平；分岔處 ν ≈ 8.7×10¹² Hz。兩者不交叉，TO ≥ LO 全程成立。」保留原本「光學支不等於頻率較高的支（區邊界 TO 8.6 > LO 7.3）」的結論即可。"
+    },
+    {
+      "where": "blocks[7].body（Fig. 8b 逐筆讀圖）資料點表的 K/K_max 欄",
+      "problem": "數值錯。縱座標（頻率）讀得很準，但**橫座標系統性偏低約 0.07–0.10**，遠超出該 block 自訂的「橫座標誤差約 ±0.05」。K/K_max ≲ 0.25 的三個點還算對，0.24 以上全部偏低。",
+      "evidence": "以 14 倍算繪 p.96 的 Fig. 8b 後做連通元件偵測（左框 x=196 對應 0、右框 x=1968 對應 1.0，四個內部刻度落在 0.2/0.4/0.6/0.8；縱軸 0 在 y=2215，每單位 410.9 px）。量得（檔案值 → 實測值）：LO (0.40,4.73)→(0.503,4.732)、(0.65,4.43)→(0.734,4.426)；TO (0.15,3.54)→(0.241,3.528)、(0.40,3.39)→(0.496,3.369)、(0.65,3.21)→(0.751,3.203)；LA (0.28,1.35)→(0.357,1.354)、(0.40,1.81)→(0.497,1.817)、(0.63,2.44)→(0.720,2.445)；TA (0.27,0.97)→(0.345,0.973)、(0.38,1.28)→(0.474,1.291)、(0.47,1.47)→(0.542,1.461)、(0.53,1.60)→(0.606,1.601)、(0.63,1.86)→(0.716,1.862)、(0.78,2.07)→(0.871,2.075)。K=0 與 K=1 的點（LO 5.00 / TO 3.57 / LO 4.30 / TO 3.07 / LA 2.78 / TA 2.16）與檔案一致。",
+      "fix": "把表中 K/K_max ≳ 0.24 的所有橫座標換成實測值（見 evidence），並重算所有以橫座標為輸入的後續結論（見下兩條）。"
+    },
+    {
+      "where": "blocks[25].eq.numeric（(24) 的數值段，「誠實的對照」）",
+      "problem": "數值與結論錯，源自上一條的橫座標偏差。原文寫「把 Fig. 8b 最低的 LA 資料點 (K/K_max ≈ 0.28, ν = 1.35×10¹² Hz) 拿來算弦斜率，得 v ≈ 3.7×10³ m/s，比模型預測的 2.8×10³ 高約 30%」。該點實際在 K/K_max = 0.357，弦斜率是 2.89×10³ m/s，只比模型的 2.81×10³ 高 2.8%，不是 30%。因此「真實色散在小 K 更陡」這個推論在此並不成立。",
+      "evidence": "最低的 LA 空心圓實測座標 (0.357, 1.354×10¹² Hz)。v = ω/K = 2νa/(K/K_max)，a = 6.59 Å/√3 = 3.8047 Å ⇒ v = 2×1.354×10¹²×3.8047×10⁻¹⁰/0.357 = 2.886×10³ m/s。模型 v_LA = a√[C_L/(2(M₁+M₂))] = 2.806×10³ m/s（C_L = 21.5 N/m）。",
+      "fix": "改成 v ≈ 2.9×10³ m/s、與模型差約 3%，並刪除／改寫「模型在小 K 低估聲速約 30%」的結論。"
+    },
+    {
+      "where": "blocks[34].body（把 KBr 的數字真的代進去）步驟 3「誠實報告模型失效的地方」",
+      "problem": "數值與結論錯，同樣源自橫座標偏差。原文寫「橫波在 K/K_max ≈ 0.27：模型給 0.70，實測 0.97 ⇒ 低估 28%」「縱波在 K/K_max ≈ 0.28：模型給 1.02，實測 1.35 ⇒ 低估 25%」。這兩個點的實際橫座標是 0.345 與 0.357；在正確的 K 上模型分別給 0.895 與 1.293，偏差只有 −8.1% 與 −4.5%。因此整個「模型在兩端準、在中段偏低（25–28%）」的段落，以及由它推出的「必須加入次近鄰力常數」的論證，都建立在錯誤的橫座標上。",
+      "evidence": "精確解 ω²₋ = (C/μ){1 − √[1 − (2μ/(M₁+M₂))(1 − cos Ka)]}，μ = 4.3594×10⁻²⁶ kg、M₁+M₂ = 1.9760×10⁻²⁵ kg。C_T = 11.0 N/m、Ka = 0.345π ⇒ ν = 0.895×10¹² Hz（實測 0.973，−8.1%）；C_L = 21.5 N/m、Ka = 0.357π ⇒ ν = 1.293×10¹² Hz（實測 1.354，−4.5%）。用檔案的 0.27／0.28 代入才會得到 0.705／1.021，正好重現檔案裡的 0.70／1.02，證實偏差來自橫座標而非模型。",
+      "fix": "用正確橫座標重算，改成「中段 K 的偏差約 4–8%，同樣落在 10% 以內」，並相應弱化／改寫「需要次近鄰力常數」的推論（可改成：整段 [111] 色散在單參數模型下誤差都在 10% 以內，次近鄰修正的必要性在此資料上並不明顯）。"
+    },
+    {
+      "where": "blocks[36].body（常見誤解表）第 2 列",
+      "problem": "與 blocks[6] 同一個讀圖錯誤：「Fig. 8a 的 Ge：LO 與 TO 在 K/K_max ≈ 0.45 交叉」。原圖上兩條光學支是簡併重疊後分岔，沒有交叉。",
+      "evidence": "同 blocks[6] 的像素量測：0.05–0.35 區間光學筆畫恆為 13 px（單線寬），0.48 才分裂成兩條各 13–14 px。",
+      "fix": "改成「兩條光學支在 K/K_max ≲ 0.45 簡併，之後分岔；區邊界 TO(8.6) 高於 LO(7.3)」——結論（標籤不等於頻率排序）不變，只改敘述。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[6].body（Fig. 8a 讀圖表）K = 0 的 TO/LO 值，另見 blocks[8] 對照表與 blocks[37]",
+      "problem": "K = 0 的光學支頻率寫 ≈9.25×10¹² Hz，實測 ≈9.14×10¹² Hz，偏差 0.11 已超出該 block 自訂的 ±0.1。這個值在檔案中出現三次（Fig. 8a 表、Ge/KBr 對照表、「TO 全程只從 9.25 降到 8.7」）。",
+      "evidence": "14 倍算繪後量測：K = 0 處光學線段佔 9.115–9.169（線寬），中心 9.14。區邊界 TO 8.64、LO 7.28、LA 6.55、TA 1.89（後四者與檔案的 8.7／7.2／6.55／1.9 相符）。",
+      "fix": "把 9.25 改成 9.15（或 9.1），順帶把 LO 區邊界 7.2 改成 7.3、聲學–光學頻隙 0.65 改成 0.7。"
+    },
+    {
+      "where": "blocks[11].body（Fig. 9 逐筆讀圖）「下排的 M₁、M₂ 標在右邊兩個原子的下方」",
+      "problem": "位置描述錯：M₁ 與 M₂ 兩個標籤印在下排右邊兩顆原子的**上方**，不是下方（下方是 a 的尺寸線與兩條引出線）。",
+      "evidence": "以 8–10 倍算繪 p.97 Fig. 9：下排由左到右為大灰圓、小黑點、大灰圓、小黑點、大灰圓（上方標 M₁）、小黑點（上方標 M₂）；圖底才是標 a 的雙箭頭尺寸線，兩端引線落在 v_s 與 v_{s+1} 兩個小黑點上（這部分檔案描述正確）。",
+      "fix": "「標在右邊兩個原子的下方」→「上方」。"
+    },
+    {
+      "where": "blocks[37].body（這一段往後接到哪裡）「第 14 章（Plasmons, Polaritons, and Polarons，p.392 起）」",
+      "problem": "章首頁碼差一頁：第 14 章從書本 p.393 開始（PDF 413 是章名頁與目次），p.392 仍是第 13 章的習題頁。",
+      "evidence": "PDF 413 / 書本 p.393 開頭為「14 Plasmons, Polaritons, and Polarons — DIELECTRIC FUNCTION OF THE ELECTRON GAS 395 ...」；PDF 412 / 書本 p.392 仍是「apply an rf signal that gives a transition rate W_rf...」的習題文字。",
+      "fix": "改成 p.393 起。"
+    },
+    {
+      "where": "blocks[10].body（a 的定義）末段「同一頁的表也可核對：書本 p.66 的 KBr 最近鄰距離 R₀ = 3.298 Å」",
+      "problem": "「同一頁」用詞錯：前一句的 a_cube = 6.59 Å 取自 p.14，R₀ = 3.298 Å 取自 p.66 的 Table 7，不是同一頁。（兩個數值本身都正確。）",
+      "evidence": "書本 p.14 的 NaCl 結構表列 KBr a = 6.59 Å；書本 p.66 Table 7（Properties of alkali halide crystals with the NaCl structure）列 KBr R₀ = 3.298 Å。",
+      "fix": "改成「另可核對書本 p.66 Table 7 的 KBr 最近鄰距離 R₀ = 3.298 Å」。"
+    },
+    {
+      "where": "blocks[1]（tier: \"book\"）",
+      "problem": "tier 偏寬：這個標為 book 的 block 除了 p.95、p.91 的兩段逐字引用外，還含兩項撰寫者自己的內容且未標注——(a)「縱 1 LA + (p−1) LO、橫 2 TA + 2(p−1) TO」的一般 p 推廣表（Kittel 只對 p = 2 做過這個拆法，且此推廣只在高對稱方向上才嚴格成立）；(b) 末段「聲學支恰好 3 條 ⇒ 剛體平移的三個方向」的解釋。後者與 blocks[2] 自己寫的「Kittel 這裡沒有直接解釋」互相牴觸。",
+      "evidence": "書本 p.95 只寫到「If there are p atoms in the primitive cell, there are 3p branches...: one LA, one LO, two TA, and two TO.」；p.91 只寫「For each wavevector there are three modes... one of longitudinal polarization and two of transverse polarization.」——沒有任何一般 p 的偏振拆解表，也沒有剛體平移論證。",
+      "fix": "把推廣表與末段標成撰寫者補充（或把整個 block 拆成 book 引用 + derived 推廣）。"
+    },
+    {
+      "where": "blocks[18].eq（久期行列式 (21)，tier: \"book\"）",
+      "problem": "這個標為 book、eqNumber (21) 的公式欄直接印出「修正後」的矩陣（右上角 exp(−iKa)），但 from／limits 欄都沒有說明書上實際印的不是這樣；要到下一個 block（blocks[19]）才交代。單獨看這一條會誤以為書上就是這麼印的。",
+      "evidence": "以 8 倍算繪 p.98 的 (21) 確認：書上兩個非對角元都印成 −C[1 + exp(iKa)]（blocks[19] 的校註內容正確）。",
+      "fix": "在 blocks[18].eq.from 加一句「書上此處兩個非對角元皆印為 exp(+iKa)，本欄已依 (20) 修正，詳見下一 block」。"
+    },
+    {
+      "where": "blocks[23].body（小 Ka 極限）開頭的引用",
+      "problem": "引文不完全逐字：「For small Ka we have cos Ka ≅ 1 − ½K²a² + . . . , and the two roots are (23) (24)」把右邊界的式號 (23)(24) 放進了引號內；書上那兩個號碼是排在版面右緣的式號，不是句子的一部分。（句子本身與展開式確實是連著印的，其餘逐字無誤。）",
+      "evidence": "以 8 倍算繪 p.98 該行：「...For small Ka we have cos Ka ≅ 1 − ½K²a² + . . . , and the two roots are」句子結束於 are，(23)、(24) 分別印在下方兩條展開式的右緣。",
+      "fix": "引號內刪掉「(23) (24)」，改在引號外說明。"
+    }
+  ],
+  "verified": [
+    "逐字引用（全部核對過、皆逐字相符）：p.95 的「If there are p atoms in the primitive cell... one LA, one LO, two TA, and two TO.」；p.96 numerology 整段；p.96 腳註 1 全文；p.97 的三段模型設定（cubic crystal / repeat distance a 與 [111]、[100] / nearest-neighbor 假設）、「We define a in Fig. 9 as the distance between nearest identical planes, not nearest-neighbor planes.」、「now with different amplitudes u, v on alternate planes」；p.98 的「The homogeneous linear equations have a solution only if the determinant...」、「We can solve this equation exactly for ω²...」、「The extent of the first Brillouin zone is −π/a ≤ K ≤ π/a...」、「For the optical branch at K = 0 we find, on substitution of (23) in (20)」、「The particle displacements in the transverse acoustical (TA) and transverse optical (TO) branches are shown in Fig. 10」；p.98→p.99 跨頁句「The atoms vibrate against each other... so that the branch is called the optical branch.」（檔案對跨頁斷點的標註正確）；p.99 的 u = v、u/v complex、frequency gap 三段；p.91 的 (1)、(3)、三偏振句、「C ... will differ for longitudinal and transverse waves」；p.92 的 (4)；p.94 的長程力與 20 層平面、「velocity of sound is independent of frequency」；Fig. 7、8a、8b、9、10 五張圖說全部逐字相符。",
+    "式號與頁碼（除 blocks[15] 一處外全對）：(18)(19)(20) 在 p.97、(21)(22)(23)(24)(25)(26) 在 p.98、腳註 1 在 p.96、(27) 與「What is the sign of ω?」在 p.99、(9)(15)(12) 分別在 p.92/94/93、第 14 章 LST 為 (62) 且在 p.414、Fig. 15/16 在 p.415，皆核對無誤。",
+    "兩處校註都成立（我獨立以 PyMuPDF 放大算繪確認）：(19) 第二式書上確實印成 v₂（直立數字 2，對照左式斜體 u_s）；(21) 兩個非對角元書上確實都印成 −C[1 + exp(iKa)]；(23)(24) 與 cos Ka 展開式書上確實用 ≅（PDF 文字層的 /H33361 被解成 ≡ 是解碼失真）；(24) 分子確實是 ½C，整式為 ω² ≅ [½C/(M₁+M₂)]K²a²。",
+    "全部數學推導重算無誤：(18) 受力分析與三項健全性檢查；(19)→(20) 五步與共軛結構；(21)→(22) 行列式展開與 |1+e^{iKa}|² = 2(1+cos Ka)；(22) 的精確解 ω²_± = (C/μ){1 ± √[1 − (2μ/(M₁+M₂))(1 − cos Ka)]} 及其判別式恆非負；小 Ka 的主導平衡兩支、以及從精確解展開時聲學支需展到一階（1 − √(1−x) ≅ x/2）；Ka = π 的解耦與因式分解 (M₁ω²−2C)(M₂ω²−2C) = 0 與根的歸屬（2C/M₁ 配聲學支頂端）；(23)→(26) 的 u/v = −M₂/M₁ 與質心檢查；等質量極限 zone folding 五步（ω²₋ = (4C/M)sin²(½Ka′)、ω²₊ = (4C/M)cos²(Ka/4) 折回、K = 0 給 4C/M、區邊界兩根併為 2C/M、小 K 回到 (15)）——全部代數與量綱檢查均正確。",
+    "數值（逐項重算）：V_c = 6.59³/4 = 71.6 Å³、1 mm³ 給 N ≈ 1.4×10¹⁹、六支共 8.4×10¹⁹ 個模；μ(KBr) = 26.25 u = 4.360×10⁻²⁶ kg；由 ν_T = 3.57 與 ν_L = 5.0×10¹² Hz 得 C_T = 11.0、C_L = 21.5 N/m；(25) 的四個區邊界預測 2.05／2.93／2.87／4.10×10¹² Hz 與實測 2.15／3.07／2.76／4.30 皆差 4–5%；Vieta 和 5.05×10²⁶ s⁻²；u/v = −0.489；(ω_L/ω_T)² = 1.96；v_TA = 2.0×10³、v_LA = 2.8×10³ m/s。書中引用的外部數值也都對：p.14 的 KBr a = 6.59 Å、p.17 的 Ge a = 5.658 Å、p.66 的 KBr R₀ = 3.298 Å；由此算出的 a(KBr,[111]) = 3.805 Å、面間距 1.902 Å、a(Ge,[111]) = 3.266 Å、Ge 基底偏移 2.450 Å 與 3:1 的交錯間距，全部複算無誤，且與 Fig. 8a 圖說的 K_max = (2π/a_cube)(½½½) = π/(a_cube/√3) 自洽。",
+    "圖面描述（用 14 倍算繪影像逐項核對）：Fig. 7 的標註位置正確——(2C/M₂)^{1/2} 在上（光學支末端）、(2C/M₁)^{1/2} 在下（聲學支末端）、[2C(1/M₁+1/M₂)]^{1/2} 在縱軸 K=0 處、M₁ > M₂ 在兩線之間、區邊界垂直虛線下標 π/a、縱軸無標籤；Fig. 9 的原子順序、大灰圓 = M₁／小黑點 = M₂、上下兩排、K 粗箭頭、以及圖底 a 的尺寸線兩端確實落在相鄰兩個 M₂ 小黑點上；Fig. 10 的上格兩條交叉曲線（交會點為 + 離子、+ 曲線上凸時 − 曲線下凹）與下格單一正弦曲線、兩格同波長，描述全部相符；Fig. 8b 的四組資料點個數（LO 7、TO 5、LA 4、TA 7）、空心=縱波／實心=橫波、縱軸只到 5、橫軸只在原點標 0，以及所有**縱座標**讀值（誤差 ≤0.03）都正確——問題只出在橫座標。",
+    "tier 分配大體正確：blocks[3][5][13][16][20][22][23][26][29][33][34] 的補推導標為 derived、blocks[0][8][35][36][37] 的延伸與跨章連結標為 mine；「橫波簡併是對稱性」「Hermitian」「玻璃無平移對稱」「不是紅外活性但拉曼活性」「LST 換算」「第 7 章能隙類比」「Cth 接點」等撰寫者補充都有明確標注「此為我的補充／書中未提」。",
+    "物理判斷正確：Ge 的 LO–TO 在 K = 0 簡併、KBr 分裂（ω_L ≈ 5.00 > ω_T = 3.57，實測值與檔案一致）；把 KBr 的頻隙歸給質量差、把 Ge 的頻隙歸給 [111] 上 3:1 的不等平面間距（力常數差）——幾何計算正確，且與 p.97「either the force constants or the masses will be different」相呼應，並已標明為撰寫者分析。"
+  ]
+}

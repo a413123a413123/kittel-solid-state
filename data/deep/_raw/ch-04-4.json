@@ -1,0 +1,274 @@
+{
+  "title": "TWO ATOMS PER PRIMITIVE BASIS (conclusion) / QUANTIZATION OF ELASTIC WAVES / PHONON MOMENTUM",
+  "titleZh": "雙原子鏈收尾／彈性波量子化／聲子動量",
+  "pages": "99-100",
+  "lede": "把雙原子鏈的代數翻譯成物理讀法（振幅比、頻率間隙），再把古典的彈性波正式量子化成聲子，最後釐清「聲子的 ℏK 不是真動量」這個全章最容易記錯的一點。",
+  "blocks": [
+    {
+      "kind": "concept",
+      "heading": "這一段在解決什麼問題",
+      "tier": "mine",
+      "body": "TWO ATOMS PER PRIMITIVE BASIS 這一節從 p.95 就開始（先做 3p 支、3 條聲學加 3p−3 條光學的計數），p.97 才進入具體的雙原子鏈模型：運動方程 (18)、行波試解 (19)、代入後的聯立式 (20) 都在 p.97；行列式為零的條件 (21) 與展開後的二次方程 (22) 在 p.98。到 p.98 為止得到的是**三組數字**：小 Ka 的兩個根 (23)(24)、區邊界的兩個根 (25)、以及 K = 0 光學支的振幅比 (26) u/v = −M₂/M₁。\n\n這一段（p.99 上半）做的事是**把這些數字讀成物理**。代數解完了不等於懂了——學生最常見的狀態是「我會算行列式，但我不知道為什麼一支叫聲學、一支叫光學，也不知道那個間隙有什麼了不起」。Kittel 在這半頁用三句話把它收乾淨：一般 K 下 u/v 是複數；K → 0 時 u = v（兩個子晶格整體同相平移，所以叫聲學支）；以及在 (2C/M₁)^{1/2} 與 (2C/M₂)^{1/2} 之間**沒有行波解**。\n\n收完之後，整章的性質就變了。從 p.99 中段的 QUANTIZATON OF ELASTIC WAVES 開始，前面所有的 ω(K) 都還是**古典**的——那是一組耦合諧振子的簡正頻率，振幅可以連續取任意值。量子化這一節把振幅釘死：一個模式的能量只能是 (n + ½)ℏω，於是振幅平方 u₀² 也只能取離散值 (29)。這條式子看起來不起眼，卻是後面所有「熱位移」討論的源頭——第 5 章習題 3 的零點位移、附錄 A 的 Debye–Waller 因子，都從它出發。\n\n最後的 PHONON MOMENTUM 一節則是在**拆掉一個即將形成的誤解**。既然聲子像光子，既然選擇律寫成 k′ = k + K + G 看起來就是動量守恆，學生很自然會說「聲子帶動量 ℏK」。Kittel 明白地擋掉這句話：聲子不帶真實線性動量，ℏK 只是它在交互作用時「表現得像」的東西。這一節篇幅最短，但期中考最愛考，而且它的邏輯（相對座標 vs 質心座標）在後面談電子的 crystal momentum 時會原封不動再用一次。"
+    },
+    {
+      "kind": "concept",
+      "heading": "一般 K 下振幅比是複數：這句話在講什麼",
+      "tier": "book",
+      "body": "原文寫：「At a general K the ratio u/v will be complex, as follows from either of the equations (20).」\n\n要看懂這句，先回頭看 p.98 已經算過的兩個特例。在 K = 0 的光學支，把 (23) 代回 (20) 得到 (26) u/v = −M₂/M₁ ——這是一個**實數**，而且是負的。負號的意思是兩個子晶格永遠反相：M₁ 往右的時候 M₂ 一定往左，位移比固定為質量的反比，所以質心不動。原文對這個狀態的描述是「The atoms vibrate against each other, but their center of mass is fixed.」（p.98）如果兩個原子帶相反電荷，這個運動就會產生振盪的電偶極矩，於是能跟光波的電場耦合——這正是「光學支」名稱的由來，原文說得很直接：可以用光波的電場去激發這種運動（p.98–99）。\n\n在 K = 0 的聲學支，原文說：「Another solution for the amplitude ratio at small K is u = v, obtained as the K = 0 limit of (24).」比值是 +1，也是實數，而且是正的——兩個子晶格同相、同振幅地一起平移。原文接著說：「The atoms (and their center of mass) move together, as in long wavelength acoustical vibrations, whence the term acoustical branch.」這就是聲學支的命名理由：長波長的聲學模式就是整塊物質一起晃，也就是聲波。\n\n**關鍵在於這兩個「實數比」只在 K = 0（或區邊界）才成立。**在這兩個特殊點之間的任何 K，u/v 是一個**複數**。複數的模長告訴你兩個子晶格的振幅大小之比，複數的輻角告訴你它們之間的**相位差**。所以一般的振動模式既不是「完全同相」也不是「完全反相」，而是 M₂ 相對 M₁ 落後（或超前）某個不等於 0 也不等於 π 的角度。"
+    },
+    {
+      "kind": "derivation",
+      "heading": "補出一般 K 的 u/v：複數究竟從哪裡冒出來",
+      "tier": "derived",
+      "body": "Kittel 只說「as follows from either of the equations (20)」就跳過去了。這一步其實只有兩行，但不寫出來很難看見複數的來源，所以補在這裡。原文 (20) 的兩式是：\n\n−ω²M₁u = Cv[1 + exp(−iKa)] − 2Cu ；\n−ω²M₂v = Cu[exp(iKa) + 1] − 2Cv 。\n\n把第一式整理成 u/v 即可。",
+      "steps": [
+        "**第一步：把 u 的項收到左邊。** −ω²M₁u + 2Cu = Cv[1 + exp(−iKa)]，即 (2C − M₁ω²)u = C[1 + exp(−iKa)]v。",
+        "**第二步：直接得到振幅比。** u/v = C[1 + exp(−iKa)] / (2C − M₁ω²)。分母是實數（ω² 由 (22) 解出，是實的），分子則明顯帶虛部——這就是複數的唯一來源：**近鄰是「左右各一個」，兩邊的相位因子不對稱地出現在同一個式子裡。**",
+        "**第三步：把分子化成模長 × 相位。** 用 1 + e^{−iθ} = 2cos(θ/2)·e^{−iθ/2}（取 θ = Ka），得到 u/v = 2C cos(Ka/2) · e^{−iKa/2} / (2C − M₁ω²)。",
+        "**第四步：讀出物理。** 模長 |u/v| = 2C|cos(Ka/2)| / |2C − M₁ω²|。相位差則是 **−Ka/2 + arg(2C − M₁ω²)**，也就是說**還要看分母的正負號**，不能只看指數因子。**聲學支**：ω² 最高只到 (25) 的下根 2C/M₁，故 2C − M₁ω² ≥ 0，相位差就是 −Ka/2 —— 這是純粹的幾何效果，**M₁ 子晶格相對 M₂ 子晶格落後的正好是「半個原胞的行進相位」**，因為兩個子晶格在空間上就差半個原胞。**光學支**：ω² ≥ 2C/M₂，取 M₁ > M₂ 則 2C − M₁ω² ≤ 2C(1 − M₁/M₂) < 0，分母為負，相位差是 **π − Ka/2** —— 也就是在**反相**的基礎上，再加那半個原胞的行進相位。",
+        "**第五步：檢查 K → 0。** cos(Ka/2) → 1、e^{−iKa/2} → 1，所以 u/v → 2C/(2C − M₁ω²)。聲學支 ω² → 0，得 u/v → 1，即 u = v ✓（與原文的 u = v 一致）。光學支代 (23) 的 ω² = 2C(1/M₁ + 1/M₂)，分母 2C − M₁·2C(1/M₁ + 1/M₂) = −2CM₁/M₂，得 u/v = 2C/(−2CM₁/M₂) = −M₂/M₁ ✓（與 (26) 一致）。兩個極限都對上，公式無誤。",
+        "**第六步：檢查區邊界 Ka = π。** cos(π/2) = 0，所以分子為零：u/v = 0（除非分母同時為零）。這代表 **u = 0 而 v ≠ 0——M₁ 子晶格完全不動，只有 M₂ 在振**。反過來用 (20) 的第二式做同樣的事，會得到另一支是 v = 0、只有 M₁ 在振。這正是本章 Problem 3「Basis of two unlike atoms」要你證明的結果，原文的提示是「Show that at this value of K the two lattices act as if decoupled: one lattice remains at rest while the other lattice moves.」（p.103）"
+      ]
+    },
+    {
+      "kind": "equation",
+      "tier": "derived",
+      "eq": {
+        "label": "一般 K 下的振幅比（書中省略、由 (20) 直接整理）",
+        "formula": "u/v = C[1 + exp(−iKa)] / (2C − M₁ω²) = 2C cos(Ka/2) · e^(−iKa/2) / (2C − M₁ω²)",
+        "bookPage": 99,
+        "symbols": "u、v：M₁ 與 M₂ 兩個子晶格的複振幅（見 (19) 的試解 u_s = u·exp(isKa)·exp(−iωt)）；C：相鄰平面間的力常數；M₁：第一種原子的質量；a：最近的「同種」平面間距，即重複距離；K：波向量；ω：該模式的角頻率，由 (22) 解出。",
+        "from": "由原文 (20) 的第一式 −ω²M₁u = Cv[1 + exp(−iKa)] − 2Cu 移項而得；第二個等號用恆等式 1 + e^(−iθ) = 2cos(θ/2)e^(−iθ/2)。原文 p.99 只說結果「At a general K the ratio u/v will be complex」，未寫出這個表達式。",
+        "limits": "K → 0 聲學支（ω² → 0）給 u/v → 1，兩個子晶格同相同幅平移，這就是聲波；K → 0 光學支（ω² = 2C(1/M₁+1/M₂)）給 u/v = −M₂/M₁，反相且質心不動，可被光波電場激發。Ka = π 時 cos(Ka/2) = 0，一支的 u/v = 0、另一支的 v/u = 0，兩個子晶格**完全解耦**，一動一靜——這正是區邊界群速度為零、波變成駐波的微觀圖像。中間任意 K 的相位差是 −Ka/2 + arg(2C − M₁ω²)：聲學支的分母 2C − M₁ω² ≥ 0，相位差就是 −Ka/2，即「兩個子晶格空間上差半個原胞」的直接反映；光學支的分母為負，相位差是 π − Ka/2，也就是在反相之上再加這半個原胞的行進相位。"
+      }
+    },
+    {
+      "kind": "concept",
+      "heading": "頻率間隙：在 (2C/M₁)^{1/2} 與 (2C/M₂)^{1/2} 之間沒有行波",
+      "tier": "book",
+      "body": "原文只有三句話，但這三句是這一整段的重點：「Wavelike solutions do not exist for certain frequencies, here between (2C/M₁)^{1/2} and (2C/M₂)^{1/2}. This is a characteristic feature of elastic waves in polyatomic lattices. There is a frequency gap at the boundary K_max = ±π/a of the first Brillouin zone.」\n\n先把這兩個數字認出來。它們就是 p.98 的 (25)：在區邊界 K_max = ±π/a，(22) 的兩個根分別是 ω² = 2C/M₁ 與 ω² = 2C/M₂。若取 M₁ > M₂（原文 Fig. 7 的設定），則 (2C/M₁)^{1/2} < (2C/M₂)^{1/2}，前者是**聲學支的頂端**，後者是**光學支的底端**。\n\n「Wavelike solutions do not exist」這句要字面理解：在這個頻率區間內，你**找不到任何實數 K** 使 (22) 成立。這不是「振幅很小」或「衰減很快」，而是**根本沒有行波這個解**。**（以下到本段結尾為本站補充，原書 p.99 未寫。）**如果你硬把一個落在間隙內的頻率灌進晶體（例如用一個這個頻率的超音波換能器貼在表面），(22) 仍然有解，但解出來的 K 是**複數**——實部固定在 π/a，虛部給出一個指數衰減。波在表面附近幾個原胞內就死掉，能量被反射回去。這就是聲子晶體與光子晶體 stop band 的原型。\n\n第三句「There is a frequency gap at the boundary K_max = ±π/a」點出間隙的**位置**。這與單原子鏈形成鮮明對比：單原子鏈只有一支，ω 從 0 單調升到區邊界的 (4C/M)^{1/2} 為止，上面就沒有了——那是「截止」不是「間隙」。雙原子鏈則是在中間挖掉一段，上面還有一整支光學支。原文用「a characteristic feature of elastic waves in polyatomic lattices」把它定位成**多原子基元的普遍特徵**，不是雙原子鏈的偶然。"
+    },
+    {
+      "kind": "concept",
+      "heading": "Fig. 7 在說什麼（網頁無圖，用文字還原）",
+      "tier": "book",
+      "body": "這段的文字論述完全靠 p.96 的 Figure 7 撐著，而網頁不放圖，所以把它描述出來。圖說原文是：「Optical and acoustical branches of the dispersion relation for a diatomic linear lattice, showing the limiting frequencies at K = 0 and K = K_max = π/a. The lattice constant is a.」設定是 M₁ > M₂。\n\n**橫軸**是 K，只畫第一布里淵區的右半，從 0 到 π/a。**縱軸**是 ω。圖上有兩條曲線：\n\n**下面那條是聲學支（acoustical phonon branch）。**從原點 (0, 0) 出發——這是關鍵，聲學支在 K = 0 時頻率為零，因為那對應整塊晶體的均勻平移，不需要任何回復力。它以正斜率離開原點（由 (24) ω² ≅ ½C K²a²/(M₁+M₂)，即 ω ≅ [C/(2(M₁+M₂))]^{1/2}·Ka，斜率即聲速 [C/(2(M₁+M₂))]^{1/2}·a），然後逐漸彎平，在 K = π/a 處以**水平切線**收在 (2C/M₁)^{1/2}。\n\n**上面那條是光學支（optical phonon branch）。**它在 K = 0 時**不是零**，而是從 [2C(1/M₁ + 1/M₂)]^{1/2} 出發——圖上標的那個帶根號的長式子就是它。它同樣以水平切線離開 K = 0，然後微微下降，在 K = π/a 處收在 (2C/M₂)^{1/2}。\n\n**兩條曲線之間、從 (2C/M₁)^{1/2} 到 (2C/M₂)^{1/2} 的這一段縱軸區間是空的**——整個第一布里淵區裡沒有任何一點的 ω 落在這裡。這塊空白就是頻率間隙。圖上把這兩個高度都標了出來，正是為了讓你看見這塊空白。\n\n兩支都在 K = π/a 有水平切線（群速度 dω/dK = 0），這與第六步算出的「兩個子晶格解耦」是同一件事的兩種說法：子晶格解耦 ⇒ 相鄰同種平面之間沒有淨相位推進 ⇒ 駐波 ⇒ 群速度為零。\n\n書上緊接著在 p.96 給了兩張**真實材料**的對照圖。Figure 8a 是鍺在 80 K、[111] 方向的色散關係，畫出 LA、TA、LO、TO 四支，縱軸到 10 × 10¹² Hz；原文特別指出「The LO and TO branches coincide at K = 0; this also is a consequence of the crystal symmetry of Ge.」——鍺的兩個基元原子同種同質量（M₁ = M₂），所以間隙關閉，這一點下面會專門討論。Figure 8b 則是 KBr 在 90 K，鉀與溴質量差很大，光學支與聲學支之間就拉開了明顯的空隙。**拿 Ge 跟 KBr 對比，兩者的質量比差異最顯眼地反映在間隙寬度上。**但要注意質量比並不是它們唯一的差別：Ge 是鑽石結構的共價晶體，KBr 是 NaCl 結構的離子晶體（p.95 就把這兩種結構並列），結構、鍵結性質、晶格常數與長程庫侖力都不同，KBr 還因為是離子晶體而有 LO–TO 分裂（p.96 Figure 8b 圖說特別把外推到 K = 0 的兩支標成 ω_T、ω_L）。這些差異在一維最近鄰模型裡都看不到。"
+    },
+    {
+      "kind": "derivation",
+      "heading": "證明間隙內真的沒有實數 K：從 (22) 反解 cos Ka",
+      "tier": "derived",
+      "body": "原文說「Wavelike solutions do not exist for certain frequencies」，但沒有證明。這其實是一個很乾淨的兩行論證，而且它讓你看見「間隙」在代數上到底長什麼樣。原文 (22) 是\n\nM₁M₂ω⁴ − 2C(M₁ + M₂)ω² + 2C²(1 − cos Ka) = 0 。\n\n一般人把它當成「給 K 解 ω²」的二次方程。**反過來讀**，它其實對 cos Ka 是線性的——這才是看見間隙的正確讀法。",
+      "steps": [
+        "**第一步：把 cos Ka 解出來。** 2C²(1 − cos Ka) = 2C(M₁+M₂)ω² − M₁M₂ω⁴，於是 1 − cos Ka = [2C(M₁+M₂)ω² − M₁M₂ω⁴] / (2C²)，即 cos Ka = 1 − [ω²(2C(M₁+M₂) − M₁M₂ω²)] / (2C²)。",
+        "**第二步：寫成因式形式。** 把右邊整理一下會發現更好看的寫法：1 − cos Ka = (M₁M₂/2C²)·ω²·[2C(1/M₁+1/M₂) − ω²]。注意方括號裡就是 (23) 的光學支 K = 0 頻率 ω_O² ≡ 2C(1/M₁+1/M₂)。所以 1 − cos Ka = (M₁M₂/2C²)·ω²·(ω_O² − ω²)。",
+        "**第三步：套上物理條件。** 要有行波解，K 必須是實數，這要求 −1 ≤ cos Ka ≤ 1，也就是 **0 ≤ 1 − cos Ka ≤ 2**。",
+        "**第四步：左邊的不等式。** 1 − cos Ka ≥ 0 要求 ω²(ω_O² − ω²) ≥ 0，即 0 ≤ ω² ≤ ω_O²。這給出**整個頻譜的上界**：ω 不能超過 [2C(1/M₁+1/M₂)]^{1/2}，也就是光學支的頂點（在 K = 0 處）。這與 Fig. 7 一致——光學支在 K = 0 最高，往區邊界是下降的。",
+        "**第五步：右邊的不等式，間隙就在這裡。** 1 − cos Ka ≤ 2 要求 (M₁M₂/2C²)·ω²(ω_O² − ω²) ≤ 2，即 M₁M₂ω⁴ − 2C(M₁+M₂)ω² + 4C² ≥ 0。把左邊對 ω² 因式分解：M₁M₂(ω² − 2C/M₁)(ω² − 2C/M₂) = M₁M₂ω⁴ − 2C(M₁+M₂)ω² + 4C² ✓（展開驗證：交叉項 −M₁M₂ω²(2C/M₁ + 2C/M₂) = −2Cω²(M₂ + M₁) ✓，常數項 M₁M₂·(2C/M₁)(2C/M₂) = 4C² ✓）。",
+        "**第六步：讀出結論。** 條件變成 (ω² − 2C/M₁)(ω² − 2C/M₂) ≥ 0。兩個因式的根正是 (25) 的兩個區邊界頻率。乘積非負 ⟺ ω² 落在兩根**之外**（同號），乘積為負 ⟺ ω² 落在兩根**之間**（異號）。所以當 **2C/M₁ < ω² < 2C/M₂**（取 M₁ > M₂）時 (ω² − 2C/M₁)(ω² − 2C/M₂) < 0，於是 1 − cos Ka > 2。而 1 − cos Ka ≤ 2 等價於 **cos Ka ≥ −1**，所以這裡被違反的是**下界**：得到的是 **cos Ka < −1**（不是 cos Ka > 1），K 沒有實數解。這就嚴格證明了原文那句「Wavelike solutions do not exist for certain frequencies, here between (2C/M₁)^{1/2} and (2C/M₂)^{1/2}」。",
+        "**第七步：把「哪一側被違反」再強調一次。** 間隙裡違反的是 cos Ka ≥ −1 這個**下界**（cos Ka < −1）；而在頻譜**上界之外**（第四步的 ω² > ω_O²）違反的才是 cos Ka ≤ 1 這個上界（cos Ka > 1）。這個區別很重要，因為它決定了衰減解的實部落在哪裡——下一步就會看到，前者的實部釘在 π/a，後者的實部是 0。",
+        "**第八步：間隙內的解長什麼樣。** cos Ka < −1 並非無解，而是 Ka 必須是複數。令 **Ka = π + iκa**（實部釘死在區邊界），則 cos Ka = cos(π + iκa) = −cosh(κa) ≤ −1 ✓，任何 cos Ka < −1 都能由某個 κ > 0 達成。代回試解：exp(isKa) = exp(isπ)·exp(−sκa) = (−1)^s·exp(−sκa)。**這正是一個漸逝（evanescent）模式：相鄰原胞反相（(−1)^s，就是區邊界的駐波圖樣），振幅每過一個原胞衰減 e^{−κa}。**波打進晶體幾個原胞內就死掉，能量被全反射回去——這就是聲子晶體／光子晶體 stop band 的原型。間隙越寬，能達到的 κ 越大，衰減長度越短。（對照組：在頻譜的**上界之外**，ω² > ω_O²，違反的是第四步的上界，cos Ka > 1，此時 Ka = iκa 純虛，exp(isKa) = exp(−sκa) 單純衰減而**沒有**逐胞變號——實部是 0 而非 π/a。兩種漸逝解的實部不同，正對應它們分別從頻譜的哪一端溢出。）"
+      ]
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "區邊界 K_max = ±π/a 的兩個頻率（頻率間隙的上下緣）",
+        "formula": "ω² = 2C/M₁ ；  ω² = 2C/M₂",
+        "bookPage": 98,
+        "eqNumber": "(25)",
+        "symbols": "C：相鄰平面間的力常數（原文定義為「對平面上的一個原子而言」的力常數）；M₁、M₂：兩種原子的質量；a：重複距離，即最近的同種平面間距。注意這裡的 ω 有兩個值，分別屬於聲學支與光學支在區邊界的端點。",
+        "from": "把 Ka = ±π（即 cos Ka = −1）代入 (22) M₁M₂ω⁴ − 2C(M₁+M₂)ω² + 2C²(1 − cos Ka) = 0，得 M₁M₂ω⁴ − 2C(M₁+M₂)ω² + 4C² = 0，其左邊可因式分解為 M₁M₂(ω² − 2C/M₁)(ω² − 2C/M₂)，兩根立即讀出。原文 p.98 直接給結果，未寫因式分解這一步（該步補在上一個推導區塊）。",
+        "limits": "取 M₁ > M₂ 時，(2C/M₁)^{1/2} 是聲學支頂端、(2C/M₂)^{1/2} 是光學支底端，兩者之間就是頻率間隙。**M₁ → M₂ 時兩根合併，間隙關閉。** M₁ ≫ M₂ 時聲學支頂端趨近 0、光學支底端趨近 (2C/M₂)^{1/2}，間隙幾乎佔滿整個頻譜——重原子幾乎不動，輕原子在幾乎固定的重原子之間獨自振盪，回復力來自兩側共兩根彈簧，故 ω² = 2C/M₂ 正是「一個質量 M₂ 掛在兩根力常數 C 的彈簧之間」的答案。這個讀法對兩個端點都成立：在區邊界，兩個子晶格解耦（見 Problem 3），動的那個子晶格的每個原子確實就是被兩根彈簧夾住的獨立振子。",
+        "numeric": "以 NaCl 為例（M_Cl = 35.45 u、M_Na = 22.99 u），兩個端點頻率之比是 (M₁/M₂)^{1/2} = (35.45/22.99)^{1/2} ≈ 1.24，也就是間隙橫跨約 24 % 的頻率範圍——這個比值只看質量比，不需要知道 C。若進一步取 NaCl 的光學模式量級 ω_O ≈ 3 × 10¹³ rad/s 反推（ω_O² = 2C/μ，約化質量 μ = 13.95 u = 2.32 × 10⁻²⁶ kg），得 C = μω_O²/2 ≈ 10.4 N/m，於是間隙約從 1.9 × 10¹³ 到 2.3 × 10¹³ rad/s，換成波數約 100 到 124 cm⁻¹。（此數值為本站依書中一維最近鄰模型所作的量級估算，非原書數據；真實 NaCl 是三維、有長程庫侖力，數值僅供量級參考。）"
+      }
+    },
+    {
+      "kind": "concept",
+      "heading": "M₁ = M₂ 時間隙為什麼會關閉：學生最容易混淆的一點",
+      "tier": "mine",
+      "body": "**以下這一小節是我補的教學說明，原書 p.96–100 沒有寫。**（我在全書搜尋過 fold / folded / zone folding，除了 p.229 談電子軌道時的「folded back to B」之外，Kittel 在這本書裡沒有使用「zone folding」這個詞，也沒有在第 4 章討論單／雙原子鏈之間的這個對應。）之所以要補，是因為它是雙原子鏈這一節最常見的混淆點。\n\n先看代數。由 (25)，間隙的上下緣是 (2C/M₁)^{1/2} 與 (2C/M₂)^{1/2}。**令 M₁ = M₂ ≡ M，兩者都變成 (2C/M)^{1/2}，間隙寬度歸零。**但兩支曲線並沒有消失——聲學支仍從 0 升到 (2C/M)^{1/2}，光學支仍從 [2C·(2/M)]^{1/2} = (4C/M)^{1/2} 降到 (2C/M)^{1/2}。它們在區邊界**接上了**。\n\n接上之後的東西，其實就是**單原子鏈**。單原子鏈（p.91–94）的色散關係是 ω = (4C/M)^{1/2}|sin(K′a′/2)|，其中 a′ 是最近鄰間距、布里淵區是 −π/a′ ≤ K′ ≤ π/a′。雙原子鏈的 a 是**兩倍**的最近鄰間距（原文 p.97 明說「We define a in Fig. 9 as the distance between nearest identical planes, not nearest-neighbor planes.」），所以 a = 2a′，雙原子鏈的區只有單原子鏈的**一半寬**：π/a = π/2a′。\n\n於是發生了什麼？單原子鏈原本從 0 畫到 π/a′ 的那一整條曲線，現在只有前半段（0 到 π/2a′）還留在「新的」第一布里淵區裡；後半段（π/2a′ 到 π/a′）被平移 −2π/a = −π/a′ 折回區內，倒過來畫，就變成了光學支。**光學支不是憑空多出來的新物理，它是同一條曲線被折疊進較小的區裡的後半段。**這就是後世所說的 zone folding（區折疊）。\n\n把這一點想清楚，很多事會同時變清楚：\n\n**一、為什麼 Ge 的 LO 與 TO 在 K = 0 重合。** p.96 的 Figure 8a 圖說寫「The LO and TO branches coincide at K = 0; this also is a consequence of the crystal symmetry of Ge.」鍺的鑽石結構每個原胞有兩個原子，但**兩個都是鍺**，M₁ = M₂，力常數也相同。所以按上面的分析，間隙必須關閉、兩支必須在區邊界相接——而 Figure 8a 畫的正是這個。（Kittel 把 K = 0 的 LO/TO 簡併歸因於晶體對稱性，這是三維的完整說法；一維模型能看到的是區邊界的相接。）\n\n**二、「模式數守恆」的帳算得平。** p.96–97 的論證是：p 個原子、N 個原胞 ⇒ 3pN 個自由度；每一支有 N 個允許的 K 值。當你把一維單原子鏈的原胞人為地加倍（明明每個原胞只該有一個原子，硬說有兩個），原胞數變成 N/2、每支只剩 N/2 個 K 值，但支數從 1 變成 2——總數還是 N。**折疊沒有創造也沒有消滅任何模式，只是換了一套記帳方式。**\n\n**三、間隙開啟的條件是「打破等價性」，不是「有兩個原子」。** 原文 p.97 有一句很容易被略過但非常重要的話：「It is not essential that the masses be different, but either the force constants or the masses will be different if the two atoms of the basis are in nonequivalent sites.」也就是說，間隙的來源是**基元中的兩個位置不等價**——質量不同可以，力常數交錯不同也可以。本章 Problem 5「Diatomic chain」就是後者的例子：質量相同，但力常數交錯為 C 與 10C，一樣會開間隙。這正是「Peierls 型」的圖像：週期加倍的微擾在新的區邊界打開能隙，這個機制在第 7 章的電子能帶（週期位勢在區邊界打開能隙）會以完全平行的形式再出現一次。\n\n**四、這是判斷你有沒有真懂的試金石。** 如果有人問「把一根單原子鏈的原胞硬取成兩倍，會不會憑空多出一支光學支？」正確答案是：會多出一支曲線，但那是折疊的假象，間隙寬度為零，物理完全沒變。只有當你真的讓兩個位置不等價，間隙才會打開，那時才是真的多了一支獨立的光學支。"
+    },
+    {
+      "kind": "equation",
+      "tier": "derived",
+      "eq": {
+        "label": "頻率間隙的寬度（由 (25) 兩根相減）",
+        "formula": "Δω = (2C/M₂)^(1/2) − (2C/M₁)^(1/2) = (2C/M₁)^(1/2) · [(M₁/M₂)^(1/2) − 1]，  取 M₁ > M₂",
+        "bookPage": 98,
+        "symbols": "Δω：頻率間隙的寬度（角頻率）；C、M₁、M₂、a 同 (25)。M₁ 取較重者，故 (2C/M₁)^{1/2} 為間隙下緣、(2C/M₂)^{1/2} 為上緣。",
+        "from": "直接由原文 (25) 的兩個區邊界根相減。原書 p.98–99 給出兩個端點但沒有寫出間隙寬度的表達式，也沒有討論它對質量比的依賴。",
+        "limits": "**M₁ → M₂ 時 Δω → 0，間隙關閉**，兩支在區邊界相接，回到單原子鏈被折疊的情形（見上一節）。**M₁ ≫ M₂ 時**（(M₁/M₂)^{1/2} ≫ 1）間隙寬度趨近上緣本身，聲學支被壓到接近零頻，幾乎整個頻譜都是間隙——重原子形同不動的錨點。重要的是這個式子顯示**間隙只由質量比決定相對寬度**：Δω/ω_下緣 = (M₁/M₂)^{1/2} − 1，與力常數 C 完全無關。C 只設定整體的頻率尺度。",
+        "numeric": "NaCl：(35.45/22.99)^{1/2} − 1 = 0.24，間隙相對寬度 24 %。KBr（M_Br = 79.90、M_K = 39.10）：(79.90/39.10)^{1/2} − 1 = 0.43，間隙相對寬度 43 %——明顯比 NaCl 寬，這與 p.96 Figure 8b 顯示 KBr 有清楚可見的間隙相符。Ge（兩原子同為 72.6 u）：比值 1，間隙 0，與 Figure 8a 相符。（本站依 (25) 所作的估算，非原書數據。）"
+      }
+    },
+    {
+      "kind": "concept",
+      "heading": "彈性波量子化：從「簡正模式」到「聲子」的語言轉換",
+      "tier": "book",
+      "body": "原文這一節（p.99，標題在章內印作 QUANTIZATON OF ELASTIC WAVES，少了一個 I；目錄裡是正確的 Quantization）用兩句話完成整個概念的建立：「The energy of a lattice vibration is quantized. The quantum of energy is called a phonon in analogy with the photon of the electromagnetic wave.」\n\n**先講物理動機。**到 p.98 為止，整章做的都是古典力學：一堆質量用彈簧連起來，解耦合振盪，得到簡正模式 ω(K)。古典上，每個簡正模式就是一個獨立的諧振子，它的能量可以是任何非負實數——你想讓它振多大都行。但實驗不是這樣。第 5 章要處理的固體熱容在低溫下遠低於 Dulong–Petit 的 3Nk_B，而古典等分配定理硬性預言 3Nk_B 與溫度無關。**古典力學算得出 ω(K)，卻算不出熱容。**要修好這件事，唯一需要改的就是「每個模式的能量可以連續取值」這個假設。\n\n**再講精確定義。**把每個簡正模式當成一個量子諧振子，它的能量本徵值就是 (27)：ε = (n + ½)ℏω，n = 0, 1, 2, ...。原文接著給出這一節最重要的**語言約定**：「when the mode is excited to quantum number n; that is, when the mode is occupied by n phonons.」\n\n這句話的份量常被低估。它宣告了一個**觀點的轉換**：\n\n| 舊語言（振子觀點） | 新語言（粒子觀點） |\n| --- | --- |\n| 波向量 K、偏振 p 的那個簡正模式 | 一種「聲子種類」 |\n| 該模式處於第 n 個激發態 | 該模式裡有 n 個聲子 |\n| 把模式從 n 激發到 n+1 | 產生一個聲子 |\n| 從 n 退到 n−1 | 湮滅一個聲子 |\n| 模式的能量 (n+½)ℏω | n 個能量各為 ℏω 的聲子，外加零點能 |\n\n這個轉換不是文字遊戲，它帶來兩個實質後果。第一，**n 沒有上限**——一個模式可以容納任意多個聲子，所以聲子是玻色子，第 5 章的 ⟨n⟩ 會服從 Planck 分佈 1/[exp(ℏω/τ) − 1]（p.107 式 (2)）。第二，**有了「產生／湮滅一個聲子」的說法，散射過程才能寫成粒子碰撞的形式**——這正是下一節 (31)(32) 選擇律的語言基礎，也是下一段 INELASTIC SCATTERING BY PHONONS 整節的前提。\n\n**最後講嚴謹性的歸屬。**原文老實地說：「The quantum theory of phonons is developed in Appendix C.」附錄 C（書本 p.648）標題是「quantization of elastic waves: phonons」，做法是把 N 個質量 M、力常數 C 的粒子排成一個圓環（週期邊界條件），寫出哈密頓量 H = Σ_s {p_s²/2M + ½C(q_{s+1} − q_s)²}，然後「make a Fourier transformation from the coordinates p_s, q_s to the coordinates P_k, Q_k, which are known as phonon coordinates」。換到這組座標後，哈密頓量變成一堆**互不耦合的**單一諧振子之和，於是能量本徵值 ε_n = (n + ½)ℏω 就是標準結果。**所以 (27) 在正文裡是被「宣告」的，證明在附錄 C。**如果你想知道「為什麼可以把晶格振動當成獨立諧振子」，那一步（正則變換到聲子座標）才是關鍵，正文完全跳過了。"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "彈性模式的量子化能量",
+        "formula": "ε = (n + ½)ℏω",
+        "bookPage": 99,
+        "eqNumber": "(27)",
+        "symbols": "ε：角頻率為 ω 的那一個彈性模式（給定 K 與偏振 p）所帶的能量；n = 0, 1, 2, ...：該模式的量子數，物理上讀作「佔據這個模式的聲子數」；ℏ：約化 Planck 常數 1.0546 × 10⁻³⁴ J·s；ω：該模式的角頻率，由色散關係 ω(K) 給出。注意 ε 是**單一模式**的能量，整塊晶體的能量是對所有 K 與所有偏振求和。",
+        "from": "由「每個簡正模式等價於一個頻率 ω 的量子諧振子」這個對應而來。原文在正文中直接給出，並註明「The quantum theory of phonons is developed in Appendix C.」（書本 p.648）——附錄 C 用傅立葉變換把耦合鏈的哈密頓量 H = Σ_s {p_s²/2M + ½C(q_{s+1} − q_s)²} 對角化成獨立諧振子，從而嚴格導出此式。",
+        "limits": "**n = 0（基態）**：ε = ½ℏω ≠ 0，即零點能——模式永遠不會完全靜止，這是不確定性原理的直接後果，且在 T = 0 K 仍然存在。**n ≫ 1（高激發／高溫）**：ε ≈ nℏω，½ 可忽略，能量近似連續，回到古典極限；此時 ⟨n⟩ ≈ k_BT/ℏω，於是 ⟨ε⟩ ≈ k_BT，正是古典等分配定理（動能 + 位能各 ½k_BT），Dulong–Petit 就從這裡出來。**ℏω ≫ k_BT（低溫／高頻模式）**：⟨n⟩ 被指數壓抑到近乎零，該模式「凍結」，對熱容沒有貢獻——這正是第 5 章低溫熱容偏離 3Nk_B 的全部原因。",
+        "numeric": "取矽的光學聲子 ω ≈ 9.8 × 10¹³ rad/s（約 15.6 THz）：ℏω ≈ 1.03 × 10⁻²⁰ J ≈ 64 meV。在 300 K 時 k_BT ≈ 25.9 meV，ℏω/k_BT ≈ 2.5，故 ⟨n⟩ = 1/(e^{2.5} − 1) ≈ 0.09 —— 室溫下矽的光學模式**幾乎是空的**，零點能 ½ℏω = 32 meV 反而是它主要的能量內容。反之取一個 ω ≈ 1 × 10¹³ rad/s 的聲學模式：ℏω ≈ 6.6 meV，ℏω/k_BT ≈ 0.25，⟨n⟩ ≈ 3.4，此時 (n + ½) ≈ 3.9，熱聲子遠多於零點貢獻。**這個對比說明了為什麼室溫下矽的熱傳主要靠聲學聲子。**（數值為本站估算，非原書數據。）"
+      }
+    },
+    {
+      "kind": "concept",
+      "heading": "零點能：為什麼聲子與光子都躲不掉那個 ½",
+      "tier": "book",
+      "body": "原文對零點能只給了兩句，但這兩句話把理由講得很精準：「The term ½ℏω is the zero point energy of the mode. It occurs for both phonons and photons as a consequence of their equivalence to a quantum harmonic oscillator of frequency ω, for which the energy eigenvalues are also (n + ½)ℏω.」\n\n請注意論證的結構：Kittel **沒有**分別對聲子和光子各講一套理由，他講的是**同一個理由**。聲子與光子之所以都有零點能，是因為它們都等價於一個頻率 ω 的量子諧振子，而量子諧振子的能量本徵值就是 (n + ½)ℏω。零點能不是聲子的性質，也不是光子的性質，**它是「量子諧振子」這個數學結構的性質**，任何被映射到這個結構上的東西都會繼承它。\n\n這個「共同祖先」的觀點值得停下來想一下，因為它解釋了為什麼固態物理裡的聲子章節與電磁學裡的光子章節在形式上幾乎可以逐行對應：\n\n| | 聲子 | 光子 |\n| --- | --- | --- |\n| 被量子化的古典場 | 晶格位移場 u(x, t) | 電磁場 A(x, t) |\n| 簡正模式的標籤 | 波向量 K + 偏振 p | 波向量 k + 偏振 |\n| 每個模式的能量 | (n + ½)ℏω | (n + ½)ℏω |\n| 模式數 | 有限（3pN 個，因為晶格離散） | 無限（真空連續） |\n| 色散關係 | ω(K)，非線性、有上界 | ω = ck，嚴格線性、無上界 |\n\n**（以下兩段為本站補充，原書 p.99 未寫。）**\n\n**最後那兩行差異是實質的，不要漏掉。**光子的模式數無限、頻率無上界，所以所有模式的零點能總和 Σ ½ℏω 發散——這就是量子場論裡真空能發散的老問題。聲子則因為晶格是離散的，模式數嚴格有限（3pN 個），第一布里淵區給了 K 一個上界，於是 Σ ½ℏω 是一個**有限**的數，它是晶體在 T = 0 K 仍然具有的實在能量，會貢獻到內聚能、晶格常數、以及同位素效應上。\n\n**零點能不是形式上的常數項，它是可以量的。**兩個直接的後果值得記住。其一，同位素效應：把 Ge 換成質量較重的 ⁷⁶Ge，ω ∝ M^{−1/2} 下降，零點能下降，晶格常數會微幅收縮——這是實測得到的。其二，零點位移：即使在絕對零度，原子仍在平衡位置附近晃動，均方位移 ⟨u²⟩ ≠ 0。第二點正是下一個推導 (29) 的主題，也是第 5 章 Problem 3「Zero point lattice displacement and strain」要算的東西。"
+    },
+    {
+      "kind": "derivation",
+      "heading": "把駐波的能量做完整時間平均：逐步導出 (28) 與 (29)",
+      "tier": "derived",
+      "body": "這是本段代數含量最高的一處，而書上跳了兩步。原文的敘述是：「Consider the standing wave mode of amplitude u = u₀ cos Kx cos ωt. Here u is the displacement of a volume element from its equilibrium position at x in the crystal. The energy in the mode, as in any harmonic oscillator, is half kinetic energy and half potential energy, when averaged over time. The kinetic energy density is ½ρ(∂u/∂t)², where ρ is the mass density. In a crystal of volume V, the volume integral of the kinetic energy is ¼ρVω²u₀² sin²ωt. The time average kinetic energy is (28) ... because ⟨sin²ωt⟩ = ½.」\n\n**書上跳過的兩步是：(a) 體積分為什麼會出現 ¼ 而不是 ½（cos²Kx 在晶體上的空間平均是 ½），(b) 「總能 = 兩倍的時均動能」這個等式是怎麼用上的。**下面逐項補齊。\n\n先說明為什麼選**駐波**而不是行波。駐波 u = u₀ cos Kx cos ωt 的好處是它的時間與空間依賴可以完全分離，做平均時兩個積分互不糾纏；而且對一個有限晶體、固定邊界的問題，簡正模式本來就是駐波。（行波做出來的係數會不同，因為行波沒有「節點」，|u|² 的空間分佈是均勻的——這是常見的踩雷點，記住 (28)(29) 的數字是**駐波約定**下的。）",
+      "steps": [
+        "**第一步：位移場與速度場。** u(x, t) = u₀ cos Kx cos ωt。對時間偏微分：∂u/∂t = −u₀ω cos Kx sin ωt。注意速度的空間分佈仍然是 cos Kx——節點（cos Kx = 0 處）永遠不動，這是駐波的定義特徵。",
+        "**第二步：動能密度。** 原文給的是 ½ρ(∂u/∂t)²，代入得動能密度 = ½ρu₀²ω² cos²(Kx) sin²(ωt)。ρ 是質量密度（kg/m³），所以這一項的量綱是 J/m³ ✓。",
+        "**第三步：對體積積分——書上跳過的 cos²Kx 空間平均。** 總動能 T(t) = ∫ ½ρu₀²ω² cos²(Kx) sin²(ωt) dV = ½ρu₀²ω² sin²(ωt) · ∫cos²(Kx) dV。關鍵在這個空間積分：對於一個尺寸遠大於波長的晶體（或用週期／固定邊界條件使 Kx 在積分範圍內跑過整數個半週期），cos²(Kx) 的空間平均值是 **½**（因為 cos²θ = ½(1 + cos 2θ)，而 cos 2θ 的平均為零）。因此 ∫cos²(Kx) dV = V/2。",
+        "**第四步：得到原文的體積分。** T(t) = ½ρu₀²ω² sin²(ωt) · (V/2) = **¼ρVω²u₀² sin²ωt** ✓ —— 這正是原文所寫的「the volume integral of the kinetic energy」。**那個 ¼ 裡面，一個 ½ 來自動能密度的定義，另一個 ½ 來自 cos²Kx 的空間平均。**這一步書上沒寫，是最多人卡住的地方。",
+        "**第五步：對時間平均。** 原文明說「because ⟨sin²ωt⟩ = ½」。理由同第三步：sin²ωt 在一個完整週期上的平均是 ½。於是時均動能 ⟨T⟩ = ¼ρVω²u₀² × ½ = **⅛ρVω²u₀²**。",
+        "**第六步：用「總能 = 兩倍時均動能」。** 這一步用的是原文那句「The energy in the mode, as in any harmonic oscillator, is half kinetic energy and half potential energy, when averaged over time.」——維里定理對諧振子的標準結果：⟨T⟩ = ⟨U⟩ = ½ε_total。而總能由 (27) 給出 ε = (n + ½)ℏω。所以 ⟨T⟩ = ½(n + ½)ℏω。",
+        "**第七步：把第五、六步接起來，就是 (28)。** ⅛ρVω²u₀² = ½(n + ½)ℏω ✓ —— 這正是原文的 (28)。**注意等號左邊是 ⅛ 不是 ¼**：¼ 是還沒做時間平均的瞬時體積分，⅛ 是做完時間平均的結果，兩者差一個 ⟨sin²ωt⟩ = ½。",
+        "**第八步：解出 u₀²，得到 (29)。** 由 ⅛ρVω²u₀² = ½(n + ½)ℏω，兩邊乘 8：ρVω²u₀² = 4(n + ½)ℏω，除以 ρVω²：u₀² = 4(n + ½)ℏω/(ρVω²) = **4(n + ½)ℏ/(ρVω)** ✓ —— 這正是原文的 (29)。",
+        "**第九步：量綱檢查。** [ℏ] = J·s，[ρVω] = (kg/m³)(m³)(1/s) = kg/s。所以 ℏ/(ρVω) 的量綱是 J·s/(kg/s) = J·s²/kg = (kg·m²/s²)·s²/kg = m² ✓ 正是 u₀² 應有的長度平方。",
+        "**第十步：從 u₀² 到均方位移 ⟨u²⟩（後面用得上的形式）。** u₀ 是**峰值**振幅，不是 rms。把 u² = u₀² cos²Kx cos²ωt 同時對空間與時間平均，各得一個 ½，所以 ⟨u²⟩ = u₀²/4 = (n + ½)ℏ/(ρVω)。**在 n = 0 的零點情形，單一模式的 ⟨u²⟩ = ℏ/(2ρVω)。**對所有獨立模式求和就得到 ⟨R²⟩ = (ℏ/2ρV)Σω⁻¹ —— 這與第 5 章 Problem 3 明確引用的形式完全一致（p.128 原文：「Start from the result (4.29) summed over the independent lattice modes: ⟨R²⟩ = (ℏ/2ρV)Σω⁻¹」）。**所以「峰值振幅平方 → 均方位移」要除的是 4（空間 ½ × 時間 ½），不是 2**；這一點值得留意，因為 Kittel 在該習題的敘述裡只提到「a factor of ½ to go from mean square amplitude to mean square displacement」，字面上容易讓人只除一次。"
+      ]
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "駐波模式的時均動能與量子化能量的連結",
+        "formula": "⅛ρVω²u₀² = ½(n + ½)ℏω",
+        "bookPage": 99,
+        "eqNumber": "(28)",
+        "symbols": "ρ：晶體的質量密度；V：晶體體積；ω：模式角頻率；u₀：駐波 u = u₀ cos Kx cos ωt 的峰值振幅；n：該模式的聲子佔據數；ℏ：約化 Planck 常數。左邊是時均動能，右邊是總能的一半。",
+        "from": "把 u = u₀ cos Kx cos ωt 的動能密度 ½ρ(∂u/∂t)² 對體積積分得 ¼ρVω²u₀² sin²ωt（其中用到 cos²Kx 的空間平均 = ½，此步書上省略），再用 ⟨sin²ωt⟩ = ½ 得左邊；右邊則來自 (27) 與「諧振子時均能量一半動能一半位能」（原文：half kinetic energy and half potential energy, when averaged over time）。",
+        "limits": "**n = 0**：右邊 = ¼ℏω，即零點能的一半，對應的 u₀ 不為零——絕對零度下振幅仍有限，這是不確定性原理不允許「位置與動量同時確定」的直接體現。**n ≫ 1（古典極限）**：右邊 ≈ ½nℏω，能量連續可調，回到古典駐波，u₀ 可任意設定。**V → ∞（宏觀晶體）**：左邊的 V 使得固定 n 下 u₀ ∝ V^{−1/2} → 0，也就是**單一模式在宏觀晶體中的振幅小到完全觀測不到**；可觀測的熱位移必須把 ~10²³ 個模式加總起來才會出現（見 (29) 的說明與第 5 章 Problem 3）。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "模式振幅的量子化",
+        "formula": "u₀² = 4(n + ½)ℏ / (ρVω)",
+        "bookPage": 99,
+        "eqNumber": "(29)",
+        "symbols": "u₀：駐波模式 u = u₀ cos Kx cos ωt 的峰值振幅；n：佔據該模式的聲子數；ℏ：約化 Planck 常數；ρ：質量密度；V：晶體體積；ω：模式角頻率。原文對它的定位是：「This relates the displacement in a given mode to the phonon occupancy n of the mode.」",
+        "from": "由 (28) 兩邊乘 8 再除以 ρVω² 直接解出。追根究柢，它是 (27) 的能量量子化透過古典駐波的能量-振幅關係「翻譯」成振幅量子化的結果。",
+        "limits": "**n = 0**：u₀² = 2ℏ/(ρVω) ≠ 0，即零點振幅；對應的均方位移（再除以 4，見推導第十步）是 ⟨u²⟩ = ℏ/(2ρVω)，這正是第 5 章 Problem 3「Zero point lattice displacement and strain」的出發點，該題原文明白寫「Start from the result (4.29)」。**u₀ ∝ ω^{−1/2}**：**低頻模式的振幅遠大於高頻模式**，這是為什麼長波長聲學聲子主導熱位移與 Debye–Waller 衰減，而光學聲子貢獻小。**u₀ ∝ V^{−1/2}**：單一模式在大晶體中振幅趨於零，可觀測量必須對所有模式求和；求和後 ⟨R²⟩ = (ℏ/2ρV)Σω⁻¹，在 Debye 近似下第 5 章 Problem 3 給出 ⟨R²⟩ = 3ℏω_D²/(8π²ρv³)。**一維時 Σω⁻¹ 發散**（該題 (b) 要證的事），但均方應變 ⟨(∂R/∂x)²⟩ = ½Σ K²u₀² 仍然有限——低維晶格的長程序問題（Mermin–Wagner 式的圖像）在這裡就露出端倪。",
+        "numeric": "取矽（ρ = 2330 kg/m³）、V = 1 cm³ = 10⁻⁶ m³、ω = 10¹⁴ rad/s、n = 0：u₀² = 2 × 1.05 × 10⁻³⁴/(2330 × 10⁻⁶ × 10¹⁴) ≈ 9 × 10⁻⁴⁶ m²，u₀ ≈ 3 × 10⁻²³ m —— 比原子核的尺度（~10⁻¹⁵ m）還小七、八個數量級，**單一模式完全不可觀測**。但把 3N ≈ 1.5 × 10²³ 個模式（每 cm³）加總，並取平均 ω⁻¹ ~ 2 × 10⁻¹⁴ s，得 ⟨R²⟩ ~ 7 × 10⁻²³ m²，u_rms ~ 8 × 10⁻¹² m ≈ 0.08 Å ——約為 Si–Si 鍵長 2.35 Å 的 3 %，這才是 X 光繞射真正感受到的零點振動幅度，也正是附錄 A（p.641–643）Debye–Waller 因子 I = I₀ exp(−⅓⟨u²⟩G²) 裡的那個 ⟨u²⟩。（估算為本站所作，非原書數據。）"
+      }
+    },
+    {
+      "kind": "concept",
+      "heading": "(29) 為什麼重要：它是熱位移與 Debye–Waller 因子的起點",
+      "tier": "mine",
+      "body": "**本節是我補的跨章連結**，用意是說明 (29) 這條不起眼的式子為什麼值得記住。以下引用的書中內容都會標明頁碼。\n\n(29) 的形式 u₀² = 4(n + ½)ℏ/(ρVω) 有兩個變數：**聲子佔據數 n**（溫度進來的地方）與**頻率 ω**（晶格動力學進來的地方）。把它們分開看，你會發現這條式子其實是「溫度 → 原子晃動幅度」這條因果鏈的中間環節。第 5 章負責把 n 換成 Planck 分佈 ⟨n⟩ = 1/[exp(ℏω/τ) − 1]（p.107 式 (2)），代進去就得到有限溫度下的均方位移。\n\n**用途一：第 5 章 Problem 3「Zero point lattice displacement and strain」（p.128）。**這題直接說「Start from the result (4.29) summed over the independent lattice modes: ⟨R²⟩ = (ℏ/2ρV)Σω⁻¹」，然後要你在 Debye 近似下證明 T = 0 時 ⟨R²⟩ = 3ℏω_D²/(8π²ρv³)。注意 Σω⁻¹ 這個結構——它是「低頻模式權重大」的直接後果，也是為什麼 Debye 模型（把 ω 對 K 線性化）足夠用。\n\n**用途二：附錄 A 的 Debye–Waller 因子（p.641–643）。**這是 (29) 最漂亮的兌現。附錄 A 開場的問題是：室溫下原子的瞬時最近鄰間距差異可達 10 %（原文 p.641：「instantaneous nearest-neighbor spacings differing by 10 percent at room temperature」），為什麼還能得到銳利的 Bragg 峰？Debye 的答案是：熱運動不會讓峰變寬，只會讓峰**變弱**。把原子位置寫成 r(t) = r_j + u(t)，結構因子裡就多出 ⟨exp(−iG·u)⟩ 這一項；因為 u 是隨機的，⟨G·u⟩ = 0，二階項給出 ⟨(G·u)²⟩ = ⅓⟨u²⟩G²（p.642，那個 ⅓ 是 cos²θ 在球面上的幾何平均），最後散射強度變成\n\n**I = I₀ exp(−⅓⟨u²⟩G²)**   （附錄 A 式 (4)，p.642）\n\n原文對它的命名是「The exponential factor is the Debye-Waller factor.」而「Here ⟨u²⟩ is the mean square displacement of an atom.」——**這個 ⟨u²⟩ 就是 (29) 一路算出來的東西。**沒有 (29)（以及第 5 章把 n 換成 Planck 分佈），Debye–Waller 因子只是一個唯象參數；有了它，⟨u²⟩ 可以從色散關係算出來，於是 Bragg 峰強度隨溫度的衰減變成可預測的量。p.641 的 Figure 1 畫的正是鋁的 (h00) 反射強度隨溫度從 50 K 到 350 K 的下降，而且階數越高（G 越大）降得越快——這完全是 exp(−⅓⟨u²⟩G²) 對 G² 的依賴。\n\n**用途三：判斷非簡諧與熔化。**Lindemann 判據說當 u_rms 達到最近鄰距離的約 10 % 時晶體熔化。上面用 (29) 估出矽在零點時 u_rms ≈ 0.08 Å ≈ 鍵長的 3 %，升溫會讓它增加（⟨n⟩ 隨 T 增大），大約在 3 倍左右時逼近 10 %——量級是對的。這也告訴你**簡諧近似的有效範圍**：整章從 p.91 的「We assume that the elastic response of the crystal is a linear function of the forces」開始就建立在簡諧假設上，而 (29) 給了你一把尺去檢查這個假設什麼時候開始失效。第 5 章的 ANHARMONIC CRYSTAL INTERACTIONS（p.119）就是在處理失效之後的事——熱膨脹與熱阻都**只能**從非簡諧項來。"
+    },
+    {
+      "kind": "concept",
+      "heading": "ω 的正負號：一個看似瑣碎、實則通往相變的問題",
+      "tier": "book",
+      "body": "原文用一個問句開頭：「What is the sign of ω?」接著是完整的回答：「The equations of motion such as (2) are equations for ω², and if this is positive then ω can have either sign, + or −. But the energy of a phonon must be positive, so it is conventional and suitable to view ω as positive. If the crystal structure is unstable, then ω² will be negative and ω will be imaginary.」\n\n**第一層：為什麼會有這個問題。**原文引用的 (2) 是 p.91 的單原子鏈運動方程 M d²u_s/dt² = C(u_{s+1} + u_{s−1} − 2u_s)。代入 exp(−iωt) 的時間依賴後（p.91 式 (3)）：−Mω²u_s = C(u_{s+1} + u_{s−1} − 2u_s)。**式子裡只出現 ω²，從來沒有單獨的 ω。**所以求解色散關係本質上是在解 ω²，而每個正的 ω² 對應兩個 ω，一正一負。雙原子鏈的 (22) 也一樣——它是 ω⁴ 與 ω² 的方程，解出來的是 ω²。\n\n**第二層：約定為什麼取正。**數學上 ±ω 都是合法解，而且它們描述的是同一個物理波（只是行進方向相反，或說是複共軛）。但一旦進入量子語言，ε = (n + ½)ℏω 必須是正的能量，於是**約定取 ω > 0**。原文的用詞很精確：「conventional and suitable」——這是一個**約定**（convention），不是從方程推出來的定理。波的方向資訊改由 **K 的正負**承載，這樣分工乾淨：ω > 0 恆成立，K 跑遍整個第一布里淵區的正負兩側。\n\n**第三層：ω² < 0 的情形，這才是重點。**這句「If the crystal structure is unstable, then ω² will be negative and ω will be imaginary」看起來只是補充說明，其實是整本書裡一個重要主題的第一次露面。\n\n仔細想 ω 為虛數的意思。設 ω = iγ（γ 實數 > 0），則時間依賴 exp(−iωt) = exp(γt) —— **不是振盪，是指數成長**。任何微小的擾動，只要投影到這個模式上，就會隨時間指數放大。物理上這代表：**當前這個結構不是能量的極小值，而是鞍點或極大值**，晶體會自發地沿著這個模式的位移圖樣「掉下去」，變形成另一個結構。這就是所謂的**軟模（soft mode）**。\n\n**第四層：書裡哪裡接下去。**\n\n這條線在本章直接接到 **Problem 7「Soft phonon modes」（p.103–104）**，題目前面標了星號，p.103 頁末腳註寫著「*This problem is rather difficult.」題設是一排等質量、電荷交錯（第 p 個離子帶 e_p = e(−1)^p）的離子鏈，交互作用分成兩部分：最近鄰的短程力常數 γ，加上**所有**離子之間的庫侖作用。第 (c) 小題要證明：定義 σ = e²/γa³ 後，**在區邊界 Ka = π 處 ω² 為負（不穩定模式）的條件是 σ > 0.475**（即 4/7ζ(3)，ζ 是 Riemann zeta 函數），而小 Ka 時聲速為虛數的條件是 σ > (2 ln 2)⁻¹ = 0.721。原文的結論句是：「Thus ω² goes to zero and the lattice is unstable for some value of Ka in the interval (0, π) if 0.475 < σ < 0.721.」\n\n這題的物理極為漂亮：**σ 是「庫侖力相對於短程回復力的強度」。**短程力想把晶格維持在均勻的等間距構型；長程庫侖力（因為電荷交錯，它偏好讓異號離子靠近）想把它拆掉。σ 小的時候短程力贏，所有 ω² > 0，晶格穩定；σ 大到某個臨界值，**某一個 K 的模式的 ω² 先掉到零**，那個模式就「軟化」了，晶格沿著它的位移圖樣自發失穩，變成一個新的結構。**相變的微觀機制被化約成「某個聲子模式的頻率降到零」。**\n\n再往後，這條線在 **第 16 章的 Soft Optical Phonons（p.473）**完整展開。那裡用 Lyddane–Sachs–Teller 關係 ω_T²/ω_L² = ε(∞)/ε(0)（p.473 式 (36)）把軟模接到鐵電性上：原文說「When ω_T = 0 the crystal is unstable and ε(0) is infinite because there is no effective restoring force.」也就是說，**橫向光學聲子軟化 ⇒ 靜態介電常數發散 ⇒ 鐵電相變**。書上給的實例是 BaTiO₃ 在 24 °C 有一個只有 12 cm⁻¹ 的 TO 模式（「a low frequency for an optical mode」），以及 SrTiO₃ 實測到 ω_T² ∝ (T − T₀)——頻率平方隨溫度線性趨近於零，正是軟模圖像的直接驗證（p.473 Figure 13）。\n\n**所以 p.100 上那句不起眼的「ω will be imaginary」，是一條從第 4 章的習題一路連到第 16 章鐵電相變的伏筆。**讀到這裡就該把它記下來。"
+    },
+    {
+      "kind": "concept",
+      "heading": "聲子動量：ℏK 是「表現得像」的動量，不是真動量",
+      "tier": "book",
+      "body": "這一節是全章最容易被誤記的一段，而且原文的措辭極為謹慎，值得逐句讀。\n\n第一句：「A phonon of wavevector K will interact with particles such as photons, neutrons, and electrons as if it had a momentum ℏK.」——注意 **as if**。Kittel 說的是「交互作用時**彷彿**帶有動量 ℏK」，不是「帶有動量 ℏK」。\n\n第二句立刻把話說死：「However, a phonon does not carry physical momentum.」——**聲子不帶物理動量。**這是一個斷言，沒有模糊空間。\n\n第三句給理由：「The reason that phonons on a lattice do not carry momentum is that a phonon coordinate (except for K = 0) involves relative coordinates of the atoms.」——理由是**聲子座標涉及的是原子的相對座標**（K = 0 除外）。\n\n**先把「相對座標不帶線性動量」這件事用書上的例子想清楚。**原文舉的是氫分子：「Thus in an H₂ molecule the internuclear vibrational coordinate r₁ – r₂ is a relative coordinate and does not carry linear momentum; the center of mass coordinate ½(r₁ + r₂) corresponds to the uniform mode K = 0 and can carry linear momentum.」\n\n這個類比精準到可以逐項對應，值得攤開：\n\n| H₂ 分子 | 晶格 |\n| --- | --- |\n| 質心座標 ½(r₁ + r₂) | K = 0 的均勻模式（整塊晶體平移） |\n| 質心運動**帶**線性動量 | K = 0 模式**帶**真實動量 |\n| 內核振動座標 r₁ − r₂ | K ≠ 0 的聲子模式 |\n| 振動**不帶**線性動量 | K ≠ 0 聲子**不帶**真實動量 |\n\n為什麼相對座標不帶動量？想像 H₂ 在振動：兩個核一個往左、一個往右，而且因為質量相等，速度大小相同。總動量 M ṙ₁ + M ṙ₂ = M(ṙ₁ + ṙ₂)，而振動模式下 ṙ₁ = −ṙ₂，所以總動量恆為零。分子在振動，但它**整體並沒有在移動**。同樣的道理搬到晶體上：K ≠ 0 的聲子讓原子們相對於彼此晃動，但所有原子的動量加起來是零，晶體的質心不動。\n\n**（以下這一段是本站補充，原書 p.100 未寫——諾特定理與 crystal momentum／quasimomentum 的說法都不在書中這一節。）**\n\n**這一點與「聲子攜帶能量」形成有意義的對比。**聲子確實帶能量 ℏω（那是真的能量，可以加熱樣品），但它不帶真動量。能量與動量在這裡分了家，原因就在於晶格**不是**連續的、平移對稱只到離散的晶格平移為止——而「動量守恆」在諾特定理下正是**連續**平移對稱的後果。晶格只有離散平移對稱，所以守恆的不是真動量，而是「模去一個倒晶格向量」的波向量。這也是為什麼 ℏK 在文獻上被叫做 **crystal momentum（晶體動量）** 或 **quasimomentum（準動量）**，而不是 momentum。"
+    },
+    {
+      "kind": "derivation",
+      "heading": "算給自己看：K ≠ 0 的模式總線性動量嚴格為零",
+      "tier": "derived",
+      "body": "原文用 H₂ 分子做類比，但沒有對晶格直接算一遍。這個計算只有三行，算完之後「相對座標」這個說法會從一句口號變成一個你驗證過的事實，所以補在這裡。\n\n設一維單原子鏈有 N 個原子（質量 M），採用週期（Born–von Kármán）邊界條件——這是 p.96 腳註提到、第 5 章正式處理的做法（原文腳註：「We show in Chapter 5 by application of periodic boundary conditions to the modes of the crystal of volume V that there is one K value in the volume (2π)³/V in Fourier space.」）。位移取 p.91 的行波形式 u_s = u·exp(isKa)·exp(−iωt)。",
+      "steps": [
+        "**第一步：週期邊界條件限定 K 的取值。** 要求 u_{s+N} = u_s，即 exp(iNKa) = 1，故 **Ka = 2πn/N**，n = 0, ±1, ±2, ..., 共 N 個獨立值（落在第一布里淵區內）。這一步很關鍵，下一步的求和恆等式全靠它。",
+        "**第二步：寫出總線性動量。** P = Σ_{s=0}^{N−1} M·(du_s/dt) = M·(−iω)·u·exp(−iωt)·Σ_{s=0}^{N−1} exp(isKa)。所有與 s 無關的因子都提到了求和號外面，剩下的就是一個純粹的幾何級數。",
+        "**第三步：計算幾何級數。** Σ_{s=0}^{N−1} exp(isKa) = Σ_{s=0}^{N−1} [exp(iKa)]^s = [1 − exp(iNKa)] / [1 − exp(iKa)]（當 exp(iKa) ≠ 1 時）。由第一步 exp(iNKa) = 1，**分子恆為零**，所以整個和 = 0。",
+        "**第四步：讀出結論。** 對任何 **K ≠ 0** 的模式，P ≡ 0 —— 不是近似為零，是**嚴格**為零。這就從代數上證實了原文那句「a phonon coordinate (except for K = 0) involves relative coordinates of the atoms」。幾何上的意思是：一個波長裡往右跑的原子與往左跑的原子完全抵消。",
+        "**第五步：K = 0 是例外。** 此時 exp(iKa) = 1，第三步的分母也為零，公式失效，必須直接求和：Σ_{s=0}^{N−1} 1 = **N**，所有原子同步同幅運動。但這裡要小心：K = 0 時 ω = 0（見下一步），把 ω = 0 代回 exp(−iωt) 形式的試解，P = −iωNMu·exp(−iωt) 反而**恆等於零**——**振盪型試解在零頻處退化了，不能拿它來讀 K = 0 的動量。**零頻模式真正的通解是均勻漂移 u_s(t) = u₀ + v₀t（代入運動方程，因為所有 u_s 相等故右邊恆為零，任何等速漂移都是解），此時 P = Σ_s M v₀ = **NMv₀ ≠ 0**。這就是**整塊晶體的剛體平移**，它當然帶真實動量，也正是原文說的「the center of mass coordinate ½(r₁ + r₂) corresponds to the uniform mode K = 0 and can carry linear momentum」。",
+        "**第六步：注意 K = 0 模式的頻率。** 由單原子鏈的色散關係，K = 0 時 ω = 0 —— 均勻平移不需要回復力，所以它不是振盪而是自由平移。這就把兩件事漂亮地統一起來：**唯一帶真實動量的那個模式，恰好是唯一沒有振盪頻率的模式。**「振動的聲子」與「帶動量的平移」在這裡是互斥的。",
+        "**第七步：推廣到雙原子鏈。** 同樣的求和論證原封不動適用，只是總動量要寫成 P = Σ_s (M₁ u̇_s + M₂ v̇_s)。K ≠ 0 時幾何級數一樣為零。而 K = 0 的**光學支**雖然 K = 0，總動量卻仍為零——因為由 (26) u/v = −M₂/M₁，代入得 M₁u + M₂v = M₁(−M₂v/M₁) + M₂v = 0，這正是原文 p.98 說的「their center of mass is fixed」。**所以真正帶動量的只有 K = 0 的聲學支**，也就是那個 ω = 0 的剛體平移模式。這是一個很好的自我檢查點：K = 0 不是充分條件，「質心真的在動」才是。"
+      ]
+    },
+    {
+      "kind": "concept",
+      "heading": "選擇律裡的 G 從哪裡來：晶格週期性的簽名",
+      "tier": "book",
+      "body": "原文接著說：「In crystals there exist wavevector selection rules for allowed transitions between quantum states.」然後回頭引用第 2 章：「We saw in Chapter 2 that the elastic scattering of an x-ray photon by a crystal is governed by the wavevector selection rule (30) k′ = k + G, where G is a vector in the reciprocal lattice, k is the wavevector of the incident photon, and k′ is the wavevector of the scattered photon.」\n\n第 2 章的原始形式在 p.31：散射振幅 F = ∫dV n(r) exp(−iΔk·r)，其中 Δk ≡ k′ − k 定義為散射向量（p.31 式 (19) k + Δk = k′）。把電子濃度 n(r) 展成傅立葉級數後，**只有當 Δk 恰好等於某個倒晶格向量 G 時**指數的幅角才會消失、積分才不為零，這就是 p.31 的 (21) Δk = G，原文在同頁明確寫成「k + G = k′」。**所以 (30) 不是新的物理，它就是第 2 章繞射條件的改寫。**\n\n**G 的來源是晶格的週期性，這一點要說清楚。**倒晶格向量的定義性質是 exp(iG·T) = 1 對所有晶格平移向量 T 成立。也就是說，**在晶格看來，波向量 k 與 k + G 是同一個東西**——它們在所有原子位置上給出完全相同的相位。這是離散平移對稱的直接後果。\n\n把這件事放進諾特定理的框架就很清楚了（**以下這個對照表是本站補充，原書未提諾特定理**）：\n\n| 對稱性 | 守恆量 |\n| --- | --- |\n| 連續平移不變（自由空間） | 真動量嚴格守恆，Δp = 0 |\n| 離散平移不變（晶格） | 波向量守恆**到 G 為止**，Δk = G |\n\n晶體只有離散平移對稱，所以守恆律被「放鬆」了：不是 k′ = k，而是 k′ = k + G。原文把這個道理總結成一句話：「Equation (30) is an example of the rule that the total wavevector of interacting waves is conserved in a periodic lattice, with the possible addition of a reciprocal lattice vector G.」\n\n**這條規則的適用範圍遠超過本章。**同一個「守恆到 G 為止」的結構會在第 5 章的 Umklapp 過程（p.125，聲子-聲子散射中 K₁ + K₂ = K₃ + G，G ≠ 0 的那些過程才產生熱阻）、第 7–8 章的電子能帶（Bloch 態的 k 只定義到 G 為止，所以能帶可以折進第一區）反覆出現。**先在這裡把它理解成「離散對稱性的後果」，後面就不必每次重學。**"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "彈性散射的波向量選擇律",
+        "formula": "k′ = k + G",
+        "bookPage": 100,
+        "eqNumber": "(30)",
+        "symbols": "k：入射光子的波向量；k′：散射光子的波向量；G：倒晶格向量。彈性散射意味能量守恆，故 |k′| = |k|（第 2 章 p.31：「In elastic scattering of a photon its energy ℏω is conserved ... Thus the magnitudes k and k′ are equal」）。",
+        "from": "原文明言「We saw in Chapter 2」。第 2 章 p.31 由散射振幅 F = ∫dV n(r)exp(−iΔk·r) 出發，代入 n(r) 的傅立葉展開後得到 (2.21) Δk = G，同頁寫成 k + G = k′。根本來源是晶格的離散平移對稱性 exp(iG·T) = 1。",
+        "limits": "**G = 0**：k′ = k，即完全不偏折的前向傳播（未散射光束）。**G ≠ 0**：即 Bragg 反射；配合 |k′| = |k| 可導出第 2 章 (2.22) 的 2k·G + G² = 0，這是 Bragg 條件的向量形式。**|k| < |G_min|/2（長波長極限）**：找不到任何 G 能同時滿足 (30) 與 |k′| = |k|，**沒有任何 Bragg 反射**——這就是為什麼可見光（波長數千 Å）不會被晶格繞射，而 X 光（波長 ~1 Å）會。這也是為什麼繞射實驗必須用 X 光、中子或高能電子。**與 (31)(32) 對照**：(30) 是彈性的，不涉及聲子；下面兩式把聲子加進來，就變成非彈性散射。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "產生一個聲子的非彈性散射選擇律",
+        "formula": "k′ + K = k + G",
+        "bookPage": 100,
+        "eqNumber": "(31)",
+        "symbols": "k、k′：入射與散射粒子（光子、中子或電子）的波向量；K：**被產生**的聲子的波向量；G：倒晶格向量。原文的條件是「If the scattering of the photon is inelastic, with the creation of a phonon of wavevector K」。",
+        "from": "把 (30) 推廣到散射過程中額外產生一個聲子的情形。原文的定位是「Relations (31) and (32) are the natural extensions of (30).」寫法上把 K 放在左邊，讀成「出射粒子帶走的 k′ 加上新生聲子帶走的 K，等於入射的 k 加上晶格提供的 G」。",
+        "limits": "**G = 0（正常過程 / normal process）**：k′ + K = k，看起來就像三體動量守恆——這是最常被拿來直觀理解的情形，但務必記住 K 是準動量不是真動量。**G ≠ 0（Umklapp 型）**：晶體整體以 −ℏG 反衝，這在第 5 章的熱阻機制（p.125）中扮演決定性角色。**K → 0**：退化回 (30) 的彈性散射（沒有產生有效的聲子）。**能量守恆是獨立的第二個條件**：本式只管波向量，還必須同時滿足 ℏω_入 = ℏω_出 + ℏω(K)。**兩個條件聯立**才把 K 釘死——這正是下一段 INELASTIC SCATTERING BY PHONONS 要講的中子散射實驗原理：量 k、k′ 與能量差，就能把色散關係 ω(K) 一點一點測出來。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "吸收一個聲子的非彈性散射選擇律",
+        "formula": "k′ = k + K + G",
+        "bookPage": 100,
+        "eqNumber": "(32)",
+        "symbols": "k、k′：入射與散射粒子的波向量；K：**被吸收**的聲子的波向量；G：倒晶格向量。原文的條件是「If a phonon K is absorbed in the process, we have instead the relation」。",
+        "from": "與 (31) 同源，差別只在聲子是被吸收而非被產生，因此 K 從等號的一邊移到另一邊（等價於把 (31) 中的 K 換成 −K）。原文同樣歸類為 (30) 的自然推廣。",
+        "limits": "**與 (31) 的關係**：(32) 就是 (31) 把 K → −K。這反映一個一般性事實——**吸收一個波向量 K 的聲子，等同於產生一個波向量 −K 的聲子**（時間反演下 ω(K) = ω(−K)，色散關係對 K 是偶函數）。**溫度依賴是兩者最大的實務差異**：吸收過程需要現場已經存在波向量 K 的聲子，其速率正比於 ⟨n_K⟩，所以 **T → 0 時吸收過程被凍結（⟨n⟩ → 0），只剩產生過程**（其速率正比於 ⟨n⟩ + 1，即使 ⟨n⟩ = 0 也還有 1，這就是自發產生）。中子散射實驗上這對應「能量損失」（neutron energy loss，產生聲子，任何溫度都有）與「能量獲得」（neutron energy gain，吸收聲子，低溫下訊號消失）兩側譜峰的強度不對稱。**同樣必須配能量守恆** ℏω_入 + ℏω(K) = ℏω_出。"
+      }
+    },
+    {
+      "kind": "concept",
+      "heading": "「動量不守恆」是假象：整塊晶體才是那個被忘記的參與者",
+      "tier": "book",
+      "body": "這是本段最需要講透的一點，因為它同時是誤解的重災區與物理的漂亮之處。原文對此有兩句非常明確的話。\n\n第一句在談 Bragg 反射時：「In the reflection process the crystal as a whole will recoil with momentum −ℏG, but this uniform mode momentum is rarely considered explicitly.」\n\n第二句是總結：「The true momentum of the whole system always is rigorously conserved.」——**注意 rigorously 這個副詞。**Kittel 不是說「近似守恆」，而是**嚴格守恆**。\n\n**把這兩句合起來讀，整個圖像就清楚了。**考慮一束 X 光打在晶體上發生 Bragg 反射。光子的動量從 ℏk 變成 ℏk′ = ℏ(k + G)，改變量是 **+ℏG**。表面上看，憑空多出了 ℏG，動量不守恆。但原文告訴你：**整塊晶體以 −ℏG 反衝**。光子得到 +ℏG，晶體得到 −ℏG，加起來是零。**動量從頭到尾嚴格守恆，一分一毫都沒少。**\n\n所謂「選擇律裡出現 G 所以動量不守恆」的說法，是因為**帳只記了一半**：只記了光子和聲子，忘了記晶體本身。\n\n**（以下的反衝能量估算與穆斯堡爾效應對照為本站補充，原書未寫。）**\n\n**為什麼可以忘記？**因為晶體的質量太大。反衝動量 ℏG 分給質量 M_crystal 的整塊晶體，得到的反衝**能量**是 (ℏG)²/(2M_crystal)。對於一塊 1 g 的晶體、G ~ 2π/(3 Å) ~ 2 × 10¹⁰ m⁻¹：ℏG ~ 2 × 10⁻²⁴ kg·m/s，反衝能量 ~ (2 × 10⁻²⁴)²/(2 × 10⁻³) ~ 2 × 10⁻⁴⁵ J ~ 10⁻²⁶ eV —— **完全無法測量，也完全不影響能量守恆的帳。**所以動量確實轉移了（而且是嚴格轉移的），但能量幾乎沒有轉移。這就是原文說「rarely considered explicitly」的原因：不是它不存在，而是它在能量帳上可以忽略。\n\n**這個「大質量吸收反衝動量而不吸收能量」的機制不是聲子獨有的。**穆斯堡爾效應（Mössbauer effect）用的是完全相同的邏輯——γ 射線發射時的反衝動量被整塊晶體吸收，所以譜線不展寬。反過來，自由原子發射 γ 射線時反衝能量落在單個原子上，譜線就被反衝位移了。差別只在承受反衝的是一個原子還是 10²³ 個原子。\n\n**注意原文用的詞：「this uniform mode momentum」。**它把晶體整體的反衝稱作 **uniform mode（均勻模式）的動量**——也就是這一節前面說的 K = 0 模式。前後完全一致：整節的邏輯是「K ≠ 0 的聲子座標是相對座標，不帶動量；能帶動量的只有 K = 0 的均勻模式」，而 Bragg 反衝正是激發了這個 K = 0 的均勻模式。**Kittel 在這裡把兩段話扣在一起了**，讀的時候別把它們當成兩件事。"
+    },
+    {
+      "kind": "concept",
+      "heading": "這一段的常見誤解清單",
+      "tier": "mine",
+      "body": "**本節是我整理的教學補充**，把上面各節容易記反的地方集中列出。每一條都標出書中的依據頁碼。\n\n**誤解一：「聲子帶動量 ℏK。」**\n正確：聲子在與光子、中子、電子交互作用時**表現得像**帶有動量 ℏK（原文 p.100 的 as if），但它**不帶物理動量**（原文：「a phonon does not carry physical momentum」）。ℏK 是準動量／晶體動量。判別方法：問「這個模式下所有原子的動量加起來是多少？」對 K ≠ 0 答案嚴格是零。\n\n**誤解二：「選擇律有 G 代表動量不守恆。」**\n正確：全系統的真動量**嚴格守恆**（原文：「The true momentum of the whole system always is rigorously conserved.」）。G 出現只是因為帳沒記整塊晶體那 −ℏG 的反衝（原文 p.100）。\n\n**誤解三：「K = 0 的模式都帶動量。」**\n正確：K = 0 的**聲學支**（ω = 0，剛體平移）帶動量；K = 0 的**光學支**不帶，因為由 (26) u/v = −M₂/M₁ 使 M₁u + M₂v = 0，原文 p.98 說得很清楚「their center of mass is fixed」。K = 0 是必要條件不是充分條件。\n\n**誤解四：「(28) 左邊是 ¼ρVω²u₀²。」**\n正確：**¼ρVω²u₀² sin²ωt 是還沒做時間平均的瞬時體積分**，原文 (28) 的左邊是做完時間平均的 **⅛**ρVω²u₀²（原文 p.99 明言「because ⟨sin²ωt⟩ = ½」）。自我檢查：⅛ 那一版才能推出 (29) 的 u₀² = 4(n+½)ℏ/ρVω。\n\n**誤解五：「u₀ 就是均方位移的平方根。」**\n正確：u₀ 是**峰值**振幅。均方位移要再除以 4（cos²Kx 的空間平均 ½ 乘上 cos²ωt 的時間平均 ½），即 ⟨u²⟩ = u₀²/4 = (n+½)ℏ/(ρVω)。這樣才與第 5 章 Problem 3 引用的 ⟨R²⟩ = (ℏ/2ρV)Σω⁻¹ 對得上（p.128）。\n\n**誤解六：「頻率間隙是因為有兩個原子。」**\n正確：間隙的來源是**基元中兩個位置不等價**。原文 p.97 明說「It is not essential that the masses be different, but either the force constants or the masses will be different if the two atoms of the basis are in nonequivalent sites.」質量相同但力常數交錯（本章 Problem 5）一樣有間隙；質量相同且力常數相同（如 Ge）則間隙為零，兩支在區邊界相接。\n\n**誤解七：「ω 可以是負的。」**\n正確：運動方程只定 ω²（原文 p.99：「The equations of motion such as (2) are equations for ω²」；該段跨頁，「ω will be imaginary」一句才在 p.100），而能量必須為正，所以**約定** ω > 0，方向資訊由 K 的正負承載。但 **ω² 本身可以是負的**——那代表結構不穩定、ω 為虛數、擾動指數成長（軟模）。\n\n**誤解八：「零點能只是一個可以扣掉的常數。」**\n正確：對單一模式而言它確實是常數，但它**隨 ω 變**，而 ω 隨晶格常數、同位素質量、外壓而變，所以 Σ½ℏω 對晶格常數有實際貢獻，可由同位素效應量到。它也造成 T = 0 K 下非零的均方位移（第 5 章 Problem 3）與非零的 Debye–Waller 衰減（附錄 A，p.641–643）。"
+    },
+    {
+      "kind": "concept",
+      "heading": "往下讀：這一段接到哪裡",
+      "tier": "mine",
+      "body": "**本節是我做的路線圖。**\n\n**立刻接的下一段：INELASTIC SCATTERING BY PHONONS（p.100 下半起）。**原文的開場是「Phonon dispersion relations ω(K) are most often determined experimentally by the inelastic scattering of neutrons with the emission or absorption of a phonon.」——注意 emission or absorption 正好對應剛講完的 (31) 與 (32)。**這一段講的選擇律，下一段就要拿去當實驗原理用。**中子的優勢在原文下一句點出：「A neutron sees the crystal lattice chiefly by interaction with the nuclei」——中子不帶電，直接看核，而且熱中子的能量（~25 meV）與聲子能量同量級、波長（~1.8 Å）與晶格常數同量級，**能量與動量的解析度剛好都在對的尺度上**。這就是為什麼 p.96 的 Figure 8a（Ge）與 8b（KBr）都註明是中子非彈性散射的結果。\n\n**第 5 章。**(27) 的 n 換成 Planck 分佈 ⟨n⟩（p.107 式 (2)）之後，晶格能量 U = Σ_K Σ_p ⟨n_{K,p}⟩ℏω_{K,p}（p.107 式 (1)）對溫度微分就是熱容。這一段的 (27) 是那一整章的第一塊磚。(29) 則供給 Problem 3 的零點位移計算（p.128）。而本段「聲子不帶真動量、守恆律只到 G 為止」的結論，在 Umklapp 過程（p.125）那裡變成熱阻的來源——**如果波向量嚴格守恆（G 恆為零），聲子氣的總動量流就不會衰減，晶體的熱導率會是無限大。**正因為有 G ≠ 0 的過程，熱流才會被耗散。這是「G 不只是數學細節」最有力的證據。\n\n**第 7–8 章。**本段建立的三個觀念會原封不動搬到電子身上：(a) 週期性使波向量只定義到 G 為止；(b) 因此存在 crystal momentum 而非真動量；(c) 週期性微擾在區邊界打開能隙——聲子這裡是頻率間隙，電子那裡是能量帶隙，數學結構完全相同（都是二階簡併微擾理論在 K = π/a 的退化點展開）。**先在聲子這個比較簡單的場景把它學會，到電子能帶時會輕鬆很多。**\n\n**第 16 章。**ω² < 0 的軟模（p.100 那句話 + 本章 Problem 7）在 p.473 的 Soft Optical Phonons 開花結果，接到 LST 關係與鐵電相變。\n\n**附錄 A 與附錄 C。**附錄 C（p.648）補上 (27) 的嚴格推導（傅立葉變換到聲子座標，把耦合鏈對角化）；附錄 A（p.641–643）則把 (29) 兌現成 Debye–Waller 因子 I = I₀exp(−⅓⟨u²⟩G²)。**這兩個附錄是本段唯二被原文明確點名要讀的延伸材料（p.99 明說 Appendix C），值得真的翻過去看一眼。**"
+    }
+  ]
+}
