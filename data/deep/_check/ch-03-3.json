@@ -1,0 +1,132 @@
+{
+  "section": 3,
+  "blockers": [
+    {
+      "where": "blocks[21].steps[1] 表格 LiF 列（以及 steps[2]、steps[3] 由它導出的結論）",
+      "problem": "把 Table 7 的 LiF 抓錯欄位：ρ 寫成 0.296 Å，但 0.296 是 LiF 的 zλ（單位 10⁻⁸ erg），不是 ρ。連帶 ρ/R₀ = 0.147、1−ρ/R₀ = 0.853 都錯；steps[2] 的「16 個鹼金屬鹵化物的 ρ/R₀ 全部落在 0.095 至 0.147 之間」「修正因子落在 0.853 至 0.905」、steps[3]「排斥項削掉靜電吸引的 10% 到 15%」、steps[4]「最極端的是 LiF（最小的晶體，0.147）」全部受污染。這份檔案自己在 blocks[31] 的 Table 7 重製裡印的是 ρ(LiF) = 0.291，前後矛盾。",
+      "evidence": "原書 p.66 Table 7 LiF 列：R₀ = 2.014 Å｜B = 6.71｜zλ = 0.296（10⁻⁸ erg）｜ρ = 0.291 Å｜242.3[246.8]｜242.2。正確值：ρ/R₀ = 0.291/2.014 = 0.14449，1 − ρ/R₀ = 0.85551。全 16 個晶體實際範圍：ρ/R₀ 由 RbI 0.09480 到 LiF 0.14449；修正因子由 0.85551（LiF）到 0.90520（RbI）；亦即排斥削掉 9.5%–14.4%。",
+      "fix": "LiF 列改成 ρ = 0.291、ρ/R₀ = 0.144、1−ρ/R₀ = 0.856；steps[2] 範圍改成「0.095 至 0.144」與「0.856 至 0.905」；steps[3] 改成「削掉約 9.5% 到 14%」；steps[4] 的 LiF 值改 0.144。（順帶：steps[2] 的下界 0.095 與同表 RbI 列自印的 0.0948 也對不上，一併改成 0.0948。）"
+    },
+    {
+      "where": "blocks[20].body（(20)→(24) 完整代數的收尾檢查）",
+      "problem": "同一個抓錯欄位的錯誤：「LiF 的 ρ/R₀ = 0.296/2.014 = 0.147」。下游的 (1−0.147)/(1−0.095) = 0.943 與 1.823 × 0.943 = 1.719 都跟著偏。",
+      "evidence": "原書 Table 7：LiF ρ = 0.291 Å（0.296 是 zλ 欄）。正確：ρ/R₀ = 0.1445；(1−0.1445)/(1−0.0948) = 0.9451；1.823 × 0.9451 = 1.723（對照晶格能比 1.672，差 3.0%，結論不變）。",
+      "fix": "改成「LiF 的 ρ/R₀ = 0.291/2.014 = 0.145，RbI 的 0.348/3.671 = 0.095，(1−0.145)/(1−0.095) = 0.945，1.823 × 0.945 = 1.723」。"
+    },
+    {
+      "where": "blocks[35].body「往後章節的接點」清單",
+      "problem": "三個章號都錯。(a)「第 13 章（介電體）：…Clausius–Mossotti 關係與 LST 關係」——第 8 版第 13 章是 Magnetic Resonance；Clausius–Mossotti 與極化率在第 16 章 Dielectrics and Ferroelectrics，LST 關係在第 14 章 Plasmons, Polaritons, and Polarons（兩者不同章，也不能併成一章）。(b)「第 14 章（繞射與缺陷之外）／第 18 章（表面）」——第 14 章是 Plasmons, Polaritons, and Polarons，第 18 章是 Nanostructures；表面與極性面屬於第 17 章 Surface and Interface Physics。",
+      "evidence": "原書目錄（PDF p.12–18）：CHAPTER 13: MAGNETIC RESONANCE／CHAPTER 14: PLASMONS, POLARITONS, AND POLARONS（含 LST）／CHAPTER 15: OPTICAL PROCESSES AND EXCITONS／CHAPTER 16: DIELECTRICS AND FERROELECTRICS（含 Dielectric Constant and Polarizability）／CHAPTER 17: SURFACE AND INTERFACE PHYSICS／CHAPTER 18: NANOSTRUCTURES。",
+      "fix": "「第 13 章（介電體）」→「第 16 章（介電體與鐵電體）：Clausius–Mossotti 關係；第 14 章（極化子與極化激元）：LST 關係」；「第 14 章（繞射與缺陷之外）／第 18 章（表面）」→「第 17 章（表面與介面物理）」。"
+    },
+    {
+      "where": "blocks[1].body 末段",
+      "problem": "「這個變形正是後面第 13 章談極化率…的來源」章號錯。第 13 章是 Magnetic Resonance。",
+      "evidence": "目錄：CHAPTER 16: DIELECTRICS AND FERROELECTRICS → Dielectric Constant and Polarizability。另原書 p.56 自己把電子極化率交叉引到「Chapter 15」。",
+      "fix": "改成「第 16 章談介電常數與極化率」，或直接沿用原書 p.56 的寫法註明 Kittel 自己指向 Chapter 15。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[8].eq.limits 第二段引文",
+      "problem": "引文「We neglect surface effects.」是句子中途截斷後自行補上句點，原句並未在此結束。",
+      "evidence": "原書 p.62–63：「…as long as it is not near the surface. We neglect surface effects and write the total lattice energy U_tot of a crystal composed of N molecules or 2N ions as U_tot = NU_i.」",
+      "fix": "引到「…as long as it is not near the surface.」為止，後面 We neglect surface effects 改為中文轉述，或補成完整句「We neglect surface effects and write the total lattice energy…」。"
+    },
+    {
+      "where": "blocks[4].eq.from 第一句引文的頁碼歸屬",
+      "problem": "標「書上 p.60 末段逐字寫的是…」，但這句話跨頁：p.60 最後一行只到「…attractive between ions of opposite charge and repulsive」，「between ions of the same charge.」印在 p.61 開頭。",
+      "evidence": "PDF p.80（書 60）結尾／PDF p.81（書 61）開頭。",
+      "fix": "改寫成「書上 p.60 末段至 p.61 開頭逐字寫的是…」。eq.bookPage = 60 本身沒問題。"
+    },
+    {
+      "where": "blocks[29].body「曲線二：Coulomb energy」",
+      "problem": "「從左下的約 −12.7 eV（R ≈ 2.2）」與圖上自己標的公式矛盾：25.2/2.2 = 11.4，不是 12.7。放大目視，庫侖曲線左端點約在 R ≈ 1.95–2.0、E ≈ −12.8 eV。",
+      "evidence": "算繪 PDF p.85 放大目測：庫侖曲線左端落在橫軸刻度 2 的略左側，縱向介於 −12 與 −14 之間偏 −13；25.2/12.7 = 1.98。",
+      "fix": "改成「從左下的約 −12.8 eV（R ≈ 2.0）」。"
+    },
+    {
+      "where": "blocks[29].body 讀圖第 1 點",
+      "problem": "「KCl 的體模量…比金剛石之類的共價晶體小兩個數量級」誇大。",
+      "evidence": "KCl B = 1.74 × 10¹¹ dyn/cm²（Table 7）＝17.4 GPa；金剛石約 443 GPa。比值約 25 倍，約 1.4 個數量級。",
+      "fix": "改成「小一個多數量級（約 25 倍）」。"
+    },
+    {
+      "where": "blocks[12].body 倒數第二段",
+      "problem": "「對一個 1 cm³ 的晶體，表面離子佔比約 10⁻⁸」量級偏低一位。",
+      "evidence": "NaCl 離子數密度 4.46 × 10²² cm⁻³、表面離子面密度約 1/(2.82 Å)² = 1.26 × 10¹⁵ cm⁻²，1 cm 立方體：6 × 1.26e15 / 4.46e22 ≈ 1.7 × 10⁻⁷。",
+      "fix": "改成「約 10⁻⁷」。（同段 5 nm 晶粒「20% 以上」經核算約 34%，無誤。）"
+    },
+    {
+      "where": "blocks[10].body（三）／blocks[31].body（一） 對照 blocks[30].body（二）與 blocks[32].body 末段",
+      "problem": "前後不一致。blocks[10] 與 blocks[31] 斷言 Table 7 的「Calculated」欄就是「R₀ 與 B 進、晶格能出」的本模型輸出；blocks[30]、blocks[32] 卻誠實指出用 (24) 算出的值落在 Experimental 欄上、並說「書上沒有交代 Tosi 的 Calculated 欄具體用了什麼模型，本站不臆測」。",
+      "evidence": "原書 p.65–66 只寫「The calculated values of the lattice energy are in exceedingly good agreement with the observed values.」與資料來源 M. P. Tosi, Solid State Physics 16, 1 (1964)，未說明 Calculated 欄的模型。用 (24)+Table 7 算 NaCl 得 182.4–182.6 kcal/mol（Experimental 182.6，Calculated 178.6）。",
+      "fix": "blocks[10] 與 blocks[31] 的措辭改成「Calculated 欄是某個以 R₀、B 為輸入的模型輸出（書上未交代細節）」，與 blocks[30]/[32] 的保留說法一致。"
+    },
+    {
+      "where": "blocks[31].body 表格後說明",
+      "problem": "「LiI 的 B 值書上加了括號 (1.71)，表示該值比較不可靠」——原書沒有替這組括號給任何圖例或說明，把推測寫成書上的意思，而且這是 tier: \"book\" 的 block。",
+      "evidence": "原書 p.66 Table 7 的說明只有方括號［絕對零度、零壓，L. Brewer 私人通訊］一條，對圓括號未置一詞。",
+      "fix": "改成「LiI 的 B 印成 (1.71)，原書未說明括號的意思（可能表示該值較不確定，本站推測）」。"
+    },
+    {
+      "where": "blocks[11].body 末段",
+      "problem": "句子自相矛盾：「指數項的高階導數比冪次項大得多（每微分一次帶出一個 1/ρ ≈ 3 Å⁻¹，而 R⁻¹² 微分一次只帶出 12/R ≈ 4 Å⁻¹，其實接近）」——括號內的數字否定了括號外的斷言。另「離子晶體的高熱導與陡峭的排斥項有直接關係」缺乏依據：鹼金屬鹵化物室溫熱導率只有 ~6–7 W/m·K，不是高熱導材料。",
+      "evidence": "1/ρ(NaCl) = 1/0.321 = 3.12 Å⁻¹；12/R₀ = 12/2.82 = 4.26 Å⁻¹。",
+      "fix": "刪掉「比冪次項大得多」這半句，直接寫兩者量級相近、真正差別在位能井形狀；「高熱導」改成明確的比較對象（例如「相對於惰性氣體晶體」）或刪除。"
+    },
+    {
+      "where": "blocks[35].body 末段「與熱容／熱傳研究的接點」",
+      "problem": "「造就了離子晶體相對高的 Debye 溫度與相對低的非諧性」沒有給比較基準，容易誤導。相對於共價晶體，鹼金屬鹵化物的 Debye 溫度低（NaCl 321 K、KI 132 K，對照金剛石 2230 K、Si 645 K）、Grüneisen 參數大（非諧性強）。只有相對於惰性氣體晶體（Ne 75 K、Ar 92 K）這句話才成立。",
+      "evidence": "Kittel 第 5 章 Debye 溫度表；本節前一小節的惰性氣體晶體資料（Table 4）。",
+      "fix": "補上「相對於前一節的惰性氣體晶體」這個基準，或改成中性敘述。"
+    },
+    {
+      "where": "tier 標示（blocks[1]、blocks[25]、blocks[31]，程度較輕者 blocks[3]、blocks[5]）",
+      "problem": "這幾個標成 tier: \"book\" 的 block，主體是撰寫者自己的教學補充而非原文內容，且未像其他地方那樣註明「（本站補充）」。例如 blocks[1] 的 Gauss 定律論證與「所以把離子當成點電荷不是粗糙近似」；blocks[25] 的 Evjen 法解說與「寫程式會得到震盪不收斂數列」的實務建議（Evjen 完全沒出現在原書）；blocks[31] 的「兩進兩出」「Experimental vs Calculated 規律」「B ∝ R₀⁻ⁿ，n 約 3–4」「ρ 幾乎是常數」四條讀表線索。",
+      "evidence": "原書 p.60–66 只寫到 Ewald 法（附錄 B）與「Computers are now used for the calculations.」，無 Evjen；Table 7 原書只有一句評語「in exceedingly good agreement」。",
+      "fix": "把這些段落改標 tier: \"mine\"，或在段內加「（本站補充）」標記，與 blocks[27]、blocks[21].steps[4] 的既有做法一致。"
+    },
+    {
+      "where": "blocks[12].body 第一段",
+      "problem": "「書上 p.59 處理 Lennard-Jones 晶體時寫的是 U_tot = ½N(4ε)[…]」——式 (11) 印在 p.58，只有「The factor ½ occurs with the N…」這句在 p.59。",
+      "evidence": "PDF p.78（書 58）末尾出現 (11)；PDF p.79（書 59）開頭才是 where p_ij R is the distance… The factor ½ occurs with the N…",
+      "fix": "改成「書上 p.58 的 (11) 式寫的是…，並在 p.59 解釋…」。"
+    },
+    {
+      "where": "blocks[0].body 第二段",
+      "problem": "「鹼金屬鹵化物的晶格能是惰性氣體晶體的一百倍以上」在最重的惰性氣體上不成立，且拿「每分子單元的晶格能」對「每原子的內聚能」比。",
+      "evidence": "Table 4：Ne 0.02、Ar 0.080、Kr 0.116、Xe 0.17 eV/atom。NaCl 7.9 eV/分子單元對 Xe 只有約 46 倍。",
+      "fix": "改成「數十到數百倍」，或明確限定成「對照 Ne 的 0.02 eV/atom 是四百倍」。"
+    },
+    {
+      "where": "blocks[2].body Fig. 7 描述",
+      "problem": "兩處目視描述不精確。(a)「圖上還有一條細細的十字線通過離子中心」——圖上其實是兩條水平線＋兩條垂直線，各自通過上下兩對、左右兩對離子，構成網格而非單一十字。(b)「在四個離子圍成的正方形正中央…標著 0.05」——0.05 這個標籤其實放在中央低密度盆地那條封閉等高線的右下側，不在正方形幾何中心；不過「中央區域低於 0.05、是全圖最低」這個結論本身正確。",
+      "evidence": "PDF p.81 以 8 倍放大算繪目視：四個離子分別在左上 Na⁺、右上 Cl⁻、左下 Cl⁻、右下 Na⁺（此點原文描述正確）；細線為 2 橫 2 縱；0.05 標籤位於中央封閉等高線的右下緣。",
+      "fix": "(a) 改成「兩條水平與兩條垂直的細線通過各離子中心」。(b) 改成「中央那條封閉等高線標著 0.05，圍出的中心區域是全圖密度最低處」。"
+    },
+    {
+      "where": "blocks[9].eq.numeric、blocks[18].eq.numeric、blocks[32].steps[2]",
+      "problem": "exp(−8.785) 寫成 1.534 × 10⁻⁴（blocks[9] 寫 1.53），精確值 1.530 × 10⁻⁴，約差 0.3%。不影響任何結論，但三處數字應統一。",
+      "evidence": "exp(−2.820/0.321) = exp(−8.78505) = 1.53004 × 10⁻⁴。",
+      "fix": "三處統一改成 1.530 × 10⁻⁴；blocks[32] 路線 A 的排斥項由 1.005 改為 1.003 eV，U/N 由 −7.918 改為 −7.920（對回 182.6 kcal/mol 不變）。"
+    }
+  ],
+  "verified": [
+    "所有 eqNumber 與 bookPage 逐一核對無誤：(17)(18) p.62、(19)(20)(21)(22)(23)(24) p.63、(25) p.64；blocks[4] 的 ±q²/r 原書確實未編號，檔案也沒有杜撰式號。",
+    "blocks[13] 對 (19) 式的校註屬實。以 14 倍放大算繪 PDF p.83 目視確認：(19) 第一行原書確實印成 λ exp(−R/p)，用的是與同式 p_ij 相同的拉丁斜體 p，而 (18)(20) 用的是希臘 ρ——原書排版錯誤，校註方向正確。",
+    "blocks[31] 重製的 Table 7 全 16 列 × 6 欄（R₀、B、zλ、ρ、Experimental、Calculated，含全部方括號 0 K 值與 LiI 的 (1.71)）逐格與原書 p.66 一致，無一筆抄錯。",
+    "blocks[33] 重製的 Table 6 電子親和力 14 筆（H 0.7542、Li 0.62、C 1.27、O 1.46、F 3.40、Na 0.55、Al 0.46、Si 1.39、P 0.74、S 2.08、Cl 3.61、Br 3.36、I 3.06、K 0.50）與出處 Hotop & Lineberger, J. Phys. Chem. Ref. Data 4, 539 (1975) 全部正確。",
+    "三個 Madelung 常數 1.747565 / 1.762675 / 1.6381 與前置條件「based on unit charges and referred to the nearest-neighbor distance」逐字無誤；blocks[28] 的換基準換算（NaCl 3.49513、CsCl 2.03528、ZnS 3.78303）數學全部正確。",
+    "blocks[32] 的 NaCl 兩路線驗算全部複算通過：αe²/R₀ = 8.923 eV、修正因子 0.88617、路線 B = −7.907 eV、×23.061 = 182.4 kcal/mol；路線 A 與 B 差 0.14% 的解釋（Table 7 參數只近似滿足 (23)）成立。",
+    "blocks[30] 的 Fig. 10 驗算通過：αe² = 25.164（對應圖上 25.2）、以圖上參數解得 R₀ ≈ 3.10 Å、谷底 −7.35 eV、以 Table 7 參數得 −7.17 eV = 165.3 kcal/mol（實驗 165.8，差 0.3%）；並正確指出 Fig. 10 與 Table 7 用了兩組不同參數。",
+    "blocks[29] 對 Fig. 10 標籤「(25.2/R) eV」漏負號的校註屬實（算繪目視確認曲線在橫軸下方）；「平衡位置是總能曲線極小值、兩條分項曲線根本不相交」的點破正確，圖上 Equilibrium position 引線確實指向虛線谷底。",
+    "blocks[19].eq.limits 關於 Lennard-Jones 對照的因子 (1 − 6/12) 經獨立複算成立：以 p.59 的 (12)(14)(16) 計算，LJ 在 R₀ 的總能／吸引能 = 0.4996。",
+    "blocks[6] Fig. 8 的三列反應式、標籤位置（5.14 eV 下方 Ionization energy、3.61 eV 下方 Electron affinity、7.9 eV 下方 Cohesive energy）與圖說逐字引用，經算繪目視逐項確認正確；6.4 eV 收支帳（+5.14 −3.61 −7.9 = −6.37）數學正確。",
+    "blocks[2] Fig. 7 的離子配置（左上 Na⁺、右上 Cl⁻、左下 Cl⁻、右下 Na⁺）、等高線數列（100/50/10/2/1/0.5/0.1）、以及「Cl⁻ 的 0.1 等高線半徑明顯大於 Na⁺」三項，經 8 倍放大算繪目視確認全部正確。",
+    "blocks[35] 引用的章末習題 4、5、6、7 內容（Na 電子親和力 0.78 eV；一維鏈 U(R₀) = −(2Nq² ln 2/R₀)(1 − 1/n)；KCl 放進立方 ZnS 結構；BaO R₀ = 2.76 Å 與 O 的第二電子親和力 −9.0 eV）逐條與原書 p.86 相符，含 blocks[33] 對習題 7 的英文逐字引用。",
+    "blocks[35] 引用的 p.85 SUMMARY 條目與 blocks[11] 引用的 p.85 排斥作用條目，均與原書逐字相符。",
+    "blocks[24] 一維鏈推導（2 ln 2 = 1.386294）與 blocks[21]、blocks[26]、blocks[28] 的其餘數學全部複算正確；blocks[24].steps[5] 補的 Abel 定理與條件收斂說明數學上成立。",
+    "本節其餘英文逐字引用（p.60 的 quick estimate 段與 5.1/7.9 eV、p.61 的 van der Waals 1–2% 與 Madelung energy、p.62 的 (17) 求和約定／λ ρ 由晶格常數與壓縮率定／ρ 的 e⁻¹ 定義／SI 換算、p.63 的 N 而非 2N／p_ij 定義／只在最近鄰放排斥／The sum should include…／The (±) sign is discussed just before (25)／of the order of 0.1R₀、p.64 的 Madelung 與 Ewald 歷史／α 必須為正與符號約定／等價定義與基準長度警語、p.65 的三維警語與 in exceedingly good agreement、p.49 的 cohesive energy 與 lattice energy 定義）共 20 餘處，逐句比對均為逐字，無捏造、無併句、無漏字。"
+  ]
+}

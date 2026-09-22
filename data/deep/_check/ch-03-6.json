@@ -1,0 +1,97 @@
+{
+  "section": 6,
+  "blockers": [
+    {
+      "where": "blocks[9].eq.numeric（式 (54) 體模量對照表的總結句）",
+      "problem": "表格本身的六組數字全部正確，但緊接的總結句與表格自相矛盾：「六個材料全部吻合到 1–3% 以內」與「鑽石與銅甚至吻合到三位有效數字」都不成立。實際偏差：Diamond 4.42 vs 4.43 = 0.23%；Si 0.979 vs 0.988 = 0.91%；Ge 0.750 vs 0.772 = 2.85%；Cu 1.371 vs 1.37 = 0.07%；Na 0.0657 vs 0.068 = 3.4%；Li 0.121 vs 0.116 = 4.31%。Li 超過 4%、Na 超過 3%，都落在宣稱的區間外。三位有效數字的宣稱只有 Cu（1.371 vs 1.37）成立，鑽石 4.42 vs 4.43 第三位就不同。",
+      "evidence": "Table 3（書本 p.52，無文字層，已用 PyMuPDF 以 3 倍算繪目視判讀）：C[d] 4.43 / 0.226；Si 0.988 / 1.012；Ge 0.772 / 1.29；Cu 1.37 / 0.73；Na 0.068 / 14.7；Li 0.116 / 8.62。表頭「Isothermal bulk moduli and compressibilities at room temperature」，單位「Bulk modulus in units 10^12 dyn/cm^2 or 10^11 N/m^2；Compressibility in units 10^-12 cm^2/dyn or 10^-11 m^2/N」——這些與檔案的描述完全相符，錯的只有總結句。",
+      "fix": "改成「四個材料吻合到 3% 以內（Cu 0.07%、Diamond 0.2%、Si 0.9%、Ge 2.9%），鹼金屬偏差較大（Na 3.4%、Li 4.3%），這與鹼金屬彈性常數本身小、Table 3 與 Table 11/12 的溫度與絕熱／等溫條件不同一致」。「吻合到三位有效數字」只保留 Cu。"
+    },
+    {
+      "where": "blocks[35].eq.limits（SUMMARY 第三條 Madelung 能方塊）「(21) 的 λexp(−R/ρ)」",
+      "problem": "式號錯。原書 (21) 是 Madelung 常數的定義式 α ≡ Σ_j (±)/p_ij，不是排斥項。指數型排斥 λexp(−R/ρ) 出現在 p.62 的 (17)(18)（U_ij = λexp(−r_ij/ρ) ± q²/r_ij）與 p.63 的 (19)(20)（U_tot = N[zλe^(−R/ρ) − αq²/R]）。讀者照式號翻過去會看到與該句無關的東西。",
+      "evidence": "書本 p.63 原文依序印出：U_tot = NU_i = N(zλe^{−R/ρ} − αq²/R)（20），「where z is the number of nearest neighbors of any ion and」α ≡ Σ_j (±)/p_ij = Madelung constant（21）。",
+      "fix": "改成「(20) 的 zλexp(−R/ρ)」或「(18)/(19) 的 λexp(−R/ρ)」。"
+    },
+    {
+      "where": "blocks[28].body（「實務：怎麼從 [110] 的三個速度反解三個彈性常數」表格第一列）",
+      "problem": "幾何敘述錯誤：「v_T1（位移沿 [001]，垂直於 (110) 面）」。[001] 與 [110] 的內積為 0，所以 [001] 是**躺在** (110) 面內，不是垂直於它；垂直於 (110) 面的方向是 [110]（也就是 K 本身）。而且下一列 v_T2 的 [11̄0] 同樣在 (110) 面內，這個括號因此既錯誤又無法區分兩支橫波。作者真正想表達的應是：T1 的位移垂直於**傳播平面**（xy 面，即 (001) 面），T2 的位移在該平面內——這正是 (64)(65) 那一小節的設定（w 沿 z、K 在 xy 平面）。",
+      "evidence": "原書 p.82：「Consider a shear wave that propagates in the xy plane with particle displacement w in the z direction」；p.83：「The particle displacement is along [11̄0] and perpendicular to the K vector」。K ∥ [110]，兩支橫波的偏振（[001] 與 [11̄0]）都與 [110] 垂直，故兩者都在 (110) 面內。",
+      "fix": "改成「v_T1（位移沿 [001]，垂直於 K 與 [11̄0] 所張的傳播平面，即 (001) 面）」；或直接寫「位移沿 [001]，垂直於 xy 傳播平面」。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[35].eq.numeric「很接近書本 p.64 給出的 NaCl 結構 Madelung 常數 1.747565」",
+      "problem": "頁碼差一頁。p.64 是「Evaluation of the Madelung Constant」小節的開頭文字，1.747565 這個數值印在 p.65 的 Madelung 常數表裡。",
+      "evidence": "全書搜尋 1.747 只在 PDF 第 85 頁（= 書本 p.65）出現：「Structure / Sodium chloride, NaCl 1.747565 / Cesium chloride, CsCl 1.762675 / Zinc blende, cubic ZnS 1.6381」，該頁頁眉為「3 Crystal Binding 65」。",
+      "fix": "改成 p.65。"
+    },
+    {
+      "where": "blocks[20].body（「[110] 方向為什麼是重頭戲」）「所以 [110] 是唯一一個『切一塊樣品、貼一組換能器就能量完全部彈性常數』的方向」",
+      "problem": "過度宣稱，且非書上說法。原書只說 [110] 有「special interest」，因為三個常數可以由這個方向的三個速度「simply」求出；並未說它唯一。一般低對稱方向同樣有三支波、三個獨立速度，原則上也能反解，只是不再是純縱／純橫、代數不漂亮。",
+      "evidence": "原書 p.82：「There is a special interest in waves that propagate in a face diagonal direction of a cubic crystal, because the three elastic constants can be found simply from the three propagation velocities in this direction.」",
+      "fix": "把「唯一」改成「最方便／最標準的」，或加上「在偏振恰為純縱純橫、代數可手算的意義下」。"
+    },
+    {
+      "where": "blocks[11].body（「Fig. 19 的兩根彈簧」，tier: book）與 blocks[20].body（「[110] 方向為什麼是重頭戲」，tier: book）",
+      "problem": "tier 標註一致性：這兩個 tier=\"book\" 的方塊裡有明顯是撰寫者自補、書上沒有的內容，卻沒有像檔案其他地方那樣加「這是我補的」標記。Fig. 19 方塊的「電荷在均勻電位裡不受力」「流體壓力梯度」類比、以及「彈性波有三個偏振而電磁波在真空中只有兩個橫偏振」一段，書上 p.81 的 Fig. 19 圖說只有兩句（等量拉伸無淨力／B 拉得多則被 X_x(B) − X_x(A) 加速）。[110] 方塊的「超音波量測彈性常數的標準樣品是 (110) 切面」同樣不在書上。",
+      "evidence": "Fig. 19 圖說全文：「If springs A and B are stretched equally, the block between them experiences no net force. This illustrates the fact that a uniform stress X_x in a solid does not give a net force on a volume element. If the spring at B is stretched more than the spring at A, the block between them will be accelerated by the force X_x(B) − X_x(A).」",
+      "fix": "比照 Fig. 20 與「一般方向」兩個方塊的做法，在自補段落加一句「（此類比／此工程慣例為我補的，Kittel 這幾頁沒有寫）」。"
+    },
+    {
+      "where": "blocks[40].steps（習題 8）「**檢查一（各向同性極限）**：令 C₁₂ = 0…」",
+      "problem": "小標題用詞不精確。C₁₂ = 0 不是各向同性條件；立方晶的彈性各向同性條件是 C₁₁ = C₁₂ + 2C₄₄（Zener A = 1），這一點檔案自己在 blocks[15].eq.limits（(57a) 方塊）已經寫對了，此處前後不一致。C₁₂ = 0 只是「無橫向耦合」的極端特例。",
+      "evidence": "同檔案 blocks[15].eq.limits：「如果把 C₁₁ = C₁₂ + 2C₄₄（各向同性條件，等價於 Zener 比 A = 1）代入…」",
+      "fix": "把小標題改成「檢查一（兩個極端特例）」或「檢查一（無橫向耦合與體積守恆兩個極限）」。"
+    },
+    {
+      "where": "blocks[6].eq.numeric（式 (52)）末句",
+      "problem": "推論不成立。「壓縮 1% 只花不到 1 meV/atom，這說明為什麼『小形變』的近似在室溫（k_BT ≈ 25 meV）之下仍然合理」——這兩件事的方向其實相反：若每原子彈性能遠小於 k_BT，讀者反而會推論熱擾動可以輕易造成大於 1% 的應變。小形變近似成立的真正理由是原子熱位移振幅相對於鍵長很小（Lindemann 判據），以及能量是 6N 個簡正模分攤而非集中在一個均勻壓縮模式上。",
+      "evidence": "數字本身正確：⅙ × 2.938×10¹² × 10⁻⁴ = 4.9 × 10⁷ erg/cm³；除以 5.0 × 10²² cm⁻³ 得 9.8 × 10⁻¹⁶ erg ≈ 6 × 10⁻⁴ eV/atom。",
+      "fix": "刪掉與 k_BT 的比較，或改寫成「一個均勻 1% 壓縮的能量遠小於 k_BT，正說明這種集體模式極容易被激發——真正把晶體固定在小形變區的是 6N 個簡正模各自振幅都很小」。"
+    },
+    {
+      "where": "blocks[32].tier（「Table 11 與 Table 12：讀表的三個角度」）",
+      "problem": "tier 反向錯標。此方塊標成 \"derived\"，但第一段完全是書本 p.83 末尾正文與 Table 11 表註的轉述（選錄表、溫度上升彈性常數下降的提醒、Table 12、外插自 4 K、致謝 Charles S. Smith），屬 book 內容。標成 derived 雖不致誤導讀者以為書上有寫，但與檔案其他地方的分類慣例不一致。",
+      "evidence": "原書 p.83：「Selected values of the adiabatic elastic stiffness constants of cubic crystals at low temperatures and at room temperature are given in Table 11. Notice the general tendency for the elastic constants to decrease as the temperature is increased. Further values at room temperature alone are given in Table 12.」Table 11 表註：「The values given at 0 K were obtained by extrapolation of measurements carried out down to 4 K. The table was compiled with the assistance of Professor Charles S. Smith.」",
+      "fix": "拆成兩塊（book 的讀表事實 + derived 的 Zener 比計算），或整塊改標 book 並在 Zener 那一段沿用既有的「此定義為我所補」標記。"
+    },
+    {
+      "where": "blocks[33].steps（量綱自檢）「a = 5.43 Å」",
+      "problem": "書上印的是 5.430 Å（第 1 章 p.17）。少寫一位有效數字，且該步驟明說是「由第 1 章的鑽石結構參數自洽算出」，引用書中數值時應照抄位數。不影響結果（ρ = 2.33 g/cm³ 不變）。",
+      "evidence": "書本 p.17：「Carbon, silicon, germanium, and tin can crystallize in the diamond structure, with lattice constants a = 3.567, 5.430, 5.658, and 6.49 Å, respectively.」",
+      "fix": "改成 a = 5.430 Å。"
+    },
+    {
+      "where": "blocks[21].eq.from（(64)(65) 的校註）「書上 p.82 在 (64) 之後印的是「whence (32c) gives (65)」」",
+      "problem": "引號內不是逐字原文。原書印的是一行文字「whence (32c) gives」，後面接一條顯示式，式號 (65) 排在右邊。把 (65) 放進引號會讓讀者以為該行文字裡就有「(65)」三個字。校註的結論（書上確實印 (32c)、應為 (57c)）經放大算繪目視確認無誤。",
+      "evidence": "PDF 第 102 頁（書本 p.82）文字區塊：[132,457,213,468] 'whence (32c) gives'；[451,478,468,488] '(65)'；式子本體 ω²ρ = C₄₄(K_x² + K_y²) = C₄₄K² 在 [237,475,363,489]。以 14 倍算繪目視確認字面為「whence (32c) gives」。",
+      "fix": "引號只留「whence (32c) gives」，式號另外交代。"
+    },
+    {
+      "where": "blocks[32].body（「角度一：溫度趨勢」）「Pd 的 C₄₄ 從 0.712 升到 0.717 是少數例外」",
+      "problem": "例外舉得不完整。Pd 的 C₁₂ 在 0 K 與 300 K 都印 1.761，完全沒有下降，同樣是「不隨溫度下降」的例外，且就在同一列。",
+      "evidence": "Table 11（書本 p.84）Pd 列：2.341 1.761 0.712 @0 K，ρ = 12.132；2.271 1.761 0.717 @300 K。",
+      "fix": "改成「Pd 是唯一的例外列：C₄₄ 由 0.712 升到 0.717，C₁₂ 則兩個溫度都印 1.761」。"
+    }
+  ],
+  "verified": [
+    "三處『原書誤植』校註全部獨立複驗屬實，不是抽取工具的鍋：(a) p.80 式 (51) 第一項確實印 C₁₄ = 1/S₄₄（8 倍算繪目視；依 (47) C₁₄ = 0，應為 C₄₄）；(b) p.82 確實印「whence (32c) gives」（14 倍算繪；依上下文應為 (57c)）；(c) p.83 確實印「The second root of (44) when substituted into the upper equation of (67) gives」（11 倍算繪；應為 (69) 的第二根）。",
+    "p.83「[11̄0]」的上橫線校註正確：14 倍算繪確認第二個 1 上方有橫線，文字層抽成「[11-0]」是 PDF 缺陷而非原書錯誤。",
+    "習題 5(b) 的量綱校註正確：14 倍算繪確認書上印 C = (n−1)q² ln 2 / R₀（分母一次方）。獨立重推（U'' (R₀) = 2(n−1)Nq²ln2/R₀³，鏈長 2NR₀）得 C = (n−1)q² ln 2 / R₀²，與量綱（能量/長度）一致，故原書誤植無誤。",
+    "習題 9 印 v_x、習題 10 印 v_s = [⅓(C₁₁ − C₁₂ + C₄₄/ρ]^(1/2)（左括號未配對關閉）——12 倍算繪逐字確認，兩處校註屬實。",
+    "所有 eq 方塊的 bookPage 與 eqNumber 全部核對正確：(51)(52)(53)(54)(55)(56)(57a) 在 p.80；(59)(60)(62)(63)(64)(65)(67) 在 p.82；(68)(69) 在 p.83；SUMMARY 的 Madelung 式在 p.85 且**未**捏造式號（原書該式無編號，檔案也沒給 eqNumber）。",
+    "章內交叉引用的式號逐一核對無誤：(29) 位移 R、(31)(32) 應變、(35) 膨脹、(36) Z_x = X_z、(37)(38) Hooke、(39) 能量密度、(42) 36→21、(43) 立方能量密度、(44) 不出現的二次項、(45) 三重旋轉輪換、(47) C₁₄ = C₁₅ = C₁₆ = 0、(49) C₆₆ = C₄₄、(50) 矩陣、(10)(11)(12)(14)(15)(16) 惰性氣體那一串。唯一錯的是 (21)（見 blocker）。",
+    "所有英文引述的中譯都對得上原文，無併句或漏字：p.82「Both the wavevector and the particle motion are along the x cube edge」「Thus for K parallel to [100] the two independent shear waves have equal velocities. This is not true for K in a general direction in the crystal」「because the three elastic constants can be found simply from the three propagation velocities in this direction」「independent of propagation direction in the plane」；p.83 Fig. 20 圖說「The two transverse modes are degenerate for propagation in the [100] and [111] directions」；p.85 三句偏振陳述；SUMMARY 五條逐條。",
+    "Fig. 20 的六個有效彈性常數逐字比對無誤：[100] L: C₁₁、T: C₄₄；[110] L: ½(C₁₁+C₁₂+2C₄₄)、T₁: C₄₄、T₂: ½(C₁₁−C₁₂)；[111] L: ⅓(C₁₁+2C₁₂+4C₄₄)、T: ⅓(C₁₁−C₁₂+C₄₄)。",
+    "Table 11／Table 12 引用的每一個數字都與原書一致：W 5.326/2.049/1.631、ρ 19.317；Cu 0 K 1.762/1.249/0.818、ρ 9.018、300 K 1.684/1.214/0.754；Al 1.143/0.619/0.316；Pb 0.555/0.454/0.194；Pd 0.712→0.717；Diamond 10.76/1.25/5.76；Si 1.66/0.639/0.796；Ge 1.285/0.483/0.680；Na 0.073/0.062/0.042；Li 0.135/0.114/0.088；MgO 2.86/0.87/1.48；NaCl 0.487/0.124/0.126。",
+    "Zener 比表十列逐項重算全部正確（W 0.995、Diamond 1.21、Al 1.21、MgO 1.49、Si 1.56、Ge 1.70、Cu 3.19、Pb 3.84、Na 7.64、NaCl 0.69）；Cu 三常數降幅 −4.4%/−2.8%/−7.8% 正確。",
+    "所有聲速數值重算通過：Cu [100] L 4.42、T 3.01 km/s（比值 0.68）；Cu [110] L 5.08、T₂ 1.69 km/s（兩橫波比 1.78 ≈ 1.8）；Σv² = 37.7 (km/s)² 與 (C₁₁+2C₄₄)/ρ = 37.68 一致；W L 5.25、T 2.91 km/s；Si 七個速度 8.44 / 5.84 / 9.14 / 5.84 / 4.68 / 9.36 / 5.10 km/s 全部重算吻合，Σv² 139.5 vs 139.6 一致；縱波方向差 10.9%、橫波 19.9% 正確。",
+    "式 (52) 的每原子能量估算正確：4.9×10⁷ erg/cm³ = 4.9 MJ/m³；9.8×10⁻¹⁶ erg ≈ 6×10⁻⁴ eV/atom（Si 原子密度 5.0×10²² cm⁻³ 可由 a = 5.430 Å 自洽得出）。壓縮率換算 K ≈ 1.01×10⁻¹² cm²/dyn × 1 GPa = 1% 正確，且與 Table 3 的 Si K = 1.012 = 1/0.988 自洽。",
+    "所有 derived 方塊的數學本身經逐步重算正確：(50) 的區塊對角化與本徵值 C₁₁+2C₁₂（一重）／C₁₁−C₁₂（二重）、跡與行列式檢查、顯式 S₁₁ = (C₁₁+C₁₂)/[(C₁₁+2C₁₂)(C₁₁−C₁₂)] 與 S₁₂ = −C₁₂/[…] 以及回推 (51)；(52) 的 1/6 與本徵向量法雙路線一致；U = ½Bδ² ⇔ B = −V dp/dV；(55)→(56)→(57a) 的逐項代入；(57a)→(67)；(68) 展開成 (69) 的 X²−Y² = 0；(70)(71) 回代得 u = v 與 u = −v。",
+    "習題推導全部重算正確：習題 2（A₆²/A₁₂ 比值 0.9566 vs 書答 0.958，差 0.15%，且自洽檢查回算出 R₀/σ = 1.0902 與書上 (14) 的 1.09、U = −2.1525×4Nε 與 (16) 的 −2.15×4Nε 一致）；習題 3（2.59 kJ/mol，為實測 0.751 的 3.45 倍，零點能佔 71%）；習題 5（α = 2ln2、U(R₀) 與書答一致）；習題 8（Y = (C₁₁+2C₁₂)(C₁₁−C₁₂)/(C₁₁+C₁₂)、ν = C₁₂/(C₁₁+C₁₂)，Si 得 130 GPa 與 ν = 0.278，並與 B = Y/[3(1−2ν)] = ⅓(C₁₁+2C₁₂) 交叉驗證通過；[111] 的 188 GPa 我用 1/E = S₁₁ − 2(S₁₁−S₁₂−½S₄₄)/3 獨立算得 187.9 GPa）；習題 9/10（含 (1,1,−2) 的簡併驗證）；習題 11；習題 13 的三方向平方和；習題 14 的四條判據等價性證明。",
+    "書外數值都有誠實標示：Si 密度 2.33 g/cm³、Si 原子密度 5.0×10²² cm⁻³、Zener 比定義、A15 超導體軟模例子、聲子聚焦、聲子平均自由程，檔案都註明「取自書外／我補的」。",
+    "「Table 3 在書本 p.52、該頁無文字層、是旋轉 90° 的週期表形式」完全屬實（PyMuPDF 讀該頁只得到 '52' 兩字元，含一張 JPX 影像）；表頭確為 Isothermal（等溫），與 Table 11/12 的 Adiabatic（絕熱）區分正確；兩者單位標示也與原書逐字相符。"
+  ]
+}

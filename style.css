@@ -272,6 +272,11 @@ code, .mono { font-family: var(--font-mono); font-size: 1em; font-variant-numeri
    --on-plate（淺色，為深底而設）就會變成白底淺字，整張表讀不到。 */
 .tablewrap { overflow-x: auto; margin: var(--s5) 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); color: var(--ink); box-shadow: var(--sh-flat); }
 .tablewrap--narrow { max-width: 42em; }
+/* 文字欄（.wrap--text，960px）裡的表格若撐滿整欄，裝句子的那一欄會超過 38em 的
+   行長門檻——ch-03「哪些小節要精讀」表量到 38.7em。收到 48em（816px）讓彈性欄
+   回到 30em 以內；數字欄有 min-content 撐著不會被壓扁，真的裝不下時 .tablewrap
+   本來就有 overflow-x: auto 可橫向捲動。 */
+.wrap--text .tablewrap { max-width: 48em; }
 table { width: 100%; border-collapse: collapse; font-size: var(--f-num); }
 th, td { text-align: left; padding: var(--s2) var(--s4); border-bottom: 1px solid var(--line); vertical-align: top; }
 thead th { background: var(--plate); color: var(--on-plate); font-weight: 500; font-size: var(--f-label); white-space: nowrap; }
@@ -280,6 +285,12 @@ tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
 td { font-variant-numeric: tabular-nums; }
 td.mono, th.mono { font-family: var(--font-mono); white-space: nowrap; }
 .eq__f, .eq__s { overflow-wrap: normal; word-break: keep-all; }
+/* 公式的換行與連續空白是排版資訊，不是原始碼縮排：JSON 裡的分段矩陣、6×6 剛度
+   矩陣、piecewise 大括號都靠它們對齊（ch-03 的式 (19)(57)(69) 是代表案例）。
+   讓瀏覽器把換行摺成空白會把 2×2 行列式印成一長串「| a b | | c d |」。
+   pre-wrap 保留換行與空白，但仍在空白處自動斷行，配上既有的 overflow-x: auto，
+   超寬的式子橫向捲動而不撐破版面。 */
+.eq__f { white-space: pre-wrap; }
 
 /* ---------- 段落區塊 ---------- */
 .sect { padding-block: var(--s7) 0; }
@@ -494,12 +505,17 @@ td.mono, th.mono { font-family: var(--font-mono); white-space: nowrap; }
 .deriv p { max-width: 34em; }
 .deriv__steps { list-style: none; counter-reset: st; margin: var(--s4) 0; padding: 0;
   display: grid; gap: var(--s3); max-width: 530px; }
-.deriv__steps li { counter-increment: st; display: grid; grid-template-columns: 1.9em 1fr;
-  gap: var(--s3); font-size: var(--f-num); line-height: 1.75; margin: 0;
+/* li 不可以是 grid container：步驟文字裡只要夾了 <strong>，每個子節點都會各自
+   變成 grid item，正文就掉進 1.9em 的編號欄一行一個字直落（全站 861 步中 534 步中招）。
+   改用 block ＋ 絕對定位的編號。 */
+.deriv__steps li { counter-increment: st; display: block; position: relative;
+  padding: var(--s3) var(--s4) var(--s3) 3.1em;
+  font-size: var(--f-num); line-height: 1.75; margin: 0;
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: var(--s3) var(--s4); box-shadow: var(--sh-card); }
+  box-shadow: var(--sh-card); }
 .deriv__steps li::before { content: counter(st); color: var(--indigo); font-weight: 600;
-  font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+  position: absolute; left: var(--s4); top: var(--s3); }
 
 /* ---- 公式：補上出處／極限／數值三列 ---- */
 .eq__meta { grid-column: 1 / -1; display: grid; gap: var(--s2); margin: var(--s3) 0 0;
@@ -528,7 +544,7 @@ td.mono, th.mono { font-family: var(--font-mono); white-space: nowrap; }
 @media (max-width: 760px) {
   .sec { padding-top: var(--s7); }
   .deriv { padding: var(--s4); }
-  .deriv__steps li { grid-template-columns: 1.6em 1fr; padding: var(--s3); }
+  .deriv__steps li { padding: var(--s3) var(--s3) var(--s3) 2.7em; }
   .eq__row { grid-template-columns: 1fr; gap: var(--s1); }
 }
 

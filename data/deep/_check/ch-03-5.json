@@ -1,0 +1,77 @@
+{
+  "section": 5,
+  "blockers": [
+    {
+      "where": "blocks[30].body（「常見錯誤：S 不是 C 的倒數（逐元）」的校註）",
+      "problem": "把書本的印刷錯誤誤判成 PDF 文字抽取的問題。原文寫「這一條在 PDF p.80 的文字層被抽成『C14 = 1/S44』，是上下標錯位」，暗示書上印的是 C₄₄ 而只有文字層壞掉。實際上第 8 版 p.80 的式 (51) 印出來就是 C₁₄ = 1/S₄₄——這是書本本身的誤植，不是抽取造成的。而且同一份檔案在 blocks[9]（式 28）的校註中明確寫過「此問題不是文字抽取造成的——放大算繪影像目視確認過，書上就是這樣印的」，代表撰寫者知道要用影像分辨這兩種情況，這一條卻沒有做就下了相反結論，與自己宣告的做法不符。",
+      "evidence": "以 PyMuPDF 將 PDF 第 100 頁（書本 p.80）式 (51) 區域算繪放大 6 倍目視：該行清楚印為「C₁₄ = 1/S₄₄ ;   C₁₁ − C₁₂ = (S₁₁ − S₁₂)⁻¹ ;」，下一行「C₁₁ + 2C₁₂ = (S₁₁ + 2S₁₂)⁻¹ .」，其後為「These relations follow on evaluating the inverse matrix to (50).」。字形為排版字體、非缺字或亂碼，確為書本誤植。",
+      "fix": "改寫為：「校註：本書第 8 版 p.80 的式 (51) 首項誤植為 C₁₄ = 1/S₄₄（已放大算繪影像目視確認，書上就是這樣印的）。依 (50) 右下 3×3 區塊為對角、以及 (49) 的 C₆₆ = C₄₄，正確寫法為 C₄₄ = 1/S₄₄。」"
+    },
+    {
+      "where": "blocks[37].body（「立方晶：先給答案，再證明沒有別的（Fig. 17）」中的 Fig. 17 文字重建）",
+      "problem": "Fig. 17 的虛線三重軸端點描述與原圖不符。原文寫「一條虛線從立方體的左下前角穿到右上後角」。實際圖中虛線的起點是三根座標軸交會的那個**隱藏的後下角頂點**（z 軸從它往上、x 軸與 y 軸沿兩條底邊從它往外延伸），終點是穿過**前上角頂點**後往右上方伸出圖外並標「3」。「左下前角」是 x 軸接上立方體的那個頂點，虛線並未經過；「右上後角」也不是虛線的出口。此區塊 tier 標為 book 且網頁不放圖、明示以文字重建代替原圖，錯誤的幾何描述會讓讀者重建出錯誤的圖。",
+      "evidence": "PyMuPDF 將 PDF 第 99 頁（書本 p.79）Fig. 17 區域算繪放大 10 倍目視：x 標籤在左下、其線段沿底邊接到左下前頂點；y 標籤在右下、沿另一條底邊接到右下頂點；z 的實線由上方往下穿過頂面後方頂點，止於立方體內部的後下頂點。虛線正是從這個後下頂點出發，經過頂面前方頂點（即 +x+y+z 角）後延伸出圖，箭頭旁標「3」，其上畫一圈旋轉箭頭。圖說為「Rotation by 2π/3 about the axis marked 3 changes x → y; y → z; and z → x.」（此圖說本身引用逐字無誤）。",
+      "fix": "改為：「一條虛線從三軸交會的後下角頂點出發，穿過對角的前上角頂點（即體對角線 [111] 方向）後往右上方伸出立方體，末端標一個『3』表示三重軸，旁邊畫一圈箭頭表示旋轉方向。」"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[5].eq.numeric（式 (26) 的數值欄）",
+      "problem": "「施加 1 GPa = 10⁹ N/m² 的單軸**應力**，e_xx ≈ 10⁹/1.66×10¹¹ ≈ 0.6%」——單軸應力（側面自由）下應變應由柔量給出 e_xx = S₁₁X_x；用 C₁₁ 相除算出來的是側向被夾住（e_yy = e_zz = 0）的單軸**應變**情形。本檔在 blocks[43].eq.limits 與 blocks[48].body 中自己強調過這個區別（「這不是楊氏模數」「邊界條件決定你該用 C₁₁ 還是 E」），此處自相矛盾。",
+      "evidence": "Si 的 S₁₁ ≈ 7.7×10⁻¹² Pa⁻¹，1 GPa 單軸應力下 e_xx ≈ 0.77%，非 0.60%；0.60% 對應的是 e_yy = e_zz = 0 的側向受夾情形（原文 p.79 式 (46)：X_x = C₁₁e_xx + C₁₂(e_yy + e_zz)）。",
+      "fix": "把「單軸應力」改成「側向受夾的單軸應變」，或保留單軸應力但改用柔量並註明數量級相同。"
+    },
+    {
+      "where": "blocks[2].steps[1]（校驗 10⁻⁶ cm 的聲速估算）",
+      "problem": "「Al 的 C₁₁ = 1.068（…，300 K），密度 ρ = 2.733 g/cm³」把不同溫度的兩個數字併用。表 11 中 2.733 g/cm³ 印在 Al 的 **0 K** 那一列，300 K 那一列的密度欄是「—」。",
+      "evidence": "PDF p.104（書本 p.84）表 11：「Al  1.143 0.619 0.316  0  2.733 / 1.068 0.607 0.282  300  —」。",
+      "fix": "註明密度取自表 11 的 0 K 列（或說明書上每種晶體只給一個密度值），數量級估算不受影響。"
+    },
+    {
+      "where": "blocks[47].eq.numeric（式 (50) 的數值列表）",
+      "problem": "「Na 0.073 / 0.062 / 0.042（最軟，比鑽石小約 150 倍）」——若「最軟」指書上兩張表的全部材料則不成立；表 11 的 K（鉀）在 295 K 為 0.0370 / 0.0314 / 0.0188，比 Na 更軟約一倍。",
+      "evidence": "PDF p.104（書本 p.84）表 11：「K  0.0416 0.0341 0.0286  4 / 0.0370 0.0314 0.0188  295」。",
+      "fix": "改成「本列表中最軟」，或直接把 K 補進列表並改寫為「表 11、12 中最軟的是 K」。"
+    },
+    {
+      "where": "blocks[28].eq.limits（式 (37) 的限制欄）",
+      "problem": "「S₁₄、S₁₅、S₁₆ 描述更奇特的耦合…立方晶體則由 (47) 知這些項為零」——(47) 給的是 C₁₄ = C₁₅ = C₁₆ = 0，是**剛度**不是柔量。結論本身對（由 (51) 對 (50) 求逆可得 S₁₄ = S₁₅ = S₁₆ = 0），但引用的式號與所討論的量對不上。",
+      "evidence": "原文 p.79：「C₁₂ = C₁₃ ;   C₁₄ = C₁₅ = C₁₆ = 0 .」(47)；柔量的對應結果書上並未單獨列出，只在 p.80 的 (51) 以組合形式給出。",
+      "fix": "改為「立方晶體由 (50) 的分塊對角結構求逆可知這些柔量項亦為零（對應的剛度關係見 (47)）」。"
+    },
+    {
+      "where": "blocks[26].tier（「因次檢查：一個三十秒就能做完的防呆」）",
+      "problem": "tier 標為 book，但區塊中只有四句因次敘述取自原文，其餘（標題本身、「為什麼力／面積與能量／體積是同一個因次」的說明、「怎麼用它防呆」的四條檢查清單）都是撰寫者自補的教學內容，書上沒有。與同檔其他純評論區塊（blocks[16]、blocks[30]、blocks[48]）標 mine 的做法不一致。",
+      "evidence": "原文 p.76 只有「Stress components have the dimensions of force per unit area or energy per unit volume. The strain components are ratios of lengths and are dimensionless.」；p.77 只有「The S's have the dimensions of [area]/[force] or [volume]/[energy]. The C's have the dimensions of [force]/[area] or [energy]/[volume].」。書上沒有 N/m² = J/m³ 的說明，也沒有任何檢查清單。",
+      "fix": "改標 tier: \"mine\"，或把四句原文因次敘述拆成 book 區塊、把使用建議另立 mine 區塊。"
+    },
+    {
+      "where": "blocks[3].body（「不區分等溫與絕熱」）",
+      "problem": "「所以**絕熱常數比等溫常數大**」過度一般化。此論證（壓縮放熱→絕熱時抵抗更強）只對含體積變化的常數成立（B、C₁₁、C₁₂）；純剪切常數 C₄₄ 不改變體積、無熱彈耦合，其絕熱值與等溫值相同。",
+      "evidence": "標準熱力學結果 κ_T − κ_S = α²TV/C_p（本區塊自己也引用了這個量級），只作用在體積相關的響應上；剪切模數的絕熱—等溫差為零。原文 p.73 只說「The small differences between the isothermal and adiabatic elastic constants are not often of importance at room temperature and below.」，並未說明哪個大。",
+      "fix": "加一句限定：「這對含體積變化的常數（B、C₁₁、C₁₂）成立；純剪切的 C₄₄ 兩者相同。」"
+    },
+    {
+      "where": "blocks[9].eq.formula（式 (28)）",
+      "problem": "formula 欄放的是**校正後**的式子（ẑ 分量首項 x ε_xz），而書上實際印的是 x ε_xx。校註已在 limits 欄完整揭露且判斷正確（我以放大影像獨立確認過書上確實誤植），但 formula 欄與 eqNumber「(28)」、bookPage 74 並列時，讀者可能誤以為那就是原文逐字。",
+      "evidence": "PyMuPDF 將 PDF 第 94 頁（書本 p.74）式 (28) 區域算繪放大 8 倍目視：確為「R(r) ≡ (xε_xx + yε_yx + zε_zx)x̂ + (xε_xy + yε_yy + zε_zy)ŷ + (xε_xx + yε_yz + zε_zz)ẑ .」，第三組首項確實印成 ε_xx。校註內容與三條判據皆正確。",
+      "fix": "在 formula 欄末尾加一行「（ẑ 分量首項已依 limits 欄的校註更正；書上原印 x ε_xx）」，讓欄位自身自明。"
+    }
+  ],
+  "verified": [
+    "頁碼全部正確：(26) p.73；(27)(28)(29)(30) p.74；(31)(32)(33)(34)(35) p.75；(36) p.76；(37)(38)(39)(40) p.77；(41)(42)(43)(44)(45) p.78；(46)(47)(48)(49)(50) p.79。章節標題 ANALYSIS OF ELASTIC STRAINS 在 p.73、ELASTIC COMPLIANCE AND STIFFNESS CONSTANTS 在 p.77，與 pages: 73-79 相符。",
+    "式號全部是原文印的編號，沒有替未編號內容捏造式號；x′·x′ 的展開式標明「（未編號）」屬實。",
+    "所有英文逐字引用皆核對過原文，含 Hooke 定律、nonlinear region、等溫／絕熱那一段、embedded securely、uniform deformation、fractional changes of length、The origin is taken at some other atom、It is usual to work with coefficients e_αβ、The other strain components e_xy, e_yz, e_zx are defined…、We may replace the ≅ signs…、The six dimensionless coefficients e_αβ(=e_βα)…、dilation 兩句、well-known result…parallelepiped、Products of two strain components…、The force acting on a unit area…、The capital letter indicates…、角加速度那一句、S/C 命名與四句因次敘述、quadratic function of the strains、The C̃'s are related to…、The stress components are found from…、unit cube…held at rest、Note that only the combination…、thirty-six…reduced to twenty-one、We now show that in cubic crystals…、We assert that…、minimum symmetry requirement…four three-fold rotation axes、odd in one or more indices / e_xy = −e_x(−y)、It remains to verify…、The appearance of C₁₁e_xx agrees with (38)、Thus from (43) we find…、p.80 的 These relations follow on evaluating the inverse matrix to (50)、p.82 的 the three elastic constants can be found simply from the three propagation velocities in this direction、習題 8 與習題 12 的引句——全部逐字相符。",
+    "Fig. 14、Fig. 15、Fig. 16 的三段文字重建以放大算繪影像逐項核對，箭頭方向、灰底面、90° 弧線、(a)(b) 兩態的軸向傾倒全部正確；四張圖說（Fig. 14/15/16/17）皆逐字相符。",
+    "式 (26)(27)(29)(30)(31)(32)(33)(34)(35)(36)(37)(38)(39)(40)(41)(42)(43)(44)(45)(46)(47)(48)(49)(50) 的符號、下標、指數、係數逐項與算繪影像比對無誤，含 (41) 的 ½Σ_{β=2}^{6}、(42) 的 ½(C̃_αβ+C̃_βα)、(43) 的兩個 ½ 與 C₁₂ 不帶 ½、(50) 的行列標籤（左側為 X_x…X_y、上方為 e_xx…e_xy）。",
+    "式 (45) 的四組輪換方案與原文排版完全一致（第一列 x→y→z→x ; −x→z→y→−x，第二列 x→z→−y→x ; −x→y→z→−x），blocks[41] 引用的「第二組 −x→z→y→−x」對得上。",
+    "式 (28) 的校註屬實：書上第 8 版確實誤植 ẑ 分量首項為 ε_xx，經放大影像確認，三條判據皆正確。",
+    "所有數值與表 11、表 12 逐筆比對無誤：鑽石 10.76/1.25/5.76、Si 1.66/0.639/0.796、Ge 1.285/0.483/0.680、Na 0.073/0.062/0.042、W(300K) 5.233/2.045/1.607、Cu(300K) 1.684/1.214/0.754、Al(300K) 1.068/0.607/0.282、Au(300K) 1.923/1.631/0.420、Pb(300K) C₁₂=0.423、Al 密度 2.733；單位 10¹² dyne/cm² = 10¹¹ N/m² 亦與表頭相符。",
+    "所有算術重算無誤：v_s(Al) = 6.25×10³ m/s、ν ≈ 6×10¹¹ Hz、Debye 端 ≈ 10¹³ Hz、B(Si) ≈ 98 GPa 與 δ ≈ −1%、U(1% 單軸) ≈ 8.3 MJ/m³ ≈ 1 meV/atom、e_xy(100 MPa) ≈ 1.26×10⁻³ rad ≈ 0.072°、½(C₁₁−C₁₂) = 0.51、鑽石 C₄₄/C₁₂ = 4.6、Na 比鑽石軟約 150 倍，以及各向異性比值 W 1.01 / Al 1.22 / Si 1.56 / Ge 1.70 / Cu 3.21 / Au 2.88（六筆全數重算相符）。",
+    "所有 derived 區塊的數學正確：|x′| 的泰勒展開、x′·y′ 與夾角減少量 γ 的等價、3×3 行列式的餘因子展開與 det(I+A) ≅ 1+tr(A)、二次型微分出 ½(C̃_αβ+C̃_βα) 與 21 = 6×7/2、(43) 對 e_xx 與 e_xy 的兩次偏導、以及「A 後接 B 合成出繞 y 的 C₂」的群論構造（B 的固定軸確為 [11̄1]，合成結果確為 (x,y,z)→(−x,y,−z)，四面體群 T 階數 12 = E + 8C₃ + 3C₂），奇偶性計數對 (43) 三類項與 (44) 三類項的判定全部正確。",
+    "量綱檢查全部成立：C 與應力同為力／面積、S 為面積／力、應變無因次、(43) 每項為能量／體積、(41) 的 ∂U/∂e 為應力、B 為力／面積、K = 1/B 為面積／力。",
+    "工程剪應變 vs 張量應變的因子關係全部正確：e_xy = 2ε_xy、C₄₄ = c_xyxy（不差）、能量密度差 4 倍、S₄₄ = 4 s_xyxy、C₄₄ = G 與 τ = Gγ 相容。",
+    "全書文字層全文搜尋確認：「Voigt」0 筆、「engineering strain」0 筆、「strain tensor」0 筆、「anisotropy ratio」0 筆，與 blocks[16]、blocks[33]、blocks[48] 的宣稱相符；「Zener」6 頁全部屬於 Zener tunneling／Zener breakdown／目錄／索引，與 blocks[48] 的宣稱相符。",
+    "跨節引用的式號與頁碼皆正確：(51)(52)(53)(54)(55) 在 p.80、(57a) p.80、(57b)(57c)(58) p.81、(60)(62)(63) p.82、Fig. 20 與 (69) p.83、表 11 與表 12 p.84、習題 8/11/12 p.87；Fig. 20 的 [110] 三支有效常數 ½(C₁₁+C₁₂+2C₄₄)、C₄₄、½(C₁₁−C₁₂) 與原圖一致。"
+  ]
+}

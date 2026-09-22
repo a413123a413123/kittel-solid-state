@@ -1,0 +1,128 @@
+{
+  "section": 4,
+  "blockers": [
+    {
+      "where": "blocks[2].body（Fig. 11 逐筆讀圖，tier=book）",
+      "problem": "Fig. 11 的圖面描述錯：宣稱「靠近兩個 Ge 原子核的位置分別標 10」。實際上只有右上角那一個 Ge 旁邊標了 10；左下角的 Ge 旁邊沒有任何數字。第二個「10」位在鍵的右側、是包住「12」那個小閉合島的外圈等高線標籤，離任何標示的 Ge 都很遠。",
+      "evidence": "以 PyMuPDF 將 pdf p.87（書本 p.67）圖區以 7 倍算繪目視：Ge(右上) 正下方緊鄰一個小閉合等高線標 25→無，標的是 10；Ge(左下) 旁只有 'Ge' 兩個字母，無數字；另一個 10 在畫面中右側、緊鄰標 12 的閉合島外緣。文字層抽出的標籤集合為「Ge Ge 25 10 10 2 12 20」，與影像一致，但位置歸屬不同。",
+      "fix": "改成「右上那個 Ge 的核心位置標 10；另一個 10 是包住右側 12 島的外圈等高線」。結論（核心附近的價電子濃度遠低於鍵中央的 25）不受影響，仍可保留。"
+    },
+    {
+      "where": "blocks[2].body 結尾（Fig. 11 逐筆讀圖，tier=book）",
+      "problem": "頁碼錯 + 捏造量級。宣稱「第 2 章末尾那個問題（書本 p.44，「X 光看不到鍵結」那一段）」，並補上「它對結構因子的影響落在千分之一的量級，一般繞射實驗量不到」。書本 p.44 是第 2 章的 Problems（習題 2 Hexagonal space lattice 到習題 6 Form factor of atomic hydrogen），完全沒有這段話；相關敘述在書本 p.42。而且原文從頭到尾沒有給任何量級數字，「千分之一」是無出處的自行量化，卻寫在 tier=book 的區塊裡。",
+      "evidence": "書本 p.42 原文：「The overall electron distribution in a solid as seen in x-ray diffraction is fairly close to that of the appropriate free atoms. This statement does not mean that the outermost or valence electrons are not redistributed somewhat in forming the solid; it means only that the x-ray reflection intensities are represented well by the free atom values of the form factors and are not very sensitive to small redistributions of the electrons.」書本 p.43 是 SUMMARY，p.44 是習題。",
+      "fix": "頁碼改成 p.42；刪掉「落在千分之一的量級」，改用原文的說法（「反射強度用自由原子的 form factor 就描述得很好，對電子的小幅重分布不太敏感」），或保留量化但明確標為非原文的自行估算。"
+    },
+    {
+      "where": "blocks[24].body（ATOMIC RADII：先說「嚴格說答案是否定的」，tier=book）",
+      "problem": "圖號／章號錯：「電荷密度是連續的（第 2 章 Fig. 11 那種等高線圖就是證據）」。第 2 章的 Fig. 11 是「Crystal and reciprocal lattices in one dimension」（書本 p.35），是一維倒晶格示意圖，不是等高線圖。該等高線圖是本段自己講過的第 3 章 Fig. 11（書本 p.67，Ge 價電子濃度）。",
+      "evidence": "掃過第 2 章全部頁面（pdf 43–64 / 書本 23–44），Figure 11 的圖說逐字是「Crystal and reciprocal lattices in one dimension. The basis vector in the reciprocal lattice is b, of length equal to ...」，出現在書本 p.35。",
+      "fix": "改成「本段 Fig. 11（第 3 章 p.67）那種等高線圖就是證據」。"
+    },
+    {
+      "where": "blocks[8].body（Fig. 12 逐條讀圖，tier=book）——曲線 A 的三個讀數",
+      "problem": "曲線 A 的三個目視讀數全部錯。檔案寫「在 r ≈ 1.3 a₀ 通過 +0.4，r ≈ 2.2 a₀ 通過 +0.2，r ≈ 3 a₀ 已降到 +0.07 左右」。r ≈ 1.3 那個位置其實是「A (↑↑)」標籤文字的位置，不是曲線；曲線在該處早已衝出 +0.6 圖框。",
+      "evidence": "把 pdf p.88（書本 p.68）以 12 倍算繪後做像素量測（以 x 軸 0/1/2/3 a₀ 格線與 y 軸 0/±0.2/±0.4 Ry 格線校準，x0=1506px、516.3px/a₀；y0=1241px、515.7px/0.2Ry）：A 在 r=1.8 為 +0.395、r=2.0 為 +0.306、r=2.2 為 +0.241、r=2.4 為 +0.191、r=2.6 為 +0.154、r=2.8 為 +0.126、r=3.0 為 +0.105。故 A 通過 +0.4 在 r ≈ 1.79、通過 +0.2 在 r ≈ 2.36、r=3.0 時是 +0.105。（同一量測確認 N 的極小 −0.046 @ r≈1.85 與 S 的極小 −0.231 @ r≈1.63，檔案寫的 −0.05@1.9 與 −0.23@1.6 是對的。）",
+      "fix": "改成「A 在 r ≈ 1.8 a₀ 通過 +0.4，r ≈ 2.4 a₀ 通過 +0.2，r = 3 a₀ 約 +0.10」，並註明 r≈1.3 處是標籤文字不是曲線。"
+    },
+    {
+      "where": "blocks[10].steps[4]（補算：磁偶極交互作用到底有多小，tier=derived）",
+      "problem": "數值錯：「在 r = 3 a₀ 處目視讀圖，曲線 A ≈ +0.07 Ry、曲線 S ≈ −0.16 Ry，兩者差約 0.23 Ry = 3.1 eV」。兩個讀數都不對；0.23 Ry 其實是 S 曲線的井深（在 r≈1.6 a₀），被誤植成 r=3 處的 A−S 差。",
+      "evidence": "同上像素量測，r = 3.0 a₀ 時 A = +0.105 Ry、S = −0.099 Ry、N = −0.017 Ry。A−S = 0.204 Ry = 2.8 eV，不是 0.23 Ry / 3.1 eV。",
+      "fix": "改成「r = 3 a₀ 處 A ≈ +0.10 Ry、S ≈ −0.10 Ry，差約 0.20 Ry ≈ 2.8 eV」，或乾脆改用 S 的井深與 A 在同一 r 的值來做對照並註明。後續的比值（≈5×10⁴、將近五個數量級）結論不變。"
+    },
+    {
+      "where": "blocks[9].body 第（2）點 與 blocks[11].body 表格「A」列",
+      "problem": "物理錯誤，且與同檔案自相矛盾：宣稱自旋平行（三重態）時「中垂面上出現節面，電荷被趕出兩核之間」「中垂面節面，電荷被排開」。Heitler–London 三重態的反對稱空間波函數只在兩電子座標相等（r₁ = r₂）時為零，那是六維組態空間裡的節面；單電子電荷密度在中垂面上是 ρ = 2φ²/(1+S) > 0，並沒有節面，只是被壓低。",
+      "evidence": "ρ_A(r) ∝ [φ_a² + φ_b² − 2S φ_aφ_b]/(1−S²)，在中垂面 φ_a = φ_b = φ 時 ρ_A = 2φ²/(1+S) > 0（對照 ρ_S = 2φ²/(1−S)）。Fig. 12 的 State A 插圖（pdf p.88 右上灰底方框，10 倍算繪目視）也明確畫出最外圈等高線在中央收成細腰後仍然通過中垂面，沒有斷開。檔案自己在 blocks[8] 描述同一張插圖時寫的是「中垂面上電荷密度被壓到很低，等高線幾乎被掐斷」（正確），與這兩處的「節面」互相矛盾。",
+      "fix": "把「中垂面上出現節面」改成「兩電子波函數在 r₁ = r₂ 時為零，導致中垂面上的電荷密度被壓低（因子 1/(1+S)），但不是零」；表格該格改成「中垂面電荷被壓低（非節面）」。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[33].body 表格最後一列「Kittel 的頁次」",
+      "problem": "小節頁次範圍不對：離子鍵寫 p.58–66、凡得瓦寫 p.49–58。實際 IONIC CRYSTALS 這個小節標題印在書本 p.60，p.58 還在講 Lennard-Jones 位能與惰性氣體的平衡晶格常數。",
+      "evidence": "掃描 pdf 69–87：CRYSTALS OF INERT GASES 在書本 p.49，IONIC CRYSTALS 在書本 p.60，COVALENT CRYSTALS 在 p.67。書本 p.58 的內容是「the Lennard-Jones potential, Fig. 6 ... Equilibrium Lattice Constants」。",
+      "fix": "改成「凡得瓦 p.49–59、離子 p.60–66」。"
+    },
+    {
+      "where": "blocks[29].eq.from（Zachariasen 的離子間距公式）",
+      "problem": "對原書的敘述不成立：「原文沒有給這條式子編號（第 3 章的式號在此處尚未用到）」。第 3 章在此之前早已用了式號。",
+      "evidence": "書本 p.64 印有式 (25)（α = Σ′(±)/r_j 的定義），p.65 前後有 (20)(21)，p.73 印出 (26)。",
+      "fix": "刪掉括號內那句，只保留「Table 10 的說明文字沒有給這條式子編號，因此不標 eqNumber」。結論本身正確。"
+    },
+    {
+      "where": "blocks[25].body（Table 9 的三組半徑）",
+      "problem": "計數錯：「粗體的六個數值」後面列了七個。",
+      "evidence": "列出的是 C 0.77、O 1.40、F 1.36、Na 0.97、Si 1.17、Ti 0.68、Ba 1.35，共 7 個；表格中加粗的也是這 7 格。（這 7 個確實都在書本正文 p.72–73 印出，這部分無誤。）",
+      "fix": "改成「粗體的七個數值」。"
+    },
+    {
+      "where": "blocks[31].eq.limits（立方鈣鈦礦兩條接觸路徑）",
+      "problem": "用詞不精確：把含 Δ₁₂ 修正的距離比說成「就是鈣鈦礦容忍因子（Goldschmidt tolerance factor）t 的定義」。標準 Goldschmidt 定義用未修正的離子半徑。",
+      "evidence": "標準定義 t = (R_A + R_O)/[√2 (R_B + R_O)]；本例代入 Table 9 原值為 2.75/(√2 × 2.08) = 0.935，不是檔案算出的 0.9995（後者是把 Δ₁₂ = +0.19 併進分子後的結果）。",
+      "fix": "改成「這個比值與鈣鈦礦容忍因子 t 的形式相同；若用 Zachariasen 修正後的距離代入，本例得 0.9995，這正是兩條路徑收斂到同一個 a 的原因（注意標準 t 不含 Δ_N 修正，用原始半徑會得 0.935）」。"
+    },
+    {
+      "where": "blocks[35].body 第（7）點（校註：單位符號遺失）",
+      "problem": "歸因錯：把「D₆ = 0.68 + 1.40 = 2.08 or a = 4.16 Å 中 2.08 後面沒有 Å」列為文字層抽取的遺失，但原書排版本身就沒有印那個 Å。",
+      "evidence": "pdf p.93（書本 p.73）以 8 倍算繪目視，印刷版逐字為「... we have D₆ = 0.68 + 1.40 = 2.08 or a = 4.16 Å.」——2.08 後面確實沒有單位。",
+      "fix": "把這一項從「抽取異常」移到「原書本身的排版省略」，或直接刪掉（同項裡的 Cl₂/Ar₂/F₂ 下標遺失才是真的抽取問題）。"
+    },
+    {
+      "where": "blocks[24].body（ATOMIC RADII）",
+      "problem": "頁碼歸屬不精確：「下一段 Kittel 立刻轉折（書本 p.72 開頭）：Nonetheless, the concept of an atomic radius is fruitful in predicting interatomic spacing.」這句其實起於 p.70 的最後一行。",
+      "evidence": "pdf p.90（書本 p.70）最後一行為「limited by a rigid spherical boundary. Nonetheless, the concept of an atomic」，pdf p.92（書本 p.72）第一行接「radius is fruitful in predicting interatomic spacing.」（中間的 p.71 是整頁 Table 9 影像）。",
+      "fix": "改成「（跨頁：句子起於 p.70 末行，續於 p.72 首行）」。"
+    },
+    {
+      "where": "blocks[7].after 與 blocks[15].body 用法三",
+      "problem": "能隙數值與 Kittel 自己的表不一致（憑常識值覆蓋書中值的典型情形）：檔案寫「金剛石 ~5.5 eV、Si 1.1 eV、Ge 0.67 eV」與「Ge 0.00 對應 0.67 eV」。",
+      "evidence": "第 8 章 Table 1（書本 p.190，文字層完整）：Diamond i 5.4；Si i 1.17 (0 K) / 1.11 (300 K)；Ge i 0.744 (0 K) / 0.66 (300 K)；GaAs d 1.52 / 1.43。書本 p.188 正文也逐字寫「the energy gap is narrower in Ge (0.66 eV) than in Si (1.11 eV)」。",
+      "fix": "改用 Kittel 的值（5.4 / 1.11 / 0.66，並註明是 300 K）。另外 blocks[15] 的括號註「（後三個能隙值非本段原文）」會讓人以為 Ge 的 0.67 有出處，但它同樣不在本段原文，註記範圍要改成四個。"
+    },
+    {
+      "where": "blocks[0].body 氫鍵那一段",
+      "problem": "把原文的 particularly 讀成 only：「只在 F、O、N 之間出現」。",
+      "evidence": "書本 p.70 原文：「being formed only between the most electronegative atoms, particularly F, O, and N.」——only 限定的是「最具電負性的原子」，F/O/N 只是 particularly（尤其）。檔案自己在 blocks[22] 寫對了（「只在最具電負性的原子之間形成，特別是 F、O、N」）。",
+      "fix": "blocks[0] 改成「只在電負性最強的原子之間出現，尤其是 F、O、N」。"
+    },
+    {
+      "where": "blocks[35].body 第（2）點 vs blocks[7].steps[5]",
+      "problem": "前後不一致：校註寫「Si 446/96.485 = 4.62 ✓」，推導區塊卻用 4.63。",
+      "evidence": "Table 1（書本 p.50，整頁影像判讀）Si 三欄為 446. / 4.63 / 106.7；446/96.485 = 4.622，是 446 這個已四捨五入的值回推所致（4.63 × 96.485 = 446.7）。",
+      "fix": "校註改成「446/96.485 = 4.62，與表印的 4.63 相符到捨入誤差」，避免看起來像兩個不同的數。"
+    },
+    {
+      "where": "blocks[2].body（Fig. 11 逐筆讀圖）",
+      "problem": "兩處描述可改善：(a)「畫面最空的角落標 2」——「2」實際位在圖面下方偏右的開闊區，不在角落；(b)「12（那是另一條鍵的剖面被切到）」是未標註的推測，卻放在 tier=book 的區塊裡沒有加註。",
+      "evidence": "pdf p.87 圖區 7 倍算繪目視：2 位於圖框下緣上方、水平方向約在右起三分之一處；12 是右側一個孤立小閉合島。書本正文與圖說都沒有解釋 12 是什麼。",
+      "fix": "(a) 改成「圖面下方偏右的開闊低密度區標 2」；(b) 在括號內加「（推測，非原文）」。"
+    },
+    {
+      "where": "blocks[7].steps[4]",
+      "problem": "表述容易誤讀：「毛回收 4 × 5.69 = 22.7 eV（每個原子形成 4 條鍵，但只算自己那一半 → 2 × 5.69 = 11.37 eV）」——先寫一個錯的數再在同一句括號內自我修正。",
+      "evidence": "正確的每原子毛回收是 2 × 5.69 = 11.37 eV；11.37 − 4 = 7.37 eV/atom ✓，比值 11.37/4 = 2.84 ✓。22.7 eV 這個中間量在本帳中沒有意義。",
+      "fix": "直接寫「每個原子分攤 2 條鍵，毛回收 2 × 5.69 = 11.37 eV，扣掉 4 eV 的 promotion 後淨得 7.37 eV/atom；回收是支出的 2.8 倍」。"
+    },
+    {
+      "where": "blocks[14].body 第（3）點",
+      "problem": "交叉參照斷掉：寫「0.785 是個門檻（本段原文未提，見下一區塊）」，但下一個區塊 blocks[15] 從頭到尾沒有提到 0.785，只寫「這條界線落在 0.6～0.8 之間」。",
+      "evidence": "blocks[15] 用法一逐字：「Table 8 中這條界線落在 0.6～0.8 之間，恰好把 Zn／Cd 化合物（四面體）與 Mg／Ag 鹵化物、氧化物（岩鹽）分開。」",
+      "fix": "要嘛在 blocks[15] 補上 Phillips 臨界離子性 F_i = 0.785 的說明（並標為非原文），要嘛把 blocks[14] 的「見下一區塊」拿掉。"
+    }
+  ],
+  "verified": [
+    "所有 tier=book 區塊的英文引號內句子，逐字比對 pdf 87–93（書本 67–73）文字層與算繪影像，全部逐字相符：COVALENT CRYSTALS 開場句、0.34/0.74 與四配位/12 配位那兩句、exchange interaction 那整段（p.67 末）、Pauli 填滿殼層與 Cl₂/Ar 對照（p.68）、C/Si/Ge 缺四個電子那句、Fig. 11 與 Fig. 12 與 Fig. 13 的圖說、Table 8 出處註、METALS 三句、鹼金屬動能論證兩句、close packed 那句、過渡金屬兩句、HYDROGEN BONDS 全部五處引用、ATOMIC RADII 開場設問與「Strictly, the answer is no」、Nonetheless 那句、Table 9 三組半徑的說明句、NaF 三句、C–Si 五句、「a few percent」那句、Table 10 說明文字、BaTiO₃ 整段與「may perhaps suggest」結語。",
+    "碳電子組態（1s²2s²2p² → 1s²2s2p³）與 ½ 這兩處文字層漂移／拆字的重建正確：以 pdf p.88 與 p.92 影像確認印刷順序是先基態後激發態，且 p.72 原文確為「The latter value is ½(n.n. distance in metallic Na + interatomic distance in gaseous F₂)」。校註第 (4)(5)(6) 三項的抽取異常描述屬實。",
+    "Table 9（書本 p.71，整頁無文字層的旋轉影像）全部 13 個元素 × 3 組半徑逐格核對無誤：H 2.08；Li 0.68/—/1.56；C 0.15/0.77/0.92；N 1.71/0.70/—；O 1.40/0.66/—；F 1.36/0.64/—；Na 0.97/—/1.91；Si 0.41/1.17/1.32；Cl 1.81/0.99/—；Ar 1.88；Ti 0.68/—/1.46；Ge 0.53/1.22/1.37；Ba 1.35/—/2.24。表頭與三條箭頭的說明文字也逐字相符。「p.71 無文字層」屬實（只抽到「71」與印刷廠註記）。",
+    "Table 1（書本 p.50，整頁影像）引用的 15 個內聚能全部正確：C 711/7.37/170、Si 446/4.63/106.7、Ge 372/3.85、Cl 135/1.40、Ar 7.74/0.080、Ne 1.92/0.020、Na 107/1.113/25.67、Cs 77.6/0.804、Ba 183/1.90、Hf 621/6.44、Ta 782/8.10、W 859/8.90、Re 775/8.03、Au 368/3.81、Hg 65/0.67。caption 也逐字相符。",
+    "Table 8 的 25 個離子性分數逐筆比對無誤（Si/Ge 0.00、SiC 0.18、GaSb 0.26、GaAs 0.31、InSb 0.32、InAs 0.36、InP 0.42、ZnTe 0.61、ZnO/ZnS 0.62、ZnSe 0.63、CdTe 0.67、CdS 0.69、CdSe 0.70、AgI 0.77、CdO/MgS/MgSe 0.79、MgO 0.84、AgBr 0.85、AgCl 0.86、LiF 0.92、NaCl 0.94、RbF 0.96），數量 25 也正確。Table 10 的 12 個 Δ_N 值（−0.50 … +0.19）逐筆相符。",
+    "跨章引用的頁碼全部正確：第 1 章 p.17（4 個最近鄰 + 12 個次近鄰、0.34 與 46 percent 逐字、晶格常數 C 3.567 / Si 5.430 / Ge 5.658 / Sn 6.49——沒有踩到 5.431 的陷阱）、p.18（SiC a = 4.35、金剛石有反演中心而 cubic ZnS 沒有）、Table 3 p.20（Na bcc 4.225 @5 K，以及 fcc/hcp/bcc/金剛石的元素歸屬全部正確）；第 3 章 Table 2 melting points p.51、Table 7 p.66（NaF R₀ = 2.317、NaCl 182.6 kcal/mol、欄名「Lattice energy compared to free ions, in kcal/mol」）、Table 12 p.84；第 6 章 p.131 與 p.138（式 (14)(15)(16) 的編號與內容都對）、第 7 章 p.161、第 8 章 p.185、第 9 章 p.221 與 p.239（「The average kinetic energy per electron is 0.6 of the Fermi energy」逐字）、第 12 章 p.321 與「Curie point and the exchange integral」p.323、第 14 章 p.393、第 16 章 p.453。",
+    "所有 derived 區塊的數學都正確：π√3/16 = 0.3401 與 π/(3√2) = 0.7405 的推導與數值、比值 0.4593 對應「46 percent」、bcc √3π/8 = 0.6802；d = (√3/4)a = 0.43301a 與 a = 2.3094d，以及用它驗算 C 1.545 / Si 2.351(半 1.176) / Ge 2.450(半 1.225) / α-Sn 2.810 / SiC 1.884；磁偶極能 8.6×10⁻²⁴ J = 5.4×10⁻⁵ eV = 0.62 K；ε_F ∝ n^(2/3) ∝ r⁻² 與 P_kin = (2/3)U/V > 0；Na 的 n = 2.65×10²² cm⁻³、k_F = 0.92 Å⁻¹、ε_F ≈ 3.2 eV、⟨T⟩ ≈ 1.9 eV；鈣鈦礦幾何 D(Ti–O) = a/2、D(Ba–O) = a/√2、配位數 6 與 12 的計數、2.94→4.158 與 2.08→4.16、實測 4.004 的 +3.9% 高估；Heitler–London 單重態/三重態的對稱性配對（ψ_S 對稱、ψ_A 反對稱，r₁=r₂ 時 ψ_A = 0）本身是對的。",
+    "eqNumber 的處理正確：四個 equation 區塊都沒有標 eqNumber，而書本在對應位置（p.67 的填充率、p.72 的 d–a 換算、Table 10 的 D_N 公式、p.73 的鈣鈦礦幾何）確實都沒有印式號，沒有無中生有的式號。",
+    "Fig. 12 的三條曲線之中，N 的淺極小（檔案寫 −0.05 Ry @ r≈1.9 a₀）與 S 的深極小（檔案寫 −0.23 Ry @ r≈1.6 a₀）經像素量測為 −0.046 @ 1.85 與 −0.231 @ 1.63，讀數正確；S 在 r≈1.0 a₀ 穿越零線也正確；A 全程為正、無極小也正確。兩張插圖的定性描述（State A 有明顯的腰、State S 最外圈把兩核一起包住）與影像相符。",
+    "Fig. 13 的圖面描述與影像完全相符：兩個大灰球標 F⁻ 幾乎相接，中間夾一個很小的黑點標 H⁺；圖說逐字無誤。",
+    "校註區塊宣告的方法（Table 1 / Table 3 / Table 9 為無文字層影像、數值僅由影像判讀、不憑記憶補值）與實際內容一致：抽查這三張表的所有被引用數值都能在影像上找到，沒有發現憑記憶填入的數字。"
+  ]
+}

@@ -1,0 +1,583 @@
+{
+ "title": "ANALYSIS OF ELASTIC STRAINS; ELASTIC COMPLIANCE AND STIFFNESS CONSTANTS",
+ "titleZh": "彈性應變分析；彈性柔量與剛度常數",
+ "pages": "73-79",
+ "lede": "把「原子鍵有多硬」翻譯成宏觀可量測的語言：先從三根嵌在固體裡的單位向量建立應變與應力這兩套記號，再用「應力是彈性能的梯度」把 36 個剛度常數砍成 21 個，最後用立方晶的四條三重旋轉軸砍到只剩 C₁₁、C₁₂、C₄₄ 三個。",
+ "blocks": [
+  {
+   "kind": "concept",
+   "heading": "這一段在解決什麼問題",
+   "tier": "mine",
+   "body": "第 3 章前面三分之二都在算**能量**：van der Waals 的 −A/R⁶、Pauli 排斥的 B/R¹²、離子晶體的 Madelung 常數 α、共價鍵的電子雲重疊。這些計算的共同輸出是一條 U(R) 曲線，以及它的最低點 R₀——也就是晶格常數。到這裡為止，鍵結理論回答的是「原子該站在哪裡」。\n\n但 U(R) 曲線帶的資訊遠不只最低點的**位置**。最低點附近的**曲率** d²U/dR² 才是決定「把原子從平衡位置推開要花多少力」的量，而這正是宏觀世界裡我們叫做「硬」的東西：楊氏模數、體積模數、聲速、聲子頻率，全都是這個曲率的不同投影。這一段（書本 p.73–79）就是把這個曲率翻譯成宏觀語言的橋梁。\n\n問題是：橋的兩端語言不同。微觀那端是一堆原子座標與鍵長；宏觀那端是「應力」與「應變」，是連續體力學的語彙。所以這一段必須先花整整三頁，把應變 e_αβ 與應力 X_x、X_y… 這套記號**從零建立起來**，才能在 p.77 寫下那條看似理所當然的 Hooke 定律。很多人讀這一段覺得冗長、下標多到眼花——Kittel 自己也承認「Some of the material below looks complicated because of the unavoidable multiplicity of subscripts on the symbols」——但這三頁不是形式主義，而是在回答一個實質問題：**一個三維固體的「硬度」到底需要幾個數字才描述得完？**\n\n答案的推導路線非常漂亮，也是這一段最值得記住的骨架：先天上需要 6×6 = 36 個數字（應力六分量 × 應變六分量）；用「應力來自能量的梯度」砍成 21 個；再用「立方晶至少有四條三重旋轉軸」砍成 **3** 個——C₁₁、C₁₂、C₄₄。從 36 到 3，中間每一步都只用了一個物理原理，沒有任何近似被偷偷加進去（Hooke 近似是一開始就宣告的）。這種「對稱性直接決定可觀測量個數」的論證方式，在後面的聲子（第 4、5 章）、能帶（第 7、9 章）、磁性（第 11、12 章）會反覆出現，這裡是全書第一次完整示範。"
+  },
+  {
+   "kind": "concept",
+   "heading": "連續體近似的適用界線，以及只有兩條的物理骨架",
+   "tier": "book",
+   "body": "Kittel 開宗明義就把這一整段的**適用範圍**框死了。原文逐字是：\n\n> We consider the elastic properties of a crystal viewed as a homogeneous continuous medium rather than as a periodic array of atoms.\n\n> The continuum approximation is usually valid for elastic waves of wavelengths λ longer than 10⁻⁶ cm, which means for frequencies below 10¹¹ or 10¹² Hz.\n\n這兩句話要一起讀。第一句說：**接下來晶體被當成均勻連續介質，不是週期性的原子陣列**。第二句給出這個「假裝」在什麼時候成立——波長長於 10⁻⁶ cm，等價地，頻率低於 10¹¹ 或 10¹² Hz。這是一個罕見的、Kittel 願意給出具體數字的近似界線，值得抄下來。\n\n接著是這一整段的方法論宣告，原文只有一句：\n\n> The basic physical ideas are simple: we use Hooke's law and Newton's second law.\n\n**整段（含後面的彈性波）只有兩條物理輸入**：Hooke 定律（應變正比於應力）與牛頓第二定律。所有其他東西——36 個常數、21 個常數、立方晶的 3 個常數、[100] 與 [110] 方向的波速公式——都是這兩條加上幾何與對稱性推出來的。看到滿頁下標時記得回頭確認：物理只有兩條。\n\nHooke 定律本身的敘述與界線，書上也寫明了：「Hooke's law states that in an elastic solid the strain is directly proportional to the stress. The law applies to small strains only.」而當應變大到 Hooke 定律失效時，書上稱這個區域為 **nonlinear region**。同一段還宣告了兩件事：只處理無窮小應變（infinitesimal strains），以及應變用 e_xx、e_yy、e_zz、e_xy、e_yz、e_zx 這六個分量指定。"
+  },
+  {
+   "kind": "derivation",
+   "heading": "校驗：10⁻⁶ cm 與 10¹¹–10¹² Hz 真的是同一句話嗎",
+   "tier": "derived",
+   "steps": [
+    "**設定**：連續體近似的判準是波長遠大於原子間距。彈性波的頻率與波長由聲速連起來：ν = v_s / λ。書上沒有寫出這個換算，只把兩個數字並列，所以我們自己補。",
+    "**取聲速的量級**。可以完全用本章後面 p.84 表 11 的數據自洽地估：Al 的 C₁₁ = 1.068（單位 10¹² dyne/cm² = 10¹¹ N/m²，300 K），密度 ρ = 2.733 g/cm³ = 2733 kg/m³（表 11 每種晶體只在 0 K 那一列印出密度，300 K 列的密度欄是「—」，所以這個 2.733 取自 0 K 列；室溫密度略小，量級估算不受影響）。後面 p.82 的式 (60) 給 [100] 縱波 v_s = (C₁₁/ρ)^(1/2)。",
+    "**代數字**：v_s = (1.068×10¹¹ / 2733)^(1/2) = (3.91×10⁷)^(1/2) ≈ 6.25×10³ m/s = 6.25×10⁵ cm/s。這就是「固體裡的聲速約 5×10⁵ cm/s」這個量級的來源。",
+    "**換算頻率**：λ = 10⁻⁶ cm 時，ν = v_s/λ = 6.25×10⁵ / 10⁻⁶ ≈ 6×10¹¹ Hz。",
+    "**結論**：落在書上說的「10¹¹ 或 10¹² Hz」之間。所以那兩個數字不是兩個獨立的實驗事實，而是**同一個判準**（λ > 10⁻⁶ cm）在不同材料的聲速下換算出來的範圍——聲速慢的材料（如 Na、Pb）落在 10¹¹ 端，聲速快的材料（如鑽石）落在 10¹² 端。"
+   ],
+   "body": "書上把「λ 長於 10⁻⁶ cm」與「ν 低於 10¹¹–10¹² Hz」用一個 which means 連起來，卻沒說換算用了什麼。這一步補起來很短，但補起來之後這個界線才真正變成你能套用在自己材料上的判準，而不是兩個要背的數字。",
+   "after": "**這個界線在物理上意味著什麼**：10⁻⁶ cm = 100 Å。典型晶格常數 a ≈ 3–5 Å，所以連續體近似要求波長至少涵蓋 20–30 個晶胞。換句話說，波必須「看不見」原子的離散性。\n\n順著同一條換算往上推，可以估出連續體近似**徹底失效**的地方：當 λ 縮到 2a ≈ 6 Å（Brillouin zone 邊界，第 4 章會正式導出）時，ν ≈ 6.25×10⁵ /(6×10⁻⁸) ≈ 10¹³ Hz。這就是 Debye 頻率的量級。所以這一段建立的整套彈性常數理論，**只覆蓋了聲子頻譜最底下不到十分之一的頻率範圍**。第 4 章要處理的正是這個範圍以上的事——色散關係 ω(K) 在 zone 邊界彎下來，群速趨近零，而連續體近似給的 ω = v_s K 是一條直線，在那裡完全失效。記住這件事，第 4 章開頭「為什麼要做單原子鏈模型」就不會顯得突兀。"
+  },
+  {
+   "kind": "concept",
+   "heading": "「不區分等溫與絕熱」這個省略，代價在哪裡",
+   "tier": "mine",
+   "body": "書上在列完六個應變分量之後，補了一句容易被略過的話，原文逐字是：\n\n> We shall not distinguish in our notation between isothermal (constant temperature) and adiabatic (constant entropy) deformations. The small differences between the isothermal and adiabatic elastic constants are not often of importance at room temperature and below.\n\n為什麼會有兩套彈性常數？因為「把固體壓一下」這件事可以在兩種不同的熱力學路徑上做。**等溫**（isothermal，C^T）是壓得夠慢、讓樣品隨時與熱庫交換熱量、溫度保持不變；**絕熱**（adiabatic，C^S）是壓得夠快、來不及交換熱量、熵保持不變。壓縮會放熱，絕熱時這些熱留在樣品裡使它膨脹，抵抗進一步壓縮，所以**絕熱常數比等溫常數大**。但這句話只對**含體積變化**的常數成立（B、C₁₁、C₁₂）；純剪切不改變體積、沒有熱彈耦合，因此 C₄₄ 的絕熱值與等溫值相同。兩者的差異源自熱膨脹係數：熱膨脹愈大，差異愈大。書上這一段沒有給出兩者差值的公式，也沒有說哪一個大。\n\nKittel 的理由是「室溫以下通常不重要」。這句話對金屬與半導體大致成立（差異常在百分之一的量級），但有兩個地方要小心：\n\n**第一，實驗上量到的其實幾乎都是絕熱常數。** 注意後面 p.84 的表 11 與表 12，標題逐字寫的是「Adiabatic elastic stiffness constants」。這不是巧合——超音波脈衝法、Brillouin 散射這類量測都是在 MHz–GHz 頻率下做的，聲波週期遠短於熱擴散時間，自然是絕熱過程。所以 Kittel 說「不區分」，但他給你的表其實已經替你選好了一邊。\n\n**第二，一旦進入熱力學量的計算就不能再混用。** 體積模數 B 在 Grüneisen 關係、熱膨脹、狀態方程裡出現時，通常要的是等溫的 B^T；而從聲速反推出來的是 B^S。這在你自己的研究裡（從彈性／聲子參數反推熱容或熱阻）是一個真實的誤差源：若把量測到的絕熱常數直接餵進一個要求等溫量的熱力學關係，就引入了一個 O(α²TV/C_p) 的系統偏差。第 3 章不需要處理它，但第 5 章討論熱容與第 6 章之後接觸熱輸運時，這個分岔會回來。"
+  },
+  {
+   "kind": "concept",
+   "heading": "形變怎麼被「記錄」下來：三個嵌進固體裡的單位向量（Fig. 14）",
+   "tier": "book",
+   "body": "要描述形變，第一件事是選一個參照物。Kittel 的選法是：**想像三個互相垂直的單位向量 x̂、ŷ、ẑ 被牢牢嵌在未形變的固體裡**（原文：「three orthogonal vectors x̂, ŷ, ẑ of unit length are embedded securely in the unstrained solid」）。固體形變時，這三根軸跟著材料一起走——方向被扭轉、長度被拉伸。形變後的新軸叫 x′、y′、z′。\n\n**Fig. 14 在說什麼**（網頁不放圖，這裡用文字重建）：圖分 (a)(b) 兩半。(a) 是未形變狀態：三根粗箭頭從共同原點射出，x̂ 指向左下前方、ŷ 指向右下方、ẑ 垂直向上；三對軸之間各畫了一道弧線標著 90°，強調三者兩兩正交、且都是單位長。(b) 是形變後：同樣三根箭頭，但不再互相垂直也不再等長——z′ 仍大致朝上但略為傾斜，y′ 幾乎水平指向右方，x′ 明顯往右下方倒。圖說逐字是「Coordinate axes for the description of the state of strain; the orthogonal unit axes in the unstrained state (a) are deformed in the strained state (b).」\n\n這張圖的重點只有一個：**形變的全部資訊 = 三根新軸相對於三根舊軸的關係**。因為形變被假設是均勻的（uniform deformation，書上定義為「each primitive cell of the crystal is deformed in the same way」），所以晶體中每一處的三根軸都被同樣地扭轉，一組係數就足以描述整塊固體。把新軸用舊軸展開，就得到式 (26) 的九個係數 ε_αβ。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "均勻形變後的新軸（形變的九個係數）",
+    "formula": "x′ = (1 + ε_xx)x̂ + ε_xy ŷ + ε_xz ẑ ;\ny′ = ε_yx x̂ + (1 + ε_yy)ŷ + ε_yz ẑ ;\nz′ = ε_zx x̂ + ε_zy ŷ + (1 + ε_zz)ẑ .",
+    "bookPage": 73,
+    "eqNumber": "(26)",
+    "symbols": "x̂、ŷ、ẑ：嵌在未形變固體中的三個正交單位向量；x′、y′、z′：形變後這三根軸變成的向量（一般既不正交也不是單位長）；ε_αβ：定義形變的九個係數。書上逐字說「The coefficients ε_αβ define the deformation; they are dimensionless and have values ≪1 if the strain is small.」注意下標順序：ε_xy 是 **x′ 這根軸** 在 **ŷ 方向** 的分量。",
+    "from": "這不是推導出來的，而是**定義**——把三個新向量在舊的正交基底上展開，展開係數就取名叫 ε_αβ。之所以寫成 (1 + ε_xx) 而不是單一個係數，是為了讓「沒有形變」對應到所有 ε = 0（此時 x′ = x̂），使 ε 直接量度「偏離未形變狀態的程度」。九個係數對應一個一般 3×3 線性變換的九個自由度。",
+    "limits": "ε_αβ = 0：完全沒有形變。只有對角元非零：三根軸仍互相垂直，只是長度改變——這是純粹的伸縮（後面會叫它 e_xx、e_yy、e_zz）。只有非對角元非零：軸長幾乎不變（因為長度變化是二階的，見下一條），但軸之間不再垂直——這是純剪切。**反對稱的部分（ε_xy = −ε_yx）對應剛體轉動**：三根軸整體轉了一個角度，彼此夾角與長度都沒變，固體內部沒有任何原子被拉近或推遠。這是 (26) 的九個係數只能給出六個「真應變」的根本原因，也是後面 (32) 只取 ε_xy + ε_yx 這個**對稱組合**的理由。",
+    "numeric": "無因次。「ε ≪ 1」是什麼量級？Si 的 C₁₁ = 1.66×10¹¹ N/m²（p.84 表 12），在**側向受夾**（e_yy = e_zz = 0）的單軸**應變**情形下，由 p.79 的 (46) X_x = C₁₁e_xx，施加 1 GPa = 10⁹ N/m² 對應 e_xx ≈ 10⁹/1.66×10¹¹ ≈ 0.6%。（若側面自由，那就是單軸**應力**，應變要改用柔量算 e_xx = S₁₁X_x，數值同一量級但不相等——這個區別在 (46) 的 limits 欄與「三個常數各自在量什麼」一節還會再談。）而矽的理論破壞應變在百分之十幾的量級，所以「線性彈性」這個假設在半導體製程常見的應力範圍內是站得住的。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "heading": "一階下，ε_xx 為什麼就是 x̂ 軸的分率長度變化",
+   "tier": "derived",
+   "steps": [
+    "**起點**：由 (26) 取 x′ 與自己的內積。書上逐字給出（未編號）：x′ · x′ = 1 + 2ε_xx + ε_xx² + ε_xy² + ε_xz²。",
+    "**驗算這一步**：x′ = (1+ε_xx)x̂ + ε_xy ŷ + ε_xz ẑ，因為 x̂、ŷ、ẑ 正交歸一，內積就是分量平方和：(1+ε_xx)² + ε_xy² + ε_xz² = 1 + 2ε_xx + ε_xx² + ε_xy² + ε_xz²。✓",
+    "**取平方根**：|x′| = (1 + 2ε_xx + ε_xx² + ε_xy² + ε_xz²)^(1/2)。用 (1+u)^(1/2) ≅ 1 + u/2，其中 u = 2ε_xx + O(ε²)。",
+    "**丟掉二階項**：|x′| ≅ 1 + ε_xx。書上逐字寫的是「whence x′ ≅ 1 + ε_xx + ⋯」。",
+    "**讀出結論**：x̂ 軸原本長度為 1，形變後長度為 1 + ε_xx，所以**分率長度變化** (|x′| − 1)/1 = ε_xx。同理 ŷ、ẑ 軸為 ε_yy、ε_zz。書上逐字：「The fractional changes of length of the x̂, ŷ, and ẑ axes are ε_xx, ε_yy, ε_zz, respectively, to the first order.」"
+   ],
+   "body": "書上把 x′·x′ 的展開式印出來，然後直接跳到「whence x′ ≅ 1 + ε_xx + ⋯」。中間的開平方與泰勒展開被省略了。這一步本身不難，但它是全段第一次動用「丟掉 ε² 項」這個動作，而後面每一條式子都在重複同一個動作，所以值得把它做一次做乾淨。",
+   "after": "**為什麼「to the first order」這四個字不能省**：注意 ε_xy 與 ε_xz（剪切）也出現在 x′·x′ 裡，但只以平方出現。這說明**剪切對軸長的貢獻是二階的**——把一根桿子側向剪一個小角度 γ，它的長度只增加 O(γ²)，這是畢氏定理的直接後果。同樣的理由，稍後 (34) 的行列式展開中，所有剪切項也只會在二階以上出現，於是體積變化只由三個對角元決定。**一階近似下，伸縮管長度與體積，剪切管角度，兩者互不干涉**——這個「解耦」是整個線性彈性理論好用的根本原因，也是 (43) 裡 C₁₁ 項（純伸縮）與 C₄₄ 項（純剪切）能分開寫的前提。"
+  },
+  {
+   "kind": "concept",
+   "heading": "從「三根軸」到「位移場」：為什麼要換一套語言",
+   "tier": "book",
+   "body": "(26) 描述的是均勻形變。但真實問題裡形變幾乎總是不均勻的——彈性波經過時，晶體不同位置的形變量不一樣；MOSFET 通道裡的應力分布也是逐點不同的。所以必須把「三根軸怎麼變」升級成「每一點位移多少」，也就是一個**位移場**。\n\n書上的鋪陳分四步，對應式 (27) 到 (30)：\n\n**第一步**，問一個具體問題（原文：「What is the effect of the deformation (26) on an atom originally at r = x x̂ + y ŷ + z ẑ ?」），並且說明原點的選法——「The origin is taken at some other atom」，也就是原點放在另一個原子上，於是原點本身不位移。\n\n**第二步**，均勻形變下這個原子跑到哪裡？答案是 r′ = x x′ + y y′ + z z′。這一步很容易看漏：**座標分量 (x, y, z) 不變，變的是基底**。書上還給了一個檢查：若取 r = x x̂（原子就在 x̂ 軸上），那麼由 x′ 的定義自然有 r′ = x x′。\n\n**第三步**，定義位移 R ≡ r′ − r，得到 (27)，再把 (26) 代進去得到 (28)。\n\n**第四步**，把 (28) 改寫成一般形式 (29) R(r) = u(r)x̂ + v(r)ŷ + w(r)ẑ，其中 u、v、w 是位移的三個卡氏分量。**這一步是關鍵的概念升級**：(28) 的 R 只是 r 的線性函數（因為形變均勻），而 (29) 的 u、v、w 是 r 的**任意函數**。一旦允許它們任意，就能描述不均勻形變；代價是 ε_αβ 這組常數必須換成**局域**的量，這就是 (30) 要做的事。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "形變的位移向量（定義）",
+    "formula": "R ≡ r′ − r = x(x′ − x̂) + y(y′ − ŷ) + z(z′ − ẑ)",
+    "bookPage": 74,
+    "eqNumber": "(27)",
+    "symbols": "R：位移向量；r = x x̂ + y ŷ + z ẑ：原子形變前的位置；r′ = x x′ + y y′ + z z′：形變後的位置。x、y、z 是**不變的座標分量**，形變體現在基底 x̂ → x′ 上。",
+    "from": "直接把 r′ = x x′ + y y′ + z z′ 與 r = x x̂ + y ŷ + z ẑ 相減，按分量合併。原點取在某個原子上，因此 R(0) = 0——這個條件在 (30) 的泰勒展開裡會用到。",
+    "limits": "若形變只是剛體平移，(26) 的 ε 全為零而每個原子卻都位移了同一個向量——注意 (27) 給出 R = 0，抓不到平移。這不是缺陷：因為原點被釘在一個原子上，平移已經被扣掉了。**應變理論本來就只關心相對位移**；絕對平移與剛體轉動都不產生應力，這是為什麼六個而不是九個量就夠用。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "均勻形變下位移向量的分量展開",
+    "formula": "R(r) ≡ (x ε_xx + y ε_yx + z ε_zx)x̂ + (x ε_xy + y ε_yy + z ε_zy)ŷ + (x ε_xz + y ε_yz + z ε_zz)ẑ\n（ẑ 分量首項已依下方 limits 欄的校註更正；書上第 8 版原印為 x ε_xx）",
+    "bookPage": 74,
+    "eqNumber": "(28)",
+    "symbols": "各項係數就是 (26) 的九個 ε_αβ。注意下標的轉置關係：x̂ 分量收集的是 ε_xx、ε_yx、ε_zx，也就是**第二個下標固定為 x**，因為 (26) 中 ε_yx 是 y′ 在 x̂ 方向的分量。",
+    "from": "把 (26) 的三條式子代進 (27)，再按 x̂、ŷ、ẑ 收集同類項。例如 x̂ 分量：x[(1+ε_xx) − 1] + y[ε_yx] + z[ε_zx] = x ε_xx + y ε_yx + z ε_zx。",
+    "limits": "**校註（依算繪影像目視判讀，本站補）**：本書第 8 版印出的 (28) 在 ẑ 分量處寫的是「(x ε_xx + y ε_yz + z ε_zz)ẑ」，第一項下標為 ε_xx。這是排版錯誤：由 (26) 與 (27) 逐項展開，ẑ 分量的第一項必為 x[ε_xz]，即 **x ε_xz**。判據有三：(1) 由 (26) 直接展開只能得到 ε_xz；(2) 三個分量的結構必須一致（第二個下標分別鎖定 x、y、z）；(3) 若真是 ε_xx，(30) 之後的 e_zx ≡ ∂u/∂z + ∂w/∂x 就找不到 ∂w/∂x 的來源。上方 formula 欄已依此更正。此問題不是文字抽取造成的——放大算繪影像目視確認過，書上就是這樣印的。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "位移場（一般形式）",
+    "formula": "R(r) = u(r)x̂ + v(r)ŷ + w(r)ẑ",
+    "bookPage": 74,
+    "eqNumber": "(29)",
+    "symbols": "u(r)、v(r)、w(r)：位移場在 x、y、z 三個方向的分量，都是位置 r 的函數。這三個純量場就是連續體力學裡描述形變的**基本未知量**。",
+    "from": "書上逐字：「This may be written in a more general form by introducing u, v, w such that the displacement is given by」。這是一個定義／改寫，不是推導。它的價值在於把 (28) 那個「只對均勻形變成立」的線性表達式，換成一個對任意形變都成立的場。",
+    "limits": "均勻形變時 u、v、w 都是 x、y、z 的線性函數（比對 (28) 就能讀出係數）。不均勻形變時它們可以是任意函數，應變隨位置變化。**這三個函數就是後面所有動力學的未知數**：p.80 的式 (55) ρ ∂²u/∂t² = ∂X_x/∂x + ∂X_y/∂y + ∂X_z/∂z 裡的 u 就是這個 u；p.81 的 (58) 把 u 取成平面波 u₀exp[i(Kx − ωt)]，一路解出聲速 (60) 與 (63)。所以 (29) 不是記號整理，它是把彈性學從幾何學轉成動力學的接口。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "heading": "由 (28) 與 (29) 比對出局域應變 (30)：泰勒展開那一步在做什麼",
+   "tier": "derived",
+   "steps": [
+    "**問題設定**：(28) 只在形變均勻時成立；(29) 對任意形變都成立。要讓 ε_αβ 在不均勻形變下仍有意義，必須把它重新定義成**局域**量。書上的做法是「We take the origin of r close to the region of interest」——把座標原點搬到你關心的那一點附近。",
+    "**為什麼要搬原點**：因為 (28) 裡 R 正比於 r 本身（x ε_xx 這種形式）。若原點離觀察點很遠，x 很大，即使 ε 很小 R 也很大，線性關係早就不成立了。原點搬近，x、y、z 都是小量，才能做展開。",
+    "**做泰勒展開**：把 (29) 的 u(r) 在原點附近展開，u(r) = u(0) + x ∂u/∂x + y ∂u/∂y + z ∂u/∂z + O(r²)。書上明寫用了 **R(0) = 0**，也就是 u(0) = v(0) = w(0) = 0（原點那個原子不動，這是 (27) 下面就設定好的）。於是 u(r) ≅ x ∂u/∂x + y ∂u/∂y + z ∂u/∂z。",
+    "**與 (28) 的 x̂ 分量逐項比對**：(28) 給 u(r) = x ε_xx + y ε_yx + z ε_zx；泰勒展開給 u(r) = x ∂u/∂x + y ∂u/∂y + z ∂u/∂z。兩式對所有小的 x、y、z 都成立，因此**同類項係數必須相等**。",
+    "**讀出對應**：x ε_xx ≅ x ∂u/∂x；y ε_yx = y ∂u/∂y；z ε_zx = z ∂u/∂z。這就是書上式 (30) 印的前兩項加一個 etc.。同理比對 ŷ 分量得 ε_xy = ∂v/∂x、ε_yy = ∂v/∂y、ε_zy = ∂v/∂z，比對 ẑ 分量得 ε_xz = ∂w/∂x、ε_yz = ∂w/∂y、ε_zz = ∂w/∂z。"
+   ],
+   "body": "書上這一步只有一句話：「comparison of (28) and (29) gives, by Taylor series expansion of R using R(0) = 0」，然後直接給 (30)。對讀者來說被省略的是三件事：為什麼要搬原點、展開的是哪個函數、以及「比對係數」的合法性。這三件補起來之後，(30) 才從一條要背的對應表變成一個可以自己重推的結果。",
+   "after": "**一句話總結這個對應**：ε_αβ = ∂(第 β 個位移分量)/∂(第 α 個座標)。也就是\n\n| ε 的下標 | 對應的偏導 |\n| ε_xx | ∂u/∂x |\n| ε_xy | ∂v/∂x |\n| ε_xz | ∂w/∂x |\n| ε_yx | ∂u/∂y |\n| ε_yy | ∂v/∂y |\n| ε_yz | ∂w/∂y |\n| ε_zx | ∂u/∂z |\n| ε_zy | ∂v/∂z |\n| ε_zz | ∂w/∂z |\n\n**注意下標順序是「先座標、後位移」**，與很多書（包括多數連續體力學教材）寫成 ∂u_i/∂x_j 時的 (i, j) 順序相反。這個轉置本身不會造成物理錯誤，因為真正進入物理的永遠是對稱組合（(31) 與 (32)），但在對照別的書逐項驗算時，若不先確認這個順序，會白白浪費半小時。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "位移梯度與 ε 的對應（局域應變）",
+    "formula": "x ε_xx ≅ x ∂u/∂x ;   y ε_yx = y ∂u/∂y ;   etc.",
+    "bookPage": 74,
+    "eqNumber": "(30)",
+    "symbols": "u：位移場的 x 分量。書上只印了兩項再加 etc.，其餘七項依同樣規則類推（見上一條推導末尾的對應表）。",
+    "from": "由 (28) 與 (29) 比對，並對 R 做泰勒展開、使用 R(0) = 0。",
+    "limits": "這條式子把「形變」從一組全域常數 ε_αβ 變成**位移場的局域梯度**。一旦寫成梯度，兩件事立刻成立：(1) 均勻平移 u = const 給出零應變（梯度為零），符合物理；(2) 應變可以逐點定義，於是可以寫出偏微分方程，這是 p.80 的運動方程 (55) 得以成立的前提。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "三個伸縮應變分量",
+    "formula": "e_xx ≡ ε_xx = ∂u/∂x ;   e_yy ≡ ε_yy = ∂v/∂y ;   e_zz ≡ ε_zz = ∂w/∂z",
+    "bookPage": 75,
+    "eqNumber": "(31)",
+    "symbols": "e_xx、e_yy、e_zz：三個伸縮（normal／longitudinal）應變分量，無因次。書上開頭逐字說明改用 e 的理由：「It is usual to work with coefficients e_αβ rather than ε_αβ.」",
+    "from": "由 (30) 直接取對角項。對角元的 e 與 ε 完全相同（沒有因子 2），這一點與非對角元 (32) 形成對比，也是所有混淆的源頭。",
+    "limits": "e_xx = 0.01 表示 x 方向每 100 個原子間距被拉長成 101 個。三者同時等於 δ/3 就是均勻膨脹（p.80 的式 (52) 用的正是這個情形）。**符號**：拉伸為正、壓縮為負，所以靜水壓下三者皆負。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "三個剪切應變分量（工程剪應變）",
+    "formula": "e_xy ≡ x′ · y′ ≅ ε_yx + ε_xy = ∂u/∂y + ∂v/∂x ;\ne_yz ≡ y′ · z′ ≅ ε_zy + ε_yz = ∂v/∂z + ∂w/∂y ;\ne_zx ≡ z′ · x′ ≅ ε_zx + ε_xz = ∂u/∂z + ∂w/∂x",
+    "bookPage": 75,
+    "eqNumber": "(32)",
+    "symbols": "e_xy、e_yz、e_zx：三個剪切應變分量，無因次。定義方式與伸縮分量完全不同——**它們由軸間夾角的改變定義**（書上逐字：「The other strain components e_xy, e_yz, e_zx are defined in terms of the changes in angle between the axes」），具體就取新軸的內積。",
+    "from": "把 (26) 代入內積 x′·y′：x′·y′ = (1+ε_xx)ε_yx + ε_xy(1+ε_yy) + ε_xz ε_yz = ε_yx + ε_xy + O(ε²)，丟掉二階項即得。再用 (30) 的對應把 ε 換成偏導。書上在下一句明講：「We may replace the ≅ signs by = signs if we neglect terms of order ε².」",
+    "limits": "**這三個量是兩項之和，不是平均**。x′ 與 y′ 原本夾 90°，形變後夾角變成 θ；由內積定義 cos θ = x′·y′/(|x′||y′|) ≅ x′·y′（分母到一階為 1）。令 θ = π/2 − γ，則 cos θ = sin γ ≅ γ。所以 **e_xy 就是兩軸夾角相對於 90° 的減少量，單位是弧度**。反對稱部分（剛體轉動）在相加時自動抵消——若 ε_xy = −ε_yx，則 e_xy = 0，正確地判定「沒有真應變」。書上緊接著說：「The six dimensionless coefficients e_αβ(=e_βα) completely define the strain.」"
+   }
+  },
+  {
+   "kind": "derivation",
+   "heading": "為什麼 x′·y′ 恰好等於夾角的改變量：把幾何補上",
+   "tier": "derived",
+   "steps": [
+    "**目標**：說明 (32) 用內積定義剪應變不是隨意約定，而是「角度改變量」這件事的精確寫法。",
+    "**內積與夾角**：設 x′ 與 y′ 的夾角為 θ。依定義 x′·y′ = |x′||y′| cos θ。",
+    "**分母到一階為 1**：由前面的展開 |x′| ≅ 1 + ε_xx、|y′| ≅ 1 + ε_yy，所以 |x′||y′| = 1 + ε_xx + ε_yy + O(ε²)。而 cos θ 本身已經是 O(ε)（未形變時 θ = 90°，cos θ = 0），兩者相乘後，分母的修正只貢獻 O(ε²)。因此 x′·y′ ≅ cos θ。",
+    "**把 θ 寫成偏離 90° 的量**：令 θ = π/2 − γ_xy，其中 γ_xy 是夾角**減少**的量。則 cos θ = cos(π/2 − γ_xy) = sin γ_xy ≅ γ_xy（小角）。",
+    "**合併**：e_xy ≡ x′·y′ ≅ γ_xy。也就是 **e_xy 直接就是以弧度計的夾角減少量**。",
+    "**對照兩項之和的形式**：∂u/∂y 是「y 方向每走一步，x 方向位移增加多少」，也就是原本沿 ŷ 的那根軸向 x̂ 倒下的角度；∂v/∂x 同理是沿 x̂ 的軸向 ŷ 倒下的角度。兩根軸各自倒一點，夾角總共減少的就是這**兩個角度之和**——這正是 (32) 為什麼是相加而不是取平均。"
+   ],
+   "body": "書上寫「defined in terms of the changes in angle between the axes」，然後直接給內積式，中間「內積為什麼等於角度改變量」這一步完全略過。補上之後，(32) 那個看起來像約定的「兩項相加」就有了不可動搖的幾何意義，而下一節那個經典的 2 倍陷阱也才講得清楚。"
+  },
+  {
+   "kind": "concept",
+   "heading": "最大陷阱：Kittel 的 e_xy 是「工程剪應變」，不是張量應變",
+   "tier": "mine",
+   "body": "這是整個第 3 章最常見的跨書比對災難，值得單獨一節。\n\n**事實陳述**。Kittel 在 (32) 定義 e_xy = ∂u/∂y + ∂v/∂x。絕大多數連續體力學與彈性理論教材定義的是**張量應變** ε_xy = ½(∂u/∂y + ∂v/∂x)。兩者差一個因子 2：\n\n| 量 | Kittel 的定義（式 32） | 張量定義（多數彈性力學教材） | 關係 |\n| 剪應變 | e_xy = ∂u/∂y + ∂v/∂x | ε_xy = ½(∂u/∂y + ∂v/∂x) | e_xy = 2ε_xy |\n| 物理意義 | 兩軸夾角的**總**改變量 | 夾角改變量的**一半** | — |\n| 伸縮應變 | e_xx = ∂u/∂x | ε_xx = ∂u/∂x | **相同**（無因子） |\n\n注意最後一列：**伸縮分量兩套定義完全一樣，只有剪切分量差 2 倍**。這種「只有一半的分量帶因子」的不對稱，正是它難抓的原因——你在對角元上驗算得到一致的結果，就以為整套記號對得上了。\n\n**這套 e 就是 Voigt 記號的應變。** 需要說明的是，**Kittel 全書從未出現「Voigt」或「engineering strain」這兩個詞**（本站對全書文字層做過全文搜尋確認；「strain tensor」一詞在全書也未出現），書上只用 (40) 的 1≡xx, 2≡yy, 3≡zz, 4≡yz, 5≡zx, 6≡xy 把六個分量編號。但 (40) 的編號加上 (32) 的「兩項之和」，合起來就是標準的 Voigt 約定。\n\n**因子 2 究竟會在哪裡咬人。** 逐一釐清（以下為本站整理）：\n\n1. **剛度常數 C₄₄ 本身不差。** Kittel 的 X_y = C₄₄ e_xy（式 48）。用張量記號寫 σ_xy = c_xyxy ε_xy + c_xyyx ε_yx = 2c_xyxy ε_xy = c_xyxy e_xy。所以 **C₄₄ = c_xyxy，兩套記號下的剪切剛度數值相同**。這是好消息：你在任何資料庫查到的 Si 的 C₄₄ = 79.6 GPa 都指同一件事。\n\n2. **能量密度會差 4 倍。** Kittel 的 (43) 寫 ½C₄₄ e_xy²。若有人不假思索把它改寫成 ½C₄₄ ε_xy²（用張量應變），數值就小了 4 倍。正確的換算是 ½C₄₄ e_xy² = ½C₄₄(2ε_xy)² = 2C₄₄ ε_xy²。**每次看到能量密度表達式，先確認裡面的剪應變是哪一種。**\n\n3. **柔量常數 S₄₄ 會差 4 倍。** Kittel 的 (37) 寫 e_xy = S₆₆X_y（立方晶時 S₆₆ = S₄₄）。張量柔量 s_xyxy 滿足 ε_xy = s_xyxy σ_xy × 2…，換算下來 S₄₄ = 4 s_xyxy。這是為什麼「柔量矩陣是剛度矩陣的逆矩陣」在 Voigt 記號下成立（p.80 的式 (51) 就是立方晶的反矩陣結果），但在張量記號下不是逐元對應。\n\n4. **剪切模數 G 的定義恰好站在 Kittel 這一邊。** 工程上 τ = Gγ，其中 γ 是夾角總改變量——正是 Kittel 的 e_xy。所以對立方晶而言，**C₄₄ 就是 {100} 面上沿 <100> 方向的剪切模數**，不需要任何因子換算。\n\n**實務建議**：讀任何彈性常數文獻，先做一個一行檢查——找它的剪應變定義，看是不是兩項之和。若是，它與 Kittel 同一套；若是二分之一，準備好在能量與柔量的地方補因子。"
+  },
+  {
+   "kind": "concept",
+   "heading": "膨脹 δ：六個應變裡唯一與體積有關的組合",
+   "tier": "book",
+   "body": "書上把「Dilation」定義成**體積的分率增加量**（原文：「The fractional increase of volume associated with a deformation is called the dilation.」），並立刻補一句物理提示：「The dilation is negative for hydrostatic pressure.」——靜水壓下體積縮小，δ 為負。\n\n計算方式很直接：形變前取一個邊長為 x̂、ŷ、ẑ 的**單位立方體**（體積為 1），形變後三條邊變成 x′、y′、z′，這三個向量張出的平行六面體體積由純量三重積給出，就是 (33) V′ = x′ · y′ × z′。書上還註明這用的是「a well-known result for the volume of a parallelepiped having edges x′, y′, z′」。\n\n把 (26) 代進去，三重積寫成 3×3 行列式就是 (34)。展開之後，書上只說「Products of two strain components have been neglected」，然後給出結果 1 + e_xx + e_yy + e_zz。這個展開值得自己做一次（見下一節），因為它會讓「為什麼剪切不改變體積」這件事變得顯而易見。\n\n**文字層警告**：(34) 的 3×3 行列式在 PDF 文字抽取時被攤平成一行，讀起來像亂碼。本站已用算繪影像目視重組，下方 formula 欄依影像還原。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "形變後單位立方體的體積",
+    "formula": "V′ = x′ · y′ × z′",
+    "bookPage": 75,
+    "eqNumber": "(33)",
+    "symbols": "V′：形變後的體積（形變前的單位立方體體積 V = 1）；x′、y′、z′：形變後的三條邊向量，由 (26) 給出。",
+    "from": "純量三重積等於三個向量張出的平行六面體體積——書上直接引用這個「well-known result」，未再證明。前提是取單位立方體，所以 V = 1，後面 (35) 的分母才能省略。",
+    "limits": "三重積可以是負的（若三個向量變成左手系），但對小形變不會發生——ε ≪ 1 保證 V′ ≈ 1 > 0。若形變大到三重積變號，代表材料已經被翻過來了，遠超出線性彈性的適用範圍。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "heading": "把 (34) 的 3×3 行列式真的展開一次",
+   "tier": "derived",
+   "steps": [
+    "**行列式**：det = | (1+ε_xx, ε_xy, ε_xz) ; (ε_yx, 1+ε_yy, ε_yz) ; (ε_zx, ε_zy, 1+ε_zz) |。",
+    "**沿第一列做餘因子展開**：det = (1+ε_xx)[(1+ε_yy)(1+ε_zz) − ε_yz ε_zy] − ε_xy[ε_yx(1+ε_zz) − ε_yz ε_zx] + ε_xz[ε_yx ε_zy − (1+ε_yy)ε_zx]。",
+    "**逐項數階數**（ε 的冪次）：第一大項 (1+ε_xx)(1+ε_yy)(1+ε_zz) = 1 + (ε_xx+ε_yy+ε_zz) + O(ε²)；(1+ε_xx)ε_yz ε_zy = O(ε²)；ε_xy ε_yx(1+ε_zz) = O(ε²)；ε_xy ε_yz ε_zx = O(ε³)；ε_xz ε_yx ε_zy = O(ε³)；ε_xz(1+ε_yy)ε_zx = O(ε²)。",
+    "**丟掉所有二階以上**：det ≅ 1 + ε_xx + ε_yy + ε_zz。",
+    "**換成 e 記號**：由 (31) 的 e_xx = ε_xx 等（對角元沒有因子 2），得 det ≅ 1 + e_xx + e_yy + e_zz。這就是 (34) 的右端。",
+    "**取膨脹**：δ ≡ (V′ − V)/V，代 V = 1、V′ = det，得 δ ≅ e_xx + e_yy + e_zz，即 (35)。"
+   ],
+   "body": "書上把行列式印出來，然後只留下一句「Products of two strain components have been neglected」。展開本身是三行代數，但把它做一次的報酬很高：你會親眼看到**每一個非對角元（剪切）都只能成對出現**，因此對體積的貢獻必定是二階的。",
+   "after": "**兩個值得帶走的結論**：\n\n**第一，剪切不改變體積（到一階）。** 六個非對角元 ε_xy、ε_yx、ε_xz、ε_zx、ε_yz、ε_zy 在行列式裡永遠以乘積形式出現，沒有任何一項是單獨的一次項。這在物理上完全合理：把一疊撲克牌側推成斜的，總體積不變。這個結論後面會以另一種面貌回來——(43) 裡 C₄₄ 只乘剪應變的平方，而體積模數 (54) B = (C₁₁ + 2C₁₂)/3 裡**完全沒有 C₄₄**。體積模數與剪切常數無關，根源就在這裡。\n\n**第二，δ 是六個應變分量中唯一的「純量不變量」。** e_xx + e_yy + e_zz 是應變矩陣的跡（trace），在座標轉動下不變。這一點在 (43) 的對稱性論證裡隱含地用到了：四條三重軸的輪換操作把 e_xx² + e_yy² + e_zz² 換成 e_yy² + e_zz² + e_xx²（書上明寫的例子），保持不變，正是因為這些組合都是不變量的函數。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "體積的行列式表達與一階展開",
+    "formula": "x′ · y′ × z′ = det[ 1+ε_xx , ε_xy , ε_xz ; ε_yx , 1+ε_yy , ε_yz ; ε_zx , ε_zy , 1+ε_zz ] ≅ 1 + e_xx + e_yy + e_zz",
+    "bookPage": 75,
+    "eqNumber": "(34)",
+    "symbols": "行列式的三列依序是 x′、y′、z′ 在 (x̂, ŷ, ẑ) 基底下的分量，直接讀自 (26)。右端已丟掉所有 ε 的二次以上項。",
+    "from": "把 (26) 代入 (33)，把純量三重積寫成係數行列式，展開後只保留一階。書上原話：「Products of two strain components have been neglected.」",
+    "limits": "行列式的一階展開就是「1 + 跡」。這是一個通用結果：det(I + A) ≅ 1 + tr(A) 對任何小矩陣 A 成立。所以體積變化只看對角元，與非對角元（剪切）無關——到一階為止。若要算二階效應（例如非線性彈性、Grüneisen 參數的來源），就必須把丟掉的那些乘積項撿回來。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "膨脹（dilation）",
+    "formula": "δ ≡ (V′ − V)/V ≅ e_xx + e_yy + e_zz",
+    "bookPage": 75,
+    "eqNumber": "(35)",
+    "symbols": "δ：膨脹，體積的分率變化，無因次；V = 1 是形變前單位立方體的體積；V′ 由 (34) 給出。",
+    "from": "由 (34) 減 1。書上把定義與結果寫成同一條式子。",
+    "limits": "δ > 0 是膨脹，δ < 0 是壓縮；書上明說「The dilation is negative for hydrostatic pressure」。**均勻膨脹**的特例 e_xx = e_yy = e_zz = δ/3 在 p.80 被用來定義體積模數：代入 (43) 得 U = (1/6)(C₁₁ + 2C₁₂)δ²（式 52），與 U = ½Bδ²（式 53）比對得 B = (1/3)(C₁₁ + 2C₁₂)（式 54）。**注意 C₄₄ 不出現**——與上面「剪切不改變體積」互為表裡。",
+    "numeric": "用 p.84 表 12 的 Si（C₁₁ = 1.66、C₁₂ = 0.639，單位 10¹¹ N/m²）代入 p.80 的 (54)：B = (1.66 + 2×0.639)/3 = 2.938/3 ≈ 0.979×10¹¹ N/m² ≈ 98 GPa。因此 1 GPa 的靜水壓造成 δ = −p/B ≈ −1.0×10⁻²，即體積縮小約 1%。"
+   }
+  },
+  {
+   "kind": "concept",
+   "heading": "δ 這個量後面在哪裡出現",
+   "tier": "mine",
+   "body": "膨脹看起來只是一個記號縮寫，但它是把彈性學接到熱物理的那根軸，值得先標出來：\n\n**體積模數與壓縮率（本章 p.80）**。B 由 U = ½Bδ² 定義，立方晶給 B = (C₁₁ + 2C₁₂)/3；壓縮率 K = 1/B。這是第 3 章唯一一個會直接被後面章節反覆引用的彈性量。\n\n**熱膨脹與 Grüneisen（第 5 章）**。熱膨脹係數描述的就是 δ 隨溫度的變化。而 Grüneisen 參數 γ = −d(ln ω)/d(ln V) 量的是「聲子頻率對體積的敏感度」——分母裡的體積變化就是 δ。整條「非簡諧 → 熱膨脹 → 熱導率有限」的邏輯鏈都以 δ 為自變數。\n\n**與你的 Cth 研究的接點**。從彈性常數出發估算熱容或熱阻時，δ 是兩個世界的共同變數：機械那邊用 B 與 δ 描述壓縮，熱那邊用 α 與 δ 描述膨脹，兩者透過 Grüneisen 關係耦合。在 FinFET 這類高度應變工程化的結構裡，通道裡的應變不只改變能帶（遷移率），也改變聲子譜（熱導率），而串起這兩件事的橋樑正是彈性常數。要量化這個效應，第一步就是把 (35) 與 p.80 的 (54) 記熟。"
+  },
+  {
+   "kind": "concept",
+   "heading": "應力的九個分量：下標約定必須先講死（Fig. 15）",
+   "tier": "book",
+   "body": "應變講完了，換應力。定義本身一句話：「The force acting on a unit area in the solid is defined as the stress.」接著書上列出九個分量：X_x, X_y, X_z, Y_x, Y_y, Y_z, Z_x, Z_y, Z_z。\n\n**約定必須背下來**，書上逐字寫的是：\n\n> The capital letter indicates the direction of the force, and the subscript indicates the normal to the plane to which the force is applied.\n\n也就是：**大寫字母 = 力的方向；下標 = 受力平面的法線方向**。所以 X_x 是「施加在法線沿 x 的平面上、方向沿 x 的單位面積力」（純壓縮／拉伸）；X_y 是「施加在法線沿 y 的平面上、方向沿 x 的單位面積力」（剪切）。\n\n**Fig. 15 在說什麼**：畫的是一個立體的立方體，x 軸從左前方指出來、y 軸指向右方。左前那一面（法線沿 x）上畫了一支水平箭頭指進立方體，標記 X_x；右側那一面被塗成灰色（法線沿 y），上面也畫了一支同方向（沿 x）的箭頭，標記 X_y。兩支箭頭方向相同，但作用在**法線不同的兩個面**上——整張圖就是為了讓你看清楚「同一個力方向、不同的作用面，是兩個不同的應力分量」。圖說逐字：「Stress component X_x is a force applied in the x direction to a unit area of a plane whose normal lies in the x direction; X_y is applied in the x direction to a unit area of a plane whose normal lies in the y direction.」\n\n**這個約定為什麼容易錯**：因為它與應變 e_αβ 的下標語意完全不同。應變的兩個下標是兩個座標方向（對稱的），應力的「大寫 + 下標」則是「力方向 + 面法線」（先天不對稱，要靠力矩平衡才變對稱）。另外，Kittel 這套大寫字母記號在現代文獻裡幾乎絕跡——大家都寫 σ_ij。對應關係是 X_x → σ_xx、X_y → σ_xy、Y_x → σ_yx，其中**第一個下標對應大寫字母（力方向）、第二個下標對應 Kittel 的小寫下標（面法線）**。"
+  },
+  {
+   "kind": "derivation",
+   "heading": "九個減到六個：把「角加速度必須為零」算清楚（Fig. 16）",
+   "tier": "derived",
+   "steps": [
+    "**Fig. 16 在說什麼**：一個畫在 xy 平面上的正方形元素，四邊各有一支箭頭。上邊（法線 +y）的箭頭沿 +x，標 X_y；下邊（法線 −y）的箭頭沿 −x，也標 X_y。右邊（法線 +x）的箭頭沿 +y，標 Y_x；左邊（法線 −x）的箭頭沿 −y，也標 Y_x。四支箭頭構成**兩個力偶**。圖說逐字：「Demonstration that for a body in static equilibrium Y_x = X_y. The sum of the forces in the x direction is zero. The sum of the forces in the y direction is also zero. The total force vanishes. The total torque about the origin is also zero if Y_x = X_y.」",
+    "**先確認淨力為零**：上下兩支 X_y 大小相等方向相反，x 方向淨力為零；左右兩支 Y_x 同理，y 方向淨力為零。所以這個組態不會讓元素**平移**——但它可以讓元素**轉動**。",
+    "**算力矩**。取邊長為 L 的立方體元素（Fig. 16 是它在 xy 平面的截面）。上表面面積 L²，其上的力為 X_y L²（沿 +x），力臂為 L/2（從中心到上表面）；下表面的力 −X_y L²，力臂也是 L/2，兩者對 z 軸的力矩同向相加，合計 X_y L³。",
+    "**另一個力偶**：右側面的力 Y_x L²（沿 +y），力臂 L/2；左側面同理。合計 Y_x L³，但**轉向相反**。",
+    "**淨力矩**：τ_z = (X_y − Y_x)L³。",
+    "**代入牛頓第二定律的轉動形式**：τ = Iα，其中對邊長 L、密度 ρ 的立方體，轉動慣量 I ∝ ρL⁵。於是角加速度 α = τ/I ∝ (X_y − Y_x)L³/(ρL⁵) = (X_y − Y_x)/(ρL²)。",
+    "**取極限 L → 0**：若 X_y ≠ Y_x，則 α ∝ 1/L² → ∞。一個無窮小的體積元會得到無窮大的角加速度——物理上不可能。**因此必須 X_y = Y_x**。同理對另兩個平面得 Y_z = Z_y、Z_x = X_z，即式 (36)。"
+   ],
+   "body": "書上這一步只寫了一句：「The number of independent stress components is reduced from nine to six by applying to an elementary cube (as in Fig. 16) the condition that the angular acceleration vanish, and hence that the total torque must be zero.」然後直接給 (36)。被省略的關鍵是**為什麼角加速度非零就不行**——答案不是「因為靜態平衡」（彈性波裡的元素明明在加速），而是**尺度分析**：力矩隨 L³ 縮小，轉動慣量隨 L⁵ 縮小，所以任何殘餘的力矩差在連續極限下都會發散。",
+   "after": "**一個常見誤解要在這裡擋掉**：有人以為 X_y = Y_x 是「靜力平衡」的結果，於是懷疑它在動態問題（彈性波）裡還成不成立。上面的尺度分析說明它與靜態無關——即使整塊固體正在劇烈振動，**每個無窮小體積元的應力張量仍然對稱**，因為力矩差項的發散速度比任何有限角加速度都快。這也是為什麼 p.80 的運動方程 (55) 裡可以放心用 X_y = Y_x。\n\n（例外只發生在材料內部有本徵力偶密度時——例如具有微極性或強磁彈耦合的介質。Kittel 全書不處理這類情形。）"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "應力張量的對稱性",
+    "formula": "Y_z = Z_y ;   Z_x = X_z ;   X_y = Y_x",
+    "bookPage": 76,
+    "eqNumber": "(36)",
+    "symbols": "每一條都是「力方向與面法線互換」的兩個分量相等。書上隨即指定六個獨立分量為：X_x, Y_y, Z_z, Y_z, Z_x, X_y。",
+    "from": "對元素立方體要求角加速度為零（即總力矩為零），見 Fig. 16 與上一節的尺度分析。",
+    "limits": "這三條把 3×3 的應力矩陣從九個獨立元降到六個，**與應變的六個分量數目恰好相同**。這個「六對六」不是巧合，而是接下來能寫出 6×6 的 Hooke 定律矩陣 (37)(38) 的前提。若應力有九個獨立分量、應變只有六個，Hooke 定律就不會是方陣，也就不會有「柔量矩陣是剛度矩陣的逆矩陣」這種乾淨的關係。**六個獨立分量的選法**（X_x, Y_y, Z_z, Y_z, Z_x, X_y）與 (40) 的 1–6 編號一一對應，順序也一致：1≡xx、2≡yy、3≡zz、4≡yz、5≡zx、6≡xy。"
+   }
+  },
+  {
+   "kind": "concept",
+   "heading": "因次檢查：一個三十秒就能做完的防呆",
+   "tier": "mine",
+   "body": "書上在應力那一節末尾與 p.77 的 S、C 定義之後，各給了一次因次說明。合起來是四句話，值得當成公式檢查的標準工具：\n\n- **應力**：force per unit area，或 energy per unit volume（原文：「Stress components have the dimensions of force per unit area or energy per unit volume.」）。\n- **應變**：「The strain components are ratios of lengths and are dimensionless.」——長度的比值，無因次。\n- **柔量 S**：「The S's have the dimensions of [area]/[force] or [volume]/[energy].」\n- **剛度 C**：「The C's have the dimensions of [force]/[area] or [energy]/[volume].」\n\n**為什麼「力／面積」與「能量／體積」是同一個因次**：N/m² = N·m/m³ = J/m³。這個等價不只是代數巧合，它正是 (39) 能把 C 寫進能量密度、而 (41) 能把 C 從能量密度的導數裡取出來的根本原因。**應變無因次**這件事讓這條鏈更乾淨：U = ½Ce² 的兩邊因次自動匹配，C 的因次就是 U 的因次。\n\n**怎麼用它防呆**。每次你懷疑某個式子少了或多了一個因子時，先做這個檢查：\n- (43) 的每一項都是 C × (無因次)² = 能量／體積 ✓\n- (41) 的 ∂U/∂e 是（能量／體積）／（無因次）= 能量／體積 = 應力 ✓\n- (35) 的 δ = e + e + e 是無因次 ✓\n- p.80 的 B = (C₁₁ + 2C₁₂)/3 是力／面積 ✓、K = 1/B 是面積／力 ✓\n\n因次檢查抓不出 2 倍的錯（那正是 e_xy 陷阱難纏的原因），但它能抓出絕大多數的下標錯位與漏項——而下標錯位恰好是這一段最容易犯的錯。"
+  },
+  {
+   "kind": "concept",
+   "heading": "Hooke 定律的 6×6 形式：柔量 S 與剛度 C",
+   "tier": "book",
+   "body": "有了六個應力分量與六個應變分量，Hooke 定律就可以寫成完整的線性關係。書上的措辭是：「Hooke's law states that for sufficiently small deformations the strain is directly proportional to the stress, so that the strain components are linear functions of the stress components」——**應變是應力的線性函數**，於是每個應變分量都是六個應力分量的線性組合，共 6×6 = 36 個係數，這就是 (37)。反過來把應力寫成應變的線性組合，得到另外 36 個係數，這就是 (38)。\n\n命名要記清楚，書上逐字：\n\n> The quantities S₁₁, S₁₂ … are called elastic compliance constants or elastic constants; the quantities C₁₁, C₁₂, … are called the elastic stiffness constants or moduli of elasticity.\n\n**S = compliance（柔量）**，出現在「應變 = S × 應力」裡，描述「一給力就變形多少」——愈大愈軟。**C = stiffness（剛度）**，出現在「應力 = C × 應變」裡，描述「要變形這麼多要施多大力」——愈大愈硬。\n\n這裡有一個歷史留下的記號陷阱：**compliance 用 S（看起來像 stiffness）、stiffness 用 C（看起來像 compliance）**。這個「字母對調」不是 Kittel 的發明，是整個彈性學界的傳統。記憶法只能靠因次：S 是面積／力（分母有力，所以是「順從」），C 是力／面積。\n\n注意書上把 S 也叫做「elastic constants」（不加修飾語）。所以在老文獻裡看到「the elastic constants S₁₁」時，指的是柔量，不是剛度。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "Hooke 定律（柔量形式，應變 = S × 應力）",
+    "formula": "（書上印出完整六列，此處錄首末兩列，中間四列同構）\ne_xx = S₁₁X_x + S₁₂Y_y + S₁₃Z_z + S₁₄Y_z + S₁₅Z_x + S₁₆X_y ;\n⋯ e_yy（第 2 列，係數 S₂₁…S₂₆）、e_zz（第 3 列）、e_yz（第 4 列）、e_zx（第 5 列）⋯\ne_xy = S₆₁X_x + S₆₂Y_y + S₆₃Z_z + S₆₄Y_z + S₆₅Z_x + S₆₆X_y .\n（緊湊寫法：e_λ = Σ_{μ=1}^{6} S_λμ σ_μ）",
+    "bookPage": 77,
+    "eqNumber": "(37)",
+    "symbols": "S_λμ：彈性柔量常數，共 36 個，因次為面積／力（或體積／能量）。列的順序對應應變 e_xx, e_yy, e_zz, e_yz, e_zx, e_xy；行的順序對應應力 X_x, Y_y, Z_z, Y_z, Z_x, X_y——與 (40) 的 1–6 編號一致。",
+    "from": "Hooke 定律（應變正比於應力）在六維空間裡的最一般線性形式。這裡沒有做任何對稱性假設，所以 36 個係數全部獨立。",
+    "limits": "非對角元 S₁₂、S₁₃ 描述**耦合**：沿 x 拉，y 與 z 方向也會變形（Poisson 效應）。S₁₄、S₁₅、S₁₆ 描述更奇特的耦合——單軸拉伸竟然引起剪切變形。這在低對稱性晶體（如三斜晶系）確實會發生；立方晶體則由 (50) 的分塊對角結構求逆可知這些**柔量**項亦為零（對應的**剛度**關係是 (47) 的 C₁₄ = C₁₅ = C₁₆ = 0，兩者不要混為一談）。第 3 章的習題 8（p.87）就是要你「Find expressions in terms of the elastic stiffnesses for Young's modulus and Poisson's ratio」，做的正是從這個矩陣讀出工程上常用的兩個量。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "Hooke 定律（剛度形式，應力 = C × 應變）",
+    "formula": "（書上印出完整六列，此處錄首末兩列，中間四列同構）\nX_x = C₁₁e_xx + C₁₂e_yy + C₁₃e_zz + C₁₄e_yz + C₁₅e_zx + C₁₆e_xy ;\n⋯ Y_y（第 2 列，係數 C₂₁…C₂₆）、Z_z（第 3 列）、Y_z（第 4 列）、Z_x（第 5 列）⋯\nX_y = C₆₁e_xx + C₆₂e_yy + C₆₃e_zz + C₆₄e_yz + C₆₅e_zx + C₆₆e_xy .\n（緊湊寫法：σ_λ = Σ_{μ=1}^{6} C_λμ e_μ）",
+    "bookPage": 77,
+    "eqNumber": "(38)",
+    "symbols": "C_λμ：彈性剛度常數（elastic stiffness constants，或 moduli of elasticity），共 36 個，因次為力／面積（或能量／體積）。",
+    "from": "(37) 的反向寫法。作為矩陣關係，C 矩陣是 S 矩陣的逆矩陣。",
+    "limits": "**這條式子是後面所有比對的基準。** p.79 驗證 (43) 的數字係數時，做法就是把 ∂U/∂e 的結果與 (38) 的對應那一列逐項比對，讀出哪些 C 相等、哪些為零——(47) 與 (49) 都是這樣得到的。所以 (38) 不只是一個定義，它是「立方晶只有三個獨立常數」這個結論的量尺。",
+    "numeric": "立方晶時這個 36 元的矩陣塌縮成 (50) 的樣子，只剩 C₁₁、C₁₂、C₄₄。以 Si 為例（p.84 表 12，300 K）：C₁₁ = 1.66、C₁₂ = 0.639、C₄₄ = 0.796，單位 10¹² dyne/cm²，即 10¹¹ N/m²，也就是 166、63.9、79.6 GPa。"
+   }
+  },
+  {
+   "kind": "concept",
+   "heading": "常見錯誤：S 不是 C 的倒數（逐元）",
+   "tier": "mine",
+   "body": "初學者最直覺的猜測是 S₁₁ = 1/C₁₁。**這是錯的。** S 與 C 是互為**逆矩陣**的兩個 6×6 矩陣，不是逐元倒數。\n\n以立方晶為例，(50) 的矩陣不是對角矩陣——C₁₂ 把 X_x 與 e_yy、e_zz 耦合起來。求逆時這些耦合會攪進來。本章 p.80 的式 (51) 給出了立方晶的正確關係（那裡逐字寫著「These relations follow on evaluating the inverse matrix to (50)」），其中包含 C₁₁ − C₁₂ = (S₁₁ − S₁₂)⁻¹ 與 C₁₁ + 2C₁₂ = (S₁₁ + 2S₁₂)⁻¹ 這種「組合對組合」的形式，而**不是** C₁₁ = 1/S₁₁。\n\n唯一逐元成立的是剪切那一塊：因為 (50) 的右下 3×3 區塊已經是對角的（只有 C₄₄），求逆就是取倒數，所以 C₄₄ = 1/S₄₄。（校註：本書第 8 版 p.80 的式 (51) 首項**誤植**為 C₁₄ = 1/S₄₄——已用放大算繪影像目視確認，書上就是這樣印的，不是 PDF 文字抽取造成的。依矩陣 (50) 右下 3×3 區塊為對角、以及 (49) 的 C₆₆ = C₄₄，正確寫法為 C₄₄ = 1/S₄₄。）\n\n**為什麼兩個組合會這樣配對**：因為 (50) 的左上 3×3 區塊是「對角為 C₁₁、非對角為 C₁₂」的形式，這種矩陣的本徵值只有兩個——(C₁₁ + 2C₁₂)（對應均勻膨脹的本徵向量 (1,1,1)）與 (C₁₁ − C₁₂)（二重簡併，對應等體積的四方畸變）。求逆就是把本徵值取倒數，所以自然是這兩個**組合**與 S 的對應組合互為倒數。p.87 的習題 11「Effective shear constant」要你證明 ½(C₁₁ − C₁₂) 是 e_xx = −e_yy 這種形變對應的剪切常數，摸的就是第二個本徵值；習題 12 用的行列式技巧（「an R-dimensional square matrix with all elements equal to unity has roots R and 0」）本質上也是在做同一件事。"
+  },
+  {
+   "kind": "concept",
+   "heading": "彈性能密度：把 36 砍到 21 的那把刀",
+   "tier": "book",
+   "body": "36 個常數太多了，而且其中一定有冗餘——因為彈性形變是**保守的**：把固體壓變形所做的功全部存成位能，放手後全部還回來。既然有位能函數，應力就不能是應變的任意線性函數，它必須是某個位能的梯度。這就是砍刀。\n\n書上的敘述分兩步。第一步，宣告彈性能密度 U 是應變的二次型：\n\n> The elastic energy density U is a quadratic function of the strains, in the approximation of Hooke's law (recall the expression for the energy of a stretched spring).\n\n括號裡那個提示很重要：**回想彈簧的能量 ½kx²**。Hooke 定律是線性的（力 ∝ 位移），所以能量必然是二次的。推廣到六維，最一般的二次型就是 (39)：U = ½ ΣΣ C̃_λμ e_λ e_μ，其中 λ、μ 各跑 1 到 6，係數 C̃_λμ 共 36 個。式 (40) 定義了 1–6 的編號：1≡xx, 2≡yy, 3≡zz, 4≡yz, 5≡zx, 6≡xy。書上特別提醒「The C̃'s are related to the C's of (38), as in (42) below」——**帶波浪的 C̃ 與 (38) 裡的 C 不是同一批數，兩者的關係要等 (42) 才建立**。\n\n第二步，把應力由 U 微分取出：\n\n> The stress components are found from the derivative of U with respect to the associated strain component. This result follows from the definition of potential energy.\n\n具體場景是「Consider the stress X_x applied to one face of a unit cube, the opposite face being held at rest」——單位立方體的一面固定、另一面施加 X_x。這個場景下，位移 = 應變（因為邊長為 1），力 = 應力（因為面積為 1），所以「力 = −d(位能)/d(位移)」直接變成 X_x = ∂U/∂e_xx。這就是 (41) 的左端。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "彈性能密度（一般二次型）",
+    "formula": "U = ½ Σ_{λ=1}^{6} Σ_{μ=1}^{6} C̃_λμ e_λ e_μ",
+    "bookPage": 77,
+    "eqNumber": "(39)",
+    "symbols": "U：彈性能密度（單位體積的彈性位能），因次為能量／體積 = 力／面積；e_λ：六個應變分量，編號依 (40)；C̃_λμ：36 個係數，**帶波浪，尚未等同於 (38) 的 C**。",
+    "from": "Hooke 近似（應力線性於應變）⇒ 能量二次於應變。書上用彈簧能量 ½kx² 作為類比提示。½ 這個因子是沿用彈簧公式的慣例，讓後面 (41) 微分之後係數乾淨。",
+    "limits": "二次型是**最低階**的非平凡形式：一次項必須為零（否則未形變狀態不是能量極小，晶體會自發變形），常數項無物理意義（能量零點）。三次以上的項就是**非簡諧項**——它們被這一章完全丟掉，代價是：熱膨脹為零、聲子之間不散射、熱導率無限大。第 5 章要重新撿回這些項才能解釋熱膨脹與有限的熱導。所以 (39) 不只是一個近似，它標定了「這一章能解釋什麼、不能解釋什麼」的分界線。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "六分量編號（Voigt 式縮寫，書上未用此名）",
+    "formula": "1 ≡ xx ;   2 ≡ yy ;   3 ≡ zz ;   4 ≡ yz ;   5 ≡ zx ;   6 ≡ xy",
+    "bookPage": 77,
+    "eqNumber": "(40)",
+    "symbols": "把兩個下標壓成一個 1–6 的編號。前三個是伸縮分量，後三個是剪切分量。這個順序與 (36) 之後指定的六個獨立應力分量 X_x, Y_y, Z_z, Y_z, Z_x, X_y 完全一致。",
+    "from": "純粹的記號約定，讓 6×6 矩陣寫得出來。注意 4、5、6 的循環順序是 yz、zx、xy（不是 yz、xz、xy），與應力那邊的 Y_z、Z_x、X_y 對齊。",
+    "limits": "這就是現代文獻所稱的 **Voigt 記號**，但**「Voigt」這個詞在 Kittel 全書從未出現**（本站對全書文字層做過全文搜尋確認）。使用這個縮寫的代價已在前面「工程剪應變」那一節說明：4、5、6 對應的應變是**兩項之和**，所以縮寫後的柔量矩陣 S 與張量柔量之間會差 2 或 4 倍。對剛度矩陣 C 則沒有這個問題。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "heading": "由二次型 (39) 微分出 (41)：那個 ½ 到哪裡去了",
+   "tier": "derived",
+   "steps": [
+    "**要算的是** ∂U/∂e₁，其中 U = ½ Σ_λ Σ_μ C̃_λμ e_λ e_μ。",
+    "**e₁ 在雙重求和裡出現在兩個地方**：一次是 λ = 1（此時 U 含 ½ Σ_μ C̃_1μ e₁ e_μ），一次是 μ = 1（此時 U 含 ½ Σ_λ C̃_λ1 e_λ e₁）。λ = μ = 1 的那一項 ½C̃₁₁e₁² 同時屬於兩者，要小心不要重複計算。",
+    "**分開處理對角項**：U = ½C̃₁₁e₁² + ½ Σ_{μ≥2} C̃_1μ e₁e_μ + ½ Σ_{λ≥2} C̃_λ1 e_λe₁ + （不含 e₁ 的項）。",
+    "**逐項微分**：∂(½C̃₁₁e₁²)/∂e₁ = C̃₁₁e₁（½ 與平方的 2 抵消）；∂(½ Σ_{μ≥2} C̃_1μ e₁e_μ)/∂e₁ = ½ Σ_{μ≥2} C̃_1μ e_μ；∂(½ Σ_{λ≥2} C̃_λ1 e_λe₁)/∂e₁ = ½ Σ_{λ≥2} C̃_λ1 e_λ。",
+    "**合併後兩項**（把求和指標都改叫 β）：½ Σ_{β=2}^{6} (C̃_1β + C̃_β1) e_β。",
+    "**得到** X_x = ∂U/∂e_xx ≡ ∂U/∂e₁ = C̃₁₁e₁ + ½ Σ_{β=2}^{6} (C̃_1β + C̃_β1) e_β，正是 (41)。",
+    "**與 (38) 第一列比對**：(38) 說 X_x = C₁₁e_xx + C₁₂e_yy + … + C₁₆e_xy。逐項對應得 C₁₁ = C̃₁₁，且對 β ≥ 2 有 C₁β = ½(C̃₁β + C̃_β1)。",
+    "**推廣到所有 α**：同樣的計算對 ∂U/∂e_α 成立，所以 C_αβ = ½(C̃_αβ + C̃_βα)。這個表達式對 α、β 交換明顯不變，因此 **C_αβ = C_βα**，就是 (42)。"
+   ],
+   "body": "書上把 (41) 直接寫出來，只說「This result follows from the definition of potential energy」，然後跳到結論「Note that only the combination ½(C̃_αβ + C̃_βα) enters the stress-strain relations.」。中間「雙重求和微分時 e₁ 出現兩次」這件事若沒意識到，就會少算一半，也就看不出為什麼冒出 ½(C̃_αβ + C̃_βα) 這個對稱化組合。",
+   "after": "**這一步的邏輯要點**：C̃ 的**反對稱部分完全不進入物理**。任何二次型 Σ C̃_λμ e_λ e_μ 只感受到 C̃ 的對稱部分，因為 e_λ e_μ 本身對 λ、μ 交換是對稱的，與反對稱部分相乘後求和恆為零。所以「C̃ 有 36 個自由度」是假象——其中 15 個（反對稱部分的元素個數 6×5/2）從一開始就不可觀測。\n\n**能觀測的是對稱部分，共 6×7/2 = 21 個。** 這就是書上那句「Thus the thirty-six elastic stiffness constants are reduced to twenty-one」的算術來源，而書上並沒有寫出這個 21 = 6×7/2。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "應力由能量密度微分取得",
+    "formula": "X_x = ∂U/∂e_xx ≡ ∂U/∂e₁ = C̃₁₁e₁ + ½ Σ_{β=2}^{6} (C̃_1β + C̃_β1) e_β",
+    "bookPage": 78,
+    "eqNumber": "(41)",
+    "symbols": "X_x：沿 x 施加在法線沿 x 的面上的應力；U：彈性能密度；e₁ = e_xx（依 (40) 的編號）；C̃：(39) 裡的 36 個係數。",
+    "from": "對 (39) 的二次型就 e₁ 求偏導。物理依據是位能的定義——書上設定的場景是「the stress X_x applied to one face of a unit cube, the opposite face being held at rest」，單位立方體使得「力 = 應力」「位移 = 應變」，於是「力 = 位能對位移的導數」直接變成「應力 = 能量密度對應變的導數」。",
+    "limits": "**這條式子是全段的樞紐**。它有兩個用途：向後（(42)）把 36 砍成 21；向前（p.79 的 (46)、(48)）從假設的能量密度 (43) 讀出立方晶的剛度矩陣。換句話說，只要你相信「彈性形變是保守的」，應力—應變關係就完全由一個純量函數 U 決定，而不是由 36 個獨立的數決定。**若材料有耗散（黏彈性、內摩擦）**，U 不存在，(41) 失效，C_αβ 就不再對稱——這正是內耗量測能區分彈性與非彈性行為的原理。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "剛度矩陣的對稱性",
+    "formula": "C_αβ = ½(C̃_αβ + C̃_βα) = C_βα",
+    "bookPage": 78,
+    "eqNumber": "(42)",
+    "symbols": "C_αβ：(38) 裡真正進入應力—應變關係的剛度常數；C̃_αβ：(39) 二次型的原始係數。這條式子既定義了兩者的關係，也證明了 C 的對稱性。",
+    "from": "由 (41) 與 (38) 逐項比對而來。書上的原話是「Note that only the combination ½(C̃_αβ + C̃_βα) enters the stress-strain relations. It follows that the elastic stiffness constants are symmetrical.」右端的等號成立，是因為 ½(C̃_αβ + C̃_βα) 這個表達式對 α ↔ β 交換顯然不變。",
+    "limits": "結論即書上逐字寫的：「Thus the thirty-six elastic stiffness constants are reduced to twenty-one.」算術是 6×7/2 = 21（書上未寫出這個算式）。**21 是完全沒有點群對稱性的晶體（三斜晶系）的獨立彈性常數個數上限**。從這裡開始，每增加一個對稱元素就再砍一刀：正交晶系 9 個、六方晶系 5 個、立方晶系 3 個、各向同性介質 2 個。這一段只做立方晶那一刀，但方法（找出讓 U 不變的操作）對所有晶系通用。"
+   }
+  },
+  {
+   "kind": "concept",
+   "heading": "立方晶：先給答案，再證明沒有別的（Fig. 17）",
+   "tier": "book",
+   "body": "接下來是這一段最漂亮的一段論證。書上的策略不是「從 21 個常數出發逐步施加對稱性」，而是反過來——**先斷言答案，再證明斷言是完備的**。\n\n書上開場白逐字：「The number of independent elastic stiffness constants is reduced further if the crystal possesses symmetry elements. We now show that in cubic crystals there are only three independent stiffness constants.」然後是那個關鍵的動詞：「**We assert that** the elastic energy density of a cubic crystal is (43)」——我們**斷言**能量密度長這樣，「and that no other quadratic terms occur; that is, (44) do not occur.」\n\n證明分兩半：\n- **(43) 裡的項合法**：證明它們在立方晶的對稱操作下不變。\n- **(44) 裡的項非法**：證明它們在某個對稱操作下會變號，因此係數必須為零。\n\n用到的對稱操作只有一組，書上明說了為什麼選它：「The minimum symmetry requirement for a cubic structure is the existence of four three-fold rotation axes. The axes are in the [111] and equivalent directions (Fig. 17).」——**立方結構的最低對稱要求是四條三重旋轉軸，沿 [111] 及等效方向**。注意「minimum」這個字：用最弱的假設證出結論，結論就對所有立方晶（包括對稱性較低的立方點群，例如某些 23 與 m3̄ 類）都成立。\n\n**Fig. 17 在說什麼**：一個立方體，三根座標軸都從立方體**隱藏的後下角頂點**射出——x 軸沿一條底邊往左前方伸出、y 軸沿另一條底邊往右方伸出、z 軸穿過頂面的後方頂點垂直向上。一條虛線從這個三軸交會的後下角頂點出發，穿過對角的前上角頂點（即體對角線 [111] 方向）後往右上方伸出立方體，末端標一個「3」表示三重軸，旁邊畫一圈箭頭表示旋轉方向。圖說逐字：「Rotation by 2π/3 about the axis marked 3 changes x → y; y → z; and z → x.」\n\n繞這四條體對角線各轉 ±2π/3，一共給出八個非恆等旋轉；書上把它們對座標軸的作用整理成 (45) 的四組輪換方案。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "立方晶的彈性能密度（斷言）",
+    "formula": "U = ½C₁₁(e_xx² + e_yy² + e_zz²) + ½C₄₄(e_yz² + e_zx² + e_xy²) + C₁₂(e_yy e_zz + e_zz e_xx + e_xx e_yy)",
+    "bookPage": 78,
+    "eqNumber": "(43)",
+    "symbols": "C₁₁：伸縮應變的自身耦合（縱向剛度）；C₄₄：剪切應變的自身耦合（剪切模數）；C₁₂：不同方向伸縮應變之間的交叉耦合。注意 C₁₁ 與 C₄₄ 項帶 ½ 而 C₁₂ 項不帶——這不是筆誤，見下方 limits。",
+    "from": "**斷言**（書上用 assert），隨後由兩件事驗證：(a) 對稱性論證（p.78–79）說明 (44) 的項不可能出現；(b) 由 (41) 微分後與 (38) 比對（p.79 的 (46)–(49)），確認這裡的數字係數正確。",
+    "limits": "**為什麼 C₁₂ 前面沒有 ½**：因為交叉項在 (39) 的雙重求和裡出現**兩次**（(λ,μ) = (1,2) 與 (2,1)），½ × 2 = 1；而平方項只出現一次，½ 保留下來。這個「對角項帶 ½、交叉項不帶」的規律是所有二次型的通例，一旦忘記就會在微分時差 2 倍。**極端情形**：只有 C₁₁ 非零 ⇒ 三個方向各自獨立的彈簧，沒有 Poisson 效應；只有 C₄₄ 非零 ⇒ 只能剪不能壓，體積模數為零；C₁₁ = C₁₂ ⇒ 由 p.87 習題 11 的 ½(C₁₁ − C₁₂) 為零，材料對「等體積四方畸變」完全不抵抗（力學失穩的邊界）。",
+    "numeric": "以 Si（p.84 表 12）代入：施加 e_xx = 0.01（1% 單軸拉伸）、其餘為零，則 U = ½ × 1.66×10¹¹ × 10⁻⁴ ≈ 8.3×10⁶ J/m³ = 8.3 MJ/m³。換算成每個原子（矽原子密度取 5×10²⁸ m⁻³，此數值非取自本段原文）：1.7×10⁻²² J ≈ 1 meV/atom。與化學鍵能（eV 量級）相比小三個數量級——這正說明了為什麼彈性形變是「微擾」，也說明了為什麼 Hooke 近似在百分之一應變下還這麼準。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "立方晶中不出現的三類二次項",
+    "formula": "(e_xx e_xy + ⋯) ;   (e_yz e_zx + ⋯) ;   (e_xx e_yz + ⋯)",
+    "bookPage": 78,
+    "eqNumber": "(44)",
+    "symbols": "第一類：伸縮 × 剪切（同一組指標，如 xx 與 xy 共用 x）；第二類：兩個不同的剪切；第三類：伸縮 × 剪切（指標完全不重疊，如 xx 與 yz）。省略號代表由對稱輪換生成的其餘同類項。",
+    "from": "這些是「一般二次型會有、但立方晶不能有」的項。書上先列出它們，宣告「do not occur」，再用四條三重軸的對稱性論證證明其係數必須為零。",
+    "limits": "**這三類項各自對應一種物理耦合，在低對稱晶體中確實存在**：第一類（如 e_xx e_xy）意味著「單軸拉伸會引起剪切變形」；第三類（如 e_xx e_yz）意味著「沿 x 拉會在 yz 面上剪」。這些在單斜、三斜晶系中是真實效應。立方晶把它們全部禁掉，剩下的 (43) 只有「伸縮—伸縮」與「剪切—同一剪切」兩種耦合，這就是 C₁₁、C₁₂、C₄₄ 三個常數的全部內容。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "四條三重軸對座標軸的四組輪換方案",
+    "formula": "x → y → z → x ;      −x → z → y → −x ;\nx → z → −y → x ;      −x → y → z → −x",
+    "bookPage": 78,
+    "eqNumber": "(45)",
+    "symbols": "每一組描述繞一條體對角線轉 2π/3 的效果：箭頭表示「這根軸變成那根軸」。第一組是純輪換（Fig. 17 畫的就是它）；另外三組帶有一個座標的變號，對應另外三條體對角線 [1̄11]、[11̄1]、[111̄]。",
+    "from": "「The effect of a rotation of 2π/3 about these four axes is to interchange the x, y, z axes according to the schemes」——把四條 [111] 型軸各自的 2π/3 旋轉作用在座標軸上，讀出的置換。",
+    "limits": "**帶負號的三組才是真正的武器。** 書上用第一組（純輪換）示範 (43) 的不變性：「Under the first of these schemes, for example, e_xx² + e_yy² + e_zz² → e_yy² + e_zz² + e_xx²」——純輪換只是把三項換順序，不變。但純輪換無法讓任何東西變號，所以要證明 (44) 的項必須消失，必須動用帶負號的那三組。關鍵恆等式書上寫在 p.79：**e_xy = −e_x(−y)**，也就是應變在某一個指標變號時整體變號（因為應變的下標對應座標方向，方向反轉則該方向的位移梯度反號）。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "heading": "四條三重軸怎麼殺掉 (44)：把「奇偶性」講成可操作的規則",
+   "tier": "derived",
+   "steps": [
+    "**先定義一個可以機械檢查的量**：對一個由應變分量相乘構成的單項式，數 x 這個字母在**所有下標裡總共出現幾次**。例如 e_xx e_xy 中 x 出現 3 次、y 出現 1 次、z 出現 0 次。稱某單項式「對 x 為奇」若 x 出現奇數次。",
+    "**規則**：把座標 x 反向（x → −x）時，單項式乘上 (−1)^(x 出現的次數)。這直接來自書上的 e_xy = −e_x(−y)：每有一個 x 下標，反向就貢獻一個負號。",
+    "**先檢查 (43) 的每一項**：e_xx²（x 出現 4 次，偶）、e_yz²（y 2 次、z 2 次，皆偶）、e_yy e_zz（皆偶）。**(43) 的每一項對每一個座標都是偶的**，所以任何座標反向都不變。✓",
+    "**再檢查 (44)**：e_xx e_xy → x 奇（3 次）、y 奇（1 次）；e_yz e_zx → x 奇（1 次）、y 奇（1 次）、z 偶（2 次）；e_xx e_yz → y 奇、z 奇。**每一項都至少對一個座標為奇**——這正是書上說的「each of the terms exhibited in (44) is odd in one or more indices」。",
+    "**但單純的「座標反向」不是立方晶的對稱操作**（(45) 只給了旋轉）。所以要證明的是：(45) 生成的旋轉群裡，存在一個操作對某項等效於一次座標反向。",
+    "**構造它**。取 (45) 的第一組 A：x↦y、y↦z、z↦x（繞 [111]）。再取第二組「−x → z → y → −x」，逐段讀出 B：−x↦z 即 **x↦−z**；z↦y；y↦−x。所以 B：x↦−z、y↦−x、z↦y（繞另一條體對角線 [11̄1]，可由解 B(v) = v 得固定方向 (1, −1, 1) 驗證）。",
+    "**先做 A 再做 B，逐個座標核對**：x ↦ A(x) = y ↦ B(y) = −x；y ↦ A(y) = z ↦ B(z) = y；z ↦ A(z) = x ↦ B(x) = −z。合成結果是 (x, y, z) → (−x, y, −z)，這正是**繞 y 軸的二重旋轉 C₂**。",
+    "**結論**：四條三重軸生成的群（即四面體旋轉群 T，階數 12 = 恆等 + 8 個 C₃ + 3 個 C₂）裡，**自動包含繞三條立方軸的二重旋轉**。這三個 C₂ 才是殺掉 (44) 的直接工具。",
+    "**用 C₂(y)（x→−x, y→y, z→−z）逐類檢驗 (44)**：e_xx e_xy：x 出現 3 次（奇）、z 出現 0 次 ⇒ 乘 (−1)³ = −1，**變號** ✓。e_yz e_zx：x 1 次、z 2 次 ⇒ (−1)^(1+2) = −1，**變號** ✓。e_xx e_yz：x 2 次、z 1 次 ⇒ (−1)^(2+1) = −1，**變號** ✓。",
+    "**收尾**：若 (44) 的任一項在 U 裡有非零係數，則 U 在一個真正的立方晶對稱操作下變號，U 就不是不變量——與「彈性能密度必須與座標軸的標號方式無關」矛盾。因此這些係數全為零。**(43) 是完備的。**"
+   ],
+   "body": "書上的論證只有兩句：「each of the terms exhibited in (44) is odd in one or more indices. A rotation in the set (45) can be found which will change the sign of the term, because e_xy = −e_x(−y), for example.」（這句跨越 p.78 與 p.79 的分頁）。它是正確的，但對讀者來說留下兩個坑：(1)「odd in one or more indices」到底怎麼數；(2)「a rotation can be found」——哪一個？下面把這兩件事都做成可以機械執行的檢查。",
+   "after": "**為什麼要繞這一圈去找 C₂**：因為 (45) 裡的四個 C₃ 操作本身都是三階的，把單項式送到**別的**單項式（可能帶負號），論證需要追蹤整個軌道，容易出錯。而 C₂ 操作只是把某些分量整體變號、不打亂項的身分，一眼就能看出結果。把「四條三重軸」翻譯成「三條二重軸」再動手，是這個證明最省力的走法——而且它完全在書上給的假設之內（C₂ 是 C₃ 的合成，不需要額外假設）。\n\n**這個論證的普遍性**：同樣的「數奇偶」技巧可以直接用來處理其他晶系。例如六方晶只有一條六重軸，z 方向與 xy 平面不等價，於是 C₁₁ ≠ C₃₃、C₁₂ ≠ C₁₃，獨立常數變成 5 個。讀者可以把它當作練習：用 (45) 的方法論，但把對稱操作換成繞 z 的 2π/6 旋轉。"
+  },
+  {
+   "kind": "derivation",
+   "heading": "驗證 (43) 的數字係數：由 (41) 微分，與 (38) 逐項比對",
+   "tier": "derived",
+   "steps": [
+    "**書上的話**：「It remains to verify that the numerical factors in (43) are correct. By (41),」。也就是說，對稱性論證只保證了「哪些項可以出現」，還沒保證 ½C₁₁、½C₄₄、C₁₂ 這些**係數**寫得對。驗證方法就是微分回去，看能不能還原 (38)。",
+    "**對 e_xx 微分**。(43) 中含 e_xx 的項有兩個：½C₁₁e_xx²，以及 C₁₂ 裡的 e_zz e_xx + e_xx e_yy。",
+    "∂(½C₁₁e_xx²)/∂e_xx = C₁₁e_xx（½ 與平方的 2 抵消）。",
+    "∂[C₁₂(e_zz e_xx + e_xx e_yy)]/∂e_xx = C₁₂(e_zz + e_yy)。",
+    "**合計**：∂U/∂e_xx = X_x = C₁₁e_xx + C₁₂(e_yy + e_zz)，這就是書上的 (46)。",
+    "**與 (38) 第一列比對**：(38) 說 X_x = C₁₁e_xx + C₁₂e_yy + C₁₃e_zz + C₁₄e_yz + C₁₅e_zx + C₁₆e_xy。書上先確認「The appearance of C₁₁e_xx agrees with (38)」——第一項對上了，所以 (43) 裡 ½C₁₁ 的那個 ½ 是**對的**（沒有它就會得到 2C₁₁e_xx）。",
+    "**讀出零與相等**：e_yy 與 e_zz 的係數都是 C₁₂ ⇒ **C₁₂ = C₁₃**；e_yz、e_zx、e_xy 完全不出現 ⇒ **C₁₄ = C₁₅ = C₁₆ = 0**。這就是 (47)。",
+    "**對 e_xy 微分**。(43) 中含 e_xy 的只有 ½C₄₄e_xy²，得 ∂U/∂e_xy = X_y = C₄₄e_xy，這就是 (48)。同樣地，這裡的 ½ 若寫錯，得到的就不是 C₄₄e_xy。",
+    "**與 (38) 第六列比對**：(38) 說 X_y = C₆₁e_xx + … + C₆₆e_xy。只剩 e_xy 項 ⇒ **C₆₁ = C₆₂ = C₆₃ = C₆₄ = C₆₅ = 0；C₆₆ = C₄₄**。這就是 (49)。",
+    "**其餘各列由對稱性補齊**：對 e_yy、e_zz 微分給出第 2、3 列（由 x↔y↔z 輪換與第 1 列同構）；對 e_yz、e_zx 微分給出第 4、5 列（與第 6 列同構）。全部填進 6×6 表格就是 (50)。"
+   ],
+   "body": "書上這一段（p.79）把 (46) 到 (49) 四條式子排成一串，中間的微分步驟一個字都沒寫。實際上只有兩次偏導，但它們**同時驗證了三件事**：對稱性論證的結論、(43) 裡兩個 ½ 的正確性、以及 (50) 每一格的值。把這兩次微分親手做一遍，(50) 就不再是一張需要背的表。",
+   "after": "**特別注意 (48) 這一步為什麼重要**：X_y = C₄₄e_xy。左邊是剪應力，右邊是 C₄₄ 乘上**工程剪應變**（兩軸夾角的總改變量）。這個式子的形式與工程上的 τ = Gγ 完全一致，所以 **C₄₄ 就是剪切模數 G**（對 {100} 面沿 <100> 方向的剪切）。如果 Kittel 當初把 e_xy 定義成張量應變（½ 那一版），這裡就會出現 X_y = 2C₄₄ε_xy，多一個因子 2，與工程慣例衝突。**Kittel 選用工程剪應變，換來的就是 (48) 與 (50) 的乾淨。** 這是前面那個 2 倍陷阱的「另一面」——它不是疏忽，是一個有代價也有報酬的選擇。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "由 (43) 對 e_xx 微分",
+    "formula": "∂U/∂e_xx = X_x = C₁₁e_xx + C₁₂(e_yy + e_zz)",
+    "bookPage": 79,
+    "eqNumber": "(46)",
+    "symbols": "U 取自 (43)；X_x 是沿 x 施加在法線沿 x 的面上的正向應力。",
+    "from": "把 (43) 對 e_xx 偏導，依據是 (41)（應力 = 能量密度對應變的偏導）。書上原話：「It remains to verify that the numerical factors in (43) are correct. By (41),」",
+    "limits": "這條式子本身就是立方晶最常用的一條工程關係。**靜水壓特例**：e_xx = e_yy = e_zz = δ/3，得 X_x = (C₁₁ + 2C₁₂)δ/3 = Bδ，重現 p.80 的 (54)。**單軸應變特例**（e_yy = e_zz = 0，薄膜被基板夾住時的情形）：X_x = C₁₁e_xx，此時 C₁₁ 扮演的是「受側向約束的楊氏模數」，數值比自由拉伸的楊氏模數大。這個區別在薄膜與 FinFET 應力分析裡非常實際——邊界條件決定你該用 C₁₁ 還是 E。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "由第一列比對得到的零與相等關係",
+    "formula": "C₁₂ = C₁₃ ;   C₁₄ = C₁₅ = C₁₆ = 0",
+    "bookPage": 79,
+    "eqNumber": "(47)",
+    "symbols": "C₁₂、C₁₃：X_x 對 e_yy、e_zz 的響應係數；C₁₄、C₁₅、C₁₆：X_x 對三個剪應變的響應係數。",
+    "from": "把 (46) 與 (38) 的第一列 X_x = C₁₁e_xx + C₁₂e_yy + C₁₃e_zz + C₁₄e_yz + C₁₅e_zx + C₁₆e_xy 逐項比對。書上：「The appearance of C₁₁e_xx agrees with (38). On further comparison, we see that」",
+    "limits": "**C₁₂ = C₁₃ 的物理意義**：沿 x 拉伸時，y 方向與 z 方向的橫向響應完全相同——這是立方對稱的直接體現（y 與 z 對 x 軸而言等價）。**C₁₄ = C₁₅ = C₁₆ = 0 的物理意義**：純粹的單軸拉伸**不會**引起任何剪切變形。在低對稱晶體中這不成立（拉一下就扭一下），這也是為什麼壓電、鐵電材料的分析不能用立方晶的簡化矩陣。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "由 (43) 對 e_xy 微分",
+    "formula": "∂U/∂e_xy = X_y = C₄₄e_xy",
+    "bookPage": 79,
+    "eqNumber": "(48)",
+    "symbols": "X_y：沿 x 施加在法線沿 y 的面上的剪應力；e_xy：工程剪應變（兩軸夾角的總減少量，見 (32)）。",
+    "from": "把 (43) 的 ½C₄₄e_xy² 對 e_xy 偏導；(43) 中其他項都不含 e_xy。",
+    "limits": "**這就是工程上的 τ = Gγ**，所以 C₄₄ 直接等於 {100} 面上沿 <100> 方向的剪切模數，不需要任何因子換算。**剪切與伸縮完全解耦**：右端沒有任何 e_xx、e_yy、e_zz——剪一下不會改變體積（與 (34)(35) 的結論一致），壓一下也不會產生剪應力。",
+    "numeric": "Si 的 C₄₄ = 0.796×10¹¹ N/m² = 79.6 GPa（p.84 表 12）。施加 100 MPa 的剪應力，得 e_xy = 10⁸/7.96×10¹⁰ ≈ 1.26×10⁻³ rad ≈ 0.072°——原本 90° 的夾角變成 89.93°。這就是「小應變」在數值上長什麼樣。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "由第六列比對得到的零與相等關係",
+    "formula": "C₆₁ = C₆₂ = C₆₃ = C₆₄ = C₆₅ = 0 ;   C₆₆ = C₄₄",
+    "bookPage": 79,
+    "eqNumber": "(49)",
+    "symbols": "C₆β：(38) 第六列（X_y 那一列）的六個係數。依 (40) 的編號，6 ≡ xy。",
+    "from": "把 (48) 與 (38) 的第六列 X_y = C₆₁e_xx + C₆₂e_yy + C₆₃e_zz + C₆₄e_yz + C₆₅e_zx + C₆₆e_xy 逐項比對。",
+    "limits": "**C₆₆ = C₄₄ 是立方對稱最直接的痕跡**：xy 面的剪切與 yz 面的剪切在立方晶裡完全等價，因為三條立方軸不可區分。在四方晶系中 C₆₆ ≠ C₄₄（z 軸與 x、y 軸不等價），這一個等式就是區分立方與四方的判據之一。**五個零則說明**：純剪切應力只產生純剪切應變，不會產生任何伸縮——這與 (47) 的結論互為對偶。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "立方晶的彈性剛度矩陣",
+    "formula": "(X_x, Y_y, Z_z, Y_z, Z_x, X_y) = C · (e_xx, e_yy, e_zz, e_yz, e_zx, e_xy)，其中 C 的六列依序為\n[ C₁₁  C₁₂  C₁₂   0    0    0  ]\n[ C₁₂  C₁₁  C₁₂   0    0    0  ]\n[ C₁₂  C₁₂  C₁₁   0    0    0  ]\n[  0    0    0   C₄₄   0    0  ]\n[  0    0    0    0   C₄₄   0  ]\n[  0    0    0    0    0   C₄₄ ]",
+    "bookPage": 79,
+    "eqNumber": "(50)",
+    "symbols": "左側直行標的是六個應力分量 X_x, Y_y, Z_z, Y_z, Z_x, X_y；上方橫列標的是六個應變分量 e_xx, e_yy, e_zz, e_yz, e_zx, e_xy（書上就是以這種帶行列標籤的表格形式印出的）。整個 36 格裡只出現三個不同的數：**C₁₁、C₁₂、C₄₄**。",
+    "from": "把 (47) 與 (49) 的結論，連同由座標輪換補齊的第 2、3、4、5 列，填進 (38) 的 6×6 架構。書上：「Thus from (43) we find that the array of values of the elastic stiffness constants is reduced for a cubic crystal to the matrix」",
+    "limits": "**這是整段的終點，也是後面所有計算的起點。** 矩陣呈現**分塊對角**結構：左上 3×3 管伸縮（彼此透過 C₁₂ 耦合），右下 3×3 管剪切（完全對角、彼此不耦合），兩塊之間全為零（伸縮與剪切不互相激發）。p.80 的 (51) 對它求逆得到柔量；p.80 的 (56) 把它代進運動方程；p.82–83 的 (60)(63)(69) 由此解出三個主要方向的聲速。**若晶體不是立方晶**，右下區塊就不再是單一個 C₄₄，零區塊也可能填上非零元素。",
+    "numeric": "三個常數的量級（p.84 表 11、表 12，單位 10¹¹ N/m² = 100 GPa）：\n鑽石 C₁₁ = 10.76、C₁₂ = 1.25、C₄₄ = 5.76（最硬）；Si 1.66 / 0.639 / 0.796；Ge 1.285 / 0.483 / 0.680；W 5.233 / 2.045 / 1.607（300 K）；Cu 1.684 / 1.214 / 0.754（300 K）；Al 1.068 / 0.607 / 0.282（300 K）；Na 0.073 / 0.062 / 0.042（本列表中最軟，C₁₁ 比鑽石小約 150 倍）。表 11 中還有更軟的：K 在 295 K 為 0.0370 / 0.0314 / 0.0188，比 Na 又軟約一倍。"
+   }
+  },
+  {
+   "kind": "concept",
+   "heading": "三個常數各自在量什麼",
+   "tier": "mine",
+   "body": "(50) 得到之後，值得停下來問：C₁₁、C₁₂、C₄₄ 各自對應哪一種「拿手把材料捏一下」的動作？以下配合 p.84 表 11、表 12 的實際數字（單位一律 10¹¹ N/m²）。\n\n**C₁₁ ——「側向夾住、只沿一軸壓」的剛度。** 由 (46)，令 e_yy = e_zz = 0，得 X_x = C₁₁e_xx。物理場景：一塊材料四周被完全約束，只能沿 x 方向壓縮。這**不是**楊氏模數（楊氏模數是側面自由的情形，習題 8 要你算的就是這個差別）。C₁₁ 也是 [100] 縱波速度的來源：v_L = (C₁₁/ρ)^(1/2)（p.82 式 60）。\n\n**C₁₂ ——「橫向耦合」的強度。** 由 (46)，沿 y 壓縮時 x 方向感受到的應力就是 C₁₂e_yy。C₁₂ 愈大，Poisson 效應愈強。注意一個有趣的對比：金屬（Au: 1.631、Cu: 1.214、Pb: 0.423）的 C₁₂ 與 C₁₁ 很接近，而共價晶體（鑽石: 1.25 對 10.76、Si: 0.639 對 1.66）的 C₁₂/C₁₁ 小得多。這反映了鍵結的本質——**方向性共價鍵抵抗角度改變，非方向性金屬鍵不抵抗**。\n\n**C₄₄ ——純剪切的剛度。** 由 (48) X_y = C₄₄e_xy，就是剪切模數 G。C₄₄ 是三個常數裡最能反映「鍵結有沒有方向性」的一個：鑽石的 C₄₄ = 5.76 幾乎是 C₁₂ 的 4.6 倍；Na 的 C₄₄ = 0.042 比 C₁₂ = 0.062 還小。液體的 C₄₄ = 0（液體不抵抗剪切），所以 C₄₄ 是「固體之所以是固體」的那個常數。\n\n**一個好用的組合診斷——立方晶的各向異性。** 各向同性介質只有兩個獨立常數，此時必然滿足 C₄₄ = ½(C₁₁ − C₁₂)（可由 p.87 習題 11「Effective shear constant」的結果看出：那裡證明 e_xx = −e_yy 這種形變的有效剪切常數是 ½(C₁₁ − C₁₂)，若材料各向同性，它必須等於 C₄₄）。於是比值 2C₄₄/(C₁₁ − C₁₂) 偏離 1 的程度就量度了彈性各向異性。**注意：這個比值本身在 Kittel 書中沒有出現**（本站對全書搜尋過「anisotropy ratio」與「Zener」，前者零筆，後者只出現在與 Zener 穿隧／Zener 崩潰相關的頁面），以下是本站用書上表 11、表 12 的數字算的：\n\n| 材料 | C₁₁ | C₁₂ | C₄₄ | 2C₄₄/(C₁₁−C₁₂) |\n| W (300 K) | 5.233 | 2.045 | 1.607 | 1.01 |\n| Al (300 K) | 1.068 | 0.607 | 0.282 | 1.22 |\n| Si | 1.66 | 0.639 | 0.796 | 1.56 |\n| Ge | 1.285 | 0.483 | 0.680 | 1.70 |\n| Cu (300 K) | 1.684 | 1.214 | 0.754 | 3.21 |\n| Au (300 K) | 1.923 | 1.631 | 0.420 | 2.88 |\n\nW 幾乎完全各向同性（1.01），這是它在力學量測中常被當成參考材料的原因；Cu 高度各向異性（3.21），[111] 方向比 [100] 方向硬得多。**Si 的 1.56 很關鍵**：它意味著矽晶圓的機械與聲學性質明顯與晶向有關，MEMS 與 FinFET 的應力設計不能用各向同性近似草草帶過。"
+  },
+  {
+   "kind": "concept",
+   "heading": "這一段接到哪裡：本章之後與你的研究",
+   "tier": "mine",
+   "body": "**本章之內（p.80–83）**。(50) 一寫下來，剩下的事就是機械化的：求逆得柔量 (51)；均勻膨脹的特例給體積模數 B = (C₁₁ + 2C₁₂)/3 (54)；把 (50) 代進牛頓第二定律 (55) 得波動方程 (57a–c)；解 [100]、[110]、[111] 三個方向得到 p.83 的 Fig. 20 那張「有效彈性常數表」——[100] 縱波看 C₁₁、橫波看 C₄₄；[110] 縱波看 ½(C₁₁ + C₁₂ + 2C₄₄)、兩支橫波分別看 C₄₄ 與 ½(C₁₁ − C₁₂)。書上明說 [110] 方向之所以特別，是因為「the three elastic constants can be found simply from the three propagation velocities in this direction」——**三個常數可以從一個方向的三個波速一次量完**，這就是超音波量測彈性常數的標準做法。\n\n**第 4 章（聲子 I）**。這一段建立的 ω = v_s K 線性色散是第 4 章單原子鏈模型在長波極限下的結果。反過來說，第 4 章要做的事正是「當波長縮到 10⁻⁶ cm 以下、連續體近似失效時會發生什麼」。兩章的接縫就在本段開頭那個 10¹¹–10¹² Hz。\n\n**第 5 章（聲子 II，熱性質）**。Debye 模型的唯一輸入參數就是聲速 v_s，而 v_s 來自 C₁₁、C₄₄ 與密度。所以**這一段量到的三個數字，最後決定了低溫比熱的 T³ 係數與 Debye 溫度**。這條鏈（C_ij → v_s → θ_D → C_V）是彈性常數在熱物理中最重要的用途。\n\n**與 FinFET Cth 萃取的接點**。熱容 C_th 在 Debye 圖像下由 θ_D 決定，而 θ_D 由聲速決定、聲速由彈性常數決定。這給了一條**不經過熱量測、純從力學／聲學參數估算 C_th 上限**的獨立路徑，可以用來檢驗電熱萃取結果的合理性。更具體的兩點：(1) FinFET 的 fin 通常沿 [110] 方向，而由 Fig. 20 可知 [110] 方向的三支模式各自對應不同的彈性常數組合，其中 ½(C₁₁ − C₁₂) 這一支在 Si 中特別軟（(1.66−0.639)/2 = 0.51，遠小於 C₄₄ = 0.796），是低頻聲子的主要通道；(2) 應變工程（SiGe source/drain、應力襯墊）改變的不只是能帶，也改變彈性常數與聲子譜，因此同時改變熱導率——分析時若只考慮遷移率變化而忽略熱路徑變化，就漏了一半。這一段給的是做這種分析所需的最小工具集。"
+  },
+  {
+   "kind": "concept",
+   "heading": "讀完這一段的自我檢查清單",
+   "tier": "mine",
+   "body": "以下八題若都能不翻書回答，這一段就算讀透了。\n\n**1. 連續體近似在什麼條件下成立？** 波長長於 10⁻⁶ cm，即頻率低於 10¹¹–10¹² Hz（書上 p.73 給的數字）。並且你要能自己用 v_s = (C₁₁/ρ)^(1/2) 把這兩個數字對起來。\n\n**2. 為什麼九個 ε_αβ 只給出六個應變？** 因為反對稱部分對應剛體轉動，不產生應力。(31)(32) 取的都是對稱組合。\n\n**3. e_xy 是什麼的度量，數值上等於什麼？** 兩軸夾角相對於 90° 的減少量（弧度），等於 ∂u/∂y + ∂v/∂x，是**兩項之和**（工程剪應變），不是張量應變的 ½(∂u/∂y + ∂v/∂x)。\n\n**4. 為什麼 δ = e_xx + e_yy + e_zz 裡沒有剪應變？** 因為在 (34) 的行列式展開中，非對角元只能成對出現，對體積的貢獻是二階的。物理上：剪切保體積。\n\n**5. 應力下標的約定是什麼？** 大寫字母 = 力的方向；下標 = 受力平面的法線方向。X_y 是沿 x 施加在法線沿 y 的面上。\n\n**6. 九個應力分量減到六個，靠的是什麼？** 角加速度必須為零。關鍵是尺度分析：力矩 ∝ L³、轉動慣量 ∝ L⁵，所以任何殘餘力矩差在 L → 0 時給出發散的角加速度。\n\n**7. 36 → 21 → 3 各靠什麼？** 36 → 21：應力是能量密度的梯度，只有 C̃ 的對稱部分進入物理，21 = 6×7/2。21 → 3：立方晶的四條 [111] 三重軸，配合 e_xy = −e_x(−y)，把所有「對某座標為奇」的二次項殺光。\n\n**8. 立方晶剛度矩陣長什麼樣？** 分塊對角：左上 3×3 是「對角 C₁₁、非對角 C₁₂」，右下 3×3 是 C₄₄I，兩塊之間全零。\n\n**最後一個提醒**：這一段所有結論的前提是「應力線性於應變」。一旦要解釋熱膨脹、聲子—聲子散射、有限熱導率，就必須回到 (39) 把三次以上的項撿回來。第 3 章的完美線性世界裡，固體受熱不膨脹、聲波永不衰減——記住這個限制，第 5 章才讀得動。"
+  }
+ ]
+}

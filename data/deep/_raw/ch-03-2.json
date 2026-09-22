@@ -1,0 +1,431 @@
+{
+  "title": "Van der Waals-London Interaction; Repulsive Interaction; Equilibrium Lattice Constants; Cohesive Energy",
+  "titleZh": "凡得瓦—倫敦交互作用；排斥交互作用；平衡晶格常數；內聚能",
+  "pages": "53-59",
+  "lede": "惰性氣體原子是閉殼層、電中性、球對稱的——照古典靜電學它們之間應該完全沒有作用力，卻會凝固成晶體；這一段用兩個耦合諧振子的零點能下降造出 −A/R⁶ 的吸引，用 Pauli 原理造出 +B/R¹² 的排斥，然後只拿氣相數據（維里係數、黏度）定出的兩個參數 ε、σ，在不含任何可調參數的情況下把固體的晶格常數與內聚能算到與實驗差 1–7%。",
+  "blocks": [
+    {
+      "kind": "concept",
+      "heading": "本段要解決什麼：一個「照理說不該存在」的晶體（書 p.53）",
+      "tier": "book",
+      "body": "第 3 章處理的問題是「晶體為什麼是晶體」，而惰性氣體是整本書挑出來的第一個、也是最乾淨的案例。乾淨的理由，Kittel 在 p.53 開頭一句話就交代完：這些晶體的電子分布「is not significantly distorted from the electron distribution around the free atoms」——晶體裡的電子分布，和自由原子周圍的電子分布比起來，沒有顯著變形。\n\n為什麼沒有變形？因為沒有本錢變形。原文給的量化理由是：「The cohesive energy of an atom in the crystal is only 1 percent or less of the ionization energy of an atomic electron.」晶體裡一個原子的內聚能，只有原子電子游離能的 1% 或更低。換句話說，把原子從晶體裡拉出來所需的能量，比起把一個電子從原子裡拉出來，差了兩個數量級。既然能量預算這麼小，就沒有任何機制能把電子雲重新排列——電子雲只能被「輕輕地擾動一下」。\n\n然後是本段的樞紐句：「Part of this distortion gives the van der Waals interaction.」（這個變形的一部分，給出了凡得瓦交互作用。）注意這句話的邏輯方向：不是「先有鍵結，順便造成變形」，而是「那一點點微小的、幾乎測不到的變形，就是鍵結的全部來源」。整段接下來要做的，就是把「一點點微小的變形」量化成一個具體的 −A/R⁶。\n\n這也是為什麼這一段值得花力氣讀透：惰性氣體晶體是本章唯一一種你可以從頭到尾、不含任何可調參數、純用兩個實驗常數就把晶格常數與內聚能算出來的固體（書上只寫「calculations on properties of the solid do not involve disposable parameters」，「唯一」是我對照本章其他鍵結型態之後下的判斷，不是 Kittel 的說法）。第 3 章後面的離子晶體要靠兩個由固體本身的晶格常數與壓縮率反推的參數 λ 與 ρ（p.62），共價鍵與金屬鍵更沒有這種待遇。惰性氣體是本章唯一一次「從氣相預測固相」成功的示範（此比較同樣是我下的判斷），Kittel 在 p.59 特地用一句話標記這件事：「From measurements on the gas phase we have predicted the lattice constant of the crystal.」"
+    },
+    {
+      "kind": "concept",
+      "heading": "【Table 4，書 p.53】這一段所有數字的來源，以及 p.54 的整頁影像",
+      "tier": "book",
+      "body": "本段所有的數值論證都回到 p.53 頂端這張 Table 4（標題「Properties of inert gas crystals」，副標「(Extrapolated to 0 K and zero pressure)」）。網頁不放圖，所以先把它重建出來。表頭分成六欄：最近鄰距離（Å）；實驗內聚能（分成 kJ/mol 與 eV/atom 兩個子欄）；熔點（K）；自由原子的游離電位（eV）；以及最後兩欄合併在「Parameters in Lennard-Jones potential, Eq. 10」這個跨欄標題底下的 ε（以 10⁻¹⁶ erg 為單位）與 σ（Å）。\n\n| | 最近鄰距離 (Å) | 內聚能 (kJ/mol) | 內聚能 (eV/atom) | 熔點 (K) | 游離電位 (eV) | ε (10⁻¹⁶ erg) | σ (Å) |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| He | （liquid at zero pressure） | | | | 24.58 | 14 | 2.56 |\n| Ne | 3.13 | 1.88 | 0.02 | 24.56 | 21.56 | 50 | 2.74 |\n| Ar | 3.76 | 7.74 | 0.080 | 83.81 | 15.76 | 167 | 3.40 |\n| Kr | 4.01 | 11.2 | 0.116 | 115.8 | 14.00 | 225 | 3.65 |\n| Xe | 4.35 | 16.0 | 0.17 | 161.4 | 12.13 | 320 | 3.98 |\n\nHe 那一列橫跨前四欄只印一句「(liquid at zero pressure)」：氦在零壓下到絕對零度都不結晶，所以沒有最近鄰距離、沒有內聚能、沒有熔點可填，但游離電位與 Lennard-Jones 參數仍然量得到。\n\n【校註】這張表在 PDF 文字層裡被抽成一長串沒有欄位結構的數字（例如 Ar 那一列抽出來是「3.76 7.74 0.080 83.81 15.76 167 3.40」），欄與列的對應關係是我把 p.53 用 PyMuPDF 放大算繪成影像後目視判讀重建的，不是照抄抽取文字。\n\n緊接的 p.54 是 Table 5「Ionization energies」，這一整頁在 PDF 裡**沒有文字層**，是一張旋轉 90° 的整頁影像（文字層只剩下頁碼「54」）。目視判讀可知它是一張週期表形式的游離能表，每格上排是移走第一個電子的能量、下排是移走前兩個電子的能量總和（即第一與第二游離電位之和），單位 eV，來源註明為 National Bureau of Standards Circular 467。惰性氣體那一行的第一游離能為 He 24.58、Ne 21.56、Ar 15.76、Kr 14.00、Xe 12.13、Rn 10.74，與 Table 4 的「游離電位」欄完全一致。這張表在本段沒有被引用，它是為了 p.61 的 Fig. 8（NaCl 的能量帳）預先擺在這裡的。"
+    },
+    {
+      "kind": "concept",
+      "heading": "為什麼「剛性的電荷分布」會給出恰好為零的交互作用",
+      "tier": "book",
+      "body": "Van der Waals-London Interaction 這一小節的第一段，Kittel 先把「沒有作用力」這個反面情形講死，這一步非常重要，因為它決定了吸引力只能從哪裡來。\n\n設定是：兩個相同的惰性氣體原子，相隔 R，而且 R「large in comparison with the radii of the atoms」——遠大於原子半徑。問題是：兩個中性原子之間有什麼交互作用？\n\n原文的答案分兩層。第一層：「If the charge distributions on the atoms were rigid, the interaction between atoms would be zero」——如果原子上的電荷分布是剛性的，交互作用會是零。理由是「the electrostatic potential of a spherical distribution of electronic charge is canceled outside a neutral atom by the electrostatic potential of the charge on the nucleus」：球對稱電子雲在原子外部產生的靜電位，被原子核電荷的靜電位抵消掉。這其實就是靜電學的殼層定理（Newton 的球殼定理在庫侖力上的對應）：一個球對稱的電荷分布，在球外的作用等同於把全部電荷集中在球心。電子雲球對稱、總電荷 −Ze，核電荷 +Ze，兩者集中到同一點，外部電位恆等於零。**不是很小，是嚴格為零。**\n\n這句話還有一個常被忽略的推論，Kittel 立刻補上了：「Then the inert gas atoms could show no cohesion and could not condense.」如果真是剛性的，惰性氣體就不可能凝結——不會有液態氬，也不會有固態氖。既然實驗上它們確實會凝結，剛性假設就一定是錯的。\n\n第二層是正面答案：「But the atoms induce dipole moments in each other, and the induced moments cause an attractive interaction between the atoms.」原子會在彼此身上**誘發**偶極矩，而誘發出來的偶極矩造成吸引。\n\n請把這兩句話合起來讀成一個嚴格的邏輯鏈：靜態的、球對稱的、時間平均後的電荷分布 ⇒ 交互作用嚴格為零 ⇒ 所以凡得瓦力**不可能**來自時間平均的電荷分布，它只能來自平均值以外的東西，也就是**漲落**。接下來的諧振子模型，就是把這個「漲落」做成一個可以解的力學問題。"
+    },
+    {
+      "kind": "concept",
+      "heading": "【Fig. 3，書 p.55】兩個線性諧振子的模型：座標到底怎麼定的",
+      "tier": "book",
+      "body": "Kittel 的原話是「As a model, we consider two identical linear harmonic oscillators 1 and 2 separated by R.」模型的每一個元件都要看清楚，因為式 (2) 的四個庫侖項完全由這張圖的幾何決定。\n\nFig. 3（圖說逐字為「Coordinates of the two oscillators.」）畫的是：左右各一個諧振子，每個畫成「⊕—彈簧—⊖」，也就是一個正電荷 +e 與一個負電荷 −e 用彈簧連著。左邊那個振子上方有一條帶箭頭的量測線標為 x₂，從它的 ⊕ 量到它的 ⊖；右邊那個振子下方同樣有一條量測線標為 x₁，從它的 ⊕ 量到它的 ⊖。圖的下緣另有一條長箭頭標為 R，從**左振子的 ⊕** 一路量到**右振子的 ⊕**。\n\n所以四個電荷在 x 軸上的座標是：左 ⊕ 在 0，左 ⊖ 在 x₂，右 ⊕ 在 R，右 ⊖ 在 R + x₁。把這四個位置兩兩配對，就是式 (2) 的四項，一項不多一項不少。這個細節值得停一下：**x₁ 與 x₂ 是同一個振子內部正負電荷的相對位移，不是兩個原子之間的距離**，而 R 是「internuclear coordinate」，量在兩個 ⊕ 之間。初讀時把 x₁、x₂ 誤認為某種「原子中心的偏移」，式 (2) 的分母就會對不上。\n\n模型的物理內容有三條，全部在 p.53 最後一段：\n\n第一，電荷是 ±e、位移是 x₁ 與 x₂，粒子只沿 x 軸振動（「The particles oscillate along the x axis.」）。這是把一個三維的原子極化問題壓成一維——只保留沿著兩原子連線方向的極化。這個簡化會少算橫向極化的貢獻，但不影響冪次。\n\n第二，力常數是 C，動量是 p₁、p₂。\n\n第三，也是最關鍵的一條：「Each uncoupled oscillator is assumed to have the frequency ω₀ of the strongest optical absorption line of the atom. Thus C = mω₀².」把彈簧的力常數用原子**最強光吸收線**的頻率去定。這一步把一個純粹虛構的彈簧接上了可測量的實驗量：ω₀ 不是自由參數，它是原子光譜裡那條主吸收線。這也預告了 p.56 那個 A ≈ ℏω₀α² 的形式——同一個 ω₀ 會與電子極化率 α 一起出現，而 α 被 Kittel 指向第 15 章。"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "未耦合系統的哈密頓量",
+        "formula": "ℋ₀ = (1/2m)p₁² + ½Cx₁² + (1/2m)p₂² + ½Cx₂²",
+        "bookPage": 53,
+        "eqNumber": "(1)",
+        "symbols": "ℋ₀ 為未受擾動系統（unperturbed system）的哈密頓量；m 為振子的質量（原文未另行給符號說明，由 C = mω₀² 一式引入，物理上是電子質量）；p₁、p₂ 為兩個振子的動量；x₁、x₂ 為兩個振子內部 ±e 兩電荷的相對位移；C 為力常數，且 C = mω₀²，其中 ω₀ 是該原子最強光吸收線的頻率。",
+        "from": "把每個原子模型化成一個一維線性諧振子，兩個振子之間先不放任何耦合。前兩項是振子 1 的動能與位能，後兩項是振子 2 的，形式完全相同（因為兩個原子相同）。這是標準的兩個獨立諧振子。",
+        "limits": "這個哈密頓量的本徵能量是 (n₁ + ½)ℏω₀ + (n₂ + ½)ℏω₀。關鍵在於**基態不是零**：即使 n₁ = n₂ = 0，能量仍有 2 × ½ℏω₀ = ℏω₀。這個零點能是整段推導的「本金」——凡得瓦吸引力完全來自這筆本金在耦合後變小了多少，而不是來自任何古典的靜電吸引。若把 ℏ 設為 0，零點能消失，本金為零，吸引力也就消失（這正是 p.56 說 ΔU → 0 as ℏ → 0 的意思）。",
+        "numeric": "以氬為例，最強光吸收線落在真空紫外，ℏω₀ 的量級是 10 eV 上下（Kittel 在這幾頁沒有給 Ar 的 ω₀ 數值，只說它是最強光吸收線的頻率）。相對地，Table 4 給的 ε 只有 167 × 10⁻¹⁶ erg ≈ 10.4 meV。兩者差三個數量級——這就是「內聚能只有游離能的 1% 或更低」在模型裡的對應：吸引力是從一個 ~10 eV 的零點能上「刮」下來的一小片。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "兩個振子之間的庫侖交互作用能（未展開）",
+        "formula": "(CGS)  ℋ₁ = e²/R + e²/(R + x₁ − x₂) − e²/(R + x₁) − e²/(R − x₂)",
+        "bookPage": 55,
+        "eqNumber": "(2)",
+        "symbols": "ℋ₁ 為兩個振子之間的庫侖交互作用能（原文：「Let ℋ₁ be the coulomb interaction energy of the two oscillators.」）；R 為 internuclear coordinate，即兩個 ⊕ 電荷之間的距離；e 為電荷量。式前標註 (CGS) 表示採高斯制，庫侖能寫成 q₁q₂/r 而不帶 1/4πε₀。",
+        "from": "把 Fig. 3 的四個電荷（左⊕在 0、左⊖在 x₂、右⊕在 R、右⊖在 R + x₁）兩兩配對，寫出全部四個跨振子的庫侖項：⊕⊕ 距離 R 給 +e²/R；⊖⊖ 距離 (R + x₁) − x₂ 給 +e²/(R + x₁ − x₂)；左⊕與右⊖ 距離 R + x₁ 給 −e²/(R + x₁)；左⊖與右⊕ 距離 R − x₂ 給 −e²/(R − x₂)。同一個振子內部的 ±e 交互作用不算進來，它已經被吸收進式 (1) 的 ½Cx² 裡。",
+        "limits": "令 x₁ = x₂ = 0（兩個振子都完全沒有極化）：四項變成 e²/R + e²/R − e²/R − e²/R = 0，嚴格為零。這就是前一段「剛性球對稱電荷分布給出零交互作用」在這個模型裡的具體體現——**沒有漲落就沒有交互作用**，一點都不剩。整個凡得瓦力因此必定藏在對 x₁、x₂ 的展開係數裡，而不在零階。另一個極限 R → ∞ 時四項各自趨於 e²/R 並成對抵消，ℋ₁ → 0，兩原子互不相干。",
+        "numeric": "以 Ar 的最近鄰距離 R = 3.76 Å 為例，單一項 e²/R 在 CGS 下是 (4.803×10⁻¹⁰ esu)²/(3.76×10⁻⁸ cm) = 6.14×10⁻¹² erg ≈ 3.8 eV。四項各自都是 eV 量級，而它們的**淨和**（見式 3）只有 meV 量級。這個三個數量級的抵消，是理解凡得瓦力為何如此微弱的關鍵：它是四個大數相減後的殘渣。"
+      }
+    },
+    {
+      "kind": "derivation",
+      "heading": "補推導：式 (2) 展開到最低階為什麼是 x₁x₂ 而不是 x₁ 或 x²",
+      "tier": "derived",
+      "steps": [
+        "原文只寫「in the approximation |x₁|, |x₂| ≪ R we expand (2) to obtain in lowest order」，然後直接跳到答案。中間這幾行是本段最值得自己算一次的代數，因為它同時解釋了為什麼結果是 R⁻³ 而不是 R⁻²，以及為什麼後面的能量是 R⁻⁶ 而不是 R⁻³。",
+        "工具只有一個：1/(R + δ) = (1/R)[1 − δ/R + (δ/R)² − (δ/R)³ + …]，對 |δ| ≪ R 收斂。注意第四項 e²/(R − x₂) 的 δ 是 −x₂，所以展開成 (1/R)[1 + x₂/R + (x₂/R)² + …]，符號全正。",
+        "把四項各自展開，並令 u ≡ x₁ − x₂：ℋ₁ = (e²/R){ 1 + [1 − u/R + u²/R² − …] − [1 − x₁/R + x₁²/R² − …] − [1 + x₂/R + x₂²/R² + …] }。",
+        "**零階（R⁻¹ 項）**：1 + 1 − 1 − 1 = 0。四個 e²/R 恰好抵消。物理意義：兩個中性物體之間沒有單極—單極項，這是電中性的直接後果。",
+        "**一階（R⁻² 項）**：係數為 (−u + x₁ − x₂)/R = [−(x₁ − x₂) + x₁ − x₂]/R = 0。又是恰好為零。物理意義：這一階原本應該是「振子 1 的瞬時偶極」與「振子 2 的瞬時偶極」各自單獨與對方**中性原子**的作用，也就是偶極—單極項；但對方是電中性的，單極為零，所以這一項必須消失。這個抵消不是巧合，是電中性要求的。",
+        "**二階（R⁻³ 項）**：係數為 (u² − x₁² − x₂²)/R² = [(x₁ − x₂)² − x₁² − x₂²]/R² = [x₁² − 2x₁x₂ + x₂² − x₁² − x₂²]/R² = −2x₁x₂/R²。注意這裡發生了第三次抵消：**兩個振子各自的自能項 x₁² 與 x₂² 也消掉了**，只剩下交叉項 x₁x₂。這一點至關重要——如果留下 x₁² 項，它會與式 (1) 的 ½Cx₁² 合併成一個「單體的頻率移動」，那不是兩體交互作用；真正把兩個振子綁在一起的，只有 x₁x₂ 這個乘積。",
+        "把二階係數乘回前置的 e²/R：ℋ₁ ≅ (e²/R)(−2x₁x₂/R²) = −2e²x₁x₂/R³。這就是式 (3)。",
+        "冪次的帳這樣記：偶極—偶極的靜電交互作用天生就是 R⁻³（兩個偶極矩 p₁ ~ ex₁、p₂ ~ ex₂，能量 ~ −2p₁p₂/R³）。前兩階之所以被砍掉，是因為電中性殺掉單極；自能項之所以被砍掉，是因為那是第三個獨立的抵消。剩下唯一存活的，就是最低階的偶極—偶極耦合。"
+      ],
+      "body": "書上這一步只有半行字（「we expand (2) to obtain in lowest order」），但它其實包含了三次獨立的抵消，而且每一次抵消都對應一個物理陳述。讀者若直接接受式 (3)，就會錯過整段最深刻的一件事：**凡得瓦力之所以這麼弱、這麼短程，是因為它是三重抵消後的殘留項。**\n\n算完之後回頭看式 (3) 的形式，可以先預告後面的走向：ℋ₁ ∝ x₁x₂，這是一個**雙線性耦合**（bilinear coupling）。任何雙線性耦合的兩個相同諧振子，都可以用對稱／反對稱的正規座標對角化——這就是式 (4) 到式 (7) 在做的事，也是為什麼 Kittel 有把握說「can be diagonalized by the normal mode transformation」，而不必先檢查什麼條件。\n\n還要注意 x₁x₂ 的符號結構：當 x₁ 與 x₂ 同號（兩個偶極頭尾相接、沿著連線方向對齊）時 ℋ₁ < 0，能量降低；異號時能量升高。也就是說這個耦合本身並沒有偏好——它只是把原本簡併的兩個振動模式**劈開**成一高一低。吸引力來自哪裡？來自劈開之後，高的那個升得比低的那個降得少（這是平方根函數的凹性），所以兩個零點能的**平均值**下降。這件事必須展到二階才看得出來，這就是下一段式 (8) 的內容。"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "最低階的偶極—偶極耦合",
+        "formula": "ℋ₁ ≅ −2e²x₁x₂ / R³",
+        "bookPage": 55,
+        "eqNumber": "(3)",
+        "symbols": "符號同式 (2)。注意書上此處印的關係符號是「≅」（近似等於）而非等號，因為這是 |x₁|, |x₂| ≪ R 展開後保留的最低階項。",
+        "from": "把式 (2) 在 |x₁|, |x₂| ≪ R 下對 x₁/R 與 x₂/R 展開，零階與一階恰好抵消，二階的自能項 x₁²、x₂² 也抵消，只剩交叉項（推導見上一個 block）。",
+        "limits": "R → ∞ 時 ℋ₁ → 0 如 R⁻³，比任何離子晶體的 R⁻¹ 庫侖項衰減快得多——這說的是**耦合強度**的衰減。要注意別把它與晶格和的收斂混為一談：p.59 的 12.13188 與 14.45392 是 Σp⁻¹² 與 Σp⁻⁶，來自**能量**的 R⁻¹² 與 R⁻⁶（式 9），不是這裡的 R⁻³；事實上三維晶格上 Σr⁻³ 恰好落在對數發散的邊緣（∫r⁻³·r²dr = ∫dr/r），根本不是一個「收斂得快」的冪次。真正收斂快的是能量的 R⁻⁶，而離子晶體的 R⁻¹ 則必須發明 Madelung 常數與特殊求和技巧（p.63-64）才能處理。另一方面，這一式在 x₁, x₂ → R 時完全失效：兩個原子一旦靠近到電子雲重疊的程度，展開的前提 |x₁|, |x₂| ≪ R 就破了，此時主宰的是下一小節的 Pauli 排斥，而不是這一項。",
+        "numeric": "把 x₁ ≈ x₂ ≈ 0.1 Å（一個粗估的電子雲瞬時位移）、R = 3.76 Å（Ar）代入：2e²x₁x₂/R³ = 2 × (4.803×10⁻¹⁰)² × (10⁻⁹)²/(3.76×10⁻⁸)³ = 8.7×10⁻¹⁵ erg ≈ 5 meV，與 Table 4 的 ε ≈ 10.4 meV 同量級。此數值僅為量級估計，Kittel 未在這幾頁給出 x 的典型值。"
+      }
+    },
+    {
+      "kind": "concept",
+      "heading": "把 x₁x₂ 讀成「關聯」：為什麼時間平均為零的東西可以產生淨吸引",
+      "tier": "mine",
+      "body": "式 (3) 常讓人卡住的地方是：電子雲的瞬時偶極矩時間平均是零（⟨x₁⟩ = ⟨x₂⟩ = 0，否則自由原子就有永久偶極矩了），那為什麼一堆平均為零的東西可以造出一個不為零的能量？\n\n答案在於能量正比於 ⟨x₁x₂⟩ 而不是 ⟨x₁⟩⟨x₂⟩。兩者的差就是**關聯**（correlation）。耦合 −2e²x₁x₂/R³ 的存在，使得基態波函數不再是兩個獨立振子波函數的乘積：系統會偏好 x₁ 與 x₂ 同號的組態（那樣能量較低），於是 ⟨x₁x₂⟩ > 0，即使 ⟨x₁⟩ 與 ⟨x₂⟩ 都還是嚴格為零。\n\n一個好用（但要收回來的）類比：兩個人各自在房間裡隨機走動，各自的平均位置都在房間中央；但如果他們手上各拿一端的橡皮筋，雖然平均位置還是中央，兩人的位置卻會同步——同步本身就是一種可以儲存能量的結構。回到精確陳述：這裡的「橡皮筋」就是式 (3) 的雙線性耦合，「同步」就是 ⟨x₁x₂⟩ ≠ 0，而「儲存的能量」就是式 (9) 的 ΔU。\n\n這也是為什麼凡得瓦力在文獻上又叫 **dispersion force**（色散力）：ω₀ 是光吸收線的頻率，而光吸收線正是決定折射率色散的東西；同一個 ω₀ 同時決定了原子怎麼吸收光、以及兩個原子怎麼互相吸引。Kittel 在 p.56 把這條線接到第 15 章的電子極化率 α 上，就是這個意思。\n\n（本 block 為我補的教學說明；Kittel 在 p.53-56 用的是諧振子正規模的語言，沒有用「關聯」或「色散力」這兩個詞。）"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "正規模變換（位置）",
+        "formula": "x_s ≡ (1/√2)(x₁ + x₂) ;   x_a ≡ (1/√2)(x₁ − x₂)",
+        "bookPage": 55,
+        "eqNumber": "(4)",
+        "symbols": "下標 s 與 a 代表 symmetric（對稱）與 antisymmetric（反對稱）運動模式，這是 p.56 緊接在式 (5) 後面的一句話所定義的：「The subscripts s and a denote symmetric and antisymmetric modes of motion.」1/√2 是歸一化因子，使變換成為正交變換。\n\n【校註】這一式在 PDF 文字層裡被拆成「xs ≡ 1 √2 (x1 + x2)」，1/√2 的分數結構整個散掉（1 與 √2 被分開成兩個漂浮的片段）。本式的形式是對照 p.55 的算繪影像重組的，不是照抄抽取文字。",
+        "from": "原文：「The total hamiltonian with the approximate form (3) for ℋ₁ can be diagonalized by the normal mode transformation」。這是兩個相同、以雙線性項耦合的振子的標準對角化。之所以一定是「和」與「差」這兩個組合，是因為系統對「交換 1 ↔ 2」有對稱性，而任何對稱操作的本徵向量只能是對稱（+）或反對稱（−）組合。",
+        "limits": "x_a = 0（只激發對稱模）代表兩個偶極同向擺動、頭尾相接；x_s = 0（只激發反對稱模）代表兩個偶極反向擺動。由式 (7) 可見對稱模的等效力常數是 C − 2e²/R³（變軟），反對稱模是 C + 2e²/R³（變硬）——同向排列的偶極互相吸引、把彈簧放鬆，反向排列的互相排斥、把彈簧繃緊。R → ∞ 時兩個等效力常數都回到 C，兩個模式簡併，變換退化成一個無意義的座標旋轉。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "正規模變換的反解（位置）",
+        "formula": "x₁ = (1/√2)(x_s + x_a) ;   x₂ = (1/√2)(x_s − x_a)",
+        "bookPage": 56,
+        "eqNumber": "(5)",
+        "symbols": "同式 (4)。原文的引導語是「or, on solving for x₁ and x₂,」。",
+        "from": "把式 (4) 的兩條式子相加與相減：x_s + x_a = (1/√2)(2x₁) ⇒ x₁ = (1/√2)(x_s + x_a)；x_s − x_a = (1/√2)(2x₂) ⇒ x₂ = (1/√2)(x_s − x_a)。變換與它的反變換形式完全相同，這正是正交（且為對合）變換的特徵。",
+        "limits": "因為變換是正交的，它保持二次型的跡：x₁² + x₂² = x_s² + x_a²。這個恆等式是下一步對角化能成功的一半理由（另一半是 x₁x₂ = ½(x_s² − x_a²)）。若歸一化因子不是 1/√2 而是別的值，這條等式就不成立，動能項會被額外的係數污染。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "正規模變換（動量）",
+        "formula": "p₁ ≡ (1/√2)(p_s + p_a) ;   p₂ ≡ (1/√2)(p_s − p_a)",
+        "bookPage": 56,
+        "eqNumber": "(6)",
+        "symbols": "p_s、p_a 為與兩個正規模相關聯的動量。原文：「Further, we have the momenta p_s, p_a associated with the two modes」。",
+        "from": "動量必須與位置用**同一個**正交變換，否則正則對易關係 [x, p] = iℏ 會被破壞。用同一組係數，可以驗證 [x_s, p_s] = [x_a, p_a] = iℏ 且 [x_s, p_a] = [x_a, p_s] = 0——新座標仍是一組合法的正則變數，所以式 (7) 的兩個括號才能各自被當成一個獨立的諧振子來讀出頻率。",
+        "limits": "同樣由正交性得 p₁² + p₂² = p_s² + p_a²，所以式 (1) 的動能項在新座標下形式完全不變（仍是 (1/2m)p_s² + (1/2m)p_a²），質量還是 m。換句話說，這個變換只動位能，不動動能——這就是為什麼兩個模式的頻率只由等效力常數的變化決定。"
+      }
+    },
+    {
+      "kind": "derivation",
+      "heading": "補推導：把 (5)(6) 代進 ℋ₀ + ℋ₁，交叉項是怎麼被吃掉的",
+      "tier": "derived",
+      "steps": [
+        "書上只寫「The total hamiltonian ℋ₀ + ℋ₁ after the transformations (5) and (6) is」然後直接給式 (7)。中間的代數只有三行，但值得算一次，因為它讓「對角化」這個詞從抽象變具體。",
+        "**動能項**：p₁² + p₂² = ½(p_s + p_a)² + ½(p_s − p_a)² = ½(p_s² + 2p_sp_a + p_a²) + ½(p_s² − 2p_sp_a + p_a²) = p_s² + p_a²。交叉項 p_sp_a 在相加時精確抵消。所以 (1/2m)(p₁² + p₂²) = (1/2m)p_s² + (1/2m)p_a²。",
+        "**彈簧位能項**：同樣的計算給 x₁² + x₂² = x_s² + x_a²，所以 ½C(x₁² + x₂²) = ½Cx_s² + ½Cx_a²。",
+        "**耦合項**：x₁x₂ = ½(x_s + x_a)(x_s − x_a) = ½(x_s² − x_a²)。這是整個對角化的核心一步——兩個**不同**變數的乘積 x₁x₂，變成了兩個**同一個**變數的平方之差。於是 ℋ₁ = −(2e²/R³)·½(x_s² − x_a²) = −(e²/R³)x_s² + (e²/R³)x_a²。",
+        "**合併**：ℋ = ℋ₀ + ℋ₁ = [(1/2m)p_s² + ½Cx_s² − (e²/R³)x_s²] + [(1/2m)p_a² + ½Cx_a² + (e²/R³)x_a²]。把每個方括號裡的 x² 係數提出 ½：½C − e²/R³ = ½(C − 2e²/R³)，½C + e²/R³ = ½(C + 2e²/R³)。",
+        "得到 ℋ = [(1/2m)p_s² + ½(C − 2e²/R³)x_s²] + [(1/2m)p_a² + ½(C + 2e²/R³)x_a²]，正是式 (7)。",
+        "「對角化」的意思到這裡就完全具體了：原本的哈密頓量裡有 x₁ 與 x₂ 的交叉項，兩個自由度糾纏在一起；換到 s、a 座標之後，哈密頓量拆成兩個**完全獨立**的方括號，每個裡面只有一個座標。兩個獨立的諧振子，頻率可以「by inspection」直接讀出來——因為標準諧振子 (1/2m)p² + ½K x² 的頻率就是 √(K/m)。"
+      ],
+      "body": "這一步在書上完全不見蹤影，但它是本段推導鏈中唯一真正的技術動作。做完之後有兩件事值得記住。\n\n第一，**耦合把一個簡併的雙重能階劈成兩個**。原本兩個振子都是 ω₀，簡併；耦合後對稱模的等效力常數少了 2e²/R³（變軟、頻率下降），反對稱模多了 2e²/R³（變硬、頻率上升）。劈裂的大小正比於耦合強度，也就是正比於 R⁻³。這個「R⁻³ 的能階劈裂」在光譜學裡是可以直接觀測的（分子間的 Davydov 劈裂就是同一個機制）。\n\n第二，也是這一段最容易被忽略的一點：**劈裂本身並不產生淨吸引**。如果 ω 對力常數是線性的，一個模上升多少、另一個就下降多少，兩個零點能的和不變，ΔU = 0。淨吸引之所以存在，完全是因為 ω = √(K/m) 是一個**凹函數**：把 K 增加 ΔK 所提升的頻率，小於把 K 減少同樣 ΔK 所降低的頻率。平均下來頻率下降，零點能下降。這個「凹性」在代數上就表現為式 (8) 平方根展開的那個 −⅛ξ² 項，而它對 ± 兩種情形**符號相同**——這是式 (9) 那個因子 2 的來源。"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "對角化後的總哈密頓量",
+        "formula": "ℋ = [ (1/2m)p_s² + ½(C − 2e²/R³)x_s² ] + [ (1/2m)p_a² + ½(C + 2e²/R³)x_a² ]",
+        "bookPage": 56,
+        "eqNumber": "(7)",
+        "symbols": "兩個方括號各自是一個獨立的一維諧振子：對稱模的等效力常數為 C − 2e²/R³，反對稱模的為 C + 2e²/R³；兩者的質量都仍是 m。\n\n【校註】此式在 PDF 文字層中，(1/2m) 的分數被拆成「1 2m」、½ 被拆成「1 2」，且整式的片段順序被打亂。本式是對照 p.56 的算繪影像重組的。",
+        "from": "把式 (5) 與 (6) 代入 ℋ₀（式 1）+ ℋ₁（式 3），利用 x₁² + x₂² = x_s² + x_a²、p₁² + p₂² = p_s² + p_a²、x₁x₂ = ½(x_s² − x_a²)（完整代數見上一個 block）。",
+        "limits": "R → ∞：2e²/R³ → 0，兩個等效力常數都回到 C，兩個模式簡併於 ω₀，系統回到兩個獨立的自由原子。反過來，當 R 小到 2e²/R³ → C 時，對稱模的等效力常數趨於零、頻率趨於零——模型在此**崩潰**（等效力常數若變負，對稱模就不再是振盪而是失穩）。臨界距離為 R³ = 2e²/C = 2e²/(mω₀²) = 2α（α 為極化率），亦即 R ≈ (2α)^{1/3}，約當原子半徑的量級。這個崩潰距離遠在 Pauli 排斥早已主宰的區域之內：以前面用過的 Ar 極化率 α ≈ 1.6 Å³ 估，R = (2α)^{1/3} ≈ 1.5 Å，而 Table 4 的 σ = 3.40 Å，兩者差了兩倍以上。也就是說模型崩潰的地方本來就不在它的適用範圍裡，並不構成矛盾。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "耦合振子的兩個頻率（含平方根展開）",
+        "formula": "ω = [ (C ± 2e²/R³) / m ]^{1/2} = ω₀ [ 1 ± ½(2e²/CR³) − ⅛(2e²/CR³)² + … ]",
+        "bookPage": 56,
+        "eqNumber": "(8)",
+        "symbols": "上方符號（+）對應反對稱模 ω_a（等效力常數 C + 2e²/R³），下方符號（−）對應對稱模 ω_s（等效力常數 C − 2e²/R³）；ω₀ = (C/m)^{1/2}，原文：「with ω₀ given by (C/m)^{1/2}. In (8) we have expanded the square root.」",
+        "from": "由式 (7)：兩個方括號各是一個標準諧振子 (1/2m)p² + ½Kx²，頻率為 √(K/m)。原文說這兩個頻率是「found by inspection of (7)」——直接讀出來的，不需要再解任何方程。第二個等號是把 √(1 ± ξ) 對小量 ξ ≡ 2e²/CR³ 做二項式展開。",
+        "limits": "展開的有效條件是 ξ = 2e²/CR³ ≪ 1，即 R³ ≫ 2e²/C = 2α。這正好是「兩原子相距遠大於原子半徑」在這個模型裡的精確版本。**最關鍵的觀察是二階項 −⅛ξ² 前面的符號不隨 ± 改變**：一階項一個 +½ξ、一個 −½ξ，相加為零；二階項兩個都是 −⅛ξ²，相加為 −¼ξ²，不為零。所以「展到一階什麼都沒有、必須展到二階才有淨效應」不是計算上的偶然，而是式 (9) 存在的唯一理由。若只保留到一階，凡得瓦力等於零。",
+        "numeric": "ξ = 2e²/(CR³) = 2α/R³（用 α = e²/C）。Ar 的極化率 α ≈ 1.6 Å³（此值不出自 Kittel 這幾頁，Kittel 在 p.56 把 α 指向第 15 章），R = 3.76 Å ⇒ R³ = 53.2 Å³，ξ ≈ 3.2/53.2 ≈ 0.06。ξ ≪ 1 成立，而 ξ² ≈ 3.6×10⁻³ ——二階項只有零點能的千分之幾，這就是為什麼 ℏω₀ ~ 10 eV 的本金只刮出 meV 量級的鍵能。"
+      }
+    },
+    {
+      "kind": "derivation",
+      "heading": "補推導：從平方根展開到式 (9) 的 −A/R⁶，每一個係數的來歷",
+      "tier": "derived",
+      "steps": [
+        "令 ξ ≡ 2e²/(CR³)（無量綱小量）。式 (7) 給出的兩個頻率是 ω_{s,a} = ω₀(1 ∓ ξ)^{1/2}，其中對稱模取 −ξ（力常數 C − 2e²/R³），反對稱模取 +ξ。",
+        "二項式展開：(1 + ξ)^{1/2} = 1 + ½ξ − ⅛ξ² + (1/16)ξ³ − …；(1 − ξ)^{1/2} = 1 − ½ξ − ⅛ξ² − (1/16)ξ³ − …。**兩式的 ξ² 係數都是 −⅛，符號相同**。書上把兩者合寫成式 (8) 的 ω₀[1 ± ½ξ − ⅛ξ² + …]。",
+        "頻率的變化量：Δω_s ≡ ω_s − ω₀ = ω₀(−½ξ − ⅛ξ²)，Δω_a ≡ ω_a − ω₀ = ω₀(+½ξ − ⅛ξ²)。",
+        "相加：Δω_s + Δω_a = ω₀(−½ξ − ⅛ξ² + ½ξ − ⅛ξ²) = ω₀(−¼ξ²)。一階項 ∓½ξ 精確抵消，只剩兩份二階項相加。",
+        "零點能：耦合後系統的零點能是 ½ℏ(ω_s + ω_a)，未耦合時是 2 · ½ℏω₀ = ℏω₀。兩者之差就是 ΔU = ½ℏ(Δω_s + Δω_a) = ½ℏ · ω₀(−¼ξ²) = −ℏω₀ · ⅛ξ²。",
+        "代回 ξ：ΔU = −ℏω₀ · ⅛ (2e²/CR³)²，這就是式 (9) 的中間表達式。",
+        "把 R 的依賴挑出來：(2e²/CR³)² = (2e²/C)² · R⁻⁶，所以 ΔU = −[ℏω₀ (2e²/C)²/8] R⁻⁶ ≡ −A/R⁶，其中 **A = ℏω₀ (2e²/C)²/8 = ℏω₀ e⁴/(2C²)**。",
+        "**R⁻⁶ 的來源一句話講完**：耦合是 R⁻³（偶極—偶極），淨能量效應是耦合的**二階**（一階抵消），二階就是平方，(R⁻³)² = R⁻⁶。這也同時說明了為什麼不會是 R⁻³——若一階不抵消，凡得瓦力就會是長程的 R⁻³，惰性氣體晶體的晶格和將不收斂，整個第 3 章的算法都要重寫。"
+      ],
+      "body": "這是本段的高潮，但書上只用了式 (8) 到式 (9) 之間的兩行字帶過（「The zero point energy of the system is ½ℏ(ω_s + ω_a); because of the interaction the sum is lowered from the uncoupled value 2 · ½ℏω₀ by」）。把中間補齊之後，可以看清楚三件層層相扣的事。\n\n**第一，一階為什麼一定抵消。** 一階項對應的是「耦合對能階的一階微擾」，而 ⟨0|x₁x₂|0⟩ 在未耦合基態下等於 ⟨0|x₁|0⟩⟨0|x₂|0⟩ = 0。用微擾論的語言：一階能量修正為零，第一個非零的貢獻來自**二階微擾**，而二階微擾能對基態永遠是負的（能量下降）——這就是為什麼凡得瓦力必定是吸引力，不會有排斥的版本。式 (8) 展開裡那個對 ± 都取負號的 −⅛ξ²，就是二階微擾恆為負的代數化身。\n\n**第二，為什麼一定要有 ℏ。** ΔU = −ℏω₀ξ²/8 裡面明擺著一個 ℏ。這不是量綱上的裝飾——整個效應的本體是**零點能**，而零點能是量子力學獨有的。古典的兩個諧振子在基態（靜止）時能量為零，耦合再怎麼劈裂，零還是零，沒有東西可以下降。Kittel 在 p.56 把這件事講得很白：「The interaction is a quantum effect, in the sense that ΔU → 0 as ℏ → 0.」\n\n**第三，兩個模式的貢獻是相加不是相抵。** 很多人在這裡直覺出錯，以為「一個升一個降，抵消掉了」。抵消的只有一階；二階的兩份**同號相加**，所以 ΔU 是單一模式二階效應的兩倍。這個因子 2 已經含在 ½ × ¼ = ⅛ 這個係數裡了。"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "凡得瓦—倫敦交互作用能",
+        "formula": "ΔU = ½ℏ(Δω_s + Δω_a) = −ℏω₀ · ⅛ (2e²/CR³)² = −A/R⁶",
+        "bookPage": 56,
+        "eqNumber": "(9)",
+        "symbols": "ΔU 為因耦合而下降的零點能；Δω_s、Δω_a 為兩個正規模頻率相對於 ω₀ 的變化量；A 為凡得瓦常數，由本式可讀出 A = ℏω₀(2e²/C)²/8 = ℏω₀e⁴/(2C²)。原文緊接的一句是：「This attractive interaction varies as the minus sixth power of the separation of the two oscillators.」",
+        "from": "由式 (8) 的頻率展開取到二階，一階項在相加時抵消，兩個二階項同號相加，再乘上 ½ℏ（零點能公式）。",
+        "limits": "(i) ℏ → 0 時 ΔU → 0：這是純量子效應，古典力學給不出凡得瓦力（原文明言）。(ii) R → ∞ 時如 R⁻⁶ 衰減，比偶極—偶極的靜電項 R⁻³ 快得多，所以它是**短程**的吸引力，晶格和收斂極快。(iii) 這個交互作用的存在**完全不需要電子雲重疊**——原文逐字：「The van der Waals interaction does not depend for its existence on any overlap of the charge densities of the two atoms.」這一點把它與下一小節的 Pauli 排斥徹底分開：一個是遠距離的關聯效應，一個是近距離的波函數重疊效應。(iv) 適用範圍不只惰性氣體：原文說它「is the principal attractive interaction in crystals of inert gases and also in crystals of many organic molecules」。",
+        "numeric": "由 4εσ⁶ = A（式 10 下方）可反推 Ar 的 A：ε = 167×10⁻¹⁶ erg，σ = 3.40 Å ⇒ σ⁶ = 1545 Å⁶ = 1.545×10⁻⁴⁵ cm⁶，A = 4 × 1.67×10⁻¹⁴ × 1.545×10⁻⁴⁵ = 1.03×10⁻⁵⁸ erg·cm⁶。在最近鄰距離 R = 3.76 Å 處（R⁶ = 2.826×10⁻⁴⁵ cm⁶）單一對原子的吸引能 −A/R⁶ = −3.65×10⁻¹⁴ erg ≈ −0.023 eV。每個原子有 12 個最近鄰、每對算一半，光是最近鄰的吸引就有 6 × 0.023 ≈ 0.14 eV/atom，扣掉 +B/R¹² 的排斥後淨剩約 0.09 eV/atom（見式 16）。這是**原子靜止**的值，還要再乘上 Ar 的量子修正（結合減少 10%）得 0.081 eV/atom，才與 Table 4 的實驗值 0.080 eV/atom 相符。（此代入計算為我所做。）"
+      }
+    },
+    {
+      "kind": "concept",
+      "heading": "四句必須背下來的限定語：名字、適用範圍、量子效應，以及「不依賴電荷密度重疊」",
+      "tier": "book",
+      "body": "式 (9) 之後 Kittel 用一整段做定性總結，這一段的每一句都是後面章節會反覆呼叫的定義。\n\n**名字。** 「This is called the van der Waals interaction, known also as the London interaction or the induced dipole-dipole interaction.」三個名字指同一件事：凡得瓦交互作用、倫敦交互作用、誘發偶極—偶極交互作用。讀文獻時三個都會遇到。\n\n**適用範圍。** 「It is the principal attractive interaction in crystals of inert gases and also in crystals of many organic molecules.」惰性氣體晶體與許多有機分子晶體的**主要**吸引作用。注意是 principal，不是 only——離子晶體裡凡得瓦部分也存在，只是 p.61 說它「makes a relatively small contribution to the cohesive energy in ionic crystals, of the order of 1 or 2 percent」。\n\n**量子性。** 「The interaction is a quantum effect, in the sense that ΔU → 0 as ℏ → 0. Thus the zero point energy of the system is lowered by the dipole-dipole coupling of Eq. (3).」這句話值得逐字記住，因為它是全書少數幾處明確標記「這個東西沒有古典對應」的地方。古典上兩個中性、球對稱、靜止的原子之間**真的**沒有力；力來自零點運動，而零點運動來自不確定性原理。\n\n**與重疊無關。** 「The van der Waals interaction does not depend for its existence on any overlap of the charge densities of the two atoms.」這是本段最容易被誤讀的一句。它的意思是：凡得瓦吸引力是兩個原子**瞬時偶極之間的庫侖關聯**（式 2 的四個 e²/r 項），兩個原子的波函數可以完全不重疊，吸引力照樣存在。它與化學鍵（需要軌域重疊）、與下一小節的 Pauli 排斥（完全來自重疊）機制上毫不相干。這也是為什麼在 Lennard-Jones 勢裡，−A/R⁶ 與 +B/R¹² 可以被當成兩個**獨立**的項相加——它們的物理來源根本不同，不是同一個展開的兩階。\n\n把這四句串起來，凡得瓦力的身分證就完整了：純量子、長程（相對於重疊而言）、恆為吸引、R⁻⁶、與重疊無關、在惰性氣體與分子晶體中主導。"
+    },
+    {
+      "kind": "derivation",
+      "heading": "補推導：A ≈ ℏω₀α² 是怎麼來的，以及那個被吞掉的 ½",
+      "tier": "derived",
+      "steps": [
+        "書上 p.56 的原話是：「An approximate value of the constant A in (9) for identical atoms is given by ℏω₀α², where ℏω₀ is the energy of the strongest optical absorption line and α is the electronic polarizability (Chapter 15).」書上沒有推，這裡把它補出來。",
+        "先從模型算出精確的 A。由式 (9)，A = ℏω₀ · ⅛ · (2e²/C)² = ℏω₀ · ⅛ · 4e⁴/C² = ℏω₀ e⁴/(2C²)。",
+        "再算這個諧振子模型的極化率。加一個外電場 E，電荷 +e 受力 eE，平衡位移 x 滿足 Cx = eE ⇒ x = eE/C。誘發偶極矩 p = ex = e²E/C。依定義 p = αE，故 **α = e²/C**（CGS 制，α 的量綱是體積）。",
+        "代回：A = ℏω₀ e⁴/(2C²) = ℏω₀ (e²/C)²/2 = **½ ℏω₀ α²**。",
+        "所以模型給的其實是 ½ℏω₀α²，書上寫的是 ℏω₀α²。差一個因子 2——這正是 Kittel 用 approximate value 與 given by 而非等號的原因：α 本身在真實原子裡並不是單一振子模型算出來的 e²/C，ω₀ 也不是唯一一條吸收線，這個表達式只保證量級正確。",
+        "量綱檢查：CGS 下 α 的量綱是 cm³（因為 p = αE，p 的量綱 esu·cm、E 的量綱 esu/cm²），所以 α² 的量綱是 cm⁶，ℏω₀α² 的量綱是 erg·cm⁶，除以 R⁶（cm⁶）得 erg。量綱成立。",
+        "順帶得到一個有用的經驗律：既然 A ~ ℏω₀α²，而 4εσ⁶ = A，較大、較容易極化的原子（α 大）就有較大的 A、較深的井（ε 大）。Table 4 的 ε 從 He 的 14 單調增加到 Xe 的 320（10⁻¹⁶ erg），正好跟著原子從小到大、從難極化到易極化的順序走。"
+      ],
+      "body": "這個 block 補的是 Kittel 只給結果、沒給來源的一步。它的價值不只在補齊代數，而在於它把本段與第 15 章接起來：**Kittel 在 p.56 明白把 α 指向 Chapter 15（Optical Processes and Excitons），而 ω₀ 是原子最強吸收線的頻率**。同一個 α 決定光吸收與折射、也決定兩個原子之間的吸引力有多強（介電常數與極化率的關係則在第 16 章 Dielectrics and Ferroelectrics 展開）。這是固態物理裡「一個量在好幾個看似無關的現象裡反覆出現」的典型例子。\n\n α = e²/C 這個關係還有一個立即的用處：它讓式 (8) 的小量 ξ = 2e²/(CR³) 可以改寫成 **ξ = 2α/R³**，一個純幾何的量——「原子體積佔間距立方的比例」。展開條件 ξ ≪ 1 於是變成「原子的極化體積遠小於原子間距所圍的體積」，也就是「原子稀疏地擺著、彼此離得遠」。這正是本段一開始那句「at a separation R large in comparison with the radii of the atoms」的定量版本。"
+    },
+    {
+      "kind": "concept",
+      "heading": "排斥交互作用：為什麼罪魁禍首是 Pauli 原理而不是庫侖排斥（書 p.56-57，Fig. 4）",
+      "tier": "book",
+      "body": "Repulsive Interaction 小節從一個幾何觀察開始：「As the two atoms are brought together, their charge distributions gradually overlap (Fig. 4), thereby changing the electrostatic energy of the system.」\n\n**Fig. 4（書 p.57）** 用兩格圖說明「重疊」是什麼。上面一格：兩個實心黑點是兩個原子核，各自**下方**掛著一個尖峰狀的灰色電荷密度分布（中央尖、兩側衰減的形狀，黑點就畫在尖峰的頂端之上）；兩條裙擺剛好在基線上相接，但沒有顏色加深的交疊區。下面一格：兩個核靠近了，兩個灰峰的裙擺明顯互相侵入，在中間形成一塊顏色明顯較深的交疊三角。圖說逐字為：「Electronic charge distributions overlap as atoms approach. The solid circles denote the nuclei.」\n\n接著是本小節的論點核心：「At sufficiently close separations the overlap energy is repulsive, in large part because of the **Pauli exclusion principle**.」在足夠近的距離，重疊能是排斥的，**很大一部分**是因為 Pauli 不相容原理。注意 in large part 這個限定——Kittel 沒有說全部來自 Pauli，靜電項也有貢獻，但主角是 Pauli。\n\n機制講得很具體。原理的初階陳述是「two electrons cannot have all their quantum numbers equal」。然後：「When the charge distributions of two atoms overlap, there is a tendency for electrons from atom B to occupy in part states of atom A already occupied by electrons of atom A, and vice versa.」——重疊時，B 原子的電子會有部分傾向去佔據 A 原子已經被佔滿的態，反之亦然。\n\n而 p.57 開頭給出後果：「The Pauli principle prevents multiple occupancy, and electron distributions of atoms with closed shells can overlap only if accompanied by the partial promotion of electrons to unoccupied high energy states of the atoms. Thus the electron overlap increases the total energy of the system and gives a repulsive contribution to the interaction.」閉殼層原子的電子分布要重疊，就**必須**伴隨部分電子被提升到未佔據的高能態；能量升高，就是排斥。\n\n這整條論證的邏輯形狀值得注意：它不是「電子帶負電所以互相推開」，而是「低能態已經被佔滿，想擠進來只能付更高能量的房租」。這是一個**運動學**的限制（來自波函數的反對稱性），不是一個動力學的力。"
+    },
+    {
+      "kind": "concept",
+      "heading": "【Fig. 5，書 p.57】把 Pauli 排斥量化成 19.60 eV 的那個極端例子",
+      "tier": "book",
+      "body": "Kittel 說「An extreme example in which the overlap is complete is shown in Fig. 5.」這張圖是全書把 Pauli 排斥量化得最乾淨的一次，值得完整重建。\n\n圖分成 (a)、(b) 兩列，每列畫三個圓圈與一個算式：\n\n**(a) 列**：左邊一個圓圈標 H，圈內一個小黑點（電子），圈下標「1s↑」；中間一個「+」號；第二個圓圈標 H，圈內一點，圈下標「1s↓」；然後一個「→」；右邊一個圓圈標 He，圈內兩個黑點，圈下標「1s↑1s↓」，再下方標「Total spin zero」。這一列右側註明「(a) Total electron energy: −78.98 eV」。\n\n**(b) 列**：同樣三個圓圈，但兩個 H 的自旋都是「1s↑」（平行），合併後的 He 圈下標「1s↑2s↑」，再下方標「Total spin one」。右側註明「(b) Total electron energy: −59.38 eV」。\n\n圖說（Figure 5）交代了這個思想實驗的設定與結論，關鍵句逐字如下：「in an extreme example, two hydrogen atoms are pushed together until the protons are almost in contact.」（兩個氫原子被壓在一起，直到兩個質子幾乎接觸。）「The energy of the electron system alone can be taken from observations on atomic He, which has two electrons.」（電子系統本身的能量，可以從有兩個電子的原子氦的觀測值取得。）\n\n這是全圖最漂亮的一手：**兩個質子幾乎接觸 ⇒ 電子看到的是一個 +2e 的點電荷 ⇒ 電子系統就是氦原子的電子系統**。於是一個原本要解的困難的雙中心問題，被換成一個實驗數據唾手可得的單中心問題。\n\n然後是兩個情形：「In (a) the electrons have antiparallel spins and the Pauli principle has no effect: the electrons are bound by −78.98 eV.」自旋反平行時，兩個電子的自旋量子數已經不同，可以同時待在 1s，Pauli 原理**無效應**，這就是氦的基態 1s²，束縛能 −78.98 eV。\n\n「In (b) the spins are parallel: the Pauli principle forces the promotion of an electron from a 1s↑ orbital of H to a 2s↑ orbital of He.」自旋平行時，兩個電子的所有量子數會完全相同，Pauli 原理**強迫**其中一個從 1s 升到 2s，變成 1s↑2s↑（氦的三重態）。「The electrons now are bound by -59.38 eV, less than (a) by 19.60 eV.」\n\n結論句：「This is the amount by which the Pauli principle has increased the repulsion.」——19.60 eV 就是 Pauli 原理增加的排斥量。\n\n最後一句是方法論上的把關，非常重要：「We have omitted the repulsive coulomb energy of the two protons, which is the same in both (a) and (b).」兩個質子之間的庫侖排斥在 (a) 與 (b) 完全相同，所以在相減時消掉了。**這正是為什麼 19.60 eV 可以被乾淨地歸因給 Pauli 原理，而不是庫侖排斥**——兩個情形唯一的差別就是自旋組態，而自旋本身不帶庫侖能。\n\n數字檢查：−59.38 − (−78.98) = 19.60 eV，與圖說一致。"
+    },
+    {
+      "kind": "concept",
+      "heading": "常見誤解：Pauli「力」不是力，而 Fig. 5 是極端例子不是典型例子",
+      "tier": "mine",
+      "body": "Fig. 5 給出的 19.60 eV 很震撼，但初學者很容易從它推出兩個錯誤的結論，這裡先擋掉。\n\n**誤解一：Pauli 原理是一種力。** 不是。Hamiltonian 裡面沒有任何一項叫「Pauli 項」，式 (2) 那種庫侖項才是力。Pauli 原理是對**允許的態**下的限制：多電子波函數必須對交換反對稱。這個限制把系統從「兩個電子都待在 1s」的低能組態中排除出去，逼它去佔據 2s，於是能量升高。能量隨距離升高，對距離微分就得到一個排斥**力**——力是這樣間接產生的，不是 Pauli 原理直接施加的。這個區別在後面幾章會反覆出現：Fermi 面之所以存在、金屬電子氣之所以有巨大的動能（第 6 章）、白矮星之所以不塌縮，機制完全相同——都是「態被佔滿了，新來的只能去高能態」。\n\n**誤解二：惰性氣體晶體裡的排斥能有 19.60 eV 這麼大。** 完全不是。Kittel 自己用 extreme example 標記了這件事：Fig. 5 是把兩個質子壓到幾乎接觸的極端，重疊是 100%。惰性氣體晶體的最近鄰距離（Table 4：Ne 3.13 Å 到 Xe 4.35 Å）上，電子雲只有裙擺相碰，重疊是小量，排斥能是 meV 量級，與 ε 同量級。Fig. 5 的作用是**證明機制存在、並且量級上足夠大**，不是提供數值。\n\n**順帶一個要小心的地方**：Fig. 5 的推理用了 He 的觀測值來代表「兩個質子合而為一」的電子系統，這是一個 united-atom 極限的論證。它在質子幾乎接觸時成立，在真實的 H₂ 分子平衡距離（約 0.74 Å，此值不出自 Kittel 這幾頁）上並不成立——真實的 H₂ 在自旋反平行時形成共價鍵（第 3 章後面的 Covalent Crystals 小節會處理），自旋平行時則是排斥態。Fig. 5 借用 He 的數據，是為了避開真正的雙中心計算；Kittel 在腳註 2 就承認了這個困難：「The overlap energy naturally depends on the radial distribution of charge about each atom. The mathematical calculation is always complicated even if the charge distribution is known.」\n\n（本 block 為我補的教學說明與防誤解；Fig. 5 的數據與 extreme example 的措辭出自書上 p.57。）"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "Lennard-Jones 勢（6-12 勢）",
+        "formula": "U(R) = 4ε [ (σ/R)¹² − (σ/R)⁶ ]",
+        "bookPage": 58,
+        "eqNumber": "(10)",
+        "symbols": "U(R) 為相距 R 的兩個原子的總位能；ε 與 σ 是原文所稱的「the new parameters」，與 A、B 的換算關係為 **4εσ⁶ = A** 與 **4εσ¹² = B**。ε 的量綱是能量（Table 4 用 10⁻¹⁶ erg），σ 的量綱是長度（Å）。兩原子間的力由 −dU/dR 給出。",
+        "from": "把式 (9) 的長程吸引項 −A/R⁶ 與經驗排斥項 +B/R¹² 相加，再把兩個常數 A、B 換成一組物理意義更直接的參數。原文說明排斥項的來歷：「Experimental data on the inert gases can be fitted well by an empirical repulsive potential of the form B/R¹², where B is a positive constant, when used together with a long-range attractive potential of the form of (9).」注意 R⁻¹² **純粹是經驗選擇**，不是從理論導出的；原文明說「We make no attempt here to evaluate the repulsive interaction from first principles.」（以下這個理由是我補的，書上未提：）選 12 的理由之一是它恰好是 6 的兩倍，令 x = (σ/R)⁶ 後 U 變成一個簡單的二次式 4ε(x² − x)，計算方便。",
+        "limits": "(i) R → ∞：U → −4εσ⁶/R⁶ = −A/R⁶，回到純凡得瓦吸引，與式 (9) 銜接。(ii) R → 0：U → +4εσ¹²/R¹² → +∞，排斥項壓過一切，原子不可互相穿透。(iii) R = σ：U = 4ε(1 − 1) = 0，位能穿越零點——σ 因此有明確的物理意義：**「硬球直徑」，兩原子接近到 R = σ 時淨位能恰好回到零**。(iv) 極小值在 R = 2^{1/6}σ ≈ 1.12σ，U_min = −ε，所以 **ε 就是位能井的深度**。(v) 這個勢**不含電荷、不含 ℏ**——所有量子力學都被壓縮進 ε 與 σ 這兩個由實驗定出的數字裡。",
+        "numeric": "以 Ar（ε = 167×10⁻¹⁶ erg，σ = 3.40 Å）為例：井深 ε = 1.67×10⁻¹⁴ erg = 10.4 meV，換算成溫度 ε/k_B = 1.67×10⁻¹⁴ / 1.381×10⁻¹⁶ = 121 K；兩體平衡距離 2^{1/6}σ = 3.82 Å。把 Table 4 四個氣體都換算：ε/k_B = Ne 36 K、Ar 121 K、Kr 163 K、Xe 232 K，而對應的熔點是 24.56、83.81、115.8、161.4 K——熔點/(ε/k_B) 分別為 0.68、0.69、0.71、0.70，四者幾乎相同。這是對應態原理（law of corresponding states）的一個漂亮驗證：惰性氣體只是同一條 Lennard-Jones 曲線在不同尺度上的縮放。（此換算與比值為我的計算，Kittel 在這幾頁沒有做這件事。）"
+      }
+    },
+    {
+      "kind": "concept",
+      "heading": "【Fig. 6，書 p.58】Lennard-Jones 曲線長什麼樣，以及該從圖上讀出什麼",
+      "tier": "book",
+      "body": "網頁不放圖，所以先重建 Fig. 6。這是一張以 R/σ 為橫軸（標註「R/σ→」，刻度 0.2、0.4、0.6、0.8、1.0、1.2，帶格線）、以 U(R)/ε 為縱軸（刻度從 −1 到 6，標註「U(R)/ε」）的圖。曲線從左上方極高處幾乎垂直地俯衝下來，在 R/σ ≈ 0.8 附近才開始明顯彎曲，在 R/σ = 1.0 處穿過 U = 0，繼續下降到 R/σ ≈ 1.12 附近觸底——圖說宣告井深為 −ε，但原書實際畫出的曲線最低只到 U/ε ≈ −0.3（原書繪圖與式 (10) 不完全一致），數學上正確的井深仍是 −ε——然後**極其平緩**地回升，到最後一個標註刻度 R/σ = 1.2（圖框還再往右延伸一小段）時仍幾乎貼著底部。\n\n圖說逐字（Figure 6）：「Form of the Lennard-Jones potential (10) which describes the interaction of two inert gas atoms. The minimum occurs at R/σ = 2^{1/6} ≅ 1.12. Notice how steep the curve is inside the minimum, and how flat it is outside the minimum. The value of U at the minimum is −ε; and U = 0 at R = σ.」\n\n圖上有三個定位點，把它們記住，這條曲線就完全被釘死了：\n\n| 位置 | R/σ | U/ε | 意義 |\n| --- | --- | --- | --- |\n| 零點 | 1.00 | 0 | σ 的定義：淨位能穿越零 |\n| 極小 | 2^{1/6} ≈ 1.12 | −1 | ε 的定義：井深 |\n| 遠場 | → ∞ | → 0⁻ | 回到 −A/R⁶ |\n\n圖說特別要讀者注意的那句「how steep the curve is inside the minimum, and how flat it is outside」，不是修辭，是本段後面一連串結論的物理基礎。井的內壁陡（R⁻¹² 發散得極快），外壁平（R⁻⁶ 衰減得慢），這個**不對稱**帶來三個後果：\n\n第一，**平衡位置幾乎不可壓縮，卻容易被拉開**。這直接對應惰性氣體晶體的體積彈性模數很小、熱膨脹係數很大。\n\n第二，**零點運動只能往外推**。一個粒子在不對稱井裡做零點振動，它的機率分布會偏向平坦的那一側，平均位置因此比古典極小值大。這正是 p.59 說輕原子（Ne）的 R₀/σ = 1.14 大於普適值 1.09 的原因，也是 p.60 那條同位素證據（Ne²⁰ 的晶格常數大於 Ne²²）的原因。\n\n第三，**非簡諧性是熱膨脹的來源**。第 5 章處理熱膨脹時所需要的「位能井不對稱」，在這裡就已經完整地畫出來了。"
+    },
+    {
+      "kind": "derivation",
+      "heading": "補推導：Fig. 6 的三個定位點怎麼算出來（兩體問題）",
+      "tier": "derived",
+      "steps": [
+        "書上把 2^{1/6}、−ε、U(σ) = 0 這三個結果直接寫在圖說裡，沒有推。它們各只有兩三行，但第一步（極小值位置）的做法與後面式 (13) 求晶體平衡距離的做法**完全同構**，先在這裡練一次，式 (13) 就不會卡。",
+        "**零點。** 令 U(R) = 0：4ε[(σ/R)¹² − (σ/R)⁶] = 0 ⇒ (σ/R)⁶[(σ/R)⁶ − 1] = 0。非平庸解為 (σ/R)⁶ = 1 ⇒ **R = σ**。（另一個根 (σ/R)⁶ = 0 對應 R → ∞。）",
+        "**極小值位置。** 令 x ≡ (σ/R)⁶，則 U = 4ε(x² − x)。對 R 微分不如對 x 微分方便，但要小心 x 是 R 的遞減函數；直接對 R 做：dU/dR = 4ε[−12σ¹²/R¹³ + 6σ⁶/R⁷] = 0。",
+        "兩邊乘 R¹³/(4ε) 得 −12σ¹² + 6σ⁶R⁶ = 0 ⇒ R⁶ = 2σ⁶ ⇒ **R_min = 2^{1/6}σ = 1.1225σ**，與圖說的 ≅ 1.12 一致。",
+        "**井深。** 在 R_min 處 (σ/R)⁶ = 1/2，代回：U = 4ε[(1/2)² − (1/2)] = 4ε[1/4 − 1/2] = 4ε(−1/4) = **−ε**。",
+        "順便驗證這個係數 4 的用意：正是為了讓井深恰好等於 ε（而不是 ε/4 之類的難看數字），Lennard-Jones 勢才寫成 4ε[…] 而不是 ε[…]。這就是原文所說「ε and σ are the new parameters」比 A、B 好用的地方——兩個參數各自都有直接的圖形意義。",
+        "**二階導數（順帶）**：d²U/dR² = 4ε[156σ¹²R⁻¹⁴ − 42σ⁶R⁻⁸]，在 R_min（R⁶ = 2σ⁶）處化簡為 72ε/R_min² = 72ε/(2^{1/3}σ²) ≈ 57.1 ε/σ²。對 Ar（ε = 1.67×10⁻¹⁴ erg，σ = 3.40 Å）得等效力常數 ≈ 8.2×10² dyn/cm，這是惰性氣體晶體的聲子頻率與 Debye 溫度之所以很低的根源（對照第 4、5 章）。此數值為我的計算，非書上所給。"
+      ],
+      "body": "這三個定位點是**兩體**的結果，只涉及一對原子。下一節要處理的是**整顆晶體**：把 U(R) 對所有原子對求和之後，平衡距離會從 1.12σ 縮到 1.09σ。\n\n先想一下為什麼會縮：晶體裡一個原子不只有 12 個最近鄰，還有第二層、第三層……這些較遠的鄰居只提供吸引（R⁻⁶ 在遠處主宰，R⁻¹² 在遠處可以忽略），等於在原本的兩體吸引上額外加了一份向內的拉力，於是平衡點往內移。用式 (12) 的數字講就精確了：排斥的晶格和 12.13188 只比 12 大 1.1%，吸引的晶格和 14.45392 卻比 12 大 20.4%——吸引被「加權放大」得多得多，所以壓縮。從 1.1225 縮到 1.0902，縮了 2.9%，數量級剛好。"
+    },
+    {
+      "kind": "concept",
+      "heading": "「不含可調參數」：這一段真正的方法論賣點，以及 λexp(−R/ρ) 這個替代品",
+      "tier": "book",
+      "body": "式 (10) 之後有兩段容易被當成技術細節滑過去的文字，其實它們才是這一整段的論證重心。\n\n**第一件事：A 與 B 從哪裡來。** 原文（p.58）：「The constants A and B are empirical parameters determined from independent measurements made in the gas phase; the data used include the virial coefficients and the viscosity.」A 與 B 是從**氣相**的獨立量測定出來的，用到的數據包括維里係數與黏度。\n\n這句話的重量在於「gas phase」與「independent」。維里係數來自實際氣體偏離理想氣體定律的程度（第二維里係數就是兩體位能的一個積分），黏度來自氣體分子的碰撞截面——兩者都只牽涉**一對**分子在氣態下的相互作用，完全沒有用到任何固體的資訊。\n\n**第二件事：所以固體的計算是一個真正的預測。** 原文：「Values of ε and σ given in Table 4 can be obtained from gas-phase data, so that calculations on properties of the solid do not involve disposable parameters.」（固體性質的計算**不涉及可調參數**。）\n\n這在整本 Kittel 裡是罕見的。對照 p.62：離子晶體的排斥參數 λ 與 ρ，Kittel 明說是「constants to be determined from observed values of the lattice constant and compressibility」——用固體本身的晶格常數與壓縮率去定的。那就不是預測，是擬合。惰性氣體是本章唯一一個「完全用氣相數據預測固相」的案例（此對比為我所加），而 p.59 的 R₀/σ = 1.09 對上實測 1.14/1.11/1.10/1.09、以及 p.59-60 的內聚能對上 Table 4 誤差 1–7%，就是這個預測的成績單。讀這一段時如果只記住公式而沒記住這件事，就錯過了 Kittel 安排惰性氣體當第一個例子的全部用意。\n\n**第三件事：另一個常用的排斥形式。** 原文：「Other empirical forms for the repulsive interaction are widely used, in particular the exponential form λ exp(−R/ρ), where ρ is a measure of the range of the interaction. This is generally as easy to handle analytically as the inverse power law form.」\n\nρ 是**交互作用的射程**（range）的度量：R 每增加一個 ρ，排斥能就衰減一個 e 倍。指數形式在物理上比 R⁻¹² 更有根據——原子波函數的尾巴本來就是指數衰減的（束縛態在經典禁區內 ψ ~ e^{−κr}），兩個指數尾巴的重疊積分自然也是指數形式。這個形式在本章後面的離子晶體被正式採用：p.62 的式 (18) 寫成 U_ij = λ exp(−r_ij/ρ) ± q²/r_ij，而 p.63 給出 ρ 的量級為「of the order of 0.1 R₀, so that the repulsive interaction has a very short range」。p.62 並且說明了換形式的理由：「we have used the exponential form of the empirical repulsive potential rather than the R⁻¹² form used for the inert gases. The change is made because it may give a be[tter representation]…」"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "晶體的總位能（Lennard-Jones 對所有原子對求和）",
+        "formula": "U_tot = ½N(4ε) [ Σ′_j (σ / p_ij R)¹² − Σ′_j (σ / p_ij R)⁶ ]",
+        "bookPage": 58,
+        "eqNumber": "(11)",
+        "symbols": "N 為晶體中的原子數；R 為最近鄰距離；p_ij 為無量綱的比值，使 p_ij R 等於參考原子 i 與任一其他原子 j 之間的距離（原文：「where p_ij R is the distance between reference atom i and any other atom j, expressed in terms of the nearest-neighbor distance R」）。求和號上的撇號 Σ′ 表示排除 j = i 這一項。因子 ½ 的理由原文寫得很清楚：「The factor ½ occurs with the N to compensate for counting twice each pair of atoms.」——每一對原子被數了兩次，要除以 2。\n\n【校註】此式在 PDF 文字層中，½ 被拆成「1 2」漂到段末。式子的形式是對照 p.58 算繪影像重組的。",
+        "from": "原文：「If we neglect the kinetic energy of the inert gas atoms, the cohesive energy of an inert gas crystal is given by summing the Lennard-Jones potential (10) over all pairs of atoms in the crystal.」也就是兩個假設：(i) **忽略原子的動能**（把原子當成靜止在格點上的古典質點——這正是後面要用 28%、10%、6%、4% 去修正的那個假設）；(ii) **位能是兩體的、可加的**（沒有三體項）。",
+        "limits": "只保留最近鄰（Σ′ → 12，因為 fcc 有 12 個最近鄰、且它們的 p = 1）時，U_tot → ½N(4ε)[12(σ/R)¹² − 12(σ/R)⁶]，退化成 12 對最近鄰的 Lennard-Jones 和，平衡距離回到兩體值 1.12σ。真實的和（式 12）把遠鄰也算進來，於是平衡距離縮到 1.09σ。另一個極限：若晶體結構改變（fcc → hcp → bcc），只有 Σ′ 的兩個數值會變，式子的形式完全不變——這就是為什麼「晶格和」可以被當成一個純幾何的結構指紋來討論。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "fcc 結構的兩個晶格和",
+        "formula": "Σ′_j p_ij⁻¹² = 12.13188 ;   Σ′_j p_ij⁻⁶ = 14.45392",
+        "bookPage": 59,
+        "eqNumber": "(12)",
+        "symbols": "兩個純幾何的無量綱常數，只由晶體結構決定，與是哪一種元素、與 ε、σ 的數值完全無關。原文並給出 hcp 的對應數值：「The corresponding sums for the hcp structure are 12.13229 and 14.45489.」",
+        "from": "把 fcc 晶格中所有原子相對於一個參考原子的距離，以最近鄰距離 R 為單位寫成 p_ij，再對 p⁻¹² 與 p⁻⁶ 求和（排除自己）。原文只說「The summations in (11) have been evaluated」，沒有給求和方法。",
+        "limits": "原文的讀法是：「There are 12 nearest-neighbor sites in the fcc structure; we see that the series are rapidly converging and have values not far from 12. The nearest neighbors contribute most of the interaction energy of inert gas crystals.」——兩個和都接近最近鄰數 12，所以最近鄰貢獻了大部分的交互作用能。更精確地說（我的計算，見下一個 block）：最近鄰佔排斥和的 12/12.13188 = 98.9%，但只佔吸引和的 12/14.45392 = 83.0%。**排斥幾乎完全是最近鄰的事，吸引則有六分之一來自遠鄰。** 極限情形：若指數再高（例如 R⁻²⁰），和會更貼近 12；若指數低到 1（庫侖），和根本不收斂，這就是離子晶體必須引入 Madelung 常數與特殊求和法（p.63-64）的原因。",
+        "numeric": "fcc 與 hcp 的數值差異極小（12.13188 vs 12.13229，14.45392 vs 14.45489），相對差都在 10⁻⁵ 量級。兩者最近鄰數同為 12、第二近鄰距離同為 √2 R，差異從第三殼層才開始。"
+      }
+    },
+    {
+      "kind": "derivation",
+      "heading": "補推導：把 12.13188 與 14.45392 拆成一層一層的鄰居",
+      "tier": "derived",
+      "steps": [
+        "Kittel 只說「The summations in (11) have been evaluated」，數字從天上掉下來。自己把前幾層算一次，才會真正相信「rapidly converging」這句話——而且會發現兩個和的收斂速度差很多，這件事書上沒有點破。",
+        "fcc 的格點可寫成 (a/2)(n₁, n₂, n₃)，其中 n₁ + n₂ + n₃ 為偶數。以最近鄰距離 R = a/√2 為單位，p² = (n₁² + n₂² + n₃²)/2。依 p² = 1, 2, 3, 4, 5, 6, … 數出每層的鄰居數：**12, 6, 24, 12, 24, 8, …**（第 1 層是 12 個 ⟨110⟩ 型最近鄰，第 2 層是 6 個 ⟨100⟩ 型，第 3 層 24 個，第 4 層 12 個，依此類推）。",
+        "**排斥和** Σp⁻¹² = Σ N/(p²)⁶：12/1 + 6/2⁶ + 24/3⁶ + 12/4⁶ + 24/5⁶ + 8/6⁶ = 12 + 0.09375 + 0.032922 + 0.0029297 + 0.0015360 + 0.0001715 = **12.13131**。只算六層就已經到 Kittel 的 12.13188 的 99.9995%。",
+        "**吸引和** Σp⁻⁶ = Σ N/(p²)³：12/1 + 6/2³ + 24/3³ + 12/4³ + 24/5³ + 8/6³ = 12 + 0.75 + 0.888889 + 0.1875 + 0.192 + 0.037037 = **14.05543**。離 14.45392 還差 2.8%，再多算三層（p² = 7, 8, 9，鄰居數 48, 6, 36）才到 14.2565，仍差 1.4%。",
+        "**結論**：R⁻¹² 的和是「幾乎只有最近鄰」（第二層以後全部加起來只佔 1.1%），R⁻⁶ 的和則要加到十幾層才收斂（遠鄰合計佔 17%）。Kittel 用同一句「rapidly converging」概括兩者，其實兩者的收斂速度差了一個數量級。",
+        "**這件事的物理後果**：排斥是徹底的近距離效應（只有直接碰到的鄰居才管事），吸引則是半長程的（第二、三殼層還有可觀貢獻）。這解釋了為什麼晶體的平衡距離會比兩體的 1.12σ 小——加進來的遠鄰幾乎只貢獻吸引，把晶格往內拉。",
+        "**順帶一個書上沒有追問的觀察**：hcp 的兩個和（12.13229、14.45489）都略**大**於 fcc 的。代入下面推導的 U_tot(R₀) = −Nε A₆²/(2A₁₂)，hcp 得 −8.61106Nε，fcc 得 −8.61020Nε——**靜態 Lennard-Jones 模型其實略偏好 hcp**（低約 0.010%）。但實驗上（p.53）Ne、Ar、Kr、Xe 全部結晶成 fcc。這個矛盾在第 3 章這幾頁裡沒有被討論；Kittel 只把 hcp 的兩個數值並列，沒有繼續追問。真正的解釋要靠零點能與三體作用的差異，那超出本章範圍。"
+      ],
+      "body": "這個 block 補的是「這兩個數字怎麼來的」以及「rapidly converging 到底多快」。對讀者最有用的收穫有兩個。\n\n第一，**晶格和是純幾何量**。它不知道你在算氖還是氙，也不知道 ε、σ 是多少。這就是為什麼式 (14) 的 R₀/σ = 1.09 可以「the same for all elements with an fcc structure」——所有 fcc 的惰性氣體共用同一個幾何因子。這種「材料細節全部塞進幾個參數，結構貢獻獨立出來」的分解方式，在固態物理裡一再出現（第 2 章的結構因子、第 3 章離子晶體的 Madelung 常數 α、第 5 章的 Debye 函數都是同一種分工）。\n\n第二，**收斂速度的差異是實質的物理資訊**。凡是 R⁻ⁿ 型的作用，n 越大越「只看得到最近鄰」。這個觀念到第 17 章（Surface and Interface Physics）處理表面時特別有用：表面原子失去一部分鄰居，對 R⁻¹² 幾乎沒差（那些鄰居本來就不重要），對 R⁻⁶ 則有明顯損失——所以表面能主要來自吸引項的損失。"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "平衡條件（對最近鄰距離取極小）",
+        "formula": "dU_tot/dR = 0 = −2Nε [ (12)(12.13) σ¹²/R¹³ − (6)(14.45) σ⁶/R⁷ ]",
+        "bookPage": 59,
+        "eqNumber": "(13)",
+        "symbols": "式中的 (12) 與 (6) 是微分 R⁻¹² 與 R⁻⁶ 掉下來的冪次；12.13 與 14.45 是式 (12) 兩個晶格和取到四位有效數字。原文的引導語是：「If we take U_tot in (11) as the total energy of the crystal, the equilibrium value R₀ is given by requiring that U_tot be a minimum with respect to variations in the nearest-neighbor distance R」。",
+        "from": "把式 (11) 代入式 (12) 的數值後對 R 微分並令其為零。注意這裡隱含一個重要的物理假設：**只允許 R 這一個變數變化**，也就是晶體維持 fcc 結構均勻地脹縮（等比例縮放），不考慮結構相變或非等向形變。",
+        "limits": "令 dU_tot/dR = 0 等價於「零壓」條件：壓力 P = −dU/dV，體積 V ∝ R³，所以 dU/dR = 0 ⟺ P = 0。這就是 Table 4 標題裡「zero pressure」的意思。若外加壓力，平衡條件變成 dU_tot/dR = −P·dV/dR ≠ 0，R₀ 會變小——這正是第 3 章習題與壓縮率計算的出發點。另一個極限：本式**完全沒有溫度**，因為式 (11) 忽略了動能。所以它給的是 0 K、且連零點運動都不算的「古典靜態平衡距離」。",
+        "numeric": "注意 −2Nε 這個前置因子在令式子為零時完全無關緊要——平衡距離與 ε 無關、與 N 無關，只由兩個晶格和與兩個冪次決定。這就是為什麼 R₀/σ 對所有 fcc 惰性氣體是同一個數。"
+      }
+    },
+    {
+      "kind": "derivation",
+      "heading": "補推導：從式 (13) 解出 1.09，以及為什麼它比兩體的 1.12 小",
+      "tier": "derived",
+      "steps": [
+        "書上從式 (13) 直接跳到「whence R₀/σ = 1.09」，中間三行沒寫。補上。",
+        "由式 (13)，方括號內為零：(12)(12.13188) σ¹²/R¹³ = (6)(14.45392) σ⁶/R⁷。",
+        "兩邊同乘 R¹³/σ⁶：(12)(12.13188) σ⁶ = (6)(14.45392) R⁶。",
+        "解出 (σ/R)⁶ = (6 × 14.45392)/(12 × 12.13188) = 86.72352/145.58256 = 0.595700。",
+        "取倒數：(R/σ)⁶ = 1.678700。開六次方：ln(1.678700) = 0.518047，除以 6 得 0.086341，取指數得 **R₀/σ = 1.0902**，四捨五入即書上的 1.09。",
+        "**用一般式寫下來**：對 U_tot = 2Nε[A₁₂(σ/R)¹² − A₆(σ/R)⁶]，平衡條件給 (σ/R₀)⁶ = A₆/(2A₁₂)，即 **R₀/σ = (2A₁₂/A₆)^{1/6}**。",
+        "**回頭檢查兩體情形**：兩體就是 A₁₂ = A₆ = 1（只有一個鄰居、p = 1），得 R₀/σ = 2^{1/6} = 1.1225——正是 Fig. 6 的極小值位置。所以兩體與晶體用的是**同一條公式**，差別只在兩個晶格和。",
+        "**為什麼晶體的比較小**：R₀/σ = (2A₁₂/A₆)^{1/6}，比值 A₁₂/A₆ 從兩體的 1 掉到 fcc 的 12.13188/14.45392 = 0.8394。吸引和被遠鄰放大得比排斥和多，A₁₂/A₆ 下降，R₀/σ 跟著下降：(2 × 0.8394)^{1/6} = 1.0902。縮了 2.9%。",
+        "**hcp 給幾乎相同的答案**：(2 × 12.13229/14.45489)^{1/6} = 1.0902，與 fcc 在四位數內無法區分。所以「R₀/σ = 1.09」實際上對所有密堆積結構都成立，不只 fcc。"
+      ],
+      "body": "算完之後，把書上 p.59 列的實測值拿來對，會發現這一小步的預測力相當驚人。原文的實測表（用 Table 4 獨立定出的 σ）是 Ne 1.14、Ar 1.11、Kr 1.10、Xe 1.09，緊接一句「The agreement with (14) is remarkable.」\n\n自己驗算一次（用 Table 4 的最近鄰距離除以 σ）：Ne 3.13/2.74 = 1.142；Ar 3.76/3.40 = 1.106；Kr 4.01/3.65 = 1.099；Xe 4.35/3.98 = 1.093。與書上列的四個數字完全吻合。\n\n重點在於**偏差的方向是系統性的**：四個值全部 ≥ 1.09，而且原子越輕偏得越多（Ne 偏 +4.6%，Xe 偏 +0.3%）。這不是隨機誤差，是一個有物理來源的單向偏差。Kittel 的解釋是：「The slight departure of R₀/σ for the lighter atoms from the universal value 1.09 predicted for inert gases can be explained by zero-point quantum effects.」\n\n把 Fig. 6 的形狀接上來就懂了：位能井內壁陡、外壁平。原子做零點振動時，波函數往阻力小的那一側（外側）鋪得比較開，平均鍵長因此大於古典極小值。零點振幅隨質量減小而增大（∝ M^{−1/4}），所以越輕的原子脹得越多——Ne 最輕，脹最多。這個解釋在 p.60 會被同位素實驗直接證實。"
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "fcc 惰性氣體晶體的普適平衡距離",
+        "formula": "R₀/σ = 1.09    [實測：Ne 1.14、Ar 1.11、Kr 1.10、Xe 1.09]",
+        "bookPage": 59,
+        "eqNumber": "(14)",
+        "symbols": "R₀ 為平衡（0 K、零壓）時的最近鄰距離；σ 為 Lennard-Jones 長度參數，取自 Table 4、由氣相數據獨立定出。原文在式 (14) 後緊接一句：「the same for all elements with an fcc structure.」實測值那一列在書上印成一個小表，標題為 R₀/σ。",
+        "from": "由式 (13) 解出（推導見上一個 block）：R₀/σ = (2 × 12.13188 / 14.45392)^{1/6} = 1.0902。",
+        "limits": "(i) 這是一個**普適數**：不含 ε、不含 N、不含元素種類，只含兩個由 fcc 幾何決定的晶格和。所有 fcc 結構的元素共用同一個值（hcp 算出來也是 1.0902，四位數內相同）。(ii) 兩體極限（A₁₂ = A₆ = 1）給 2^{1/6} = 1.12，也就是 Fig. 6 的極小值——晶體因為遠鄰的額外吸引而被壓縮 2.9%。(iii) 實測值全部大於等於 1.09，且偏差隨原子質量減小而增大，這個系統性偏差由零點量子效應解釋（p.59 原文），在 p.60 由 Ne 同位素實驗獨立證實。(iv) 本式沒有溫度依賴，因為式 (11) 忽略了動能——它描述的是「原子靜止在格點上」的假想晶體。",
+        "numeric": "用 Table 4 自行驗算：Ne 3.13/2.74 = 1.142；Ar 3.76/3.40 = 1.106；Kr 4.01/3.65 = 1.099；Xe 4.35/3.98 = 1.093，與書上列出的 1.14、1.11、1.10、1.09 一致。反過來，把 1.09 當預測值算 Ne 的最近鄰距離：1.09 × 2.74 = 2.99 Å，實測 3.13 Å，低估 4.5%；Xe：1.09 × 3.98 = 4.34 Å，實測 4.35 Å，幾乎命中。另外可用 Fig. 2 圖說的立方晶格參數交叉檢查（fcc 的最近鄰距離 = a/√2）：Ne a = 4.46 Å 於 4 K ⇒ 3.15 Å，Ar 5.31 ⇒ 3.76 Å，Kr 5.64 ⇒ 3.99 Å，Xe 6.13 ⇒ 4.33 Å，與 Table 4（外插到 0 K）的 3.13、3.76、4.01、4.35 相符。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "惰性氣體晶體的總內聚能（代入晶格和後）",
+        "formula": "U_tot(R) = 2Nε [ (12.13)(σ/R)¹² − (14.45)(σ/R)⁶ ]",
+        "bookPage": 59,
+        "eqNumber": "(15)",
+        "symbols": "N 為原子數，ε、σ 取自 Table 4，12.13 與 14.45 為式 (12) 的兩個 fcc 晶格和。前置因子 2Nε 來自式 (11) 的 ½N(4ε) = 2Nε。原文的引導語：「The cohesive energy of inert gas crystals at absolute zero and at zero pressure is obtained by substituting (12) and (14) in (11)」。",
+        "from": "式 (11) 加上式 (12) 的數值。這一式與式 (10) 的兩體 Lennard-Jones 形式完全同構，只是兩個係數從 1、1 換成 12.13、14.45，能量尺度從 4ε 換成 2Nε。",
+        "limits": "(i) R → ∞：U_tot → 0⁻，晶體解離成自由原子。(ii) R → 0：U_tot → +∞。(iii) 在 R = R₀ = 1.09σ 處取極小，值為式 (16)。(iv) 令 N = 2、12.13 → 1、14.45 → 1 就退化回式 (10) 的兩體勢（因為 ½N(4ε) 在 N = 2 時等於 4ε）。(v) 這個式子沒有溫度、沒有零點能，所以它算的是「原子靜止」的內聚能——原文下一句就明說了：「This is the calculated cohesive energy when the atoms are at rest.」",
+        "numeric": "把 U_tot 寫成每原子的形式：U_tot/N = 2ε[12.13(σ/R)¹² − 14.45(σ/R)⁶]。在 R = σ 處為 2ε(12.13 − 14.45) = −4.64ε；在 R = R₀ 處為 −8.61ε（見式 16）。"
+      }
+    },
+    {
+      "kind": "equation",
+      "tier": "book",
+      "eq": {
+        "label": "平衡時的內聚能（靜止原子）",
+        "formula": "U_tot(R₀) = −(2.15)(4Nε)",
+        "bookPage": 59,
+        "eqNumber": "(16)",
+        "symbols": "U_tot(R₀) 為 0 K、零壓、原子靜止時整顆晶體（N 個原子）的總位能，也就是「計算值的內聚能」（取負號代表束縛）。原文緊接一句：「the same for all inert gases.」",
+        "from": "把 R = R₀（即 (σ/R₀)⁶ = 0.595700）代入式 (15)。完整代數見下一個 block。",
+        "limits": "(i) 同樣是一個**普適數**：2.15 只由兩個晶格和決定，與元素無關，所有惰性氣體共用。每原子的內聚能一律是 −8.61ε，只要知道 ε 就知道內聚能。(ii) 這是 **原子靜止** 的值，還沒有量子修正；原文接著說量子力學修正會使結合減少 Ne 28%、Ar 10%、Kr 6%、Xe 4%。(iii) 兩體極限檢查：一對原子在 R = 2^{1/6}σ 時能量是 −ε；晶體裡每原子 −8.61ε，若天真地想成「每個原子有 12 個最近鄰、每對算一半」應得 −6ε，實際是 −8.61ε，多出來的 43% 來自遠鄰的吸引與「晶體被壓縮到比兩體最佳距離更近」的綜合結果。(iv) 若把結構換成 hcp，2.15 幾乎不變（我的計算為 hcp 2.1528 vs fcc 2.1526）。",
+        "numeric": "每原子 −8.61ε 代入 Table 4 的 ε：Ne −0.0269 eV、Ar −0.0897 eV、Kr −0.1209 eV、Xe −0.1720 eV。再乘上量子修正（分別保留 72%、90%、94%、96%）得 −0.0193、−0.0807、−0.1136、−0.1651 eV，對上 Table 4 的實驗值 0.02、0.080、0.116、0.17 eV/atom——這就是 p.60 所說「within 1 to 7 percent」的那個吻合。（此代入計算為我所做，書上只給了修正百分比與最終結論。）"
+      }
+    },
+    {
+      "kind": "derivation",
+      "heading": "補推導：2.15 是怎麼冒出來的，以及把它一路算到 Table 4 的實驗值",
+      "tier": "derived",
+      "steps": [
+        "書上從式 (15) 直接跳到 −(2.15)(4Nε)，中間一步沒寫。這一步只有兩行，但它讓「普適常數 2.15」從一個要背的數字變成一個能自己重現的結果。",
+        "由式 (14) 的推導知 (σ/R₀)⁶ = A₆/(2A₁₂) = 14.45392/(2 × 12.13188) = 0.595700，於是 (σ/R₀)¹² = 0.595700² = 0.354858。",
+        "代入式 (15)：U_tot(R₀) = 2Nε[12.13188 × 0.354858 − 14.45392 × 0.595700] = 2Nε[4.30510 − 8.61020] = 2Nε × (−4.30510) = **−8.61020 Nε**。（可順手檢查：排斥項恆等於吸引項的一半，4.30510 = 8.61020/2。）",
+        "改寫成書上的形式：−8.61020 Nε = −(8.61020/4)(4Nε) = **−(2.1526)(4Nε)**，四捨五入即 −(2.15)(4Nε)。",
+        "**一般式**：U_tot(R₀) = −Nε A₆²/(2A₁₂)。代 fcc 得 −14.45392²/(2 × 12.13188) Nε = −208.91586/24.26376 Nε = **−8.61020Nε**，與上面逐步代入的結果完全相同——兩者在代數上本來就恆等，不該有任何差異。這個閉式很有用，換任何結構只要換兩個晶格和。",
+        "**每原子內聚能 = 8.61ε**。以 Ar 為例：ε = 167 × 10⁻¹⁶ erg = 1.67 × 10⁻¹⁴ erg；1 eV = 1.602 × 10⁻¹² erg，所以 ε = 0.01042 eV。8.61 × 0.01042 = **0.0897 eV/atom**（靜止原子值）。",
+        "套上 Ar 的量子修正 10%：0.0897 × 0.90 = **0.0807 eV/atom**。Table 4 的實驗值是 **0.080 eV/atom**。誤差 < 1%。",
+        "四個氣體全部做一次：Ne ε = 0.003121 eV → 8.61ε = 0.02687 → ×0.72 = 0.0193（實驗 0.02）；Ar 0.0897 → ×0.90 = 0.0807（實驗 0.080）；Kr ε = 0.014045 eV → 0.1209 → ×0.94 = 0.1136（實驗 0.116）；Xe ε = 0.019975 eV → 0.1720 → ×0.96 = 0.1651（實驗 0.17）。四個全部落在 p.60 所說的 1–7% 之內。",
+        "**再交叉檢查一次單位**：Ar 的 7.74 kJ/mol ÷ 96.485 kJ/(mol·eV) = 0.0802 eV/atom，與 Table 4 的 eV/atom 欄的 0.080 一致——表中兩個內聚能子欄自洽。"
+      ],
+      "body": "這一串數字值得親手算一次，因為它是整段論證的收尾，也是「不含可調參數」這個宣稱唯一的檢驗。\n\n把整條鏈重新走一遍：**維里係數與黏度（氣相）→ ε 與 σ → 式 (13) 給 R₀/σ = 1.09 → 式 (16) 給每原子 8.61ε → 量子修正 → 對上 Table 4 的實驗內聚能，誤差 1–7%。** 這條鏈上沒有任何一個數字是用固體的數據去湊出來的。\n\n另外注意 2.15 這個數字的結構：U_tot(R₀) = −Nε A₆²/(2A₁₂)，它對**吸引**的晶格和是平方依賴、對**排斥**的晶格和是倒數依賴。所以內聚能對「遠鄰吸引」特別敏感，對「排斥的細節」相對不敏感——這也是為什麼 R⁻¹² 這個純粹湊出來的排斥形式可以用得這麼好：它的具體冪次對最終答案的影響被開平方與取倒數雙重稀釋了。\n\n最後，順便注意 8.61ε 與熔點的關係。前面算過 ε/k_B 分別是 Ne 36 K、Ar 121 K、Kr 163 K、Xe 232 K，所以每原子內聚能相當於 Ne 310 K、Ar 1040 K、Kr 1400 K、Xe 1990 K；而熔點只有 24.6、83.8、115.8、161.4 K，大約是內聚能的 8%。換句話說，晶體遠在「把原子完全拆散」所需能量的十分之一處就已經熔化了——熔化拆掉的是長程序，不是鍵。（此換算為我的計算，Kittel 在這幾頁沒有討論熔點與內聚能的關係。）"
+    },
+    {
+      "kind": "concept",
+      "heading": "量子修正與同位素證據：零點運動如何把晶格撐大（書 p.59-60）",
+      "tier": "book",
+      "body": "式 (16) 之後，Kittel 用一段把「忽略動能」這個假設的代價算清楚。原文：「Quantum-mechanical corrections act to reduce the binding by 28, 10, 6, and 4 percent of Eq. (16) for Ne, Ar, Kr, and Xe, respectively.」\n\n**（以下內容延續到書本 p.60，略超出本段標示的 53-59 頁範圍，但它是 Cohesive Energy 這一小節的直接收尾，不看完這一段，28/10/6/4% 就只是四個孤立的數字。）**\n\n趨勢一眼可見：Ne 28%、Ar 10%、Kr 6%、Xe 4%，原子越重修正越小。p.60 開頭直接把規律寫成一句話：「The heavier the atom, the smaller the quantum correction.」\n\n然後 Kittel 給了一個**極簡的模型**來解釋這個反比關係，這個模型的簡潔程度值得注意：「We can understand the origin of the quantum correction by consideration of a simple model in which an atom is confined by fixed boundaries. If the particle has the quantum wavelength λ, where λ is determined by the boundaries, then the particle has kinetic energy p²/2M = (h/λ)²/2M with the de Broglie relation p = h/λ for the connection between the momentum and the wavelength of a particle. On this model the quantum zero-point correction to the energy is inversely proportional to the mass.」\n\n把這個論證拆開來看，它其實只有三步：(i) 原子被鄰居圍在一個尺寸固定的「籠子」裡，籠子的大小由晶格常數決定，與原子質量無關；(ii) 籠子大小固定 ⇒ 駐波波長 λ 固定 ⇒ 由 de Broglie 關係 p = h/λ，動量 p 固定，也與質量無關；(iii) 零點動能 p²/2M = (h/λ)²/2M **反比於質量 M**。\n\n質量比對一下：Ne 20、Ar 40、Kr 84、Xe 131。1/M 的相對值是 1 : 0.5 : 0.24 : 0.153，而修正百分比是 28 : 10 : 6 : 4，也就是 1 : 0.36 : 0.21 : 0.14。趨勢正確，量上大致對得起來（這個簡單模型本來也只宣稱「反比於質量」這個定性結論）。\n\n**結果的成績單**：「The final calculated cohesive energies agree with the experimental values of Table 4 within 1 to 7 percent.」\n\n**最後是一條漂亮的獨立證據——同位素效應。** 原文：「One consequence of the quantum kinetic energy is that a crystal of the isotope Ne²⁰ is observed to have a larger lattice constant than a crystal of Ne²². The higher quantum kinetic energy of the lighter isotope expands the lattice because the kinetic energy is reduced by expansion. The observed lattice constants (extrapolated to absolute zero from 2.5 K) are Ne²⁰, 4.4644 Å; Ne²², 4.4559 Å.」\n\n這個實驗為什麼具有決定性？因為 Ne²⁰ 與 Ne²² 的**電子結構完全相同**——同樣的 ε、同樣的 σ、同樣的 Lennard-Jones 曲線、同樣的化學。式 (14) 與式 (16) 這些只依賴電子結構的量，對兩者的預測是**一模一樣**的。兩者唯一的差別是原子核的質量。所以任何可觀測的差異，都只能來自與質量有關的項，而在這個問題裡與質量有關的只有零點動能。\n\n差多少？4.4644 − 4.4559 = 0.0085 Å，相對差 0.19%。方向也對：質量較小的 Ne²⁰ 零點動能較大，晶格被撐得較大（原文的說法是「the kinetic energy is reduced by expansion」——脹開可以降低動能，所以系統選擇脹開）。\n\n這條證據同時回頭把 p.59 的那個系統性偏差（Ne 的 R₀/σ = 1.14 > 1.09）釘死了：兩者是同一個機制在不同尺度上的顯現。"
+    },
+    {
+      "kind": "concept",
+      "heading": "這一段在整本書與 Cth 研究裡的位置",
+      "tier": "mine",
+      "body": "最後把這幾頁往前往後接一下，說明它為什麼值得花這麼多力氣。\n\n**往後在書裡會用到的地方。** 第一，**極化率 α**：式 (9) 的 A ≈ ℏω₀α² 明白指向第 15 章，同一個 α 在那裡決定介電函數與折射率。第二，**非簡諧位能井**：Fig. 6「內壁陡、外壁平」的不對稱，是第 5 章熱膨脹與聲子—聲子散射（熱阻）的全部物理來源；本段用它解釋 R₀/σ 的偏差，第 5 章用它解釋 α_thermal 與 Umklapp 過程。第三，**指數排斥 λexp(−R/ρ)**：本段只是提了一句，p.62 的離子晶體正式採用它，並在 p.63 得出 ρ ≈ 0.1R₀。第四，**晶格和作為結構指紋**：12.13188 與 14.45392 的角色，與離子晶體的 Madelung 常數 α（p.63）完全平行——都是把「幾何」從「化學」裡分離出來的手法。第五，**零點能**：式 (1) 那個 2 × ½ℏω₀，在第 4、5 章會以聲子零點能的形式回來。\n\n**方法論上的樣板。** 這一段示範了固態物理最常用的一套動作：(i) 找一個可解的模型（兩個耦合諧振子）；(ii) 用對稱性對角化（對稱／反對稱模）；(iii) 發現一階效應抵消，去二階找答案；(iv) 把模型參數換成可測量（ω₀ ← 吸收線，α ← 極化率，ε、σ ← 維里係數與黏度）；(v) 把幾何與化學分離（晶格和 vs ε、σ）；(vi) 算出一個沒有可調參數的預測，與實驗對帳。後面每一章其實都在重複這套動作。\n\n**與 Cth（熱容／熱阻抗萃取）研究的接點。** 如果你的研究關心的是熱，這一段有三個直接相關的東西：第一，**位能井的曲率決定聲子頻率**。上面算過 Ar 在極小值處的二階導數約 57.1ε/σ²，換算成等效力常數 ~8×10² dyn/cm；力常數直接進第 4 章的色散關係、第 5 章的 Debye 溫度，而 Debye 溫度是所有熱容模型的輸入。惰性氣體因為 ε 極小（meV 量級），Debye 溫度極低（幾十 K），這就是它們在常溫下根本不是固體的原因。第二，**非簡諧性就是熱阻的來源**。Fig. 6 的不對稱在 Cth 的語言裡就是「聲子不是自由粒子」，沒有這個不對稱，晶格熱導率會是無限大。第三，**「幾何和／材料參數」的分解手法本身可以移植**。本段把內聚能寫成 −Nε A₆²/(2A₁₂)，把材料（ε）與結構（A₆、A₁₂）分開；在 FinFET 的熱阻萃取裡，同樣可以嘗試把 R_th 分解成「材料熱導率」與「純幾何形狀因子」的乘積，讓幾何掃描的結果可以外插到不同材料。\n\n（本 block 為我補的跨章連結與研究接點；其中 Kittel 明確寫出的只有「α 見第 15 章」這一項，其餘為我依書中內容所作的整理與延伸。）"
+    }
+  ]
+}
