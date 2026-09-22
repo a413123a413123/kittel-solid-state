@@ -1,0 +1,91 @@
+{
+  "section": 4,
+  "blockers": [
+    {
+      "where": "blocks[1].body（heading「諧近似到底是什麼：原文在哪裡下刀」，tier: \"book\"）",
+      "problem": "式號錯。該 tier:\"book\" 區塊寫「**二次項**保留下來，就是第 4 章一路在用的力常數 C；把運動方程寫出來就是 (16)、(18) 那些線性耦合方程，解出來就是 ω(K)」。第 4 章的 (16a)/(16b) 不是運動方程：(16a) 是「把色散關係 (7) 推廣到 p 個近鄰面」的色散關係，(16b) 是為了反解力常數而乘 cos rKa 再積分的中間式，(17) 才是力常數公式。真正的線性耦合運動方程是 (2)（單原子基，p.91）與 (18)（雙原子基，p.97）。",
+      "evidence": "書本 p.91：「The equation of motion of an atom in the plane s is (2) M d²u_s/dt² = C(u_{s+1} + u_{s−1} − 2u_s)」。書本 p.95：「The generalization of the dispersion relation (7) to p nearest planes is easily found to be (16a) ω² = (2/M) Σ_{p>0} C_p(1 − cos pKa). We solve for the interplanar force constants C_p by multiplying both sides by cos rKa, where r is an integer, and integrating over the range of independent values of K: (16b) …Thus (17) C_p = −(Ma/2π)∫dK ω²_K cos pKa」。書本 p.97：「We write the equations of motion under the assumption that each plane interacts only with its nearest-neighbor planes… We refer to Fig. 9 to obtain (18)」。",
+      "fix": "改成「把運動方程寫出來就是 (2)、(18) 那些線性耦合方程，解出來就是 ω(K)（第 4 章 p.91、p.97）」；若想引 (16a)，要改稱它為「推廣到 p 個近鄰面的色散關係」而不是運動方程。"
+    },
+    {
+      "where": "blocks[16].body（heading「gx³ 與 fx⁴ 各在管什麼」，tier: \"book\"）",
+      "problem": "物理錯誤。該區塊寫「中間那一項 −6gx 則是有正有負，在一個振盪週期內平均掉一部分，所以**負責頻率軟化的主力是 f，負責平均位置偏移的主力是 g**」。三次項的頻率軟化並不會「平均掉」：它在微擾的**二階**進來，與四次項的一階貢獻同為振幅平方階，而且永遠是軟化方向。哪一項主導取決於係數大小，不能一律說主力是 f。",
+      "evidence": "非諧振子的振幅相依頻率（Landau–Lifshitz《Mechanics》§28）：U = ½mω₀²x² + (1/3)mαx³ + (1/4)mβx⁴ 時 ω = ω₀ + κa²，κ = 3β/(8ω₀) − 5α²/(12ω₀³)，第二項來自三次項且恆為負。代入本檔的 U = cx² − gx³ − fx⁴（ω₀² = 2c/M、α = −3g/M、β = −4f/M）得 κ = −3f/(2Mω₀) − 15g²/(4M²ω₀³)，兩項都軟化，四次項要在 4fc ≳ 5g² 時才佔優。Kittel 本人只寫「the term in x⁴ represents the softening of the vibration at large amplitudes.」（p.120），並未說三次項不造成軟化，更沒有給出「週期內平均掉」這個理由——這句推理是本講解自行補的。",
+      "fix": "把理由改成：「−6gx 在一階（週期平均）上不移動頻率，但它在二階微擾仍給出一個永遠為負的頻率移位 −15g²/(4M²ω₀³)a²，與 −fx⁴ 的一階貢獻同階。Kittel 把『軟化』掛在 x⁴ 上，是因為 x⁴ 在一階就直接壓低有效力常數；嚴格說兩者都軟化，孰為主力取決於 4fc 與 5g² 的大小。」並把後半句改為「負責**平均位置偏移**的則只能是 g（宇稱論證）」。"
+    },
+    {
+      "where": "blocks[30].body（「這一段的常見誤解清單」的「一句話記法」，tier: \"mine\"）",
+      "problem": "物理錯誤，且與本檔自己前面的內容直接矛盾。該處寫「**偶次非諧項（fx⁴）改變的是「寬度」與「頻率」** → 管彈性常數軟化、熱容的非諧修正、**聲子壽命**。**奇次非諧項（gx³）改變的是「中心」** → 管熱膨脹，也管三聲子過程。」聲子壽命的主導來源正是三聲子過程，也就是**三次項**；把聲子壽命歸給四次項，與同一句自己承認「gx³ 管三聲子過程」自相矛盾。",
+      "evidence": "本檔 blocks[3] 自己寫：「兩個聲子交互作用產生第三個聲子。一旦模式之間可以交換能量，一個被激發的模式就有**有限壽命** τ」；blocks[12] 第六步自己寫：「四聲子過程在微擾展開中高一階，**通常次要**」。原書 p.120 也明說「Three-phonon processes are caused by third-order terms in the lattice potential energy.」",
+      "fix": "把「聲子壽命」從偶次項那一列移走，改成：「偶次非諧項（fx⁴）→ 管彈性常數軟化、熱容的非諧修正、四聲子散射（高階修正）；奇次非諧項（gx³）→ 管熱膨脹，也管三聲子過程，因而是**聲子壽命與熱阻的主要來源**。」"
+    },
+    {
+      "where": "blocks[31].body（「往下讀：這一段接到哪裡」，tier: \"mine\"）",
+      "problem": "頁碼錯。該處寫「p.123 的 Thermal resistivity of phonon gas 用動力學理論給 K = ⅓Cvℓ，把問題化約成『平均自由程 ℓ 是多少』」。K = ⅓Cvℓ 是式 (42)，印在 **p.122**，屬於 THERMAL CONDUCTIVITY 一節；p.123 的 Thermal Resistivity of Phonon Gas 小節整頁都沒有出現這條式子，它談的是 ℓ 由幾何散射與聲子—聲子散射決定、ℓ ∝ 1/T、以及 (45)(46) 的動量守恆論證。",
+      "evidence": "書本 p.122：「From the kinetic theory of gases we find below the following expression for the thermal conductivity: (42) K = ⅓Cvℓ , where C is the heat capacity per unit volume, v is the average particle velocity, and ℓ is the mean free path…」同頁末：「with ℓ ≡ vτ and C ≡ nc. Thus K = ⅓Cvℓ.」書本 p.123 起句為「Thermal Resistivity of Phonon Gas / The phonon mean free path is determined principally by two processes, geometrical scattering and scattering by other phonons.」",
+      "fix": "改成「p.122 的式 (42) K = ⅓Cvℓ 用動力學理論把問題化約成『平均自由程 ℓ 是多少』；p.123 的 Thermal resistivity of phonon gas 接著說明 ℓ 由幾何散射與聲子—聲子散射決定、高溫下 ℓ ∝ 1/T，並用 (45)(46) 指出 N 過程守住總聲子動量因而不造成熱阻」。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[31].body（同一句的後半）",
+      "problem": "「p.125 的 Umklapp processes 指出只有 G ≠ 0 的三聲子碰撞（式 (47)）才貢獻熱阻，並給出低溫下 ℓ ∝ exp(θ/2T) 的指數行為」——指數律那句印在 **p.126**（Umklapp 小節從 p.125 跨到 p.126），而且原書給的是「適合做 umklapp 的高能聲子**數目**隨 exp(−θ/2T) 變化」，ℓ ∝ exp(+θ/2T) 是由它反推出來的，書上沒有直接寫成 ℓ 的式子。",
+      "evidence": "書本 p.126：「At low temperatures the number of suitable phonons of the high energy required may be expected to vary roughly as exp(−θ/2T), according to the Boltzmann factor. The exponential form is in good agreement with experiment.」p.125 只到 (47) 與 Fig. 17。",
+      "fix": "改成「p.125–126 的 Umklapp processes 指出只有 G ≠ 0 的碰撞（式 (47)）才貢獻熱阻，並在 p.126 給出『可參與 U 過程的高能聲子數目 ∝ exp(−θ/2T)』，因而 ℓ ∝ exp(θ/2T)」。"
+    },
+    {
+      "where": "blocks[4].body（「後果二」，tier: \"mine\"）",
+      "problem": "把 Morse 位能算到第 3 章頭上。原文寫「真實的原子間位能（第 3 章的 Lennard-Jones、Morse 那一類）在**排斥側陡、吸引側緩**」，但 Morse 位能全書從未出現。",
+      "evidence": "以 pypdf 掃全書 700 頁：'Morse' 出現 0 次；'Lennard-Jones' 出現在 PDF p.73、78、106（書本 p.53、58、86，均屬第 3 章）與索引 p.697。",
+      "fix": "刪掉 Morse，或改寫成「真實的原子間位能（第 3 章的 Lennard-Jones 那一類，或文獻上常用的 Morse 位能）」，把「第 3 章」的範圍限定在 Lennard-Jones 上。"
+    },
+    {
+      "where": "blocks[28].eq.symbols 與 blocks[28].eq.limits（Grüneisen 關係）",
+      "problem": "U(T) 的定義前後不一致。symbols 寫「U(T)：熱能量密度（由 Σ ½ℏω coth(ℏω/2k_BT) 給出）」，limits 卻寫「高溫…U(T) → 3Nk_BT/V」。Σ ½ℏω coth 在高溫趨於 3Nk_BT（總量），不是 3Nk_BT/V（密度），兩處差一個體積因子。同樣的體積歸一化在 blocks[26]（β_V = γC_V/B）與 blocks[29] 第三步（β_V = γC_V/(BV)）之間也不一致。",
+      "evidence": "書本 p.129 Problem 5(b)：「show that F is a minimum with respect to Δ when BΔ = γ Σ ½ℏω coth(ℏω/2k_BT), and show that this may be written in terms of the thermal energy density as Δ = γU(T)/B」——原書本身就把 Σ（總量）與「thermal energy density」放在一起，沒有交代歸一化。",
+      "fix": "在 symbols 補一句「原書此處未交代體積歸一化：BΔ 是能量密度，故 Σ 應理解為單位體積的求和；本檔一律以 C_V、U(T) 表示**每單位體積**的量」，並把 blocks[29] 第三步的 β_V = γC_V/(BV) 統一寫成 β_V = γ(C_V/V)/B。"
+    },
+    {
+      "where": "blocks[4].body 與 blocks[7].body 的 α，對照 blocks[5].body 的 α",
+      "problem": "同一個符號 α 在檔內兩種意思。blocks[4]、blocks[7] 寫「C_p − C_V = 9α²BVT」（係數 9 只有在 α 是**線膨脹**係數時才對），blocks[5] 卻明文定義「α 是**體**膨脹係數」並寫 B_S/B_T = C_p/C_V = 1 + αγT（這條要 α 是體膨脹係數才對）。兩條式子各自正確，但符號衝突。",
+      "evidence": "熱力學恆等式 C_p − C_V = α_V²BVT，α_V = 3α_linear ⟹ 9α_linear²BVT；而 C_p/C_V = 1 + γα_V T。blocks[29] 又自己寫「β_V = 3α」，可見檔內 α 預設是線膨脹係數。",
+      "fix": "統一符號：線膨脹用 α、體膨脹用 β_V（檔內 blocks[29] 已用 β_V），把 blocks[5] 改成 B_S/B_T = C_p/C_V = 1 + β_V γT 並刪掉「α 是體膨脹係數」那句。"
+    },
+    {
+      "where": "blocks[22].eq.numeric 與 blocks[25].body（Fig. 15 讀圖）",
+      "problem": "高溫端讀值偏低一點。兩處都把 80 K 讀成 a ≈ 5.44 Å，實際曲線在 80 K 約 5.447 Å；由此 da/dT 從 2.9 × 10⁻³ 被低估成 2.7 × 10⁻³ Å/K，α 從 5.4 × 10⁻⁴ 被低估成 5.0 × 10⁻⁴ K⁻¹，最後 blocks[29] 的 γ ≈ 2.8 實際應為 ≈ 3.0。差約 7%，不影響任何結論。",
+      "evidence": "把 p.121 Fig. 15 以 900 dpi 算繪後做像素定標（左軸刻度 5.46→y=222、5.30→y=1846；橫軸 0 K→x=516、80 K→x=2240）逐點取值：4 K → 5.300、15 K → 5.300、20 K → 5.307、30 K → 5.318、40 K → 5.336、50 K → 5.360、60 K → 5.385、70 K → 5.413、80 K → 5.447、84 K（三相點）→ 5.457。其餘讀值與本檔所寫（5.300/5.306/5.318/5.335/5.360/5.383/5.415/5.46）全部相符到 ±0.002 Å。",
+      "fix": "把 80 K 的讀值改為 ≈ 5.447，da/dT ≈ 2.9 × 10⁻³ Å/K，α ≈ 5.4 × 10⁻⁴ K⁻¹，並把 blocks[29] 的結論改為 γ ≈ 3（仍落在惰性氣體晶體的合理區間，結論不變）。"
+    },
+    {
+      "where": "blocks[14].body（「簡化三：mean separation」，tier: \"book\"）",
+      "problem": "斷章取義式引用。該處寫「原文隨後明確指出「The minimum at x = 0」——**位能的極小點永遠釘在 x = 0，一步都不動**」。引號內六個字確實逐字出現，但它是句子「The minimum at x = 0 **is not an absolute minimum**, but for small oscillations…」的前半，原句的用意恰恰相反（提醒這個極小不是絕對極小）。用半句去支撐「極小點釘死在 0」會讓讀者誤以為原書在強調這件事。",
+      "evidence": "書本 p.120：「The minimum at x = 0 is not an absolute minimum, but for small oscillations the form is an adequate representation of an interatomic potential.」本檔 blocks[16] 引的是完整句，處理正確，兩處不一致。",
+      "fix": "改成「原文的措辭是『The minimum at x = 0 is not an absolute minimum…』——注意它把極小點釘在 x = 0 當成不言而喻的前提（U(x) 與溫度無關，極小永遠在 0），句子真正的重點是提醒這個極小不是絕對極小」。"
+    },
+    {
+      "where": "頂層 pages 欄位（\"119-120\"）",
+      "problem": "本段實際引用與論證大量依賴 p.121：(40) 的限定語「in the classical region.」、兩句關鍵提醒、Fig. 15 與其三句正文全部在 p.121（blocks[22]、blocks[23]、blocks[25] 都標了 p.121），本檔自己也在 blocks[23] 說明「Kittel 把兩句關鍵的註解放到了 p.121 的開頭」。pages 只寫 119-120 會讓讀者以為不必翻到 p.121。",
+      "evidence": "第 5 章章首目錄（書本 p.105）印「ANHARMONIC CRYSTAL INTERACTIONS 119 / Thermal expansion 120 / THERMAL CONDUCTIVITY 121」，Thermal expansion 小節確實在 p.121 的第一段結束（THERMAL CONDUCTIVITY 標題出現在同頁中段）。",
+      "fix": "改成 \"119-121\"，或 \"119-120（延伸至 121 上半）\"。"
+    },
+    {
+      "where": "blocks[1]、blocks[11]、blocks[16] 的 tier 標記",
+      "problem": "tier 標記偏寬。這三個 concept 區塊標 tier:\"book\"，但除了一段逐字引用之外，主體是撰寫者自己的教學鋪陳：blocks[1] 的位能 Taylor 展開、一次項為零、正規座標與「聲子理想氣體」；blocks[11] 的四步拆解；blocks[16] 的 k_eff(x) = 2c − 6gx − 12fx² 推導。本檔對自己的推導另有 kind:\"derivation\" + tier:\"derived\" 的做法（blocks[12]/[20]/[21]），此處與自己宣告的做法不一致。（blocks[29] 是 kind:\"derivation\" 卻標 tier:\"mine\"，也是同一類不一致。）",
+      "evidence": "書本 p.119–120 全文只有本檔所引的那幾句；Taylor 展開、正規座標、k_eff 的二階導數計算、三波混頻四步都不在原文。對照本檔 blocks[12]「Kittel 只給了文字圖像，沒有寫任何式子…這裡補上」——同樣性質的內容在該處被正確標成 derived。",
+      "fix": "把這三個區塊拆成「引用＋書中內容」與「本站補述」兩段（或在 body 末尾加校註標明哪些是自行補出），tier 維持 book 但明確劃界；blocks[29] 的 tier 改為 \"derived\" 以與 kind 一致。"
+    }
+  ],
+  "verified": [
+    "全部逐字引用（共 22 條）通過程式化比對（去掉 PDF 自訂字符與標點後做子字串比對，來源為 PDF p.139/140/141/145/149/671）：p.119 的諧理論定義句與五條後果全文；p.120 的「In real crystals none of these consequences is satisfied accurately…」整段、「Beautiful demonstrations…ω₃ = ω₁ + ω₂.」、「Three-phonon processes are caused by third-order terms in the lattice potential energy.」、移動三維光柵整段、「We may understand thermal expansion…at a temperature T.」、「at a displacement x from their equilibrium separation at absolute zero」、「with c, g, and f all positive」、x³/x⁴ 兩句註解、「The minimum at x = 0 is not an absolute minimum…」、「We calculate the average displacement by using the Boltzmann distribution function…thermodynamic probability」、「For displacements such that the anharmonic terms in the energy are small in comparison with k_BT, we may expand the integrands as」；p.121 的「in the classical region.」、「Note that in (39) we have left cx² in the exponential, but we have expanded exp(βgx³ + βfx⁴) ≅ 1 + βgx³ + βfx⁴ + ⋯.」、「In lowest order the thermal expansion does not involve the symmetric term fx⁴ in U(x), but only the antisymmetric term gx³.」、Fig. 15 三句與圖說、「If the energy were propagated directly through the specimen without deflection…regardless of the length of the specimen.」；p.125 Fig. 17 圖說「For all processes, N or U, energy must be conserved, so that ω₁ + ω₂ = ω₃.」；p.129 Problem 5 的 (a)(b)(c) 敘述與結尾警語「Many approximations are involved in this theory…γ may be quite different for different modes.」全部逐字相符。",
+    "blocks[2] 的校註「最後一條的 θ 沒有下標 D」**經 800 dpi 算繪目視確認為真**：原頁印的是「The heat capacity becomes constant at high temperatures T > θ.」，θ 後面沒有任何下標；文字層裡緊接的 D(ω) 是上半頁 Van Hove 段落浮出來的行內數學，不是 θ 的下標。校註第二句「第 5 章別處提到 Debye 溫度時多寫 θ」也成立：以 pypdf 掃第 5 章（PDF 125–150），θ 字符（/H9258）共出現 36 次，帶下標 D 者 0 次。",
+    "blocks[19] 的校註「(39) 的關係符號是 ≅ 而非 ≡」**經 500 dpi 算繪目視確認為真**：原頁兩條式子印的都是 ≅（等號上加波浪），p.121「exp(βgx³ + βfx⁴) ≅ 1 + …」亦然；而同一頁的 β ≡ 1/k_BT 印的確實是 ≡。追到字符層：≅ 者為自訂代碼 /H33361、≡ 者為 /H11013，抽取腳本 tools/kittel_extract.py 的 OPS 表把 '33361' 映成 '≡' 是誤映（'33360' 才映成 '≅'），校註的診斷正確。校註提到的「∞ 以未解碼代碼 /L50525 出現」也屬實（出現在 ⟨x⟩ 定義式的積分上下限）。",
+    "式號與頁碼（除 blockers 所列者外）全部正確且無虛構：(38) U(x) = cx² − gx³ − fx⁴、(39) 兩條積分、(40) ⟨x⟩ = 3g/(4c²)k_BT 均印在 p.120；ω₃ = ω₁ + ω₂ 與 ⟨x⟩ 的 Boltzmann 定義式在原書確實**沒有編號**，blocks[10] 與 blocks[18] 誠實不填 eqNumber 並在 from 欄註明「這個式子在原書中沒有編號」——處理正確。(41) j_U = −K dT/dx 在 p.121、(47) K₁+K₂=K₃+G 與 Fig. 17 在 p.125、(48) K ≅ CvD 與 Imperfections 在 p.126、Problem 5 在 p.129、Appendix C 的 (32) q_s = Σ_k (ℏ/2NMω_k)^{1/2}[a_k exp(iks) + a_k⁺ exp(−iks)] 在 p.651（該節標題確為 Creation and Annihilation Operators，隸屬 appendix C: quantization of elastic waves: phonons，起於書本 p.648）——逐字逐號相符。",
+    "blocks[0] 對第 5 章章首目錄（書本 p.105）的複述完全正確：PHONON HEAT CAPACITY 107 / Planck distribution 107 / Normal mode enumeration 108 / Density of states in one dimension 108 / in three dimensions 111 / Debye model 112 / Debye T³ law 114 / Einstein model 114 / General result for D(ω) 117 / ANHARMONIC CRYSTAL INTERACTIONS 119 / Thermal expansion 120 / THERMAL CONDUCTIVITY 121 / Thermal resistivity of phonon gas 123 / Umklapp processes 125 / Imperfections 126；Problem 2「Rms thermal dilation of crystal cell」、Problem 3「Zero point lattice displacement and strain」、Problem 5「Grüneisen constant」的題名與頁碼（128/128/129）也全對。p.119 上半屬前一節（D(ω) 一般公式、Van Hove 奇異點、Fig. 13/Fig. 14）的描述屬實。",
+    "所有數學獨立複算通過。(a) blocks[21] 的高斯矩：I₀ = (π/a)^{1/2}、∫x²e^{−ax²}dx = ½π^{1/2}a^{−3/2}、∫x⁴e^{−ax²}dx = (3/4)π^{1/2}a^{−5/2} 全對；分子 βg·(3/4)π^{1/2}(βc)^{−5/2} = (3π^{1/2}/4)(g/c^{5/2})β^{−3/2} 與原文 (39) 逐字符合；相除得 (3/4)(g/c²)β^{−1} = (3g/4c²)k_BT 與 (40) 相符；量綱 [g/c²][k_BT] = (E L⁻³/E²L⁻⁴)·E = L 成立。(b) blocks[20] 的宇稱篩選（x 奇死、βgx⁴ 偶活、βfx⁵ 奇死）正確；第六步的二階展開 ½(βgx³+βfx⁴)² = ½β²g²x⁶ + β²gfx⁷ + ½β²f²x⁸ 正確，乘 x 後存活的 β²gfx⁸ 與三階的 β³g³x⁹→x¹⁰ 經冪次清點確實都給 T² 修正（β²gf(βc)^{−9/2} ÷ β^{−1/2}c^{−1/2} ∝ gfβ^{−2}）；第五步「分母的 f 修正是 O(f/βc²)」複算為 1 + (3/4)f/(βc²)，正確。(c) blocks[12] 的 k_eff = 2c − 6gx（及加入四次項後的 −12fx²）與積化和差展開正確；由 F = −dU/dx 展開 (x₁+x₂)² 得到的交叉項確為 6gx₁x₂。(d) blocks[8] 的 ⟨x²⟩ = k_BT/2c、ω = (2c/M)^{1/2} 正確。(e) blocks[13] 的算符計數（q³ 展開八項、依產生／湮滅數分四類、aaa 與 a⁺a⁺a⁺ 被能量守恆禁止）正確。(f) blocks[28] 的 ½ℏω coth(ℏω/2k_BT) = ℏω(⟨n⟩ + ½) 恆等式複驗成立，高溫 → k_BT、低溫 → ½ℏω 的兩個極限也正確。",
+    "blocks[29] 的量級自洽檢查算術逐步複驗無誤：a³/4 = 157.5/4 = 39.4 Å³ = 3.94 × 10⁻²⁹ m³；C_V/V = 3 × 1.38 × 10⁻²³ / 3.94 × 10⁻²⁹ = 1.05 × 10⁶ J m⁻³K⁻¹；γ/B = 1.5 × 10⁻³ / 1.05 × 10⁶ = 1.43 × 10⁻⁹ Pa⁻¹；× 2 × 10⁹ Pa = 2.86 ≈ 2.8；誤用 β_V = α 會得 0.95 ≈ 0.9。外部資料（B ≈ 2 GPa、γ 的合理區間）都已在文中明確標示為非本書數字，處理誠實。",
+    "Fig. 15 的文字還原經 900 dpi 算繪逐項核對通過：左縱軸為晶格常數（Å），由下而上 5.30/5.34/5.38/5.42/5.46（實際刻度每 0.02 Å 一格，標字每 0.04 Å）；右縱軸為密度（g cm⁻³），由下而上 1.78/1.74/1.70/1.66/1.62，確為反向軸；橫軸 0–90 K，標字每 20 K；右上角確有「Triple point」字樣並以箭頭指到曲線末端（約 84 K）；資料點最左側確在約 4 K，4 K 與 15 K 兩點都在 5.300 Å 附近，低溫端目視水平。雙軸互相自洽也獨立驗過：fcc、4 原子/cell、M = 39.948，a = 5.30 Å → ρ = 1.782；a = 5.46 Å → ρ = 1.630，與圖上兩軸端點對應。整段 5.30 → 5.46 的相對變化 3.0%，與本檔所寫「約 3%」相符。",
+    "物理論證抽查通過：諧位能下 ⟨x⟩ ≡ 0 的宇稱證明、「⟨x²⟩ ≠ 0 但 ⟨x⟩ = 0」、(∂S/∂ε)_T = −(∂σ/∂T)_ε 的 Maxwell 關係、B_S/B_T = C_p/C_V = 1 + γα_V T、C_p − C_V = 9α_linear²BVT、β_V = γC_V/B 與其高溫（常數）／低溫（∝T³）極限、blocks[17] 指出 ∫exp(−βU) 因 +βfx⁴ 而發散並須以漸近展開理解、blocks[24] 的反向檢查題（U = cx² − fx⁴ 為偶函數故 ⟨x⟩ 嚴格為零）——全部成立。blocks[30] 誤解一至誤解七、誤解九亦正確（誤解六「本書 p.119–121 沒有討論負熱膨脹」屬實，且已自限範圍不對全書下結論）。",
+    "tier: \"book\" 區塊中沒有發現把書上沒說的話寫成書上說的（唯一的例外是 blockers 第 1、2 條所列的兩處：ch.4 式號與頻率軟化的歸因）。blocks[19]、blocks[20]、blocks[22] 明確標示「這一點原文沒說明／屬於本講解補出的環節」，blocks[25] 明確標示讀圖數值「非原書印出的數字」，blocks[29] 明確標示體模數與莫耳體積為外部資料——自我標註的紀律良好。"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+ "section": 3,
+ "blockers": [
+  {
+   "where": "blocks[29].eq.limits（體積元與群速度）",
+   "problem": "把一維態密度式 (15) 標成「p.111 的式 (15)」且公式抄錯：寫成 D₁(ω) = (L/π)·dω/(dω/dK)。(a) 式 (15) 印在書本 p.110（PDF 130），p.111 只有「There is a singularity in D₁(ω)…」那句話；(b) 原文左邊是 D₁(ω) dω，不是 D₁(ω)。照抄書上右邊的形式卻拿掉左邊的 dω，等號右邊就多出一個 dω，量綱不成立（右邊變成 L/π×dK 這個微分量，不是每單位頻率的態數）。同檔 blocks[32] 自己寫的是正確的 D₁(ω) = (L/π)/(dω/dK)，兩處互相矛盾。",
+   "evidence": "書本 p.110 原文（算繪目視與文字層一致）：「We need to know D(ω), the number of modes per unit frequency range for a given polarization. The number of modes D(ω) dω in dω at ω is given in one dimension by (15) D₁(ω) dω = (L/π)(dK/dω) dω = (L/π) · dω/(dω/dK).」書本 p.111 開頭才是：「We can obtain the group velocity dω/dK from the dispersion relation ω versus K. There is a singularity in D₁(ω) whenever the dispersion relation is horizontal; that is, whenever the group velocity is zero.」",
+   "fix": "改成「p.110 的式 (15)：D₁(ω) dω = (L/π)(dK/dω) dω = (L/π)·dω/(dω/dK)，即 D₁(ω) = (L/π)/(dω/dK)」；後面那句引文的頁碼維持 p.111（該句確實在 p.111）。"
+  },
+  {
+   "where": "blocks[4].eq.symbols / blocks[5].eq.symbols / blocks[10].eq.numeric（N 的定義與矽的莫耳模數）",
+   "problem": "同一份檔案對 (29)–(32) 裡的 N 採兩套互斥定義，導致矽的數值差 2 倍，且與原文明文衝突。blocks[4]、blocks[5] 的 symbols 把 N 定義為「原胞數」，但書本 p.113 在式 (29) 正下方明寫 N 是「原子數」；blocks[5].numeric 實際上又採原子數（矽取 Nk_B = R，算出 A = 7.25×10⁻⁶ J mol⁻¹K⁻⁴、「比氬小 344 倍」），而 blocks[10].numeric 卻明文「Debye 模型中的 N 是原胞數…矽每個原胞 2 個原子，故一莫耳矽 N = N_A/2 = 3.0×10²³，聲學模共 3N = 9.0×10²³ 個」。若照 blocks[10] 的定義，blocks[5] 的矽 A 應為 3.63×10⁻⁶ J mol⁻¹K⁻⁴、與氬相差 689 倍；若照 blocks[5] 的算法，blocks[10] 的矽 3N 應為 1.8×10²⁴。氬（每原胞 1 原子）不受影響，所以矛盾只在矽身上暴露。",
+   "evidence": "書本 p.113（算繪目視確認）：式 (29) 之後緊接「where N is the number of atoms in the specimen and x_D = θ/T.」；書本 p.112 則是「If there are N primitive cells in the specimen, the total number of acoustic phonon modes is N.」——Kittel 是在「單原子晶格（原胞＝原子）」的前提下混用這兩種說法，檔案只引了 p.112 那句、沒有處理 p.113 這句，於是在矽（每原胞 2 原子）上自相矛盾。",
+   "fix": "統一採 p.113 的措辭：(29)–(32) 的 N＝樣品中的原子數（單原子晶格時等於原胞數），並註明 Table 1 的 θ 是以每莫耳原子 3N_A 個模定義的低溫極限值，因此 blocks[5] 矽的 A = 234R/θ³ = 7.25×10⁻⁶ 成立；同時修正 blocks[10] 對矽的敘述（Kittel 的 Debye 處理只涵蓋 3N_cell 條聲學支，與 Fig 10 圖說的「3N possible modes」並用時必須交代 N 的取法）。"
+  }
+ ],
+ "minors": [
+  {
+   "where": "top-level \"pages\": \"114-118\"",
+   "problem": "宣告的頁碼範圍與實際內容不符：Fig 13、Fig 14、「The result refers to a single branch…」、「We can use this result also in electron band theory.」與 Van Hove 奇異點整段都出自書本 p.119，而且是本節（General Result for D(ω)）的結論部分。",
+   "evidence": "書本 p.119 含 Fig 13、Fig 14 與該節最後兩段；blocks[30]、blocks[32]、blocks[34] 自己也都標 p.119。",
+   "fix": "把 pages 改為 \"114-119\"，或註明本節收尾在 p.119。"
+  },
+  {
+   "where": "blocks[27].body（Fig 13 圖面描述）",
+   "problem": "描述為「上面那條標 Surface ω + dω = constant，下面那條標 Surface ω = constant」，會讓讀者想像成上下堆疊的兩條水平曲線。實際圖上兩條曲線左右並排、走向接近垂直：左為 ω = constant、右為 ω + dω = constant，只是標籤分別放在圖的上方與下方。",
+   "evidence": "書本 p.119 Fig 13 算繪放大：兩條近乎垂直、左右相鄰的弧線，上方標籤以箭頭指向右邊那條，下方標籤以箭頭指向左邊那條，中間短線段帶直角記號標 dK⊥。",
+   "fix": "改成「左右並排的兩條近乎垂直的曲線，左為 ω = constant、右為 ω + dω = constant，兩者之間以帶直角記號的短線段標出 dK⊥」。"
+  },
+  {
+   "where": "blocks[21].eq.numeric 與 blocks[24].body（Fig 11 曲線在 T/θ_E = 1.0 的讀值）",
+   "problem": "兩處都寫「圖上曲線在 T/θ_E = 1.0 讀到約 5.5 cal/mol-K」，並據此說 5.5/5.96 = 0.92「與 f(1) = 0.921 完全相符／書內自洽」。像素量測顯示虛線在 T/θ_E = 1.0 處是 5.43 cal/mol-K，比值 0.911。書上這條虛線本來就整體比精確 Einstein 函數低 1–2%（T/θ_E = 0.5 處讀 4.19、精確值 4.31）。",
+   "evidence": "p.117 Fig 11 以 5 倍算繪並用格線校準（C = 0 與 C = 6 的格線間距 103.75 px/單位）：x = 1.00 處虛線中心 5.43；x = 0.98/0.93/0.88 分別為 5.43/5.41/5.35。",
+   "fix": "讀值改為「約 5.4」，並把「完全相符」改成「與 Einstein 函數 f(1) = 0.921 給的 5.49 相差約 1%，在圖面繪製精度之內」。"
+  },
+  {
+   "where": "blocks[9].body 最後一段（三個因子的第 (2) 項）",
+   "problem": "寫成「比值 T/θ 來自 ℏvK = k_BE 這條線性色散」，k_BE 不是任何有定義的量，量綱也不成立，屬明顯誤植。",
+   "evidence": "原文的兩條定義是 ℏvK_T = k_BT（p.114 正文）與 ℏω_D = ℏvK_D = k_Bθ（Fig 10 圖內標註）。",
+   "fix": "改成「ℏvK_T = k_BT 與 ℏvK_D = k_Bθ 相除即得 K_T/K_D = T/θ」。"
+  },
+  {
+   "where": "blocks[11].body（「符號本身就是分級」）",
+   "problem": "這條規則被 Fig 10 圖說自己打折：圖說寫 C_V = ∂U/∂T = 12Nk_B(T/θ)³ 用的是等號，而那正是本條目要讀者拒絕引用的係數。只靠「看到 ~ 或 ≈ 就不要引用係數」會漏掉最需要警告的那一處。",
+   "evidence": "書本 p.115 Fig 10 圖說（8 倍算繪確認）：「The energy is U ≈ k_BT · 3N(T/θ)³, and the heat capacity is C_V = ∂U/∂T = 12Nk_B(T/θ)³.」——能量用 ≈、熱容用 =；正文則兩者都用 ~。",
+   "fix": "補一句：Fig 10 圖說的 C_V 雖寫等號，但它只是把上一句 ≈ 的 U 微分而來，精度不會高於 U，仍屬量級結果。"
+  },
+  {
+   "where": "blocks[0].body（（二）用一個刻意做壞的模型當對照組）",
+   "problem": "「Einstein (1907) 模型假設所有 3N 個模都是同一個頻率 ω₀，也就是 D(ω) = Nδ(ω−ω₀)」——模數寫 3N，態密度歸一化卻只有 N，前後不一致。",
+   "evidence": "書本 p.114：「Consider N oscillators of the same frequency ω₀ and in one dimension. The Einstein density of states is D(ω) = Nδ(ω−ω₀)」；p.117 才說「In three dimensions N is replaced by 3N, there being three modes per oscillator.」",
+   "fix": "改成「一維 N 個同頻振子給 D(ω) = Nδ(ω−ω₀)，三維時換成 3Nδ(ω−ω₀)」。"
+  },
+  {
+   "where": "blocks[4].eq.limits（低溫 Debye 熱能的 T → 0 討論）",
+   "problem": "解釋 Debye 的 U → 0 時引用「(33) 這一類表示式都已經把零點能 ½ℏω 扣掉了」，但 (33) 是後文 Einstein 模型的式子，與本式無關；本式的上游是 (9)/(29)。",
+   "evidence": "書本 p.108 式 (9) U = Σ_p ∫dω D_p(ω)ℏω/(e^{ℏω/τ}−1) 即未含零點項；(33) 出現在 p.114 的 Einstein 小節。",
+   "fix": "把 (33) 改成 (9)（或 (9)、(29)）。"
+  },
+  {
+   "where": "blocks[7].steps[3]（Fig 9 刻度數字的來歷）",
+   "problem": "對 4.44/8.89/…/22.23 這組刻度提出「原始數據以 cal 為單位、後來整體乘以 4.186」的臆測，但同段自己算出 22.23/4.186 = 5.31 並不整齊，等於自我否定；「4.44 = 1.06 cal 的倍數嗎？不是」一句也沒有實際論證。更直接的事實是 22.23/5 = 4.446、7.98/6 = 1.33，兩軸只是把最大值等分成 5 格與 6 格。",
+   "evidence": "Fig 9 算繪量測：橫軸 6 條等距格線（1.33 的整數倍，最大 7.98）、縱軸 5 條等距格線（4.446 的整數倍，最大 22.23）。",
+   "fix": "刪掉換算臆測，改述為「兩軸把最大值 7.98 K³ 與 22.23 mJ mol⁻¹K⁻¹ 分別等分成 6 格與 5 格，刻度數字因此不是整數，不是抽取錯誤」。"
+  },
+  {
+   "where": "blocks[8]（tier: book）",
+   "problem": "標為 book，但除了那段逐字引文之外還含相當份量的延伸詮釋（「Debye 模型對這些模不是近似，是精確的…在低溫是漸近精確的」「第 6 章的自由電子氣…用的是完全一樣的論證」），且未像本檔其他 book 區塊（blocks[9]、blocks[13]、blocks[24]）那樣標註「以下為我的判讀」，與檔案自己宣告的標註紀律不一致。",
+   "evidence": "書本 p.114 該段只說 T³ 近似在只有長波聲學模被激發時很好、這些模可當彈性連續體處理、短波模能量太高不被顯著佔據；沒有「漸近精確」的字眼，也沒有提第 6 章。",
+   "fix": "在第二、三層的延伸段落前加「（以下為我的判讀）」，或把該 block 拆成 book + mine 兩塊。"
+  },
+  {
+   "where": "blocks[24].body（為什麼選鑽石）",
+   "problem": "「鑽石是唯一能在十九世紀末的技術條件下暴露出『Dulong–Petit 定律失效』的常見材料」過度斷言——硼、矽、石墨等輕元素或強鍵材料在室溫也明顯低於 3R。此段雖已標「以下為我的判讀」，但「唯一」仍屬不必要的強宣稱。",
+   "evidence": "書本 p.117 只說 Fig 11 是鑽石實測與 Einstein 模型的比較，未討論選材理由，也未作唯一性宣稱。",
+   "fix": "改成「鑽石是當時最容易觀察到 Dulong–Petit 失效的材料之一（θ 高達 2230 K，室溫已是 T/θ = 0.13）」。"
+  }
+ ],
+ "verified": [
+  "式號與頁碼全數正確：(31) p.114、(32) p.114、(33) p.114、(34) p.117、(35) p.117、(36) p.118、(37) p.118、(28) p.112；三個標為「無式號」的式子（U ≅ 3π⁴Nk_BT⁴/5θ³ 行內式、Einstein D(ω) = Nδ(ω−ω₀)、dS_ωdK⊥ = dS_ωdω/v_g）確實在書上都沒有編號。Fig 7 p.113、Fig 9/Fig 10 p.115、Fig 11 p.117、Fig 12 p.118、Fig 13/Fig 14 p.119 也都對。",
+  "英文逐字引用逐條核對（含圖說）全部相符：(31) 後的 standard tables 句、p.114 的 T³ 適用條件整段、simple argument 段落、θ/50 句、Fig 7 圖說（含 24.943 J mol⁻¹deg⁻¹）、Fig 9 圖說、Fig 10 圖說（U 用 ≈、C_V 用 =，檔案照抄無誤；8 倍算繪確認不是 ≅）、鹼金屬評註、Einstein 小節四句、Fig 11 圖說、(35) 的積分範圍說明、(36) 的 right cylinder 句、dK⊥ 逐點變化句、梯度句、v_g 定義句、p.119 的 single branch／electron band theory／Van Hove 句、Fig 12/13/14 圖說、p.111 一維奇異點句、p.112 的 primitive cells 句與 for each polarization type、(26) 的 we multiply by the factor 3。",
+  "Table 1（p.116，PDF 無文字層）的目視判讀值以算繪影像逐格核對全部正確：Li 344/0.85、Na 158/1.41、K 91/1.02、Rb 56/0.58、Cs 38/0.36、Be 1440/2.00、Mg 400/1.56、Al 428/2.37、C 2230/1.29、Si 645/1.48、Ge 374/0.60、Sn(w) 200/0.67、Pb 105/0.35、Fe 470/0.80、Cu 343/4.01、Ag 225/4.29、Au 165/3.17、W 400/1.74、Ne 75、Ar 92、Kr 72、Xe 64（惰性氣體 κ 欄確實空白）；兩行標頭「Low temperature limit of θ, in Kelvin」「Thermal conductivity at 300 K, in W cm⁻¹K⁻¹」與表名「Debye temperature and thermal conductivity」也逐字相符。",
+  "所有數值以 mpmath 數值積分重算，全部吻合：π⁴/15 = 6.4939、4π⁴/15 = 25.976；blocks[2] 的截斷比 0.755/0.990/0.99999（實算 0.7545/0.99045/0.999997）；blocks[6] 的表 0.591(+69%)／0.973(+2.8%)／0.99998(+0.002%)／1.0000（實算 0.59131/0.97297/0.999984/1.0）；尾巴公式 e^{−x_D}(x_D⁴+4x_D³+12x_D²+24x_D+24) 完全正確；Einstein 函數 f(1) = 0.9207、f(1.1) = 0.905、f(2) = 0.7241、f(4.4) = 0.2436、f(10) = 4.54×10⁻³；高溫展開 f = 1 − x²/12 的每一步代數與誤差評估（x = 1 差 0.4%、x = 2 差 8%）正確；Debye 高溫修正係數 1/20 正確且已標為自補；低溫 Einstein vs Debye 對照表 17／1.2×10⁴／1.3×10¹⁵ 正確。",
+  "與圖面對照的驗算成立：Fig 9 預測斜率 234R/θ³ = 2.498 mJ mol⁻¹K⁻⁴、T³ = 7.98 時 C = 19.9，像素量測最高資料點約 (7.9, 20.2)，吻合；橫軸上限 7.98 K³ ⇒ T = 2.00 K、T/θ = 1/46 正確；氬 T = 2 K 的 U ≈ 1.0×10⁻² J/mol 兩種算法一致；Fig 9、Fig 10、Fig 11、Fig 12、Fig 14 的其餘圖面描述（軸標、刻度、6×5 格線、空心方塊、同心圓與灰底內圈、右上角兩條定義式、馬鈴薯狀等頻面、Debye 拋物線 vs 真實譜的尖峰台階）都與算繪影像相符。",
+  "延伸算例的 Debye 函數值全部重算正確：C_V/3Nk_B 在 T/θ = 0.135（鑽石 300 K）= 0.166、0.465（Si 300 K）= 0.802、0.62（Si 400 K）= 0.881、0.80（Ge）= 0.926、0.87（Cu）= 0.938、2.86（Pb）= 0.994；(28) 反推矽 Debye 平均聲速 7.4 km/s 的每一步算術正確（a = 5.43 Å、N/V = 4/a³ = 2.50×10²⁸ m⁻³，且已註明非原文數值）。",
+  "tier: derived 的數學本身正確：幾何級數展開 1/(eˣ−1) = Σ_{s≥1}e^{−sx}、Tonelli 交換、Γ(4) = 3! = 6、ζ(4) = π⁴/90；分部積分把 ∫x⁴eˣ/(eˣ−1)² 化成 4∫x³/(eˣ−1)；dx/dT = −x/T 的微分鏈導出 (34)；(37) 退回 (22) 的三行驗算；三維 Van Hove 的 √(ω−ω_c) 標度分析與 1/2/3 維對照表。",
+  "12 對 234 的分析正確：234/12 = 19.5、19.5^{1/3} = 2.69、645/2.69 = 240 K；K_T 定義改取 a 倍會讓係數乘 a³、a = 2.69 剛好補回 234；第 6 章電子比熱的精確係數 π²/2 也正確。",
+  "其他書內事實核對無誤：p.116 在 PDF 中確實無文字層（抽取器只得到約 40 字元的印刷記號）；熱導率一節確實始於書本 p.121；p.107 腳註 1 確實給 C_p − C_V = 9α²BVT；Fig 8 與 Fig 11 圖說確實都附「multiply by 4.186」。"
+ ]
+}

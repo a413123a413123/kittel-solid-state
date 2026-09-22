@@ -1,0 +1,67 @@
+{
+  "section": 5,
+  "blockers": [
+    {
+      "where": "blocks[1].body（heading「熱導率的定義：四個被寫進定義裡的限定詞」，tier: \"book\"）",
+      "problem": "捏造跨章交叉引用。該 tier:\"book\" 區塊以肯定語氣宣稱：「下標 U 代表 energy（內能），這個記號在第 6 章討論金屬的電子熱導與 Wiedemann–Franz 定律時（p.156）會再出現。」此宣稱不成立，且未被該區塊末尾的校註涵蓋（校註只認領「四個限定詞」的拆解與 3ω／TDTR 對照）。",
+      "evidence": "書本 p.156「THERMAL CONDUCTIVITY OF METALS」與「Ratio of Thermal to Electrical Conductivity」整節完全沒有出現 j_U，只用 K、K_el、σ、L：原文為「In Chapter 5 we found an expression K = ⅓Cvℓ for the thermal conductiv- ity of particles of velocity v, heat capacity C per unit volume, and mean free path ℓ.」、(56) K_el = π²nk_B²Tτ/3m、(57) K/σ = …。p.157 的 Lorenz number 亦然。以 PyMuPDF 掃全書，j_U 只出現在 p.121、p.122（本節），下一次出現在 p.215（第 8 章）：「The energy flux that accompanies the charge flux is (55) … The Peltier coefficient Π is defined by j_U = Π j_q; or the energy carried per unit charge.」",
+      "fix": "刪除 p.156 的宣稱，或改寫為「第 6 章 p.156 會再用 K = ⅓Cvℓ 這條式子處理金屬的電子熱導與 Wiedemann–Franz 定律（但該處不再使用 j_U 記號）；j_U 這個記號下一次出現是 p.215 第 8 章定義 Peltier 係數 j_U = Π j_q 時」。"
+    },
+    {
+      "where": "blocks[17].eq.from（(45) K₁ + K₂ = K₃，tier: \"book\"）",
+      "problem": "對原文內容的事實描述錯誤。該處寫「晶體中嚴格成立的選擇律是『總波向量守恆，至多相差一個倒晶格向量 G』（第 4 章 p.100 的 (30)(31)(32) 已用同一原理處理中子散射）」。p.100 的 (30)(31)(32) 處理的是 X 射線光子散射，不是中子散射。",
+      "evidence": "p.100 原文：「We saw in Chapter 2 that the elastic scattering of an x-ray photon by a crystal is governed by the wavevector selection rule (30) k′ = k + G」；「If the scattering of the photon is inelastic, with the creation of a phonon of wavevector K, then the wavevector selection rule becomes (31) k′ + K = k + G.」；「If a phonon K is absorbed in the process, we have instead the relation (32) k′ = k + K + G.」中子要到同頁之後另起的小節「INELASTIC SCATTERING BY PHONONS」才登場：「Phonon dispersion relations ω(K) are most often determined experimentally by the inelastic scattering of neutrons…」",
+      "fix": "把「中子散射」改為「X 射線光子的彈性與非彈性散射」，例如：「第 4 章 p.100 的 (30)(31)(32) 已用同一原理處理 X 射線光子的彈性散射與伴隨聲子產生／吸收的非彈性散射」。"
+    }
+  ],
+  "minors": [
+    {
+      "where": "blocks[2].eq.numeric 與 blocks[4].body",
+      "problem": "把 Table 2 的 0 °C 資料稱為「室溫」。blocks[2].eq.numeric 寫「室溫石英（平行光軸）K = 0.13 W cm⁻¹ K⁻¹（Table 2, p.122）」；blocks[4].body 寫「室溫 NaCl 的 ℓ 約 23 Å，石英約 40 Å」。同一份檔案的 blocks[5].eq.numeric、blocks[11] 卻正確寫「石英 0 °C」「NaCl 0 °C」，前後不一致。",
+      "evidence": "Table 2（p.122，已 6 倍算繪目視確認）T 欄印的是 0 與 −190（單位 °C），沒有任何一列是室溫；0 °C = 273 K。",
+      "fix": "一律改成「0 °C」，或寫「0 °C（273 K，接近室溫）」。"
+    },
+    {
+      "where": "blocks[4].body（「Ballistic 對 Diffusive」，tier: \"mine\"）",
+      "problem": "兩點：(a) 此處直接引用書上印的「NaCl 從 23 Å 變成 100 Å」而未加註，但 blocks[11] 與 blocks[24]、blocks[26] 都主張這一筆用書上自己的 (44) 算出來是 162 Å、印的 100 Å 對不回來——同檔前後對同一個數字的處理不一致；(b) 23 → 100 只有 4.3 倍，與石英的 13.5 倍一起說成「都是一個數量級上下」偏鬆。",
+      "evidence": "Table 2（p.122）NaCl −190 °C 列：C = 1.00、K = 0.27、ℓ = 100。依表題「Calculated from (44)」反解 ℓ = 3K/(Cv) = 0.81/(1.00×5×10⁵) = 1.62×10⁻⁶ cm = 162 Å。",
+      "fix": "在 blocks[4] 引用 100 Å 時補一句「（此筆與 (44) 對不回來，詳見後文驗算）」，並把「都是一個數量級上下」改為「石英約 13.5 倍、NaCl 約 4～7 倍」。"
+    },
+    {
+      "where": "blocks[12].body（「為什麼低溫下 ℓ 會暴增」表格下方的反推）",
+      "problem": "算術與「正好」的宣稱不精確：「C 掉了 3.6 倍（石英），而 K 反而漲了 3.8 倍，所以 ℓ 必須漲 3.6 × 3.8 ≈ 13.7 倍才收得平——這正好就是 540/40 = 13.5。」先四捨五入再相乘造成偏差，且兩個數字並非「正好」相等。",
+      "evidence": "精確值為 (2.00/0.55) × (0.50/0.13) = 3.6364 × 3.8462 = 13.99，不是 13.7；由 (44) 重算的 ℓ 比值為 545/39 = 13.97。書上印的 540/40 = 13.5 之所以略低，是 ℓ 欄四捨五入所致。",
+      "fix": "改成「ℓ 必須漲 (2.00/0.55)×(0.50/0.13) ≈ 14.0 倍；書上印的 540/40 = 13.5，差異來自 ℓ 欄的四捨五入」。"
+    },
+    {
+      "where": "blocks[8].eq.limits（(44) 的 limits）",
+      "problem": "「光學支整條都很平，群速度近乎為零」過度概括。多數材料的光學支在 Γ 點附近仍有可觀色散（例如 Si 的 LO/TO 支），且光學聲子在部分材料（如 Ge、GaAs 的高溫區）對熱導有非零的直接貢獻。",
+      "evidence": "Kittel 本節（p.121–124）並未做此宣稱；此為 limits 欄的自行補充。書中第 4 章的雙原子鏈色散只顯示光學支在區邊界附近變平，未說「整條都很平」。",
+      "fix": "改為「光學支多半色散很弱、群速度遠小於聲學支，因此對 K 的直接貢獻通常很小」。"
+    },
+    {
+      "where": "blocks[18].eq.limits（(46) 的 limits，第一句）",
+      "problem": "「Planck 分布 ⟨n_K⟩ 只依賴 |K|（透過 ω(K)），對 K 與 −K 對稱，求和後 J = 0」——「只依賴 |K|」在各向異性晶體不成立，ω 一般也依賴 K 的方向。",
+      "evidence": "本節自己在 blocks[2].eq.limits 已指出「各向異性晶體的 K 是二階張量」，且 Table 2 的石英需註明「Parallel to optic axis」，可見色散並非各向同性。",
+      "fix": "把理由改為時間反演／倒易對稱給出的 ω(K) = ω(−K)，因此 ⟨n_K⟩ = ⟨n_−K⟩，求和後 J = 0；不必假設 ω 只依賴 |K|。"
+    },
+    {
+      "where": "blocks[10].body（「Table 2（p.122）原表重現」第三點）",
+      "problem": "「umklapp 這個詞在書上還沒有定義，要到 p.125 的 Umklapp Processes 小節才出現」——「還沒有定義」正確，但「才出現」不確。",
+      "evidence": "第 5 章章首目錄（書本 p.105）已印「Umklapp processes 125」；全書目錄（PDF p.9）亦然。首次「出現」在 p.105，首次「定義」在 p.125（「These processes, discovered by Peierls, are called umklapp processes.」）。",
+      "fix": "改成「這個詞在 p.122 之前只在章首目錄出現過，正式定義要到 p.125」。"
+    }
+  ],
+  "verified": [
+    "頁碼全數正確：(41) 在 p.121、(42)(43)(44) 與 Table 2 在 p.122、Thermal Resistivity of Phonon Gas 小節與 (45)(46) 在 p.123、Fig. 16a–c 在 p.124、Fig. 16d 與 (47)、Fig. 17 圖說在 p.125。第 5 章章首目錄（p.105）印「THERMAL CONDUCTIVITY 121 / Thermal resistivity of phonon gas 123 / Umklapp processes 125」，證實本檔宣告的 p.121–124 範圍切分正確。",
+    "式號全數正確且無虛構：(41)(42)(43)(44)(45)(46) 均為原文印出的編號（p.121、p.122、p.123，已算繪目視確認）。ℓ ∝ 1/T 那一條原文確實只以行內式印出、沒有編號，blocks[14] 也誠實不填 eqNumber 並在 symbols 裡說明——處理正確。ΔT = (dT/dx)ℓ_x = (dT/dx)v_xτ 在 p.122 確實是排版但未編號的顯示式，blocks[6] 的描述正確。",
+    "逐字引用全數通過（共約 20 條）。p.121 的四段隨機過程論證、p.122 的動力論五句與 Debye 那句、「with ℓ ≡ vτ and C ≡ nc. Thus K = ⅓Cvℓ.」、p.123 的七句（含 T₂/T₁ 與 ω₂/ω₁ 的先後順序，已 4 倍算繪確認：原文正是「at a temperature T₂ and those at the other end in equilibrium at T₁」與「the frequency ω₂ of the scattered phonon is equal to the frequency ω₁ of the incident phonon」，與 PDF 文字層浮出後的反序不同，本檔取的是紙面正確順序）、跨 p.123–124 的「If we start a distribution of hot phonons…Therefore there is no thermal resistance.」、Fig. 16a/16b/16c 三段完整圖說、Fig. 16d 與 Fig. 17 的引句、p.562 的熱導量子引句——逐字比對全部相符。",
+    "Table 2 原表重現完全正確（已 6 倍算繪目視核對）：表題「Table 2 Phonon mean free paths」、表下說明「[Calculated from (44), taking v = 5 × 10⁵ cm/sec as a representative sound velocity. The ℓ's obtained in this way refer to umklapp processes.]」、欄位標頭（T, °C；C, in J cm⁻³K⁻¹；K, in W cm⁻¹K⁻¹；ℓ, in Å）、四列數值（Quartz 0: 2.00/0.13/40；−190: 0.55/0.50/540；NaCl 0: 1.88/0.07/23；−190: 1.00/0.27/100）與註腳「ᵃParallel to optic axis.」全部逐字逐數相符。",
+    "blocks[11] 對 Table 2 的四筆反算獨立複驗全部正確，包含它宣稱的那一筆不自洽：ℓ = 3K/(Cv) 給出 39 / 545 / 22.3 / 162 Å，對應書上印的 40 / 540 / 23 / 100 Å。NaCl −190 °C 確實對不回來（162 vs 100，差 62%），這是 Kittel 原書 Table 2 自身的內部不一致，本檔的報告與三種「反推需要什麼條件」的數字（K ≈ 0.167、C ≈ 1.62、v ≈ 8.1×10⁵）也全部複算無誤。量綱檢查 [K]/([C][v]) → cm 正確。",
+    "其餘數值全部複算無誤：0.13 × 100 = 13 W cm⁻²；⅓ × 2.00 × 5×10⁵ × 4×10⁻⁷ = 0.133；⅓ × 1.88 × 5×10⁵ × 2.3×10⁻⁷ = 0.072；馬克士威分布 ⟨v²⟩/⟨v⟩² = (3kT/m)/(8kT/πm) = 3π/8 ≈ 1.178；273/83 = 3.29；40 × 3.29 ≈ 132 Å 對照實際 540 Å 約差 4 倍；540 Å = 54 nm；162/23 = 7.0、100/23 = 4.3。",
+    "公式與量綱：K = ⅓Cvℓ、j_U = −n⟨v_x²⟩cτ dT/dx = −⅓n⟨v²⟩cτ dT/dx、j_U = −⅓Cvℓ dT/dx、J = Σ_K n_K ℏK、K₁+K₂=K₃ 的符號、下標、係數與原文完全一致（已算繪核對 (43)(44) 的排版式）。K = ⅓∫C(ω)v(ω)²τ(ω)dω 的量綱化簡為 W cm⁻¹K⁻¹，成立。",
+    "tier: \"derived\" 的三個推導數學正確：(a) 補完 (43) 的組裝——½n⟨|v_x|⟩ × c × (−2ℓ_x dT/dx) 中 ½ 與 2 相乘為 1、⅓ 唯一來自 ⟨v_x²⟩ = ⅓⟨v²⟩，並正確指出 1D 無此因子、2D 為 ½；(b) 高溫 ⟨n⟩ ≈ k_BT/ℏω、N_ph = (k_BT/ℏ)Σ1/ω ∝ T；(c) J 守恆 ⟹ 熱阻為零，其中「熱流 = Σ n_K ℏω_K v_K = v²J（Debye 近似）」與位移 Bose–Einstein 分布 n_K = 1/{exp[ℏ(ω_K − u·K)/k_BT] − 1} 皆正確，且明確聲明後者為本文補充。U 過程下 ΔJ = ℏK₃ − ℏK₁ − ℏK₂ = −ℏG 亦正確。",
+    "Fig. 16a/16b/16c 的圖形描述經 4 倍算繪目視逐項核對，全部屬實：16a 上下管壁畫斜線剖面、兩端開口、左「Hot gas in」右「Hot gas out」、箭頭整體偏右、上方大箭頭標「Mass flow of gas」；16b 四面封死、左「Hot end」右「Cold end」、箭頭方向隨機無淨偏向、無質量流大箭頭；16c 為素線長方框、左「Phonon source」右「Phonon sink」、中央「N processes」、上方大箭頭「Net flow of phonons」、箭頭偏右。左右方位與標籤全部正確。",
+    "其餘跨節交叉引用經查證屬實：p.107 定義 τ ≡ k_BT 與 Planck 分布 (2)、p.108 重述為 (7)；Kittel 在 Appendix D（p.652）確實稱 τ 為「fundamental temperature」；p.120 的 (38) U(x) = cx² − gx³ − fx⁴、(40) ⟨x⟩ = 3g k_BT/4c² 與「Three-phonon processes are caused by third-order terms in the lattice potential energy.」；p.100「The true momentum of the whole system always is rigorously conserved.」與晶體整體以 −ℏG 反衝；p.125 (47) K₁+K₂=K₃+G 與「For all processes, N or U, energy must be conserved, so that ω₁ + ω₂ = ω₃.」；p.126 的 exp(−θ/2T) 指數凍結與 (48) K ≅ CvD 的 Casimir／尺寸效應；p.562 第 18 章 (78) 熱導量子引句逐字相符。「τ 在第 5 章有兩義」這個警示（p.107 的 k_BT vs p.122 的碰撞時間）正確且有價值。"
+  ]
+}

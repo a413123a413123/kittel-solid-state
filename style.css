@@ -603,3 +603,14 @@ section.deriv { padding: var(--s5) var(--s5) var(--s6); }
 .layout--deep article .blk__h { margin-top: var(--s6); }
 .layout--deep article > .sec > :first-child .blk__h { margin-top: 0; }
 .eqs { margin-block: var(--s5) var(--s7); }
+
+/* 含表格的公式 meta 列改為單欄，否則 6 欄表會擠進 1fr 的窄格變成跑馬燈 */
+.eq__row--wide { grid-template-columns: 1fr; gap: var(--s2); }
+/* 行長上限是給散文用的；表格要能用滿整列，否則 6 欄表被壓到 442px */
+.eq__row--wide .eq__rv { max-width: none; }
+/* prose() 在 li／卡片內會包 <p>，首尾的外距要收掉才不會撐開容器 */
+.deriv__steps li > p:first-child, .misc__i > div > p:first-child,
+.eq__rv > p:first-child { margin-top: 0; }
+.deriv__steps li > p:last-child, .misc__i > div > p:last-child,
+.eq__rv > p:last-child { margin-bottom: 0; }
+.eq__rv .tablewrap { margin-block: var(--s2); }

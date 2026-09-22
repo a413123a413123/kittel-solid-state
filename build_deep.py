@@ -101,6 +101,20 @@ def prose(body):
     return ''.join(out)
 
 
+def has_table(t):
+    return bool(t) and any(ln.strip().startswith('|') for ln in t.splitlines())
+
+
+def rich(t):
+    """含 Markdown 表格時走 prose()，否則只做行內轉換。
+
+    md() 不認表格，之前直接用在 <li>、誤解卡與公式的 from/limits/numeric 上，
+    整張表會以字面的 | --- | --- | 洩漏到畫面（Ch3–Ch5 共 13 處）。
+    但也不能無條件改用 prose()——那會在單行內容外面憑空多包一層 <p>。
+    """
+    return prose(t) if has_table(t) else md(t)
+
+
 def tier_tag(tier):
     if tier in TIER:
         label, cls = TIER[tier]
@@ -112,9 +126,12 @@ def eq_html(q):
     rt = ([e(q['eqNumber'])] if q.get('eqNumber') else []) + [f'p.{q["bookPage"]}']
     rows = ''
     for key, lab in (('from', '出處推導'), ('limits', '極限行為'), ('numeric', '典型數值')):
-        if q.get(key, '').strip():
-            rows += (f'<div class="eq__row"><span class="eq__rk">{lab}</span>'
-                     f'<span class="eq__rv">{md(q[key])}</span></div>')
+        v = q.get(key, '').strip()
+        if v:
+            # 表格塞進 4.5em + 1fr 的窄欄會擠成跑馬燈，改讓它獨佔整列
+            wide = ' eq__row--wide' if has_table(v) else ''
+            rows += (f'<div class="eq__row{wide}"><span class="eq__rk">{lab}</span>'
+                     f'<div class="eq__rv">{rich(v)}</div></div>')
     meta = f'<div class="eq__meta">{rows}</div>' if rows else ''
     return ('<div class="eq">'
             f'<p class="eq__l">{e(q["label"])}</p>'
@@ -136,7 +153,7 @@ def block_html(b):
     head = f'<h3 class="blk__h">{md(b["heading"])}{tag}</h3>' if b.get('heading') else ''
 
     if kind == 'derivation':
-        steps = ''.join(f'<li>{md(s)}</li>' for s in b.get('steps', []))
+        steps = ''.join(f'<li>{rich(s)}</li>' for s in b.get('steps', []))
         return (f'<section class="deriv">{head}{prose(b.get("body", ""))}'
                 + (f'<ol class="deriv__steps">{steps}</ol>' if steps else '')
                 + (prose(b['after']) if b.get('after') else '') + '</section>')
@@ -283,9 +300,9 @@ def chapter_overview(n, D):
 
     if D.get('misconceptions'):
         items = ''.join(
-            f'<li class="misc__i"><p class="misc__w">{md(m["wrong"])}</p>'
-            f'<p class="misc__why">{md(m["why"])}</p>'
-            f'<p class="misc__r">{md(m["right"])}</p></li>'
+            f'<li class="misc__i"><div class="misc__w">{rich(m["wrong"])}</div>'
+            f'<div class="misc__why">{rich(m["why"])}</div>'
+            f'<div class="misc__r">{rich(m["right"])}</div></li>'
             for m in D['misconceptions'])
         b.append('<section class="facet misc" id="fmis">'
                  '<p class="facet__k"><b>⊘</b>常見誤解與易錯點　（我的判讀）</p>'

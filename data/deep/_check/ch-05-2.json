@@ -1,0 +1,112 @@
+{
+ "section": 2,
+ "blockers": [
+  {
+   "where": "blocks[9].eq.limits（式(19) 的 limits 欄）",
+   "problem": "宣稱三維態密度的一般式「D(ω) = (V/8π³)∮dS/|∇_K ω| 是本講解補充的，Kittel 第 5 章並未寫出」。這是錯的——Kittel 就在同一章寫了這條式子，而且有編號，是式(37)。把書中明明有的東西說成書中沒有，是對原文的反向捏造，也會誤導讀者以為 Kittel 只給了球形近似。",
+   "evidence": "書本 p.118（PDF 138）末：「We divide both sides by dω and write V = L³ for the volume of the crystal: the result for the density of states is (37) D(ω) = V/(2π)³ ∫ dS_ω / v_g .」同頁上文已定義 v_g = |∇_Kω|，並附 Fig. 12、Fig. 13 圖解；p.119 接著寫「The integral is taken over the area of the surface ω = constant, in K space. The result refers to a single branch of the dispersion relation.」(2π)³ = 8π³，與本講解寫的一般式完全相同。",
+   "fix": "刪掉「Kittel 第 5 章並未寫出」，改成指出這正是 Kittel 第 5 章 p.118 的式(37) D(ω) = (V/(2π)³)∫dS_ω/v_g，並可順勢說明本段的式(20) 只是它在球形等頻率面下的特例。"
+  },
+  {
+   "where": "blocks[1].body（heading「原文的起手式：從一維的奇異點跨到三維」，tier: book）",
+   "problem": "宣稱 Kittel 沒有在第 5 章把 van Hove 奇異點與 Debye 近似的代價連起來、「而是把它放進了 p.128 的習題 1」，並把「Debye 的 D(ω) 是光滑拋物線、真實晶體有尖峰與扭折」寫成本講解的補充解讀。實際上 Kittel 在同一章 p.119 用了「Van Hove singularities」這個詞，而且 Fig. 14 就是把 Debye 的 D(ω) 與真實晶體的 D(ω) 並排畫給你看。整份檔案有三處（blocks[1]、blocks[8]、blocks[11].limits）建立在這個錯誤前提上。",
+   "evidence": "書本 p.119（PDF 139）：「There is a special interest in the contribution to D(ω) from points at which the group velocity is zero. Such critical points produce singularities (known as Van Hove singularities) in the distribution function (Fig. 14).」Fig. 14 圖說：「Density of states as a function of frequency for (a) the Debye solid and (b) an actual crystal structure. The spectrum for the crystal starts as ω² for small ω, but discontinuities develop at singular points.」",
+   "fix": "把 blocks[1] 那段括號說明改寫為：Kittel 在 p.111 先觀察到奇異點，接著在 p.118 給出一般式(37)、在 p.119 正式命名 Van Hove singularities 並用 Fig. 14 直接對比 Debye 與真實晶體的 D(ω)；習題 1 只是要你把 p.119 的定性圖算成定量式子。blocks[8]、blocks[11].limits 的相同說法一併修正，並撤回「本講解補充」的宣稱。"
+  },
+  {
+   "where": "blocks[6].eq.limits（式(18) 的 limits 欄）",
+   "problem": "頁碼錯。宣稱「第 6 章 p.136 算自由電子氣的態密度時 … 得到 D(ε) = (V/2π²)(2m/ℏ²)^{3/2}ε^{1/2}」。書本 p.136 是 EFFECT OF TEMPERATURE ON THE FERMI-DIRAC DISTRIBUTION（分布函數式(5) 與 Fig. 3），完全沒有態密度。",
+   "evidence": "書本 p.140（PDF 160）：「We now find an expression for the number of orbitals per unit energy range, D(ε), called the density of states. … so that the density of states (Fig. 5) is (20) D(ε) ≡ dN/dε = (V/2π²)·(2m/ℏ²)^{3/2}·ε^{1/2}.」而 (2π/L)³ 的計數在 p.138（本檔 blocks[41] 自己也正確寫成 p.138）。",
+   "fix": "改成「第 6 章 p.138 用同一個 (2π/L)³ 計數（再乘 2 代表自旋），到 p.140 的式(20) 得到 D(ε) = (V/2π²)(2m/ℏ²)^{3/2}ε^{1/2}」。"
+  },
+  {
+   "where": "blocks[39].body（誤解二）與 blocks[41].body（（七）小節標題與內文）",
+   "problem": "章號錯。兩處都把書本 p.580（熔融石英低溫熱容 Fig. 8、非晶固體熱導率式(29)）歸成「第 18 章」，blocks[41] 甚至把小節標成「（七）第 18 章 奈米結構與非晶固體（p.557-562、p.580）」。p.580 屬於第 19 章 NONCRYSTALLINE SOLIDS，不是第 18 章；第 18 章（NANOSTRUCTURES）只到 p.564。",
+   "evidence": "目錄（PDF 16-17）：「CHAPTER 18: NANOSTRUCTURES 515 … Quantized Vibrational Modes 557 … Heat Capacity and Thermal Transport 561」；「CHAPTER 19: NONCRYSTALLINE SOLIDS 565 … Low Energy Excitations in Amorphous Solids 578 … Thermal Conductivity 579」。p.580 頁尾的來源檔名亦為 ch19.qxd（第 18 章頁面為 ch18.qxd）。",
+   "fix": "p.557-562 保留在第 18 章（奈米結構）；p.578-580 改標為第 19 章（非晶固體）。blocks[41] 的小節標題改成「（七）第 18 章 奈米結構（p.557-562）與第 19 章 非晶固體（p.578-580）」。"
+  },
+  {
+   "where": "blocks[39].body（誤解五最後一段）",
+   "problem": "物理錯誤，而且與本檔自己引用兩次的原文表頭矛盾。宣稱「Table 1 的 θ = 645 K 是從實驗熱容擬合出來的有效參數，它已經把光學支的貢獻吸收進去了」。Table 1 表頭明寫取的是 θ 的低溫極限；低溫下矽的光學支（本檔自己算出 ℏω/k_B ≈ 745 K）完全凍結，不可能被吸收進一個低溫極限的 θ。blocks[29] 才剛強調「Table 1 特別標明取 low temperature limit … 那裡 fit 出來的 θ 才有唯一而確定的意義」，兩段直接打架。",
+   "evidence": "Table 1（書本 p.116，算繪影像目視）標題「Debye temperature and thermal conductivity」，表頭兩行為「Low temperature limit of θ, in Kelvin」與「Thermal conductivity at 300 K, in W cm⁻¹K⁻¹」。另：用矽彈性常數取 Debye 平均聲速 v_D ≈ 6.35 km/s，配原子數密度 5.00×10²² cm⁻³，由式(28) 得 θ ≈ 696 K（與 645 K 同量級）；配原胞數密度則只有 ≈ 553 K。",
+   "fix": "把 Fig. 8 對得準的原因改寫成約定問題而非光學支：文獻與 Table 1 的 θ 依慣例用「每原子 3 個模態」（N = 原子數）定義，本檔式(29)(30) 的數值也一律用 N = 原子數，所以自洽；改用原胞數密度 θ 會掉到 ≈ 553 K，Fig. 8 就對不上。光學支應另外討論（它是 Debye 形狀在中高溫偏差的原因之一），不能說被低溫極限的 θ 吸收。"
+  }
+ ],
+ "minors": [
+  {
+   "where": "blocks[36].body（Fig. 8 的圖上讀值）",
+   "problem": "矽在 100 K 的圖上讀值寫成「約 1.5」，偏低；同段又說「矽則要到 100 K 附近才離開軸線」，與圖面不符（且與自己給的 1.5 互相矛盾）。",
+   "evidence": "以 14 倍算繪 Fig. 8 逐格判讀（縱軸每格 1 cal/mol-K）：矽曲線在 T = 100 K 格線上位於 y ≈ 1.7；矽約 40 K 起已明顯離開橫軸，約 70 K 通過 1 cal/mol-K。鍺 100 K ≈ 3.3、200 K ≈ 5.0、300 K ≈ 5.5 與矽 200 K ≈ 3.8、300 K ≈ 4.7 則都讀對。",
+   "fix": "矽 100 K 改為「約 1.7」；「要到 100 K 附近才離開軸線」改為「約 40 K 起才明顯抬頭、70 K 左右才到 1 cal/mol-K」。"
+  },
+  {
+   "where": "blocks[15].eq.limits 與 blocks[14].body（第 4 章交叉引用）",
+   "problem": "頁碼錯一頁。兩處都寫「第 4 章 p.93 的式(9) ω = (4C/M)^{1/2}|sin(½Ka)|」。式子本身逐字正確，但印在 p.92；p.93 是 First Brillouin Zone 小節，「群速度在區邊界為零」則在 p.94。",
+   "evidence": "書本 p.92（PDF 112）：「(9) ω² = (4C/M) sin²½Ka ; ω = (4C/M)^{1/2}|sin ½Ka|.」書本 p.94（PDF 114）：「With the particular dispersion relation (9), the group velocity (Fig. 6) is (14) … This is zero at the edge of the zone where K = π/a.」",
+   "fix": "改成「第 4 章 p.92 的式(9) …；群速度在區邊界歸零見 p.94 的式(14)」。"
+  },
+  {
+   "where": "blocks[26].eq.formula（式(27)）",
+   "problem": "把未編號的定義 x ≡ ℏω/τ ≡ ℏω/k_BT 併進「式(27)」的公式欄。原文式(27) 只有 x_D ≡ ℏω_D/k_BT ≡ θ/T；x 的定義寫在式(26) 之後的行文裡，沒有編號。（from 欄已有說明，故列 minor。）",
+   "evidence": "書本 p.112：「… where x ≡ ℏω/τ ≡ ℏω/k_BT and (27) x_D ≡ ℏω_D/k_BT ≡ θ/T.」",
+   "fix": "formula 欄只留 x_D ≡ ℏω_D/k_BT ≡ θ/T，把 x 的定義移到 symbols 或 from 欄並註明原文未編號。"
+  },
+  {
+   "where": "blocks[2].eq.numeric（式(16) 的數值欄）",
+   "problem": "「L = 10 nm 時 … 沿每個軸只有約 23 個允許的 K 點」數錯。23 只是 K_D ÷ (2π/L)，即從 0 數到 K_D；沿整個軸（−K_D 到 +K_D）約 46 個，而真正的物理計數是每邊 L/a = 10 nm / 0.543 nm ≈ 18 個。",
+   "evidence": "式(17)：每軸允許值間距 2π/L，區間為第一布里淵區 −π/a 到 +π/a，故每軸點數 = (2π/a)/(2π/L) = L/a。",
+   "fix": "改成「2π/L 只比 K_D 小 23 倍；沿每個軸的允許 K 點數為 L/a ≈ 18 個」。"
+  },
+  {
+   "where": "blocks[6].eq.numeric（式(18) 的數值欄）",
+   "problem": "與本檔自訂的約定不一致。此處用原子數密度對應的 K_D = 1.436×10¹⁰ m⁻¹，結論寫「得到 5.00×10²² 個 K 點——正好是 1 cm³ 矽裡的原子數」；但 blocks[5] 才剛論證「允許的 K 點數 = 原胞數」，blocks[9] 與 blocks[20] 的數值欄又改用原胞密度的 K_D = 1.14 Å⁻¹。而且這個驗算是循環的——K_D 本來就是從該密度反算出來的。",
+   "evidence": "blocks[22] 自訂規則：「式(23)(24)(28) 裡的 N/V 永遠是原胞數密度」；blocks[9].numeric 用 2.50×10²² cm⁻³ 得 K_D = 1.14 Å⁻¹。",
+   "fix": "統一成原胞約定（K_D = 1.14 Å⁻¹ → 2.50×10²² 個 K 點 = 原胞數），或就地加註此處刻意用原子約定、且該式為循環驗算僅用來核對量級。"
+  },
+  {
+   "where": "blocks[14].body（Debye 近似的物理動機，三條溫區分區）",
+   "problem": "免責註記位置擺錯。「（以下三條分區是本講解由原文兩段話整理出來的判讀框架，不是 Kittel 的原話。）」被放在三條 bullet 的第二條之後，實際只涵蓋到第三條，前兩條仍以 tier book 的身分呈現為原文內容。",
+   "evidence": "檔案內該段落順序為：T ≪ θ bullet → T ≫ θ bullet → 免責註記 → T ~ 0.1θ 到 θ bullet。",
+   "fix": "把註記整段前移到三條 bullet 之前。"
+  },
+  {
+   "where": "blocks[30].eq.limits 與 blocks[24].eq.limits（低溫極限的式號指稱）",
+   "problem": "「U → 3π⁴Nk_BT⁴/5θ³，即 p.114 的式(31) 結果」指稱不精確。p.114 的式(31) 是積分 ∫₀^∞ x³dx/(e^x − 1) = π⁴/15；U ≅ 3π⁴Nk_BT⁴/5θ³ 是緊接其後的未編號式子，編號 (32) 給的是 C_V。",
+   "evidence": "書本 p.114：「(31) ∫₀^∞ dx x³/(e^x−1) = ∫₀^∞ dx x³ Σ_{s=1}^∞ exp(−sx) = 6Σ1/s⁴ = π⁴/15, Thus U ≅ 3π⁴Nk_BT⁴/5θ³ for T ≪ θ, and (32) C_V ≡ (12π⁴/5)Nk_B(T/θ)³ ≡ 234 Nk_B(T/θ)³」。",
+   "fix": "改成「用 p.114 式(31) 的 π⁴/15，得到該頁緊接其後（未編號）的 U ≅ 3π⁴Nk_BT⁴/5θ³，微分後即式(32)」。"
+  },
+  {
+   "where": "blocks[38].body（習題 3(b) 的引用）",
+   "problem": "引用不逐字：寫成「The divergence of ⟨R²⟩ is not significant for any physical measurement.」原文沒有角括號。",
+   "evidence": "書本 p.128（PDF 148，8 倍算繪目視確認）：「… counting longitudinal modes only. The divergence of R² is not significant for any physical measurement.」同一題前文確實用 ⟨R²⟩，但這一句用的是裸的 R²。",
+   "fix": "引號內改回「The divergence of R² is not significant for any physical measurement.」"
+  },
+  {
+   "where": "blocks[1].tier 與 blocks[14].tier",
+   "problem": "tier 偏寬。這兩塊標成 book，但實質內容以撰寫者自己的框架為主（blocks[1]：van Hove 命名、「Debye 在構造上消滅奇異點」、代價論；blocks[14]：「T ≪ θ 漸近精確／T ≫ θ 也對但理由不同／中溫最差」三分法、「K ≪ π/a 時 Debye 是精確的」）。兩塊各只有 1-3 句逐字引用才是真正的 book 內容。",
+   "evidence": "p.111-112 原文在這兩處只寫了奇異點那一句，以及「In the Debye approximation … as it would be for a classical elastic continuum.」與「The dispersion relation is written as (21)」。",
+   "fix": "把逐字引用與緊鄰原文的解釋留在 tier book，其餘框架性內容切出成獨立的 tier mine 區塊（其他 mine 區塊已是這種寫法）。"
+  },
+  {
+   "where": "blocks[37].body（Fig. 10 的頁碼）與 blocks[9].eq.limits（矽橫波速度差）",
+   "problem": "兩處小偏差。(1)「p.114 Fig. 10 圖說給的正是這個 12Nk_B」——12Nk_B 確實出現在 p.114 本文，但 Fig. 10 的圖說印在 p.115（blocks[41] 自己寫的是「Fig. 10（p.115）」，前後不一致）。(2) 矽橫聲學速度 [100] 5.85 km/s 對 [111] 5.10 km/s 差 12.8%，寫成「相差約一成」略低估。",
+   "evidence": "書本 p.114 本文：「The energy is ~3Nk_BT(T/θ)³, and the heat capacity is ~12Nk_B(T/θ)³.」Fig. 10 圖說位於 p.115。Si 彈性常數 C11=165.7、C12=63.9、C44=79.6 GPa、ρ=2329 kg/m³ → v_T[100]=√(C44/ρ)=5.85 km/s，v_T[111]=√((C11−C12+C44)/3ρ)=5.10 km/s，比值 1.147。",
+   "fix": "(1) 改成「p.114 本文（Fig. 10 圖說在 p.115）」。(2)「相差約一成」改成「相差約 13%」。"
+  }
+ ],
+ "verified": [
+  "全部 15 條 eq 的 bookPage 與 eqNumber：式(16)(17)(18)(19) → p.111、式(20)(21)(22)(23)(24)(25)(26)(27)(28) → p.112、式(29)(30) → p.113，逐條與原文印刷相符，沒有原文無編號卻被安上式號的情形。",
+  "式(30) 的 w/ω 校註屬實：以 14 倍算繪 PDF p.133 放大目視，書本印的確實是 ∫₀^{w_D} dw ω⁴e^{ℏw/τ}/(e^{ℏw/τ}−1)²——積分上限、微分元與兩個指數都用斜體 w，只有 ω⁴ 用 ω。是書本第 8 版本身的排版瑕疵，不是文字層抽取錯誤；校註寫得正確且誠實。",
+  "p.111-113 主段落的英文逐字引用全部核對無誤：奇異點那一句、「We apply periodic boundary conditions over N³ primitive cells within a cube of side L…」、「Therefore, there is one allowed value of K per volume (2π/L)³ in K space, or (18) allowed values…for each polarization and for each branch.」、「The volume of the specimen is V = L³」、「The total number of modes with wavevector less than K…」、Fig. 6／Fig. 7／Fig. 8 三段圖說、「In the Debye approximation the velocity of sound is taken as constant…classical elastic continuum.」、「with v the constant velocity of sound」、「The density of states (20) becomes」、「If there are N primitive cells in the specimen, the total number of acoustic phonon modes is N.」、「To this frequency there corresponds a cutoff wavevector in K space:」、「On the Debye model we do not allow modes of wavevector larger than K_D. The number of modes with K ≤ K_D exhausts the number of degrees of freedom of a monatomic lattice.」、「For brevity we assume that the phonon velocity is independent of the polarization, so that we multiply by the factor 3 to obtain」、「where N is the number of atoms in the specimen」、「The heat capacity is found most easily by differentiating the middle expression of (26) with respect to temperature.」",
+  "章外交叉引用的逐字引用亦全部無誤：p.107 註腳 1（C_p − C_V = 9α²BVT）、p.108「The central problem is to find D(ω)…density of states.」、p.110「The method of periodic boundary conditions (Figs. 4 and 5) does not change the physics…」與「gives the same number of modes (one per mobile atom)」、Fig. 5 圖說「The special points ±Nπ/L represent only a single solution because exp(iπs) is identical to exp(−iπs)」、p.114 兩段（T³ approximation／short wavelength modes）與鹼金屬那句、p.128 習題 1 的兩條 D(ω)、習題 3(a) 的 ⟨R²⟩ = 3ℏω_D²/8π²ρv³、習題 4 全句、p.122 式(42) 與「heat capacity per unit volume」、p.127「The only temperature-dependent term…vary as T³ at low temperatures.」、p.138「From (10) we see that there is one allowed wavevector…(2π/L)³ of k space.」與自旋因子 2 那句、p.145 兩段（T_F 不是電子溫度／C = γT + AT³）與 C/T = 2.08 + 2.57T²、p.270 同位素效應、p.278 T_c = 1.14θ exp[−1/UD(ε_F)]、p.580「As in Chapter 5, the expression for the thermal conductivity K has the form (29)…」。",
+  "Table 1（書本 p.116，無文字層，3 倍算繪目視）：表頭確為「Low temperature limit of θ, in Kelvin」，θ 值 Cu 343、Al 428、Si 645、Ge 374、C 2230、Ar 92 全部正確；鹼金屬 Li 344／Na 158／K 91／Rb 56／Cs 38 也支持「愈重的原子 θ 愈低」那句引用。",
+  "Table 4（書本 p.21，無文字層，3 倍算繪目視）：原子濃度 Cu 8.45、Al 6.02、Si 5.00、Ge 4.42、C 17.6（單位 10²² cm⁻³）與最近鄰距 Si 2.35、Ge 2.45、Cu 2.56 Å 全部正確；由此反推 a_Si = 4×2.35/√3 = 5.427 Å、a_Ge = 5.658 Å、a_Cu = 2.56√2 = 3.620 Å，檔中的 2π/a = 1.158／1.110／1.736 Å⁻¹ 與 √3π/a = 1.003 Å⁻¹ 都算得對（未誤用記憶中的 5.431）。",
+  "blocks[32] 的 Debye 熱容數值表（T/θ = 0.05／0.10／0.20／0.30／0.40／0.50／0.60／0.80／1.00／1.60）以 scipy 獨立數值積分重算得 0.243／1.891／9.195／15.158／18.604／20.589／21.796／23.099／23.740／24.463，與檔中十個值全部相符（僅末位截斷差 0.001）；佔 3R 的百分比亦全對。",
+  "其餘數值全部重算吻合：8π³ = 248.05、V/8π³ = 4.03×10⁻⁹ m³、K_D 表（Cu 1.710／Al 1.528／Si 1.436／Ge 1.378／C 2.184 Å⁻¹）、ν_D 表（7.15／8.92／13.4／7.79／46.5 THz）、反解聲速表（2630／3670／5880／3550／13400 m/s）、換算常數 2.977×10⁻¹¹ = (ℏ/k_B)(6π²)^{1/3}、ℏv/k_B = 4.49×10⁻⁸ m·K、λ_D = 4.38／5.51 Å、x_D（Si 2.15／Ge 1.25／C 7.43／Si@77K 8.4）、∫₀^{2.15}x³/(e^x−1)dx = 1.3687、U(Si,300K) = 3.09 kJ/mol、U₀ = (9/8)Nk_Bθ = 6.03（Si）／3.50（Ge）kJ/mol、3R = 24.943 = 5.958 cal/mol-K、234Nk_B 的 T³ 誤差（0.05θ 0.1%、0.1θ 2.9%、0.2θ 69%）、C_vol 表（77 K 0.254／300 K 1.661／350 K 1.758／400 K 1.825／450 K 1.873 J cm⁻³K⁻¹）、古典上限 3nk_B = 2.07 J cm⁻³K⁻¹、V_m = 12.04／13.63 cm³/mol、Cth ≈ 5×10⁻¹⁷ J/K、矽光學聲子 15.5 THz → 745 K、Si 兩種約定聲速差 26% = 2^{1/3}。",
+  "所有 tier derived 的推導數學都正確：6π² = (4π/3)/(8π³) 的倒數、2π² = 6π²/3、式(22) 三個 v 的來源、換元冪次 4（式26）與 5（式30）、歸一化 ∫₀^{ω_D}D(ω)dω = N、D(ω_D) = 3N/ω_D、K_D 球與第一布里淵區等體積（V_BZ = 8π³N/V → K_D³ = 6π²N/V）、路線 A 對中間式微分與路線 B 的 Leibniz 邊界項並用分部積分證明兩者等價（B-5／B-6 逐項核對正確）、高溫展開 x⁴e^x/(e^x−1)² = x²(1 − x²/12 + …) 給出 C_V ≈ 3Nk_B[1 − (1/20)(θ/T)²]（且正確指出只展開到 e^x ≈ 1+x 會得到假的 1/T 修正）、零點能 (9/8)Nℏω_D 的兩種算法一致。所有量綱檢查（D(ω) 單位為秒、V/8π³ 為 m³、ℏv/k_B 為 m·K）都成立，沒有漏平方之類的問題。",
+  "三維度對照表（1D: L/2π, 2K, LK/π, L/πv, ∝T；2D: A/4π², πK², AK²/4π, Aω/2πv², ∝T²；3D: V/8π³, 4πK³/3, VK³/6π², Vω²/2π²v³, ∝T³）逐格重算正確，且 1D 那列確實可對回 p.110 的式(15)、2D 那列可對回 Fig. 6 圖說的 πK²(L/2π)²。",
+  "Fig. 6 的文字還原（6 倍算繪目視）正確：灰色正方形、均勻黑點、頂端 π/a 標註量的確實是從中心到右邊界、方塊橫跨 ±π/a 邊長 2π/a、點距 2π/10a 故每方向 10 個點共約 100 點、正中央 K = 0 處有一個小白叉、白色虛線圓以原點為心、白色箭頭自圓心指向圓周並標 K。Fig. 7 的文字還原（橫軸 T/θ 帶右箭頭 0→1.6 每 0.2 一格、縱軸 0→25 每 5 一格、單一粗實線、0.1 前貼軸、0.15-0.35 陡升、1.0 後近水平、右端 1.6 仍未達 24.943）也全部正確。",
+  "blocks[40] 的「全書逐詞檢索」宣稱屬實：以 pypdf 逐頁掃描全書，Kapitza、thermal boundary resistance、thermal time constant、thermal impedance、self-heating、Cauer、Foster 的出現次數皆為 0。",
+  "blocks[22] 的「Kittel 的 N 有三個意思」對照表正確：式(16)(17) 的 N 確為每邊原胞數（原文「over N³ primitive cells within a cube of side L」）、式(19) 的 N 為 |K| < K 的模態數且為單一偏振（承 p.112 頁首「for each polarization type.」）、式(23)(24)(28) 的 N 為原胞數、式(29)(30) 的 N 為原子數（p.113 明寫），四條原文依據全部對得上。"
+ ]
+}
