@@ -1,0 +1,92 @@
+{
+ "section": 5,
+ "blockers": [
+  {
+   "where": "blocks[27].body（「表題的單位換算實際示範」，tier: derived，第二段「兩個觀察」的第一個）",
+   "problem": "數學錯。原文寫「『9』其實是 8.988，也就是 c²×10⁻¹⁹（c 以 cm/s 計）」。c = 2.998×10¹⁰ cm/s，c² = 8.988×10²⁰，乘 10⁻¹⁹ 得 89.88，不是 8.988，差了 10 倍。本 block 第 3、4 步算出的兩個因子（8.988×10¹¹、8.988×10¹³）本身正確，錯的是這句要讀者記住的恆等式。",
+   "evidence": "程式驗算：c_cgs² × 1e-19 = 89.8755；c_cgs² × 1e-20 = 8.98755。表題第一因子 = 299.79 V / (10/c A) = c²×10⁻⁹ = 8.988×10¹¹，第二因子 = c²×10⁻⁷ = 8.988×10¹³。",
+   "fix": "改為「也就是 c²×10⁻²⁰（c 以 cm/s 計）」，或更直觀地寫「第一因子 = c²×10⁻⁹、第二因子 = c²×10⁻⁷（c 以 cm/s 計）」。"
+  },
+  {
+   "where": "blocks[31].body（「為什麼 helicon 法最準」，tier: mine，第「一」點最後一句）",
+   "problem": "物理論證錯誤。原文宣稱傳統 Hall 量測「需要精確知道樣品厚度 d 並處理電極位置不對稱等問題，這些幾何誤差在 helicon 法中都不存在」。『無電極、無接點不對稱』成立，但『沒有厚度（幾何）誤差』不成立：helicon 色散 ω = (Bc/4πpe)K² 要換成 R_H 必須知道 K，而有限樣品中 K 由邊界條件決定（例如板狀樣品的駐波條件 K ≈ nπ/d），所以 R_H ∝ ωd²/B，樣品尺寸反而以平方進入。本 block 同一段自己也寫了『量出頻率與波向量的關係』，而波向量正是由幾何決定的。",
+   "evidence": "p.425 習題 4(b)：「ω = (Bc/4πpe)K², the helicon dispersion relation, in CGS」。由此 R_H = 1/pec = 4πω/(c²BK²)，K 必須另外由樣品幾何決定。書中對 helicon 法的準確度來源沒有任何說明，p.155 只說「The most accurate measurements are made by the method of helicon resonance」。",
+   "fix": "刪去「需要精確知道樣品厚度 d」與「這些幾何誤差在 helicon 法中都不存在」，改成「不需要在樣品上接電極，避開了 Hall 電極錯位、接觸電阻與電流分布不均等問題；樣品尺寸仍然會透過駐波條件進入 K，但它是巨觀、可精確量測的量」，並標註為本講解的推論。"
+  },
+  {
+   "where": "blocks[33].body（「與元件熱特性研究（Cth）的接點」，tier: ext，第「一」點）",
+   "problem": "把書中沒說的話寫成 Table 4 顯示的結果，且與本檔自己的其他 block 矛盾。原文寫「對金屬而言，本段的 Table 4 顯示 n 就是價電子數、與溫度無關，電阻的溫度相依完全來自 τ(T)」。(1) Table 4 並沒有顯示 n 等於價電子數：Al、In 對應每原子 1 個電洞而非 3 個電子，Be 為正號，As、Sb、Bi 差兩到四個數量級。本檔 blocks[32] 的誤解六正是說「(55) 裡的 n 就是價電子濃度」是誤解，並舉 Al、Be、As 為反例。(2) Table 4 每種方法只有單一溫度（conv. 室溫、helicon 4 K），無法顯示 n 與溫度無關；本檔 blocks[32] 的誤解七反而用 Table 4 的 Na（室溫 −2.3、4 K −2.619）說明 Hall 係數會隨條件改變。",
+   "evidence": "p.155 Table 4 表題與表列；p.156：「these agree with values calculated for one positive charge carrier per atom and thus disagree in magnitude and sign with values calculated for the expected three negative charge carriers」。書中沒有任何一句說 Table 4 證明 n 與溫度無關。",
+   "fix": "改成「對簡單金屬（如 Table 4 中以 helicon 法量得的 Na、K），n 與『每原子一個傳導電子』吻合；n 由價電子數決定、不隨溫度變化，是自由電子模型（簡併電子氣）的假設，不是 Table 4 直接量到的。因此金屬電阻的溫度相依主要來自 τ(T)……」，並刪去「本段的 Table 4 顯示……與溫度無關」。"
+  }
+ ],
+ "minors": [
+  {
+   "where": "blocks[20].body（「書中對 (55) 的限定與補充」，tier: book，開頭與第「二」點）",
+   "problem": "對原文結構的描述不準確，而且在 book-tier 中加了一句書上沒有的話。(1)「p.155 在 (55) 之後補了四段話，每一段都劃出了這條式子的適用邊界」：原文只有兩個段落，第一段是「濃度越低 R_H 越大」加上 Note 說明符號用法，第二段是「弛豫時間相等」加上「電子電洞並存」。而且前兩點（R_H 可用來量載子濃度、符號另有他義）並不是適用邊界。(2) 第二點的「兩者的量綱與物理意義都不同」：書上只說「with a different meaning」，沒有提到量綱。這句內容本身正確，但被寫在 book-tier 的「書中提醒」之下。",
+   "evidence": "p.155 算繪影像。第一段：「The lower the carrier concentration, ... Note: The symbol R_H denotes the Hall coefficient (54), but the same symbol is sometimes used with a different meaning, that of Hall resistance in two-dimensional problems.」第二段：「The simple result (55) follows from ... contribute to the conductivity.」",
+   "fix": "改為「p.155 在 (55) 之後用兩段話補了四點」，並刪去「每一段都劃出了這條式子的適用邊界」；「兩者的量綱與物理意義都不同」改成括號註明為本講解補充，例如「（本講解補充：兩者連量綱都不同，見後面的換算區塊）」。"
+  },
+  {
+   "where": "blocks[10].eq.formula（(52)）",
+   "problem": "把書中 (52) 之後正文裡的定義「ω_c = eB/mc」併進了有編號的式子。原書 (52) 只有 v_x、v_y、v_z 三式，ω_c 的定義在下一行正文（where ω_c = eB/mc is the cyclotron frequency），而且 (52) 本身沒有標 CGS。",
+   "evidence": "p.153 算繪影像：印有式號 (52) 的那一行是 v_x = −(eτ/m)E_x − ω_cτv_y；v_y = −(eτ/m)E_y + ω_cτv_x；v_z = −(eτ/m)E_z；下一行才是「where ω_c = eB/mc is the cyclotron frequency」。",
+   "fix": "formula 只放三條速度式；把「ω_c = eB/mc（正文定義；SI 以 1 取代 c 得 eB/m）」移到 symbols。"
+  },
+  {
+   "where": "blocks[28].body（衍生比對表，Au 列「等效載子數／原子」）",
+   "problem": "數值差一點。Au 的等效載子數寫成 1.48。依本 block 自己的定義 1/(|R_H|·ec·n_atom)，以 n = 5.90×10²² cm⁻³ 計算得 1.471，應寫 1.47。1.48 是拿表中已四捨五入的 1.18 除以 0.8 得 1.475 再進位的結果。其餘 15 列的比值與等效載子數都已用程式驗算，沒有錯誤。",
+   "evidence": "1/(0.8×10⁻²⁴ × 14.3996 × 5.90×10²²) = 1.471；−1/nec = −1.1771×10⁻²⁴，1.1771/0.8 = 1.471。",
+   "fix": "Au 列的等效載子數改為 1.47。"
+  },
+  {
+   "where": "blocks[28].body（第一段「Kittel 在 p.155–156 只挑了 Na、K、Al、In 與 As、Sb、Bi 做文字評論」）",
+   "problem": "漏掉了 Be。p.156 明寫正號異常也出現在 Be 與 As，所以「只挑了」這個說法不成立。本檔 blocks[29] 的第二層自己也寫了「表中的 Be 與 As 也出現載子看似帶正號的問題」。",
+   "evidence": "p.156：「The problem of an apparent positive sign for the charge carriers arises also for Be and As, as seen in the table.」",
+   "fix": "改為「只挑了 Na、K、Al、In、Be 與 As、Sb、Bi 做文字評論」。"
+  },
+  {
+   "where": "blocks[28].body（四群判讀）、blocks[30].body（第 9 章段）、blocks[31].body（開頭）、blocks[34].body（檢驗）",
+   "problem": "有幾個範圍描述和本檔自己的表對不上。(1)「室溫傳統值偏離 5%–30%」：Au 的實驗／預期為 0.68，偏離 32%。(2) blocks[30]「貴金屬傳統值偏離 20%–30%」：Ag 為 0.84，只偏離 16%；Au 則是 32%。(3)「半金屬 |R_H| 比自由電子預期大兩到四個數量級」：Sb 只大 52 倍，約 1.7 個數量級。(4)「等效載子數只有每原子 10⁻²–10⁻⁴」：Sb 為 0.095，接近 10⁻¹。",
+   "evidence": "本檔 blocks[28] 的表：Au 0.68、Ag 0.84、Cu 0.73；Sb 的實驗／預期為 52，等效載子數為 0.095。",
+   "fix": "分別改成「約 5%–35%」、「貴金屬偏離約 15%–30%」、「大一到四個數量級（Sb 約 50 倍，Bi 約 10⁴ 倍）」、「10⁻¹–10⁻⁴」。"
+  },
+  {
+   "where": "blocks[22].eq.numeric（鉍的遷移率比估算）",
+   "problem": "前後推算不一致。本段先寫 Table 7 給出 n ≈ 2.9×10¹⁷、p ≈ 3.0×10¹⁷ cm⁻³，但「對應 b ≈ 1.05」其實是用 n = p = 3.0×10¹⁷ 的補償近似 (1/nec)(1 − b)/(1 + b) 算出來的。若代入本段自己引用的 n、p，精確解習題 3 的公式得 b ≈ 1.07（以 Table 7 原值 n = 2.88×10¹⁷ 計算則 b ≈ 1.074）。本段已註明只作量級示範，所以列為 minor。",
+   "evidence": "數值求解 (1/ec)(p − nb²)/(p + nb)² = −6000×10⁻²⁴：n = 2.9e17、p = 3.0e17 時 b = 1.070；n = 2.88e17（Table 7 原值）時 b = 1.074；n = p = 3.0e17 時 b = 1.053。",
+   "fix": "寫明「以 n ≈ p 近似」得 b ≈ 1.05，或改用 n、p 的精確值，得 b ≈ 1.07。"
+  },
+  {
+   "where": "blocks[27].steps[5]（第 6 步括號）",
+   "problem": "誤差來源的解釋錯誤。比較的兩個數是 −2.339×10⁻¹⁰（SI 直接計算）與 −2.340×10⁻¹⁰（乘 8.988×10¹³），兩者都沒有用到「9」，所以括號寫「差異來自 9 與 8.988 的四捨五入」並不正確。兩者實際上在 10⁻⁴ 以內相等（2.33946 對 2.33946），差異只是顯示位數的捨入。",
+   "evidence": "程式驗算：1/(2.66793×10²⁸ × 1.602177×10⁻¹⁹) = 2.339460×10⁻¹⁰；2.603×10⁻²⁴ × 8.98755×10¹³ = 2.339459×10⁻¹⁰。",
+   "fix": "括號改成「（兩者相同，末位差異只是捨入）」。若要討論 9 與 8.988 的差別，應該與第 5 步用 9 算出的值對照（差約 0.14%）。"
+  },
+  {
+   "where": "blocks[31].body（第「一」點，鈉的 helicon 頻率）",
+   "problem": "用詞誇大，也沒有給數字。原文寫「代入 Table 1 的 n 即可發現它是遠低於 1 s⁻¹ 的極低頻波」，但實際算出 |ω| ≈ 0.19 s⁻¹（f ≈ 0.03 Hz），只比 1 s⁻¹ 小約 5 倍，說「遠低於」不精確。另外，書上括號註明電子載子的頻率為負，代表旋轉方向。",
+   "evidence": "ω = BcK²/(4πne) = 1000 × 2.998×10¹⁰ × 1 / (4π × 2.65×10²² × 4.803×10⁻¹⁰) = 0.187 s⁻¹。p.425：「(The frequency is negative; with circular-polarized modes the sign of the frequency refers to the sense of the rotation.)」",
+   "fix": "直接寫出數值：「|ω| ≈ 0.19 s⁻¹（約 0.03 Hz），是極低頻的波；書中並提醒，對電子而言頻率為負，代表旋轉方向相反」。"
+  },
+  {
+   "where": "blocks[30].body（第 8 章段，p.218 電洞性質「五條」）",
+   "problem": "列舉方式和原書的五條對不上。原書 (a)–(e) 依序是 k_h = −k_e、電荷 e_h = e、速度 v_h = v_e、能量 ε_h(k_h) = −ε(k_e)、有效質量 m_h = −m_e；「性質等同於其餘 N − 1 個電子」是這五條之前的引言。本檔把引言算成一條，又把 (d)(e) 合併成一條，湊成五條。內容本身沒有錯。",
+   "evidence": "p.218 SUMMARY：「The properties of the hole are those of the N − 1 electrons in this band. (a) ... k_h = −k_e. (b) ... e_h = e ... (c) ... v_h = v_e. (d) ... ε_h(k_h) = −ε(k_e). (e) ... m_h = −m_e.」",
+   "fix": "改為「先說明電洞的性質等同於帶內其餘 N − 1 個電子，再列出五條：k_h = −k_e；e_h = e；v_h = v_e；ε_h = −ε(k_e)；m_h = −m_e」。"
+  }
+ ],
+ "verified": [
+  "式號與頁碼全部正確：(48) 在 p.152；(49)(50)(51)(52) 在 p.153；(53) 的 CGS 形式印在 p.153 末、SI 形式印在 p.154 上方（檔案有註明）；(54)(55) 在 p.154；blocks[22] 的兩載子公式在 p.218，沒有捏造式號。已算繪 p.152–154 目視核對，公式的符號、係數與 CGS/SI 標註都和原書一致，包括 (51) 第二式的負號。",
+  "(64) 磁導電張量已放大 5 倍目視：第一列 (1, −ω_cτ, 0)、第二列 (ω_cτ, 1, 0)、第三列 (0, 0, 1 + (ω_cτ)²)，與 blocks[11] 第 4 步相符；(65) σ_yx = nec/B = −σ_xy，以及「σ_xx = 0, to order 1/ω_cτ」「Hall conductivity」都正確。",
+  "blocks[3] 的校註屬實：p.147 放大 8 倍確認原書印成「v = δk/m = −eEτ/m」，少了 ℏ，是原書排印的疏漏。",
+  "英文逐字引用共三處（in the direction j × B；for e is positive by definition；Density and atomic concentration），都逐字出現在原文。",
+  "Table 4 共 16 列（方法、實驗值、假設載子、計算值）已用程式比對轉錄，全部正確。表題中的 Landolt-Börnstein 室溫數據、helicon 4 K、J. M. Goodman、Table 1.4 例外（Na/K/Al/In）、9×10¹¹ 與 9×10¹³ 兩個換算因子也都正確；Na、K 的 conv. 列不另列元素名，與原書版面相符。",
+  "第 1 章 Table 4（p.21，影像）已算繪目視：Be 12.1、Mg 4.30、Al 6.02、In 3.83、As 4.65、Sb 3.31、Bi 2.82 全部正確；乘上價數後與第 6 章 Table 1 的 24.2、8.60、18.06、11.49 一致。",
+  "Fig. 14 的逐格描述已放大目視：(a) 五支 B_z 箭頭、j_x 的進出方向、座標軸方向；(b) 三組各三支白箭頭，由右往左並向下彎；(c) 上緣為＋、下緣為−、E_y 向下、箭頭變直、z 以圓圈表示。描述與圖說都正確。",
+  "所有推導的數學都已重算，結果正確（blocks[3][4][7][9][11][15][18][21][23][25][27] 的主體），包括：一階 ODE 的解、叉積分量與符號檢查、迴旋解的旋轉方向、(52) 的顯式解與「Hall 幾何下沒有磁阻」、E_y = −ω_cτE_x 的兩種推法、R_H 的逐項消去、Hall 因子 ⟨τ²⟩/⟨τ⟩²、強場 R_H → −1/[(n−p)ec]、兩載子弱場的四個極限、3D/2D 換算、statvolt/statamp 的單位推導。",
+  "數值已用程式驗算：銅的 τ ≈ 2.5×10⁻¹⁴ s、v_drift ≈ 7.4×10⁻⁵ m/s、δk ≈ 0.64 m⁻¹、δk/k_F ≈ 5×10⁻¹¹；ω_c(1 T) = 1.76×10¹¹ s⁻¹、f_c ≈ 28 GHz、ω_cτ ≈ 4.4×10⁻³、θ_H ≈ 0.25°、r_c ≈ 8.9 μm、ℓ ≈ 39 nm；4 K 時 ω_cτ ≈ 350（約 56 圈）；|R_H| = 7.4×10⁻¹¹ m³/C（CGS 為 0.82）、E_y ≈ 7.4×10⁻⁵ V/m、面電荷 ≈ 0.4 e/cm²、μ ≈ 43 cm²/Vs；V_H ≈ 0.74 μV 對 0.62 mV；p.200 例子的 860 G；As 的 1/pec ≈ 328 與 b ≈ 0.74；Goodman 的 n（2.668/1.405/6.119/3.901）與偏差（0.7/0.3/1.6/1.9%）；七個多價金屬的 −1/nec。",
+  "跨章引用都查過原頁，內容屬實：p.147–148（(39)–(44)、Fig. 10 圖說）、p.150–151（(45)、殘餘電阻率、τ ≈ 2×10⁻⁹ s、ℓ ≈ 0.3 cm、ρ ∝ T）、p.159 習題 9、p.163–164、p.200（(30)、ω_cτ ≥ 1、電子與電洞旋轉方向相反）、p.212、p.213 Fig. 21、p.215–216 與 Table 7、p.218 習題 3、p.219 習題 5（含「Problem 6.9 shows ... does not lead to transverse magnetoresistance」、σ ∝ B⁻² 與飽和）、p.222 Fig. 1、p.250–251、p.254 習題 10、p.425 習題 3–4、p.498 (18a)、p.499 的 25,813 Ω。",
+  "book-tier 的 blocks[1][13][26][29] 都能在原文找到依據；ext/derived 的補充內容（Hall 因子 3π/8 與 1.93、鋁的強場計數、幾何磁阻）都已標示不在書中。"
+ ]
+}

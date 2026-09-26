@@ -1,0 +1,82 @@
+{
+ "section": 2,
+ "blockers": [
+  {
+   "where": "blocks[38].steps[6]（「(17) → (19) → (20)：兩條路，同一個 √ε」第 7 步，tier: derived）；同一問題亦見 blocks[47].body「第 5 章 p.110–111：…以球殼體積換態密度」",
+   "problem": "頁碼錯。第 7 步寫「第 5 章 p.111 的聲子一般式是 D(ω) = (VK²/2π²)(dK/dω)（每個偏振）」。這條式子是第 5 章式 (20)，印在書本 p.112（PDF 132）第一行之後；p.111 整頁只有 (16)–(19)：週期性條件、K 的允許值 (17)、(L/2π)³ = V/8π³ (18) 與球體積計數 N = (L/2π)³(4πK³/3) (19)，沒有任何 D(ω) 的式子。blocks[47] 把「以球殼體積換態密度」歸到 p.110–111，同樣漏了 p.112。",
+   "evidence": "書本 p.112 開頭逐字：「for each polarization type. The density of states for each polarization is (20) D(ω) = dN/dω = (VK²/2π²)(dK/dω).」p.111 最後一條式子是 (19) N = (L/2π)³(4πK³/3)。",
+   "fix": "blocks[38] 第 7 步改成「第 5 章 p.112 式 (20) 的聲子一般式是 D(ω) = (VK²/2π²)(dK/dω)（每個偏振）」；blocks[47] 改成「第 5 章 p.110–112：週期性邊界條件、(2π/L)³ 的計數（p.111 式 (18)(19)）、以球殼體積換態密度（p.112 式 (20)）」。"
+  },
+  {
+   "where": "blocks[28].body（「全表 20 列驗算：誤差都在 1% 以內」，tier: derived）的 Cs 列 r_n 欄與結論「r_n：20 列與重算值的差都不超過 0.01」",
+   "problem": "重算值錯、結論不成立。表中 Cs 的 r_n 寫「5.63／5.62」，並據此下結論「20 列與重算值的差都不超過 0.01」。依本檔 blocks[27] 宣告、本區塊聲明沿用的常數 a_H = 0.5292×10⁻⁸ cm，Cs（n = 0.91×10²²）的 r_0 = [3/(4πn)]^{1/3} = 2.9714×10⁻⁸ cm，r_n = 5.6148，應印 5.61，不是 5.62；表列 5.63 與重算值差 0.015，超過自己宣稱的 0.01 上限。即使改用 CODATA a_H = 0.529177 Å（得 5.6150）或 0.529 Å（得 5.6170），差值仍是 0.013–0.015，結論在任何常數選擇下都不成立。「5.62」這個捨入剛好把差距掩成 0.01。",
+   "evidence": "以 blocks[27] 的常數程式化重算全表 20 列：r_n 差值最大為 Cs（5.63 − 5.6148 = +0.0152），其次 Rb（+0.007）；其餘 18 列 |差| ≤ 0.006。",
+   "fix": "Cs 列 r_n 改為「5.63／5.61」；結論改為「r_n：除 Cs 差 0.015 外，其餘 19 列與重算值的差都不超過 0.01」。"
+  }
+ ],
+ "minors": [
+  {
+   "where": "blocks[35].body（「T_F 為什麼高達數萬 K」，tier: mine）「用 Fig. 3 看 T/T_F 的效果」一段末句",
+   "problem": "以偏概全，並與同一區塊自己給的範圍矛盾。末句說「真實金屬在室溫落在比 500 K 那條曲線還要『陡』的位置」。Fig. 3 的 500 K 曲線對應 T/T_F = 500/50,000 = 0.01；但同一區塊前一段才寫「室溫下金屬的 T/T_F 只有 0.002–0.016」。Table 1 中 K（300/24,600 = 0.012）、Rb（0.014）、Cs（0.016）三種鹼金屬的室溫 T/T_F 都大於 0.01，比 500 K 曲線更緩，不是更陡。",
+   "evidence": "Table 1（p.139）：T_F(K) = 2.46×10⁴ K、T_F(Rb) = 2.15×10⁴ K、T_F(Cs) = 1.83×10⁴ K；Fig. 3（p.136）圖說 T_F = 50,000 K。",
+   "fix": "改成「大多數金屬在室溫落在比 500 K 那條曲線更陡的位置（Cu 的 T/T_F ≈ 0.004）；最稀的 K、Rb、Cs（0.012–0.016）則略緩於它，但仍遠比 5,000 K 那條陡」。"
+  },
+  {
+   "where": "頂層 lede「並以 Table 1 的實測濃度驗算這些量」",
+   "problem": "用詞與原表及本檔自身說法不符。Table 1 的表題是「Calculated free electron Fermi surface parameters」，電子濃度是「價數 × 原子濃度」，其中價數是模型假設；本檔 blocks[29] 自己也強調「『價數』欄是自由電子模型的假設，不是量測結果」。稱之為「實測濃度」會讓讀者以為電子濃度是量測值。",
+   "evidence": "p.139 表題：「Table 1 Calculated free electron Fermi surface parameters for metals at room temperature」。",
+   "fix": "改成「並以 Table 1 列出的電子濃度驗算這些量」。"
+  },
+  {
+   "where": "blocks[12].eq.numeric 與 blocks[18].eq.numeric（Cu 的 ε_F 數值）",
+   "problem": "兩處小瑕疵。(a) blocks[12] 說「Cu 的 k_F = 1.36 Å⁻¹（Table 1 的兩位有效數字）」，1.36 是三位有效數字（兩位小數）。(b) 兩處展示的算式與所寫結果末位對不上：blocks[12]「用未捨入的 1.358 Å⁻¹ 得 7.02 eV」，但 3.81 × 1.358² = 7.026；blocks[18]「3.810 eV·Å² × 1.844 Å⁻² = 7.02 eV」，但 3.810 × 1.844 = 7.026，照所列數字應得 7.03。7.02 是用未捨入的 k_F = 1.3576 Å⁻¹（k_F² = 1.8430）算出的正確值，問題只在展示的中間值已先捨入；此外 1.358 本身也已捨入，稱「未捨入」不精確。",
+   "evidence": "3π²n = 2.502×10²⁴ cm⁻³ → k_F = 1.35757 Å⁻¹，k_F² = 1.8430 Å⁻²，ε_F = 3.810 × 1.8430 = 7.022 eV。",
+   "fix": "(a) 改成「Table 1 的三位有效數字」；(b) 改成「用較精確的 1.3576 Å⁻¹（k_F² = 1.843 Å⁻²）得 7.02 eV」，blocks[18] 的算式改寫成「3.810 eV·Å² × 1.843 Å⁻² = 7.02 eV」。"
+  },
+  {
+   "where": "blocks[28].body（全表驗算的 ε_F／T_F 統計敘述）",
+   "problem": "三個統計說法與實際重算略有出入。(1)「各列 T_F/ε_F 都落在 11,580–11,620 K/eV」：Rb 為 2.15×10⁴/1.85 = 11,622，超出上限。(2)「Mg 約 +0.4%」：以本檔常數重算，Mg 的 ε_F 偏 +0.35%、T_F 偏 +0.30%，說「約 +0.3%」較貼切。(3)「偏差最大的是 Pb（−0.9%）、Ga（−0.8%）、Ba（−0.7%）」只對 ε_F 成立；以 T_F 看，Cs 為 −0.79%，與 Ga 並列第二，Ba 的 T_F 只有 −0.59%。",
+   "evidence": "以 blocks[27] 常數重算：T_F/ε_F 範圍 11,582（Cs）–11,622（Rb）；ε_F 偏差 Pb −0.89%、Ga −0.79%、Ba −0.70%、Li −0.62%、Cs −0.60%；T_F 偏差 Pb −0.92%、Ga −0.79%、Cs −0.79%、Ba −0.59%。",
+   "fix": "(1) 改為「11,580–11,625 K/eV」；(2) 改為「Mg 約 +0.3%」；(3) 改為「偏差最大的是 Pb（約 −0.9%），其次 Ga 與 Cs（T_F 約 −0.8%）、Ba（ε_F −0.7%）」。"
+  },
+  {
+   "where": "blocks[30].eq.formula（r_n，tier: book）",
+   "problem": "tier: book 的 formula 欄混入書上沒印的關係式。公式欄寫「r_n = r_0/a_H，其中 (4π/3)r_0³ = V/N = 1/n」，但 Table 1 註腳 a 只給 r_n = r_0/a_H 與文字定義；「(4π/3)r_0³ = 1/n」是撰寫者把文字翻成算式。from 欄雖已註明「註腳本身沒有寫出這一步」，但 formula 欄會被讀者當成原書所印。",
+   "evidence": "p.139 註腳 a 逐字：「The dimensionless radius parameter is defined as r_n = r_0/a_H, where a_H is the first Bohr radius and r_0 is the radius of a sphere that contains one electron.」",
+   "fix": "formula 欄只保留「r_n = r_0/a_H」，把「(4π/3)r_0³ = V/N = 1/n」移到 from 欄（那裡已有說明）。"
+  },
+  {
+   "where": "blocks[32].body（「r_s 在說什麼」，tier: mine）「p.133 對此的說法很節制」一句",
+   "problem": "譯詞不精確。原文是「properties that depend essentially on the kinetic properties of the conduction electrons」，kinetic properties 譯成「動力學性質」會被讀成 dynamics；原意是與電子運動、輸運有關的性質（動理／運動性質）。",
+   "evidence": "p.133：「The utility of the free electron model is greatest for properties that depend essentially on the kinetic properties of the conduction electrons.」",
+   "fix": "改成「主要取決於傳導電子**運動（動理）性質**的物理量」，可括註 kinetic properties。"
+  },
+  {
+   "where": "blocks[9].body 首句",
+   "problem": "計數不符。「書上 (10) 與 (11) 之間只有兩句話」：(10) 之後（不計接續 (10) 的「and similarly for k_y and k_z.」）有三個完整句：Any component of k of the form 2nπ/L…；The components of k are the quantum numbers…；We confirm that these values of k_x satisfy (8), for。",
+   "evidence": "p.137 (10) 與 (11) 之間的原文（見 PDF 157 算繪影像）。",
+   "fix": "改成「書上 (10) 與 (11) 之間只有三句話」或「只有短短一段」。"
+  },
+  {
+   "where": "blocks[7].eq.from 與 blocks[39].eq.limits (iii)",
+   "problem": "檔內區塊指引錯位。(a) blocks[7] 的 from 寫「逐步推導見下一個區塊」，但下一個區塊是 blocks[8]（式 (11)），推導在 blocks[9]。(b) blocks[39] limits (iii) 寫一維態密度「見 (21) 之後的推導」，但該推導是 blocks[41]，排在 (21) 的 blocks[42] 之前。",
+   "evidence": "本檔 blocks 排序：7 = (10)、8 = (11)、9 = 推導；41 = 「(19)(20) → (21)」推導、42 = (21)。",
+   "fix": "(a) 改成「逐步推導見 (11) 之後的推導區塊」；(b) 改成「見 (21) 前面的推導區塊『(19)(20) → (21)』」。"
+  }
+ ],
+ "verified": [
+  "全部 16 個 equation block 的 bookPage 與 eqNumber 與原文一致：(6)–(11) 在 p.137、(12)–(16) 在 p.138、(17)–(20) 在 p.140、(21) 在 p.141；v = ħk/m（p.138）、T_F ≡ ε_F/k_B（p.140）、r_n = r_0/a_H（p.139 註腳）三式正確標為無式號。",
+  "所有公式逐字元對照原文（含 (11) 的兩行驗算、(15) 的三段等式、(18) 的括號寫法），符號、指數、係數無誤；(17)、(19)、(20)、(21) 與 r_s 相關式量綱逐一檢查成立。",
+  "「書中以方框標示」的宣稱經算繪確認：(9)、(17)、(20) 確有方框，(18) 沒有，檔案也沒說 (18) 有。",
+  "唯一的英文逐字引句「The quantity T_F has nothing to do with the temperature of the electron gas!」（p.140）逐字相符；Fig. 5 軸標「Density of orbitals, relative scale」「Energy, ε」逐字相符。",
+  "Table 1（p.139，PDF 頁 rotation = 90，確為橫排）：blocks[26] 的分組、欄位、冪次只印在 Li 列、Cs/Be 兩端的 12 個值，以及 blocks[28] 表中 10 列 60 個「表列值」與原表全部一致（程式比對）。",
+  "Table 1 全 20 列由 n 程式化重算：k_F、v_F 全在 ±1% 內（最大 Cs k_F −0.91%）；ε_F、T_F 只有 Mg、K、Sr 偏高、其餘 17 列偏低；Cu 列逐項驗算（1.358×10⁸ cm⁻¹、1.572×10⁸ cm/s、7.02 eV、8.15×10⁴ K、r_n 2.67）全部重現。",
+  "Fig. 4 描述（灰色漸層球、斜向虛線陰影、k_F 箭頭、右側引線標 Fermi surface at energy ε_F）經算繪確認；Fig. 5 描述以 PDF 向量路徑核對：虛線在 ε_F 處高度 = 0.524·D(ε_F)（「約一半」成立）、k_BT 標尺兩端在 x = 172.8／209.2 跨過 ε_F（x = 192.8）、虛線在 x = 154.8 開始偏離，早於標尺左緣，區域 1、2 位置正確。",
+  "Fig. 3（p.136）的溫度清單與「T = T_F 時 ε = 0 處 f ≈ 0.5」、Fig. 8（p.144）一維上升／三維下降、Fig. 7（p.143）簡併區／古典區標示，均與算繪影像相符。",
+  "跨頁引用逐頁核對無誤：p.133（離子實佔約 15%、交互作用留到下一章、kinetic properties）、p.134–135（軌域定義、式 (1)–(4)、簡併度）、p.136–137、p.141–142（3/2 Nk_B、0.01、T_F ~ 5×10⁴ K）、p.144（(34)(35)(36)、由 (21)）、p.145–147（m_th、γ ∝ m、三種效應）、p.147–148（Fermi 球平移、Nħδk）、p.155–159（Hall 係數、(56)、Wiedemann–Franz、習題 1/2/3/4/5/8/10）、p.164（(1)–(3)）、p.167（Bloch (7)）、p.173（晶體動量、k + q = k′ + G）、p.191（式 (1)）、p.205（(35)(36)(37)，由 (6.20)）、p.239（3.1 eV、0.6ε_F）、p.249（4.90/a、9.80/a、10.88/a、金的 k_F 與 4.5×10¹⁶ cm⁻²）、p.278（one spin）、p.317（½D 為單一自旋、3N/2ε_F from Chapter 6）、p.404–405（(6.17)、Cu 0.55 Å）、p.520（δ 函數態密度）、p.528（particle-in-a-box discussed in Chapter 6）、p.547（magic numbers、(55) 由 (6.21)、Au R = 2 nm 約 2 meV）；第 5 章 p.110（Fig. 4 環、Fig. 5 均勻模態、exp(isKa) 仍 8 個模態）、p.111（式 (17) 截在 Nπ/L）。",
+  "「全書文字層搜不到 white tin」屬實：全書僅 p.139 出現 Sn(w)，無 white tin／β-Sn 字樣。",
+  "derived 推導數學正確：由 (8) 解 (10)、駐波（1/8 卦限、π/L 格距）與週期性條件都數到 Vk³/6π²、一維對回式 (4)、表面修正在 k_FL = 68 時約一成（Weyl 修正係數 ≈ 7/(kL)）、機率流 j = ħk/(mV)、兩條路得 (20)、D = (d/2)N/ε 與一維 N/2ε、二維 m/πħ²；r_s 表示式 k_Fr_0 = (9π/4)^{1/3} = 1.919、ε_F = 3.683 Ry/r_s² = 50.1 eV/r_s²、平均動能 2.21 Ry/r_s²、v_F = 4.20×10⁸ cm/s ÷ r_s、|庫侖能|/動能 ≈ 0.81 r_s。",
+  "其餘數值經重算成立：實用式 0.666 Å⁻¹、1.693 eV、7.72×10⁷ cm/s 乘上 (n/10²²)^{1/3 或 2/3}；Be/Cs 濃度比 26.6、k_F 比 2.98、ε_F 比 8.9；L = 1 cm 盒中基態 1.1×10⁻¹⁴ eV；300 K 古典熱速度 1.17×10⁷ cm/s（v_F 為其 13 倍）；n = 10¹⁶／10¹⁸／10²⁰ cm⁻³ 時 T_F ≈ 2／42／910 K；D(ε_F) = 1.8×10²² eV⁻¹cm⁻³、每原子 0.214 eV⁻¹；Au 奈米粒子 N ≈ 1.98×10³、Δε ≈ 1.9 meV；C_el/(3/2 Nk_B) = 0.012；Na 3.1 對 3.23 eV 差約 4%。",
+  "tier 標示整體妥當：book 區塊（4、16、26、34、36 等）的實質宣稱都能在原文找到依據；撰寫者補充的動機、歸一化、Sn(w) 推測等都已明確標為 mine／ext 或註明「本講解補充」「書外知識」。"
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "section": 1,
+ "blockers": [
+  {
+   "where": "blocks[3].steps[0]（「核算約 15%」，tier: mine）",
+   "problem": "數值比較錯誤。原文寫「兩個相鄰離子實表面之間的空隙為 d_NN − 2r_ion = 3.66 − 1.96 = 1.70 Å，比離子實本身的直徑還寬」。但離子實直徑就是式中的 2r_ion = 1.96 Å，1.70 Å < 1.96 Å，空隙其實比直徑窄（約為直徑的 87%）。算式本身正確，但結論下反了，而且這正是這一步想傳達的幾何圖像。",
+   "evidence": "書 p.133：“The radius of the free Na+ ion is 0.98 Å, whereas one-half of the nearest-neighbor distance of the metal is 1.83 Å.” 因此直徑 = 2 × 0.98 = 1.96 Å，d_NN = 3.66 Å，空隙 = 1.70 Å。1.70/1.96 = 0.87。",
+   "fix": "改成「兩個相鄰離子實表面之間的空隙為 3.66 − 1.96 = 1.70 Å，與離子實本身的直徑（1.96 Å）相當」，或直接刪掉比較句。另外，Fig. 1 把圓畫得比實際比例小很多，可以順帶提醒示意圖誇大了間距。"
+  }
+ ],
+ "minors": [
+  {
+   "where": "blocks[34].body（Figure 3 文字描述，tier: book）表中 2.5×10⁴ K 一列；以及 blocks[35].body「與圖上的目視判讀逐點相符」",
+   "problem": "blocks[34] 說表格是「本站依算繪影像的目視判讀」，但 2.5×10⁴ K 那一列的「約在 3.7 處通過 0.5」「到 8 時約 0.15」其實是 blocks[35] 的計算值（μ = 3.72、f = 0.153），不是圖上的讀數。原圖這條曲線整體比精確解低約 0.01：f(0)=0.808（計算 0.816），x=4.975 處 0.367（計算 0.377），x=8 處 0.143（計算 0.153），通過 0.5 的位置約在 3.61。依圖說「μ 可由 f = 0.5 讀出」的做法，從圖上讀到的 μ 是 3.6，不是 3.7。blocks[35] 說「逐點相符」也說得太滿；在 ±0.01 的精度內相符才是準確的說法。結論（此圖是在三維、N 固定下畫的）不受影響。",
+   "evidence": "用 PyMuPDF 抽出 p.136 的向量路徑（page.get_drawings()，線寬 1.0 那組），以座標框 x∈[173.90, 450.45]↔0–9、y∈[548.77, 362.37]↔0–1.2 換算。2.5×10⁴ K 曲線的節點為 (0, 0.808)、(2.595, 0.600)、(4.975, 0.367)、(6.993, 0.215)、(8.004, 0.143)；在 Bézier 段上 y = 0.5 的位置是 x ≈ 3.61。其餘曲線與文中描述相符：10×10⁴ K 為 0.223→0.117；5×10⁴ K 為 0.487→0.171；1×10⁴ K 在 x=2.98 處 0.855、x=8 處 0.036；5,000 K 在 x=4.005 處 0.872、x=5.98 處 0.109。",
+   "fix": "blocks[34] 的 2.5×10⁴ K 一列改成「f(0) 約 0.81，約在 3.6 處通過 0.5，到 8 時約 0.14」；blocks[35] 改成「與圖上讀數在約 ±0.01 內相符（圖中 2.5×10⁴ K 曲線略低於精確解，由 f = 0.5 讀出的 μ ≈ 3.6，精確值 3.72）」。"
+  },
+  {
+   "where": "blocks[2].body（Figure 1，tier: book）最後一段",
+   "problem": "文中說「圖說補充了正文沒有的資訊」，接著列出四項，但其中兩項（傳導電子來自 3s 價電子、鹼金屬離子實約佔 15%）正文 p.133 都寫了。真正只出現在圖說裡的，是「貴金屬離子實較大、可能彼此接觸」與「bcc／fcc」兩項。",
+   "evidence": "p.133 正文：“In a free atom of sodium the valence electron is in a 3s state; in the metal this electron becomes a conduction electron in the 3s conduction band.” 以及 “The ion cores fill only about 15 percent of the volume of a sodium crystal”。",
+   "fix": "改成「圖說重述了 3s 來源與約 15% 的比例，並補充了正文沒有的兩點：貴金屬……可能彼此接觸；室溫下鹼金屬為 bcc、貴金屬為 fcc」。"
+  },
+  {
+   "where": "blocks[29].body（由 Appendix D 推出式 (5)，tier: derived）",
+   "problem": "頁碼範圍的起點錯了。文中寫「Appendix D（p.653–655）」，但 Appendix D 從 p.652 開始。同一區塊引用的「基本溫度 τ = k_BT」、S = k_Bσ 的定義，都在 p.652。",
+   "evidence": "PDF 第 672 頁（書 p.652）印有 “appendix D: fermi-dirac distribution function”，以及 “the Kelvin temperature T is related to the fundamental temperature τ by τ = k_BT”。",
+   "fix": "改成「Appendix D（p.652–655）」。blocks[28].eq.from 寫 p.654–655 是指 Gibbs 因子那一段，這個寫法沒有問題。"
+  },
+  {
+   "where": "blocks[9].body 校註（/H5108 出現頁）",
+   "problem": "文中列出「/H5108 在全書另見於 p.53、55、171、289、301、439」，漏了 p.56。p.56 上有 3 次，內容是「total hamiltonian ℋ₀ + ℋ₁」以及式 (7) 的 ℋ，同樣是哈密頓量。",
+   "evidence": "對全書原始文字層做 re.findall(r'/H5108')，各頁次數為：{53:1, 55:4, 56:3, 134:3, 171:2, 289:1, 301:2, 439:5}。p.56 上下文：“The total hamiltonian /H51080 /H11001/H51081 after the transformations (5) and (6) is (7)”。",
+   "fix": "把頁碼改成「p.53、55、56、171、289、301、439」。另外建議直接修正 tools/kittel_extract.py 的 OPS['5108']，讓它對應 ℋ。"
+  },
+  {
+   "where": "blocks[37].body「校讀提醒」；blocks[15].eq.symbols 校註",
+   "problem": "計數與描述不一致。文中先說「有兩個『½』都會掉成浮出的『1 2』」，列了 m_s 與 f 兩處，接著又說「式 (2) 的 ½nλ_n = L 也是如此」，實際上是三處。另外，式 (2) 的 ½ 在文字層是就地抽成「1 2 nλn = L」，並沒有漂移到別處，說它「浮出」並不準確。真正漂移的是 p.135 的 ½（跑到式 (4) 之後）與 p.136 的 ½（跑到式 (5) 之前）。",
+   "evidence": "p.134 文字層：“ψn = A sin ( 2π λn x) ; 1 2 nλn = L”（在原位）；p.135：“(4)εF = … . 1 2 6 Free Electron Fermi Gas 135”（漂移）；p.136：“has the value 2. 1 2 f (ε) = …”（漂移）。",
+   "fix": "改成「本段文字層有三個 ½ 會被抽成『1 2』：式 (2) 的 ½nλ_n = L（在原位），以及 m_s = ±½（p.135，漂到式 (4) 之後）與 f = ½（p.136，漂到式 (5) 之前）」。blocks[15] 的校註也把「浮出的」改成「就地抽成」。"
+  },
+  {
+   "where": "blocks[35].body（tier: mine）「其餘五條曲線的溫度都遠高於任何金屬的熔點」",
+   "problem": "說得太誇張。熔點最高的金屬是鎢，約 3695 K；5,000 K 只比它高約 35%，談不上「遠高於」。1×10⁴ K 以上的四條才確實遠高於。",
+   "evidence": "W 的熔點為 3422 °C ≈ 3695 K（通用物性值，書中未給）。",
+   "fix": "改成「其餘五條曲線的溫度都高於任何金屬的熔點（5,000 K 已超過熔點最高的鎢，約 3,700 K；其餘四條更是高出數倍）」。"
+  },
+  {
+   "where": "blocks[17].eq.numeric（式 (3)）「L = 1 nm：ε₁ ≈ 0.38 eV，與化學鍵能同一量級」",
+   "problem": "比較基準不夠精確。一般所說的化學鍵能（共價鍵）約為 2–5 eV，例如 C–C 約 3.6 eV、H–H 約 4.5 eV。0.38 eV 小了約一個數量級，與氫鍵同級。",
+   "evidence": "數值 ε₁ = 3.81 × π²／100 = 0.376 eV 本身正確；問題只在比較對象。",
+   "fix": "改成「約 0.38 eV，已是室溫 k_BT（25.9 meV）的 15 倍」，或改成「與氫鍵能量同一量級」。"
+  },
+  {
+   "where": "blocks[1]、blocks[2]、blocks[4]、blocks[11] 的 tier: book",
+   "problem": "tier 標得偏寬，不過程度輕微。這四個區塊的骨幹都能在原文逐句找到，但各夾了幾句撰寫者自己的詮釋，沒有標註：blocks[1] 的「這是一種『有保留的肯定』」「換句話說，這裡的『自由』指的是運動學上的處理方式」；blocks[2] 的「所以可以把離子實當成一個剛性的正電荷來處理」；blocks[4] 的「這個判斷替整章定了方向」；blocks[11] 第三段「本章之後說……指的都是在獨立電子近似下……」。這些內容都不是捏造，物理上也都對，但讀者會當成 Kittel 的話。",
+   "evidence": "p.133 原文只寫 Na⁺ 核心 “with a spatial distribution that is essentially the same when in the metal as in the free ion”，沒有「剛性正電荷」的說法；其他幾句同樣沒有對應原文。",
+   "fix": "在這幾句前面加上「（本站判讀）」，或移到相鄰的 tier: mine 區塊。"
+  }
+ ],
+ "verified": [
+  "頁碼：所有 heading 宣稱的頁碼（p.131–137、Fig. 1 在 p.132、Fig. 2 在 p.135、Fig. 3 在 p.136）都與 PDF 頁 151–157 相符。式 (1)(2)(3) 印在 p.134、式 (4) 在 p.135、式 (5) 在 p.136、Boltzmann 極限在 p.137，都沒有編號錯誤。圖說中的 (h²/2m)(n/2L)² 與 p.137 的 Boltzmann 式都正確標成「未編號」。",
+  "式號與公式：式 (1)–(5) 的符號、指數、係數逐項與算繪影像核對無誤，ψ_n = A sin(2πx/λ_n)；½nλ_n = L、ε_F = (ℏ²/2m)(n_Fπ/L)² = (ℏ²/2m)(Nπ/2L)² 都正確。量綱逐一檢查成立，包括一維 D(ε) = (L/πℏ)√(2m/ε)、λ_T、古典 K = (3/2)nk_B²Tτ/m。",
+  "算繪目視（PyMuPDF 放大 4–8 倍）：p.133 的 10⁸ 確為上標 8；p.134 的 periodic 確為斜體，哈密頓量確為花體 ℋ，算符確為 −iℏ d/dx；p.135 確為 m_s = ±½；p.136 “At all temperatures f(ε) is equal to ½ when ε = μ” 確為斜體。",
+  "逐字引用：唯一的英文引號 \"not failures of the free electron model\" 逐字出現在 p.133。",
+  "Fig. 1：灰底、2 列 × 3 個白圓、圓內標「+」，描述正確。Fig. 2：縱軸單位 (ℏ²/2m)(π/L)²，刻度 0/1/4/9；右軸 Quantum number, n 標 1/2/3；圖例為虛線能階、實線波函數（相對尺度）；λ = 2L、L、(2/3)L；n = 3 的波形為上、下、上。以上都與 p.135 的放大算繪一致。",
+  "Fig. 3：座標軸（0–9、曲線畫到 8；縱軸 0–1.2）與六條曲線中五條的讀數，用向量路徑座標核對吻合；三條低溫曲線在 (≈4.99, ≈0.47) 交會，屬實。",
+  "μ(T) 數值表以 scipy 重算三維、N 固定，六列全部吻合：μ/ε_F = 0.9999、0.9916、0.9646、0.7431、−0.0215、−2.4614；f(0) 與 f(8) 也都吻合。另外確認一維 t = 0.2 時 μ = 1.0377ε_F，三維 μ 在 T = 0.9887T_F 通過零。",
+  "Fig. 8（p.144）向量路徑：三維曲線終點約 (0.2007, 0.9635)，一維曲線終點約 (0.207, 1.039)，與文中「0.965 與 1.04」相符；Sommerfeld 展開值 0.967／1.033 也正確。",
+  "數值：ℏ²/2m = 3.810 eV·Å²；h²/2m = 150.4 eV·Å²；(0.98/1.83)³ = 0.154；bcc 模型下 V_core/V_at = 0.104 = 0.154 × 0.680；古典 Lorenz 數 1.11×10⁻⁸；9/(2π²) = 0.456；熱容比約 50×、速度平方比約 110×；一維鈉鏈 k_F = 0.429 Å⁻¹、ε_F = 0.70 eV、T_F ≈ 8,100 K、4ε_F/N ≈ 1.0×10⁻⁷ eV；nλ_T³/2 = 0.752(T_F/T)^{3/2}；10¹⁶ cm⁻³ 對應 T_F ≈ 1.96 K；2 ln 9 = 4.39；Boltzmann 近似誤差 10%／5%／0.7%。以上全部驗算正確。",
+  "書中數值（逐字對照）：Na ε_F = 3.23 eV、T_F = 3.75×10⁴ K；Li 5.48×10⁴ K；Ca 5.43×10⁴ K（p.139 Table 1）；Na⁺ 半徑 0.98 Å、半最近鄰距 1.83 Å、約 15%；L = 2.45×10⁻⁸ watt-ohm/deg²（p.157 式 (59)）；Table 5 實驗值 2.23–2.79，W 為 3.04／3.20；Ch1 Table 2（p.10）bcc 最近鄰距 √3a/2、packing fraction 0.680。",
+  "跨章引用全部查證屬實：p.138 式 (13)(15)(16)（式 (15) 左邊因子 2 來自自旋）；p.140 式 (17)(20)、Fig. 5 虛線 f(ε,T)D(ε)、「T_F has nothing to do with the temperature of the electron gas!」；p.141 式 (21)、(3/2)k_B、< 0.01、Lorentz、T/T_F；p.142 “(ε−εF) df/dT has large positive peaks”；p.143 Fig. 7 的兩個區域標示；p.144 式 (33)(34)(36)、Fig. 8 圖說（τ/ε_F ≅ 0.01、series expansions）；p.148 式 (43) σ = ne²τ/m，並於 p.156 被引用；p.156 K = (1/3)Cvℓ；p.157 習題 1 的 U₀ = (3/5)Nε_F 與習題 3 的式 (61) 與 D = m/πℏ²；p.163 Bloch 題詞（sneak by all the ions）；p.167 BLOCH FUNCTIONS；p.316 Pauli 與 Curie、magnetization independent of temperature；p.417–419 Fermi liquid 定義、quasiparticle 一對一對應、鹼金屬有效質量約增加 25%、10⁻⁴ cm、≥10 倍、1 K 時 >10 cm、In 在 2 K 時約 30 cm、T² 電阻項、(ε₁/ε_F)² 兩因子論證；Appendix D 式 (1)(7)(8)(9)(10)、σ = log g、fundamental temperature；前言中 TP 的定義；Ch5 p.109 的固定端駐波。",
+  "derived 推導的數學全部正確：無限位井的 ε ≤ 0 排除、n 取正整數、歸一化 √(2/L)、正交性；h 與 ℏ 兩式的等價；2n_F = N、奇數 N 的相對差 2/N、λ_F = 4/n₁；一維 D(ε)、D(ε_F) = N/2ε_F、E₀ = Nε_F/3，以及 N = 6 時精確和 28ε₁；Gibbs 因子推導與 Bose 對照；f 的對稱性、斜率、4.39k_BT、二階矩 π²/3；Maxwell–Boltzmann 簡併判據；Sommerfeld 型 μ(T) 展開及其 d 維一般式，二維時化為 μ = ε_F + k_BT ln(1 − e^{−ε_F/k_BT})。",
+  "未發現捏造的書中引文或式號；ext 區塊（古典 Lorenz 數與 Ashcroft & Mermin 的歷史註記）已明確標為本站延伸。"
+ ]
+}

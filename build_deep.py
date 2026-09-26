@@ -29,6 +29,21 @@ TIER = {'derived': ('補推導', 'tier--derived'),
 ITALIC = re.compile(r'(?<![^\W_])\*(?=[^\s*])([^*\n]+?)(?<=[^\s*])\*(?![^\W_])')
 
 
+NBSP = ' '
+
+
+def keep_numbers(t):
+    """數字內部的空格改成不斷行空格（寬度與一般空格相同，只是不讓瀏覽器在此斷行）。
+
+    千分位寫法「13 400」與「5 × 10⁵」裡的空格原本是合法斷行點，
+    窄欄裡會變成「13」換行「400」，讀者會以為是兩個數字。
+    """
+    t = re.sub(r'(?<=\d) (?=\d{3}(?!\d))', NBSP, t)                        # 13 400
+    t = re.sub(r'(?<=[\d⁰¹²³⁴⁵⁶⁷⁸⁹]) ([×·]) (?=\d)',
+               lambda m: NBSP + m.group(1) + NBSP, t)                        # 5 × 10⁵
+    return t
+
+
 def md(t):
     """先轉義再處理 **粗體**／*斜體*／`行內碼`，最後還原 \\| 跳脫。"""
     t = e(t)
@@ -37,14 +52,32 @@ def md(t):
     t = re.sub(r'`(.+?)`', lambda m: '<code>' + m.group(1) + '</code>', t)
     # \| 是「字面豎線」的跳脫（絕對值 \|G\|）；切完欄之後才還原成 |
     t = t.replace('\\|', '|')
-    return t
+    return keep_numbers(t)
+
+
+LIST_UL = re.compile(r'^[-*•]\s+(.+)$')        # 「- 」「* 」「• 」無序清單
+LIST_OL = re.compile(r'^(\d+)[.)]\s+(.+)$')     # 「1. 」「2) 」有序清單
 
 
 def prose(body):
-    """把多段文字轉成 <p>，其中的 Markdown 表格獨立成 <table>。"""
+    """把多段文字轉成 <p>，其中的表格、引用、清單各自成塊。"""
     if not body:
         return ''
-    out, tbl, quo = [], [], []
+    out, tbl, quo, lst = [], [], [], []
+
+    def flush_list():
+        # 連續的清單行併成一個 <ul>/<ol>。先前沒處理，330 處清單以
+        # 「- 熱容：…」這種帶連字號的段落呈現。有序清單用 value 保留原號碼，
+        # 因為作者常在清單中間插一段說明再接著編號，交給瀏覽器重排會錯號。
+        if not lst:
+            return
+        if lst[0][0] == 'ol':
+            out.append('<ol class="prose__ol">'
+                       + ''.join(f'<li value="{n}">{md(t)}</li>' for _, n, t in lst) + '</ol>')
+        else:
+            out.append('<ul class="prose__ul">'
+                       + ''.join(f'<li>{md(t)}</li>' for _, _, t in lst) + '</ul>')
+        lst.clear()
 
     def flush_quote():
         # 連續的「> 」行併成一個引用區塊，沿用章總覽既有的 .quote 樣式
@@ -78,26 +111,42 @@ def prose(body):
             s = ln.strip()
             if s.startswith('|'):            # 表格列：交給 flush_table 收集
                 flush_quote()
+                flush_list()
                 tbl.append(ln)
                 continue
             flush_table()
             if s.startswith('>'):            # 引用：連續行併成一塊
+                flush_list()
                 quo.append(s.lstrip('>').strip())
                 continue
             flush_quote()
+            # 分隔線要先於清單判定：「***」「---」不能被當成空的清單項
+            if re.fullmatch(r'-{3,}|\*{3,}|_{3,}', s):
+                flush_list()
+                out.append('<hr class="prose__hr">')
+                continue
+            mu, mo = LIST_UL.match(s), LIST_OL.match(s)
+            if mu or mo:                     # 清單項：同型的連續項收在一起
+                kind = 'ol' if mo else 'ul'
+                if lst and lst[0][0] != kind:
+                    flush_list()
+                lst.append((kind, mo.group(1) if mo else None,
+                            mo.group(2) if mo else mu.group(1)))
+                continue
+            flush_list()
             if not s:
                 continue
             h = re.match(r'^(#{1,6})\s+(.+)$', s)
             if h:                            # ## / ### 小標；全部走同一級，字級表不變胖
                 out.append(f'<h4 class="prose__h">{md(h.group(2).strip())}</h4>')
-            elif re.fullmatch(r'-{3,}|\*{3,}|_{3,}', s):
-                out.append('<hr class="prose__hr">')
             else:
                 out.append(f'<p>{md(s)}</p>')
         flush_table()
         flush_quote()
+        flush_list()
     flush_table()
     flush_quote()
+    flush_list()
     return ''.join(out)
 
 
@@ -105,14 +154,21 @@ def has_table(t):
     return bool(t) and any(ln.strip().startswith('|') for ln in t.splitlines())
 
 
-def rich(t):
-    """含 Markdown 表格時走 prose()，否則只做行內轉換。
+# 任何需要「區塊級」處理的語法：表格、引用、小標、清單
+BLOCKY = re.compile(r'^\s*(\||>|#{1,6}\s|[-*•]\s|\d+[.)]\s)', re.M)
 
-    md() 不認表格，之前直接用在 <li>、誤解卡與公式的 from/limits/numeric 上，
-    整張表會以字面的 | --- | --- | 洩漏到畫面（Ch3–Ch5 共 13 處）。
+
+def rich(t):
+    """含區塊語法或多段落時走 prose()，否則只做行內轉換。
+
+    md() 只認行內語法。之前直接用在 <li>、誤解卡與公式的 from/limits/numeric 上，
+    表格以字面的 | --- | --- | 洩漏（Ch3–Ch5 共 13 處），多段落的 \\n\\n 被壓成一個
+    空白而黏成一段（Ch4 誤解卡 3 處），清單以帶連字號的段落呈現。
     但也不能無條件改用 prose()——那會在單行內容外面憑空多包一層 <p>。
     """
-    return prose(t) if has_table(t) else md(t)
+    if not t:
+        return ''
+    return prose(t) if ('\n\n' in t or BLOCKY.search(t)) else md(t)
 
 
 def tier_tag(tier):

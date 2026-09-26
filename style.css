@@ -190,7 +190,7 @@ code, .mono { font-family: var(--font-mono); font-size: 1em; font-variant-numeri
 .anchors .k { display: block; font-size: var(--f-label); color: var(--ink-2); margin-top: var(--s1); }
 
 /* ---------- 招牌時刻 A：22 格章節刻度尺 ---------- */
-.layout { display: grid; grid-template-columns: 1fr; gap: var(--s6); padding-block: var(--s6) var(--s9); }
+.layout { display: grid; grid-template-columns: minmax(0,1fr); gap: var(--s6); padding-block: var(--s6) var(--s9); }
 @media (min-width: 1000px) {
   .layout { grid-template-columns: 128px minmax(0,1fr); gap: var(--s8); align-items: start; }
   .scale { position: sticky; top: var(--s4); }
@@ -235,15 +235,18 @@ code, .mono { font-family: var(--font-mono); font-size: 1em; font-variant-numeri
 .facet li { margin-bottom: var(--s1); }
 
 /* 公式：右對齊式號與頁碼，仿 Kittel 的式號慣例 */
-.eqs { display: grid; gap: var(--s2); margin: var(--s2) 0 0; }
+.eqs { display: grid; grid-template-columns: minmax(0,1fr); gap: var(--s2); margin: var(--s2) 0 0; }
 .eq {
-  display: grid; grid-template-columns: 1fr auto; gap: var(--s2) var(--s4); align-items: baseline;
+  display: grid; grid-template-columns: minmax(0,1fr) auto; gap: var(--s2) var(--s4); align-items: baseline;
   background: var(--card); border: 1px solid var(--line); border-left: var(--rail) solid var(--indigo);
   border-radius: 0 var(--radius) var(--radius) 0; padding: var(--s3) var(--s4); box-shadow: var(--sh-card);
 }
 .eq__l { font-size: var(--f-label); color: var(--ink-3); grid-column: 1 / -1; margin: 0; }
 .eq__f { font-family: var(--font-mono); font-size: var(--f-num); line-height: 1.7; color: var(--ink); overflow-x: auto; margin: 0; max-width: 62ch; }
-.eq__r { font-family: var(--font-mono); font-size: var(--f-label); color: var(--ink-2); white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
+.eq__r { font-family: var(--font-mono); font-size: var(--f-label); color: var(--ink-2); text-align: right; font-variant-numeric: tabular-nums;
+  /* 式號欄在 auto 欄寬裡：nowrap 加上舊資料裡的長註記（如「(10) j=−(c/4πλ_L²)A；curl j 形式為…」）
+     會把整張卡撐到 474px。允許換行並設上限。 */
+  white-space: normal; max-width: 16em; overflow-wrap: anywhere; }
 .eq__s { grid-column: 1 / -1; font-size: var(--f-label); color: var(--ink-2); line-height: 1.7; margin: 0; max-width: 36em; }
 
 .quote { border-left: 2px solid var(--line-strong); padding-left: var(--s4); margin: var(--s3) 0 0; font-size: var(--f-label); color: var(--ink-2); line-height: 1.8; }
@@ -279,12 +282,23 @@ code, .mono { font-family: var(--font-mono); font-size: 1em; font-variant-numeri
 .wrap--text .tablewrap { max-width: 48em; }
 table { width: 100%; border-collapse: collapse; font-size: var(--f-num); }
 th, td { text-align: left; padding: var(--s2) var(--s4); border-bottom: 1px solid var(--line); vertical-align: top; }
-thead th { background: var(--plate); color: var(--on-plate); font-weight: 500; font-size: var(--f-label); white-space: nowrap; }
+thead th { background: var(--plate); color: var(--on-plate); font-weight: 500; font-size: var(--f-label);
+  /* 表頭原為 nowrap：「等效載子數／原子」這種長表頭會把欄撐寬、把最關鍵的末欄推到橫捲後面。
+     改為可換行；keep-all 讓中文詞不被拆成單字，只在空白與標點處斷。 */
+  white-space: normal; word-break: keep-all; overflow-wrap: normal; }
 tbody th { font-weight: 500; color: var(--ink-2); }
 tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
-td { font-variant-numeric: tabular-nums; }
+td { font-variant-numeric: tabular-nums;
+  /* body 的 overflow-wrap: anywhere 會把 min-content 算成單一字元寬，表格自動排版
+     因此能把欄壓到比數字還窄，把「−2.619」拆成「−2.61／9」、「1.2×10⁴」拆成「1.2×1／0⁴」。
+     儲存格改 normal：數字與英文詞保持完整，中文仍可字間換行；放不下就在 .tablewrap 內橫捲。 */
+  overflow-wrap: normal; }
 td.mono, th.mono { font-family: var(--font-mono); white-space: nowrap; }
-.eq__f, .eq__s { overflow-wrap: normal; word-break: keep-all; }
+/* keep-all 只適合公式本體：保護符號串不被拆斷。
+   .eq__s 是中文符號說明，keep-all 會讓中日韓文字不在字間斷行，
+   幾乎無空格的中文整段變成不可斷長串，在窄螢幕把公式卡撐破（ch-03-s3/s5）。 */
+.eq__f { overflow-wrap: normal; word-break: keep-all; }
+.eq__s { word-break: normal; overflow-wrap: anywhere; }
 /* 公式的換行與連續空白是排版資訊，不是原始碼縮排：JSON 裡的分段矩陣、6×6 剛度
    矩陣、piecewise 大括號都靠它們對齊（ch-03 的式 (19)(57)(69) 是代表案例）。
    讓瀏覽器把換行摺成空白會把 2×2 行列式印成一長串「| a b | | c d |」。
@@ -504,30 +518,38 @@ td.mono, th.mono { font-family: var(--font-mono); white-space: nowrap; }
 .deriv .blk__h { margin-bottom: var(--s4); }
 .deriv p { max-width: 34em; }
 .deriv__steps { list-style: none; counter-reset: st; margin: var(--s4) 0; padding: 0;
-  display: grid; gap: var(--s3); max-width: 530px; }
+  display: grid; gap: var(--s3); max-width: 530px;
+  /* 隱式軌道是 auto，會被步驟內表格的 min-content 撐寬，連帶同一 ol 的所有 li 一起
+     超出 ol（ch-06-s4 的 6 欄 τ／ℓ 表把軌道撐到 659px，文字步驟量到 44em）。
+     鎖成 minmax(0, 1fr)：軌道不超過 ol，裝不下的表格交給 .tablewrap 橫向捲動。 */
+  grid-template-columns: minmax(0, 1fr); }
+/* 步驟卡內只剩約 440px 可用：表頭改為可換行、左右留白減半，6 欄數值表才放得下，
+   不必讓讀者橫向捲動才看到最後兩欄的計算結果。 */
+.deriv__steps thead th { white-space: normal; word-break: keep-all; overflow-wrap: normal; }
+.deriv__steps th, .deriv__steps td { padding-inline: var(--s2); }
 /* li 不可以是 grid container：步驟文字裡只要夾了 <strong>，每個子節點都會各自
    變成 grid item，正文就掉進 1.9em 的編號欄一行一個字直落（全站 861 步中 534 步中招）。
    改用 block ＋ 絕對定位的編號。 */
-.deriv__steps li { counter-increment: st; display: block; position: relative;
+.deriv__steps > li { counter-increment: st; display: block; position: relative;
   padding: var(--s3) var(--s4) var(--s3) 3.1em;
   font-size: var(--f-num); line-height: 1.75; margin: 0;
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
   box-shadow: var(--sh-card); }
-.deriv__steps li::before { content: counter(st); color: var(--indigo); font-weight: 600;
+.deriv__steps > li::before { content: counter(st); color: var(--indigo); font-weight: 600;
   font-family: var(--font-mono); font-variant-numeric: tabular-nums;
   position: absolute; left: var(--s4); top: var(--s3); }
 
 /* ---- 公式：補上出處／極限／數值三列 ---- */
 .eq__meta { grid-column: 1 / -1; display: grid; gap: var(--s2); margin: var(--s3) 0 0;
   padding-top: var(--s3); border-top: 1px solid var(--line); }
-.eq__row { display: grid; grid-template-columns: 4.5em 1fr; gap: var(--s3);
+.eq__row { display: grid; grid-template-columns: 4.5em minmax(0,1fr); gap: var(--s3);
   font-size: var(--f-label); line-height: 1.7; }
 .eq__rk { color: var(--ink-3); }
 .eq__rv { color: var(--ink-2); max-width: 34em; }
 
 /* ---- 常見誤解 ---- */
 .misc { margin-top: var(--s7); }
-.misc__l { display: grid; gap: var(--s4); list-style: none; margin: var(--s4) 0 0; padding: 0; }
+.misc__l { display: grid; grid-template-columns: minmax(0,1fr); gap: var(--s4); list-style: none; margin: var(--s4) 0 0; padding: 0; }
 .misc__i { background: var(--card); border: 1px solid var(--line);
   border-left: var(--rail) solid var(--ember); border-radius: 0 var(--radius) var(--radius) 0;
   padding: var(--s4) var(--s5); box-shadow: var(--sh-card); }
@@ -544,16 +566,16 @@ td.mono, th.mono { font-family: var(--font-mono); white-space: nowrap; }
 @media (max-width: 760px) {
   .sec { padding-top: var(--s7); }
   .deriv { padding: var(--s4); }
-  .deriv__steps li { padding: var(--s3) var(--s3) var(--s3) 2.7em; }
-  .eq__row { grid-template-columns: 1fr; gap: var(--s1); }
+  .deriv__steps > li { padding: var(--s3) var(--s3) var(--s3) 2.7em; }
+  .eq__row { grid-template-columns: minmax(0,1fr); gap: var(--s1); }
 }
 
 /* ---- 章總覽的小節導覽卡（放在反轉板面上，替整頁提供一條暗帶） ---- */
 .plate__lede { color: var(--on-plate-2); font-size: var(--f-num); line-height: 1.8;
   max-width: 34em; margin: 0 0 var(--s6); }
-.seclist { display: grid; gap: var(--s4); }
-@media (min-width: 720px)  { .seclist { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1080px) { .seclist { grid-template-columns: repeat(3, 1fr); } }
+.seclist { display: grid; grid-template-columns: minmax(0,1fr); gap: var(--s4); }
+@media (min-width: 720px)  { .seclist { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (min-width: 1080px) { .seclist { grid-template-columns: repeat(3, minmax(0,1fr)); } }
 .seccard { display: grid; gap: var(--s2); align-content: start; text-decoration: none;
   background: var(--card); border: 1px solid transparent; border-radius: var(--radius);
   padding: var(--s5); box-shadow: var(--sh-card); }
@@ -594,7 +616,7 @@ section.deriv { padding: var(--s5) var(--s5) var(--s6); }
 }
 /* 公式在白紙面上改為內凹，靠明度差而非陰影與紙面區隔 */
 .layout--deep article .eq { background: var(--paper-sunk); box-shadow: var(--sh-flat); }
-.layout--deep article .deriv__steps li { background: var(--card); }
+.layout--deep article .deriv__steps > li { background: var(--card); }
 @media (max-width: 760px) {
   .layout--deep article { padding: var(--s5) var(--s4) var(--s6); }
 }
@@ -605,12 +627,29 @@ section.deriv { padding: var(--s5) var(--s5) var(--s6); }
 .eqs { margin-block: var(--s5) var(--s7); }
 
 /* 含表格的公式 meta 列改為單欄，否則 6 欄表會擠進 1fr 的窄格變成跑馬燈 */
-.eq__row--wide { grid-template-columns: 1fr; gap: var(--s2); }
+.eq__row--wide { grid-template-columns: minmax(0,1fr); gap: var(--s2); }
 /* 行長上限是給散文用的；表格要能用滿整列，否則 6 欄表被壓到 442px */
 .eq__row--wide .eq__rv { max-width: none; }
 /* prose() 在 li／卡片內會包 <p>，首尾的外距要收掉才不會撐開容器 */
-.deriv__steps li > p:first-child, .misc__i > div > p:first-child,
+.deriv__steps > li > p:first-child, .misc__i > div > p:first-child,
 .eq__rv > p:first-child { margin-top: 0; }
-.deriv__steps li > p:last-child, .misc__i > div > p:last-child,
+.deriv__steps > li > p:last-child, .misc__i > div > p:last-child,
 .eq__rv > p:last-child { margin-bottom: 0; }
 .eq__rv .tablewrap { margin-block: var(--s2); }
+
+/* ---- prose() 產生的清單 ---- */
+.prose__ul, .prose__ol { margin: 0 0 var(--s4); padding-left: 1.4em; max-width: 34em; }
+.prose__ul { list-style: disc; }
+.prose__ol { list-style: decimal; }
+.prose__ul > li, .prose__ol > li { margin-bottom: var(--s2); padding-left: var(--s1); }
+.prose__ul > li:last-child, .prose__ol > li:last-child { margin-bottom: 0; }
+.prose__ul:last-child, .prose__ol:last-child { margin-bottom: 0; }
+/* 步驟卡、誤解卡、公式 meta 裡的清單字級跟著容器走，不另設 */
+.deriv__steps > li > .prose__ul, .deriv__steps > li > .prose__ol { margin-top: var(--s2); }
+.plate .prose__ul, .plate .prose__ol { color: var(--on-plate); }
+
+/* 窄螢幕：公式卡改單欄，式號移到公式下方靠左，不再與公式搶寬度 */
+@media (max-width: 760px) {
+  .eq { grid-template-columns: minmax(0,1fr); }
+  .eq__r { text-align: left; max-width: none; }
+}

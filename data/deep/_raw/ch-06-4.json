@@ -1,0 +1,460 @@
+{
+ "title": "ELECTRICAL CONDUCTIVITY AND OHM'S LAW",
+ "titleZh": "電導率與歐姆定律",
+ "pages": "147-152",
+ "lede": "電場下整顆費米球如何在 k 空間平移、碰撞如何把平移釘成穩態而得到歐姆定律 σ = ne²τ/m，以及真實金屬裡聲子與靜態缺陷兩種碰撞如何相加（Matthiessen 規則、電阻比）、低溫下為什麼晶格電阻主要來自借助倒晶格向量的 umklapp 碰撞。",
+ "blocks": [
+  {
+   "kind": "concept",
+   "tier": "mine",
+   "heading": "這一段在整章的位置：讓費米氣第一次「動起來」",
+   "body": "第 6 章到 p.147 為止處理的都是**平衡態**的自由電子費米氣：費米球怎麼填、費米能多大、電子熱容為什麼只有古典值的 T/T_F 那麼一點。這些問題裡，費米球是靜止地坐在 k 空間原點的。\n\n從 p.147 的 ELECTRICAL CONDUCTIVITY AND OHM'S LAW 開始，Kittel 第一次對這團費米氣施加外力，問三個問題：\n\n**(1) 外加電場時，整團電子在 k 空間裡怎麼動？** 答案是整顆費米球平移（式 (39)–(41)、Fig. 10）。\n\n**(2) 為什麼金屬會有一個穩定的電流、而不是被電場無限加速？** 答案是碰撞把平移量釘在一個穩態值，由此得到歐姆定律 j = σE 與 σ = ne²τ/m（式 (42)–(44)）。\n\n**(3) 碰撞的來源是什麼、它們怎麼隨溫度與樣品純度變化？** 答案分成兩部分：聲子與靜態缺陷兩種碰撞的速率相加（Matthiessen 規則，式 (45)–(46)），以及低溫下晶格電阻的主要來源是借助倒晶格向量 G 的 umklapp 散射。\n\n這一段的價值在於：它用**同一個參數 τ** 把「理論上的一條公式」與「實驗上的一張電阻—溫度曲線」接起來。讀完之後，你應該能拿一個金屬的室溫電阻率與殘餘電阻比，說出它的 τ、電子平均自由程、以及大概有多少雜質。後面同一章的 Hall 效應（p.154 用的正是 j_x = ne²τE_x/m）與熱導率（p.156）都直接沿用這裡的 τ；Ch14 的電漿頻率 ω_p 則會透過 σ = ω_p²τ/4π 與它接上（見本頁高斯單位單元）。\n\n**讀前提醒**：本段有兩個看似互相矛盾的說法——p.147 說「每個電子都位移同樣的 δk，整顆球平移」，p.151 卻說「所有碰撞只涉及費米面附近的電子」。這不是 Kittel 前後不一，而是同一個物理的兩種描述方式。本頁後面有專門的一個單元把它講清楚。"
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "出發點：mv = ℏk 與 CGS 的勞侖茲力",
+   "body": "本段第一句逐字是：「The momentum of a free electron is related to the wavevector by mv = ℏk.」\n\n這一句是整段推導的樞紐。對**自由電子**（平面波 e^{ik·r}）而言，k 是動量算符 −iℏ∇ 的本徵值除以 ℏ，所以「電子的動量」與「它在 k 空間的座標」只差一個常數 ℏ。這讓我們可以把古典的牛頓第二定律直接翻譯成 k 空間的運動方程：電子受力，就是它的 k 在 k 空間裡移動。\n\n接著 Kittel 寫下作用在電荷 −e 的電子上的力：「In an electric field E and magnetic field B the force F on an electron of charge −e is −e[E + (1/c)v × B]」。這裡有兩點要注意：\n\n**第一，e 是正數。** Kittel 全書的慣例是 e > 0，電子電荷寫成 −e。所以後面所有的負號（δk = −eEt/ℏ）都是在說「電子往電場的反方向被推」。\n\n**第二，這是 CGS（高斯）單位。** 式 (39) 左邊明確印了「(CGS)」標籤，勞侖茲力裡的 1/c 就是高斯單位的記號。SI 版本是 F = −e(E + v × B)，差別只在 B 的單位定義。這一點在本段後面會再出現一次：Kittel 特別指出「在高斯單位下 σ 的量綱是頻率」，那句話只有在 CGS 裡才成立。\n\n**為什麼這一步重要**：在週期晶格裡，ℏk 不再是電子的真實動量，而是所謂的**晶體動量**（Kittel 在 p.173 才正式引入這個名稱，並寫下電子吸收聲子的選擇定則 k + q = k′ + G）。本段的 umklapp 散射恰好就是這個「差一個 G」的後果。所以 mv = ℏk 在這裡是自由電子模型的等號，到了能帶理論會被改寫，但「外力改變 ℏk」這個結構會保留下來。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "k 空間中的牛頓第二定律（自由電子）",
+    "formula": "F = m dv/dt = ℏ dk/dt = −e(E + (1/c) v × B)",
+    "bookPage": 147,
+    "eqNumber": "(39)",
+    "symbols": "F：作用在單一電子上的力；m：電子質量；v：電子速度；ℏ：約化普朗克常數；k：電子波向量；e：基本電荷（取正值，電子電荷為 −e）；E：電場；B：磁場；c：光速（CGS 單位的記號）。",
+    "from": "把 mv = ℏk（自由電子動量與波向量的關係）對時間微分得 m dv/dt = ℏ dk/dt，再令它等於 CGS 單位下的勞侖茲力 −e[E + (1/c)v × B]。書上只印 CGS 版本；（本站補充）SI 版本是 ℏ dk/dt = −e(E + v × B)。",
+    "limits": "**B = 0**：力與 k 無關，每個電子的 k 以同樣的速率 −eE/ℏ 平移，這就是下一式 (40) 與整顆費米球平移的根源。\n\n**E = 0、B ≠ 0**（本站由 (39) 先行推演，正式討論在下一節）：力 −(e/c)v × B 永遠垂直於 v，所以 |v| 與 |k| 不變，k 只繞著 B 轉——這是迴旋運動，角頻率 ω_c = eB/mc。此時不同 k 的電子受力不同（力依賴 v），費米球不再是單純平移而是繞 B 旋轉；下一節 MOTION IN MAGNETIC FIELDS（p.152 起）就從這裡出發。\n\n**有碰撞時**：(39) 只描述兩次碰撞之間的自由運動，本身不含任何耗散。耗散要另外加（p.152 式 (48) 把碰撞寫成 ℏδk/τ 的摩擦項）。",
+    "numeric": "在 E = 1 V/m 的電場中（SI），ℏ dk/dt = eE 給出 dk/dt = eE/ℏ ≈ 1.6×10⁻¹⁹/1.05×10⁻³⁴ ≈ 1.5×10¹⁵ m⁻¹ s⁻¹。銅的 k_F = 1.36×10⁸ cm⁻¹ = 1.36×10¹⁰ m⁻¹（p.139 Table 1），所以**若沒有碰撞**，只要約 9 μs 就能把電子推過一整個 k_F。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "無碰撞時 k 的線性漂移",
+    "formula": "k(t) − k(0) = −eEt/ℏ",
+    "bookPage": 147,
+    "eqNumber": "(40)",
+    "symbols": "k(t)：時刻 t 的電子波向量；k(0)：初始波向量；E：定值電場；t：自施加電場起經過的時間；其餘同 (39)。",
+    "from": "令 (39) 中 B = 0，並假設 E 不隨時間變化，則 ℏ dk/dt = −eE 為常數，直接對 t 積分即得。書上的說法是「We integrate (39) with B = 0 to obtain」。",
+    "limits": "**這是一個不會停的過程。** 在沒有碰撞的情形下，k 隨時間無限制地線性成長，電流也跟著線性成長——這不是歐姆定律，而是等加速度運動。p.147 的原句是「In the absence of collisions the Fermi sphere (Fig. 10) moves in k space at a uniform rate by a constant applied electric field.」\n\n所以 (40) 的物理意義是反面的：**正是因為真實金屬有碰撞，歐姆定律才成立。** 若碰撞率趨於零，電導率趨於無限大（見 (43) 的 τ → ∞ 極限）。\n\n另外要注意：(40) 對每一個電子都一樣，與它的初始 k(0) 無關——這是下一式「整顆球平移」的前提。（本站補充）在週期晶格中，k 走到布里淵區邊界時會等價於另一側的點（差一個 G），自由電子的無限平移圖像不再成立；這一點在本段 umklapp 小節會以散射的形式回來。",
+    "numeric": "銅在室溫的 τ ≈ 2.5×10⁻¹⁴ s（由 (44) 與 Table 3 算得，見後面的數值單元）。代入上式，E = 1 V/m 時每個電子在一個 τ 內只累積 |δk| = eEτ/ℏ ≈ 3.8×10¹ m⁻¹，只有 k_F 的 3×10⁻⁹。"
+   }
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "整顆費米球平移：式 (41) 在說什麼",
+   "body": "p.147 把 (40) 從單一電子推廣到整團電子：「If the force F = −eE is applied at time t = 0 to an electron gas that fills the Fermi sphere centered at the origin of k space, then at a later time t the sphere will be displaced to a new center at」δk = −eEt/ℏ，也就是式 (41)。\n\n緊接著是本段最重要的一句觀察，逐字為：「Notice that the Fermi sphere is displaced as a whole because every electron is displaced by the same δk.」\n\n為什麼「每個電子位移一樣」就推出「整顆球平移」？因為在 B = 0 時，(39) 右邊的力 −eE 與電子的 k 無關。k 空間裡的每一個佔據點都被同一個向量推了同樣的距離，所以一整團點（費米球）作為剛體平移，形狀不變、只有中心移動。這一點在有磁場時不成立：v × B 依賴於各電子的速度，不同位置的點受到不同方向的力。\n\n**這個圖像的威力在於它把 N 個電子的問題化成了一個向量 δk 的問題。** 我們不必追蹤每個電子，只要追蹤球心。球心的位移 δk 就決定了整個系統的總動量（Nℏδk）與電流（見 Fig. 10 圖說與 (42)）。\n\n**這個圖像的陷阱**在於它容易讓人以為「所有電子都在參與導電、都在被散射」。實際上，因為 δk 極小（對銅約 10⁻⁹ k_F），平移後的球與原來的球幾乎完全重疊，真正改變的只有費米面上一層極薄的新月形區域。本頁後面「兩種說法如何並存」的單元會專門處理這一點。"
+  },
+  {
+   "kind": "concept",
+   "tier": "mine",
+   "heading": "Fig. 10 畫了什麼（網頁無圖，逐一描述）",
+   "body": "Fig. 10（p.148）是左右兩個方框，各畫一個 k_x–k_y 平面上的截面。\n\n**(a) 左框，標題「Fermi sphere at time t = 0」**：一個以原點為圓心的大圓，圓內填滿規則排列的黑點（每個黑點代表一個被佔據的 k 軌域），k_x、k_y 兩條座標軸交在圓心，原點處有一個小圓圈記號。圓相對於兩軸左右、上下完全對稱。\n\n**(b) 右框，標題「Fermi sphere at t」**：同樣大小的圓、同樣排列的點陣，但整個圓（連同內部點陣）**向右平移了一小段**，圓心的小圓圈記號不再落在 k_y 軸上，而是位於 k_y 軸右側。左上方畫了一支指向右方的粗箭頭，標「F」，表示外力方向。注意：圖中的平移量是為了看得見而誇大的；實際的 δk 只有 k_F 的 10⁻⁹ 量級。\n\n**圖說的內容**（p.148，逐字）：\n\n「(a) The Fermi sphere encloses the occupied electron orbitals in k space in the ground state of the electron gas. The net momentum is zero, because for every orbital k there is an occupied orbital at −k.」\n\n「(b) Under the influence of a constant force F acting for a time interval t every orbital has its k vector increased by δk = Ft/ℏ. This is equivalent to a displacement of the whole Fermi sphere by δk. The total momentum is Nℏδk, if there are N electrons present. The application of the force increases the energy of the system by N(ℏδk)²/2m.」\n\n**讀圖時要抓住的一點**：圖 (b) 中力 F 指向右（+k_x），球也往右移。若這個力來自電場，F = −eE，那麼電場其實指向左——電子往電場的反方向被推。(41) 的負號講的就是這件事。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "費米球球心的位移",
+    "formula": "δk = −eEt/ℏ",
+    "bookPage": 147,
+    "eqNumber": "(41)",
+    "symbols": "δk：費米球球心在 k 空間的位移（等於每個電子波向量的共同增量）；E：電場；t：施加電場後經過的時間（無碰撞）；Fig. 10 圖說以一般外力寫成 δk = Ft/ℏ。",
+    "from": "由 (40) 對每個電子都成立、且與 k(0) 無關，推得整團佔據態一起平移；原本球心在原點（總動量為零的基態），故新的球心就是 δk。",
+    "limits": "**t ≪ τ（碰撞前的短時間）**：(41) 精確成立，球心線性漂移。\n\n**穩態**：有碰撞時，Kittel 取 t = τ，得到 δk = −eEτ/ℏ，這是本段通往歐姆定律的關鍵一步。之後用 p.152 的 (48) 可以證明這一代換其實是穩態的精確解（見下方推導單元）。\n\n**方向**：δk 與 E 反向，因為電子電荷為負。\n\n**尺度**：由於 δk/k_F 在一般電場下只有 10⁻⁹–10⁻⁷，平移後的費米球與原球幾乎完全重疊；這是理解「只有費米面電子參與」的出發點。",
+    "numeric": "銅在室溫、E = 1 V/m：δk = eEτ/ℏ ≈ (1.6×10⁻¹⁹)(1)(2.5×10⁻¹⁴)/(1.05×10⁻³⁴) ≈ 38 m⁻¹，而 k_F = 1.36×10¹⁰ m⁻¹，比值約 2.8×10⁻⁹。即使在 1 MA/cm² 的高電流密度下（E ≈ 170 V/m），比值也只有約 5×10⁻⁷。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "Fig. 10 圖說的兩個結果：總動量 Nℏδk 與能量增量 N(ℏδk)²/2m",
+   "body": "Fig. 10 的圖說直接給了兩個結果，但沒有寫推導。它們都來自同一個事實：基態費米球對原點對稱，所以 Σ k = 0。下面補出中間步驟，並說明能量增量為什麼是 δk 的**二次方**、以及它在穩態下的意義。",
+   "steps": [
+    "基態（t = 0）：N 個電子佔據費米球內的軌域 {k_j}。因為對每個 k 都有一個 −k 也被佔據（圖說 (a) 的原話），所以 Σ_j k_j = 0，總動量 P₀ = Σ_j ℏk_j = 0。",
+    "施力時間 t 之後：每個軌域都變成 k_j + δk（δk = Ft/ℏ，與 j 無關）。總動量 P = Σ_j ℏ(k_j + δk) = Σ_j ℏk_j + Nℏδk = 0 + Nℏδk。這就是圖說的「The total momentum is Nℏδk」。",
+    "總能量：E(t) = Σ_j ℏ²|k_j + δk|²/2m = Σ_j ℏ²k_j²/2m + (ℏ²/m) δk · Σ_j k_j + N ℏ²δk²/2m。",
+    "中間的交叉項正比於 Σ_j k_j = 0，所以消失。因此 ΔE = E(t) − E(0) = N(ℏδk)²/2m，這就是圖說的最後一句。",
+    "解讀：ΔE = ½ (Nm) v_d²，其中 v_d = ℏδk/m。也就是說，**平移後的系統能量增量恰好等於「總質量 Nm 以漂移速度 v_d 運動的質心動能」**，內部（相對運動）的能量完全沒變。這是剛體平移的直接後果。",
+    "為什麼是二次方：因為一次項被對稱性消掉了。這也說明 δk 很小時，平移所需的能量極小，外加電場幾乎不改變電子系統的內能。",
+    "穩態下的能量收支（書上沒寫，但值得算）：單位體積的儲存能量 u = n·½ m v_d² = n e²E²τ²/2m = σE²τ/2（用了 v_d = eEτ/m 與 (43)）。而電場對電子做功的功率密度是 j·E = σE²。兩者相除得 u/(σE²) = τ/2——也就是說，**碰撞在約 τ/2 的時間內把漂移動能打散成電子的無序運動（能量最終再經電子—聲子作用流入晶格）**，而電場又以相同速率補充。這就是焦耳熱的微觀圖像：能量從電場經由電子的漂移運動，透過碰撞變成電子的無序運動，最終流入晶格。",
+    "數值：銅在 j = 1 MA/cm²（E ≈ 170 V/m）時，σE² ≈ 1.7×10¹² W/m³，而儲存的漂移動能密度只有約 2×10⁻² J/m³——儲存量小得可憐，但每 10⁻¹⁴ s 就換一次。"
+   ]
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "碰撞把球釘住：取 t = τ 的穩態，以及一個 ℏ 的校註",
+   "body": "(41) 描述的是無止境的漂移。p.147 接著引入碰撞，逐字為：「Because of collisions of electrons with impurities, lattice imperfections, and phonons, the displaced sphere may be maintained in a steady state in an electric field. If the collision time is τ, the displacement of the Fermi sphere in the steady state is given by (41) with t = τ.」\n\n這裡有三個要點：\n\n**第一，碰撞的來源在這一句就已點名**：雜質、晶格缺陷、聲子。這三者正是後面「Experimental Electrical Resistivity of Metals」與 Matthiessen 規則要分開處理的對象。\n\n**第二，「穩態」的意思是**：電場持續把球往前推，碰撞持續把球往回拉，兩者平衡時球心停在一個固定的位移 δk = −eEτ/ℏ。這不是「電子停下來」，而是「分布函數不再隨時間改變」。\n\n**第三，「取 t = τ」看起來像是一個粗略的代換**，但它其實是精確的——下一個推導單元用 p.152 的式 (48) 證明這一點。\n\n接著書上寫「The incremental velocity is v = δk/m = −eEτ/m.」\n\n**校註**：書上印的是 v = δk/m（已放大算繪 p.147 目視確認，原書就是這樣印的，不是 PDF 抽取遺漏）。這少了一個 ℏ：δk/m 的量綱是 cm⁻¹/g，不是速度。由本段第一句 mv = ℏk 可知正確寫法是 **v = ℏδk/m**，代入 δk = −eEτ/ℏ 才會得到等號右邊的 −eEτ/m。等號最右邊的結果是對的，只是中間那一項漏了 ℏ。\n\n最後，n 個電荷 q = −e 的電子以此速度漂移，電流密度 j = nqv = n(−e)(−eEτ/m) = ne²τE/m，這就是式 (42)。書上的評語只有一句：「This is Ohm's law.」"
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "為什麼「取 t = τ」是對的：用 p.152 的 (48) 求穩態與暫態",
+   "body": "p.147 說穩態位移「is given by (41) with t = τ」，但沒有解釋為什麼碰撞時間恰好就是該代入的時間。p.152 下一節一開頭給了把碰撞寫進運動方程的形式，逐字為：「By the arguments of (39) and (41) we are led to the equation of motion for the displacement δk of a Fermi sphere of particles acted on by a force F and by friction as represented by collisions at a rate 1/τ:」\n\nℏ(d/dt + 1/τ)δk = F　　(48)\n\n用它可以把 t = τ 的代換從「直覺」升級成「精確解」。",
+   "steps": [
+    "把 (48) 展開：ℏ dδk/dt = F − ℏδk/τ。右邊第一項是外力（電場的推動），第二項是碰撞造成的「摩擦」——它正比於球心偏離原點的距離 δk，比例常數是碰撞率 1/τ。",
+    "**穩態**：令 dδk/dt = 0，得 ℏδk/τ = F，即 δk_ss = Fτ/ℏ。代入 F = −eE：δk_ss = −eEτ/ℏ。這正是 (41) 取 t = τ 的結果——兩者完全一致，沒有任何數值因子的差別。",
+    "**暫態**：若 t = 0 時突然加上定值電場、δk(0) = 0，解為 δk(t) = (Fτ/ℏ)(1 − e^{−t/τ})。",
+    "檢查短時間極限 t ≪ τ：1 − e^{−t/τ} ≈ t/τ，所以 δk ≈ Ft/ℏ，回到無碰撞的 (41)。也就是說 (41) 是 (48) 在碰撞還來不及發生時的極限。",
+    "檢查長時間極限 t ≫ τ：δk → Fτ/ℏ，就是穩態。",
+    "**注意一個常見誤讀**：「取 t = τ」**不是**把暫態解在 t = τ 那一刻的值拿來用——那樣會得到 (1 − e⁻¹) Fτ/ℏ ≈ 0.63 Fτ/ℏ。它指的是穩態值恰好等於「以無碰撞速率漂移 τ 這麼長時間」所累積的位移。兩者在數值上差了 37%，概念上完全不同。",
+    "**關掉電場**：令 F = 0，(48) 的解為 δk(t) = δk(0) e^{−t/τ}。球心以時間常數 τ 指數地回到原點。這正是 p.150 所說「if the electric field were switched off the momentum distribution would relax back to its ground state」的定量版本，也說明 τ 的精確身分是**動量分布的弛豫時間**。",
+    "另一種常見的理解方式（Drude 式的論證）：若每個電子在每次碰撞後完全忘記先前累積的動量，且碰撞是無記憶的隨機事件（平均間隔 τ），那麼在任一時刻，一個電子距上次碰撞的平均時間恰好是 τ。所以平均漂移位移為 Fτ/ℏ——與 (48) 的穩態結果相同。"
+   ]
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "歐姆定律的微觀形式（電流密度）",
+    "formula": "j = nqv = ne²τE/m",
+    "bookPage": 147,
+    "eqNumber": "(42)",
+    "symbols": "j：電流密度；n：單位體積的傳導電子數；q = −e：電子電荷；v = ℏδk/m = −eEτ/m：穩態漂移速度（書上印成 δk/m，見前一單元校註）；τ：碰撞時間；m：電子質量；E：電場。",
+    "from": "取 (41) 在 t = τ 的穩態位移，換成漂移速度 v = ℏδk/m = −eEτ/m，再乘上電荷密度 nq。書中條件：「If in a constant electric field E there are n electrons of charge q = −e per unit volume」。",
+    "limits": "**電荷的符號消失了**：j 裡出現的是 q² = e²，所以不論載子帶正電或負電，電流都順著電場方向。單靠電導率無法分辨載子符號；這要靠下一節的 Hall 效應（p.154 用的正是這條 j_x = ne²τE_x/m 來算 Hall 係數）。\n\n**τ → ∞（沒有任何碰撞）**：j 無上限，對應 (40) 的無限加速。這是「完美導體」的極限（本站補充：這與超導並不相同，超導不只是 τ → ∞）。\n\n**線性**：j ∝ E 的成立條件是 δk ≪ k_F，也就是漂移速度遠小於 v_F。由於一般情況下 v/v_F 只有 10⁻⁹–10⁻⁷，金屬的歐姆定律在極大的範圍內都是線性的。",
+    "numeric": "銅，j = 1 MA/cm² = 10¹⁰ A/m²（積體電路導線的典型高電流密度量級）：v = j/(ne) = 10¹⁰/(8.45×10²⁸ × 1.6×10⁻¹⁹) ≈ 0.74 m/s。對照費米速度 v_F = 1.57×10⁶ m/s，比值約 5×10⁻⁷。**漂移速度是每秒不到一公尺，費米速度是每秒一千五百公里。**"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "電導率（自由電子、單一碰撞時間）",
+    "formula": "σ = ne²τ/m",
+    "bookPage": 148,
+    "eqNumber": "(43)",
+    "symbols": "σ：電導率，由 j = σE 定義；n、e、τ、m 同 (42)。",
+    "from": "p.148：「The electrical conductivity σ is defined by j = σE, so by (42)」。把 (42) 的 j = ne²τE/m 與定義 j = σE 比對即得。",
+    "limits": "**量綱**：Kittel 特別指出「In Gaussian units σ has the dimensions of frequency.」（見下方推導單元的驗證與物理意義）。\n\n**古典極限**：同頁說「Closely the same result for the electrical conductivity is obtained for a classical (Maxwellian) gas of electrons, as realized at low carrier concentration in many semiconductor problems.」——所以 (43) 的形式並不依賴費米統計；費米統計改變的是 τ 應該在哪些電子上計算（費米面上的電子），而不是公式的樣子。\n\n**各因子的角色**：σ ∝ n（載子越多，運送的電荷越多）、∝ e²（一個 e 來自電荷、一個來自受力）、∝ 1/m（越重越難加速）、∝ τ（兩次碰撞間被電場加速的時間越長越好）。",
+    "numeric": "p.149 Table 3：銅在 295 K 的 σ = 5.88×10⁵ (Ω·cm)⁻¹。配合 p.139 Table 1 的 n = 8.45×10²² cm⁻³，反推 τ = mσ/ne² ≈ 2.5×10⁻¹⁴ s。在高斯單位下，銅的 σ ≈ 5.3×10¹⁷ s⁻¹。"
+   }
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "電阻率",
+    "formula": "ρ = m/ne²τ",
+    "bookPage": 148,
+    "eqNumber": "(44)",
+    "symbols": "ρ：電阻率，定義為 1/σ；其餘同 (43)。",
+    "from": "p.148：「The electrical resistivity ρ is defined as the reciprocal of the conductivity」。直接取 (43) 的倒數。",
+    "limits": "**ρ ∝ 1/τ，也就是 ρ 正比於碰撞率。** 這是整段最有用的一個觀點：電阻率就是「電子動量被打亂的速率」乘上一個與材料載子數有關的常數 m/ne²。一旦接受這一點，p.150 的 Matthiessen 規則就只是「兩種獨立的碰撞速率相加」的直接翻譯（見 (45)、(46)）。\n\n**T → 0 的完美晶體**：若沒有任何靜態缺陷，聲子碰撞率趨於零，ρ → 0。實際樣品總有缺陷，所以 ρ 趨於一個有限的殘餘值 ρ_i(0)。\n\n**高溫**：聲子數 ∝ T（T > θ），1/τ ∝ T，所以 ρ ∝ T（p.151）。",
+    "numeric": "反過來用：由 Table 3 的 295 K 電阻率可以直接讀出 τ。例如銅 ρ = 1.70×10⁻⁶ Ω·cm = 1.70×10⁻⁸ Ω·m，n = 8.45×10²⁸ m⁻³：τ = m/(ne²ρ) = 9.11×10⁻³¹/(8.45×10²⁸ × (1.60×10⁻¹⁹)² × 1.70×10⁻⁸) ≈ 2.5×10⁻¹⁴ s。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "「高斯單位下 σ 的量綱是頻率」：驗證、換算與物理意義",
+   "body": "p.148 只丟下一句「In Gaussian units σ has the dimensions of frequency.」，沒有解釋。這一句值得停下來算，因為它揭露了 σ 與電漿頻率之間的關係，也提醒讀者：在 SI 與 CGS 之間搬數字時，σ 不只是差一個 10 的冪次。",
+   "steps": [
+    "高斯單位中，庫侖定律寫成 F = e²/r²，所以 e² 的量綱是 [力 × 長度²] = erg·cm = g·cm³·s⁻²。",
+    "σ = ne²τ/m 的量綱：[cm⁻³]·[g·cm³·s⁻²]·[s]/[g] = s⁻¹。確實是頻率。",
+    "SI 中則沒有這種巧合：σ 的單位是 S/m = Ω⁻¹m⁻¹，因為 SI 的 e² 帶有 ε₀（e²/4πε₀ 才有力×長度²的量綱）。換算關係是 σ_Gauss = σ_SI/(4πε₀)，即 σ_Gauss [s⁻¹] ≈ 8.99×10⁹ × σ_SI [S/m]。",
+    "代入銅：Table 3 的 σ = 5.88×10⁵ (Ω·cm)⁻¹ = 5.88×10⁷ S/m → σ_Gauss ≈ 5.3×10¹⁷ s⁻¹。",
+    "**這個頻率是什麼？** 把 (43) 改寫成 σ = (4πne²/m)·(τ/4π) = ω_p²τ/4π，其中 ω_p² = 4πne²/m 正是 Ch14 p.397 式 (9)（CGS）定義的電漿頻率平方。所以 σ 是「電漿頻率平方乘以碰撞時間」這個組合。",
+    "數值檢查：銅的自由電子 ω_p = (4πne²/m)^{1/2}，SI 形式 (ne²/ε₀m)^{1/2} ≈ 1.6×10¹⁶ s⁻¹；ω_p²τ/4π ≈ (1.6×10¹⁶)²(2.5×10⁻¹⁴)/(4π) ≈ 5.3×10¹⁷ s⁻¹，與上面直接換算的值一致。",
+    "另一個讀法：高斯單位的連續方程 ∂ρ_c/∂t = −∇·j，配上 j = σE 與 ∇·E = 4πρ_c，得 ∂ρ_c/∂t = −4πσ ρ_c。所以 4πσ 就是「金屬內淨電荷消散的速率」的量綱來源。",
+    "但要小心這個讀法的適用範圍：4πσ = ω_p²τ，而 ω_pτ 對銅約為 (1.6×10¹⁶)(2.5×10⁻¹⁴) ≈ 400 ≫ 1。在 ω_pτ ≫ 1 時，電荷擾動其實是以頻率 ω_p 振盪、再以 τ 的時間尺度阻尼，並不是單純以 4πσ 指數衰減（那個簡單圖像默認了靜態的 σ，而 σ 在 ω ~ ω_p 時已不能用直流值）。這是 Ch14 電漿光學的主題。"
+   ]
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "書中對 (43) 的直觀解讀",
+   "body": "Kittel 在 p.148 用一段話說明 (43) 為什麼「很好懂」。逐字為：\n\n「It is easy to understand the result (43) for the conductivity of a Fermi gas. We expect the charge transported to be proportional to the charge density ne; the factor e/m enters (43) because the acceleration in a given electric field is proportional to e and inversely proportional to the mass m. The time τ describes the free time during which the field acts on the carrier.」\n\n把這段拆開，σ = (ne) × (e/m) × τ 三個因子各有意義：\n\n**ne**：單位體積裡可以被搬運的電荷。\n\n**e/m**：電場給出的加速度 a = eE/m，所以單位電場的加速度是 e/m。\n\n**τ**：電場有多長的時間可以「不受干擾地」加速載子。\n\n三者相乘：電荷密度 × 單位電場的漂移速度（(e/m)τ；本站補充：這就是常說的**遷移率** μ = eτ/m 的原型，書中本段未用此名稱）。\n\n隨後的一句更值得注意：「Closely the same result for the electrical conductivity is obtained for a classical (Maxwellian) gas of electrons, as realized at low carrier concentration in many semiconductor problems.」這句話告訴讀者兩件事：(1) 公式 σ = ne²τ/m 本身並不是費米統計的產物；(2) 它在半導體裡同樣適用（載子濃度低時，電子氣是非簡併的古典氣體）。這也是為什麼後面半導體章節可以沿用同一個 τ 與遷移率的語言。\n\n**（本站補充）那費米統計到底改變了什麼？** 改變的是「τ 屬於誰」。在古典氣體中，所有電子都參與碰撞，τ 是熱分布上的某種平均；在簡併費米氣中，只有費米面附近的電子能被散射（p.151 的說法），所以 τ 是費米面電子的碰撞時間，而平均自由程要用 v_F 而不是熱速度計算。下一個單元專門講這一點。"
+  },
+  {
+   "kind": "concept",
+   "tier": "mine",
+   "heading": "最常見的混淆：「整顆球平移」與「只有費米面電子參與碰撞」如何並存",
+   "body": "本段有兩句話，放在一起讀會讓很多人卡住：\n\np.147：「Notice that the Fermi sphere is displaced as a whole because every electron is displaced by the same δk.」\n\np.151：「where v_F is the velocity at the Fermi surface, because all collisions involve only electrons near the Fermi surface.」\n\n前一句說**所有**電子都在動，後一句說**只有**費米面電子在碰撞。到底是誰在導電？\n\n**答案：兩句都對，因為電子是全同粒子，系統的狀態只由「哪些 k 被佔據」決定，而不是「哪個電子在哪裡」。**\n\n**第一步：電場確實作用在每一個電子上。** 球心平移 δk，意味著每個佔據態都被推了 δk。這是 (39) 的直接結果，沒有例外。\n\n**第二步：但對「佔據分布」而言，球內部的平移是看不見的。** 球內部一個電子從 k 被推到 k + δk，而 k + δk 原本就被另一個電子佔著，那個電子又被推到 k + 2δk……一整排電子像接力一樣各往前挪一格，淨效果是：**球內部的佔據狀況完全沒變**。真正改變的只有兩個地方——球的前緣多出一層原本空著、現在被佔據的新月形薄殼，後緣空出一層原本被佔據、現在空了的新月形薄殼。\n\n**第三步：這層薄殼有多薄？** 厚度就是 δk，而 δk/k_F 在一般電場下是 10⁻⁹–10⁻⁷。前緣多出的電子數大約只佔總數的 (3/4)(δk/k_F)（下一個推導單元算這個係數）。\n\n**第四步：電流可以用兩種方式算，結果完全相同。**\n\n| 描述方式 | 參與的電子數 | 每個電子的速度 | 電流 |\n|---|---|---|---|\n| 整顆球平移（p.147） | 全部 n 個 | 漂移速度 ℏδk/m（極小） | n·(−e)·ℏδk/m |\n| 費米面薄殼 | 約 (3/4)(δk/k_F)·n 個（極少） | 約 v_F（極大），方向依位置 | 積分後同上 |\n\n一個是「很多電子 × 很小的速度」，一個是「很少電子 × 很大的速度」，乘起來一樣。下一個單元用球面積分證明這個等式。\n\n**第五步：碰撞為什麼只發生在費米面？** 散射把電子從 k 送到 k′，前提是 k′ 空著（包立不相容）。球內深處的電子，同能量的所有態都被佔滿，它無處可去。在 δk 的一階近似下，前緣多出的電子與後緣空出的態都貼在費米面上；碰撞（包立原理只允許散射進費米面附近的空態）的**淨效果是把分布的不對稱抹平**，等於把球心拉回原點。所以 τ 描述的是費米面附近這群電子的散射時間。\n\n**第六步：因此平均自由程要用 v_F。** 真正「在跑、在撞」的電子是費米面上以 v_F 運動的那些，它們兩次碰撞之間跑的距離是 v_Fτ，這就是 (47)。若誤用漂移速度，銅在 E = 1 V/m 時會得到 ℓ = v_dτ ~ 10⁻¹⁶ m（即使 1 MA/cm² 也只有 ~10⁻¹⁴ m），比原子還小四到六個數量級，荒謬。\n\n**一句話總結**：「整顆球平移」是描述電場作用的方便語言（因為力與 k 無關），「只有費米面電子」是描述碰撞與實際載流的物理語言（因為包立原理）。兩者描述的是同一個分布函數。"
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "殼層計算：只看費米面上的新月形薄層，也得到同一個 j",
+   "body": "這一單元把上一單元的第四步算出來：證明「全部電子 × 漂移速度」與「費米面薄殼電子 × 費米速度」給出相同的電流。這個計算書上沒有，但它是理解後續所有輸運理論（Boltzmann 方程的線性化）的原型。取 T = 0、δk 沿 z 方向。",
+   "steps": [
+    "平移後的佔據函數：f(k) = f₀(k − δk)，其中 f₀ 是以原點為中心、半徑 k_F 的階梯函數。δk ≪ k_F 時展開到一階：f(k) ≈ f₀(k) − δk·∇_k f₀。",
+    "T = 0 時 f₀ = Θ(k_F − |k|)，其梯度 ∇_k f₀ = −k̂ δ(|k| − k_F)（只在費米面上不為零，方向向內）。所以 f − f₀ = δk (k̂·ẑ) δ(|k| − k_F) = δk cos θ δ(k − k_F)，θ 是 k 與 δk 的夾角。",
+    "這個結果的意義：佔據的改變**只發生在費米面上**（δ 函數），前半球（cos θ > 0）多了電子，後半球（cos θ < 0）少了電子，改變量正比於 cos θ——這就是新月形薄殼。",
+    "電流密度：j = −e · (2/(2π)³) ∫ d³k (ℏk/m) f(k)。f₀ 的部分因對稱性積分為零，只剩 f − f₀ 的貢獻。取 z 分量：j_z = −e (2/(8π³)) ∫ k² dk dΩ (ℏk cos θ/m) δk cos θ δ(k − k_F)。",
+    "對 k 積分（δ 函數）：j_z = −e (1/(4π³)) (ℏk_F³/m) δk ∫ cos²θ dΩ。",
+    "角度積分：∫ cos²θ dΩ = 4π/3。所以 j_z = −e (1/(4π³)) (4π/3) (ℏk_F³/m) δk = −e (k_F³/3π²) (ℏδk/m)。",
+    "用 n = k_F³/3π²（自由電子氣的電子濃度與 k_F 的關係）：j_z = −e n ℏδk/m = n·(−e)·v_d，其中 v_d = ℏδk/m。**這與整顆球平移的 (42) 完全相同。**",
+    "順便算薄殼裡多出的電子數（單位體積）：Δn₊ = (2/(8π³)) ∫_{cos θ>0} k_F² dΩ δk cos θ = (1/(4π³)) k_F² δk · π = k_F² δk/(4π²)。與 n 相除：Δn₊/n = (k_F²δk/4π²)/(k_F³/3π²) = (3/4)(δk/k_F)。",
+    "數值：銅在 E = 1 V/m 時 δk/k_F ≈ 2.8×10⁻⁹，所以每十億個傳導電子中只有約 2 個是「多出來的」前緣電子——但它們以 v_F ≈ 1.6×10⁶ m/s 運動，攜帶的電流與全體 8.45×10²⁸ m⁻³ 個電子以 4 mm/s 漂移所攜帶的完全一樣。"
+   ]
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "實驗電阻率：室溫看聲子，4 K 看缺陷",
+   "body": "子節「Experimental Electrical Resistivity of Metals」（p.148 起）的第一句就把兩種碰撞來源按溫度分開，逐字為：\n\n「The electrical resistivity of most metals is dominated at room temperature (300 K) by collisions of the conduction electrons with lattice phonons and at liquid helium temperature (4 K) by collisions with impurity atoms and mechanical imperfections in the lattice (Fig. 11).」\n\n這句話給出的是一個**溫度分工**：\n\n**室溫**：晶格振動（聲子）的數量很多，電子與聲子的碰撞壓倒一切。這部分的電阻隨溫度變化，而且對同一種金屬的不同樣品幾乎一樣——因為聲子是晶格本身的性質，與樣品純不純無關。\n\n**液氦溫度**：聲子幾乎全部凍結，剩下的碰撞對象是**靜態**的不完美：雜質原子、空位、差排等「機械缺陷」。這部分的電阻幾乎不隨溫度變，但會隨樣品而大幅不同——同一種金屬，純度差一百倍，殘餘電阻就差一百倍左右。\n\nFig. 11 的圖說把這兩類不完美畫成兩張示意圖，逐字為：「Electrical resistivity in most metals arises from collisions of electrons with irregularities in the lattice, as in (a) by phonons and in (b) by impurities and vacant lattice sites.」\n\n注意這個圖說的用詞：**irregularities in the lattice**（晶格的不規則）。這是理解電阻的關鍵觀念——**一個完美的週期晶格不會散射電子**（本站補充：在能帶理論中，完美週期位勢裡的 Bloch 態是穩定態，會一直走下去）。電阻來自的是**偏離週期性**的部分：聲子是動態的偏離，雜質與空位是靜態的偏離。p.150 描述 ρ_i 時也用了同樣的語言：「scattering of the electron waves by static defects that disturb the periodicity of the lattice」。"
+  },
+  {
+   "kind": "concept",
+   "tier": "mine",
+   "heading": "Fig. 11 畫了什麼（網頁無圖，逐一描述）",
+   "body": "Fig. 11（p.150）是兩個並排的灰色正方形方塊，每塊裡畫一個 4 × 4 的原子陣列，每個原子畫成白色圓圈中間一個黑點。\n\n**(a) 左塊（聲子）**：16 個原子排成四列四行。四個**橫列的間距相等**，但四個**直行的間距不相等**——左邊兩行靠得較近，往右間距逐漸拉開（經放大算繪目視，左起第一、二行的間距明顯小於第三、四行的間距）。這是用「沿 x 方向的疏密變化」來示意一個縱波聲子：原子偏離平衡位置，晶格在某處被壓縮、某處被拉伸。這種動態的偏離破壞了嚴格的週期性，因此會散射電子。\n\n**(b) 右塊（雜質與空位）**：同樣 4 × 4 的陣列，但這次行列間距都**完全規則**。有兩處不同：(i) 第二列第三行的位置畫成一顆**實心的大黑圓**，代表一個尺寸、種類都不同的雜質原子；(ii) 第四列第二行的位置只剩一個**虛線圓圈**、中間沒有黑點，代表一個空位（vacant lattice site）。這兩者都是靜態的、不隨時間改變的週期性破缺。\n\n**兩張圖的對比就是 Matthiessen 規則的圖解**：(a) 的不規則會隨溫度增減（溫度越高、振幅越大、聲子越多），(b) 的不規則由樣品製備決定、不隨溫度變。兩者造成的散射彼此獨立，所以散射率相加。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "總弛豫率：兩種碰撞速率相加",
+    "formula": "1/τ = 1/τ_L + 1/τ_i",
+    "bookPage": 150,
+    "eqNumber": "(45)",
+    "symbols": "τ：總碰撞時間（動量弛豫時間）；τ_L：僅由聲子（晶格）散射決定的碰撞時間；τ_i：僅由靜態缺陷（雜質、缺陷）散射決定的碰撞時間。原文：「where τ_L and τ_i are the collision times for scattering by phonons and by imperfections, respectively.」",
+    "from": "p.150 的前提逐字為：「The rates of these collisions are often independent to a good approximation, so that if the electric field were switched off the momentum distribution would relax back to its ground state with the net relaxation rate」。兩個獨立的隨機過程，其發生率相加（見下方推導單元）。",
+    "limits": "**T → 0**：聲子凍結，1/τ_L → 0，所以 τ → τ_i，總碰撞時間由缺陷決定。\n\n**高溫**：1/τ_L 隨 T 增加，通常遠大於 1/τ_i，所以 τ ≈ τ_L。\n\n**快者主導**：因為是速率（倒數）相加，**碰撞時間較短的那個機制主導**。這與電阻串聯的直覺一致：誰的阻礙大，誰說了算。\n\n**成立條件**：兩種碰撞必須彼此獨立，且都能用同一種「單一 τ」描述整個費米面。書上用了「often」與「to a good approximation」兩個保留詞，這是有意的。",
+    "numeric": "銅，RRR = 1000 的樣品：室溫下 τ_L ≈ 2.5×10⁻¹⁴ s，τ_i 約為它的 1000 倍 ≈ 2.5×10⁻¹¹ s。室溫時 1/τ_i 只佔總碰撞率的 0.1%，幾乎看不見；到 4 K 聲子凍結後，它就成了唯一剩下的項。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "從 (44)、(45) 到 (46)：為什麼速率相加會變成電阻相加",
+   "body": "書上從 (45) 直接跳到 (46)，中間只有一句「The net resistivity is given by」。這一步雖短，但它依賴兩個假設：碰撞彼此獨立（速率可加），以及兩種碰撞共用同樣的 n 與 m。下面把兩步都寫出來。",
+   "steps": [
+    "**速率為何可加**：設聲子碰撞與缺陷碰撞都是無記憶的隨機事件，單位時間發生的機率分別為 1/τ_L 與 1/τ_i。在極短時間 dt 內「兩者都沒發生」的機率為 (1 − dt/τ_L)(1 − dt/τ_i) ≈ 1 − dt(1/τ_L + 1/τ_i)。所以「任一碰撞發生」的總速率是 1/τ = 1/τ_L + 1/τ_i，即 (45)。這一步的關鍵是兩個機率可以相乘——也就是**獨立性**。",
+    "**代入 (44)**：ρ = m/(ne²τ) = (m/ne²)·(1/τ) = (m/ne²)(1/τ_L + 1/τ_i)。",
+    "**拆開**：ρ = m/(ne²τ_L) + m/(ne²τ_i) ≡ ρ_L + ρ_i。這就是 (46)。",
+    "**這一步用到的隱含假設**：兩項前面的係數 m/ne² 是同一個——也就是不論哪種散射，參與導電的電子數與質量都一樣。在自由電子模型中這自動成立。",
+    "**什麼時候會失效（本站補充，非書中內容）**：若碰撞時間依賴於電子在費米面上的位置（例如聲子偏好散射某些方向、雜質偏好另一些方向），就不能用單一 τ 描述，兩種機制在不同區域各自「短路」，相加的結果不再是簡單的 ρ_L + ρ_i，會出現所謂偏離 Matthiessen 規則的現象。書上的「often」就是在為這種情況保留餘地。",
+    "**解讀**：(46) 讓電阻率像串聯電阻一樣相加——不同的散射機制是「串聯」的阻礙，因為電子必須同時忍受所有機制。"
+   ]
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "淨電阻率的分解",
+    "formula": "ρ = ρ_L + ρ_i",
+    "bookPage": 150,
+    "eqNumber": "(46)",
+    "symbols": "ρ：總電阻率；ρ_L：熱聲子造成的電阻率；ρ_i：靜態缺陷造成的電阻率。原文：「where ρ_L is the resistivity caused by the thermal phonons, and ρ_i is the resistivity caused by scattering of the electron waves by static defects that disturb the periodicity of the lattice.」",
+    "from": "把 (45) 代入 (44)，假設兩種散射共用相同的 n 與 m（見上方推導單元）。",
+    "limits": "**兩個「often」構成 Matthiessen 規則**：p.150 逐字為「Often ρ_L is independent of the number of defects when their concentration is small, and often ρ_i is independent of temperature. This empirical observation expresses Matthiessen's rule, which is convenient in analyzing experimental data (Fig. 12).」注意書上稱之為 **empirical observation**（經驗觀察），不是定理。\n\n**T → 0**：ρ_L → 0，ρ → ρ_i(0)，即殘餘電阻率。\n\n**不同樣品**：ρ_L(T) 相同、ρ_i 不同，所以同一種金屬不同樣品的 ρ(T) 曲線是**上下平移**的關係——Fig. 12 的兩條鉀曲線就是這個樣子。\n\n**高濃度缺陷（合金）**：「when their concentration is small」這個前提失效時，ρ_i 會大到壓過 ρ_L，而且兩者不再獨立。",
+    "numeric": "銅室溫 ρ ≈ 1.70 μΩ·cm（Table 3，已扣除殘餘電阻率，所以這個數字本身就是 ρ_L(295 K)）；RRR = 1000 的樣品 ρ_i ≈ 1.7×10⁻³ μΩ·cm，只佔室溫總電阻率的 0.1%。"
+   }
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "Matthiessen 規則的兩個操作定義：殘餘電阻率與晶格電阻率",
+   "body": "(46) 本身只是一條分解式；要在實驗上真的把 ρ_L 與 ρ_i 分開，需要操作定義。p.150 給了兩個。\n\n**殘餘電阻率**，逐字為：「The residual resistivity, ρ_i(0), is the extrapolated resistivity at 0 K because ρ_L vanishes as T → 0.」\n\n關鍵字是 **extrapolated**（外插）。實驗上到不了 0 K，所以要把低溫段的 ρ(T) 曲線往 T = 0 延伸，截距就是 ρ_i(0)。Fig. 12 兩條曲線在最左側以**虛線**延伸到 0 K，畫的正是這個外插。之所以截距就是 ρ_i，是因為 ρ_L 在 T → 0 時消失（聲子凍結）。\n\n**晶格電阻率**，逐字為：「The lattice resistivity, ρ_L(T) = ρ − ρ_i(0), is the same for different specimens of a metal, even though ρ_i(0) may itself vary widely.」\n\n這裡的操作是：量到的總電阻率減去外插得到的殘餘電阻率，剩下的就是晶格部分。而這句話的後半是**可以被實驗檢驗的預言**：不同樣品的 ρ_L(T) 應該相同。這就是 Matthiessen 規則「好用」的地方——它讓你可以從一個樣品的數據推算另一個樣品的行為，只要知道兩者的殘餘電阻率。\n\n**為什麼這很重要**：它把「材料本質」（ρ_L，由晶格與聲子決定）與「樣品品質」（ρ_i，由製程決定）乾淨地分開。表列的金屬電阻率（如 Table 3）之所以要「扣除殘餘電阻率」，正是為了只報告材料本質的部分。第 22 章 p.639 討論合金中的 Kondo 效應時，也是先假設「if the resistivities are additive」，把聲子項 αT⁵ 與磁性雜質的自旋散射電阻 cρ₀ − cρ₁ ln T（式 (12)）直接相加——Matthiessen 規則在那裡被當成分析的起點。"
+  },
+  {
+   "kind": "concept",
+   "tier": "mine",
+   "heading": "Fig. 12 讀圖：鉀的兩條平行曲線（網頁無圖，含目視判讀）",
+   "body": "Fig. 12（p.151）的圖說逐字為：「Resistance of potassium below 20 K, as measured on two specimens by D. MacDonald and K. Mendelssohn. The different intercepts at 0 K are attributed to different concentrations of impurities and static imperfections in the two specimens.」\n\n**座標軸**：橫軸「Temperature, K」，刻度 0、5、10、15、20。縱軸「Relative resistance, 10² R/R_290 K」，刻度 1.0 到 6.0。也就是說，縱軸讀到的數字 x 代表 R/R(290 K) = x × 10⁻²——每個樣品都以自己在 290 K 的電阻為基準做了歸一化。\n\n**上方曲線（空心圓點）**：最低溫的數據點約在 1.5 K，縱軸約 4.2；到約 5 K 之前幾乎是水平的；之後緩慢上升，10 K 約 4.4–4.5，15 K 約 4.9，最右端約 20 K 時接近 5.9–6.0。左端有一小段虛線延伸到 T = 0，截距約 4.2。\n\n**下方曲線（空心方點）**：最低溫點約 1.45；5 K 之前幾乎水平；10 K 約 1.7，15 K 約 2.2，20 K 附近約 3.2。左端同樣以虛線外插到 T = 0，截距約 1.45。\n\n（以上數值為放大算繪後目視判讀，精度約 ±0.05 格。）\n\n**從圖上可以讀出的三件事：**\n\n**(1) 兩個樣品的純度不同。** 截距就是殘餘電阻與 290 K 電阻之比：上方樣品 R(0)/R(290) ≈ 0.042，下方 ≈ 0.0145。取倒數得電阻比約 24 與 69。下方樣品較純。\n\n**(2) Matthiessen 規則在這裡看得見。** 兩條曲線從 0 K 到 20 K 的**上升量**幾乎相同：上方約 5.9 − 4.2 ≈ 1.7，下方約 3.15 − 1.45 ≈ 1.7（15 K 時兩者也都約上升 0.7–0.75）。形狀相同、只差一個上下平移——這正是「ρ_L(T) 對不同樣品相同」的預言。（嚴格說，兩樣品各自以 R(290 K) 歸一化，而 R(290 K) 分別含 4.2% 與 1.45% 的殘餘項，歸一化基準相差約 3%，不影響這個結論。）\n\n**(3) 低溫段異常平坦。** 兩條曲線在 5 K 以下都幾乎不動，然後在 10–20 K 迅速上揚。晶格電阻在低溫消失得比任何冪次律都快——p.152 把這個形狀歸因於 umklapp 過程的指數凍結 exp(−θ_U/T)，並從這組數據得到 θ_U = 23 K（見本頁後段）。\n\n**延伸估算（本站補充）**：Table 3 給鉀在 295 K 的 ρ ≈ 7.19 μΩ·cm，所以兩樣品的殘餘電阻率約為 0.30 與 0.10 μΩ·cm。若硬套 p.150「每 at.% 雜質約 1 μΩ·cm」的經驗值，相當於 0.3 與 0.1 at.% 的雜質——但該經驗值只說適用於「many materials」，且圖說把截距同時歸因於雜質**與**靜態缺陷，所以這只能當量級參考。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "電阻比（resistivity ratio，常稱 RRR）",
+    "formula": "電阻比 ≡ ρ(室溫)/ρ_i(0) = [ρ_L(室溫) + ρ_i]/ρ_i ≈ ρ_L(室溫)/ρ_i　（當 ρ_i ≪ ρ_L）",
+    "bookPage": 150,
+    "symbols": "ρ(室溫)：樣品在室溫的電阻率；ρ_i(0)：殘餘電阻率（外插到 0 K）；ρ_L(室溫)：室溫晶格電阻率。「RRR」（residual resistivity ratio）是業界常用縮寫，書上只寫「resistivity ratio」。",
+    "from": "p.150 的定義逐字為：「The resistivity ratio of a specimen is usually defined as the ratio of its resistivity at room temperature to its residual resistivity.」第二個等號用了 (46)。",
+    "limits": "**為什麼是純度指標**：分子 ρ(室溫) 幾乎只由晶格決定、各樣品相同；分母 ρ_i 正比於缺陷濃度。所以比值直接反映純度，而且不需要知道樣品的幾何尺寸——量同一根線在兩個溫度的電阻比即可，截面積與長度在相除時抵銷。p.150：「It is a convenient approximate indicator of sample purity」。\n\n**極純極限**：p.151「In exceptionally pure specimens the resistivity ratio may be as high as 10⁶」。\n\n**合金極限**：「whereas in some alloys (e.g., manganin) it is as low as 1.1.」電阻比 1.1 代表 ρ_L(室溫) 只有 ρ_i 的十分之一，殘餘項完全主導，電阻率幾乎不隨溫度變。（本站補充：這正是這類合金被用來製作標準電阻的原因。）\n\n**常見誤讀**：電阻比高**不代表**室溫電阻率低。室溫電阻率由 ρ_L 主導，純化只降低分母。",
+    "numeric": "p.150 的銅算例逐字：「A copper specimen with a resistivity ratio of 1000 will have a residual resistivity of 1.7 × 10⁻³ μohm-cm, corresponding to an impurity concentration of about 20 ppm.」完整的數字鏈見下一個推導單元。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "把書中的純度數字串起來驗算：從 RRR = 1000 到 ℓ = 10 cm",
+   "body": "p.150–151 在短短半頁內丟出一連串數字：每 at.% 約 1 μΩ·cm、RRR = 1000 對應 1.7×10⁻³ μΩ·cm 與約 20 ppm、4 K 電導率可達室溫的 10⁵ 倍、τ ≈ 2×10⁻⁹ s、ℓ(4 K) ≈ 0.3 cm、極純金屬 ℓ 可達 10 cm。書上沒有把它們之間的換算寫出來。下面逐一驗算，並說明它們彼此一致。所用的室溫值取 p.149 Table 3 的銅 ρ = 1.70 μΩ·cm（295 K、已扣除殘餘電阻率）。",
+   "steps": [
+    "**經驗法則**：p.150 逐字「for many materials an impurity in solid solution creates a residual resistivity of about 1 μohm-cm (1 × 10⁻⁶ ohm-cm) per atomic percent of impurity.」即 ρ_i ≈ (1 μΩ·cm) × c[at.%]。注意限定語 in solid solution（固溶）與 for many materials。",
+    "**RRR = 1000 → ρ_i**：ρ_i = ρ(室溫)/1000 ≈ 1.70/1000 = 1.7×10⁻³ μΩ·cm，與書上數字一致。（嚴格說 ρ(室溫) = ρ_L + ρ_i，但 ρ_i 只佔 0.1%，可忽略。）",
+    "**ρ_i → 雜質濃度**：c = 1.7×10⁻³ μΩ·cm ÷ (1 μΩ·cm/at.%) = 1.7×10⁻³ at.% = 1.7×10⁻⁵（原子分率）= 17 ppm。書上寫「about 20 ppm」，是 17 的一位有效數字進位。",
+    "**RRR = 10⁶ 的極純樣品**：ρ_i ≈ 1.7×10⁻⁶ μΩ·cm → 約 0.017 ppm = 17 ppb。這是化學分析都很難直接量到的純度，所以電阻比常被當作比化學分析更靈敏的純度量尺。",
+    "**「4 K 電導率是室溫的 10⁵ 倍」**：p.151 逐字「It is possible to obtain crystals of copper so pure that their conductivity at liquid helium temperatures (4 K) is nearly 10⁵ times that at room temperature; for these conditions τ ≈ 2 × 10⁻⁹ s at 4 K.」這相當於電阻比約 10⁵，介於 RRR = 1000 與 10⁶ 之間；對應的等效雜質濃度約 0.17 ppm。",
+    "**由 10⁵ 推 τ(4 K)**：因為 n 與 m 不隨溫度變，由 (43) 得 σ ∝ τ，所以 τ(4 K) ≈ 10⁵ × τ(室溫)。室溫 τ 由 (44) 算得 m/(ne²ρ) ≈ 2.5×10⁻¹⁴ s（n = 8.45×10²² cm⁻³，p.139 Table 1），故 τ(4 K) ≈ 2.5×10⁻⁹ s。書上寫 ≈ 2×10⁻⁹ s，同一量級。",
+    "**由 τ 推 ℓ(4 K)**：用 (47) ℓ = v_Fτ 與 Table 1 的 v_F = 1.57×10⁸ cm/s：ℓ = 1.57×10⁸ × 2×10⁻⁹ ≈ 0.31 cm，與書上「ℓ(4 K) ≈ 0.3 cm」一致。（若用上一步的 2.5×10⁻⁹ s 則得約 0.39 cm。）",
+    "**對照室溫**：同樣的 v_F 乘上室溫 τ ≈ 2.5×10⁻¹⁴ s，ℓ(室溫) ≈ 3.9×10⁻⁶ cm ≈ 39 nm。低溫與室溫的自由程相差 10⁵ 倍，從幾十奈米變成幾公釐。",
+    "**10 cm 的自由程對應什麼純度**：p.151 逐字「Mean free paths as long as 10 cm have been observed in very pure metals in the liquid helium temperature range.」若以類似銅的 v_F ≈ 1.6×10⁸ cm/s 估算，τ = ℓ/v_F ≈ 6×10⁻⁸ s，是室溫 τ 的約 2.6×10⁶ 倍——也就是電阻比 10⁶ 量級。**這與 p.151 前文「exceptionally pure specimens the resistivity ratio may be as high as 10⁶」互相呼應**：書上的幾個數字是一個自洽的整體。",
+    "**總結這條數字鏈**：RRR 1000 ↔ 17 ppm ↔ ρ_i 1.7×10⁻³ μΩ·cm；RRR 10⁵ ↔ τ(4 K) ~ 2×10⁻⁹ s ↔ ℓ ~ 0.3 cm；RRR 10⁶ ↔ 17 ppb ↔ ℓ ~ 10 cm。每一個箭頭都只用到 (43)、(44)、(47) 與兩張表的數字。"
+   ]
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "Table 3（p.149，無文字層的影像表）：295 K 的電導率與電阻率",
+   "body": "p.148 寫道「Values of the electrical conductivity and resistivity of the elements are given in Table 3.」Table 3 在 p.149 整頁**旋轉 90° 排版**，而且在本專案使用的 PDF 中**沒有文字層**（文字抽取只得到頁碼 149），以下內容全部是把該頁以 PyMuPDF 旋轉算繪、放大後**目視判讀**所得。\n\n**表頭**（目視）：「Table 3　Electrical conductivity and resistivity of metals at 295 K」，副標為「(Resistivity values as given by G. T. Meaden, Electrical resistance of metals, Plenum, 1965; residual resistivities have been subtracted.)」\n\n**版面**：以週期表的排列方式呈現，每個元素格內有上下兩個數字，上格（灰底列）為電導率，單位標示為「Conductivity in units of 10⁵ (ohm-cm)⁻¹.」；下格為電阻率，單位「Resistivity in units of 10⁻⁶ ohm-cm.」——也就是 μΩ·cm。\n\n**兩個關鍵性質**：(1) 溫度是 **295 K**，不是 300 K；(2) **殘餘電阻率已扣除**，所以表中的電阻率其實就是 ρ_L(295 K)，是材料本質的晶格部分，與樣品純度無關。\n\n**部分元素的目視讀值**：\n\n| 元素 | σ（10⁵ Ω⁻¹cm⁻¹） | ρ（10⁻⁶ Ω·cm） |\n|---|---|---|\n| Li | 1.07 | 9.32 |\n| Na | 2.11 | 4.75 |\n| K | 1.39 | 7.19 |\n| Cu | 5.88 | 1.70 |\n| Ag | 6.21 | 1.61 |\n| Au | 4.55 | 2.20 |\n| Al | 3.65 | 2.74 |\n| Fe | 1.02 | 9.8 |\n| Pb | 0.48 | 21.0 |\n| Mn | 0.072 | 139. |\n| Bi | 0.086 | 116. |\n| Hg（液態） | 0.10 | 95.9 |\n\n**自洽檢查**：兩格互為倒數，而且單位的乘積是 10⁵ × 10⁻⁶ = 0.1，所以同一格內兩數相乘應該等於 10。銅：5.88 × 1.70 = 10.0；鉀：1.39 × 7.19 = 10.0；鋁：3.65 × 2.74 = 10.0。目視讀值通過檢查。\n\n**與本段其他數字的接點**：銅的 ρ = 1.70 μΩ·cm 正是 p.150「RRR = 1000 → ρ_i = 1.7×10⁻³ μΩ·cm」算例背後的分子。鉀的 7.19 μΩ·cm 則可以把 Fig. 12 的相對電阻換算成絕對值。\n\n**值得注意的排序（本站依表中數值比較）**：室溫下最好的導體依序是 Ag（6.21）、Cu（5.88）、Au（4.55）、Al（3.65）；鹼金屬雖然是最接近自由電子模型的金屬，電導率卻只有銅的約 1/12（Cs，σ = 0.50）到 1/3（Na）；以 K 為例，主要是 n 只有銅的 1/6（Table 1：K 只有 1.40×10²² cm⁻³，銅是 8.45×10²²），但 Li 則主要是 τ 較短（見下一單元的表）。"
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "用 Table 1 + Table 3 算出各金屬在室溫的 τ 與 ℓ",
+   "body": "(44) 可以反過來用：只要知道 n（p.139 Table 1）與 ρ（p.149 Table 3），就能算出 τ；再乘上 v_F（Table 1）得到自由程 ℓ。書上只對銅在 4 K 做了這件事；下面把幾種金屬在室溫都算一遍，讓讀者對 τ 與 ℓ 的典型量級有具體印象。",
+   "steps": [
+    "公式（SI）：τ = m/(ne²ρ)，m = 9.11×10⁻³¹ kg、e = 1.60×10⁻¹⁹ C，n 以 m⁻³、ρ 以 Ω·m 代入。再算 ℓ = v_Fτ。",
+    "注意 Table 1 的條件：它是「Calculated free electron Fermi surface parameters for metals at room temperature」，但鹼金屬例外（Na、K、Rb、Cs 取 5 K、Li 取 78 K 的值）。Table 3 則是 295 K。對鹼金屬而言，n 與 ρ 取自不同溫度，會有百分之幾的誤差，不影響量級。",
+    "計算結果：\n\n| 金屬 | n (10²² cm⁻³) | v_F (10⁸ cm/s) | ρ(295 K) (μΩ·cm) | τ (10⁻¹⁴ s) | ℓ (nm) |\n|---|---|---|---|---|---|\n| Li | 4.70 | 1.29 | 9.32 | 0.81 | 10 |\n| Na | 2.65 | 1.07 | 4.75 | 2.8 | 30 |\n| K | 1.40 | 0.86 | 7.19 | 3.5 | 30 |\n| Cu | 8.45 | 1.57 | 1.70 | 2.5 | 39 |\n| Ag | 5.85 | 1.39 | 1.61 | 3.8 | 52 |\n| Au | 5.90 | 1.39 | 2.20 | 2.7 | 38 |\n| Al | 18.06 | 2.02 | 2.74 | 0.72 | 15 |",
+    "**讀法一**：室溫下這些金屬的 τ 都在 10⁻¹⁴ s 量級（約 0.7–4×10⁻¹⁴ s），自由程約 10–50 nm；電阻率相差近 6 倍，τ 的差距也在同一個量級之內。",
+    "**讀法二**：鋁的 τ 比銅小三倍多，但電導率只比銅低約 40%——因為鋁是三價金屬，n 是銅的兩倍多，部分補償了較短的 τ。σ = ne²τ/m 中 n 與 τ 是兩個獨立的旋鈕。",
+    "**讀法三**：ℓ ≈ 10–50 nm 遠大於晶格常數（數 Å）。所以電子在碰撞前會穿過上百個原子——這本身就是「完美週期晶格不散射電子」的證據。若電子被每個離子都散射一次，ℓ 應該只有幾 Å。",
+    "**一個不依賴 τ 的組合**：ρℓ = (m/ne²τ)(v_Fτ) = mv_F/(ne²) = ℏk_F/(ne²)，τ 消掉了。所以對同一種金屬，**電阻率與自由程的乘積是常數**，只由 n 決定。銅：ρℓ ≈ 1.70×10⁻⁸ Ω·m × 3.9×10⁻⁸ m ≈ 6.6×10⁻¹⁶ Ω·m²。有了這個常數，量到一個樣品的 ρ 就能直接推出它的 ℓ，不需要另外知道 τ。"
+   ]
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "傳導電子的平均自由程",
+    "formula": "ℓ = v_F τ",
+    "bookPage": 151,
+    "eqNumber": "(47)",
+    "symbols": "ℓ：傳導電子的平均自由程；v_F：費米面上的電子速度；τ：碰撞時間（由 (44) 從電阻率決定）。",
+    "from": "定義式。p.151 對為什麼用 v_F 給了理由，逐字為：「where v_F is the velocity at the Fermi surface, because all collisions involve only electrons near the Fermi surface.」理由來自包立原理：只有費米面附近的電子有空態可以散射進去（見前文「兩種說法如何並存」單元）。",
+    "limits": "**不能用漂移速度**：若誤寫成 ℓ = v_dτ，銅在 E = 1 V/m 時得到約 10⁻¹⁶ m，毫無物理意義。電子兩次碰撞之間實際跑的是 v_F。\n\n**低溫、高純度**：τ 可以變大 10⁵–10⁶ 倍，ℓ 從數十奈米長到公分量級。\n\n**自由程撞上樣品尺寸**：當 ℓ 可以與樣品的線寬、膜厚相比時，表面散射成為另一個 1/τ 來源，電阻率開始依賴樣品幾何。這與 Ch5（p.126）聲子熱導的尺寸效應是同一個邏輯，只是載子換成電子。書上在本段沒有討論電子的尺寸效應。\n\n**ρℓ = 常數**：由 (44) 與 (47) 相乘，ρℓ = mv_F/ne² 與 τ 無關（見上一個推導單元）。",
+    "numeric": "p.151 逐字：「From Table 1 we have v_F = 1.57 × 10⁸ cm s⁻¹ for Cu, thus the mean free path is ℓ(4 K) ≈ 0.3 cm.」驗算：1.57×10⁸ cm/s × 2×10⁻⁹ s = 0.31 cm。室溫下同一個銅：1.57×10⁸ × 2.5×10⁻¹⁴ ≈ 3.9×10⁻⁶ cm = 39 nm。"
+   }
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "溫度相依部分：碰撞率正比於熱聲子數，T > θ 時 ρ ∝ T",
+   "body": "p.151 用三句話處理 ρ(T) 的溫度依賴。逐字為：\n\n「The temperature-dependent part of the electrical resistivity is proportional to the rate at which an electron collides with thermal phonons and thermal electrons. The collision rate with phonons is proportional to the concentration of thermal phonons. One simple limit is at temperatures over the Debye temperature θ: here the phonon concentration is proportional to the temperature T, so that ρ ∝ T for T > θ. A sketch of the theory is given in Appendix J.」\n\n**校註**：本專案 PDF 的文字層把「ρ ∝ T」中的「∝」存成自訂字符 `/L50524`（不屬於 /H 系列，解碼器不處理，抽出來會變成「ρ/L50524T」），上面的「∝」是回原頁放大算繪目視確認後還原的；同時確認原文寫的是 ρ（總電阻率）而非 ρ_L。\n\n這段話的邏輯鏈是：\n\n**溫度相依的電阻 ∝ 碰撞率**（由 (44)，ρ ∝ 1/τ）\n**→ 碰撞率 ∝ 熱聲子濃度**（每個聲子是一個散射中心）\n**→ T > θ 時熱聲子濃度 ∝ T**\n**→ ρ ∝ T。**\n\n有三點值得注意：\n\n**第一，「thermal electrons」也被點名了。** 電子—電子碰撞也是溫度相依電阻的一個來源，但本段沒有展開。（本站補充：在一般金屬的常溫區，它遠小於聲子貢獻。）\n\n**第二，原文說這只是「One simple limit」。** T > θ 時所有聲子模態都被激發，聲子數與溫度成線性，是最容易算的情形。低溫的行為複雜得多：聲子數下降、而且剩下的長波聲子只能造成小角度散射。p.152 的 umklapp 小節就在處理低溫這一端。\n\n**第三，Appendix J 的「sketch」。** Appendix J（p.671–674）用形變位勢（deformation potential）近似計算電子—聲子碰撞率，最後在 p.674 的式 (14) 得到高溫時的聲子發射率正比於 k_BT——這就是 ρ ∝ T 的微觀來源。但要注意 Appendix J 在 p.673 明言「Let us limit ourselves to N processes」，它只處理 normal 過程，不含 umklapp。\n\n**與實驗的對照（本站推論）**：Table 3 的數值是 295 K 的。對德拜溫度低於室溫的金屬（例如鉀，θ = 91 K，見 p.152），室溫已經深入 ρ ∝ T 區。"
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "為什麼 T > θ 時聲子數 ∝ T",
+   "body": "p.151 只說「here the phonon concentration is proportional to the temperature T」，沒有推導。這是 Ch5 已經建立的結果，這裡補出兩行，並順便說明為什麼低溫一端不能用同一個論證。",
+   "steps": [
+    "一個頻率為 ω 的聲子模態，熱平衡時的平均佔據數是 Planck（Bose–Einstein）分布：⟨n(ω)⟩ = 1/(e^{ℏω/k_BT} − 1)。",
+    "高溫極限 k_BT ≫ ℏω：展開 e^x ≈ 1 + x，得 ⟨n⟩ ≈ k_BT/ℏω。每個模態的聲子數**線性正比於 T**。",
+    "T > θ 意味著 k_BT > ℏω_D（最高頻率），所以**所有**模態都滿足上一步的條件。總聲子數 = Σ_modes k_BT/ℏω ∝ T。",
+    "碰撞率 1/τ_L ∝ 聲子數 ∝ T，由 (44) 得 ρ_L = m/(ne²τ_L) ∝ T。",
+    "**低溫不能照搬**：T ≪ θ 時只有 ℏω ≲ k_BT 的低頻模態被激發，其他模態的佔據數被 e^{−ℏω/k_BT} 指數壓制。總聲子數下降得比 T 快得多（Debye 模型中 ∝ T³）。更麻煩的是，剩下的低頻聲子波向量 q 很小，只能讓電子偏轉很小的角度，對電阻的效率也跟著下降。這兩個效應疊加，使 normal 過程對 ρ_L 的貢獻在低溫急速消失；再加上 umklapp 在 T ≪ θ_U 時被 exp(−θ_U/T) 凍結（p.152），Fig. 12 在 5 K 以下才會如此平坦。（本站補充：低溫純 normal 過程的標準結果是 ρ_L ∝ T⁵，即 Bloch–Grüneisen 定律；Kittel 在本段沒有推導它，全書只在第 22 章 p.639 以「If the phonon contribution to the electrical resistivity goes as T⁵」的假設語氣提到過。）"
+   ]
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "Umklapp 散射：低溫電阻的主角",
+   "body": "子節「Umklapp Scattering」（p.151 起）的第一句話就下了一個很強的斷言，逐字為：\n\n「Umklapp scattering of electrons by phonons (Chapter 5) accounts for most of the electrical resistivity of metals at low temperatures.」\n\n接著定義：「These are electron-phonon scattering processes in which a reciprocal lattice vector G is involved, so that electron momentum change in the process may be much larger than in a normal electron-phonon scattering process at low temperatures. (In an umklapp process the wavevector of one particle may be “flipped over.”)」\n\n**為什麼要引入它？**（本段動機說明為本站補充，書上只給出「electron momentum change in the process may be much larger」這個結論）前面 (44) 告訴我們電阻 ∝ 碰撞率，但這隱含了一個假設：每一次碰撞都「有效地」打亂電子的動量。低溫時這個假設出了問題。熱聲子的波向量 q 大約是 k_BT/ℏv_s，遠小於 k_F；一個電子吸收或放出這樣的聲子，k 只轉一個小角度。電流的方向幾乎沒變，所以這種碰撞對電阻幾乎沒有貢獻。\n\n**Umklapp 過程改變了這個局面。** 在晶體裡，波向量守恆只需要成立到「差一個倒晶格向量 G」為止（Kittel 在 p.173 正式寫下電子吸收聲子的選擇定則 k + q = k′ + G，並把 ℏk 稱為晶體動量）。一個波向量不大的聲子，若能把電子推到布里淵區邊界之外，那個終態就等價於減去 G 之後、在區內另一側的點——電子的方向幾乎被整個翻轉。這就是「flipped over」。\n\n**與 Ch5 的對應**：書上括號裡的「(Chapter 5)」指的是 p.125–126 的聲子—聲子 umklapp 過程 K₁ + K₂ = K₃ + G。那裡它是**熱阻**的來源（N 過程不改變聲子氣的總動量，所以不產生熱阻）；這裡它是**電阻**的主要來源（小角度的 N 過程幾乎不改變電流）。兩者的共同邏輯是：**輸運阻力來自「讓總動量改變」的碰撞，而不是碰撞本身。** 在 Ch5 裡，低溫 U 過程的聲子數大約按 exp(−θ/2T) 凍結；這裡的電子 umklapp 會按 exp(−θ_U/T) 凍結，而 θ_U 比 θ/2 小得多——後面會說明原因。"
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "Normal 與 umklapp 電子—聲子散射的波向量關係",
+    "formula": "normal：k′ = k + q　　umklapp：k′ = k + q + G",
+    "bookPage": 152,
+    "symbols": "k：電子初態波向量（在費米面上）；k′：電子終態波向量；q：被吸收的聲子波向量；G：倒晶格向量。",
+    "from": "p.152 以 Fig. 13 引入，逐字為：「The lower half of the figure shows the normal electron-phonon collision k′ = k + q, while the upper half shows a possible scattering process k′ = k + q + G involving the same phonon and terminating outside the first Brillouin zone, at the point A.」背後是晶體中的波向量守恆只成立到差一個 G（p.173 的選擇定則寫成 k + q = k′ + G，與此處只差 G → −G 的符號慣例）。另外隱含了能量守恆：ε(k′) = ε(k) + ℏω_q。",
+    "limits": "**能量守恆的實際效果**：聲子能量最多約 k_Bθ，遠小於 ε_F，所以散射幾乎是彈性的，k 與 k′ 都在費米面上（在各自等價的費米球上）。\n\n**normal 過程、小 q**：散射角 φ ≈ q/k_F 很小，對電阻效率低（效率 ∝ 1 − cos φ ≈ φ²/2，見下方推導單元）。\n\n**umklapp 過程**：G 的加入讓終態可以落在原費米球的「對面」，散射角可接近 π。p.152 逐字：「Such collisions are strong scatterers because the scattering angle can be close to π.」\n\n**G = 0**：退化回 normal 過程。",
+    "numeric": "鉀（bcc、單價）：k_F = 0.75×10⁸ cm⁻¹（p.139 Table 1），最短倒晶格向量 |G| = 2√2π/a ≈ 1.70×10⁸ cm⁻¹（a ≈ 5.23 Å，由 Table 1 的 n = 1.40×10²² cm⁻³ 以 a = (2/n)^{1/3} 反推）。聲子能量上限 k_Bθ = 91 K × 8.62×10⁻⁵ eV/K ≈ 7.8 meV，而 ε_F = 2.12 eV（Table 1），比值約 0.4%——散射確實幾乎是彈性的。"
+   }
+  },
+  {
+   "kind": "concept",
+   "tier": "mine",
+   "heading": "Fig. 13 畫了什麼（網頁無圖，逐一描述）",
+   "body": "Fig. 13（p.152）的圖說逐字為：「Two Fermi spheres in adjacent zones: a construction to show the role of phonon umklapp processes in electrical resistivity.」正文說明這是「a section perpendicular to [100] through two adjacent Brillouin zones in bcc potassium, with the equivalent Fermi spheres inscribed within each」。\n\n**整體版面**：一個橫向長方形被一條垂直線分成左右兩格，代表兩個相鄰的布里淵區（的截面），中間那條垂直線就是區界。左右兩格各有一顆灰色漸層的球（費米球的截面），大小相同，都**完全落在自己的格子裡、不碰到區界**——兩球之間留有一道窄縫。\n\n**窄縫與 q₀**：兩球最靠近的地方，各自向下畫了一條虛線，兩條虛線之間在長方形下方以雙向箭頭標出「q₀」。**q₀ 就是兩顆費米球表面之間的最短距離**，也就是 umklapp 所需的最小聲子波向量。\n\n**上半部（umklapp 過程）**：從左球球心畫一支粗箭頭 k 指向右上方的球面；從該點再畫一支水平向右的粗箭頭 q，穿過區界的縫隙，終點標「A」——A 恰好落在**右邊那顆球的左側表面**上（所以終態仍在一顆費米球的表面上，能量守恆）。在左球的左側表面、與 A 同一高度處標「A′」，A′ 與 A 之間有一條水平虛線；長方形上方以雙向箭頭標出 A′ 到 A 的距離為「G」。從左球球心畫一支粗箭頭 k′ 指向 A′（左上方）。k 與 k′ 之間畫一個弧形雙向箭頭，標「~π」——兩者幾乎反向。\n\n**下半部（normal 過程）**：從左球球心往下畫兩支粗箭頭 k 與 k′，都指向球的下方表面，彼此夾一個小角度，以小雙向箭頭標為「φ」；兩箭頭尖端之間用一支短的水平粗箭頭 q 連起來（k′ = k + q）。\n\n**讀圖的重點**：上下兩個過程用的是**同一個聲子 q**（正文：「involving the same phonon」），長度相同。在下半部，這個 q 只讓電子偏轉小角度 φ；在上半部，同一個 q 把電子推過區界、落在鄰區的費米球上，折回原區後的等價點 A′ 幾乎在原來 k 的正對面。**同一個聲子，放在費米面的不同位置，效果天差地遠。** 而上半部要發生，q 至少要跨過兩球之間的縫，也就是 q ≥ q₀。"
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "為什麼散射角接近 π 才「有效」：(1 − cos φ) 權重",
+   "body": "p.152 說 umklapp 碰撞「are strong scatterers because the scattering angle can be close to π」，而 p.152 末又說 2 K 以下剩下的是「small angle scattering」。書上沒有定量說明「散射角大小」與「對電阻的貢獻」之間的關係。下面補出這個關係——它是理解本小節所有結論的鑰匙。",
+   "steps": [
+    "電流由電子的動量（波向量）攜帶。考慮一個初態 k 的電子被散射到 k′，兩者都在費米面上（準彈性），|k′| = |k| = k_F，夾角 φ。",
+    "沿原方向 k̂ 的波向量損失是 k − k′·k̂ = k_F(1 − cos φ)。這是這次碰撞「消掉」多少電流的量度。",
+    "對 normal 過程 k′ = k + q，由 |k′|² = |k|² 得 2k·q + q² = 0，所以損失 −q·k̂ = q²/(2k_F)。又 1 − cos φ = 2 sin²(φ/2)，而幾何上 q = 2k_F sin(φ/2)，所以 1 − cos φ = q²/(2k_F²)。",
+    "**低溫的 normal 過程**：熱聲子的典型波向量 q_T ~ k_BT/(ℏv_s) 隨 T 線性減小，所以每次碰撞的有效權重 (1 − cos φ) ∝ q_T² ∝ T²。碰撞本身變少，每次碰撞的效率也變差——雙重打擊。",
+    "**Umklapp 過程**：φ 接近 π，1 − cos φ 接近 2——這是最大可能值。一次 umklapp 碰撞幾乎把電子的動量整個翻過來，抵得上成千上萬次小角度碰撞。",
+    "與 Appendix J 的對應：p.674 計算「fractional rate of loss of k_z」時，在積分中加入額外因子 (q/k) cos θ（θ 是放出的聲子與 k 的夾角），說明「The loss of the component of wavevector parallel to the original direction of the electron when a phonon is emitted at an angle θ to k is given by q cos θ」。由彈性條件 2k·q = q² 可知 q cos θ = q²/2k，與第三步同一件事。所以 Appendix J 算的 W(k_z) 正是這個加權後的速率，而不是單純的碰撞率。",
+    "這解釋了一個乍看奇怪的事實：**碰撞率（1/τ 的「次數」意義）與電阻率（動量弛豫率）不是同一個東西。** (44) 裡的 τ 必須理解為動量弛豫時間，也就是每次碰撞乘上 (1 − cos φ) 權重之後的平均。在高溫時兩者只差 O(1) 因子，低溫時可以差很多。",
+    "（本站補充，非本段內容）若只有 normal 過程，低溫的熱聲子數 ∝ T³ 再乘上 T² 的角度權重，得到 ρ_L ∝ T⁵，這就是 Bloch–Grüneisen 低溫定律的來源。Kittel 在本段沒有推導它；以全書文字層搜尋，只有第 22 章 p.639 用「If the phonon contribution to the electrical resistivity goes as T⁵ in the region of interest」的假設語氣提到 T⁵。"
+   ]
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "最小聲子波向量 q₀ 與指數凍結 exp(−θ_U/T)",
+   "body": "p.152 接著處理一個關鍵的幾何條件，逐字為：「When the Fermi surface does not intersect the zone boundary, there is some minimum phonon wavevector q₀ for umklapp scattering.」\n\n**為什麼有最小值？** 若費米面沒有碰到區界（像 Fig. 13 那樣，費米球完整地躲在區內），那麼從費米面上任一點出發，要讓終態落在鄰區的等價費米面上，聲子至少要跨過兩球之間的縫隙。縫越寬，q₀ 越大。反過來說（本站補充），若費米面與區界相交（許多多價金屬如此），就不存在這樣的門檻，任意小的 q 都可能在交界附近造成 umklapp。\n\n**門檻如何變成指數**：逐字為「At low enough temperatures the number of phonons available for umklapp scattering falls as exp(−θ_U/T), where θ_U is a characteristic temperature calculable from the geometry of the Fermi surface inside the Brillouin zone.」\n\n（本站補充，類比 Ch5 p.126 的 Boltzmann 因子論證）波向量至少為 q₀ 的聲子，能量至少約 ℏω(q₀)。當 k_BT 遠小於這個能量時，這些聲子的佔據數被 Boltzmann 因子 exp(−ℏω/k_BT) 壓制。定義 k_Bθ_U ~ ℏω(q₀)，就得到 exp(−θ_U/T)。θ_U「calculable from the geometry」的意思是：它由 q₀ 決定，而 q₀ 由費米球半徑與區界距離決定。\n\n**書上給的幾何結果**，逐字為：「For a spherical Fermi surface with one electron orbital per atom inside the bcc Brillouin zone, one shows by geometry that q₀ = 0.267 k_F.」\n\n書上只說「one shows by geometry」，沒有給出過程。下一個推導單元把這個幾何做一遍。"
+  },
+  {
+   "kind": "derivation",
+   "tier": "derived",
+   "heading": "q₀ 的幾何：bcc 單價金屬中兩顆費米球相距多遠",
+   "body": "p.152 說「one shows by geometry that q₀ = 0.267 k_F」。下面用最直接的幾何做一遍：兩顆等價費米球（中心相差最短倒晶格向量 G）表面之間的最短距離。結果與書上的數字相近但不完全相同，差異在最後一步說明。",
+   "steps": [
+    "**實空間**：bcc 慣用立方晶胞邊長 a，每個晶胞含 2 個原子，原子濃度 2/a³。單價金屬每原子貢獻 1 個傳導電子（書上的「one electron orbital per atom」），所以 n = 2/a³。",
+    "**費米波向量**：k_F = (3π²n)^{1/3} = (6π²)^{1/3}/a ≈ 3.898/a。",
+    "**倒晶格**：bcc 的倒晶格是 fcc，最短的倒晶格向量是 (2π/a)(1,1,0) 類，共 12 個，長度 |G| = 2√2π/a ≈ 8.886/a。它們指向布里淵區（菱形十二面體）12 個面的面心，所以區界面距原點 |G|/2 ≈ 4.443/a。書上說截面「perpendicular to [100]」——(2π/a)(0,1,1) 這類 G 正好躺在這個截面內，所以 Fig. 13 的兩球是沿這類 G 並排的。",
+    "**費米球是否碰到區界**：k_F/(|G|/2) = 3.898/4.443 ≈ 0.877 < 1。費米球半徑只有到區界面距離的 88%，完全落在區內——與書上「equivalent Fermi spheres inscribed within each」以及「When the Fermi surface does not intersect the zone boundary」的前提一致。",
+    "**umklapp 的條件**：初態 k 在以原點為心的費米球上，終態 k + q 要落在以 G 為心的等價費米球上（折回區內就是 k + q − G，仍在原費米球上）。所以 q 必須連接兩顆球的表面。",
+    "**最短距離**：兩球心相距 |G|，半徑都是 k_F，表面最短距離為 q₀ = |G| − 2k_F ≈ (8.886 − 7.796)/a ≈ 1.090/a。",
+    "**以 k_F 為單位**：q₀/k_F = 1.090/3.898 ≈ 0.280；等價地寫成 q₀/k_F = 2(|G|/2k_F − 1) = 2(1/0.877 − 1) ≈ 0.280。",
+    "**與書上數字的比較**：上面的直接幾何得到 0.280 k_F，書上印的是 0.267 k_F，差約 5%。書中沒有給出其幾何的細節，本講解無法從原文還原 0.267 的確切來源（它可能用了不同的取法或數值）。這個差異不影響任何定性結論：q₀ 都是 k_F 的四分之一強，遠小於 k_F，也遠小於 |G|/2。",
+    "**對鉀的具體數值**：由 Table 1 的 n = 1.40×10²² cm⁻³ 得 a = (2/n)^{1/3} ≈ 5.23 Å，k_F ≈ 0.746×10⁸ cm⁻¹（Table 1 四捨五入為 0.75），|G| ≈ 1.70×10⁸ cm⁻¹，q₀ ≈ 0.21×10⁸ cm⁻¹（用書上的 0.267 k_F 則為 0.20×10⁸ cm⁻¹）。"
+   ]
+  },
+  {
+   "kind": "equation",
+   "tier": "book",
+   "eq": {
+    "label": "低溫下可參與 umklapp 的聲子數",
+    "formula": "N_U ∝ exp(−θ_U/T)　（T ≪ θ_U）",
+    "bookPage": 152,
+    "symbols": "N_U：波向量足以跨過 q₀、能參與 umklapp 散射的聲子數；θ_U：由費米面在布里淵區內的幾何決定的特徵溫度；T：溫度。記號 N_U 為本站所加，書上以文字敘述「the number of phonons available for umklapp scattering」。",
+    "from": "p.152：「At low enough temperatures the number of phonons available for umklapp scattering falls as exp(−θ_U/T)」。（本站補充，類比 Ch5 p.126 的 Boltzmann 因子論證）來源是 Planck 分布在 ℏω ≫ k_BT 時化為 Boltzmann 因子：⟨n⟩ = 1/(e^{ℏω/k_BT} − 1) ≈ e^{−ℏω/k_BT}；而 umklapp 需要 ℏω ≳ ℏω(q₀) ≡ k_Bθ_U。",
+    "limits": "**T ≪ θ_U**：umklapp 被指數凍結，電阻中的 umklapp 貢獻急速消失，剩下的只有效率很差的小角度 normal 散射——p.152 說鉀在「below about 2 K」時就是這種情形。\n\n**T ≳ θ_U**：不再是指數形式；波向量大於 q₀ 的聲子已大量存在，umklapp 成為主要的電阻機制，p.151 說它「accounts for most of the electrical resistivity of metals at low temperatures」指的就是這個中間溫區。\n\n**與 Ch5 聲子熱導的對照**：Ch5 p.126 的聲子 umklapp 按 exp(−θ/2T) 凍結，門檻是 θ/2；這裡的門檻 θ_U 由 q₀ 決定，而 q₀ 只有 k_F 的約四分之一，所以 θ_U 遠低於 θ/2（鉀：23 K 對 45 K）。\n\n**費米面與區界相交的金屬**：q₀ 不存在，就沒有這個指數凍結。",
+    "numeric": "鉀，θ_U = 23 K：exp(−23/T) 在 T = 20 K 為 0.32，10 K 為 0.10，5 K 為 1.0×10⁻²，4 K 為 3.2×10⁻³，2 K 為 1.0×10⁻⁵，1 K 為 1.0×10⁻¹⁰。從 4 K 降到 2 K，可用的 umklapp 聲子數就再少了約 300 倍——這是書上說「(below about 2 K in potassium) the number of umklapp processes is negligible」的量化根據。"
+   }
+  },
+  {
+   "kind": "derivation",
+   "tier": "mine",
+   "heading": "用 Debye 模型粗估 θ_U：為什麼鉀的 θ_U 只有 θ 的四分之一",
+   "body": "書上給了鉀的實驗值 θ_U = 23 K 與 θ = 91 K，並說 θ_U「calculable from the geometry」，但沒有算。以下用 Ch5 的 Debye 模型做一個粗估，看幾何能不能解釋這個比值。**這是本站的估算，不是書中內容**；Debye 模型假設線性、各向同性的色散，用在區界附近的聲子只能給出量級。",
+   "steps": [
+    "Debye 模型：ω = v_s q，最大波向量 k_D 與 Debye 溫度的關係為 k_Bθ = ℏv_s k_D。",
+    "最小 umklapp 聲子的能量：k_Bθ_U ≈ ℏω(q₀) = ℏv_s q₀。兩式相除：θ_U/θ ≈ q₀/k_D。",
+    "Debye 波向量：k_D³ = 6π² n_atom（每個原胞一個原子）。單價金屬 n = n_atom，而 k_F³ = 3π²n，所以 k_D = 2^{1/3} k_F ≈ 1.26 k_F。",
+    "代入：θ_U/θ ≈ q₀/(1.26 k_F)。用書上的 q₀ = 0.267 k_F 得 0.21；用前一單元的 0.280 k_F 得 0.22。",
+    "鉀 θ = 91 K：θ_U ≈ 19–20 K。書上從 Fig. 12 數據得到的實驗值是 23 K。以如此粗糙的模型，差距在 20% 以內，可以說**幾何確實解釋了 θ_U 為何只有 θ 的四分之一左右**。",
+    "**為什麼電子的門檻比聲子的低**：Ch5 的聲子 umklapp 要兩個聲子自己湊出約 ½G 的波向量，所以門檻約 θ/2。電子 umklapp 則不然——電子本身已經帶著大小為 k_F 的波向量，站在離區界不遠的地方，聲子只需要補上「縫隙」q₀ 那一小段。**是費米球替聲子做了大部分的工作。**",
+    "反過來看，這也說明 θ_U 對費米面的形狀極為敏感：若費米球再大一點（例如電子數增加），縫隙 q₀ 會縮小，θ_U 下降；費米面一旦碰到區界，門檻就完全消失。"
+   ]
+  },
+  {
+   "kind": "concept",
+   "tier": "book",
+   "heading": "鉀的實驗：θ_U = 23 K、θ = 91 K，以及 2 K 以下只剩 normal 散射",
+   "body": "p.152 最後用鉀的數據收尾，逐字為：\n\n「The experimental data (Fig. 12) for potassium have the expected exponential form with θ_U = 23 K compared with the Debye θ = 91 K. At the very lowest temperatures (below about 2 K in potassium) the number of umklapp processes is negligible and the lattice resistivity is then caused only by small angle scattering, which is the normal (not umklapp) scattering.」\n\n**為什麼選鉀？**（本站解讀）鉀是 bcc 單價金屬，費米面幾乎是完美的球，而且不碰區界——正是 q₀ 幾何論證成立的理想情形。Fig. 12 的兩個鉀樣品在前面已經用來示範 Matthiessen 規則；這裡同一組數據被第二次使用，這次看的是**曲線的形狀**而非截距。\n\n**把本段的論證串起來看 Fig. 12**（本站整理）：\n\n1. 兩條曲線的上升部分（扣除截距後）相同 → 這是 ρ_L(T)，與樣品無關（Matthiessen）。\n2. ρ_L(T) 在 10–20 K 迅速上升、在 5 K 以下幾乎消失 → 符合指數形式 exp(−θ_U/T)，θ_U = 23 K。（書上說數據「have the expected exponential form」；本站不以目視讀值去重新擬合 θ_U，因為截距附近的小差值對讀圖誤差太敏感。）\n3. 2 K 以下 umklapp 的因子只剩 exp(−23/2) ≈ 10⁻⁵ → 晶格電阻只剩小角度 normal 散射，而這種散射的效率又被 (1 − cos φ) ∝ T² 壓低 → 晶格電阻幾乎為零，總電阻完全由殘餘項 ρ_i 決定，曲線變平。\n\n**θ_U = 23 K 與 θ = 91 K 的對比**（本站解讀）傳達了一個重要訊息：「低溫」是相對的。對鉀而言，10 K 已經遠低於 Debye 溫度，聲子總數已大幅凍結；但 10 K 仍然比 θ_U 的一半還低一點點，umklapp 雖被壓制卻還活躍，晶格電阻仍由它主導。只有到 θ_U 的十分之一左右（約 2 K），umklapp 才真正退場。\n\n**「the lattice resistivity is then caused only by small angle scattering」** 這句話的份量在於：它說明 normal 過程**並沒有消失**，只是它們對電阻的貢獻本來就小。電阻的溫度依賴在最低溫段的主角換人了——從 umklapp 換成 normal，而後者的貢獻小到在 Fig. 12 上幾乎看不見。"
+  },
+  {
+   "kind": "concept",
+   "tier": "mine",
+   "heading": "常見誤解與自我檢查清單",
+   "body": "把這一段最容易錯的地方集中列出。每一條後面附上原文出處，可以回頭對照。\n\n**誤解一：「電場只加速費米面上的電子。」**\n錯。p.147 逐字：「every electron is displaced by the same δk」。電場作用在所有電子上；只是球內部的平移對佔據分布而言看不見（全同粒子），淨改變只出現在費米面的薄殼。**「只有費米面電子參與」說的是碰撞與分布的改變，不是受力。**\n\n**誤解二：「導電電子以接近 v_F 的速度沿電場方向跑。」**\n錯。整體的漂移速度 v_d = eEτ/m 在一般條件下只有 mm/s 到 m/s；v_F ~ 10⁶ m/s 是費米面電子在各個方向上的隨機速率。兩者相差 10⁶–10⁹ 倍。\n\n**誤解三：「平均自由程 ℓ = v_dτ。」**\n錯。p.151 明寫 ℓ = v_Fτ，理由是「all collisions involve only electrons near the Fermi surface」。\n\n**誤解四：「(41) 取 t = τ 只是一個粗略的代換。」**\n不對。由 p.152 的 (48) 求穩態，δk = Fτ/ℏ 是精確解。把暫態解在 t = τ 的值拿來用反而是錯的（會少 37%）。\n\n**誤解五：「Matthiessen 規則是一條定律。」**\np.150 用的詞是「This empirical observation expresses Matthiessen's rule」，而且兩個前提都加了「often」。它在缺陷濃度低、兩種散射彼此獨立時成立。\n\n**誤解六：「電阻比越高，室溫電阻率越低。」**\n不一定。室溫電阻率由晶格項主導，不同樣品幾乎相同；電阻比反映的是分母 ρ_i。Table 3 的數值也特地「residual resistivities have been subtracted」。\n\n**誤解七：「Umklapp 過程不守恆能量或動量。」**\n能量守恆（散射近乎彈性）；波向量守恆到差一個 G——這在晶體中本來就是完整的守恆律（p.173）。被「打破」的只是自由電子意義下的真實動量，那一份由整個晶格承接。\n\n**誤解八：「電子 umklapp 的凍結溫度與聲子熱導的 umklapp 一樣是 θ/2。」**\n不一樣。Ch5 p.126 的聲子是 exp(−θ/2T)；電子是 exp(−θ_U/T)，θ_U 由費米面與區界的縫隙 q₀ 決定。鉀：θ_U = 23 K，θ/2 ≈ 45 K。\n\n**誤解九：「碰撞越多，電阻一定越大。」**\n要看碰撞有沒有改變電流。小角度的 normal 碰撞即使很頻繁，對電阻的貢獻也被 (1 − cos φ) 壓得很小。(44) 的 τ 是**動量弛豫時間**，不是單純的兩次碰撞間隔。\n\n**誤解十：「σ = ne²τ/m 是費米統計的結果。」**\np.148 說古典的 Maxwellian 氣體得到「Closely the same result」。費米統計改變的是 τ 與 ℓ 要在誰身上計算，不是公式形式。\n\n**自我檢查題（能全部答出就算讀懂這一段）：**\n\n1. 為什麼 B = 0 時費米球是剛體平移，B ≠ 0 時卻不是？\n2. 書上印的 v = δk/m 錯在哪裡？正確式子是什麼？\n3. 銅的室溫電阻率 1.70 μΩ·cm，算出 τ 與 ℓ。電阻比 1000 的樣品大約含多少雜質？\n4. 為什麼「整顆球平移」與「只有費米面電子被散射」兩種說法給出同一個電流？用一句話說明。\n5. Fig. 12 的兩條曲線要怎麼看才能驗證 Matthiessen 規則？\n6. 為什麼費米面不碰區界時才有 q₀？為什麼 q₀ 會變成 exp(−θ_U/T)？\n7. 鉀的 θ_U（23 K）為什麼只有 θ（91 K）的四分之一左右？"
+  },
+  {
+   "kind": "concept",
+   "tier": "ext",
+   "heading": "延伸：這一段與奈米元件自熱／Cth 萃取的接點",
+   "body": "**本 block 全部是 Kittel 沒有的內容**，寫給做元件熱模型（例如 FinFET 自熱與熱容 C_th 萃取）的讀者，說明這六頁的物理在什麼地方會變成量測與建模上的約束。\n\n**第一，金屬線的電阻就是溫度計，而 Matthiessen 規則決定了這支溫度計的靈敏度。** 以閘極電阻或金屬加熱線當溫度計做自熱量測時，用的是電阻溫度係數 α = (1/ρ)(dρ/dT)。由 (46)，dρ/dT 只來自晶格項 ρ_L，但分母卻是 ρ_L + ρ_i。所以\n\nα = (dρ_L/dT)/(ρ_L + ρ_i)。\n\n奈米尺度的薄膜與細線，晶界、表面、雜質造成的 ρ_i 往往不小，**α 會比塊材值明顯偏低**。實務後果是：不能拿塊材的溫度係數去換算元件溫度，每一批結構都要自己做溫度校正；而量一次室溫與低溫的電阻比（本段的 resistivity ratio），可以很快判斷這層金屬的缺陷散射有多重。\n\n**第二，銅在室溫的自由程約 39 nm（本頁由 Table 1 + Table 3 算得），已經與先進製程的導線寬度、接觸孔尺寸相當。** 當線寬接近 ℓ，表面與晶界散射成為額外的 1/τ 項，用 Matthiessen 的精神加在 (45) 上，電阻率隨尺寸縮小而上升。本頁推得的 ρℓ ≈ 6.6×10⁻¹⁶ Ω·m²（銅）是尺寸效應模型中常用的材料組合量。\n\n**第三，焦耳熱的微觀圖像。** 本頁 Fig. 10 的推導單元說明：電場持續以 σE² 的功率把能量交給電子的漂移運動，碰撞在約 τ/2 的時間內把它打散成電子的無序運動，能量最終再經電子—聲子作用流入晶格。銅在 1 MA/cm² 時熱源密度約 ρj² ≈ 1.7×10¹² W/m³，也就是每立方微米約 1.7 μW。元件自熱的熱源項就是這個。需要注意的是：(44) 的 τ 是**動量**弛豫時間；電子把**能量**交給晶格（以及晶格把熱傳走）的時間尺度是另一回事，建熱模型時不能混用。\n\n**第四，電子熱導與電導同源。** 本章稍後（p.156）的 Wiedemann–Franz 關係把金屬的電子熱導率與 σ 連起來，用的是同一個 τ。所以量到金屬層的電阻率，就能估計它的電子熱導——這在多層結構的熱阻網路中常被用來給金屬層定值。\n\n**第五，低溫量測的陷阱。** 若在低溫做熱或電的萃取，高純金屬的自由程可以長到遠超結構尺寸（本段：4 K 的銅可達 0.3 cm），「電阻率」這個局域量本身就開始依賴幾何。本段 Fig. 12 所示的 umklapp 凍結也意味著：在 θ_U 以下，晶格電阻的溫度依賴會急劇變弱，電阻溫度計的靈敏度隨之喪失。"
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+{
+ "section": 4,
+ "blockers": [],
+ "minors": [
+  {
+   "where": "lede；blocks[0].body（tier: mine）第 (3) 點",
+   "problem": "對 umklapp 的角色說過頭。lede 寫「低溫下為什麼只有借助倒晶格向量的 umklapp 碰撞才真正產生電阻」，blocks[0] 寫「低溫下真正有效的聲子碰撞必須借助倒晶格向量 G」。書上用的詞是 most（大部分），而且明說在最低溫時晶格電阻只由 normal 散射造成。本檔 blocks[39] 自己也寫了「normal 過程並沒有消失」。",
+   "evidence": "p.151：「Umklapp scattering of electrons by phonons (Chapter 5) accounts for most of the electrical resistivity of metals at low temperatures.」p.152：「At the very lowest temperatures (below about 2 K in potassium) the number of umklapp processes is negligible and the lattice resistivity is then caused only by small angle scattering, which is the normal (not umklapp) scattering.」",
+   "fix": "lede 改成「低溫下為什麼晶格電阻主要來自借助倒晶格向量的 umklapp 碰撞」；blocks[0] 改成「低溫下晶格電阻的主要來源是借助倒晶格向量 G 的 umklapp 散射」。"
+  },
+  {
+   "where": "blocks[0].body（tier: mine）倒數第二段",
+   "problem": "「以及 Ch14 的電漿光學，都建立在這裡的 τ 上」說過頭。Ch14 的電漿光學（p.396–397）用的是無碰撞的運動方程，推導 ε(ω) 與 ω_p 時完全沒有 τ。整個 Ch14 只有 p.426 的習題用到 τ。",
+   "evidence": "p.396 Plasma Optics：「obtained from the equation of motion of a free electron in an electric field: (4) m d²x/dt² = −eE」；p.397 式 (8)(9) 都不含 τ。全文搜尋 book p.393–435，τ 只出現在 p.426 的習題（「τ = 2.83 × 10⁻¹⁵ s for the electron relaxation time」）。",
+   "fix": "改成「Hall 效應（p.154）與熱導率（p.156）都直接沿用這裡的 τ；Ch14 的電漿頻率 ω_p 則會透過 σ = ω_p²τ/4π 與它接上（見本頁高斯單位單元）」。"
+  },
+  {
+   "where": "blocks[7].steps[6]（tier: derived）；blocks[41].body 「第三」段（tier: ext）",
+   "problem": "u/(σE²) = τ/2 這個計算正確，但解讀成「碰撞在大約 τ/2 的時間內就把累積的漂移動能全部交給晶格」不精確。τ 是動量弛豫時間，所以漂移動能（∝ v_d²）以 2/τ 的速率被打散，τ/2 是漂移動能被轉成電子無序（熱）運動的時間，不是交給晶格的時間。雜質碰撞是彈性的，根本不把能量交給晶格。blocks[41]「第三」段先照抄「碰撞在約 τ/2 的時間內把它轉交給晶格」，同一段隨即警告「電子把能量交給晶格的時間尺度是另一回事」，同一段自相矛盾。",
+   "evidence": "由 (48)，F = 0 時 δk ∝ e^{−t/τ}，所以漂移動能 ∝ δk² ∝ e^{−2t/τ}，耗散率 2u/τ = σE²，這正是 τ/2 的來源。書上本段沒有討論能量弛豫。",
+   "fix": "blocks[7] 改成「碰撞在約 τ/2 的時間內把漂移動能打散成電子的無序運動（能量最終再經電子—聲子作用流入晶格），電場則以相同速率補充」；blocks[41] 改成一致的說法，和後面那句警告對齊。"
+  },
+  {
+   "where": "blocks[15].body（tier: mine）第五步",
+   "problem": "「只有前緣薄殼裡的電子，才找得到後緣薄殼裡那些同能量的空態可以跳進去」在能量上不對。平移後前緣多出的佔據態 |k| > k_F（ε > ε_F），後緣空出的態 |k| < k_F（ε < ε_F），兩者不同能量。彈性散射保持 |k|，會把前緣電子送到同一 |k| 殼上其他方向的空態，不會直接落進後緣薄殼。",
+   "evidence": "blocks[16].steps[1] 自己給出 f − f₀ = δk cos θ δ(k − k_F)：前半球（cos θ > 0）多出的佔據在 k_F 外側，後半球少掉的在 k_F 內側。",
+   "fix": "改成「在 δk 的一階近似下，多出的電子與空出的態都貼在費米面上；碰撞（包立原理只允許散射進費米面附近的空態）的淨效果是把分布的不對稱抹平，等於把球心拉回原點」，並刪掉「同能量」。"
+  },
+  {
+   "where": "blocks[15].body 第六步（tier: mine）vs blocks[28].eq.limits（tier: book）",
+   "problem": "同一個「誤用漂移速度」的數值前後不一。blocks[15] 寫「ℓ = v_dτ ~ 10⁻¹⁴ m，比原子還小幾萬倍」，沒有給條件；blocks[28] 寫「銅在 E = 1 V/m 時得到約 10⁻¹⁶ m」。",
+   "evidence": "E = 1 V/m 時 v_d = eEτ/m ≈ 4.3×10⁻³ m/s，v_dτ ≈ 1.1×10⁻¹⁶ m；要到 10⁻¹⁴ m 需要 j ≈ 1 MA/cm²（v_d ≈ 0.74 m/s，見 blocks[10].numeric），此時 v_dτ ≈ 1.8×10⁻¹⁴ m。",
+   "fix": "blocks[15] 補上條件，例如「E = 1 V/m 時 ℓ = v_dτ ~ 10⁻¹⁶ m（即使 1 MA/cm² 也只有 ~10⁻¹⁴ m）」，與 blocks[28] 一致。"
+  },
+  {
+   "where": "blocks[22].body（tier: book）最後一段",
+   "problem": "把 p.639 的式 (13) 描述成「把聲子項 αT⁵、雜質項與自旋散射項相加」不準確。書上只相加兩項：聲子項 αT⁵ 與式 (12) 的自旋電阻 ρ_spin = cρ₀ − cρ₁ ln T。cρ₀ 是磁性雜質交換散射項的一部分，不是獨立的雜質項。",
+   "evidence": "p.639：「ρ_spin = cρ_M[1 + 3zJ/ε_F ln T] = cρ₀ − cρ₁ ln T」（12）；「If the phonon contribution to the electrical resistivity goes as T⁵ in the region of interest and if the resistivities are additive, then the total resistivity has the form ρ = αT⁵ + cρ₀ − cρ₁ ln T」（13）。",
+   "fix": "改成「把聲子項 αT⁵ 與磁性雜質的自旋散射電阻 cρ₀ − cρ₁ ln T（式 (12)）直接相加」。"
+  },
+  {
+   "where": "blocks[23].body（tier: mine）(1)",
+   "problem": "「截距就是殘餘電阻比：上方樣品 R(0)/R(290) ≈ 0.042」用詞與本檔 blocks[24] 相反。blocks[24] 定義的電阻比（RRR）是 ρ(室溫)/ρ_i(0)，這裡卻把倒數 R(0)/R(290) 叫「殘餘電阻比」，下一句又「取倒數得電阻比」。",
+   "evidence": "blocks[24].eq.formula：「電阻比 ≡ ρ(室溫)/ρ_i(0)」；p.150：「the ratio of its resistivity at room temperature to its residual resistivity」。",
+   "fix": "改成「截距就是殘餘電阻與 290 K 電阻之比：上方 R(0)/R(290) ≈ 0.042……取倒數得電阻比約 24 與 69」。"
+  },
+  {
+   "where": "blocks[26].body（tier: book）最後一段「值得注意的排序」",
+   "problem": "(a)「鹼金屬……電導率卻只有銅的四分之一到三分之一」與 Table 3 不符。(b)「因為它們的電子濃度 n 低得多」對 Li 不成立：Li 的 n 是銅的 0.56，σ 卻只有 0.18，差距主要來自 τ。本檔 blocks[27] 算出 Li 的 τ = 0.81×10⁻¹⁴ s，銅是 2.5×10⁻¹⁴ s。",
+   "evidence": "Table 3（p.149，目視）：Li 1.07、Na 2.11、K 1.39、Rb 0.80、Cs 0.50，銅 5.88（10⁵ Ω⁻¹cm⁻¹），比值依序為 0.18、0.36、0.24、0.14、0.085。Table 1：Li n = 4.70，Cu 8.45（10²² cm⁻³）。",
+   "fix": "改成「鹼金屬的電導率只有銅的約 1/12（Cs）到 1/3（Na）；以 K 為例，主要是 n 只有銅的 1/6，但 Li 則主要是 τ 較短（見下一單元的表）」。"
+  },
+  {
+   "where": "blocks[27].steps[3]（tier: derived）「讀法一」",
+   "problem": "文字結論與同一單元的表不符。原文說「τ 都落在 10⁻¹⁵–10⁻¹⁴ s 的狹窄範圍，自由程都在 10–50 nm……τ 幾乎一樣」，但表中 τ 為 0.72–3.8×10⁻¹⁴ s：七種金屬有五種超過 10⁻¹⁴ s，最大與最小差約 5 倍。Ag 的 ℓ = 52 nm，也超出 10–50 nm。",
+   "evidence": "blocks[27].steps[2] 表：Li 0.81、Na 2.8、K 3.5、Cu 2.5、Ag 3.8、Au 2.7、Al 0.72（10⁻¹⁴ s）；ℓ：Ag 52 nm。以 Table 1/Table 3 重算結果相同（Li 0.81、Na 2.82、K 3.53、Cu 2.47、Ag 3.77、Au 2.73、Al 0.72）。",
+   "fix": "改成「室溫下這些金屬的 τ 都在 10⁻¹⁴ s 量級（約 0.7–4×10⁻¹⁴ s），自由程約 10–50 nm；電阻率相差近 6 倍，τ 的差距也在同一個量級之內」。"
+  },
+  {
+   "where": "blocks[28].eq.limits（tier: book）「自由程撞上樣品尺寸」一段末句",
+   "problem": "「p.151『Mean free paths as long as 10 cm』的樣品必須比 10 cm 大得多，才能讓這個數字不受樣品邊界限制」書上沒有依據，物理上也不成立：這麼長的自由程通常是用尺寸效應類實驗在比 ℓ 薄得多的樣品上測得，或是量幾種不同厚度再外插得到。這句寫在 tier book 的 block 裡，也沒有標明是本站推論。",
+   "evidence": "p.151 只寫：「Mean free paths as long as 10 cm have been observed in very pure metals in the liquid helium temperature range.」沒有提樣品尺寸或量測方法。",
+   "fix": "刪掉這句，或改成「（本站補充）當 ℓ 大於樣品尺寸時，量到的電阻率會受邊界散射限制，要推回塊材的 ℓ 需要做尺寸修正或尺寸效應量測」。"
+  },
+  {
+   "where": "blocks[29].body（tier: book）「第三，Appendix J 的 sketch」",
+   "problem": "「Appendix J 開宗明義『Let us limit ourselves to N processes』」的位置描述不對。Appendix J 從 p.671 下半頁開始，先談電子—聲子耦合的效應與形變位勢（p.671–672），這句在 p.673 頁首才出現。",
+   "evidence": "p.671：「appendix J: electron-phonon collisions  Phonons distort the local crystal structure…」；p.672 末：「In semiconductors at low temperatures only the possibility zero (N processes) may be allowed energetically.」；p.673 首句：「Let us limit ourselves to N processes, and for convenience we approximate …」。",
+   "fix": "改成「但要注意 Appendix J 在 p.673 明言『Let us limit ourselves to N processes』」。"
+  },
+  {
+   "where": "blocks[30].steps[4]（tier: derived）",
+   "problem": "把 Fig. 12 在 5 K 以下的平坦段歸因於「聲子總數 ∝ T³ 下降 + 小角度散射效率低」兩個 normal 過程效應，並說「就是這樣來的」，漏掉了書上給的主因：umklapp 的指數凍結 exp(−θ_U/T)。這與本檔 blocks[23](3)、blocks[39] 的歸因不一致。",
+   "evidence": "p.152：「The experimental data (Fig. 12) for potassium have the expected exponential form with θ_U = 23 K」；blocks[23](3) 寫「p.152 把這個形狀歸因於 umklapp 過程的指數凍結」。",
+   "fix": "改成「……使 normal 過程對 ρ_L 的貢獻在低溫急速消失；再加上 umklapp 在 T ≪ θ_U 時被 exp(−θ_U/T) 凍結（p.152），Fig. 12 在 5 K 以下才會如此平坦」。"
+  },
+  {
+   "where": "blocks[35].body（tier: book）「門檻如何變成指數」下一段；blocks[37].eq.from（tier: book）",
+   "problem": "標示不一致。「波向量至少為 q₀ 的聲子能量至少約 ℏω(q₀)……定義 k_Bθ_U ~ ℏω(q₀)，就得到 exp(−θ_U/T)」這段 Boltzmann 因子的機制說明是撰寫者補的；書上對電子 umklapp 只說 θ_U「calculable from the geometry」。同一個 block 的另一句補充有標「（本站補充）」，這段沒標，放在 tier book 裡容易被讀成書中內容。blocks[37].eq.from 的「來源是 Planck 分布……≡ k_Bθ_U」也一樣。",
+   "evidence": "p.152 原文只有：「At low enough temperatures the number of phonons available for umklapp scattering falls as exp(−θ_U/T), where θ_U is a characteristic temperature calculable from the geometry of the Fermi surface inside the Brillouin zone.」Boltzmann factor 的說法只出現在 Ch5 p.126 的聲子—聲子 umklapp。",
+   "fix": "兩處在該段開頭加「（本站補充，類比 Ch5 p.126 的 Boltzmann 因子論證）」。"
+  }
+ ],
+ "verified": [
+  "頁碼：(39)(40)(41)(42) 在 p.147，(43)(44) 在 p.148，(45)(46) 在 p.150，(47) 在 p.151，(48) 在 p.152；Fig. 10 在 p.148、Table 3 在 p.149（旋轉、無文字層）、Fig. 11 在 p.150、Fig. 12 在 p.151、Fig. 13 在 p.152，皆與 PDF 167–172 算繪相符。",
+  "式號：所有 eqNumber (39)–(47) 皆為原文所印；電阻比、normal/umklapp 波向量關係、N_U ∝ exp(−θ_U/T) 三個未編號式子正確地沒有 eqNumber。",
+  "公式抄錄：(39)–(48) 的符號、負號、ℏ、1/c、平方皆與原頁一致；(39) 左側確印「(CGS)」。",
+  "校註 v = δk/m：放大算繪 p.147 確認原書就是印 v = δk/m（漏 ℏ），撰寫者的校註正確，且等號最右 −eEτ/m 正確。",
+  "校註 ρ ∝ T：p.151 文字層為「ρ/L50524T」，算繪確認為 ρ ∝ T（總 ρ，非 ρ_L）。",
+  "所有英文逐字引用（約 40 處）以程式與全書文字層模糊比對，未命中者（跨頁、顯示式被抽離、Table 3 影像）逐一目視原頁確認，全部逐字無誤，含跨 p.148→150、p.150→151、p.151→152 的三段引用，以及 ℓ(4 K) ≈ 0.3 cm、τ ≈ 2 × 10⁻⁹ s 的符號。",
+  "Table 1（p.139）數值：Cu n = 8.45、k_F = 1.36、v_F = 1.57；K n = 1.40、k_F = 0.75、v_F = 0.86、ε_F = 2.12；Li 4.70/1.29、Na 2.65/1.07、Ag 5.85/1.39、Au 5.90/1.39、Al 18.06/2.02，以及表頭「room temperature (Except for Na, K, Rb, Cs at 5 K and Li at 78 K)」，全部與原文一致。",
+  "Table 3（p.149 算繪）：表頭、Meaden 出處、「residual resistivities have been subtracted」、單位列，以及 Li/Na/K/Cu/Ag/Au/Al/Fe/Pb/Mn/Bi/Hg 十二組讀值全部正確。",
+  "書中數字：300 K/4 K、1 μΩ·cm per at.%、RRR 1000 → 1.7×10⁻³ μΩ·cm → 20 ppm、10⁶、manganin 1.1、10⁵、τ ≈ 2×10⁻⁹ s、v_F = 1.57×10⁸、ℓ ≈ 0.3 cm、10 cm、q₀ = 0.267 k_F、θ_U = 23 K、θ = 91 K、2 K、Fig. 12 的 290 K，全部與原文一致。",
+  "本站計算的數值：銅 τ ≈ 2.47×10⁻¹⁴ s、δk ≈ 38 m⁻¹、δk/k_F ≈ 2.8×10⁻⁹、v_d(1 MA/cm²) ≈ 0.74 m/s、σE² ≈ 1.7×10¹² W/m³、u ≈ 2×10⁻² J/m³、σ_Gauss ≈ 5.3×10¹⁷ s⁻¹、ω_p ≈ 1.64×10¹⁶ s⁻¹、ω_pτ ≈ 400、ℓ(室溫) ≈ 39 nm、ρℓ ≈ 6.6×10⁻¹⁶ Ω·m²、blocks[27] 七種金屬的 τ 與 ℓ 表、exp(−23/T) 各值、4 K→2 K 約 315 倍、鉀 a = 5.23 Å、|G| = 1.70×10⁸ cm⁻¹、k_Bθ = 7.8 meV，皆經程式重算無誤。",
+  "推導數學：(48) 的穩態與暫態解、0.63/37% 的區分、Matthiessen 由速率相加推到電阻相加、高斯單位 σ 量綱與 σ = ω_p²τ/4π、4πσ 的電荷弛豫，以及殼層積分 j_z = −e n ℏδk/m 與 Δn₊/n = (3/4)(δk/k_F)，皆正確。",
+  "其他推導：(1 − cos φ) = q²/2k_F² 權重、bcc 幾何 k_F = 3.898/a、|G| = 8.886/a、k_F/(|G|/2) = 0.877、q₀ = 0.280 k_F（撰寫者誠實標出與書上 0.267 的差異）、Debye 粗估 θ_U/θ ≈ 0.21–0.22，皆正確。",
+  "Fig. 10–13 的文字描述經 4–7 倍放大目視全部核實：Fig. 10 的 F 箭頭與球心右移；Fig. 11 (a) 行距左密右疏、列距相等，(b) 第 2 列第 3 行為實心大黑圓、第 4 列第 2 行為無點虛線圈；Fig. 12 截距 4.2/1.45、各溫度讀值、圓點/方點、左端虛線外插；Fig. 13 的區界、q₀ 虛線、A/A′/G/~π/φ 標記。",
+  "書內交叉引用皆存在且內容相符：p.154 用 j_x = ne²τE_x/m 算 Hall 係數；p.156 Wiedemann–Franz (57) 同一 τ；p.173 crystal momentum 與 k + q = k′ + G；p.125 式 (47) K₁ + K₂ = K₃ + G；p.126 exp(−θ/2T) 與尺寸效應；p.397 式 (9) ω_p² = 4πne²/m；p.639 T⁵ 假設語氣與 additive；Appendix J p.671–674、p.674 式 (14) 正比於 k_BT、「q cos θ」與「(q/k) cos θ」的逐字引文。",
+  "「全書只在 p.639 提到 T⁵ 電阻」經全書 700 頁文字層搜尋屬實（僅 p.639 兩處）。"
+ ]
+}
